@@ -3249,6 +3249,8 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, const int nConfMin
         std::sort(vCoins.begin(), vCoins.end(), less_then_denom);
     }
 
+    int nMaxChainLength = std::min(gArgs.GetArg("-limitancestorcount", DEFAULT_ANCESTOR_LIMIT), gArgs.GetArg("-limitdescendantcount", DEFAULT_DESCENDANT_LIMIT));
+
     // try to find nondenom first to prevent unneeded spending of mixed coins
     for (unsigned int tryDenom = tryDenomStart; tryDenom < 2; tryDenom++)
     {
