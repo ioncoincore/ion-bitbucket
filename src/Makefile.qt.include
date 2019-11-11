@@ -28,6 +28,7 @@ QT_TS = \
   qt/locale/ion_pl.ts \
   qt/locale/ion_pt.ts \
   qt/locale/ion_pt_BR.ts \
+  qt/locale/ion_ro.ts \
   qt/locale/ion_ru.ts \
   qt/locale/ion_sk.ts \
   qt/locale/ion_sv.ts \
