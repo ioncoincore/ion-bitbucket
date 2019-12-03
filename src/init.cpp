@@ -71,6 +71,9 @@
 #include "xion/accumulatorcheckpoints.h"
 #include "xion/zerocoindb.h"
 
+#include "tokens/tokengroupmanager.h"
+#include "tokens/tokendb.h"
+
 #include "evo/deterministicmns.h"
 #include "llmq/quorums_init.h"
 
@@ -317,6 +320,8 @@ void PrepareShutdown()
         evoDb = nullptr;
         delete zerocoinDB;
         zerocoinDB = nullptr;
+        delete pTokenDB;
+        pTokenDB = nullptr;
     }
 #ifdef ENABLE_WALLET
     for (CWalletRef pwallet : vpwallets) {
@@ -480,6 +485,7 @@ std::string HelpMessage(HelpMessageMode mode)
             "Warning: Reverting this setting requires re-downloading the entire blockchain. "
             "(default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, >%u = automatically prune block files to stay under the specified target size in MiB)"), MIN_DISK_SPACE_FOR_BLOCK_FILES / 1024 / 1024));
     strUsage += HelpMessageOpt("-reindex-chainstate", _("Rebuild chain state from the currently indexed blocks"));
+    strUsage += HelpMessageOpt("-reindex-tokens", _("Reindex the token database"));
     strUsage += HelpMessageOpt("-reindex", _("Rebuild chain state and block index from the blk*.dat files on disk"));
 #ifndef WIN32
     strUsage += HelpMessageOpt("-sysperms", _("Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)"));
@@ -1774,12 +1780,14 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
                 delete deterministicMNManager;
                 delete evoDb;
                 delete zerocoinDB;
+                delete pTokenDB;
 
                 evoDb = new CEvoDB(nEvoDbCache, false, fReset || fReindexChainState);
                 deterministicMNManager = new CDeterministicMNManager(*evoDb);
                 pblocktree = new CBlockTreeDB(nBlockTreeDBCache, false, fReset);
                 llmq::InitLLMQSystem(*evoDb, &scheduler, false, fReset || fReindexChainState);
                 zerocoinDB = new CZerocoinDB(0, false, fReset || fReindexChainState);
+                pTokenDB = new CTokenDB(0, false, fReset || fReindexChainState);
 
                 if (fReset) {
                     pblocktree->WriteReindexing(true);
@@ -1853,6 +1861,20 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
 
                 //ION: Load Accumulator Checkpoints according to network (main/test/regtest)
                 assert(AccumulatorCheckpoints::LoadCheckpoints(Params().NetworkIDString()));
+
+                tokenGroupManager = std::shared_ptr<CTokenGroupManager>(new CTokenGroupManager());
+
+                // Drop all information from the tokenDB and repopulate
+                if (gArgs.GetBoolArg("-reindextokens", false)) {
+                    uiInterface.InitMessage(_("Reindexing token database..."));
+                    if (!ReindexTokenDB(strLoadError))
+                        break;
+                }
+
+                // ION: load token data
+                uiInterface.InitMessage(_("Loading token data..."));
+                if (!pTokenDB->LoadTokensFromDB(strLoadError))
+                    break;
 
                 pcoinsdbview = new CCoinsViewDB(nCoinDBCache, false, fReset || fReindexChainState);
                 pcoinscatcher = new CCoinsViewErrorCatcher(pcoinsdbview);
