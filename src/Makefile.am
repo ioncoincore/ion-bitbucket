@@ -374,6 +374,7 @@ libdash_server_a_SOURCES = \
   script/ismine.cpp \
   spork.cpp \
   timedata.cpp \
+  tokens/tokendb.cpp \
   torcontrol.cpp \
   txdb.cpp \
   txmempool.cpp \
@@ -411,7 +412,6 @@ libdash_wallet_a_SOURCES = \
   privatesend/privatesend-client.cpp \
   privatesend/privatesend-util.cpp \
   tokens/rpctokens.cpp \
-  tokens/tokendb.cpp \
   tokens/tokengroupconfiguration.cpp \
   tokens/tokengroupdescription.cpp \
   tokens/tokengroupmanager.cpp \
