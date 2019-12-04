@@ -9,8 +9,188 @@
 #include "stakeinput.h"
 #include "validation.h"
 #include "wallet/wallet.h"
+#include "xion/accumulators.h"
+#include "xion/deterministicmint.h"
 
 typedef std::vector<unsigned char> valtype;
+
+CXIonStake::CXIonStake(const libzerocoin::CoinSpend& spend)
+{
+    this->nChecksum = spend.getAccumulatorChecksum();
+    this->denom = spend.getDenomination();
+    uint256 nSerial = ArithToUint256(spend.getCoinSerialNumber().getuint256());
+    this->hashSerial = Hash(nSerial.begin(), nSerial.end());
+    fMint = false;
+}
+
+int CXIonStake::GetChecksumHeightFromMint()
+{
+    int nHeightChecksum = chainActive.Height() - Params().GetConsensus().nZerocoinRequiredStakeDepth;
+
+    //Need to return the first occurance of this checksum in order for the validation process to identify a specific
+    //block height
+    uint32_t nChecksum = 0;
+    nChecksum = ParseChecksum(chainActive[nHeightChecksum]->GetBlockHeader().nAccumulatorCheckpoint, denom);
+    return GetChecksumHeight(nChecksum, denom);
+}
+
+int CXIonStake::GetChecksumHeightFromSpend()
+{
+    return GetChecksumHeight(nChecksum, denom);
+}
+
+uint32_t CXIonStake::GetChecksum()
+{
+    return nChecksum;
+}
+
+// The xION block index is the first appearance of the accumulator checksum that was used in the spend
+// note that this also means when staking that this checksum should be from a block that is beyond 60 minutes old and
+// 100 blocks deep.
+CBlockIndex* CXIonStake::GetIndexFrom()
+{
+    if (pindexFrom)
+        return pindexFrom;
+
+    int nHeightChecksum = 0;
+
+    if (fMint)
+        nHeightChecksum = GetChecksumHeightFromMint();
+    else
+        nHeightChecksum = GetChecksumHeightFromSpend();
+
+    if (nHeightChecksum < Params().GetConsensus().nZerocoinStartHeight || nHeightChecksum > chainActive.Height()) {
+        pindexFrom = nullptr;
+    } else {
+        //note that this will be a nullptr if the height DNE
+        pindexFrom = chainActive[nHeightChecksum];
+    }
+
+    return pindexFrom;
+}
+
+CAmount CXIonStake::GetValue()
+{
+    return denom * COIN;
+}
+
+//Use the first accumulator checkpoint that occurs 60 minutes after the block being staked from
+// In case of regtest, next accumulator of 60 blocks after the block being staked from
+bool CXIonStake::GetModifier(uint64_t& nStakeModifier)
+{
+    CBlockIndex* pindex = GetIndexFrom();
+    if (!pindex)
+        return error("%s: failed to get index from", __func__);
+
+    if(Params().NetworkIDString() == CBaseChainParams::REGTEST) {
+        // Stake modifier is fixed for now, move it to 60 blocks after this pindex in the future..
+        nStakeModifier = pindexFrom->nStakeModifier;
+        return true;
+    }
+
+    int64_t nTimeBlockFrom = pindex->GetBlockTime();
+    while (true) {
+        if (pindex->GetBlockTime() - nTimeBlockFrom > 60 * 60) {
+            nStakeModifier = UintToArith256(pindex->GetBlockHeader().nAccumulatorCheckpoint).GetLow64();
+            return true;
+        }
+
+        if (pindex->nHeight + 1 <= chainActive.Height())
+            pindex = chainActive.Next(pindex);
+        else
+            return false;
+    }
+}
+
+CDataStream CXIonStake::GetUniqueness()
+{
+    //The unique identifier for a xION is a hash of the serial
+    CDataStream ss(SER_GETHASH, 0);
+    ss << hashSerial;
+    return ss;
+}
+
+bool CXIonStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
+{
+    return false;
+/*
+    CBlockIndex* pindexCheckpoint = GetIndexFrom();
+    if (!pindexCheckpoint)
+        return error("%s: failed to find checkpoint block index", __func__);
+
+    CZerocoinMint mint;
+    if (!pwallet->GetMintFromStakeHash(hashSerial, mint))
+        return error("%s: failed to fetch mint associated with serial hash %s", __func__, hashSerial.GetHex());
+
+    if (libzerocoin::ExtractVersionFromSerial(mint.GetSerialNumber()) < 2)
+        return error("%s: serial extract is less than v2", __func__);
+
+    CZerocoinSpendReceipt receipt;
+    if (!pwallet->MintToTxIn(mint, hashTxOut, txIn, receipt, libzerocoin::SpendType::STAKE, pindexCheckpoint))
+        return error("%s", receipt.GetStatusMessage());
+
+    return true;
+*/
+}
+
+bool CXIonStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmount nTotal)
+{
+    return false;
+/*
+    //Create an output returning the xION that was staked
+    CTxOut outReward;
+    libzerocoin::CoinDenomination denomStaked = libzerocoin::AmountToZerocoinDenomination(this->GetValue());
+    CDeterministicMint dMint;
+    if (!pwallet->CreateXIONOutPut(denomStaked, outReward, dMint))
+        return error("%s: failed to create xION output", __func__);
+    vout.emplace_back(outReward);
+
+    //Add new staked denom to our wallet
+    if (!pwallet->DatabaseMint(dMint))
+        return error("%s: failed to database the staked xION", __func__);
+
+    CAmount toMint = (nTotal - this->GetValue()) / 2;
+    CAmount nRemaining = 0;
+    while (toMint >= 1 * COIN) {
+        libzerocoin::CoinDenomination denomination = libzerocoin::AmountToClosestDenomination(toMint, nRemaining);
+
+        if (denomination == libzerocoin::ZQ_ERROR)
+            return error("%s: failed to create xION output", __func__);
+
+        CAmount nValueNewMint = libzerocoin::ZerocoinDenominationToAmount(denomination);
+        toMint -= nValueNewMint;
+
+        CTxOut out;
+        CDeterministicMint dMintReward;
+        if (!pwallet->CreateXIONOutPut(denomination, out, dMintReward))
+            return error("%s: failed to create xION output", __func__);
+        vout.emplace_back(out);
+
+        if (!pwallet->DatabaseMint(dMintReward))
+            return error("%s: failed to database mint reward", __func__);
+    }
+
+    return true;
+*/
+}
+
+bool CXIonStake::GetTxFrom(CTransactionRef& tx)
+{
+    return false;
+}
+
+/*
+bool CXIonStake::MarkSpent(CWallet *pwallet, const uint256& txid)
+{
+    CxIONTracker* xionTracker = pwallet->xionTracker.get();
+    CMintMeta meta;
+    if (!xionTracker->GetMetaFromStakeHash(hashSerial, meta))
+        return error("%s: tracker does not have serialhash", __func__);
+
+    xionTracker->SetPubcoinUsed(meta.hashPubcoin, txid);
+    return true;
+}
+*/
 
 //!ION Stake
 bool CIonStake::SetInput(CTransactionRef txPrev, unsigned int n)

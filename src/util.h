@@ -139,8 +139,10 @@ namespace BCLog {
         //End Dash
 
         //Start ION
+        ZEROCOIN    = ((uint64_t)1 << 61),
         STAKING     = ((uint64_t)1 << 62),
         //End ION
+
         ALL         = ~(uint64_t)0,
     };
 }

@@ -6,8 +6,7 @@
 #include "blocksignature.h"
 #include "util.h"
 #include "utilstrencodings.h"
-//#include "main.h"
-//#include "xionchain.h"
+#include "xion/xionchain.h"
 
 typedef std::vector<unsigned char> valtype;
 
@@ -72,11 +71,8 @@ bool CheckBlockSignature(const CBlock& block)
     CPubKey pubkey;
     bool fxIONStake = block.vtx[1]->vin[0].IsZerocoinSpend();
     if (fxIONStake) {
-/*
-        libzerocoin::CoinSpend spend = TxInToZerocoinSpend(block.vtx[1].vin[0]);
+        libzerocoin::CoinSpend spend = TxInToZerocoinSpend(block.vtx[1]->vin[0]);
         pubkey = spend.getPubKey();
-*/
-        return error ("%s: zerocoin functionality not implemented yet", __func__);
     } else {
         txnouttype whichType;
         std::vector<valtype> vSolutions;

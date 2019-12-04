@@ -36,6 +36,7 @@ class CBlockIndex;
 class CBlockTreeDB;
 class CChainParams;
 class CCoinsViewDB;
+class CZerocoinDB;
 class CInv;
 class CConnman;
 class CScriptCheck;
@@ -211,6 +212,9 @@ extern bool fHavePruned;
 extern bool fPruneMode;
 /** Number of MiB of block files that we're trying to stay below. */
 extern uint64_t nPruneTarget;
+
+extern std::map<uint256, uint256> mapProofOfStake;
+
 /** Block files containing a block-height within MIN_BLOCKS_TO_KEEP of chainActive.Tip() will not be pruned. */
 static const unsigned int MIN_BLOCKS_TO_KEEP = 288;
 
@@ -461,6 +465,9 @@ extern CCoinsViewCache *pcoinsTip;
 
 /** Global variable that points to the active block tree (protected by cs_main) */
 extern CBlockTreeDB *pblocktree;
+
+/** Global variable that points to the zerocoin database (protected by cs_main) */
+extern CZerocoinDB *zerocoinDB;
 
 /**
  * Return the spend height, which is one more than the inputs.GetBestBlock().
