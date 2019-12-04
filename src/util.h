@@ -138,6 +138,9 @@ namespace BCLog {
         SPORK       = ((uint64_t)1 << 42),
         //End Dash
 
+        //Start ION
+        STAKING     = ((uint64_t)1 << 62),
+        //End ION
         ALL         = ~(uint64_t)0,
     };
 }
