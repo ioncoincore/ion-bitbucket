@@ -6,7 +6,7 @@ share/pixmaps/ion64.xpm usr/share/pixmaps
 share/pixmaps/ion128.png usr/share/pixmaps
 share/pixmaps/ion256.xpm usr/share/pixmaps
 share/pixmaps/ion_testnet16.xpm usr/share/pixmaps
-share/pixmaps/ion_testnet32.xpm usr/share/pixmaps
+share/pixmaps/ion_testnet2.xpm usr/share/pixmaps
 share/pixmaps/ion_testnet48.xpm usr/share/pixmaps
 share/pixmaps/ion_testnet64.xpm usr/share/pixmaps
 share/pixmaps/ion_testnet128.png usr/share/pixmaps
