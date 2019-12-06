@@ -201,7 +201,7 @@ And to source contributors which provided base for this release with their proje
 - rejectedpromise
 - Warrows
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/ion/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/ioncoincore/ioncore/).
 
 Setting up the Gitian image
 ======================
