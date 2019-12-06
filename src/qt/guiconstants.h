@@ -52,7 +52,7 @@ static const int MAX_URI_LENGTH = 255;
 #define SPINNER_FRAMES 36
 
 #define QAPP_ORG_NAME "Ion"
-#define QAPP_ORG_DOMAIN "ion.org"
+#define QAPP_ORG_DOMAIN "ionomy.com"
 #define QAPP_APP_NAME_DEFAULT "Ion-Qt"
 #define QAPP_APP_NAME_TESTNET "Ion-Qt-testnet"
 #define QAPP_APP_NAME_DEVNET "Ion-Qt-%s"

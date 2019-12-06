@@ -671,7 +671,7 @@ std::string HelpMessage(HelpMessageMode mode)
 std::string LicenseInfo()
 {
     const std::string URL_SOURCE_CODE = "<https://bitbucket.org/ioncoin/ion>";
-    const std::string URL_WEBSITE = "<https://ion.org>";
+    const std::string URL_WEBSITE = "<https://ionomy.com>";
 
     return CopyrightHolders(_("Copyright (C)"), 2014, COPYRIGHT_YEAR) + "\n" +
            "\n" +

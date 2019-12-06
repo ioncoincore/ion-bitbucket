@@ -3,7 +3,7 @@ Ion Core staging tree 0.14.1
 
 `master:` [![Build Status](https://travis-ci.org/ionpay/ion.svg?branch=master)](https://travis-ci.org/ionpay/ion) `develop:` [![Build Status](https://travis-ci.org/ionpay/ion.svg?branch=develop)](https://travis-ci.org/ionpay/ion/branches)
 
-https://www.ion.org
+https://www.ionomy.com
 
 
 What is Ion?
@@ -16,7 +16,7 @@ are carried out collectively by the network. Ion Core is the name of the open
 source software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Ion Core software, see https://www.ion.org/get-ion/.
+the Ion Core software, see https://www.ionomy.com/get-ion/.
 
 
 License
@@ -74,4 +74,4 @@ Translations are periodically pulled from Transifex and merged into the git repo
 **Important**: We do not accept translation changes as GitHub pull requests because the next
 pull from Transifex would automatically overwrite them again.
 
-Translators should also follow the [forum](https://www.ion.org/forum/topic/ion-worldwide-collaboration.88/).
+Translators should also follow the [forum](https://www.ionomy.com/forum/topic/ion-worldwide-collaboration.88/).

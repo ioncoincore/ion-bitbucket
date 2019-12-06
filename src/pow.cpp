@@ -80,7 +80,7 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const Conse
 }
 
 unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params, const bool fProofOfStake) {
-    /* current difficulty formula, ion - DarkGravity v3, written by Evan Duffield - evan@ion.org */
+    /* current difficulty formula, ion - DarkGravity v3, written by Evan Duffield - evan@ionomy.com */
     const arith_uint256 bnPowLimit = fProofOfStake ? UintToArith256(params.posLimit) : UintToArith256(params.powLimit);
     int64_t nPastBlocks = 24;
 

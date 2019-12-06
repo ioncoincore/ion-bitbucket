@@ -1,8 +1,8 @@
 Source: ion
 Section: utils
 Priority: optional
-Maintainer: Holger Schinzel <holger@ion.org>
-Uploaders: Holger Schinzel <holger@ion.org>
+Maintainer: Holger Schinzel <holger@ionomy.com>
+Uploaders: Holger Schinzel <holger@ionomy.com>
 Build-Depends: debhelper,
  devscripts,
  automake,
@@ -26,7 +26,7 @@ Build-Depends: debhelper,
  python,
  libzmq3-dev
 Standards-Version: 3.9.2
-Homepage: https://www.ion.org/
+Homepage: https://www.ionomy.com/
 Vcs-Git: git://bitbucket.org/ioncoin/ion.git
 Vcs-Browser: https://bitbucket.org/ioncoin/ion
 

@@ -3,7 +3,7 @@ Ion Core version 0.14.0.3
 
 Release is now available from:
 
-  <https://www.ion.org/downloads/#wallets>
+  <https://www.ionomy.com/downloads/#wallets>
 
 This is a new minor version release, bringing various bugfixes and improvements.
 

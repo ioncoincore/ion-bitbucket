@@ -1,7 +1,7 @@
 Ion Core
 ==========
 
-This is the official reference wallet for Ion digital currency and comprises the backbone of the Ion peer-to-peer network. You can [download Ion Core](https://www.ion.org/downloads/) or [build it yourself](#building) using the guides below.
+This is the official reference wallet for Ion digital currency and comprises the backbone of the Ion peer-to-peer network. You can [download Ion Core](https://www.ionomy.com/downloads/) or [build it yourself](#building) using the guides below.
 
 Running
 ---------------------
@@ -24,12 +24,12 @@ Drag Ion-Qt to your applications folder, and then run Ion-Qt.
 
 ### Need Help?
 
-* See the [Ion documentation](https://docs.ion.org)
+* See the [Ion documentation](https://docs.ionomy.com)
 for help and more information.
 * See the [Ion Developer Documentation](https://ion-docs.github.io/) 
 for technical specifications and implementation details.
 * Ask for help on [Ion Nation Discord](http://ionchat.org)
-* Ask for help on the [Ion Forum](https://ion.org/forum)
+* Ask for help on the [Ion Forum](https://ionomy.com/forum)
 
 Building
 ---------------------
@@ -59,7 +59,7 @@ The Ion Core repo's [root README](/README.md) contains relevant information on t
 - [Benchmarking](benchmarking.md)
 
 ### Resources
-* Discuss on the [Ion Forum](https://ion.org/forum), in the Development & Technical Discussion board.
+* Discuss on the [Ion Forum](https://ionomy.com/forum), in the Development & Technical Discussion board.
 * Discuss on [Ion Nation Discord](http://ionchat.org)
 
 ### Miscellaneous
