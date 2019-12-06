@@ -37,10 +37,11 @@
 #define ARCH_CPU_ARM_FAMILY 1
 #elif defined(__aarch64__)
 #define ARCH_CPU_ARM64_FAMILY 1
-#elif defined(__ppc__) || defined(__powerpc__) || defined(__powerpc64__)
+#elif defined(__ppc__) || defined(__powerpc__) || defined(__powerpc64__) || defined(__powerpc64el__) || defined(__ppc64el__)
 #define ARCH_CPU_PPC_FAMILY 1
-#elif defined(__mips__)
+#elif defined(__mips__) || defined(__mipsel__) || defined(__mips64el__)
 #define ARCH_CPU_MIPS_FAMILY 1
+#elif defined(__sparc__) || defined(__sparc) || defined(__s390__) || defined(__s390x__)1
 #endif
 
 namespace leveldb {
