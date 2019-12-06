@@ -7,7 +7,7 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://github.com/ionpay/ion-detached-sigs.git"
+- "url": "https://bitbucket.org/ioncoin/ion-detached-sigs.git"
   "dir": "signature"
 files:
 - "ioncore-osx-unsigned.tar.gz"

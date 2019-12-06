@@ -17,7 +17,7 @@ RUN pip3 install pyzmq # really needed?
 RUN pip3 install jinja2
 
 # ion_hash
-RUN git clone https://github.com/ionpay/ion_hash
+RUN git clone https://bitbucket.org/ioncoin/ion_hash
 RUN cd ion_hash && python3 setup.py install
 
 ARG USER_ID=1000

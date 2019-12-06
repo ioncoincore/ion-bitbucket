@@ -27,8 +27,8 @@ Build-Depends: debhelper,
  libzmq3-dev
 Standards-Version: 3.9.2
 Homepage: https://www.ion.org/
-Vcs-Git: git://github.com/ionpay/ion.git
-Vcs-Browser: https://github.com/ionpay/ion
+Vcs-Git: git://bitbucket.org/ioncoin/ion.git
+Vcs-Browser: https://bitbucket.org/ioncoin/ion
 
 Package: iond
 Architecture: any

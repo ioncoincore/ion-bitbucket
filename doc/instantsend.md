@@ -12,8 +12,8 @@ When a "Transaction Lock" occurs the hash of the related transaction is broadcas
 * `zmqpubhashtxlock`: publishes the transaction hash when locked via InstantSend
 
 This mechanism has been integrated into Bitcore-Node-Ion which allows for notification to be broadcast through Insight API in one of two ways:
-* WebSocket: [https://github.com/ionpay/insight-api-ion#web-socket-api](https://github.com/ionpay/insight-api-ion#web-socket-api)
-* API: [https://github.com/ionpay/insight-api-ion#instantsend-transactions](https://github.com/ionpay/insight-api-ion#instantsend-transactions)
+* WebSocket: [https://bitbucket.org/ioncoin/insight-api-ion#web-socket-api](https://bitbucket.org/ioncoin/insight-api-ion#web-socket-api)
+* API: [https://bitbucket.org/ioncoin/insight-api-ion#instantsend-transactions](https://bitbucket.org/ioncoin/insight-api-ion#instantsend-transactions)
 
 #### Command line option
 
