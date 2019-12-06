@@ -33,7 +33,7 @@ def setup():
     if not os.path.isdir('gitian-builder'):
         subprocess.check_call(['git', 'clone', 'https://github.com/devrandom/gitian-builder.git'])
     if not os.path.isdir('ion'):
-        subprocess.check_call(['git', 'clone', 'https://github.com/ioncoincore/ion.git'])
+        subprocess.check_call(['git', 'clone', 'https://bitbucket.org/ioncoin/ion.git'])
     os.chdir('gitian-builder')
     make_image_prog = ['bin/make-base-vm', '--suite', 'bionic', '--arch', 'amd64']
     if args.docker:
@@ -55,10 +55,14 @@ def build():
     os.chdir('gitian-builder')
     os.makedirs('inputs', exist_ok=True)
 
-    subprocess.check_call(['wget', '-O', 'inputs/osslsigncode-1.7.1.tar.xz', '-N', '-P', 'inputs', 'https://github.com/cevap/osslsigncode/releases/download/v1.7.1/osslsigncode-1.7.1.tar.xz'])
-    subprocess.check_call(['wget', '-O', 'inputs/osslsigncode-Backports-to-1.7.1.patch', '-N', '-P', 'inputs', 'https://github.com/cevap/osslsigncode/releases/download/v1.7.1/osslsigncode-Backports-to-1.7.1.patch'])
+    subprocess.check_call(['wget', '-O', 'inputs/osslsigncode-1.7.1.tar.xz', '-N', '-P', 'inputs', 'https://bitbucket.org/ioncoin/osslsigncode/downloads/osslsigncode-1.7.1.tar.xz'])
+    subprocess.check_call(['wget', '-O', 'inputs/osslsigncode-Backports-to-1.7.1.patch', '-N', '-P', 'inputs', 'https://bitbucket.org/ioncoin/osslsigncode/downloads/osslsigncode-Backports-to-1.7.1.patch'])
+    subprocess.check_call(['wget', '-O', 'inputs/MacOSX10.11.sdk.tar.xz', '-N', '-P', 'inputs', 'https://github.com/gitianuser/MacOSX-SDKs/releases/download/MacOSX10.11.sdk/MacOSX10.11.sdk.tar.xz'])
+
     subprocess.check_call(["echo 'a8c4e9cafba922f89de0df1f2152e7be286aba73f78505169bc351a7938dd911 inputs/osslsigncode-Backports-to-1.7.1.patch' | sha256sum -c"], shell=True)
     subprocess.check_call(["echo 'f9a8cdb38b9c309326764ebc937cba1523a3a751a7ab05df3ecc99d18ae466c9 inputs/osslsigncode-1.7.1.tar.gz' | sha256sum -c"], shell=True)
+    subprocess.check_call(["echo '415a427a7c2a91187650ff5dfdb03e4d56912aa29c95471339733e1d569143f8 inputs/MacOSX10.11.sdk.tar.xz' | sha256sum -c"], shell=True)
+
     subprocess.check_call(['make', '-C', '../ion/depends', 'download', 'SOURCES_PATH=' + os.getcwd() + '/cache/common'])
 
     if args.linux:
