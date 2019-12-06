@@ -107,7 +107,7 @@ bool fLiteMode = false;
 */
 int nWalletBackups = 10;
 
-const char * const BITCOIN_CONF_FILENAME = "ion.conf";
+const char * const BITCOIN_CONF_FILENAME = "ioncoin.conf";
 const char * const BITCOIN_PID_FILENAME = "iond.pid";
 
 ArgsManager gArgs;
@@ -623,13 +623,13 @@ void PrintExceptionContinue(const std::exception_ptr pex, const char* pszThread)
 
 fs::path GetDefaultDataDir()
 {
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\IonCore
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\IonCore
-    // Mac: ~/Library/Application Support/IonCore
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\ioncoin
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\ioncoin
+    // Mac: ~/Library/Application Support/ioncoin
     // Unix: ~/.ioncore
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "IonCore";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "ioncoin";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -639,7 +639,7 @@ fs::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/IonCore";
+    return pathRet / "Library/Application Support/ioncoin";
 #else
     // Unix
     return pathRet / ".ioncore";
@@ -709,7 +709,7 @@ void ArgsManager::ReadConfigFile(const std::string& confPath)
 {
     fs::ifstream streamConfig(GetConfigFile(confPath));
     if (!streamConfig.good()){
-        // Create empty ion.conf if it does not excist
+        // Create empty ioncoin.conf if it does not excist
         FILE* configFile = fopen(GetConfigFile(confPath).string().c_str(), "a");
         if (configFile != nullptr)
             fclose(configFile);
@@ -723,7 +723,7 @@ void ArgsManager::ReadConfigFile(const std::string& confPath)
 
         for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
         {
-            // Don't overwrite existing settings so command line settings override ion.conf
+            // Don't overwrite existing settings so command line settings override ioncoin.conf
             std::string strKey = std::string("-") + it->string_key;
             std::string strValue = it->value[0];
             InterpretNegativeSetting(strKey, strValue);

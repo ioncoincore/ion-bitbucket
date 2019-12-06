@@ -39,7 +39,7 @@ Sample initialization flow from _ion-qt_ console (this needs to be done only onc
  - Type "_keepass init_" in ion-qt console
  - Keepass pops up and asks for an association id, fill that in, for example, "_mydrkwallet_"
  - You should get a response like this "_Association successful. Id: mydrkwalletion - Key: AgQkcs6cI7v9tlSYKjG/+s8wJrGALHl3jLosJpPLzUE=_"
- - Edit _ion.conf_ and fill in these values
+ - Edit _ioncoin.conf_ and fill in these values
 ```
 keepass=1
 keepasskey=AgQkcs6cI7v9tlSYKjG/+s8wJrGALHl3jLosJpPLzUE=

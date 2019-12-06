@@ -37,15 +37,15 @@ Ion Core is now available at `./src/iond`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=ionrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/IonCore/ion.conf"
+    echo -e "rpcuser=ionrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/ioncoin/ioncoin.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/IonCore/ion.conf"
+    chmod 600 "/Users/${USER}/Library/Application Support/ioncoin/ioncoin.conf"
 
 The first time you run iond, it will start downloading the blockchain. This process could take several hours.
 
 You can monitor the download process by looking at the debug.log file:
 
-    tail -f $HOME/Library/Application\ Support/IonCore/debug.log
+    tail -f $HOME/Library/Application\ Support/ioncoin/debug.log
 
 Other commands:
 -------

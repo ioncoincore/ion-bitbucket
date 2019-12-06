@@ -230,7 +230,7 @@ bool Intro::pickDataDirectory()
         settings.setValue("strDataDirDefault", dataDirDefaultCurrent);
     }
     /* Only override -datadir if different from the default, to make it possible to
-     * override -datadir in the ion.conf file in the default data directory
+     * override -datadir in the ioncoin.conf file in the default data directory
      * (to be consistent with iond behavior)
      */
     if(dataDir != dataDirDefaultCurrent)
