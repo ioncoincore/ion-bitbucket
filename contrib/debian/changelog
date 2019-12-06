@@ -1,22 +1,22 @@
-bitcoin (0.14.1-trusty4) trusty; urgency=medium
+bitcoin (5.0.99-trusty4) trusty; urgency=medium
 
   * Re-enable UPnP support.
 
  -- Matt Corallo (BlueMatt) <matt@mattcorallo.com>  Fri, 05 May 2017 13:28:00 -0400
 
-bitcoin (0.14.1-trusty3) trusty; urgency=medium
+bitcoin (5.0.99-trusty3) trusty; urgency=medium
 
   * Build with qt5 if we are on a non-Ubuntu (ie non-Unity) distro.
 
  -- Matt Corallo (BlueMatt) <matt@mattcorallo.com>  Thu, 04 May 2017 17:13:00 -0400
 
-bitcoin (0.14.1-trusty2) trusty; urgency=medium
+bitcoin (5.0.99-trusty2) trusty; urgency=medium
 
   * Bump minimum boost version in deps.
 
  -- Matt Corallo (BlueMatt) <matt@mattcorallo.com>  Thu, 04 May 2017 17:12:00 -0400
 
-bitcoin (0.14.1-trusty1) trusty; urgency=medium
+bitcoin (5.0.99-trusty1) trusty; urgency=medium
 
   * New upstream release.
 

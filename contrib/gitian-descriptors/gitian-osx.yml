@@ -1,5 +1,5 @@
 ---
-name: "ion-osx-0.14"
+name: "ion-osx-5.0"
 enable_cache: true
 suites:
 - "bionic"

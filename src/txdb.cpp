@@ -520,7 +520,7 @@ public:
 
 /** Upgrade the database from older formats.
  *
- * Currently implemented: from the per-tx utxo model (0.8..0.14.x) to per-txout.
+ * Currently implemented: from the per-tx utxo model (0.8..5.0.x) to per-txout.
  */
 bool CCoinsViewDB::Upgrade() {
     std::unique_ptr<CDBIterator> pcursor(db.NewIterator());
