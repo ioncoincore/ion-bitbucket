@@ -25,7 +25,7 @@ background-color:#fff;
 
 QMenuBar::item:selected {
 background-color: #ffffff;
-color: #008de4;
+color: #130fa2;
 }
 
 QMenu {
@@ -38,7 +38,7 @@ color:#333;
 
 QMenu::item:selected {
 background-color: #ffffff;
-color: #008de4;
+color: #130fa2;
 }
 
 QToolBar {
@@ -285,7 +285,7 @@ background-color:transparent;
 
 QHeaderView::section { /* Table Header Sections */
 qproperty-alignment:center;
-background-color: #008de4;
+background-color: #130fa2;
 color:#fff;
 min-height:25px;
 font-weight:bold;
@@ -905,7 +905,7 @@ color:#818181;
 }
 
 QWidget .QFrame#framePrivateSend #privateSendFormLayoutWidget .QProgressBar#privateSendProgress::chunk {
-background-color: #008de4;
+background-color: #130fa2;
 width:1px;
 }
 
@@ -994,7 +994,7 @@ margin-top:0;
 
 QWidget .QFrame#frame_2 .QLabel#label_4 { /* Recent Transactions Label */
 min-width:180px;
-color: #008de4;
+color: #130fa2;
 margin-left:67px;
 margin-top:0;
 margin-right:5px;
