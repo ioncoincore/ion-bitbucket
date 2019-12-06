@@ -24,7 +24,7 @@ packages:
 - "python3"
 - "rename"
 remotes:
-- "url": "https://github.com/ioncoincore/ion.git"
+- "url": "https://bitbucket.org/ioncoin/ion.git"
   "dir": "ion"
 files: []
 script: |
