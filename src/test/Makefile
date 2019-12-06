@@ -1,6 +1,6 @@
 all:
-	$(MAKE) -C .. dash_test
+	$(MAKE) -C .. ion_test
 clean:
-	$(MAKE) -C .. dash_test_clean
+	$(MAKE) -C .. ion_test_clean
 check:
-	$(MAKE) -C .. dash_test_check
+	$(MAKE) -C .. ion_test_check

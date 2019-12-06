@@ -53,7 +53,7 @@ ION developers fine tuned, extended and customized the Group Tokenization implem
 
 ### Noteable Changes
 ______
-- core: switch core from pivx to dash
+- core: switch core from pivx to ion
 - updated dependencies
 - QT 5.9.8
 - expat 2.2.9

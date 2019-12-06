@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dash-config.h"
+#include "config/ion-config.h"
 #endif
 
 #include "init.h"
@@ -225,7 +225,7 @@ void PrepareShutdown()
     /// for example if the data directory was found to be locked.
     /// Be sure that anything that writes files or flushes caches only does this if the respective
     /// module was initialized.
-    RenameThread("dash-shutoff");
+    RenameThread("ion-shutoff");
     mempool.AddTransactionsUpdated(1);
     StopHTTPRPC();
     StopREST();
@@ -606,8 +606,8 @@ std::string HelpMessage(HelpMessageMode mode)
     }
     strUsage += HelpMessageOpt("-shrinkdebugfile", _("Shrink debug.log file on client startup (default: 1 when no -debug)"));
     AppendParamsHelpMessages(strUsage, showDebug);
-    strUsage += HelpMessageOpt("-litemode", strprintf(_("Disable all Dash specific functionality (Masternodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)"), 0));
-    strUsage += HelpMessageOpt("-sporkaddr=<dashaddress>", strprintf(_("Override spork address. Only useful for regtest and devnet. Using this on mainnet or testnet will ban you.")));
+    strUsage += HelpMessageOpt("-litemode", strprintf(_("Disable all Ion specific functionality (Masternodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)"), 0));
+    strUsage += HelpMessageOpt("-sporkaddr=<ionaddress>", strprintf(_("Override spork address. Only useful for regtest and devnet. Using this on mainnet or testnet will ban you.")));
     strUsage += HelpMessageOpt("-minsporkkeys=<n>", strprintf(_("Overrides minimum spork signers to change spork value. Only useful for regtest and devnet. Using this on mainnet or testnet will ban you.")));
 
     strUsage += HelpMessageGroup(_("Masternode options:"));
@@ -621,7 +621,7 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-privatesendmultisession", strprintf(_("Enable multiple PrivateSend mixing sessions per block, experimental (0-1, default: %u)"), DEFAULT_PRIVATESEND_MULTISESSION));
     strUsage += HelpMessageOpt("-privatesendsessions=<n>", strprintf(_("Use N separate masternodes in parallel to mix funds (%u-%u, default: %u)"), MIN_PRIVATESEND_SESSIONS, MAX_PRIVATESEND_SESSIONS, DEFAULT_PRIVATESEND_SESSIONS));
     strUsage += HelpMessageOpt("-privatesendrounds=<n>", strprintf(_("Use N separate masternodes for each denominated input to mix funds (%u-%u, default: %u)"), MIN_PRIVATESEND_ROUNDS, MAX_PRIVATESEND_ROUNDS, DEFAULT_PRIVATESEND_ROUNDS));
-    strUsage += HelpMessageOpt("-privatesendamount=<n>", strprintf(_("Keep N DASH anonymized (%u-%u, default: %u)"), MIN_PRIVATESEND_AMOUNT, MAX_PRIVATESEND_AMOUNT, DEFAULT_PRIVATESEND_AMOUNT));
+    strUsage += HelpMessageOpt("-privatesendamount=<n>", strprintf(_("Keep N ION anonymized (%u-%u, default: %u)"), MIN_PRIVATESEND_AMOUNT, MAX_PRIVATESEND_AMOUNT, DEFAULT_PRIVATESEND_AMOUNT));
     strUsage += HelpMessageOpt("-privatesenddenoms=<n>", strprintf(_("Create up to N inputs of each denominated amount (%u-%u, default: %u)"), MIN_PRIVATESEND_DENOMS, MAX_PRIVATESEND_DENOMS, DEFAULT_PRIVATESEND_DENOMS));
 #endif // ENABLE_WALLET
 
@@ -670,8 +670,8 @@ std::string HelpMessage(HelpMessageMode mode)
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/dashpay/dash>";
-    const std::string URL_WEBSITE = "<https://dash.org>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/ionpay/ion>";
+    const std::string URL_WEBSITE = "<https://ion.org>";
 
     return CopyrightHolders(_("Copyright (C)"), 2014, COPYRIGHT_YEAR) + "\n" +
            "\n" +
@@ -774,7 +774,7 @@ void CleanupBlockRevFiles()
 void ThreadImport(std::vector<fs::path> vImportFiles)
 {
     const CChainParams& chainparams = Params();
-    RenameThread("dash-loadblk");
+    RenameThread("ion-loadblk");
 
     {
     CImportingNow imp;
@@ -862,7 +862,7 @@ void ThreadImport(std::vector<fs::path> vImportFiles)
 }
 
 /** Sanity checks
- *  Ensure that Dash Core is running in a usable environment with all
+ *  Ensure that Ion Core is running in a usable environment with all
  *  necessary library support.
  */
 bool InitSanityCheck(void)
@@ -1021,7 +1021,7 @@ void InitLogging()
     fLogIPs = gArgs.GetBoolArg("-logips", DEFAULT_LOGIPS);
 
     LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-    LogPrintf("Dash Core version %s\n", FormatFullVersion());
+    LogPrintf("Ion Core version %s\n", FormatFullVersion());
 }
 
 namespace { // Variables internal to initialization process only
@@ -1453,7 +1453,7 @@ static bool LockDataDirectory(bool probeOnly)
 {
     std::string strDataDir = GetDataDir().string();
 
-    // Make sure only a single Dash Core process is using the data directory.
+    // Make sure only a single Ion Core process is using the data directory.
     fs::path pathLockFile = GetDataDir() / ".lock";
     FILE* file = fsbridge::fopen(pathLockFile, "a"); // empty lock file; created if it doesn't exist.
     if (file) fclose(file);
@@ -1715,16 +1715,16 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
 
     // ********************************************************* Step 7a: check lite mode and load sporks
 
-    // lite mode disables all Dash-specific functionality
+    // lite mode disables all Ion-specific functionality
     fLiteMode = gArgs.GetBoolArg("-litemode", false);
     LogPrintf("fLiteMode %d\n", fLiteMode);
 
     if(fLiteMode) {
-        InitWarning(_("You are starting in lite mode, most Dash-specific functionality is disabled."));
+        InitWarning(_("You are starting in lite mode, most Ion-specific functionality is disabled."));
     }
 
     if((!fLiteMode && fTxIndex == false)
-       && chainparams.NetworkIDString() != CBaseChainParams::REGTEST) { // TODO remove this when pruning is fixed. See https://github.com/dashpay/dash/pull/1817 and https://github.com/dashpay/dash/pull/1743
+       && chainparams.NetworkIDString() != CBaseChainParams::REGTEST) { // TODO remove this when pruning is fixed. See https://github.com/ionpay/ion/pull/1817 and https://github.com/ionpay/ion/pull/1743
         return InitError(_("Transaction index can't be disabled in full mode. Either start with -litemode command line switch or enable transaction index."));
     }
 
@@ -2105,7 +2105,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         }
     }
 
-    // ********************************************************* Step 10c: schedule Dash-specific tasks
+    // ********************************************************* Step 10c: schedule Ion-specific tasks
 
     if (!fLiteMode) {
         scheduler.scheduleEvery(boost::bind(&CNetFulfilledRequestManager::DoMaintenance, boost::ref(netfulfilledman)), 60 * 1000);

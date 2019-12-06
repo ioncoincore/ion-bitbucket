@@ -280,8 +280,8 @@ public:
         consensus.DGWStartTime = 1521851265;
         consensus.ATPStartHeight = 1320000; // Start enforcing the Atomic Token Protocol (ATP) for blocks with version 11 and higher
         consensus.powLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 24
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Dash: 1 day
-        consensus.nPowTargetSpacing = 2.5 * 60; // Dash: 2.5 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
+        consensus.nPowTargetSpacing = 2.5 * 60; // Ion: 2.5 minutes
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nPowKGWHeight = 99999999;
@@ -380,16 +380,16 @@ public:
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,103);
         // Ion script addresses start with '?'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,88);
-        // Dash private keys start with '?' or '?'
+        // Ion private keys start with '?' or '?'
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,153);
-        // Dash BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
+        // Ion BIP32 pubkeys start with 'xpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
-        // Dash BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
+        // Ion BIP32 prvkeys start with 'xprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
 
         bech32_hrp = "ion";
 
-        // Dash BIP44 coin type is '5'
+        // Ion BIP44 coin type is '5'
         nExtCoinType = 7567736;
 
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
@@ -491,8 +491,8 @@ public:
         consensus.DGWStartTime = 1554332940;
         consensus.ATPStartHeight = 5530; // Start enforcing the Atomic Token Protocol (ATP) for blocks with version 11 and higher
         consensus.powLimit = uint256S("3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 2
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Dash: 1 day
-        consensus.nPowTargetSpacing = 2.5 * 60; // Dash: 2.5 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
+        consensus.nPowTargetSpacing = 2.5 * 60; // Ion: 2.5 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nPowKGWHeight = 4002; // nPowKGWHeight >= nPowDGWHeight means "no KGW"
@@ -573,20 +573,20 @@ public:
         vSeeds.emplace_back("testnet.seeder.baseserv.com", true);
         vSeeds.emplace_back("testnet.seeder.uksafedns.net", true);
 
-        // Testnet Dash addresses start with 'y'
+        // Testnet Ion addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,97);
-        // Testnet Dash script addresses start with '8' or '9'
+        // Testnet Ion script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
         // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Testnet Dash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet Ion BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        // Testnet Dash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet Ion BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x91};
 
         bech32_hrp = "tion";
 
-        // Testnet Dash BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet Ion BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         // long living quorum params
@@ -666,8 +666,8 @@ public:
         consensus.DGWStartTime = 1554332940;
         consensus.ATPStartHeight = 1; // Start enforcing the Atomic Token Protocol (ATP) for blocks with version 11 and higher
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Dash: 1 day
-        consensus.nPowTargetSpacing = 2.5 * 60; // Dash: 2.5 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
+        consensus.nPowTargetSpacing = 2.5 * 60; // Ion: 2.5 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nPowKGWHeight = 4001; // nPowKGWHeight >= nPowDGWHeight means "no KGW"
@@ -738,22 +738,22 @@ public:
 
         vFixedSeeds.clear();
         vSeeds.clear();
-        //vSeeds.push_back(CDNSSeedData("dashevo.org",  "devnet-seed.dashevo.org"));
+        //vSeeds.push_back(CDNSSeedData("ionevo.org",  "devnet-seed.ionevo.org"));
 
-        // Testnet Dash addresses start with 'y'
+        // Testnet Ion addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,97);
-        // Testnet Dash script addresses start with '8' or '9'
+        // Testnet Ion script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
         // Testnet private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Testnet Dash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Testnet Ion BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        // Testnet Dash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Testnet Ion BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x91};
 
         bech32_hrp = "iondn";
 
-        // Testnet Dash BIP44 coin type is '1' (All coin's testnet default)
+        // Testnet Ion BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         // long living quorum params
@@ -830,8 +830,8 @@ public:
         consensus.DGWStartTime = 1554332940;
         consensus.ATPStartHeight = 1; // Start enforcing the Atomic Token Protocol (ATP) for blocks with version 11 and higher
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
-        consensus.nPowTargetTimespan = 24 * 60 * 60; // Dash: 1 day
-        consensus.nPowTargetSpacing = 2.5 * 60; // Dash: 2.5 minutes
+        consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
+        consensus.nPowTargetSpacing = 2.5 * 60; // Ion: 2.5 minutes
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nPowKGWHeight = 15200; // same as mainnet
@@ -930,20 +930,20 @@ public:
             0
         };
 
-        // Regtest Dash addresses start with 'y'
+        // Regtest Ion addresses start with 'y'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,97);
-        // Regtest Dash script addresses start with '8' or '9'
+        // Regtest Ion script addresses start with '8' or '9'
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
         // Regtest private keys start with '9' or 'c' (Bitcoin defaults)
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,239);
-        // Regtest Dash BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
+        // Regtest Ion BIP32 pubkeys start with 'tpub' (Bitcoin defaults)
         base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-        // Regtest Dash BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
+        // Regtest Ion BIP32 prvkeys start with 'tprv' (Bitcoin defaults)
         base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x91};
 
         bech32_hrp = "ionrt";
 
-        // Regtest Dash BIP44 coin type is '1' (All coin's testnet default)
+        // Regtest Ion BIP44 coin type is '1' (All coin's testnet default)
         nExtCoinType = 1;
 
         // long living quorum params

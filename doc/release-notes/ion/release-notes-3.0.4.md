@@ -50,7 +50,7 @@ The coin supply was calculated at the fork point, and the base line number for t
 
 Windows masternode.conf port parsing fix
 -------------------------
-Fixed an issue on Windows wallet with opening masternode ports based on Dash commit 56971f8
+Fixed an issue on Windows wallet with opening masternode ports based on Ion commit 56971f8
 
 Updated DGW start time
 -------------------------

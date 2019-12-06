@@ -4,7 +4,7 @@
 
 #include "consensus/tokengroups.h"
 #include "miner.h"
-#include "test/test_dash.h"
+#include "test/test_ion.h"
 #include "utilstrencodings.h"
 #include "tokens/tokengroupwallet.h"
 #include <boost/test/unit_test.hpp>

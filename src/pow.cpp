@@ -80,7 +80,7 @@ unsigned int static KimotoGravityWell(const CBlockIndex* pindexLast, const Conse
 }
 
 unsigned int static DarkGravityWave(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params, const bool fProofOfStake) {
-    /* current difficulty formula, dash - DarkGravity v3, written by Evan Duffield - evan@dash.org */
+    /* current difficulty formula, ion - DarkGravity v3, written by Evan Duffield - evan@ion.org */
     const arith_uint256 bnPowLimit = fProofOfStake ? UintToArith256(params.posLimit) : UintToArith256(params.powLimit);
     int64_t nPastBlocks = 24;
 
@@ -185,7 +185,7 @@ unsigned int static GetNextWorkRequiredPivx(const CBlockIndex* pindexLast, const
     if (Params().NetworkIDString() == CBaseChainParams::REGTEST)
         return pindexLast->nBits;
 
-    /* current difficulty formula, ion - DarkGravity v3, written by Evan Duffield - evan@dashpay.io */
+    /* current difficulty formula, ion - DarkGravity v3, written by Evan Duffield - evan@ionpay.io */
     const CBlockIndex* BlockLastSolved = pindexLast;
     const CBlockIndex* BlockReading = pindexLast;
     int64_t nActualTimespan = 0;

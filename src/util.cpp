@@ -5,7 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #if defined(HAVE_CONFIG_H)
-#include "config/dash-config.h"
+#include "config/ion-config.h"
 #endif
 
 #include "util.h"
@@ -95,7 +95,7 @@
 // Application startup time (used for uptime calculation)
 const int64_t nStartupTime = GetTime();
 
-//Dash only features
+//Ion only features
 bool fMasternodeMode = false;
 bool fLiteMode = false;
 /**
@@ -107,8 +107,8 @@ bool fLiteMode = false;
 */
 int nWalletBackups = 10;
 
-const char * const BITCOIN_CONF_FILENAME = "dash.conf";
-const char * const BITCOIN_PID_FILENAME = "dashd.pid";
+const char * const BITCOIN_CONF_FILENAME = "ion.conf";
+const char * const BITCOIN_PID_FILENAME = "iond.pid";
 
 ArgsManager gArgs;
 bool fPrintToConsole = false;
@@ -265,7 +265,7 @@ const CLogCategoryDesc LogCategories[] =
     {BCLog::ALL, "1"},
     {BCLog::ALL, "all"},
 
-    //Start Dash
+    //Start Ion
     {BCLog::CHAINLOCKS, "chainlocks"},
     {BCLog::GOBJECT, "gobject"},
     {BCLog::INSTANTSEND, "instantsend"},
@@ -277,7 +277,7 @@ const CLogCategoryDesc LogCategories[] =
     {BCLog::MNSYNC, "mnsync"},
     {BCLog::PRIVATESEND, "privatesend"},
     {BCLog::SPORK, "spork"},
-    //End Dash
+    //End Ion
 
     //Start ION
     {BCLog::ZEROCOIN, "zerocoin"},
@@ -294,7 +294,7 @@ bool GetLogCategory(uint64_t *f, const std::string *str)
             *f = BCLog::ALL;
             return true;
         }
-        if (*str == "dash") {
+        if (*str == "ion") {
             *f = BCLog::CHAINLOCKS
                 | BCLog::GOBJECT
                 | BCLog::INSTANTSEND
@@ -623,13 +623,13 @@ void PrintExceptionContinue(const std::exception_ptr pex, const char* pszThread)
 
 fs::path GetDefaultDataDir()
 {
-    // Windows < Vista: C:\Documents and Settings\Username\Application Data\DashCore
-    // Windows >= Vista: C:\Users\Username\AppData\Roaming\DashCore
-    // Mac: ~/Library/Application Support/DashCore
-    // Unix: ~/.dashcore
+    // Windows < Vista: C:\Documents and Settings\Username\Application Data\IonCore
+    // Windows >= Vista: C:\Users\Username\AppData\Roaming\IonCore
+    // Mac: ~/Library/Application Support/IonCore
+    // Unix: ~/.ioncore
 #ifdef WIN32
     // Windows
-    return GetSpecialFolderPath(CSIDL_APPDATA) / "DashCore";
+    return GetSpecialFolderPath(CSIDL_APPDATA) / "IonCore";
 #else
     fs::path pathRet;
     char* pszHome = getenv("HOME");
@@ -639,10 +639,10 @@ fs::path GetDefaultDataDir()
         pathRet = fs::path(pszHome);
 #ifdef MAC_OSX
     // Mac
-    return pathRet / "Library/Application Support/DashCore";
+    return pathRet / "Library/Application Support/IonCore";
 #else
     // Unix
-    return pathRet / ".dashcore";
+    return pathRet / ".ioncore";
 #endif
 #endif
 }
@@ -709,7 +709,7 @@ void ArgsManager::ReadConfigFile(const std::string& confPath)
 {
     fs::ifstream streamConfig(GetConfigFile(confPath));
     if (!streamConfig.good()){
-        // Create empty dash.conf if it does not excist
+        // Create empty ion.conf if it does not excist
         FILE* configFile = fopen(GetConfigFile(confPath).string().c_str(), "a");
         if (configFile != nullptr)
             fclose(configFile);
@@ -723,7 +723,7 @@ void ArgsManager::ReadConfigFile(const std::string& confPath)
 
         for (boost::program_options::detail::config_file_iterator it(streamConfig, setOptions), end; it != end; ++it)
         {
-            // Don't overwrite existing settings so command line settings override dash.conf
+            // Don't overwrite existing settings so command line settings override ion.conf
             std::string strKey = std::string("-") + it->string_key;
             std::string strValue = it->value[0];
             InterpretNegativeSetting(strKey, strValue);

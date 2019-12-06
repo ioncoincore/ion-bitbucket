@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DASH_QUORUMS_INSTANTSEND_H
-#define DASH_QUORUMS_INSTANTSEND_H
+#ifndef ION_QUORUMS_INSTANTSEND_H
+#define ION_QUORUMS_INSTANTSEND_H
 
 #include "quorums_signing.h"
 
@@ -176,4 +176,4 @@ bool IsInstantSendEnabled();
 
 } // namespace llmq
 
-#endif//DASH_QUORUMS_INSTANTSEND_H
+#endif//ION_QUORUMS_INSTANTSEND_H
