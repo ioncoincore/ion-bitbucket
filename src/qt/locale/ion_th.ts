@@ -62,12 +62,12 @@
         <translation>ที่อยู่ผู้รับ</translation>
     </message>
     <message>
-        <source>These are your Dash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>นี่คือที่อยู่ Dash ของคุณสำหรับการส่งการชำระเงิน โปรดตรวจสอบจำนวนเงินและที่อยู่ผู้รับก่อนที่จะส่งเหรียญ</translation>
+        <source>These are your Ion addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>นี่คือที่อยู่ Ion ของคุณสำหรับการส่งการชำระเงิน โปรดตรวจสอบจำนวนเงินและที่อยู่ผู้รับก่อนที่จะส่งเหรียญ</translation>
     </message>
     <message>
-        <source>These are your Dash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>นี่เป็นที่อยู่ Dash ของคุณสำหรับการรับการชำระเงิน แนะนำให้ใช้ที่อยู่รับใหม่สำหรับแต่ละธุรกรรม</translation>
+        <source>These are your Ion addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>นี่เป็นที่อยู่ Ion ของคุณสำหรับการรับการชำระเงิน แนะนำให้ใช้ที่อยู่รับใหม่สำหรับแต่ละธุรกรรม</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -172,8 +172,8 @@
         <translation>ยืนยันการเข้ารหัสกระเป๋าสตางค์</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DASH&lt;/b&gt;!</source>
-        <translation>คำเตือน : ถ้าคุณเข้ารหัส Wallet ของคุณแล้วทำรหัสวลีหาย คุณจะ&lt;b&gt;สูญเสีย Dash ของคุณทั้งหมด&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ION&lt;/b&gt;!</source>
+        <translation>คำเตือน : ถ้าคุณเข้ารหัส Wallet ของคุณแล้วทำรหัสวลีหาย คุณจะ&lt;b&gt;สูญเสีย Ion ของคุณทั้งหมด&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
@@ -242,12 +242,12 @@
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <source>A fatal error occurred. Dash Core can no longer continue safely and will quit.</source>
-        <translation>เกิดข้อผิดพลาดร้ายแรงขึ้น Dash Core ไม่สามารถดำเนินการต่อได้อย่างปลอดภัยและจะออกจากระบบ</translation>
+        <source>A fatal error occurred. Ion Core can no longer continue safely and will quit.</source>
+        <translation>เกิดข้อผิดพลาดร้ายแรงขึ้น Ion Core ไม่สามารถดำเนินการต่อได้อย่างปลอดภัยและจะออกจากระบบ</translation>
     </message>
     <message>
-        <source>Dash Core</source>
-        <translation>Dash Core</translation>
+        <source>Ion Core</source>
+        <translation>Ion Core</translation>
     </message>
     <message>
         <source>Wallet</source>
@@ -270,16 +270,16 @@
         <translation>&amp;ส่ง</translation>
     </message>
     <message>
-        <source>Send coins to a Dash address</source>
-        <translation>ส่ง เหรียญ ไปยัง ที่อยู่ Dash</translation>
+        <source>Send coins to a Ion address</source>
+        <translation>ส่ง เหรียญ ไปยัง ที่อยู่ Ion</translation>
     </message>
     <message>
         <source>&amp;Receive</source>
         <translation>&amp;รับ</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and dash: URIs)</source>
-        <translation>เรียกเก็บ การชำระเงิน (สร้าง QR codes และ Dash: URIs)</translation>
+        <source>Request payments (generates QR codes and ion: URIs)</source>
+        <translation>เรียกเก็บ การชำระเงิน (สร้าง QR codes และ Ion: URIs)</translation>
     </message>
     <message>
         <source>&amp;Transactions</source>
@@ -306,8 +306,8 @@
         <translation>ออกจากโปรแกรม</translation>
     </message>
     <message>
-        <source>Show information about Dash Core</source>
-        <translation>แสดงข้อมูลเกี่ยวกับ Dash Core</translation>
+        <source>Show information about Ion Core</source>
+        <translation>แสดงข้อมูลเกี่ยวกับ Ion Core</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
@@ -378,16 +378,16 @@
         <translation>เซ็นต์ชื่อด้วย &amp;ข้อความ...</translation>
     </message>
     <message>
-        <source>Sign messages with your Dash addresses to prove you own them</source>
-        <translation>เซ็นชื่อด้วยข้อความ ที่เก็บ Dash เพื่อแสดงว่าท่านเป็นเจ้าของ Dash นี้จริง</translation>
+        <source>Sign messages with your Ion addresses to prove you own them</source>
+        <translation>เซ็นชื่อด้วยข้อความ ที่เก็บ Ion เพื่อแสดงว่าท่านเป็นเจ้าของ Ion นี้จริง</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
         <translation>&amp;ยืนยันข้อความ...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Dash addresses</source>
-        <translation>ตรวจสอบ ข้อความ เพื่อให้แน่ใจว่า การเซ็นต์ชื่อ ด้วยที่เก็บ Dash แล้ว</translation>
+        <source>Verify messages to ensure they were signed with specified Ion addresses</source>
+        <translation>ตรวจสอบ ข้อความ เพื่อให้แน่ใจว่า การเซ็นต์ชื่อ ด้วยที่เก็บ Ion แล้ว</translation>
     </message>
     <message>
         <source>&amp;Information</source>
@@ -466,16 +466,16 @@
         <translation>เปิด URI</translation>
     </message>
     <message>
-        <source>Open a dash: URI or payment request</source>
-        <translation>เปิด Dash: URI หรือคำขอการชำระเงิน</translation>
+        <source>Open a ion: URI or payment request</source>
+        <translation>เปิด Ion: URI หรือคำขอการชำระเงิน</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
         <translation>ตัวเลือก Command-line</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Dash command-line options</source>
-        <translation>แสดง %1 ข้อความช่วยเหลือ เพื่อแสดงรายการ ตัวเลือกที่เป็นไปได้สำหรับ Dash command-line</translation>
+        <source>Show the %1 help message to get a list with possible Ion command-line options</source>
+        <translation>แสดง %1 ข้อความช่วยเหลือ เพื่อแสดงรายการ ตัวเลือกที่เป็นไปได้สำหรับ Ion command-line</translation>
     </message>
     <message>
         <source>%1 client</source>
@@ -510,8 +510,8 @@
         <translation>แถบเครื่องมือ</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Dash network</source>
-        <translation><numerusform>%n เชื่อมต่อใช้งานกับเครือข่าย Dash</numerusform></translation>
+        <source>%n active connection(s) to Ion network</source>
+        <translation><numerusform>%n เชื่อมต่อใช้งานกับเครือข่าย Ion</numerusform></translation>
     </message>
     <message>
         <source>Network activity disabled</source>
@@ -861,8 +861,8 @@
         <translation>แก้ไขที่อยู่ผู้ส่ง</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Dash address.</source>
-        <translation>ที่อยู่ที่ป้อน "%1" ไม่ใช่ที่อยู่ Dash ที่ถูกต้อง</translation>
+        <source>The entered address "%1" is not a valid Ion address.</source>
+        <translation>ที่อยู่ที่ป้อน "%1" ไม่ใช่ที่อยู่ Ion ที่ถูกต้อง</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -959,8 +959,8 @@
         <translation>ข้อมูล PrivateSend</translation>
     </message>
     <message>
-        <source>&lt;h3&gt;PrivateSend Basics&lt;/h3&gt; PrivateSend gives you true financial privacy by obscuring the origins of your funds. All the Dash in your wallet is comprised of different "inputs" which you can think of as separate, discrete coins.&lt;br&gt; PrivateSend uses an innovative process to mix your inputs with the inputs of two other people, without having your coins ever leave your wallet. You retain control of your money at all times.&lt;hr&gt; &lt;b&gt;The PrivateSend process works like this:&lt;/b&gt;&lt;ol type="1"&gt; &lt;li&gt;PrivateSend begins by breaking your transaction inputs down into standard denominations. These denominations are 0.001 DASH, 0.01 DASH, 0.1 DASH, 1 DASH and 10 DASH -- sort of like the paper money you use every day.&lt;/li&gt; &lt;li&gt;Your wallet then sends requests to specially configured software nodes on the network, called "masternodes." These masternodes are informed then that you are interested in mixing a certain denomination. No identifiable information is sent to the masternodes, so they never know "who" you are.&lt;/li&gt; &lt;li&gt;When two other people send similar messages, indicating that they wish to mix the same denomination, a mixing session begins. The masternode mixes up the inputs and instructs all three users' wallets to pay the now-transformed input back to themselves. Your wallet pays that denomination directly to itself, but in a different address (called a change address).&lt;/li&gt; &lt;li&gt;In order to fully obscure your funds, your wallet must repeat this process a number of times with each denomination. Each time the process is completed, it's called a "round." Each round of PrivateSend makes it exponentially more difficult to determine where your funds originated.&lt;/li&gt; &lt;li&gt;This mixing process happens in the background without any intervention on your part. When you wish to make a transaction, your funds will already be anonymized. No additional waiting is required.&lt;/li&gt; &lt;/ol&gt; &lt;hr&gt;&lt;b&gt;IMPORTANT:&lt;/b&gt; Your wallet only contains 1000 of these "change addresses." Every time a mixing event happens, up to 9 of your addresses are used up. This means those 1000 addresses last for about 100 mixing events. When 900 of them are used, your wallet must create more addresses. It can only do this, however, if you have automatic backups enabled.&lt;br&gt; Consequently, users who have backups disabled will also have PrivateSend disabled. &lt;hr&gt;For more information, see the &lt;a href="https://docs.dash.org/en/latest/wallets/dashcore/privatesend-instantsend.html"&gt;PrivateSend documentation&lt;/a&gt;.</source>
-        <translation>&lt;h3&gt;ข้อมูลพื้นฐานเกี่ยวกับ PrivateSend PrivateSend ช่วยให้คุณมีความเป็นส่วนตัวทางการเงินอย่างแท้จริงโดยปิดบังแหล่งที่มาของเงินทุนของคุณ  Dash ทั้งหมดใน wallet ของคุณประกอบด้วย "อินพุต" ที่แตกต่างกันซึ่งคุณสามารถแยกเหรียญกันได้ &lt;br&gt;  PrivateSend ใช้กระบวนการใหม่ในการผสมผสานอินพุตของคุณเข้ากับอินพุตของคนอื่นอีกสองคนโดยไม่ต้องมีเหรียญออกจาก wallet  คุณสามารถควบคุมเงินได้ตลอดเวลา&lt;hr&gt;&lt;b&gt;กระบวนการ PrivateSend ทำงานได้ดังนี้:&lt;/b&gt;&lt;ol type="1"&gt;&lt;li&gt;PrivateSend เริ่มต้นด้วยการทำลายอินพุตการทำธุรกรรมของคุณลงไปเป็นหน่วยเงินมาตรฐาน หน่วยเงินเหล่านี้คือ 0.001 DASH, 0.01 DASH, 0.1 DASH, 1 DASH และ 10 DASH - เหมือนกับเงินกระดาษที่คุณใช้ทุกวัน&lt;/li&gt;&lt;li&gt; Wallet ของคุณจะส่งคำขอไปยังโหนดซอฟต์แวร์ที่กำหนดค่าไว้เป็นพิเศษในเครือข่ายที่ เรียกว่า "masternodes"  โดย masternodes เหล่านี้จะแจ้งให้ทราบแล้วว่าคุณสนใจที่จะผสมหน่วยเงินนั้นๆ  ไม่มีข้อมูลที่สามารถระบุตัวได้ถูกส่งไปยัง masternodes ดังนั้นพวกเขาจึงไม่เคยรู้จักว่าคุณเป็นใคร &lt;/li&gt;&lt;li&gt;เมื่อมีคนอีกสองคนส่งข้อความที่คล้ายกันแสดงว่าพวกเขาต้องการที่จะผสมผสานหน่วยเงินเดียวกันเซสชันการผสมจะเริ่มขึ้น  Masternode จะผสมผสานอินพุตเข้าด้วยกันและสั่งให้ wallet ของผู้ใช้ทั้ง 3 รายชำระค่าป้อนข้อมูลที่เปลี่ยนไปแล้วกลับคืนสู่ตัวเอง Wallet ของคุณจ่ายเงินให้กับตัวเองโดยตรง แต่ในที่อยู่อื่น (เรียกว่าที่อยู่เปลี่ยน)&lt;/li&gt;&lt;li&gt;เพื่อเป็นการปิดบังเงินทุนของคุณ   wallet ของคุณจะต้องทำซ้ำขั้นตอนนี้ซ้ำหลายครั้งโดยใช้แต่ละหน่วยเงิน ทุกครั้งที่ดำเนินการเสร็จสิ้นระบบจะเรียกว่า "รอบ ๆ "  รอบ PrivateSend ในแต่ละครั้งทำให้การระบุแหล่งเงินทุนของคุณเกิดขึ้นยากขึ้นอย่างมาก&lt;/li&gt;&lt;li&gt;กระบวนการผสมนี้เกิดขึ้นโดยไม่มีการก้าวก่ายในส่วนของคุณ  เมื่อคุณต้องการทำธุรกรรม เงินของคุณจะถูกซ่อนไว้  ไม่ต้องการเพิ่มเติม &lt;/li&gt;&lt;/ol&gt;&lt;hr&gt;&lt;b&gt;สำคัญ:&lt;/b&gt;Wallet ของคุณมีเพียง 1,000 ที่อยู่ในการเปลี่ยนแปลงเท่านั้น ทุกครั้งที่เกิดเหตุการณ์ผสมเกิดขึ้น 9 ที่อยู่ของคุณจะถูกนำมาใช้  ซึ่งหมายความว่า 1000 ที่อยู่ล่าสุดสำหรับการผสมประมาณ 100 เหตุการณ์ เมื่อมีการใช้ 900 ราย Wallet ของคุณต้องสร้างที่อยู่เพิ่มเติม  สามารถทำเช่นนี้ได้หากคุณเปิดใช้งานการสำรองข้อมูลอัตโนมัติไว้&lt;br&gt;ดังนั้นผู้ใช้ที่มีการสำรองข้อมูลถูกปิดใช้งานจะมีการปิดใช้ PrivateSend &lt;hr&gt;สำหรับข้อมูลเพิ่มเติม&lt;a href="https://docs.dash.org/en/latest/wallets/dashcore/privatesend-instantsend.html"&gt;โปรดดูที่เอกสาร PrivateSend &lt;/a&gt;</translation>
+        <source>&lt;h3&gt;PrivateSend Basics&lt;/h3&gt; PrivateSend gives you true financial privacy by obscuring the origins of your funds. All the Ion in your wallet is comprised of different "inputs" which you can think of as separate, discrete coins.&lt;br&gt; PrivateSend uses an innovative process to mix your inputs with the inputs of two other people, without having your coins ever leave your wallet. You retain control of your money at all times.&lt;hr&gt; &lt;b&gt;The PrivateSend process works like this:&lt;/b&gt;&lt;ol type="1"&gt; &lt;li&gt;PrivateSend begins by breaking your transaction inputs down into standard denominations. These denominations are 0.001 ION, 0.01 ION, 0.1 ION, 1 ION and 10 ION -- sort of like the paper money you use every day.&lt;/li&gt; &lt;li&gt;Your wallet then sends requests to specially configured software nodes on the network, called "masternodes." These masternodes are informed then that you are interested in mixing a certain denomination. No identifiable information is sent to the masternodes, so they never know "who" you are.&lt;/li&gt; &lt;li&gt;When two other people send similar messages, indicating that they wish to mix the same denomination, a mixing session begins. The masternode mixes up the inputs and instructs all three users' wallets to pay the now-transformed input back to themselves. Your wallet pays that denomination directly to itself, but in a different address (called a change address).&lt;/li&gt; &lt;li&gt;In order to fully obscure your funds, your wallet must repeat this process a number of times with each denomination. Each time the process is completed, it's called a "round." Each round of PrivateSend makes it exponentially more difficult to determine where your funds originated.&lt;/li&gt; &lt;li&gt;This mixing process happens in the background without any intervention on your part. When you wish to make a transaction, your funds will already be anonymized. No additional waiting is required.&lt;/li&gt; &lt;/ol&gt; &lt;hr&gt;&lt;b&gt;IMPORTANT:&lt;/b&gt; Your wallet only contains 1000 of these "change addresses." Every time a mixing event happens, up to 9 of your addresses are used up. This means those 1000 addresses last for about 100 mixing events. When 900 of them are used, your wallet must create more addresses. It can only do this, however, if you have automatic backups enabled.&lt;br&gt; Consequently, users who have backups disabled will also have PrivateSend disabled. &lt;hr&gt;For more information, see the &lt;a href="https://docs.ionomy.com/en/latest/wallets/ioncoin/privatesend-instantsend.html"&gt;PrivateSend documentation&lt;/a&gt;.</source>
+        <translation>&lt;h3&gt;ข้อมูลพื้นฐานเกี่ยวกับ PrivateSend PrivateSend ช่วยให้คุณมีความเป็นส่วนตัวทางการเงินอย่างแท้จริงโดยปิดบังแหล่งที่มาของเงินทุนของคุณ  Ion ทั้งหมดใน wallet ของคุณประกอบด้วย "อินพุต" ที่แตกต่างกันซึ่งคุณสามารถแยกเหรียญกันได้ &lt;br&gt;  PrivateSend ใช้กระบวนการใหม่ในการผสมผสานอินพุตของคุณเข้ากับอินพุตของคนอื่นอีกสองคนโดยไม่ต้องมีเหรียญออกจาก wallet  คุณสามารถควบคุมเงินได้ตลอดเวลา&lt;hr&gt;&lt;b&gt;กระบวนการ PrivateSend ทำงานได้ดังนี้:&lt;/b&gt;&lt;ol type="1"&gt;&lt;li&gt;PrivateSend เริ่มต้นด้วยการทำลายอินพุตการทำธุรกรรมของคุณลงไปเป็นหน่วยเงินมาตรฐาน หน่วยเงินเหล่านี้คือ 0.001 ION, 0.01 ION, 0.1 ION, 1 ION และ 10 ION - เหมือนกับเงินกระดาษที่คุณใช้ทุกวัน&lt;/li&gt;&lt;li&gt; Wallet ของคุณจะส่งคำขอไปยังโหนดซอฟต์แวร์ที่กำหนดค่าไว้เป็นพิเศษในเครือข่ายที่ เรียกว่า "masternodes"  โดย masternodes เหล่านี้จะแจ้งให้ทราบแล้วว่าคุณสนใจที่จะผสมหน่วยเงินนั้นๆ  ไม่มีข้อมูลที่สามารถระบุตัวได้ถูกส่งไปยัง masternodes ดังนั้นพวกเขาจึงไม่เคยรู้จักว่าคุณเป็นใคร &lt;/li&gt;&lt;li&gt;เมื่อมีคนอีกสองคนส่งข้อความที่คล้ายกันแสดงว่าพวกเขาต้องการที่จะผสมผสานหน่วยเงินเดียวกันเซสชันการผสมจะเริ่มขึ้น  Masternode จะผสมผสานอินพุตเข้าด้วยกันและสั่งให้ wallet ของผู้ใช้ทั้ง 3 รายชำระค่าป้อนข้อมูลที่เปลี่ยนไปแล้วกลับคืนสู่ตัวเอง Wallet ของคุณจ่ายเงินให้กับตัวเองโดยตรง แต่ในที่อยู่อื่น (เรียกว่าที่อยู่เปลี่ยน)&lt;/li&gt;&lt;li&gt;เพื่อเป็นการปิดบังเงินทุนของคุณ   wallet ของคุณจะต้องทำซ้ำขั้นตอนนี้ซ้ำหลายครั้งโดยใช้แต่ละหน่วยเงิน ทุกครั้งที่ดำเนินการเสร็จสิ้นระบบจะเรียกว่า "รอบ ๆ "  รอบ PrivateSend ในแต่ละครั้งทำให้การระบุแหล่งเงินทุนของคุณเกิดขึ้นยากขึ้นอย่างมาก&lt;/li&gt;&lt;li&gt;กระบวนการผสมนี้เกิดขึ้นโดยไม่มีการก้าวก่ายในส่วนของคุณ  เมื่อคุณต้องการทำธุรกรรม เงินของคุณจะถูกซ่อนไว้  ไม่ต้องการเพิ่มเติม &lt;/li&gt;&lt;/ol&gt;&lt;hr&gt;&lt;b&gt;สำคัญ:&lt;/b&gt;Wallet ของคุณมีเพียง 1,000 ที่อยู่ในการเปลี่ยนแปลงเท่านั้น ทุกครั้งที่เกิดเหตุการณ์ผสมเกิดขึ้น 9 ที่อยู่ของคุณจะถูกนำมาใช้  ซึ่งหมายความว่า 1000 ที่อยู่ล่าสุดสำหรับการผสมประมาณ 100 เหตุการณ์ เมื่อมีการใช้ 900 ราย Wallet ของคุณต้องสร้างที่อยู่เพิ่มเติม  สามารถทำเช่นนี้ได้หากคุณเปิดใช้งานการสำรองข้อมูลอัตโนมัติไว้&lt;br&gt;ดังนั้นผู้ใช้ที่มีการสำรองข้อมูลถูกปิดใช้งานจะมีการปิดใช้ PrivateSend &lt;hr&gt;สำหรับข้อมูลเพิ่มเติม&lt;a href="https://docs.ionomy.com/en/latest/wallets/ioncoin/privatesend-instantsend.html"&gt;โปรดดูที่เอกสาร PrivateSend &lt;/a&gt;</translation>
     </message>
 </context>
 <context>
@@ -1108,12 +1108,12 @@
         <translation>รูป</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Dash network, as detailed below.</source>
-        <translation>การทำธุรกรรมล่าสุดอาจยังไม่สามารถเห็นได้และทำให้ยอดคงเหลือของ wallet ของคุณไม่ถูกต้อง ข้อมูลนี้จะถูกต้องก่อนที่ Wallet ของคุณจะเสร็จสิ้นการซิงค์กับเครือข่าย Dash ตามรายละเอียดด้านล่างนี้</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Ion network, as detailed below.</source>
+        <translation>การทำธุรกรรมล่าสุดอาจยังไม่สามารถเห็นได้และทำให้ยอดคงเหลือของ wallet ของคุณไม่ถูกต้อง ข้อมูลนี้จะถูกต้องก่อนที่ Wallet ของคุณจะเสร็จสิ้นการซิงค์กับเครือข่าย Ion ตามรายละเอียดด้านล่างนี้</translation>
     </message>
     <message>
-        <source>Attempting to spend Dash that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
-        <translation>เครือข่ายจะไม่ยอมรับความพยายามที่จะใช้ Dash ที่ได้รับผลกระทบจากการทำธุรกรรมที่ยังไม่ได้แสดงผล</translation>
+        <source>Attempting to spend Ion that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <translation>เครือข่ายจะไม่ยอมรับความพยายามที่จะใช้ Ion ที่ได้รับผลกระทบจากการทำธุรกรรมที่ยังไม่ได้แสดงผล</translation>
     </message>
     <message>
         <source>Number of blocks left</source>
@@ -1202,8 +1202,8 @@
         <translation>(0 = อัตโนมัติ, &lt;0 = ปล่อย คอร์ อิสระ)</translation>
     </message>
     <message>
-        <source>Amount of Dash to keep anonymized</source>
-        <translation>จำนวน Dash เพื่อไม่ระบุชื่อ</translation>
+        <source>Amount of Ion to keep anonymized</source>
+        <translation>จำนวน Ion เพื่อไม่ระบุชื่อ</translation>
     </message>
     <message>
         <source>W&amp;allet</source>
@@ -1254,8 +1254,8 @@
         <translation>จำนวนนี้ทำหน้าที่เป็นเกณฑ์เพื่อปิดการใช้งาน PrivateSend เมื่อถึงขีดจำกัดแล้ว</translation>
     </message>
     <message>
-        <source>Automatically open the Dash Core client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>เปิดพอร์ต Dash Core client บนเราเตอร์โดยอัตโนมัติ การทำงานนี้ใช้ได้เฉพาะเมื่อเราเตอร์ของคุณรองรับ UPnP และเปิดใช้งานแล้ว</translation>
+        <source>Automatically open the Ion Core client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>เปิดพอร์ต Ion Core client บนเราเตอร์โดยอัตโนมัติ การทำงานนี้ใช้ได้เฉพาะเมื่อเราเตอร์ของคุณรองรับ UPnP และเปิดใช้งานแล้ว</translation>
     </message>
     <message>
         <source>Accept connections from outside</source>
@@ -1266,8 +1266,8 @@
         <translation>อนุญาตการเชื่อมต่อขาเข้า</translation>
     </message>
     <message>
-        <source>Connect to the Dash network through a SOCKS5 proxy.</source>
-        <translation>เชื่อมต่อกับเครือข่าย Dash ผ่านพร็อกซี่แบบ SOCKS5</translation>
+        <source>Connect to the Ion network through a SOCKS5 proxy.</source>
+        <translation>เชื่อมต่อกับเครือข่าย Ion ผ่านพร็อกซี่แบบ SOCKS5</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1362,8 +1362,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the Dash network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>เชื่อมต่อกับ เครือข่าย Dash ผ่านทาง พร้อกซี่ SOCKS5 แยกต่างหาก สำหรับ Tor เซอร์วิส</translation>
+        <source>Connect to the Ion network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>เชื่อมต่อกับ เครือข่าย Ion ผ่านทาง พร้อกซี่ SOCKS5 แยกต่างหาก สำหรับ Tor เซอร์วิส</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
@@ -1407,9 +1407,9 @@
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/projects/p/dash/</source>
+https://www.transifex.com/ioncoincore/ioncore/</source>
         <translation>ภาษาขาดหายไปหรือการแปลไม่สมบูรณ์ใช่หรือไม่?  สามารถช่วยแปลเพิ่มเติมได้ที่นี่:   
-https://www.transifex.com/projects/p/dash/</translation>
+https://www.transifex.com/ioncoincore/ioncore/</translation>
     </message>
     <message>
         <source>User Interface Theme:</source>
@@ -1487,8 +1487,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>รูป</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Dash network after a connection is established, but this process has not completed yet.</source>
-        <translation>ข้อมูลที่แสดงอาจล้าสมัย  Wallet ของคุณจะทำข้อมูลให้ตรงกับเครือข่าย Dash โดยอัตโนมัติหลังจากที่มีการเชื่อมต่อแล้ว แต่กระบวนการนี้ยังไม่เสร็จสมบูรณ์</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Ion network after a connection is established, but this process has not completed yet.</source>
+        <translation>ข้อมูลที่แสดงอาจล้าสมัย  Wallet ของคุณจะทำข้อมูลให้ตรงกับเครือข่าย Ion โดยอัตโนมัติหลังจากที่มีการเชื่อมต่อแล้ว แต่กระบวนการนี้ยังไม่เสร็จสมบูรณ์</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -1587,8 +1587,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>จำนวนและรอบ:</translation>
     </message>
     <message>
-        <source>0 DASH / 0 Rounds</source>
-        <translation>0 DASH / 0 รอบ</translation>
+        <source>0 ION / 0 Rounds</source>
+        <translation>0 ION / 0 รอบ</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
@@ -1752,8 +1752,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>คำขอการชำระเงินผิดพลาด</translation>
     </message>
     <message>
-        <source>Cannot start dash: click-to-pay handler</source>
-        <translation>ไม่สามารถเริ่มต้น Dash: คลิกเพื่อจ่ายเงิน</translation>
+        <source>Cannot start ion: click-to-pay handler</source>
+        <translation>ไม่สามารถเริ่มต้น Ion: คลิกเพื่อจ่ายเงิน</translation>
     </message>
     <message>
         <source>URI handling</source>
@@ -1768,8 +1768,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>ที่อยู่การชำระเงินไม่ถูกต้อง %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Dash address or malformed URI parameters.</source>
-        <translation>ไม่สามารถประมวลผล URI ได้สำเร็จ ! ซึ่งอาจเกิดจากที่อยู่ Dash ไม่ถูกต้องหรือพารามิเตอร์ URI ที่มีรูปแบบไม่ถูกต้อง</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Ion address or malformed URI parameters.</source>
+        <translation>ไม่สามารถประมวลผล URI ได้สำเร็จ ! ซึ่งอาจเกิดจากที่อยู่ Ion ไม่ถูกต้องหรือพารามิเตอร์ URI ที่มีรูปแบบไม่ถูกต้อง</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
@@ -1866,8 +1866,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>จำนวน</translation>
     </message>
     <message>
-        <source>Enter a Dash address (e.g. %1)</source>
-        <translation>ป้อนที่อยู่ Dash (เช่น %1)</translation>
+        <source>Enter a Ion address (e.g. %1)</source>
+        <translation>ป้อนที่อยู่ Ion (เช่น %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -2384,8 +2384,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>ใช้ที่อยู่รับที่มีอยู่ (ไม่แนะนำ)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Dash network.</source>
-        <translation>ข้อความเสริมที่จะแนบไปกับคำขอการชำระเงินซึ่งจะแสดงขึ้นเมื่อมีการเปิดคำขอ หมายเหตุ: ข้อความจะไม่ถูกส่งพร้อมกับการชำระเงินผ่านเครือข่าย Dash</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Ion network.</source>
+        <translation>ข้อความเสริมที่จะแนบไปกับคำขอการชำระเงินซึ่งจะแสดงขึ้นเมื่อมีการเปิดคำขอ หมายเหตุ: ข้อความจะไม่ถูกส่งพร้อมกับการชำระเงินผ่านเครือข่าย Ion</translation>
     </message>
     <message>
         <source>&amp;Message:</source>
@@ -2396,8 +2396,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>ป้ายกำกับเพิ่มเติมสำหรับเชื่อมโยงกับที่อยู่รับใหม่</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Dash network.</source>
-        <translation>ข้อความเสริมที่จะแนบไปกับคำขอการชำระเงินซึ่งจะแสดงขึ้นเมื่อมีการเปิดคำขอ&lt;br&gt; หมายเหตุ: ข้อความจะไม่ถูกส่งพร้อมกับการชำระเงินผ่านเครือข่าย Dash</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Ion network.</source>
+        <translation>ข้อความเสริมที่จะแนบไปกับคำขอการชำระเงินซึ่งจะแสดงขึ้นเมื่อมีการเปิดคำขอ&lt;br&gt; หมายเหตุ: ข้อความจะไม่ถูกส่งพร้อมกับการชำระเงินผ่านเครือข่าย Ion</translation>
     </message>
     <message>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
@@ -2665,8 +2665,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>หากค่าธรรมเนียมที่กำหนดเองถูกตั้งค่าเป็น 1000 duffs และการทำธุรกรรมนี้มีเพียง 250 ไบต์ ซึ่ง "ต่อกิโลไบต์" จะจ่ายเพียง 250 duffs ในขณะที่ "อย่างน้อยทั้งหมด" จ่าย 1000 duffs สำหรับธุรกรรมที่มีขนาดใหญ่กว่ากิโลไบต์จะต้องจ่ายเป็นกิโลไบต์</translation>
     </message>
     <message>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for dash transactions than the network can process.</source>
-        <translation>การจ่ายเงินเพียงค่าขั้นต่ำก็ทำได้ดีตราบเท่าที่ปริมาณธุรกรรมมีน้อยกว่าพื้นที่ในบล็อก&lt;br /&gt; แต่โปรดทราบว่าการจ่ายนี้จะสิ้นสุดลงในธุรกรรมที่ไม่เคยมีการยืนยัน ความต้องการใช้การทำธุรกรรมแบบ Dash มีมากกว่าที่เครือข่ายสามารถดำเนินการได้</translation>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for ion transactions than the network can process.</source>
+        <translation>การจ่ายเงินเพียงค่าขั้นต่ำก็ทำได้ดีตราบเท่าที่ปริมาณธุรกรรมมีน้อยกว่าพื้นที่ในบล็อก&lt;br /&gt; แต่โปรดทราบว่าการจ่ายนี้จะสิ้นสุดลงในธุรกรรมที่ไม่เคยมีการยืนยัน ความต้องการใช้การทำธุรกรรมแบบ Ion มีมากกว่าที่เครือข่ายสามารถดำเนินการได้</translation>
     </message>
     <message>
         <source>per kilobyte</source>
@@ -2853,8 +2853,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation><numerusform>คาดว่าจะเริ่มการยืนยันภายใน %n บล็อค</numerusform></translation>
     </message>
     <message>
-        <source>Warning: Invalid Dash address</source>
-        <translation>คำเตือน: ที่อยู่ Dash ไม่ถูกต้อง</translation>
+        <source>Warning: Invalid Ion address</source>
+        <translation>คำเตือน: ที่อยู่ Ion ไม่ถูกต้อง</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -2884,8 +2884,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>จ่ายไปยัง:</translation>
     </message>
     <message>
-        <source>The Dash address to send the payment to</source>
-        <translation>ที่อยู่ Dash เพื่อส่งการชำระเงินไปที่</translation>
+        <source>The Ion address to send the payment to</source>
+        <translation>ที่อยู่ Ion เพื่อส่งการชำระเงินไปที่</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2920,8 +2920,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>จำนวน:</translation>
     </message>
     <message>
-        <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Dash than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
-        <translation>ค่าธรรมเนียมจะถูกหักออกจากจำนวนเงินที่ส่ง ผู้รับจะได้รับ Dash น้อยกว่าที่คุณป้อนในฟิลด์ หากมีการเลือกผู้รับหลายรายค่าธรรมเนียมจะแบ่งเท่า ๆ กัน</translation>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Ion than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <translation>ค่าธรรมเนียมจะถูกหักออกจากจำนวนเงินที่ส่ง ผู้รับจะได้รับ Ion น้อยกว่าที่คุณป้อนในฟิลด์ หากมีการเลือกผู้รับหลายรายค่าธรรมเนียมจะแบ่งเท่า ๆ กัน</translation>
     </message>
     <message>
         <source>S&amp;ubtract fee from amount</source>
@@ -2932,8 +2932,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>ข้อความ: </translation>
     </message>
     <message>
-        <source>A message that was attached to the dash: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Dash network.</source>
-        <translation>ข้อความที่แนบมาไปยัง Dash: URI ซึ่งจะถูกเก็บไว้กับธุรกรรมเพื่อเป็นข้อมูลอ้างอิงของคุณ  หมายเหตุ: ข้อความนี้จะถูกส่งไปยังเครือข่าย Dash </translation>
+        <source>A message that was attached to the ion: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Ion network.</source>
+        <translation>ข้อความที่แนบมาไปยัง Ion: URI ซึ่งจะถูกเก็บไว้กับธุรกรรมเพื่อเป็นข้อมูลอ้างอิงของคุณ  หมายเหตุ: ข้อความนี้จะถูกส่งไปยังเครือข่าย Ion </translation>
     </message>
     <message>
         <source>This is an unauthenticated payment request.</source>
@@ -2985,12 +2985,12 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>ลงนามข้อความ</translation>
     </message>
     <message>
-        <source>You can sign messages/agreements with your addresses to prove you can receive Dash sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>คุณสามารถลงนามในข้อความ / ข้อตกลงกับที่อยู่ของคุณเพื่อพิสูจน์ว่าคุณสามารถรับ Dash ส่งถึงพวกเขาได้  ระวังอย่าเซ็นชื่ออะไรที่กำกวม เนื่องจากการโจมตีแบบฟิชชิ่งอาจพยายามหลอกล่อให้คุณเซ็นชื่อตัวคุณเอง เพียงลงนามในคำชี้แจงอย่างละเอียดที่คุณเห็นด้วยเท่านั้น</translation>
+        <source>You can sign messages/agreements with your addresses to prove you can receive Ion sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <translation>คุณสามารถลงนามในข้อความ / ข้อตกลงกับที่อยู่ของคุณเพื่อพิสูจน์ว่าคุณสามารถรับ Ion ส่งถึงพวกเขาได้  ระวังอย่าเซ็นชื่ออะไรที่กำกวม เนื่องจากการโจมตีแบบฟิชชิ่งอาจพยายามหลอกล่อให้คุณเซ็นชื่อตัวคุณเอง เพียงลงนามในคำชี้แจงอย่างละเอียดที่คุณเห็นด้วยเท่านั้น</translation>
     </message>
     <message>
-        <source>The Dash address to sign the message with</source>
-        <translation>ที่อยู่ Dash เพื่อเซ็นชื่อ</translation>
+        <source>The Ion address to sign the message with</source>
+        <translation>ที่อยู่ Ion เพื่อเซ็นชื่อ</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -3021,8 +3021,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>คัดลอกลายเซ็นปัจจุบันไปยังคลิปบอร์ดของระบบ</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Dash address</source>
-        <translation>ลงนามข้อความเพื่อพิสูจน์ว่าคุณเป็นเจ้าของที่อยู่ Dash นี้</translation>
+        <source>Sign the message to prove you own this Ion address</source>
+        <translation>ลงนามข้อความเพื่อพิสูจน์ว่าคุณเป็นเจ้าของที่อยู่ Ion นี้</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
@@ -3045,12 +3045,12 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>ป้อนที่อยู่ของผู้รับข้อความ (ตรวจสอบให้แน่ใจว่าคุณได้คัดลอกเว้นวรรค ช่องว่าง ย่อหน้า ฯลฯ ) และลายเซ็นด้านล่างเพื่อยืนยันข้อความ โปรดระวังอย่าใช้ข้อมูลมากกว่าข้อความที่เซ็นชื่อไว้เพื่อหลีกเลี่ยงการฉ้อโกงโดยอาศัยการโจมตีแบบ man-in-the-middle โปรดทราบว่าสิ่งนี้พิสูจน์ให้เห็นว่าบุคคลที่ลงนามได้รับพร้อมกับที่อยู่แล้วไม่สามารถพิสูจน์ว่ามีผู้ส่งรายการใด ๆ !</translation>
     </message>
     <message>
-        <source>The Dash address the message was signed with</source>
-        <translation>ข้อความที่อยู่ Dash ถูกเซ็นชื่อด้วย</translation>
+        <source>The Ion address the message was signed with</source>
+        <translation>ข้อความที่อยู่ Ion ถูกเซ็นชื่อด้วย</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Dash address</source>
-        <translation>ยืนยันข้อความเพื่อให้แน่ใจว่าข้อความถูกเซ็นชื่อด้วยที่อยู่ Dash ที่ระบุ</translation>
+        <source>Verify the message to ensure it was signed with the specified Ion address</source>
+        <translation>ยืนยันข้อความเพื่อให้แน่ใจว่าข้อความถูกเซ็นชื่อด้วยที่อยู่ Ion ที่ระบุ</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
@@ -3680,8 +3680,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>ส่งเหรียญ</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 DASH.</source>
-        <translation>InstantSend ไม่สนับสนุนการส่งค่าที่สูงเกินไป  ธุรกรรมปัจจุบันถูก จำกัด ไว้ที่ %1 DASH</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 ION.</source>
+        <translation>InstantSend ไม่สนับสนุนการส่งค่าที่สูงเกินไป  ธุรกรรมปัจจุบันถูก จำกัด ไว้ที่ %1 ION</translation>
     </message>
     <message>
         <source>Used way too many inputs (&gt;%1) for this InstantSend transaction, fees could be huge.</source>
@@ -3728,7 +3728,7 @@ https://www.transifex.com/projects/p/dash/</translation>
     </message>
 </context>
 <context>
-    <name>dash-core</name>
+    <name>ion-core</name>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
         <translation>เชื่อมโยงไปยังที่อยู่ที่กำหนดและฟังเสมอ โปรดใช้รูปแบบ  [host]:port สำหรับ IPv6</translation>
@@ -4314,8 +4314,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>เก็บให้ได้มากที่สุด&lt;n&gt;รายการที่ไม่สามารถยกเลิกการทำธุรกรรมในหน่วยความจำ (ค่าเริ่มต้น: %u)</translation>
     </message>
     <message>
-        <source>Disable all Dash specific functionality (Masternodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
-        <translation>ปิดใช้ฟังก์ชันการทำงานเฉพาะ Dash ทั้งหมด  (Masternodes, PrivateSend, InstantSend, Governance) (0-1, ค่าดีฟอลต์: %u)</translation>
+        <source>Disable all Ion specific functionality (Masternodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
+        <translation>ปิดใช้ฟังก์ชันการทำงานเฉพาะ Ion ทั้งหมด  (Masternodes, PrivateSend, InstantSend, Governance) (0-1, ค่าดีฟอลต์: %u)</translation>
     </message>
     <message>
         <source>%s file contains all private keys from this wallet. Do not share it with anyone!</source>
@@ -4366,8 +4366,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>ถ้าไม่มี &lt;category&gt;หรือถ้า &lt;category&gt;= 1  , ผลลัพธ์ก็จะเกิดจากข้อมูลการดีบักทั้งหมด</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 DASH.</source>
-        <translation>InstantSend ยังไม่สนับสนุนการส่งค่าที่สูงเกินไป ธุรกรรมปัจจุบันถูกจำกัดไว้ที่ %1 DASH</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 ION.</source>
+        <translation>InstantSend ยังไม่สนับสนุนการส่งค่าที่สูงเกินไป ธุรกรรมปัจจุบันถูกจำกัดไว้ที่ %1 ION</translation>
     </message>
     <message>
         <source>InstantSend requires inputs with at least %d confirmations, you might need to wait a few minutes and try again.</source>
@@ -4466,8 +4466,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>คำเตือน: ไม่สามารถหาเงิน PrivateSend ที่ระบุได้เพียงพอสำหรับธุรกรรมนี้</translation>
     </message>
     <message>
-        <source>You are starting in lite mode, all Dash-specific functionality is disabled.</source>
-        <translation>คุณกำลังเริ่มต้นใน Lite Mode  ฟังก์ชันการทำงานเฉพาะ Dash ทั้งหมดจะถูกปิดใช้งาน</translation>
+        <source>You are starting in lite mode, all Ion-specific functionality is disabled.</source>
+        <translation>คุณกำลังเริ่มต้นใน Lite Mode  ฟังก์ชันการทำงานเฉพาะ Ion ทั้งหมดจะถูกปิดใช้งาน</translation>
     </message>
     <message>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
@@ -4802,8 +4802,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>ตัวเลือกเซิร์ฟเวอร์ RPC:</translation>
     </message>
     <message>
-        <source>Dash Core</source>
-        <translation>Dash Core</translation>
+        <source>Ion Core</source>
+        <translation>Ion Core</translation>
     </message>
     <message>
         <source>The %s developers</source>
@@ -4998,8 +4998,8 @@ https://www.transifex.com/projects/p/dash/</translation>
         <translation>ที่อยู่ spork ที่ระบุด้วย -sporkaddr ไม่ถูกต้อง</translation>
     </message>
     <message>
-        <source>Keep N DASH anonymized (%u-%u, default: %u)</source>
-        <translation>เก็บ N DASH ไว้โดยไม่ระบุชื่อ (%u-%u, ค่าดีฟอลต์: %u)</translation>
+        <source>Keep N ION anonymized (%u-%u, default: %u)</source>
+        <translation>เก็บ N ION ไว้โดยไม่ระบุชื่อ (%u-%u, ค่าดีฟอลต์: %u)</translation>
     </message>
     <message>
         <source>Print this help message and exit</source>

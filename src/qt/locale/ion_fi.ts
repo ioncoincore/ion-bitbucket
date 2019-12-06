@@ -1,1068 +1,1068 @@
-<TS language="zh_CN" version="2.1">
+<TS language="fi" version="2.1">
 <context>
     <name>AddressBookPage</name>
     <message>
         <source>Right-click to edit address or label</source>
-        <translation>右键点击编辑地址或标签</translation>
+        <translation>Klikkaa hiiren oikealla muokataksesi osoitetta tai nimeä</translation>
     </message>
     <message>
         <source>Create a new address</source>
-        <translation>创建新地址</translation>
+        <translation>Luo uusi osoite</translation>
     </message>
     <message>
         <source>&amp;New</source>
-        <translation>新建(&amp;N)</translation>
+        <translation>&amp;Uusi</translation>
     </message>
     <message>
         <source>Copy the currently selected address to the system clipboard</source>
-        <translation>复制当前选中的地址到系统剪贴板</translation>
+        <translation>Kopioi valittu osoite leikepöydälle</translation>
     </message>
     <message>
         <source>&amp;Copy</source>
-        <translation>复制(&amp;C)</translation>
+        <translation>&amp;Kopioi</translation>
     </message>
     <message>
         <source>Show QR code for the currently selected address</source>
-        <translation>显示当前选中地址的二维码</translation>
+        <translation>Näytä valitun osoitteen QR koodi</translation>
     </message>
     <message>
         <source>&amp;Show QR code</source>
-        <translation>&amp;显示二维码</translation>
+        <translation>&amp;Näytä QR koodi</translation>
     </message>
     <message>
         <source>Delete the currently selected address from the list</source>
-        <translation>从列表中删除选中的地址</translation>
+        <translation>Poista valittu osoite listalta</translation>
     </message>
     <message>
         <source>&amp;Delete</source>
-        <translation>删除(&amp;D)</translation>
+        <translation>&amp;Poista</translation>
     </message>
     <message>
         <source>Export the data in the current tab to a file</source>
-        <translation>导出当前数据到文件</translation>
+        <translation>Vie auki olevan välilehden tiedot tiedostoon</translation>
     </message>
     <message>
         <source>&amp;Export</source>
-        <translation>导出(&amp;E)</translation>
+        <translation>Vi&amp;e...</translation>
     </message>
     <message>
         <source>C&amp;lose</source>
-        <translation>关闭(&amp;C)</translation>
+        <translation>&amp;Sulje</translation>
     </message>
     <message>
         <source>Choose the address to send coins to</source>
-        <translation>选择发款地址</translation>
+        <translation>Valitse osoite johon varat lähetetään</translation>
     </message>
     <message>
         <source>Choose the address to receive coins with</source>
-        <translation>选择收款地址</translation>
+        <translation>Valitse vastaanottava osoite</translation>
     </message>
     <message>
         <source>C&amp;hoose</source>
-        <translation>选择(&amp;H)</translation>
+        <translation>V&amp;alitse</translation>
     </message>
     <message>
         <source>Sending addresses</source>
-        <translation>正在发送地址</translation>
+        <translation>Lähettävä osoite</translation>
     </message>
     <message>
         <source>Receiving addresses</source>
-        <translation>正在接收地址</translation>
+        <translation>Vastaanottava osoite</translation>
     </message>
     <message>
-        <source>These are your Dash addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>这些是你要付款过去的达世币地址。在付款之前，务必要检查金额和收款地址是否正确。</translation>
+        <source>These are your Ion addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Nämä ovat Ion osoitteesi maksujen lähetykseen. Tarkista aina lähetettävä määrä ja vastaanottajan osoite ennen kuin lähetät varoja.</translation>
     </message>
     <message>
-        <source>These are your Dash addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>这些是你用来收款的达世币地址。建议在每次交易时，都使用一个新的收款地址。</translation>
+        <source>These are your Ion addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
+        <translation>Nämä ovat Ion osoitteesi suoritusten vastaanottamiseen. Suositellaan että käytät uutta osoitetta kullekin siirtotapahtumalle.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
-        <translation>复制地址(&amp;C)</translation>
+        <translation>Kopioi &amp;Osoite</translation>
     </message>
     <message>
         <source>Copy &amp;Label</source>
-        <translation>复制标签(&amp;L)</translation>
+        <translation>Kopioi &amp;Nimi</translation>
     </message>
     <message>
         <source>&amp;Edit</source>
-        <translation>编辑(&amp;E)</translation>
+        <translation>&amp;Muokkaa</translation>
     </message>
     <message>
         <source>&amp;Show address QR code</source>
-        <translation>&amp;显示地址二维码</translation>
+        <translation>&amp;Näytä osoitteen QR koodi</translation>
     </message>
     <message>
         <source>QR code</source>
-        <translation>二维码</translation>
+        <translation>QR koodi</translation>
     </message>
     <message>
         <source>Export Address List</source>
-        <translation>导出地址列表</translation>
+        <translation>Vie osoitekirja</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
-        <translation>逗号分隔文件 (*.csv)</translation>
+        <translation>Pilkuilla eritelty tiedosto (*.csv)</translation>
     </message>
     <message>
         <source>Exporting Failed</source>
-        <translation>导出失败</translation>
+        <translation>Vienti epäonnistui</translation>
     </message>
     <message>
         <source>There was an error trying to save the address list to %1. Please try again.</source>
-        <translation>尝试保存地址列表至%1时发生错误。请重新执行操作。</translation>
+        <translation>Osoitelistan tallennuksessa tapahtui virhe tiedostoon %1. Yritä uudelleen.</translation>
     </message>
 </context>
 <context>
     <name>AddressTableModel</name>
     <message>
         <source>Label</source>
-        <translation>标签</translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>地址</translation>
+        <translation>Osoite</translation>
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(无标签)</translation>
+        <translation>(ei nimeä)</translation>
     </message>
 </context>
 <context>
     <name>AskPassphraseDialog</name>
     <message>
         <source>Passphrase Dialog</source>
-        <translation>密码对话框</translation>
+        <translation>Salasanan Dialogi</translation>
     </message>
     <message>
         <source>Enter passphrase</source>
-        <translation>输入密码</translation>
+        <translation>Kirjoita salasana</translation>
     </message>
     <message>
         <source>New passphrase</source>
-        <translation>新密码</translation>
+        <translation>Uusi salasana</translation>
     </message>
     <message>
         <source>Repeat new passphrase</source>
-        <translation>重复新密码</translation>
+        <translation>Uusi salasana uudelleen</translation>
     </message>
     <message>
         <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
-        <translation>输入钱包的新密码。&lt;br/&gt;使用的密码请至少包含&lt;b&gt;10个以上随机字符&lt;/b&gt;，或者是&lt;b&gt;8个以上的单词&lt;/b&gt;。</translation>
+        <translation>Anna lompakolle uusi salasana.&lt;br/&gt;Käytä salasanaa jossa on ainakin  &lt;b&gt;10 satunnaista mekkiä&lt;/b&gt; tai &lt;b&gt;kahdeksan sanaa&lt;/b&gt;.</translation>
     </message>
     <message>
         <source>Encrypt wallet</source>
-        <translation>加密钱包</translation>
+        <translation>Salaa lompakko</translation>
     </message>
     <message>
         <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>此操作需要您首先使用密码解锁该钱包。</translation>
+        <translation>Tätä toimintoa varten sinun täytyy antaa lompakon salasana sen lukituksen avaamiseksi.</translation>
     </message>
     <message>
         <source>Unlock wallet for mixing only</source>
-        <translation>解锁钱包用以混币</translation>
+        <translation>Avaa lompakon lukitus vain sekoitusta varten</translation>
     </message>
     <message>
         <source>Unlock wallet</source>
-        <translation>解锁钱包</translation>
+        <translation>Avaa lompakon lukitus</translation>
     </message>
     <message>
         <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
-        <translation>该操作需要您首先使用密码解密钱包。</translation>
+        <translation>Tätä toimintoa varten sinun täytyy antaa lompakon salasana salauksen purkuun.</translation>
     </message>
     <message>
         <source>Decrypt wallet</source>
-        <translation>解密钱包</translation>
+        <translation>Pura lompakon salaus</translation>
     </message>
     <message>
         <source>Change passphrase</source>
-        <translation>更改密码</translation>
+        <translation>Vaihda salasana</translation>
     </message>
     <message>
         <source>Enter the old passphrase and new passphrase to the wallet.</source>
-        <translation>请输入钱包的旧密码和新密码。</translation>
+        <translation>Anna lompakon vanha ja uusi salasana.</translation>
     </message>
     <message>
         <source>Confirm wallet encryption</source>
-        <translation>确认加密钱包</translation>
+        <translation>Vahvista lompakon salaus</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DASH&lt;/b&gt;!</source>
-        <translation>警告:如果把钱包加​​密后又忘记密码，您就会从此&lt;b&gt;失去所有的达世币了&lt;/b&gt;！</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ION&lt;/b&gt;!</source>
+        <translation>Varoitus: Jos salaat lompakon ja unohdat salasanan, &lt;b&gt;MENETÄT KAIKKI IONisi&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
-        <translation>您确定需要为钱包加密吗？</translation>
+        <translation>Haluatko varmasti salata lompakkosi?</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
-        <translation>钱包已加密</translation>
+        <translation>Lompakko salattu</translation>
     </message>
     <message>
         <source>%1 will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your funds from being stolen by malware infecting your computer.</source>
-        <translation>%1 将要关闭，以完成加密过程。请注意，加密钱包不能完全防止恶意软件入侵您的电脑盗取您的资金。</translation>
+        <translation>%1 sulkeutuu nyt salauksen viimeistelyä varten. Muista että salaus pelkästään ei voi estää Ioniesi varastamista jos koneesi saastuu haittaohjelmilla tai viruksilla.</translation>
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. Previous backups of the unencrypted wallet file contain the same HD seed and still have full access to all your funds just like the new, encrypted wallet.</source>
-        <translation>重要提示：请用新生成的加密钱包文件替换旧的钱包备份文件。先前未加密的旧钱包备份文件含有同样的HD种子，能够像新加密的钱包一样获取您的资金，而无需输入密码。</translation>
+        <translation>TÄRKEÄÄ: Kaikki vanhat lompakon varmuuskopiot pitäisi korvata uusilla salatuilla varmuuskopioilla. Edelliset salaamattomat varmuuskopiot sisältävät saman HD siemenen ja niihin on täysi pääsy varoihisi niin kuin uuteen salattuunkin lompakkoon.</translation>
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
-        <translation>重要提示：您以前备份的钱包文件应该替换成最新生成的加密钱包文件。从安全性上考虑，您以前备份的未加密的钱包文件，在您使用新的加密钱包后将无效，请重新备份。</translation>
+        <translation>TÄRKEÄÄ: Kaikki vanhat lompakon varmuuskopiot pitäisi korvata uusilla salatuilla varmuuskopioilla. Turvallisuussyistä edelliset salaamattomat varmuuskopiot muuttuvat turhiksi kun aloitat uuden salatun lompakon käytön.</translation>
     </message>
     <message>
         <source>Wallet encryption failed</source>
-        <translation>钱包加密失败</translation>
+        <translation>Lompakon salaus epäonnistui</translation>
     </message>
     <message>
         <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
-        <translation>由于一个本地错误，加密钱包的操作已经失败。您的钱包没能被加密。</translation>
+        <translation>Lompakon salaaminen epäonnistui sisäisen virheen vuoksi. Lompakkoasi ei salattu.</translation>
     </message>
     <message>
         <source>The supplied passphrases do not match.</source>
-        <translation>密码不匹配。</translation>
+        <translation>Annetut salasanat eivät täsmää.</translation>
     </message>
     <message>
         <source>Wallet unlock failed</source>
-        <translation>钱包解锁失败</translation>
+        <translation>Lompakon lukituksen avaus epäonnistui.</translation>
     </message>
     <message>
         <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation>用于解密钱包的密码不正确。</translation>
+        <translation>Annettu salasana oli väärin.</translation>
     </message>
     <message>
         <source>Wallet decryption failed</source>
-        <translation>钱包解密失败。</translation>
+        <translation>Lompakon salauksen purku epäonnistui.</translation>
     </message>
     <message>
         <source>Wallet passphrase was successfully changed.</source>
-        <translation>修改钱包密码成功。</translation>
+        <translation>Lompakon salasana vaihdettiin onnistuneesti.</translation>
     </message>
     <message>
         <source>Warning: The Caps Lock key is on!</source>
-        <translation>警告：大写锁定键处于打开状态！</translation>
+        <translation>Varoitus: Caps Lock on käytössä!</translation>
     </message>
 </context>
 <context>
     <name>BanTableModel</name>
     <message>
         <source>IP/Netmask</source>
-        <translation>IP/子网掩码</translation>
+        <translation>IP/Netmask</translation>
     </message>
     <message>
         <source>Banned Until</source>
-        <translation>在此之前禁止：</translation>
+        <translation>Estetty Asti</translation>
     </message>
 </context>
 <context>
     <name>BitcoinGUI</name>
     <message>
-        <source>A fatal error occurred. Dash Core can no longer continue safely and will quit.</source>
-        <translation>发生致命错误。达世币核心钱包不再能安全地运行下去，程序将会关闭。</translation>
+        <source>A fatal error occurred. Ion Core can no longer continue safely and will quit.</source>
+        <translation>Vakava virhe tapahtunut. Ion Core ei voi enää toimia turvallisesti ja sulkeutuu.</translation>
     </message>
     <message>
-        <source>Dash Core</source>
-        <translation>达世币核心</translation>
+        <source>Ion Core</source>
+        <translation>Ion Core</translation>
     </message>
     <message>
         <source>Wallet</source>
-        <translation>钱包</translation>
+        <translation>Lompakko</translation>
     </message>
     <message>
         <source>Node</source>
-        <translation>节点</translation>
+        <translation>Solmu</translation>
     </message>
     <message>
         <source>&amp;Overview</source>
-        <translation>概况(&amp;O)</translation>
+        <translation>&amp;Yleisnäkymä</translation>
     </message>
     <message>
         <source>Show general overview of wallet</source>
-        <translation>显示钱包概况</translation>
+        <translation>Lompakon tilanteen yleisnäkymä</translation>
     </message>
     <message>
         <source>&amp;Send</source>
-        <translation>发送(&amp;S)</translation>
+        <translation>L&amp;ähetä</translation>
     </message>
     <message>
-        <source>Send coins to a Dash address</source>
-        <translation>发送币至达世币地址</translation>
+        <source>Send coins to a Ion address</source>
+        <translation>Lähetä varoja Ion osoitteeseen</translation>
     </message>
     <message>
         <source>&amp;Receive</source>
-        <translation>接收(&amp;R)</translation>
+        <translation>&amp;Vastaanota</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and dash: URIs)</source>
-        <translation>请求付款(生成二维码和达世币付款协议的URI)</translation>
+        <source>Request payments (generates QR codes and ion: URIs)</source>
+        <translation>Pyydä maksuja (Luo QR koodit ja Ion: URIt)</translation>
     </message>
     <message>
         <source>&amp;Transactions</source>
-        <translation>交易记录(&amp;T)</translation>
+        <translation>&amp;Tapahtumat</translation>
     </message>
     <message>
         <source>Browse transaction history</source>
-        <translation>查看交易历史</translation>
+        <translation>Selaa tapahtumahistoriaa</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
-        <translation>主节点(&amp;M)</translation>
+        <translation>&amp;Masternodet</translation>
     </message>
     <message>
         <source>Browse masternodes</source>
-        <translation>浏览主节点</translation>
+        <translation>Selaa masternodeja</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
-        <translation>退出(&amp;X)</translation>
+        <translation>L&amp;opeta</translation>
     </message>
     <message>
         <source>Quit application</source>
-        <translation>退出程序</translation>
+        <translation>Sulje ohjelma</translation>
     </message>
     <message>
-        <source>Show information about Dash Core</source>
-        <translation>显示关于达世币核心信息</translation>
+        <source>Show information about Ion Core</source>
+        <translation>Näytä tietoja Ion Core:sta</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
-        <translation>关于 &amp;Qt</translation>
+        <translation>Tietoja &amp;Qt</translation>
     </message>
     <message>
         <source>Show information about Qt</source>
-        <translation>显示 Qt 相关信息</translation>
+        <translation>Näytä tietoja QT:sta</translation>
     </message>
     <message>
         <source>&amp;Options...</source>
-        <translation>选项(&amp;O)...</translation>
+        <translation>&amp;Asetukset...</translation>
     </message>
     <message>
         <source>&amp;About %1</source>
-        <translation>关于 %1</translation>
+        <translation>&amp;Tietoja %1</translation>
     </message>
     <message>
         <source>Modify configuration options for %1</source>
-        <translation>修改%1配置选项</translation>
+        <translation>Muuta %1 asetuksia</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
-        <translation>显示 / 隐藏(&amp;S)</translation>
+        <translation>&amp;Näytä / Piilota</translation>
     </message>
     <message>
         <source>Show or hide the main Window</source>
-        <translation>显示或隐藏主窗口</translation>
+        <translation>Näytä tai piilota pääikkuna</translation>
     </message>
     <message>
         <source>&amp;Encrypt Wallet...</source>
-        <translation>加密钱包(&amp;E)...</translation>
+        <translation>&amp;Salaa Lompakko...</translation>
     </message>
     <message>
         <source>Encrypt the private keys that belong to your wallet</source>
-        <translation>对钱包中的私钥加密</translation>
+        <translation>Salaa yksityiset avaimet jotka kuuluvat lompakkoosi</translation>
     </message>
     <message>
         <source>&amp;Backup Wallet...</source>
-        <translation>备份钱包(&amp;B)...</translation>
+        <translation>&amp;Varmuuskopioi Lompakko...</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
-        <translation>备份钱包到其他文件夹</translation>
+        <translation>Varmuuskopioi lompakko toiseen paikkaan</translation>
     </message>
     <message>
         <source>&amp;Change Passphrase...</source>
-        <translation>更改密码(&amp;C)...</translation>
+        <translation>&amp;Vaihda Salasana...</translation>
     </message>
     <message>
         <source>Change the passphrase used for wallet encryption</source>
-        <translation>更改钱包加密口令</translation>
+        <translation>Vaihda lompakon salaukseen käytettävä salasana</translation>
     </message>
     <message>
         <source>&amp;Unlock Wallet...</source>
-        <translation>解锁钱包(&amp;U)</translation>
+        <translation>&amp;Avaa Lukitus...</translation>
     </message>
     <message>
         <source>Unlock wallet</source>
-        <translation>解锁钱包</translation>
+        <translation>Avaa lompakon lukitus</translation>
     </message>
     <message>
         <source>&amp;Lock Wallet</source>
-        <translation>锁定钱包(&amp;L)</translation>
+        <translation>&amp;Lukitse Lompakko</translation>
     </message>
     <message>
         <source>Sign &amp;message...</source>
-        <translation>消息签名(&amp;M)...</translation>
+        <translation>&amp;Allekirjoita Viesti...</translation>
     </message>
     <message>
-        <source>Sign messages with your Dash addresses to prove you own them</source>
-        <translation>使用您的达市币地址进行消息签名以证明对此地址的所有权</translation>
+        <source>Sign messages with your Ion addresses to prove you own them</source>
+        <translation>Allekirjoita viestit Ion osoitteillasi todistaaksesi että omistat ne</translation>
     </message>
     <message>
         <source>&amp;Verify message...</source>
-        <translation>验证消息(&amp;V)...</translation>
+        <translation>&amp;Tarkista Viesti...</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Dash addresses</source>
-        <translation>验证消息是用来确定此消息是用指定的达世币地址签发的</translation>
+        <source>Verify messages to ensure they were signed with specified Ion addresses</source>
+        <translation>Tarkista viestit ollaksesi varma että ne on allekirjoitettu määritetyillä Ion osoitteilla</translation>
     </message>
     <message>
         <source>&amp;Information</source>
-        <translation>信息(&amp;I)</translation>
+        <translation>T&amp;ietoja</translation>
     </message>
     <message>
         <source>Show diagnostic information</source>
-        <translation>显示诊断信息</translation>
+        <translation>Näytä diagnostiikka tietoja</translation>
     </message>
     <message>
         <source>&amp;Debug console</source>
-        <translation>Debug控制台(&amp;D)</translation>
+        <translation>&amp;Testauskonsoli</translation>
     </message>
     <message>
         <source>Open debugging console</source>
-        <translation>打开调试控制台</translation>
+        <translation>Avaa testauskonsoli</translation>
     </message>
     <message>
         <source>&amp;Network Monitor</source>
-        <translation>网络流量监控(&amp;N)</translation>
+        <translation>&amp;Verkkoliikenne</translation>
     </message>
     <message>
         <source>Show network monitor</source>
-        <translation>显示网络流量监控</translation>
+        <translation>Näytä verkkoliikenne</translation>
     </message>
     <message>
         <source>&amp;Peers list</source>
-        <translation>节点列表(&amp;P)</translation>
+        <translation>&amp;Peers Lista</translation>
     </message>
     <message>
         <source>Show peers info</source>
-        <translation>显示节点信息</translation>
+        <translation>Näytä verkon peers tietoja</translation>
     </message>
     <message>
         <source>Wallet &amp;Repair</source>
-        <translation>钱包&amp;修复</translation>
+        <translation>Lompakon &amp;Korjaus</translation>
     </message>
     <message>
         <source>Show wallet repair options</source>
-        <translation>显示钱包修复选项</translation>
+        <translation>Näytä lompakon korjausvalinnat</translation>
     </message>
     <message>
         <source>Open Wallet &amp;Configuration File</source>
-        <translation>打开钱包配置文件(&amp;C)</translation>
+        <translation>Avaa &amp;Asetustiedosto</translation>
     </message>
     <message>
         <source>Open configuration file</source>
-        <translation>打开配置文件</translation>
+        <translation>Avaa asetustiedosto</translation>
     </message>
     <message>
         <source>Show Automatic &amp;Backups</source>
-        <translation>显示自动备份(&amp;B)</translation>
+        <translation>&amp;Näytä Automaattiset Varmistukset</translation>
     </message>
     <message>
         <source>Show automatically created wallet backups</source>
-        <translation>显示自动创建的钱包备份</translation>
+        <translation>Näytä automaattisesti tehdyt lompakon varmistukset</translation>
     </message>
     <message>
         <source>&amp;Sending addresses...</source>
-        <translation>付款地址(&amp;S)...</translation>
+        <translation>&amp;Lähettävät Osoitteet...</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
-        <translation>显示用过的发送地址和标签的列表</translation>
+        <translation>Näytä lähettämiseen käytettyjen osoitteiden ja nimien lista</translation>
     </message>
     <message>
         <source>&amp;Receiving addresses...</source>
-        <translation>收款地址(&amp;R)...</translation>
+        <translation>Va&amp;staanottavat Osoitteet...</translation>
     </message>
     <message>
         <source>Show the list of used receiving addresses and labels</source>
-        <translation>显示用过的接收地址和标签的列表</translation>
+        <translation>Näytä vastaanottamiseen käytettyjen osoitteiden ja nimien lista</translation>
     </message>
     <message>
         <source>Open &amp;URI...</source>
-        <translation>打开 &amp;URI...</translation>
+        <translation>Avaa &amp;URI...</translation>
     </message>
     <message>
-        <source>Open a dash: URI or payment request</source>
-        <translation>打开一个达世币协议的URI或付款请求</translation>
+        <source>Open a ion: URI or payment request</source>
+        <translation>Avaa Ion: URI tai maksupyyntö</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
-        <translation>命令行选项(&amp;C)</translation>
+        <translation>&amp;Komentorivin valinnat</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Dash command-line options</source>
-        <translation>显示 %1 帮助信息，获取可用命令行选项列表</translation>
+        <source>Show the %1 help message to get a list with possible Ion command-line options</source>
+        <translation>Näytä %1 ohjelista komentorivin valinnoista</translation>
     </message>
     <message>
         <source>%1 client</source>
-        <translation>%1 客戶</translation>
+        <translation>%1 asiakasohjelma</translation>
     </message>
     <message>
         <source>&amp;PrivateSend information</source>
-        <translation>匿名发送信息(&amp;P)</translation>
+        <translation>&amp;PrivateSend tietoja</translation>
     </message>
     <message>
         <source>Show the PrivateSend basic information</source>
-        <translation>显示匿名发送基本信息</translation>
+        <translation>Näytä PrivateSend perustietoja</translation>
     </message>
     <message>
         <source>&amp;File</source>
-        <translation>文件(&amp;F)</translation>
+        <translation>&amp;Tiedosto</translation>
     </message>
     <message>
         <source>&amp;Settings</source>
-        <translation>设置(&amp;S)</translation>
+        <translation>&amp;Asetukset</translation>
     </message>
     <message>
         <source>&amp;Tools</source>
-        <translation>工具(&amp;T)</translation>
+        <translation>&amp;Työkalut</translation>
     </message>
     <message>
         <source>&amp;Help</source>
-        <translation>帮助(&amp;H)</translation>
+        <translation>&amp;Apua</translation>
     </message>
     <message>
         <source>Tabs toolbar</source>
-        <translation>分页工具栏</translation>
+        <translation>Välilehtipalkki</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Dash network</source>
-        <translation><numerusform>%n个有效的达世币网络连接</numerusform></translation>
+        <source>%n active connection(s) to Ion network</source>
+        <translation><numerusform>%n aktiivinen yhteys Ion verkkoon</numerusform><numerusform>%n aktiivista yhteyttä Ion verkkoon</numerusform></translation>
     </message>
     <message>
         <source>Network activity disabled</source>
-        <translation>网络活动已禁用</translation>
+        <translation>Verkkotoiminnot ei käytössä</translation>
     </message>
     <message>
         <source>Syncing Headers (%1%)...</source>
-        <translation>同步区块头 (%1%)...</translation>
+        <translation>Synkronoidaan otsikoita (%1%)...</translation>
     </message>
     <message>
         <source>Synchronizing with network...</source>
-        <translation>正在与网络同步...</translation>
+        <translation>Synkronoidaan verkkoon...</translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
-        <translation>正在为硬盘中的区块建立索引...</translation>
+        <translation>Indeksoidaan lohkoja levyllä...</translation>
     </message>
     <message>
         <source>Processing blocks on disk...</source>
-        <translation>正在处理硬盘中的区块...</translation>
+        <translation>Käsitellään lohkoja levyllä...</translation>
     </message>
     <message>
         <source>Reindexing blocks on disk...</source>
-        <translation>正在为硬盘中的区块重建索引...</translation>
+        <translation>Uudelleen indeksoidaan lohkoja...</translation>
     </message>
     <message>
         <source>Connecting to peers...</source>
-        <translation>正在连接到节点……</translation>
+        <translation>Kytkeydytään peers...</translation>
     </message>
     <message numerus="yes">
         <source>Processed %n block(s) of transaction history.</source>
-        <translation><numerusform>已处理了%n个区块的交易记录。</numerusform></translation>
+        <translation><numerusform>Käsitelty %n lohko(a) tapahtumahistoriasta.</numerusform><numerusform>Käsitelty %n lohko(a) tapahtumahistoriasta.</numerusform></translation>
     </message>
     <message>
         <source>%1 behind</source>
-        <translation>落后 %1 </translation>
+        <translation>%1 jäljessä</translation>
     </message>
     <message>
         <source>Catching up...</source>
-        <translation>更新中...</translation>
+        <translation>Saavutetaan verkkoa...</translation>
     </message>
     <message>
         <source>Last received block was generated %1 ago.</source>
-        <translation>最新收到的区块产生于%1之前。</translation>
+        <translation>Viimeisin vastaanotettu lohko luotu %1 sitten.</translation>
     </message>
     <message>
         <source>Transactions after this will not yet be visible.</source>
-        <translation>在此之后的交易尚未可见</translation>
+        <translation>Tämän jälkeiset siirtotapahtumat eivät ole vielä näkyvissä.</translation>
     </message>
     <message>
         <source>Up to date</source>
-        <translation>已更新</translation>
+        <translation>Tapahtumahistoria on ajan tasalla</translation>
     </message>
     <message>
         <source>Synchronizing additional data: %p%</source>
-        <translation>正在同步附加数据：%p%</translation>
+        <translation>Synkronoidaan lisätietoja: %p%</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation>Virhe</translation>
     </message>
     <message>
         <source>Warning</source>
-        <translation>警告</translation>
+        <translation>Varoitus</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>信息</translation>
+        <translation>Tietoja</translation>
     </message>
     <message>
         <source>Date: %1
 </source>
-        <translation>日期：%1
+        <translation>Pvm: %1
 </translation>
     </message>
     <message>
         <source>Amount: %1
 </source>
-        <translation>金额：%1
+        <translation>Määrä: %1
 </translation>
     </message>
     <message>
         <source>Type: %1
 </source>
-        <translation>类型：%1
+        <translation>Tyyppi: %1
 </translation>
     </message>
     <message>
         <source>Label: %1
 </source>
-        <translation>标签：%1
+        <translation>Nimi: %1
 </translation>
     </message>
     <message>
         <source>Address: %1
 </source>
-        <translation>地址：%1
+        <translation>Osoite: %1
 </translation>
     </message>
     <message>
         <source>Sent transaction</source>
-        <translation>发送交易</translation>
+        <translation>Lähetetty siirtotapahtuma</translation>
     </message>
     <message>
         <source>Incoming transaction</source>
-        <translation>接收交易</translation>
+        <translation>Saapuva siirtotapahtuma</translation>
     </message>
     <message>
         <source>HD key generation is &lt;b&gt;enabled&lt;/b&gt;</source>
-        <translation>HD密钥生成&lt;b&gt;启用&lt;/b&gt;</translation>
+        <translation>HD avaimen generointi on &lt;b&gt;käytössä&lt;/b&gt;</translation>
     </message>
     <message>
         <source>HD key generation is &lt;b&gt;disabled&lt;/b&gt;</source>
-        <translation>HD密钥生成&lt;b&gt;禁用&lt;/b&gt;</translation>
+        <translation>HD avaimen generointi &lt;b&gt;ei käytössä&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
-        <translation>钱包已被&lt;b&gt;加密&lt;/b&gt;，当前为&lt;b&gt;解锁&lt;/b&gt;状态</translation>
+        <translation>Lompakko on &lt;b&gt;salattu&lt;/b&gt; ja tällä hetkellä &lt;b&gt;lukitsematta&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for mixing only</source>
-        <translation>钱包已经&lt;b&gt;加密&lt;/b&gt;  ，当前为 &lt;b&gt;解锁&lt;/b&gt;状态以进行混币</translation>
+        <translation>Lompakko on &lt;b&gt;salattu&lt;/b&gt; ja tällä hetkellä &lt;b&gt;lukitsematta&lt;/b&gt; vain sekoitusta varten</translation>
     </message>
     <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
-        <translation>钱包已被&lt;b&gt;加密&lt;/b&gt;，当前为&lt;b&gt;锁定&lt;/b&gt;状态</translation>
+        <translation>Lompakko on &lt;b&gt;salattu&lt;/b&gt; ja tällä hetkellä &lt;b&gt;lukittu&lt;/b&gt;</translation>
     </message>
 </context>
 <context>
     <name>ClientModel</name>
     <message>
         <source>Network Alert</source>
-        <translation>网络警报</translation>
+        <translation>Verkkohälytys</translation>
     </message>
 </context>
 <context>
     <name>CoinControlDialog</name>
     <message>
         <source>Quantity:</source>
-        <translation>总量：</translation>
+        <translation>Määrä:</translation>
     </message>
     <message>
         <source>Bytes:</source>
-        <translation>字节：</translation>
+        <translation>Tavuja:</translation>
     </message>
     <message>
         <source>Amount:</source>
-        <translation>金额：</translation>
+        <translation>Määrä:</translation>
     </message>
     <message>
         <source>Fee:</source>
-        <translation>费用：</translation>
+        <translation>Siirtomaksu:</translation>
     </message>
     <message>
         <source>Coin Selection</source>
-        <translation>选择币</translation>
+        <translation>Kolikko Valinta</translation>
     </message>
     <message>
         <source>Dust:</source>
-        <translation>零散金额：</translation>
+        <translation>Tomu:</translation>
     </message>
     <message>
         <source>After Fee:</source>
-        <translation>加上交易费用后：</translation>
+        <translation>Siirtomaksun jälkeen:</translation>
     </message>
     <message>
         <source>Change:</source>
-        <translation>找零金额：</translation>
+        <translation>Vaihtoraha:</translation>
     </message>
     <message>
         <source>(un)select all</source>
-        <translation>(不)全选</translation>
+        <translation>Poista kaikki valinnat</translation>
     </message>
     <message>
         <source>toggle lock state</source>
-        <translation>切换锁定状态</translation>
+        <translation>muuta lukituksen tilaa</translation>
     </message>
     <message>
         <source>Tree mode</source>
-        <translation>树状模式</translation>
+        <translation>Puurakenne</translation>
     </message>
     <message>
         <source>List mode</source>
-        <translation>列表模式</translation>
+        <translation>Listarakenne</translation>
     </message>
     <message>
         <source>(1 locked)</source>
-        <translation>(1 锁定)</translation>
+        <translation>(1 lukittu)</translation>
     </message>
     <message>
         <source>Amount</source>
-        <translation>金额</translation>
+        <translation>Määrä</translation>
     </message>
     <message>
         <source>Received with label</source>
-        <translation>收款标签</translation>
+        <translation>Vastaanotettu nimellä</translation>
     </message>
     <message>
         <source>Received with address</source>
-        <translation>收款地址</translation>
+        <translation>Vastaanotettu osoitteeseen</translation>
     </message>
     <message>
         <source>PS Rounds</source>
-        <translation>匿名发送循环</translation>
+        <translation>PS Kierrokset</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>日期</translation>
+        <translation>Päivämäärä</translation>
     </message>
     <message>
         <source>Confirmations</source>
-        <translation>确认</translation>
+        <translation>Vahvistuksia</translation>
     </message>
     <message>
         <source>Confirmed</source>
-        <translation>已确认</translation>
+        <translation>Vahvistettu</translation>
     </message>
     <message>
         <source>Copy address</source>
-        <translation>复制地址</translation>
+        <translation>Kopioi osoite</translation>
     </message>
     <message>
         <source>Copy label</source>
-        <translation>复制标签</translation>
+        <translation>Kopioi nimi</translation>
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>复制金额</translation>
+        <translation>Kopioi määrä</translation>
     </message>
     <message>
         <source>Copy transaction ID</source>
-        <translation>复制交易编号</translation>
+        <translation>Kopioi siirtotunnus</translation>
     </message>
     <message>
         <source>Lock unspent</source>
-        <translation>锁定未花费</translation>
+        <translation>Lukitse käyttämättömät</translation>
     </message>
     <message>
         <source>Unlock unspent</source>
-        <translation>解锁未花费</translation>
+        <translation>Avaa lukitus käyttämättömistä</translation>
     </message>
     <message>
         <source>Copy quantity</source>
-        <translation>复制金额</translation>
+        <translation>Kopioi määrä</translation>
     </message>
     <message>
         <source>Copy fee</source>
-        <translation>复制交易费</translation>
+        <translation>Kopioi siirtomaksu</translation>
     </message>
     <message>
         <source>Copy after fee</source>
-        <translation>复制含交易费的金额</translation>
+        <translation>Kopioi siirtomaksun jälkeen</translation>
     </message>
     <message>
         <source>Copy bytes</source>
-        <translation>复制字节</translation>
+        <translation>Kopioi tavut</translation>
     </message>
     <message>
         <source>Copy dust</source>
-        <translation>复制零钱金额</translation>
+        <translation>Kopioi tomu</translation>
     </message>
     <message>
         <source>Copy change</source>
-        <translation>复制零钱</translation>
+        <translation>Kopioi vaihtoraha</translation>
     </message>
     <message>
         <source>Please switch to "List mode" to use this function.</source>
-        <translation>请切换到“列表模式”来使用此功能。</translation>
+        <translation>Vaihda "Lista tilaan" käyttääksesi tätä toimintoa.</translation>
     </message>
     <message>
         <source>Non-anonymized input selected. &lt;b&gt;PrivateSend will be disabled.&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you still want to use PrivateSend, please deselect all non-anonymized inputs first and then check the PrivateSend checkbox again.</source>
-        <translation>已选择非匿名输入。&lt;b&gt;匿名发送将会被禁用。&lt;/b&gt;&lt;br&gt;&lt;br&gt;如果你仍然想使用匿名发送功能，请先取消所选的非匿名输入，然后再勾选匿名发送。</translation>
+        <translation>Ei anonyymeja syötteitä valittu. &lt;b&gt;PrivateSend poistetaan käytöstä.&lt;/b&gt;&lt;br&gt;&lt;br&gt;Jos silti haluat käyttää PrivateSend:iä, poista ei anonyymit valinnat ensin ja valitse uudelleen PrivateSend optio.</translation>
     </message>
     <message>
         <source>(%1 locked)</source>
-        <translation>(%1 锁定)</translation>
+        <translation>(%1 lukittu)</translation>
     </message>
     <message>
         <source>yes</source>
-        <translation>是</translation>
+        <translation>kyllä</translation>
     </message>
     <message>
         <source>no</source>
-        <translation>否</translation>
+        <translation>ei</translation>
     </message>
     <message>
         <source>This label turns red if any recipient receives an amount smaller than the current dust threshold.</source>
-        <translation>当任何一个收款金额小于目前的零散金额上限时，文字会变红色。</translation>
+        <translation>Tämä nimi vaihtuu punaiseksi jos yksikään vastaanottaja saa pienemmän määrän kuin nykyinen tomun määritelty raja-arvo.</translation>
     </message>
     <message>
         <source>Can vary +/- %1 duff(s) per input.</source>
-        <translation>每笔输入可能会有 +/- %1个duff(s)的偏差.</translation>
+        <translation>Voi vaihdella +/- %1 duffs per syöte.</translation>
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(无标签)</translation>
+        <translation>(ei nimeä)</translation>
     </message>
     <message>
         <source>change from %1 (%2)</source>
-        <translation>来自%1的找零 (%2)</translation>
+        <translation>Vaihda %1 (%2)</translation>
     </message>
     <message>
         <source>(change)</source>
-        <translation>(找零)</translation>
+        <translation>(vaihtoraha)</translation>
     </message>
     <message>
         <source>n/a</source>
-        <translation>不可用</translation>
+        <translation>e/s</translation>
     </message>
 </context>
 <context>
     <name>EditAddressDialog</name>
     <message>
         <source>Edit Address</source>
-        <translation>编辑地址</translation>
+        <translation>Muokkaa osoitetta</translation>
     </message>
     <message>
         <source>&amp;Label</source>
-        <translation>标签(&amp;L)</translation>
+        <translation>&amp;Nimi</translation>
     </message>
     <message>
         <source>The label associated with this address list entry</source>
-        <translation>与此地址相关的标签项</translation>
+        <translation>Tähän osoitteeseen liitetty nimi</translation>
     </message>
     <message>
         <source>&amp;Address</source>
-        <translation>地址(&amp;A)</translation>
+        <translation>&amp;Osoite</translation>
     </message>
     <message>
         <source>The address associated with this address list entry. This can only be modified for sending addresses.</source>
-        <translation>该地址已与地址列表中的条目关联。只有发送地址才能被修改。</translation>
+        <translation>Osoite liitettynä tähän osoitekirjan alkioon. Tämä voidaan muokata vain lähetysosoitteissa.</translation>
     </message>
     <message>
         <source>New receiving address</source>
-        <translation>新建接收地址</translation>
+        <translation>Uusi vastaanottava osoite</translation>
     </message>
     <message>
         <source>New sending address</source>
-        <translation>新建发送地址</translation>
+        <translation>Uusi lähettävä osoite</translation>
     </message>
     <message>
         <source>Edit receiving address</source>
-        <translation>编辑接收地址</translation>
+        <translation>Muokkaa vastaanottavaa osoitetta</translation>
     </message>
     <message>
         <source>Edit sending address</source>
-        <translation>编辑发送地址</translation>
+        <translation>Muokkaa lähettävää osoitetta</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Dash address.</source>
-        <translation>输入的地址“%1”不是有效的达世币地址。</translation>
+        <source>The entered address "%1" is not a valid Ion address.</source>
+        <translation>Annettu osoite "%1" ei ole pätevä Ion osoite.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
-        <translation>输入的地址“%1”已经存在于地址簿中。</translation>
+        <translation>Osoite "%1" on jo osoitekirjassa.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
-        <translation>无法解锁钱包</translation>
+        <translation>Lompakon lukitusta ei voitu avata.</translation>
     </message>
     <message>
         <source>New key generation failed.</source>
-        <translation>新的密钥生成失败。</translation>
+        <translation>Uuden avaimen luonti epäonnistui.</translation>
     </message>
 </context>
 <context>
     <name>FreespaceChecker</name>
     <message>
         <source>A new data directory will be created.</source>
-        <translation>一个新的数据目录将被创建。</translation>
+        <translation>Luodaan uusi datahakemisto.</translation>
     </message>
     <message>
         <source>name</source>
-        <translation>名称</translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <source>Directory already exists. Add %1 if you intend to create a new directory here.</source>
-        <translation>目录已存在。如果您打算在这里创建一个新目录，添加 %1。</translation>
+        <translation>Hakemisto on jo olemassa. Lisää %1 jos tarkoitus on luoda hakemisto tänne.</translation>
     </message>
     <message>
         <source>Path already exists, and is not a directory.</source>
-        <translation>路径已存在，并且不是一个目录。</translation>
+        <translation>Polku on jo olemassa, eikä se ole hakemisto.</translation>
     </message>
     <message>
         <source>Cannot create data directory here.</source>
-        <translation>无法在此创建数据目录。</translation>
+        <translation>Ei voida luoda datahakemistoa tänne.</translation>
     </message>
 </context>
 <context>
     <name>HelpMessageDialog</name>
     <message>
         <source>version</source>
-        <translation>版本</translation>
+        <translation>versio</translation>
     </message>
     <message>
         <source>(%1-bit)</source>
-        <translation>(%1 位)</translation>
+        <translation>(%1-bittinen)</translation>
     </message>
     <message>
         <source>About %1</source>
-        <translation>關於 %1</translation>
+        <translation>Tietoja %1</translation>
     </message>
     <message>
         <source>Command-line options</source>
-        <translation>命令行选项</translation>
+        <translation>Komentorivin valinnat</translation>
     </message>
     <message>
         <source>Usage:</source>
-        <translation>用法：</translation>
+        <translation>Käyttö:</translation>
     </message>
     <message>
         <source>command-line options</source>
-        <translation>命令行选项</translation>
+        <translation>komentorivi valintaparametrit</translation>
     </message>
     <message>
         <source>UI Options:</source>
-        <translation>界面选项：</translation>
+        <translation>Käyttöliittymän asetukset:</translation>
     </message>
     <message>
         <source>Choose data directory on startup (default: %u)</source>
-        <translation>在启动时选择目录（默认%u）</translation>
+        <translation>Valitse datahakemisto käynnistyksessä (oletus: %u)</translation>
     </message>
     <message>
         <source>Set language, for example "de_DE" (default: system locale)</source>
-        <translation>设置语言, 例如“zh_CN”（默认为系统语言）</translation>
+        <translation>Aseta kieli, esim. "fi_FI" (oletus: sama kuin järjestelmän)</translation>
     </message>
     <message>
         <source>Start minimized</source>
-        <translation>启动时最小化</translation>
+        <translation>Käynnistä pienennettynä</translation>
     </message>
     <message>
         <source>Set SSL root certificates for payment request (default: -system-)</source>
-        <translation>设置付款请求时使用的SSL根证书（默认：-系统-）</translation>
+        <translation>Aseta SSL root varmenne maksupyynnöille (oletus: -system-)</translation>
     </message>
     <message>
         <source>Show splash screen on startup (default: %u)</source>
-        <translation>显示启动画面（默认：%u）</translation>
+        <translation>Näytä aloitusruutu käynnistettäessä (oletus: %u)</translation>
     </message>
     <message>
         <source>Reset all settings changed in the GUI</source>
-        <translation>重置图形界面所有的变更设置</translation>
+        <translation>Nollaa kaikki muokatut käyttöliittymän asetukset</translation>
     </message>
     <message>
         <source>PrivateSend information</source>
-        <translation>匿名发送信息</translation>
+        <translation>PrivateSend tietoja</translation>
     </message>
     <message>
-        <source>&lt;h3&gt;PrivateSend Basics&lt;/h3&gt; PrivateSend gives you true financial privacy by obscuring the origins of your funds. All the Dash in your wallet is comprised of different "inputs" which you can think of as separate, discrete coins.&lt;br&gt; PrivateSend uses an innovative process to mix your inputs with the inputs of two other people, without having your coins ever leave your wallet. You retain control of your money at all times.&lt;hr&gt; &lt;b&gt;The PrivateSend process works like this:&lt;/b&gt;&lt;ol type="1"&gt; &lt;li&gt;PrivateSend begins by breaking your transaction inputs down into standard denominations. These denominations are 0.001 DASH, 0.01 DASH, 0.1 DASH, 1 DASH and 10 DASH -- sort of like the paper money you use every day.&lt;/li&gt; &lt;li&gt;Your wallet then sends requests to specially configured software nodes on the network, called "masternodes." These masternodes are informed then that you are interested in mixing a certain denomination. No identifiable information is sent to the masternodes, so they never know "who" you are.&lt;/li&gt; &lt;li&gt;When two other people send similar messages, indicating that they wish to mix the same denomination, a mixing session begins. The masternode mixes up the inputs and instructs all three users' wallets to pay the now-transformed input back to themselves. Your wallet pays that denomination directly to itself, but in a different address (called a change address).&lt;/li&gt; &lt;li&gt;In order to fully obscure your funds, your wallet must repeat this process a number of times with each denomination. Each time the process is completed, it's called a "round." Each round of PrivateSend makes it exponentially more difficult to determine where your funds originated.&lt;/li&gt; &lt;li&gt;This mixing process happens in the background without any intervention on your part. When you wish to make a transaction, your funds will already be anonymized. No additional waiting is required.&lt;/li&gt; &lt;/ol&gt; &lt;hr&gt;&lt;b&gt;IMPORTANT:&lt;/b&gt; Your wallet only contains 1000 of these "change addresses." Every time a mixing event happens, up to 9 of your addresses are used up. This means those 1000 addresses last for about 100 mixing events. When 900 of them are used, your wallet must create more addresses. It can only do this, however, if you have automatic backups enabled.&lt;br&gt; Consequently, users who have backups disabled will also have PrivateSend disabled. &lt;hr&gt;For more information, see the &lt;a href="https://docs.dash.org/en/latest/wallets/dashcore/privatesend-instantsend.html"&gt;PrivateSend documentation&lt;/a&gt;.</source>
-        <translation>&lt;h3&gt;匿名发送基础知识&lt;/h3&gt;匿名发送通过隐藏您的资金来源为您提供真正的财务隐私。您的钱包中所有的达世币都由不同的“输入”组成，您可以将其视为分开的离散硬币。&lt;br&gt;匿名发送使用创新的方法将您的输入与其他两个人的输入相结合，而过程中不会让您的达世币离开您的钱包。每时每刻，您仍然控制着您的钱。&lt;hr&gt;&lt;b&gt;匿名发送的运作原理如下：&lt;/b&gt;&lt;ol type="1"&gt;&lt;li&gt;匿名发送首先将您的交易分柝成多个标准面额的交易。这些标准面额分别为0.001 DASH，0.01 DASH，0.1 DASH，1 DASH和10 DASH --有点像您每天使用的纸币。&lt;/li&gt;&lt;li&gt;您的钱包然后发送请求到网络上有专门配置的软件节点，称为“主节点”。这些主节点会收到您希望混合一些资金的通知。没有可识别的信息发送到主节点，所以他们永远不会知道你是“谁”。&lt;li&gt;当另外两个人发送类似的消息时，表示希望混合相同的面额的话，混合会话就会开始。相关的主节点会混合这些输入，并指示所有三个用户的钱包将已经转换了输入的交易支付给自己。您的钱包直接支付给自己，但是付给不同的位址（称之为找零地址）。&lt;/li&gt;&lt;li&gt;为了完全掩盖您的资金来源，您的钱包必须以每个面额来重复此过程数次。每次这个过程完成后，都称之为一个“循环”。每个循环的匿名发送都会令确定您的资金来源的工作倍加困难。&lt;/li&gt;&lt;li&gt;这种混合过程发生在后台，而不需要您进行任何操作。当您想进行交易时，您的资金将已被匿名处理。不需再花额外的时间等待。&lt;/li&gt;&lt;/ol&gt;&lt;hr&gt;重要：&lt;b&gt;您的钱包只能拥有1000个“找零地址”。每次混合事件发生时，最多会使用9个找零地址。这意味着这1000个地址可以容许100次的混合事件。当其的中900个已经被使用后，您的钱包必须创建更多的地址。如果您启用了自动备份，则只能够这样做。&lt;br&gt;因此，禁用备份的用户也将禁用匿名发送。&lt;hr&gt;如欲了解更多信息请参阅&lt;a href="https://docs.dash.org/en/latest/wallets/dashcore/privatesend-instantsend.html"&gt;匿名发送文档&lt;/a&gt;。</translation>
+        <source>&lt;h3&gt;PrivateSend Basics&lt;/h3&gt; PrivateSend gives you true financial privacy by obscuring the origins of your funds. All the Ion in your wallet is comprised of different "inputs" which you can think of as separate, discrete coins.&lt;br&gt; PrivateSend uses an innovative process to mix your inputs with the inputs of two other people, without having your coins ever leave your wallet. You retain control of your money at all times.&lt;hr&gt; &lt;b&gt;The PrivateSend process works like this:&lt;/b&gt;&lt;ol type="1"&gt; &lt;li&gt;PrivateSend begins by breaking your transaction inputs down into standard denominations. These denominations are 0.001 ION, 0.01 ION, 0.1 ION, 1 ION and 10 ION -- sort of like the paper money you use every day.&lt;/li&gt; &lt;li&gt;Your wallet then sends requests to specially configured software nodes on the network, called "masternodes." These masternodes are informed then that you are interested in mixing a certain denomination. No identifiable information is sent to the masternodes, so they never know "who" you are.&lt;/li&gt; &lt;li&gt;When two other people send similar messages, indicating that they wish to mix the same denomination, a mixing session begins. The masternode mixes up the inputs and instructs all three users' wallets to pay the now-transformed input back to themselves. Your wallet pays that denomination directly to itself, but in a different address (called a change address).&lt;/li&gt; &lt;li&gt;In order to fully obscure your funds, your wallet must repeat this process a number of times with each denomination. Each time the process is completed, it's called a "round." Each round of PrivateSend makes it exponentially more difficult to determine where your funds originated.&lt;/li&gt; &lt;li&gt;This mixing process happens in the background without any intervention on your part. When you wish to make a transaction, your funds will already be anonymized. No additional waiting is required.&lt;/li&gt; &lt;/ol&gt; &lt;hr&gt;&lt;b&gt;IMPORTANT:&lt;/b&gt; Your wallet only contains 1000 of these "change addresses." Every time a mixing event happens, up to 9 of your addresses are used up. This means those 1000 addresses last for about 100 mixing events. When 900 of them are used, your wallet must create more addresses. It can only do this, however, if you have automatic backups enabled.&lt;br&gt; Consequently, users who have backups disabled will also have PrivateSend disabled. &lt;hr&gt;For more information, see the &lt;a href="https://docs.ionomy.com/en/latest/wallets/ioncoin/privatesend-instantsend.html"&gt;PrivateSend documentation&lt;/a&gt;.</source>
+        <translation>&lt;h3&gt;PrivateSend perusteet&lt;/h3&gt; PrivateSend tarjoaa yksityisyyden hämärtämällä varojesi alkuperäisen osoitteen. Kaikki Ion:it lompakossasi muodostuvat erillisistä "syötteistä", joita voit ajatella erillisinä kolikkoina.&lt;br&gt; PrivateSend käyttää innovatiivista prosessia sekoittaakseen lompakkosi syötteet kahden muun ihmisen syötteisiin, siirtämättä varoja pois lompakostasi. Varojesi kontrolli pysyy aina sinulla.&lt;hr&gt; &lt;b&gt; PrivateSend prosessi toimii seuraavasti:&lt;/b&gt;&lt;ol type="1"&gt; &lt;li&gt;PrivateSend aloittaa pilkkomalla siirtotapahtumiesi syötteet pienemmiksi standardi arvoiksi. Nämä arvot ovat 0.001 ION, 0.01 ION, 0.1 ION, 1 ION ja 10 ION.&lt;/li&gt; &lt;li&gt;Sitten lompakkosi lähettää pyynnön verkon palvelimille, joita kutsutaan "masternode:iksi". Masternodet saavat tiedon että haluat sekoittaa pilkottuja standardi arvoja. Mitään tunnistetietoja ei lähetetä masternode:ille, ne eivät koskaan tiedä "kuka" olet.&lt;/li&gt; &lt;li&gt;Kun 2 muuta käyttäjää ilmoittaa että he haluavat myös sekoittaa varoja, alkaa sekoitus-sessio. Masternodet sekoittavat standardi arvot ja ilmoittavat kaikille 3:lle käyttäjän lompakoille että maksavat sekoitetut arvot takaisin itselleen. Lompakkosi maksaa nuo sekoitetut arvot suoraan itselleen, mutta eri osoitteeseen (vaihto-osoite).&lt;/li&gt; &lt;li&gt;Jotta varojesi alkuperäinen lähde hämärretään, lompakkosi suorittaa tämän prosessin useita kertoja kaikilla standardi arvoilla. Aina kun prosessi on valmis, sitä kutsutaan "kierrokseksi". Jokainen PrivateSend kierros tekee eksponentiaalisesti vaikeammaksi löytää varojesi alkuperäisen osoitteen.&lt;/li&gt; &lt;li&gt;Tämä sekoitusprosessi tapahtuu taustalla ilman käyttäjän toimenpiteitä. Kun haluat myöhemmin tehdä anonyymin varojen siirron, on varasi valmiiksi sekoitettu eli anonymisoitu. Erillistä sekoitusta/odotusta ei tarvita.&lt;/li&gt; &lt;/ol&gt; &lt;hr&gt;&lt;b&gt;TÄRKEÄÄ:&lt;/b&gt; Lompakkosi sisältää vain 1000 "vaihto-osoitetta". Aina kun sekoitustapahtuma tehdään, max 9 osoitetta käytetään. Tämä tarkoittaa sitä että nuo 1000 osoitetta kestää noin 100 sekoitustapahtumaa. Kun 900 osoitetta on käytetty, lompakkosi täytyy tehdä lisää osoitteita. Se voi tehdä niitä vain jos automaattinen varmistus on käytössä.&lt;br&gt; Tästä seuraa että jos varmistus ei ole käytössä, myös PrivateSend on pois käytöstä. &lt;hr&gt;Katso lisätietoja &lt;a href="https://docs.ionomy.com/en/latest/wallets/ioncoin/privatesend-instantsend.html"&gt;PrivateSend dokumentaatiosta&lt;/a&gt;.</translation>
     </message>
 </context>
 <context>
     <name>Intro</name>
     <message>
         <source>Welcome</source>
-        <translation>欢迎</translation>
+        <translation>Tervetuloa</translation>
     </message>
     <message>
         <source>Welcome to %1.</source>
-        <translation>欢迎使用 %1</translation>
+        <translation>%1 - Tervetuloa.</translation>
     </message>
     <message>
         <source>As this is the first time the program is launched, you can choose where %1 will store its data.</source>
-        <translation>由于这是第一次启动此程序，您可以选择%1的数据所存储的位置</translation>
+        <translation>Tämä on ensimmäinen kerta, kun %1 on käynnistetty, joten voit valita datahakemiston paikan.</translation>
     </message>
     <message>
         <source>When you click OK, %1 will begin to download and process the full %4 block chain (%2GB) starting with the earliest transactions in %3 when %4 initially launched.</source>
-        <translation>当你点击确认后，%1 将会在 %4 启动时从  %3 中最早的交易开始，下载并处理完整的 %4 区块链 (%2GB)。</translation>
+        <translation>Kun klikkaat OK, %1 alkaa latautua ja prosessoida %4 lohkoketjua (%2GB) alkaen esimmäisestä siirtotapahtumasta %3 kun %4 ensi kerran käynnistettiin.</translation>
     </message>
     <message>
         <source>This initial synchronisation is very demanding, and may expose hardware problems with your computer that had previously gone unnoticed. Each time you run %1, it will continue downloading where it left off.</source>
-        <translation>最初的同步过程是非常吃力的，同时可能会暴露你电脑上的一些硬件方面的小毛病，尽管你可能之前没有注意过。你每跑%1，它就会继续从之前中断的地方下载</translation>
+        <translation>Tämä ensimmäinen synkronointi on vaativa, ja saattaa paljastaa laitteisto-ongelmia tietokoneessasi joita ei aikaisemmin ole huomattu. Aina kun käynnistät %1, jatkuu latautuminen siitä mihin se jäi aikaisemmin.</translation>
     </message>
     <message>
         <source>If you have chosen to limit block chain storage (pruning), the historical data must still be downloaded and processed, but will be deleted afterward to keep your disk usage low.</source>
-        <translation>如果你选择限制区块链存储大小（区块链裁剪模式），程序依然会下载并处理全部历史数据，此后才会删除不必须的部分，占用最少的存储空间。</translation>
+        <translation>Jos olet valinnut rajoitetun lohkoketjun levytilan (karsimalla), historialliset tiedot täytyy silti ladata ja prosessoida, mutta ne poistetaan jälkeenpäin jotta levytilaa säästyy.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
-        <translation>使用默认的数据目录</translation>
+        <translation>Käytä oletushakemistoa</translation>
     </message>
     <message>
         <source>Use a custom data directory:</source>
-        <translation>使用自定义的数据目录：</translation>
+        <translation>Määritä oma datahakemisto:</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
-        <translation>此目录中至少会保存 %1 GB 的数据，并且尺寸还会随着时间增长。</translation>
+        <translation>Vähintään %1 GB dataa tallennetaan tähän hakemistoon, ja se kasvaa ajan kuluessa.</translation>
     </message>
     <message>
         <source>Approximately %1 GB of data will be stored in this directory.</source>
-        <translation>会在此目录中存储约 %1 GB 的数据。</translation>
+        <translation>Arviolta %1 GB dataa tallennetaan tähän hakemistoon.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the Dash block chain.</source>
-        <translation>%1 将会下载并存储比特币区块链。</translation>
+        <source>%1 will download and store a copy of the Ion block chain.</source>
+        <translation>%1 lataa ja tallentaa kopion Ion lohkoketjusta.</translation>
     </message>
     <message>
         <source>The wallet will also be stored in this directory.</source>
-        <translation>钱包也会被保存在这个目录中。</translation>
+        <translation>Myös lompakko tallennetaan tähän hakemistoon.</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
-        <translation>错误：指定的数据目录“%1”无法被创建。</translation>
+        <translation>Virhe: Annettua datahakemistoa "%1" ei voida luoda.</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation>Virhe</translation>
     </message>
     <message>
         <source>%1 GB of free space available</source>
-        <translation>%1GB的可用空间</translation>
+        <translation>%1 GB vapaata levytilaa</translation>
     </message>
     <message>
         <source>(of %1 GB needed)</source>
-        <translation>(需要 %1 GB的空间)</translation>
+        <translation>(tarvitaan %1GB)</translation>
     </message>
 </context>
 <context>
     <name>MasternodeList</name>
     <message>
         <source>Form</source>
-        <translation>表单</translation>
+        <translation>Lomake</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>地址</translation>
+        <translation>IP Osoite</translation>
     </message>
     <message>
         <source>Status</source>
-        <translation>状态</translation>
+        <translation>Tila</translation>
     </message>
     <message>
         <source>Payee</source>
-        <translation>收款人</translation>
+        <translation>Maksun Saaja</translation>
     </message>
     <message>
         <source>0</source>
@@ -1070,149 +1070,149 @@
     </message>
     <message>
         <source>Filter List:</source>
-        <translation>筛选列表：</translation>
+        <translation>Suodatukset:</translation>
     </message>
     <message>
         <source>Filter masternode list</source>
-        <translation>筛选主节点列表</translation>
+        <translation>Suodata masternodet lista</translation>
     </message>
     <message>
         <source>Node Count:</source>
-        <translation>节点数：</translation>
+        <translation>Solmuja Yht:</translation>
     </message>
     <message>
         <source>DIP3 Masternodes</source>
-        <translation>DIP3 主节点</translation>
+        <translation>DIP3 Masternodet</translation>
     </message>
     <message>
         <source>Show only masternodes this wallet has keys for.</source>
-        <translation>仅显示此钱包拥有私钥的主节点</translation>
+        <translation>Näytä vain ne masternodet joiden avaimet ovat tässä lompakossa.</translation>
     </message>
     <message>
         <source>My masternodes only</source>
-        <translation>仅我的主节点</translation>
+        <translation>Vain omat masternodet</translation>
     </message>
     <message>
         <source>PoSe Score</source>
-        <translation>PoSe 评分</translation>
+        <translation>PoSe Pisteet</translation>
     </message>
     <message>
         <source>Registered</source>
-        <translation>已注册的</translation>
+        <translation>Rekisteröity</translation>
     </message>
     <message>
         <source>Last Paid</source>
-        <translation>最近支付</translation>
+        <translation>Viimeisin Maksu</translation>
     </message>
     <message>
         <source>Next Payment</source>
-        <translation>下次支付</translation>
+        <translation>Seuraava Maksu</translation>
     </message>
     <message>
         <source>Operator Reward</source>
-        <translation>运行者奖励</translation>
+        <translation>Operaattorin Palkkio</translation>
     </message>
     <message>
         <source>Copy ProTx Hash</source>
-        <translation>复制 ProTx Hash</translation>
+        <translation>Kopioi ProTx Tarkiste</translation>
     </message>
     <message>
         <source>Copy Collateral Outpoint</source>
-        <translation>复制保证金输出点</translation>
+        <translation>Kopioi Vakuus Lähtöpiste</translation>
     </message>
     <message>
         <source>ENABLED</source>
-        <translation>ENABLED</translation>
+        <translation>KÄYTÖSSÄ</translation>
     </message>
     <message>
         <source>POSE_BANNED</source>
-        <translation>POSE_BANNED</translation>
+        <translation>POSE_ESTETTY</translation>
     </message>
     <message>
         <source>UNKNOWN</source>
-        <translation>UNKNOWN</translation>
+        <translation>TUNTEMATON</translation>
     </message>
     <message>
         <source>to %1</source>
-        <translation>至 %1</translation>
+        <translation>-&gt; %1</translation>
     </message>
     <message>
         <source>to UNKNOWN</source>
-        <translation>至 UNKNOWN</translation>
+        <translation>-&gt; TUNTEMATON</translation>
     </message>
     <message>
         <source>but not claimed</source>
-        <translation>但未认领</translation>
+        <translation>mutta ei lunastettu</translation>
     </message>
     <message>
         <source>NONE</source>
-        <translation>NONE</translation>
+        <translation>EI MITÄÄN</translation>
     </message>
     <message>
         <source>Additional information for DIP3 Masternode %1</source>
-        <translation>DIP3 主节点 %1 的额外信息</translation>
+        <translation>Masternode DIP3 lisätietoja %1</translation>
     </message>
 </context>
 <context>
     <name>ModalOverlay</name>
     <message>
         <source>Form</source>
-        <translation>表单</translation>
+        <translation>Lomake</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Dash network, as detailed below.</source>
-        <translation>最近的交易可能尚未显示，因此您的钱包的余额可能不正确。一旦您的钱包完成与达世币网络的同步，这个信息将会修正，如下所述。</translation>
+        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the Ion network, as detailed below.</source>
+        <translation>Viimeisimmät siirtotapahtumat eivät välttämättä ole vielä näkyvissä, ja siksi lompakon saldo voi olla väärin. Saldo korjaantuu oikeaksi kun lompakon synkronointi Ion verkkoon on valmis.</translation>
     </message>
     <message>
-        <source>Attempting to spend Dash that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
-        <translation>假如您正在尝试花费尚未显示出来的达世币，这个交易将不会被网络所接受。</translation>
+        <source>Attempting to spend Ion that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <translation>Yritys käyttää Ion:eja joihin vaikuttaa ei näkyvissä olevat siirtotapahtumat, tulevat hylätyksi Ion verkossa.</translation>
     </message>
     <message>
         <source>Number of blocks left</source>
-        <translation>剩余区块数量</translation>
+        <translation>Lohkoja jäljellä</translation>
     </message>
     <message>
         <source>Unknown...</source>
-        <translation>未知...</translation>
+        <translation>Tuntematon...</translation>
     </message>
     <message>
         <source>Last block time</source>
-        <translation>上一区块时间</translation>
+        <translation>Viimeisimmän lohkon aika</translation>
     </message>
     <message>
         <source>Progress</source>
-        <translation>进度</translation>
+        <translation>Edistyminen</translation>
     </message>
     <message>
         <source>Progress increase per hour</source>
-        <translation>每小时进度增加</translation>
+        <translation>Edistymisen kasvu per tunti</translation>
     </message>
     <message>
         <source>calculating...</source>
-        <translation>正在计算...</translation>
+        <translation>lasketaan...</translation>
     </message>
     <message>
         <source>Estimated time left until synced</source>
-        <translation>预计剩余同步时间</translation>
+        <translation>Synkronoinnin jäljellä oleva aika</translation>
     </message>
     <message>
         <source>Hide</source>
-        <translation>隐藏</translation>
+        <translation>Piilota</translation>
     </message>
     <message>
         <source>Unknown. Syncing Headers (%1)...</source>
-        <translation>未知状态。同步区块头(%1)...</translation>
+        <translation>Tuntematon. Synkronoidaan otsikoita (%1)...</translation>
     </message>
 </context>
 <context>
     <name>OpenURIDialog</name>
     <message>
         <source>Open URI</source>
-        <translation>打开 URI</translation>
+        <translation>Avaa URI</translation>
     </message>
     <message>
         <source>Open payment request from URI or file</source>
-        <translation>打开来自URI或文件的付款请求 </translation>
+        <translation>Avaa maksupyyntö URI:sta tai tiedostosta</translation>
     </message>
     <message>
         <source>URI:</source>
@@ -1220,26 +1220,26 @@
     </message>
     <message>
         <source>Select payment request file</source>
-        <translation>选择付款请求文件 </translation>
+        <translation>Valitse maksupyynnön tiedosto</translation>
     </message>
     <message>
         <source>Select payment request file to open</source>
-        <translation>选择需要打开的付款请求文件 </translation>
+        <translation>Valitse avattava maksupyynnön tiedosto</translation>
     </message>
 </context>
 <context>
     <name>OptionsDialog</name>
     <message>
         <source>Options</source>
-        <translation>选项</translation>
+        <translation>Asetukset</translation>
     </message>
     <message>
         <source>&amp;Main</source>
-        <translation>主要(&amp;M)</translation>
+        <translation>&amp;Yleiset</translation>
     </message>
     <message>
         <source>Size of &amp;database cache</source>
-        <translation>数据库缓存大小(&amp;D)</translation>
+        <translation>&amp;Tietokannan välimuistin koko</translation>
     </message>
     <message>
         <source>MB</source>
@@ -1247,159 +1247,159 @@
     </message>
     <message>
         <source>Number of script &amp;verification threads</source>
-        <translation>脚本&amp; 验证 进程数 </translation>
+        <translation>Script &amp;vahvistuksien säikeiden määrä</translation>
     </message>
     <message>
         <source>(0 = auto, &lt;0 = leave that many cores free)</source>
-        <translation>(0 = 自动, &lt;0 = 保留处理器核心不用的数目)</translation>
+        <translation>(0 = auto, &lt;0 = jätä näin monta prosessorin ydintä vapaaksi)</translation>
     </message>
     <message>
-        <source>Amount of Dash to keep anonymized</source>
-        <translation>保持匿名化的达世币数</translation>
+        <source>Amount of Ion to keep anonymized</source>
+        <translation>Ion määrä joka pidetään anonymisoituna</translation>
     </message>
     <message>
         <source>W&amp;allet</source>
-        <translation>钱包(&amp;A)</translation>
+        <translation>&amp;Lompakko</translation>
     </message>
     <message>
         <source>Show additional tab listing all your masternodes in first sub-tab&lt;br/&gt;and all masternodes on the network in second sub-tab.</source>
-        <translation>显示其他标签，在第一个子标签列出所有您的主节点&lt;br/&gt;在第二个子标签列出所有网络上的主节点。</translation>
+        <translation>Näytä lisävälilehti jonka ensimmäisellä alivälilehdellä näkyvät sinun masternodet&lt;br/&gt;ja toisella alivälilehdellä näkyvät verkon kaikki masternodet.</translation>
     </message>
     <message>
         <source>Show Masternodes Tab</source>
-        <translation>显示主节点标签页</translation>
+        <translation>Näytä Masternodet Välilehti</translation>
     </message>
     <message>
         <source>Show additional information and buttons for PrivateSend on overview screen.</source>
-        <translation>在概况页面上显示匿名发送的额外信息和按钮。</translation>
+        <translation>Näytä PrivateSend laajennetut tiedot ja painikkeet yleisnäkymässä.</translation>
     </message>
     <message>
         <source>Enable advanced PrivateSend interface</source>
-        <translation>启用高级匿名发送界面</translation>
+        <translation>Ota käyttöön laajennettu PrivateSend käyttöliittymä</translation>
     </message>
     <message>
         <source>Show warning dialog when PrivateSend detects that wallet has very low number of keys left.</source>
-        <translation>当匿名发送检测到钱包具有非常少的公钥时，显示警告对话框。</translation>
+        <translation>Näytä varoitus kun PrivateSend osoitteet ovat vähissä.</translation>
     </message>
     <message>
         <source>Warn if PrivateSend is running out of keys</source>
-        <translation>如果匿名发送用完公钥就发出警告</translation>
+        <translation>Varoitus jos PrivateSend osoitteet ovat vähissä</translation>
     </message>
     <message>
         <source>Whether to use experimental PrivateSend mode with multiple mixing sessions per block.&lt;br/&gt;Note: You must use this feature carefully.&lt;br/&gt;Make sure you always have recent wallet (auto)backup in a safe place!</source>
-        <translation>是否使用实验性质的匿名发送模式，当中每个内存块都会有多个混合会话。&lt;br/&gt;注意：您必须小心使用此功能。&lt;br/&gt;确保您总是有最近的钱包（自动）备份在一个安全的地方！</translation>
+        <translation>Käytä kokeellista PrivateSend tilaa jossa on useita sekoitus sessiota per lohko.&lt;br/&gt;Huom: Käytä tätä ominaisuutta varoen.&lt;br/&gt;Varmista että sinulla on viimeisin lompakon (auto)varmistus turvassa!</translation>
     </message>
     <message>
         <source>Enable PrivateSend &amp;multi-session</source>
-        <translation>启用匿名发送多重会话</translation>
+        <translation>Ota käyttöön PrivateSend &amp;multisessio</translation>
     </message>
     <message>
         <source>If you disable the spending of unconfirmed change, the change from a transaction&lt;br/&gt;cannot be used until that transaction has at least one confirmation.&lt;br/&gt;This also affects how your balance is computed.</source>
-        <translation>如果您禁用还未确认的零钱，那么交易中找零的零钱&lt;br/&gt;至少需要1个确认才能使用。&lt;br/&gt;这也会影响余额的计算。</translation>
+        <translation>Jos poistat vahvistamattomien vaihtorahojen käytön, siirtotapahtuman&lt;br/&gt;vaihtorahaa ei voida käyttää ennen vähintään yhtä vahvistusta.&lt;br/&gt;Tämä vaikuttaa myös kuinka saldosi lasketaan.</translation>
     </message>
     <message>
         <source>PrivateSend rounds to use</source>
-        <translation>匿名传送的循环次数</translation>
+        <translation>Kuinka montaa PrivateSend kierrosta käytetään</translation>
     </message>
     <message>
         <source>This amount acts as a threshold to turn off PrivateSend once it's reached.</source>
-        <translation>此金额为关闭匿名发送的阈值。</translation>
+        <translation>Tämä määrä toimii rajana sekoituksen keskeytykselle kun PrivateSend sen saavuttaa.</translation>
     </message>
     <message>
-        <source>Automatically open the Dash Core client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>自动在路由器打开达世币核心客户端端口。此项只在路由器支持UPnP且开启时有效。</translation>
+        <source>Automatically open the Ion Core client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Avaa automaattisesti Ion Core asiakasohjelmalle portti reitittimeen. Tämä toimii vain jos reitittimesi tukee UPnP:tä ja se on käytössä.</translation>
     </message>
     <message>
         <source>Accept connections from outside</source>
-        <translation>接受来自外部的连接</translation>
+        <translation>Hyväksy yhteydet ulkopuolelta</translation>
     </message>
     <message>
         <source>Allow incoming connections</source>
-        <translation>接受外来连接</translation>
+        <translation>Salli sisään tulevat yhteydet</translation>
     </message>
     <message>
-        <source>Connect to the Dash network through a SOCKS5 proxy.</source>
-        <translation>通过SOCKS5代理连接达世币网络。</translation>
+        <source>Connect to the Ion network through a SOCKS5 proxy.</source>
+        <translation>Kytkeydy Ion verkkoon käyttäen SOCKS5 proxy:a.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
-        <translation>通过SOCKS5代理连接 (默认代理)(&amp;C)：</translation>
+        <translation>&amp;Yhdistä SOCKS5 proxyn kautta (oletus: proxy):</translation>
     </message>
     <message>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Exit in the menu.</source>
-        <translation>窗口被关闭时最小化而不是退出应用程序。当此选项启用时，应用程序只会在菜单中选择退出时退出。</translation>
+        <translation>Ikkunaa suljettaessa pienennä ohjelman ikkuna lopettamatta itse ohjelmaa. Kun tämä asetus on valittuna, ohjelman voi sulkea vain valitsemalla Lopeta ohjelman valikosta.</translation>
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items.&lt;br/&gt;%s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
-        <translation>出现在交易的选项卡的上下文菜单项的第三方URL（例如，区块链查询网站）。&lt;br/&gt;URL中的 %s被替换为交易哈希。多个URL需用竖线 | 分隔。</translation>
+        <translation>Ulkopuoliset URL-osoitteet (esim. lohkoselain) jotka esiintyvät tapahtumat-välilehdellä valikossa.&lt;br/&gt;%s URL osoitteessa korvataan siirtotunnuksen tarkisteella. Useampi URL osoite on eroteltu pystyviivalla |.</translation>
     </message>
     <message>
         <source>Expert</source>
-        <translation>专家</translation>
+        <translation>Expertti</translation>
     </message>
     <message>
         <source>This setting determines the amount of individual masternodes that an input will be anonymized through.&lt;br/&gt;More rounds of anonymization gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>此选项用以调整进行匿名化操作的主节点数量。&lt;br/&gt;越多的循环次数提供了更高级别的匿名性，同时也会花费更多的手续费</translation>
+        <translation>Tämä asetus määrittää kuinka monen erillisen masternoden kautta syötteen anonymisointi tehdään.&lt;br/&gt;Mitä enemmän anonymisoinnin kierroksia, sen parempi yksityisyys, mutta se myös maksaa enemmän siirtomaksuina.</translation>
     </message>
     <message>
         <source>Whether to show coin control features or not.</source>
-        <translation>是否显示交易源地址控制功能。</translation>
+        <translation>Näytetäänkö kolikkokontrollin ominaisuuksia vai ei</translation>
     </message>
     <message>
         <source>Automatically start %1 after logging in to the system.</source>
-        <translation>在登入系统后自动启动 %1</translation>
+        <translation>Käynnistä %1 automaattisesti järjestelmään kirjautumisen jälkeen.</translation>
     </message>
     <message>
         <source>&amp;Start %1 on system login</source>
-        <translation>系统登入时启动 %1</translation>
+        <translation>&amp;Käynnistä %1 järjestelmään kirjautuessa</translation>
     </message>
     <message>
         <source>Enable coin &amp;control features</source>
-        <translation>启动交易源地址控制功能(&amp;C)</translation>
+        <translation>Ota käytöön &amp;kolikkokontrolli ominaisuudet</translation>
     </message>
     <message>
         <source>Show system popups for PrivateSend mixing transactions&lt;br/&gt;just like for all other transaction types.</source>
-        <translation>显示匿名发送混币交易的系统弹出窗口 &lt;br/&gt; 如同其他所有交易类型一样。</translation>
+        <translation>Näytä järjestelmän ponnahdusikkunat PrivateSend sekoituksen siirtotapahtumista&lt;br/&gt;aivan kuin kaikista muistakin siirtotapahtumista.</translation>
     </message>
     <message>
         <source>Show popups for PrivateSend transactions</source>
-        <translation>显示匿名发送交易的弹出窗口</translation>
+        <translation>Näytä PrivateSend siirtotapahtumien ponnahdusikkunat</translation>
     </message>
     <message>
         <source>&amp;Spend unconfirmed change</source>
-        <translation>可以花还未确认的零钱(&amp;S)</translation>
+        <translation>&amp;Käytä vahvistamattomia vaihtorahoja</translation>
     </message>
     <message>
         <source>&amp;Network</source>
-        <translation>网络(&amp;N)</translation>
+        <translation>&amp;Verkko</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
-        <translation>使用UPnP映射端口(&amp;U)</translation>
+        <translation>Kartoita portti käyttäen &amp;UPnP:tä</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
-        <translation>代理服务器IP(&amp;I)：</translation>
+        <translation>Proxy &amp;IP</translation>
     </message>
     <message>
         <source>IP address of the proxy (e.g. IPv4: 127.0.0.1 / IPv6: ::1)</source>
-        <translation>代理的 IP 地址 (例如 IPv4: 127.0.0.1 / IPv6: ::1)</translation>
+        <translation>IP osoite proxy:lle (esim. IPv4: 127.0.0.1 / IPv6: ::1)</translation>
     </message>
     <message>
         <source>&amp;Port:</source>
-        <translation>端口(&amp;P)：</translation>
+        <translation>&amp;Portti</translation>
     </message>
     <message>
         <source>Port of the proxy (e.g. 9050)</source>
-        <translation>代理端口（例如 9050）</translation>
+        <translation>Proxyn portti (esim. 9050)</translation>
     </message>
     <message>
         <source>Used for reaching peers via:</source>
-        <translation>连接到节点的方式：</translation>
+        <translation>Käytetään peers tavoittamiseen:</translation>
     </message>
     <message>
         <source>Shows, if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
-        <translation>如果是使用提供的默认SOCKS5代理来连接到节点就加以显示。</translation>
+        <translation>Näyttää onko oletus SOCKS5 proxy käytössä peers:ien tavoittamiseen tämän verkkotyypin kautta.</translation>
     </message>
     <message>
         <source>IPv4</source>
@@ -1414,975 +1414,979 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the Dash network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>通过另一个SOCKS5代理服务器作为Tor隐藏服务来连接到达世币网络。</translation>
+        <source>Connect to the Ion network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Kytkeydy Ion verkkoon käyttäen erillistä SOCKS5 proxy:a Tor piilopalveluihin.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services:</source>
-        <translation>使用另外的SOCK5代理服务器，并透过Tor隐藏服务跟节点联系：</translation>
+        <translation>Käytä erillistä SOCKS5 proxy:a tavoittaaksesi peers:it Tor piilopalvelun kautta:</translation>
     </message>
     <message>
         <source>&amp;Window</source>
-        <translation>窗口(&amp;W)</translation>
+        <translation>&amp;Ikkuna</translation>
     </message>
     <message>
         <source>&amp;Hide the icon from the system tray.</source>
-        <translation>从系统托盘中隐藏图标(&amp;H）。</translation>
+        <translation>&amp;Piilota kuvake ilmaisinalueelta.</translation>
     </message>
     <message>
         <source>Hide tray icon</source>
-        <translation>隐藏托盘图标</translation>
+        <translation>Piilota ilmaisinalueen kuvake</translation>
     </message>
     <message>
         <source>Show only a tray icon after minimizing the window.</source>
-        <translation>最小化窗口后仅显示托盘图标。</translation>
+        <translation>Näytä ainoastaan kuvake ilmaisinalueella ikkunan pienentämisen jälkeen.</translation>
     </message>
     <message>
         <source>&amp;Minimize to the tray instead of the taskbar</source>
-        <translation>最小化到托盘(&amp;M)</translation>
+        <translation>&amp;Pienennä ilmaisinalueelle työkalurivin sijasta</translation>
     </message>
     <message>
         <source>M&amp;inimize on close</source>
-        <translation>单击关闭按钮最小化(&amp;I)</translation>
+        <translation>P&amp;ienennä suljettaessa</translation>
     </message>
     <message>
         <source>&amp;Display</source>
-        <translation>显示(&amp;D)</translation>
+        <translation>&amp;Käyttöliittymä</translation>
     </message>
     <message>
         <source>User Interface &amp;language:</source>
-        <translation>用户界面语言(&amp;L)：</translation>
+        <translation>&amp;Käyttöliittymän kieli</translation>
     </message>
     <message>
         <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
-        <translation>可以在这里设定用户界面的语言。这个设定在重启 %1 后才会生效。</translation>
+        <translation>Tässä voit määritellä käyttöliittymän kielen. Muutokset astuvat voimaan seuraavan kerran, kun %1 käynnistetään.</translation>
     </message>
     <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
-https://www.transifex.com/projects/p/dash/</source>
-        <translation>缺少相关语言或翻译不完整？请到这里协助翻译：
-https://www.transifex.com/projects/p/dash/</translation>
+https://www.transifex.com/ioncoincore/ioncore/</source>
+        <translation>Puuttuuko sopiva kieli tai käännös on kesken? Auta käännöstyössä täällä:
+https://www.transifex.com/ioncoincore/ioncore/</translation>
     </message>
     <message>
         <source>User Interface Theme:</source>
-        <translation>用户界面主题：</translation>
+        <translation>Käyttöliittymän Teema:</translation>
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
-        <translation>达世币金额单位(&amp;U)：</translation>
+        <translation>Yksikkö joina määrät näytetään</translation>
     </message>
     <message>
         <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
-        <translation>选择操作界面和付款时，显示金额的默认细分单位。</translation>
+        <translation>Valitse mitä yksikköä käytetään ensisijaisesti varojen määrien näyttämiseen.</translation>
     </message>
     <message>
         <source>Decimal digits</source>
-        <translation>小数位数</translation>
+        <translation>Desimaalit</translation>
     </message>
     <message>
         <source>Third party transaction URLs</source>
-        <translation>第三方交易网址</translation>
+        <translation>Kolmannen osapuolen siirtotapahtuma URL:t</translation>
     </message>
     <message>
         <source>Active command-line options that override above options:</source>
-        <translation>有效的命令行参数覆盖上述选项：</translation>
+        <translation>Aktiiviset komentorivivalinnat jotka ohittavat ylläolevat valinnat:</translation>
     </message>
     <message>
         <source>Reset all client options to default.</source>
-        <translation>恢复客户端的缺省设置。</translation>
+        <translation>Palauta kaikki asetukset oletusarvoihin.</translation>
     </message>
     <message>
         <source>&amp;Reset Options</source>
-        <translation>恢复缺省设置(&amp;R)</translation>
+        <translation>Palauta &amp;Asetukset</translation>
     </message>
     <message>
         <source>&amp;OK</source>
-        <translation>确定(&amp;O)</translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation>取消(&amp;C)</translation>
+        <translation>&amp;Peruuta</translation>
     </message>
     <message>
         <source>default</source>
-        <translation>默认</translation>
+        <translation>oletus</translation>
     </message>
     <message>
         <source>none</source>
-        <translation>无</translation>
+        <translation>ei mitään</translation>
     </message>
     <message>
         <source>Confirm options reset</source>
-        <translation>确认恢复缺省设置</translation>
+        <translation>Vahvista asetusten palautus</translation>
     </message>
     <message>
         <source>Client restart required to activate changes.</source>
-        <translation>更改生效需要重启客户端。</translation>
+        <translation>Ohjelman uudelleen käynnistys aktivoi muutokset käyttöön.</translation>
     </message>
     <message>
         <source>Client will be shut down. Do you want to proceed?</source>
-        <translation>客户端即将关闭，您想继续吗？</translation>
+        <translation>Ohjelma suljetaan, haluatko jatkaa?</translation>
     </message>
     <message>
         <source>This change would require a client restart.</source>
-        <translation>此更改需要重启客户端。</translation>
+        <translation>Tämä muutos vaatii ohjelman uudelleen käynnistyksen.</translation>
     </message>
     <message>
         <source>The supplied proxy address is invalid.</source>
-        <translation>提供的代理服务器地址无效。</translation>
+        <translation>Antamasi proxyn osoite on virheellinen.</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>Form</source>
-        <translation>表单</translation>
+        <translation>Lomake</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Dash network after a connection is established, but this process has not completed yet.</source>
-        <translation>显示的信息也许已过期。当与达世币网络连接后钱包程序会自动同步，但现在还未完成。</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Ion network after a connection is established, but this process has not completed yet.</source>
+        <translation>Näytetyt tiedot eivät välttämättä ole ajan tasalla.&lt;br&gt;Lompakkosi synkronoituu automaattisesti Ion verkkoon kun&lt;br&gt;yhteys on muodostettu, mutta tämä prosessi ei vielä ole valmis.</translation>
     </message>
     <message>
         <source>Available:</source>
-        <translation>可使用的余额：</translation>
+        <translation>Käytettävissä:</translation>
     </message>
     <message>
         <source>Your current spendable balance</source>
-        <translation>您当前可使用的余额</translation>
+        <translation>Nykyinen käytettävissä oleva saldo</translation>
     </message>
     <message>
         <source>Pending:</source>
-        <translation>等待中的余额：</translation>
+        <translation>Vahvistamatta:</translation>
     </message>
     <message>
         <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
-        <translation>尚未确认的交易总额，未计入当前余额</translation>
+        <translation>Vahvistamattomien siirtotapahtumien summa,&lt;br&gt;jota ei vielä lasketa käytettävissä olevaan saldoon</translation>
     </message>
     <message>
         <source>Immature:</source>
-        <translation>未成熟的：</translation>
+        <translation>Kypsymättä:</translation>
     </message>
     <message>
         <source>Mined balance that has not yet matured</source>
-        <translation>尚未成熟的挖矿收入余额</translation>
+        <translation>Louhittu saldo, joka ei ole vielä kypsynyt</translation>
     </message>
     <message>
         <source>Balances</source>
-        <translation>余额</translation>
+        <translation>Saldot</translation>
     </message>
     <message>
         <source>Unconfirmed transactions to watch-only addresses</source>
-        <translation>仅限查看的还未交易确认的地址</translation>
+        <translation>Vahvistamattomat tapahtumat vain-luku osoitteisiin</translation>
     </message>
     <message>
         <source>Mined balance in watch-only addresses that has not yet matured</source>
-        <translation>仅限查看的地址中尚未成熟的挖矿收入余额</translation>
+        <translation>Louhittu saldo vain-luku osoitteisiin, joka ei ole vielä kypsynyt</translation>
     </message>
     <message>
         <source>Total:</source>
-        <translation>总额：</translation>
+        <translation>Saldo Yhteensä:</translation>
     </message>
     <message>
         <source>Your current total balance</source>
-        <translation>您当前的总余额</translation>
+        <translation>Saldo yhteensä tällä hetkellä</translation>
     </message>
     <message>
         <source>Current total balance in watch-only addresses</source>
-        <translation>仅限查看地址中的当前总余额</translation>
+        <translation>Saldo yhteensä vain-luku osoitteissa</translation>
     </message>
     <message>
         <source>Watch-only:</source>
-        <translation>仅限查看：</translation>
+        <translation>Vain-luku:</translation>
     </message>
     <message>
         <source>Your current balance in watch-only addresses</source>
-        <translation>仅限查看地址中的当前余额</translation>
+        <translation>Nykyinen käytettävissä oleva saldo vain-luku osoitteissa</translation>
     </message>
     <message>
         <source>Spendable:</source>
-        <translation>可花费：</translation>
+        <translation>Käytettävissä:</translation>
     </message>
     <message>
         <source>PrivateSend</source>
-        <translation>匿名发送</translation>
+        <translation>PrivateSend</translation>
     </message>
     <message>
         <source>Status:</source>
-        <translation>状态：</translation>
+        <translation>Tila:</translation>
     </message>
     <message>
         <source>Enabled/Disabled</source>
-        <translation>启用/禁用</translation>
+        <translation>Käytössä/Ei käytössä</translation>
     </message>
     <message>
         <source>Completion:</source>
-        <translation>完成度：</translation>
+        <translation>Valmiina:</translation>
     </message>
     <message>
         <source>Try to manually submit a PrivateSend request.</source>
-        <translation>尝试手动提交匿名发送请求。</translation>
+        <translation>Yritä manuaalisesti lähettää PrivateSend sekoituspyyntö.</translation>
     </message>
     <message>
         <source>Reset the current status of PrivateSend (can interrupt PrivateSend if it's in the process of Mixing, which can cost you money!)</source>
-        <translation>重置目前匿名发送状态（此操作可能会影响您目前正在执行的混合过程，并且产生费用！）</translation>
+        <translation>Nollaa nykyinen PrivateSend tila (voi keskeyttää PrivateSend sekoituksen, joka voi maksaa ylimääräisiä kuluja)</translation>
     </message>
     <message>
         <source>Information about PrivateSend and Mixing</source>
-        <translation>关于匿名发送和混币的信息</translation>
+        <translation>Lisätietoja PrivateSend:istä ja Sekoittamisesta</translation>
     </message>
     <message>
         <source>Info</source>
-        <translation>信息</translation>
+        <translation>Info</translation>
     </message>
     <message>
         <source>Amount and Rounds:</source>
-        <translation>数量与循环次数：</translation>
+        <translation>Määrä ja Kierrokset:</translation>
     </message>
     <message>
-        <source>0 DASH / 0 Rounds</source>
-        <translation>0 达世币 / 0 循环数</translation>
+        <source>0 ION / 0 Rounds</source>
+        <translation>0 ION / 0 Kierrosta</translation>
     </message>
     <message>
         <source>Submitted Denom:</source>
-        <translation>提交的面额:</translation>
+        <translation>Lähetetyt Denom:</translation>
     </message>
     <message>
         <source>n/a</source>
-        <translation>不可用</translation>
+        <translation>e/s</translation>
     </message>
     <message>
         <source>Recent transactions</source>
-        <translation>最近交易</translation>
+        <translation>Viimeisimmät tapahtumat</translation>
     </message>
     <message>
         <source>Start/Stop Mixing</source>
-        <translation>开始/停止 混合</translation>
+        <translation>Käynnistä/Lopeta Sekoitus</translation>
     </message>
     <message>
         <source>PrivateSend Balance:</source>
-        <translation>匿名发送余额：</translation>
+        <translation>PrivateSend Saldo:</translation>
     </message>
     <message>
         <source>The denominations you submitted to the Masternode.&lt;br&gt;To mix, other users must submit the exact same denominations.</source>
-        <translation>您向主节点所提交的用以面额化混合的达世币。&lt;br&gt;为了混合，其他用户必须提交完全一样的面额。</translation>
+        <translation>Masternodelle lähetetyt denominoinnit.&lt;br&gt;Jotta sekoitus onnistuisi, täytyy muiden käyttäjien käyttää saman arvoisia denominointeja.</translation>
     </message>
     <message>
         <source>(Last Message)</source>
-        <translation>(最近一次信息)</translation>
+        <translation>(Viimeisin Viesti)</translation>
     </message>
     <message>
         <source>Try Mix</source>
-        <translation>尝试混合</translation>
+        <translation>Yritä Sekoittaa</translation>
     </message>
     <message>
         <source>Reset</source>
-        <translation>重置</translation>
+        <translation>Nollaus</translation>
     </message>
     <message>
         <source>out of sync</source>
-        <translation>未同步</translation>
+        <translation>Ei ajan tasalla</translation>
     </message>
     <message>
         <source>Automatic backups are disabled, no mixing available!</source>
-        <translation>自动备份已停用，无法进行混合！</translation>
+        <translation>Automaattinen varmistus ei ole käytössä, sekoitus ei ole mahdollista!</translation>
     </message>
     <message>
         <source>Start Mixing</source>
-        <translation>开始混合</translation>
+        <translation>Käynnistä Sekoitus</translation>
     </message>
     <message>
         <source>Stop Mixing</source>
-        <translation>停止混合</translation>
+        <translation>Lopeta Sekoitus</translation>
     </message>
     <message>
         <source>No inputs detected</source>
-        <translation>未检测到输入</translation>
+        <translation>Syötteitä ei havaittu</translation>
     </message>
     <message numerus="yes">
         <source>%n Rounds</source>
-        <translation><numerusform>%n 次循环</numerusform></translation>
+        <translation><numerusform>%n Kierros</numerusform><numerusform>%n Kierrosta</numerusform></translation>
     </message>
     <message>
         <source>Found enough compatible inputs to anonymize %1</source>
-        <translation>找到足够的相容的输入进行匿名处理 %1</translation>
+        <translation>Löytyi tarpeeksi yhteensopivia syötteitä anonymisointiin %1</translation>
     </message>
     <message>
         <source>Not enough compatible inputs to anonymize &lt;span style='color:red;'&gt;%1&lt;/span&gt;,&lt;br&gt;will anonymize &lt;span style='color:red;'&gt;%2&lt;/span&gt; instead</source>
-        <translation>没有足够相容的输入来进行匿名处理&lt;span style='color:red;'&gt;%1&lt;/span&gt;,&lt;br&gt;将匿名处理 &lt;span style='color:red;'&gt;%2&lt;/span&gt; 作为代替</translation>
+        <translation>Ei tarpeeksi yhteensopivia syötteitä anonymisointiin &lt;span style='color:red;'&gt;%1&lt;/span&gt;,&lt;br&gt;anonymisoidaan &lt;span style='color:red;'&gt;%2&lt;/span&gt; sen sijaan</translation>
     </message>
     <message>
         <source>Overall progress</source>
-        <translation>总体进度</translation>
+        <translation>Edistyminen</translation>
     </message>
     <message>
         <source>Denominated</source>
-        <translation>已面额化的</translation>
+        <translation>Denominoitu</translation>
     </message>
     <message>
         <source>Mixed</source>
-        <translation>混合的</translation>
+        <translation>Sekoitettu</translation>
     </message>
     <message>
         <source>Anonymized</source>
-        <translation>已匿名处理的</translation>
+        <translation>Anonymisoitu</translation>
     </message>
     <message numerus="yes">
         <source>Denominated inputs have %5 of %n rounds on average</source>
-        <translation><numerusform>面额化的输入在%n次循环中平均有%5</numerusform></translation>
+        <translation><numerusform>Denominoiduilla syötteillä on keskimäärin %5 / %n kierrosta</numerusform><numerusform>Denominoiduilla syötteillä on keskimäärin %5 / %n kierrosta</numerusform></translation>
     </message>
     <message>
         <source>keys left: %1</source>
-        <translation>剩余密匙：%1</translation>
+        <translation>osoitteita jäljellä: %1</translation>
     </message>
     <message>
         <source>Disabled</source>
-        <translation>已禁用</translation>
+        <translation>Ei käytössä</translation>
     </message>
     <message>
         <source>Very low number of keys left since last automatic backup!</source>
-        <translation>自上次自动备份后，尚余小量的密钥！</translation>
+        <translation>Osoitteita vähän jäljellä viimeisimmän automaattisen varmistuksen jälkeen!</translation>
     </message>
     <message>
         <source>We are about to create a new automatic backup for you, however &lt;span style='color:red;'&gt; you should always make sure you have backups saved in some safe place&lt;/span&gt;!</source>
-        <translation>我们即将为您创建一个新的自动备份，但&lt;span style='color:red;'&gt;您应该始终确保您有另外的一些备份保存在安全的位置&lt;/span&gt;！</translation>
+        <translation>Olemme tekemässä uutta automaattista varmistusta, mutta&lt;span style='color:red;'&gt; varmista aina että olet tallentanut varmistuksen turvalliseen paikkaan&lt;/span&gt;!</translation>
     </message>
     <message>
         <source>Note: You can turn this message off in options.</source>
-        <translation>注意：您可以在选项中关闭此消息。</translation>
+        <translation>Huom: Voit kytkeä tämän viestin pois päältä asetuksissa.</translation>
     </message>
     <message>
         <source>WARNING! Something went wrong on automatic backup</source>
-        <translation>警告！自动备份出现问题</translation>
+        <translation>VAROITUS! Jotain meni vikaan automaattisessa varmistuksessa</translation>
     </message>
     <message>
         <source>ERROR! Failed to create automatic backup</source>
-        <translation>错误！无法创建自动备份</translation>
+        <translation>VIRHE! Automaattinen varmistus epäonnistui</translation>
     </message>
     <message>
         <source>Mixing is disabled, please close your wallet and fix the issue!</source>
-        <translation>混合被停用，请关闭您的钱包和解决这个问题！</translation>
+        <translation>Sekoitus pois käytöstä, sulje ohjelma korjataksesi ongelman!</translation>
     </message>
     <message>
         <source>Enabled</source>
-        <translation>已启用</translation>
+        <translation>Käytössä</translation>
     </message>
     <message>
         <source>see debug.log for details.</source>
-        <translation>详细信息请参阅debug.log。</translation>
+        <translation>katso debug.log lisätietoja.</translation>
     </message>
     <message>
         <source>WARNING! Failed to replenish keypool, please unlock your wallet to do so.</source>
-        <translation>警告！无法补充公钥池，请解锁您的钱包。</translation>
+        <translation>VAROITUS! Osoitevarannon täydentäminen epäonnistui, avaa lompakon lukitus.</translation>
     </message>
     <message>
         <source>Last PrivateSend message:
 </source>
-        <translation>最近收到的匿名发送信息：
+        <translation>Viimeisin PrivateSend viesti:
 </translation>
     </message>
     <message>
         <source>PrivateSend was successfully reset.</source>
-        <translation>匿名发送成功重置。</translation>
+        <translation>PrivateSend nollattu onnistuneesti.</translation>
     </message>
     <message>
         <source>If you don't want to see internal PrivateSend fees/transactions select "Most Common" as Type on the "Transactions" tab.</source>
-        <translation>如果您不希望看到内部匿名发送手续费/交易，请在“交易”种类标签中选择“最常用的”。</translation>
+        <translation>Jos et halua nähdä sisäisiä PrivateSend sekoituksen kuluja/tapahtumia, valitse "Yleiset" tyypiksi siirtotapahtumissa.</translation>
     </message>
     <message>
         <source>PrivateSend requires at least %1 to use.</source>
-        <translation>匿名发送要求至少%1才能使用</translation>
+        <translation>PrivateSend:in käyttö vaatii vähintään %1.</translation>
     </message>
     <message>
         <source>Wallet is locked and user declined to unlock. Disabling PrivateSend.</source>
-        <translation>钱包被锁定，用户拒绝解锁。正在停用匿名发送。</translation>
+        <translation>Lompakko on lukittu ja käyttäjä ei avannut sitä. PrivateSend asetetaan pois käytöstä.</translation>
     </message>
 </context>
 <context>
     <name>PaymentServer</name>
     <message>
         <source>Payment request error</source>
-        <translation>支付请求出错</translation>
+        <translation>Maksupyyntövirhe</translation>
     </message>
     <message>
-        <source>Cannot start dash: click-to-pay handler</source>
-        <translation>无法启动达世币程序：click-to-pay handler</translation>
+        <source>Cannot start ion: click-to-pay handler</source>
+        <translation>Ei voi käynnistää Ionia: click-to-pay handler</translation>
     </message>
     <message>
         <source>URI handling</source>
-        <translation>URI 处理</translation>
+        <translation>URI käsittely</translation>
     </message>
     <message>
         <source>Payment request fetch URL is invalid: %1</source>
-        <translation>付款请求URI链接非法：%1</translation>
+        <translation>Maksupyynnön haku URL on virheellinen: %1</translation>
     </message>
     <message>
         <source>Invalid payment address %1</source>
-        <translation>无效的付款地址 %1</translation>
+        <translation>Virheellinen maksuosoite %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Dash address or malformed URI parameters.</source>
-        <translation>URI不能被解析! 原因可能是无效的达世币地址或URI参数格式错误。</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Ion address or malformed URI parameters.</source>
+        <translation>URI:a ei voida jäsentää! Tämä voi johtua virheellisestä Ion osoitteesta tai virheellisestä URI:n muuttujasta. </translation>
     </message>
     <message>
         <source>Payment request file handling</source>
-        <translation>付款请求文件处理 </translation>
+        <translation>Maksupyynnön tiedoston käsittely</translation>
     </message>
     <message>
         <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
-        <translation>付款请求文件不能读取！这可能是个无效的付款请求文件。</translation>
+        <translation>Maksupyynnön tiedostoa ei voida lukea! Tämä voi johtua virheellisestä maksupyyntötiedostosta.</translation>
     </message>
     <message>
         <source>Payment request rejected</source>
-        <translation>付款请求被拒绝</translation>
+        <translation>Maksupyyntö hylätty</translation>
     </message>
     <message>
         <source>Payment request network doesn't match client network.</source>
-        <translation>付款请求网络与客户端网络不符。</translation>
+        <translation>Maksupyynnon verkko ei täsmää asiakasverkkon kanssa.</translation>
     </message>
     <message>
         <source>Payment request expired.</source>
-        <translation>付款请求已过期。</translation>
+        <translation>Maksupyyntö vanhentunut.</translation>
     </message>
     <message>
         <source>Payment request is not initialized.</source>
-        <translation>付款请求没有完成初始化。</translation>
+        <translation>Maksupyyntö ei ole alustettu.</translation>
     </message>
     <message>
         <source>Unverified payment requests to custom payment scripts are unsupported.</source>
-        <translation>不支持到自定义付款脚本的未验证付款请求。</translation>
+        <translation>Vahvistamattomia maksupyyntöjä kustomoituun maksupalvelun scripteihin ei tueta.</translation>
     </message>
     <message>
         <source>Invalid payment request.</source>
-        <translation>无效的支付请求。</translation>
+        <translation>Virheellinen maksupyyntö.</translation>
     </message>
     <message>
         <source>Requested payment amount of %1 is too small (considered dust).</source>
-        <translation>请求支付的金额 %1 太小（会被网络认为是没有必要的零散金额）。</translation>
+        <translation>Maksupyyntö %1 on liian pieni (lasketaan tomuksi).</translation>
     </message>
     <message>
         <source>Refund from %1</source>
-        <translation>来自%1的退款</translation>
+        <translation>Maksupalautus %1:sta</translation>
     </message>
     <message>
         <source>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</source>
-        <translation>付款请求 %1 过大（%2字节，上限%3字节位）。</translation>
+        <translation>Maksupyyntö %1 on liian iso (%2 tavua, sallitusta %3 tavusta).</translation>
     </message>
     <message>
         <source>Error communicating with %1: %2</source>
-        <translation>跟%1通信时发生错误：%2</translation>
+        <translation>Virhe kommunikoidessa %1: %2</translation>
     </message>
     <message>
         <source>Payment request cannot be parsed!</source>
-        <translation>支付请求不能被解析！</translation>
+        <translation>Maksupyyntöä ei voida jäsentää!</translation>
     </message>
     <message>
         <source>Bad response from server %1</source>
-        <translation>来自 %1 服务器的错误响应</translation>
+        <translation>Epäkelpo vastaus palvelimelta %1</translation>
     </message>
     <message>
         <source>Network request error</source>
-        <translation>网络请求出错</translation>
+        <translation>Tietoverkon pyyntövirhe</translation>
     </message>
     <message>
         <source>Payment acknowledged</source>
-        <translation>支付已到账</translation>
+        <translation>Maksu tunnistettu</translation>
     </message>
 </context>
 <context>
     <name>PeerTableModel</name>
     <message>
         <source>NodeId</source>
-        <translation>节点ID</translation>
+        <translation>Solmuid</translation>
     </message>
     <message>
         <source>Node/Service</source>
-        <translation>节点/服务</translation>
+        <translation>Solmu/Palvelu</translation>
     </message>
     <message>
         <source>User Agent</source>
-        <translation>用户代理</translation>
+        <translation>Käyttäjäohjelma</translation>
     </message>
     <message>
         <source>Ping</source>
-        <translation> Ping</translation>
+        <translation>Ping</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
         <source>%1 didn't yet exit safely...</source>
-        <translation>%1 尚未安全退出</translation>
+        <translation>%1 ei vielä sulkeutunut turvallisesti...</translation>
     </message>
     <message>
         <source>Amount</source>
-        <translation>金额</translation>
+        <translation>Määrä</translation>
     </message>
     <message>
-        <source>Enter a Dash address (e.g. %1)</source>
-        <translation>输入达世币地址(例如 %1)</translation>
+        <source>Enter a Ion address (e.g. %1)</source>
+        <translation>Syötä Ion osoite (esim. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
-        <translation>%1 天</translation>
+        <translation>%1 d</translation>
     </message>
     <message>
         <source>%1 h</source>
-        <translation>%1 小时</translation>
+        <translation>%1 h</translation>
     </message>
     <message>
         <source>%1 m</source>
-        <translation>%1 分钟</translation>
+        <translation>%1 m</translation>
     </message>
     <message>
         <source>%1 s</source>
-        <translation>%1 秒</translation>
+        <translation>%1 s</translation>
     </message>
     <message>
         <source>None</source>
-        <translation>无</translation>
+        <translation>Ei mitään</translation>
     </message>
     <message>
         <source>N/A</source>
-        <translation>不可用</translation>
+        <translation>e/s</translation>
     </message>
     <message>
         <source>%1 ms</source>
-        <translation>%1 毫秒</translation>
+        <translation>%1 ms</translation>
     </message>
     <message numerus="yes">
         <source>%n second(s)</source>
-        <translation><numerusform>%n 秒</numerusform></translation>
+        <translation><numerusform>%n sekunti</numerusform><numerusform>%n sekuntia</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n minute(s)</source>
-        <translation><numerusform>%n 分钟</numerusform></translation>
+        <translation><numerusform>%n minuutti</numerusform><numerusform>%n minuuttia</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n hour(s)</source>
-        <translation><numerusform>%n 小时</numerusform></translation>
+        <translation><numerusform>%n tunti</numerusform><numerusform>%n tuntia</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n day(s)</source>
-        <translation><numerusform>%n 天</numerusform></translation>
+        <translation><numerusform>%n päivä</numerusform><numerusform>%n päivää</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n week(s)</source>
-        <translation><numerusform>%n 周</numerusform></translation>
+        <translation><numerusform>%n viikko</numerusform><numerusform>%n viikkoa</numerusform></translation>
     </message>
     <message numerus="yes">
         <source>%n year(s)</source>
-        <translation><numerusform>%n 年</numerusform></translation>
+        <translation><numerusform>%n vuosi</numerusform><numerusform>%n vuotta</numerusform></translation>
     </message>
     <message>
         <source>%1 and %2</source>
-        <translation>%1 和 %2</translation>
+        <translation>%1 ja %2</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation>未知</translation>
+        <translation>tuntematon</translation>
     </message>
 </context>
 <context>
     <name>QObject::QObject</name>
     <message>
         <source>Error: Specified data directory "%1" does not exist.</source>
-        <translation>错误：指定的数据目录“%1”不存在。</translation>
+        <translation>Virhe: Annettua datahakemistoa "%1" ei ole olemassa.</translation>
     </message>
     <message>
         <source>Error: Cannot parse configuration file: %1. Only use key=value syntax.</source>
-        <translation>错误：无法解析配置文件：%1。只接受 key=value语法。</translation>
+        <translation>Virhe: asetustiedostoa %1 ei voida jäsentää. Käytä vain avain=arvo merkintätapaa.</translation>
     </message>
     <message>
         <source>Error: %1</source>
-        <translation>错误：%1</translation>
+        <translation>Virhe: %1</translation>
     </message>
 </context>
 <context>
     <name>QRDialog</name>
     <message>
         <source>QR-Code Title</source>
-        <translation>二维码标题</translation>
+        <translation>QR Koodi Otsikko</translation>
     </message>
     <message>
         <source>QR Code</source>
-        <translation>二维码</translation>
+        <translation>QR Koodi</translation>
     </message>
     <message>
         <source>&amp;Save Image...</source>
-        <translation>保存图片(&amp;S)...</translation>
+        <translation>&amp;Tallenna Kuva</translation>
     </message>
     <message>
         <source>Error creating QR Code.</source>
-        <translation>生成二维码错误</translation>
+        <translation>Virhe QR koodin generoinnissa.</translation>
     </message>
 </context>
 <context>
     <name>QRGeneralImageWidget</name>
     <message>
         <source>&amp;Save Image...</source>
-        <translation>保存图片(&amp;S)...</translation>
+        <translation>&amp;Tallenna Kuva</translation>
     </message>
     <message>
         <source>&amp;Copy Image</source>
-        <translation>复制图片</translation>
+        <translation>&amp;Kopioi kuva</translation>
     </message>
     <message>
         <source>Save QR Code</source>
-        <translation>保存QR二维码</translation>
+        <translation>Tallenna QR Koodi</translation>
     </message>
     <message>
         <source>PNG Image (*.png)</source>
-        <translation>PNG 图像(*.png)</translation>
+        <translation>PNG kuva (*.png)</translation>
     </message>
 </context>
 <context>
     <name>QRImageWidget</name>
     <message>
         <source>&amp;Save Image...</source>
-        <translation>保存图片(&amp;S)...</translation>
+        <translation>&amp;Tallenna Kuva...</translation>
     </message>
     <message>
         <source>&amp;Copy Image</source>
-        <translation>复制图片(&amp;C)</translation>
+        <translation>&amp;Kopioi kuva</translation>
     </message>
     <message>
         <source>Save QR Code</source>
-        <translation>保存二维码</translation>
+        <translation>Tallenna QR Koodi</translation>
     </message>
     <message>
         <source>PNG Image (*.png)</source>
-        <translation>PNG图片(*.png)</translation>
+        <translation>PNG kuva (*.png)</translation>
     </message>
 </context>
 <context>
     <name>RPCConsole</name>
     <message>
         <source>Tools window</source>
-        <translation>工具窗口</translation>
+        <translation>Työkaluikkuna</translation>
     </message>
     <message>
         <source>&amp;Information</source>
-        <translation>信息(&amp;I)</translation>
+        <translation>T&amp;ietoja</translation>
     </message>
     <message>
         <source>General</source>
-        <translation>常规</translation>
+        <translation>Yleinen</translation>
     </message>
     <message>
         <source>Name</source>
-        <translation>姓名</translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <source>N/A</source>
-        <translation>不可用</translation>
+        <translation>e/s</translation>
     </message>
     <message>
         <source>Number of connections</source>
-        <translation>连接数</translation>
+        <translation>Yhteyksien määrä</translation>
     </message>
     <message>
         <source>&amp;Open</source>
-        <translation>打开(&amp;O)</translation>
+        <translation>&amp;Avaa</translation>
     </message>
     <message>
         <source>Startup time</source>
-        <translation>启动时间</translation>
+        <translation>Käynnistysaika</translation>
     </message>
     <message>
         <source>Network</source>
-        <translation>网络</translation>
+        <translation>Verkko</translation>
     </message>
     <message>
         <source>Last block time</source>
-        <translation>上一数据块时间</translation>
+        <translation>Viimeisimmän lohkon aika</translation>
     </message>
     <message>
         <source>Debug log file</source>
-        <translation>调试日志文件</translation>
+        <translation>Debug lokitiedosto</translation>
     </message>
     <message>
         <source>Current number of blocks</source>
-        <translation>当前数据块数量</translation>
+        <translation>Nykyinen lohkojen määrä</translation>
     </message>
     <message>
         <source>Client version</source>
-        <translation>客户端版本</translation>
+        <translation>Asiakasohjelman versio</translation>
     </message>
     <message>
         <source>Using BerkeleyDB version</source>
-        <translation>使用 BerkeleyDB 版本</translation>
+        <translation>Käytössä oleva BerkeleyDB versio</translation>
     </message>
     <message>
         <source>Block chain</source>
-        <translation>区块链</translation>
+        <translation>Lohkoketju</translation>
     </message>
     <message>
         <source>Number of Masternodes</source>
-        <translation>主节点数量</translation>
+        <translation>Masternodet määrä</translation>
     </message>
     <message>
         <source>Memory Pool</source>
-        <translation>内存池</translation>
+        <translation>Muistivaranto</translation>
     </message>
     <message>
         <source>Current number of transactions</source>
-        <translation>当前交易数量</translation>
+        <translation>Nykyinen tapahtumien määrä</translation>
     </message>
     <message>
         <source>Memory usage</source>
-        <translation>内存使用</translation>
+        <translation>Muistin käyttö</translation>
     </message>
     <message>
         <source>&amp;Console</source>
-        <translation>控制台(&amp;C)</translation>
+        <translation>&amp;Konsoli</translation>
     </message>
     <message>
         <source>Clear console</source>
-        <translation>清空控制台</translation>
+        <translation>Tyhjennä konsoli</translation>
     </message>
     <message>
         <source>&amp;Network Traffic</source>
-        <translation>网络流量(&amp;N)</translation>
+        <translation>&amp;Verkkoliikenne</translation>
     </message>
     <message>
         <source>&amp;Clear</source>
-        <translation>清除(&amp;C)</translation>
+        <translation>&amp;Tyhjennä</translation>
     </message>
     <message>
         <source>Totals</source>
-        <translation>总数</translation>
+        <translation>Yhteensä</translation>
     </message>
     <message>
         <source>Received</source>
-        <translation>接收</translation>
+        <translation>Vastaanotettu</translation>
     </message>
     <message>
         <source>Sent</source>
-        <translation>发送</translation>
+        <translation>Lähetetty</translation>
     </message>
     <message>
         <source>&amp;Peers</source>
-        <translation>&amp;节点</translation>
+        <translation>&amp;Peers</translation>
     </message>
     <message>
         <source>Banned peers</source>
-        <translation>节点黑名单</translation>
+        <translation>Estetyt peers:it</translation>
     </message>
     <message>
         <source>Select a peer to view detailed information.</source>
-        <translation>选择一个节点查看详细信息.</translation>
+        <translation>Valitse peer nähdäksesi tarkempia tietoja.</translation>
     </message>
     <message>
         <source>Whitelisted</source>
-        <translation>白名单</translation>
+        <translation>Merkitty luotettavaksi</translation>
     </message>
     <message>
         <source>Direction</source>
-        <translation>方向</translation>
+        <translation>Suunta</translation>
     </message>
     <message>
         <source>Version</source>
-        <translation>版本</translation>
+        <translation>Versio</translation>
     </message>
     <message>
         <source>Starting Block</source>
-        <translation>起始高度</translation>
+        <translation>Aloituslohko</translation>
     </message>
     <message>
         <source>Synced Headers</source>
-        <translation>已同步的区块头</translation>
+        <translation>Synkronoidut otsikot</translation>
     </message>
     <message>
         <source>Synced Blocks</source>
-        <translation>已同步的区块</translation>
+        <translation>Synkronoidut lohkot</translation>
     </message>
     <message>
         <source>Wallet Path</source>
-        <translation>钱包路径</translation>
+        <translation>Lompakon polku</translation>
     </message>
     <message>
         <source>User Agent</source>
-        <translation>用户代理</translation>
+        <translation>Käyttäjäohjelma</translation>
     </message>
     <message>
         <source>Datadir</source>
-        <translation>数据目录</translation>
+        <translation>Datahakemisto</translation>
     </message>
     <message>
         <source>Open the %1 debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>打开当前目录中的%1调试日志文件。日志文件大的话可能要等上几秒钟。</translation>
+        <translation>Avaa %1 -debug-loki tämänhetkisestä datahakemistosta. Tämä voi viedä muutaman sekunnin suurille lokitiedostoille.</translation>
     </message>
     <message>
         <source>Decrease font size</source>
-        <translation>缩小文字</translation>
+        <translation>Pienennä fontin kokoa</translation>
     </message>
     <message>
         <source>Increase font size</source>
-        <translation>放大文字</translation>
+        <translation>Suurenna fontin kokoa</translation>
     </message>
     <message>
         <source>Services</source>
-        <translation>服务</translation>
+        <translation>Palvelut</translation>
     </message>
     <message>
         <source>Ban Score</source>
-        <translation>组别评分</translation>
+        <translation>Estopisteet</translation>
     </message>
     <message>
         <source>Connection Time</source>
-        <translation>连接时间</translation>
+        <translation>Yhteysaika</translation>
     </message>
     <message>
         <source>Last Send</source>
-        <translation>最近发送</translation>
+        <translation>Viimeinen lähetys</translation>
     </message>
     <message>
         <source>Last Receive</source>
-        <translation>最近接收</translation>
+        <translation>Viimeinen vastaanotto</translation>
     </message>
     <message>
         <source>Ping Time</source>
-        <translation>Ping 时间</translation>
+        <translation>Ping aika</translation>
     </message>
     <message>
         <source>The duration of a currently outstanding ping.</source>
-        <translation>目前这一次 ping 已经过去的时间。</translation>
+        <translation>Nykyisen ping:in kestoaika.</translation>
     </message>
     <message>
         <source>Ping Wait</source>
-        <translation>Ping等待</translation>
+        <translation>Ping odota</translation>
     </message>
     <message>
         <source>Min Ping</source>
-        <translation>最小Ping值</translation>
+        <translation>Min Ping</translation>
     </message>
     <message>
         <source>Time Offset</source>
-        <translation>时间抵消</translation>
+        <translation>Aikapoikkeama</translation>
     </message>
     <message>
         <source>&amp;Wallet Repair</source>
-        <translation>钱包修复(&amp;W)</translation>
+        <translation>&amp;Lompakon Korjaus</translation>
     </message>
     <message>
         <source>Salvage wallet</source>
-        <translation>抢救钱包</translation>
+        <translation>Pelasta lompakko</translation>
     </message>
     <message>
         <source>Rescan blockchain files</source>
-        <translation>重新扫描区块链文件</translation>
+        <translation>Skannaa lohkoketju uudelleen</translation>
     </message>
     <message>
         <source>Recover transactions 1</source>
-        <translation>恢复交易 1</translation>
+        <translation>Palauta tapahtumat 1</translation>
     </message>
     <message>
         <source>Recover transactions 2</source>
-        <translation>恢复交易 2</translation>
+        <translation>Palauta tapahtumat 2</translation>
     </message>
     <message>
         <source>Upgrade wallet format</source>
-        <translation>升级钱包格式</translation>
+        <translation>Päivitä lompakon formaatti</translation>
     </message>
     <message>
         <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
-        <translation>下面的按钮将重新启动钱包并使用命令行选项进行修复，解决损坏或丢失的区块链文件/超时的交易问题。</translation>
+        <translation>Painikkeet käynnistävät lompakon korjauksen komentorivin valintoja käyttäen.
+Näillä toiminnoilla voit korjata korruptoituneen lohkoketjun tai puuttuvat/vanhentuneet tapahtumat.</translation>
     </message>
     <message>
         <source>-salvagewallet: Attempt to recover private keys from a corrupt wallet.dat.</source>
-        <translation>-salvagewallet：尝试从已损坏的钱包文件中找回私钥。</translation>
+        <translation>-salvagewallet: Yrittää pelastaa yksityiset avaimet viallisesta lompakkotiedostosta.</translation>
     </message>
     <message>
         <source>-rescan: Rescan the block chain for missing wallet transactions.</source>
-        <translation>-rescan：重新扫描区块链以查找遗漏的钱包交易。</translation>
+        <translation>-rescan: Skannaa uudelleen puuttuvat tapahtumat lohkoketjusta.</translation>
     </message>
     <message>
         <source>-zapwallettxes=1: Recover transactions from blockchain (keep meta-data, e.g. account owner).</source>
-        <translation>-zapwallettxes=1：从区块链恢复交易（保留交易描述信息，例如账户拥有者）。</translation>
+        <translation>-zapwallettxes=1: Palauta tapahtumat lohkoketjusta
+ (pidä metadata, esim. tilin omistaja).</translation>
     </message>
     <message>
         <source>-zapwallettxes=2: Recover transactions from blockchain (drop meta-data).</source>
-        <translation>-zapwallettxes=2：从区块链恢复交易（删除交易描述信息）。</translation>
+        <translation>-zapwallettxes=2: Palauta tapahtumat lohkoketjusta
+ (poista metadata).</translation>
     </message>
     <message>
         <source>-upgradewallet: Upgrade wallet to latest format on startup. (Note: this is NOT an update of the wallet itself!)</source>
-        <translation>-upgradewallet：在启动时升级钱包到最新格式。（注：这并不是钱包软件本身的更新！）</translation>
+        <translation>-upgradewallet: Päivitä lompakko viimeisimpään formaattiin
+ (Huom: tämä EI päivitä varsinaista lompakko-ohjelmistoa!).</translation>
     </message>
     <message>
         <source>Wallet repair options.</source>
-        <translation>钱包修复选项。</translation>
+        <translation>Lompakon korjausvalinnat</translation>
     </message>
     <message>
         <source>Rebuild index</source>
-        <translation>重建索引</translation>
+        <translation>Rakenna indeksi uudelleen</translation>
     </message>
     <message>
         <source>-reindex: Rebuild block chain index from current blk000??.dat files.</source>
-        <translation>-reindex：从现在的blk000??.dat文件重新建立区块链索引。</translation>
+        <translation>-reindex: Rakenna uudelleen lohkoketjun indeksi nykyisistä blk000??.dat tiedostoista.</translation>
     </message>
     <message>
         <source>&amp;Disconnect</source>
-        <translation>断开(&amp;D)</translation>
+        <translation>&amp;Katkaise yhteys</translation>
     </message>
     <message>
         <source>Ban for</source>
-        <translation>禁止</translation>
+        <translation>Estolistaan</translation>
     </message>
     <message>
         <source>1 &amp;hour</source>
-        <translation>1 小时(&amp;H)</translation>
+        <translation>1 &amp;tunniksi</translation>
     </message>
     <message>
         <source>1 &amp;day</source>
-        <translation>1 天(&amp;D)</translation>
+        <translation>1 &amp;päiväksi</translation>
     </message>
     <message>
         <source>1 &amp;week</source>
-        <translation>1 周(&amp;W)</translation>
+        <translation>1 &amp;viikoksi</translation>
     </message>
     <message>
         <source>1 &amp;year</source>
-        <translation>1 年(&amp;Y)</translation>
+        <translation>1 &amp;vuodeksi</translation>
     </message>
     <message>
         <source>&amp;Unban</source>
-        <translation>解禁(&amp;U)</translation>
+        <translation>&amp;Poista estolistalta</translation>
     </message>
     <message>
         <source>Welcome to the %1 RPC console.</source>
-        <translation>欢迎使用 %1 的 RPC 控制台。</translation>
+        <translation>Tervetuloa %1 RPC konsoliin.</translation>
     </message>
     <message>
         <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>使用上下方向键浏览历史,  &lt;b&gt;Ctrl-L&lt;/b&gt;清除屏幕。</translation>
+        <translation>Ylös- ja alas-nuolet selaavat historiaa ja &lt;b&gt;Ctrl-L&lt;/b&gt; tyhjentää ruudun.</translation>
     </message>
     <message>
         <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>使用 &lt;b&gt;help&lt;/b&gt; 命令显示可用命令的简介。</translation>
+        <translation>Kirjoita &lt;b&gt;help&lt;/b&gt; nähdäksesi käytettävissä olevat komennot.</translation>
     </message>
     <message>
         <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramification of a command.</source>
-        <translation>警告: 骗子总是积极地劝说用户在此输入指令, 以窃取用户钱包中的资金. 在没有完全理解各命令行作用前, 请不要使用控制台.</translation>
+        <translation>VAROITUS: Huijarit ovat olleet aktiivisia, kertoen käyttäjille komentoja tänne varastaen lompakon sisällön. Älä käytä tätä konsolia ymmärtämättä täysin komennon vaikutuksia.</translation>
     </message>
     <message>
         <source>In:</source>
-        <translation>输入：</translation>
+        <translation>Sisään:</translation>
     </message>
     <message>
         <source>Out:</source>
-        <translation>输出：</translation>
+        <translation>Ulos:</translation>
     </message>
     <message>
         <source>Network activity disabled</source>
-        <translation>网络活动已禁用</translation>
+        <translation>Verkkotoiminnot ei käytössä</translation>
     </message>
     <message>
         <source>Total: %1 (Enabled: %2)</source>
-        <translation>总计: %1 (已激活的: %2)</translation>
+        <translation>Yhteensä: %1 (Käytössä: %2)</translation>
     </message>
     <message>
         <source>%1 B</source>
-        <translation>%1 字节</translation>
+        <translation>%1 B</translation>
     </message>
     <message>
         <source>%1 KB</source>
@@ -2398,157 +2402,157 @@ https://www.transifex.com/projects/p/dash/</translation>
     </message>
     <message>
         <source>(node id: %1)</source>
-        <translation>(节点ID：%1)</translation>
+        <translation>(solmun id: %1)</translation>
     </message>
     <message>
         <source>via %1</source>
-        <translation>经由 %1</translation>
+        <translation>kautta %1</translation>
     </message>
     <message>
         <source>never</source>
-        <translation>永不</translation>
+        <translation>ei koskaan</translation>
     </message>
     <message>
         <source>Inbound</source>
-        <translation>导入</translation>
+        <translation>Saapuva</translation>
     </message>
     <message>
         <source>Outbound</source>
-        <translation>导出</translation>
+        <translation>Lähtevä</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation>是</translation>
+        <translation>Kyllä</translation>
     </message>
     <message>
         <source>No</source>
-        <translation>否</translation>
+        <translation>Ei</translation>
     </message>
     <message>
         <source>Unknown</source>
-        <translation>未知</translation>
+        <translation>Tuntematon</translation>
     </message>
 </context>
 <context>
     <name>ReceiveCoinsDialog</name>
     <message>
         <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
-        <translation>重复使用以前用过的接收地址。&lt;br&gt;重用地址有安全和隐私方面的隐患。&lt;br&gt;除非是为重复生成同一项支付请求，否则请不要这样做。</translation>
+        <translation>Uudelleen käytä yksi vanhoista vastaanottavista osoitteista.&lt;br&gt;Uudelleen käytössä on turvallisuus ja yksityisyysongelmia.&lt;br&gt;Älä käytä tätä ellet ole uudelleen luomassa aikaisempaa maksupyyntöä.</translation>
     </message>
     <message>
         <source>R&amp;euse an existing receiving address (not recommended)</source>
-        <translation>重用现有的接收地址（不推荐）</translation>
+        <translation>&amp;Uudelleen käytä vastaanottavaa osoitetta (ei suositella)</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Dash network.</source>
-        <translation>附加在付款要求中的讯息，可以不填，打开要求内容时会显示。注意：这个讯息不会随着付款送到达世币网路上。</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Ion network.</source>
+        <translation>Valinnainen viesti liitettäväksi maksupyyntöön, joka näytetään kun pyyntö on avattu.&lt;br&gt;Huomio: Viestiä ei lähetetä maksun mukana Ion verkkoon.</translation>
     </message>
     <message>
         <source>&amp;Message:</source>
-        <translation>消息(&amp;M)：</translation>
+        <translation>Vi&amp;esti:</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
-        <translation>可为新建的收款地址添加一个可选标签。</translation>
+        <translation>Valinnainen nimi liitetään uuteen vastaanottavaan osoitteeseen.</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Dash network.</source>
-        <translation>附加在付款要求中的讯息，可以不填，打开要求内容时会显示。&lt;br&gt;注意：这个讯息不会随着付款送到达世币网路上。</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the Ion network.</source>
+        <translation>Valinnainen viesti liitettäväksi maksupyyntöön, joka näytetään kun pyyntö on avattu.&lt;br&gt;Huomio: Viestiä ei lähetetä maksun mukana Ion verkkoon.</translation>
     </message>
     <message>
         <source>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</source>
-        <translation>使用此表单要求付款。所有字段都是&lt;b&gt;可选&lt;/b&gt;的。</translation>
+        <translation>Käytä tätä lomaketta maksupyyntöihin. Kaikki kentät ovat &lt;b&gt;valinnaisia&lt;/b&gt;.</translation>
     </message>
     <message>
         <source>&amp;Label:</source>
-        <translation>标签(&amp;L)：</translation>
+        <translation>&amp;Nimi:</translation>
     </message>
     <message>
         <source>An optional amount to request. Leave this empty or zero to not request a specific amount.</source>
-        <translation>可选的请求金额。留空或填零为不要求具体金额。</translation>
+        <translation>Valinnainen pyyntömäärä. Jätä tyhjäksi tai nollaksi jos et pyydä tiettyä määrää.</translation>
     </message>
     <message>
         <source>&amp;Amount:</source>
-        <translation>总额(&amp;A)：</translation>
+        <translation>&amp;Määrä</translation>
     </message>
     <message>
         <source>&amp;Request payment</source>
-        <translation>请求付款(&amp;R)</translation>
+        <translation>&amp;Maksupyyntö</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
-        <translation>清空此表单的所有字段。</translation>
+        <translation>Tyhjennä lomakkeen kaikki kentät.</translation>
     </message>
     <message>
         <source>Clear</source>
-        <translation>清除</translation>
+        <translation>Tyhjennä</translation>
     </message>
     <message>
         <source>Request InstantSend</source>
-        <translation>要求即时到帐付款</translation>
+        <translation>Pyydä InstantSend</translation>
     </message>
     <message>
         <source>Requested payments history</source>
-        <translation>请求付款的历史</translation>
+        <translation>Pyydettyjen maksujen historia</translation>
     </message>
     <message>
         <source>Show the selected request (does the same as double clicking an entry)</source>
-        <translation>显示选中的请求 (双击也可以显示)</translation>
+        <translation>Näytä valittu pyyntö (sama toiminta kuin alkion tuplaklikkaus)</translation>
     </message>
     <message>
         <source>Show</source>
-        <translation>显示</translation>
+        <translation>Näytä</translation>
     </message>
     <message>
         <source>Remove the selected entries from the list</source>
-        <translation>从列表中移除选中的条目</translation>
+        <translation>Poista valitut merkinnät listalta</translation>
     </message>
     <message>
         <source>Remove</source>
-        <translation>移除</translation>
+        <translation>Poista</translation>
     </message>
     <message>
         <source>Copy URI</source>
-        <translation>复制URI</translation>
+        <translation>Kopioi URI</translation>
     </message>
     <message>
         <source>Copy label</source>
-        <translation>复制标签</translation>
+        <translation>Kopioi nimi</translation>
     </message>
     <message>
         <source>Copy message</source>
-        <translation>复制消息 </translation>
+        <translation>Kopioi viesti</translation>
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>复制金额</translation>
+        <translation>Kopioi määrä</translation>
     </message>
 </context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
         <source>QR Code</source>
-        <translation>二维码</translation>
+        <translation>QR Koodi</translation>
     </message>
     <message>
         <source>Copy &amp;URI</source>
-        <translation>复制 URI(&amp;U)</translation>
+        <translation>Kopioi &amp;URI</translation>
     </message>
     <message>
         <source>Copy &amp;Address</source>
-        <translation>复制地址(&amp;A)</translation>
+        <translation>Kopioi &amp;Osoite</translation>
     </message>
     <message>
         <source>&amp;Save Image...</source>
-        <translation>保存图片(&amp;S)...</translation>
+        <translation>&amp;Tallenna Kuva</translation>
     </message>
     <message>
         <source>Request payment to %1</source>
-        <translation>请求付款到 %1</translation>
+        <translation>Maksupyyntö %1</translation>
     </message>
     <message>
         <source>Payment information</source>
-        <translation>付款信息</translation>
+        <translation>Maksutiedot</translation>
     </message>
     <message>
         <source>URI</source>
@@ -2556,396 +2560,396 @@ https://www.transifex.com/projects/p/dash/</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>地址</translation>
+        <translation>Osoite</translation>
     </message>
     <message>
         <source>Amount</source>
-        <translation>金额</translation>
+        <translation>Määrä</translation>
     </message>
     <message>
         <source>Label</source>
-        <translation>标签</translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <source>Message</source>
-        <translation>消息</translation>
+        <translation>Viesti</translation>
     </message>
     <message>
         <source>InstantSend</source>
-        <translation>即时到账</translation>
+        <translation>InstantSend</translation>
     </message>
     <message>
         <source>Yes</source>
-        <translation>是</translation>
+        <translation>Kyllä</translation>
     </message>
     <message>
         <source>No</source>
-        <translation>否</translation>
+        <translation>Ei</translation>
     </message>
     <message>
         <source>Resulting URI too long, try to reduce the text for label / message.</source>
-        <translation>URI 太长，请试着精简标签或消息文本。</translation>
+        <translation>Tuloksen URI liian pitkä, yritä lyhentää otsikon tekstiä / viestiä.</translation>
     </message>
     <message>
         <source>Error encoding URI into QR Code.</source>
-        <translation>将 URI 转为二维码失败。</translation>
+        <translation>Virhe käännettäessä URI:a QR koodiksi.</translation>
     </message>
 </context>
 <context>
     <name>RecentRequestsTableModel</name>
     <message>
         <source>Date</source>
-        <translation>日期</translation>
+        <translation>Päivämäärä</translation>
     </message>
     <message>
         <source>Label</source>
-        <translation>标签</translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <source>Message</source>
-        <translation>消息</translation>
+        <translation>Viesti</translation>
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(无标签)</translation>
+        <translation>(ei nimeä)</translation>
     </message>
     <message>
         <source>(no message)</source>
-        <translation>(无消息)</translation>
+        <translation>(ei viestiä)</translation>
     </message>
     <message>
         <source>(no amount requested)</source>
-        <translation>（无请求金额）</translation>
+        <translation>(ei pyydettyä määrää)</translation>
     </message>
     <message>
         <source>Requested</source>
-        <translation>总额</translation>
+        <translation>Pyydetty</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
-        <translation>发送货币</translation>
+        <translation>Lähetä</translation>
     </message>
     <message>
         <source>Coin Control Features</source>
-        <translation>交易源地址控制功能</translation>
+        <translation>Kolikkokontrolli ominaisuudet</translation>
     </message>
     <message>
         <source>Inputs...</source>
-        <translation>输入...</translation>
+        <translation>Sisääntulot...</translation>
     </message>
     <message>
         <source>automatically selected</source>
-        <translation>自动选择</translation>
+        <translation>automaattisesti valitut</translation>
     </message>
     <message>
         <source>Insufficient funds!</source>
-        <translation>余额不足！</translation>
+        <translation>Lompakon saldo ei riitä!</translation>
     </message>
     <message>
         <source>Quantity:</source>
-        <translation>总量：</translation>
+        <translation>Määrä:</translation>
     </message>
     <message>
         <source>Bytes:</source>
-        <translation>字节：</translation>
+        <translation>Tavuja:</translation>
     </message>
     <message>
         <source>Amount:</source>
-        <translation>金额：</translation>
+        <translation>Määrä:</translation>
     </message>
     <message>
         <source>Fee:</source>
-        <translation>费用：</translation>
+        <translation>Siirtomaksu:</translation>
     </message>
     <message>
         <source>Dust:</source>
-        <translation>零散金额：</translation>
+        <translation>Tomu:</translation>
     </message>
     <message>
         <source>After Fee:</source>
-        <translation>加上交易费用后:</translation>
+        <translation>Siirtomaksun jälkeen:</translation>
     </message>
     <message>
         <source>Change:</source>
-        <translation>找零金额：</translation>
+        <translation>Vaihtoraha:</translation>
     </message>
     <message>
         <source>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</source>
-        <translation>如果激活该选项，但是找零地址用光或者非法，将会生成新的找零地址，转入找零金额。</translation>
+        <translation>Jos tämä aktivoidaan mutta vaihtorahan osoite on tyhjä tai virheellinen, vaihtoraha tullaan lähettämään uuteen luotuun osoitteeseen.</translation>
     </message>
     <message>
         <source>Custom change address</source>
-        <translation>自定义找零地址</translation>
+        <translation>Kustomoitu vaihtorahan osoite</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
-        <translation>交易手续费：</translation>
+        <translation>Siirtomaksu:</translation>
     </message>
     <message>
         <source>Choose...</source>
-        <translation>选择...</translation>
+        <translation>Valitse...</translation>
     </message>
     <message>
         <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until your have validated the complete chain.</source>
-        <translation>使用fallbackfee可能会导致发送一笔需要几个小时或几天(或永远不会)确认的交易. 建议手动选择手续费, 或者等待你完全验证整个区块链后.</translation>
+        <translation>Fallbackfee:n käyttö saattaa aiheuttaa että maksutapahtuman vahvistus kestää useita tunteja tai päiviä (tai ei koskaan). Harkitse että valitset siirtomaksun manuaalisesti tai odota että lohkoketju on täysin vahvistettu.</translation>
     </message>
     <message>
         <source>Warning: Fee estimation is currently not possible.</source>
-        <translation>警告: 目前无法进行交易费估计。</translation>
+        <translation>Varoitus: Kulujen arviointi ei ole juuri nyt mahdollista.</translation>
     </message>
     <message>
         <source>collapse fee-settings</source>
-        <translation>收起手续费设置</translation>
+        <translation>pienennä siirtomaksu asetukset</translation>
     </message>
     <message>
         <source>Confirmation time target:</source>
-        <translation>确认时间目标：</translation>
+        <translation>Vahvistusajan tavoite:</translation>
     </message>
     <message>
         <source>PrivateSend</source>
-        <translation>匿名发送</translation>
+        <translation>PrivateSend</translation>
     </message>
     <message>
         <source>InstantSend</source>
-        <translation>即时到账</translation>
+        <translation>InstantSend</translation>
     </message>
     <message>
         <source>If the custom fee is set to 1000 duffs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 duffs in fee,&lt;br /&gt;while "at least" pays 1000 duffs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>如果自定手续费设定为1000 duffs，而交易信息只有250字节的话，那么选择"每千字节"就只会支付250 duffs的手续费，&lt;br /&gt;而"至少"会支付1000 duffs。但如果交易信息大于一千字节,那么两者都要按每千字节付费。</translation>
+        <translation>Jos mukautettu siirtomaksu on asetettu 1000 duff ja siirtotapahtuma on vain 250 tavua,&lt;br /&gt;tällöin "per kilotavu" maksaa vain 250 duffs siirtomaksun, kun taas "vähintään" maksaa 1000 duffs.&lt;br /&gt;Siirtotapahtumat jotka ovat isompia kuin kilotavu, molemmat maksaa "per kilotavu".</translation>
     </message>
     <message>
         <source>If the custom fee is set to 1000 duffs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 duffs in fee,&lt;br /&gt;while "total at least" pays 1000 duffs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>如果自定手续费设定为1000 duffs，而交易信息只有250字节的话，那么选择“每千字节”就只会支付250 duffs的手续费，&lt;br /&gt;而"总共至少"会支付1000 duffs。但如果交易信息大于一千字节，那么两者都要按每千字节付费。</translation>
+        <translation>Jos mukautettu siirtomaksu on asetettu 1000 duff ja siirtotapahtuma on vain 250 tavua,&lt;br /&gt;tällöin "per kilotavu" maksaa vain 250 duffs siirtomaksun, kun taas "yhteensä vähintään" maksaa 1000 duffs.&lt;br /&gt;Siirtotapahtumat jotka ovat isompia kuin kilotavu, molemmat maksaa "per kilotavu".</translation>
     </message>
     <message>
-        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for dash transactions than the network can process.</source>
-        <translation>当交易量少于区块可容纳的空间时，只需支付最低手续费。&lt;br /&gt;但当交易量的需求增长到超过总体网络可处理的量时，可能会造成一笔一直不被确认的交易。</translation>
+        <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for ion transactions than the network can process.</source>
+        <translation>Minimi siirtomaksun maksaminen on ok niin kauan kun siirtotapahtumien määrä on pienempi kuin tila lohkoissa.&lt;br /&gt;Mutta ota huomioon että tämä voi johtaa siirtotapahtumaan jota ei vahvisteta koskaan, jos siirtotapahtumia on enemmän kuin verkko voi käsitellä.</translation>
     </message>
     <message>
         <source>per kilobyte</source>
-        <translation>每千字节</translation>
+        <translation>per kilotavu</translation>
     </message>
     <message>
         <source>Hide</source>
-        <translation>隐藏</translation>
+        <translation>Piilota</translation>
     </message>
     <message>
         <source>total at least</source>
-        <translation>总共至少</translation>
+        <translation>yhteensä vähintään</translation>
     </message>
     <message>
         <source>(read the tooltip)</source>
-        <translation>(请看提示)</translation>
+        <translation>(lue vinkki)</translation>
     </message>
     <message>
         <source>Recommended:</source>
-        <translation>推荐：</translation>
+        <translation>Suositeltava:</translation>
     </message>
     <message>
         <source>Custom:</source>
-        <translation>自定义：</translation>
+        <translation>Mukautettu:</translation>
     </message>
     <message>
         <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
-        <translation>(手续费演算法还没有准备好。通常都要等几个块才可以...)</translation>
+        <translation>(Älykästä siirtomaksua ei ole alustettu vielä. Tämä kestää yleensä muutaman lohkon...)</translation>
     </message>
     <message>
         <source>normal</source>
-        <translation>正常</translation>
+        <translation>normaali</translation>
     </message>
     <message>
         <source>fast</source>
-        <translation>快速</translation>
+        <translation>nopea</translation>
     </message>
     <message>
         <source>Confirm the send action</source>
-        <translation>确认并发送货币</translation>
+        <translation>Lähetä klikkaamalla</translation>
     </message>
     <message>
         <source>S&amp;end</source>
-        <translation>发送(&amp;E)</translation>
+        <translation>&amp;Lähetä</translation>
     </message>
     <message>
         <source>Clear all fields of the form.</source>
-        <translation>清除此表单的所有字段。</translation>
+        <translation>Tyhjennä lomakkeen kaikki kentät.</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
-        <translation>清除所有(&amp;A)</translation>
+        <translation>T&amp;yhjennä Kaikki</translation>
     </message>
     <message>
         <source>Send to multiple recipients at once</source>
-        <translation>一次发送给多个接收者</translation>
+        <translation>Lähetä usealle vastaanottajalle samanaikaisesti</translation>
     </message>
     <message>
         <source>Add &amp;Recipient</source>
-        <translation>添加收款人(&amp;R)</translation>
+        <translation>Lisää &amp;Vastaanottaja</translation>
     </message>
     <message>
         <source>Balance:</source>
-        <translation>余额：</translation>
+        <translation>Saldo:</translation>
     </message>
     <message>
         <source>Copy quantity</source>
-        <translation>复制数量</translation>
+        <translation>Kopioi määrä</translation>
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>复制金额</translation>
+        <translation>Kopioi määrä</translation>
     </message>
     <message>
         <source>Copy fee</source>
-        <translation>复制交易费</translation>
+        <translation>Kopioi siirtomaksu</translation>
     </message>
     <message>
         <source>Copy after fee</source>
-        <translation>复制含交易费的金额</translation>
+        <translation>Kopioi siirtomaksun jälkeen</translation>
     </message>
     <message>
         <source>Copy bytes</source>
-        <translation>复制字节</translation>
+        <translation>Kopioi tavut</translation>
     </message>
     <message>
         <source>Copy dust</source>
-        <translation>复制零散金额</translation>
+        <translation>Kopioi tomu</translation>
     </message>
     <message>
         <source>Copy change</source>
-        <translation>复制找零金额</translation>
+        <translation>Kopioi vaihtoraha</translation>
     </message>
     <message>
         <source>using</source>
-        <translation>使用</translation>
+        <translation>käyttäen</translation>
     </message>
     <message>
         <source>anonymous funds</source>
-        <translation>匿名化资金</translation>
+        <translation>anonymisoituja varoja</translation>
     </message>
     <message>
         <source>(privatesend requires this amount to be rounded up to the nearest %1).</source>
-        <translation>（匿名发送需要这一数额四舍五入到最接近%1）。</translation>
+        <translation>(privatesend pyöristää tämän lähimpään %1).</translation>
     </message>
     <message>
         <source>any available funds (not anonymous)</source>
-        <translation>任何可用资金（非匿名的）</translation>
+        <translation>kaikkia käytössä olevia varoja (ei anonymisoituja)</translation>
     </message>
     <message>
         <source>and InstantSend</source>
-        <translation>和即时支付</translation>
+        <translation>ja InstantSend</translation>
     </message>
     <message>
         <source>%1 to %2</source>
-        <translation>%1 到 %2</translation>
+        <translation>%1 -&gt; %2</translation>
     </message>
     <message>
         <source>Are you sure you want to send?</source>
-        <translation>您确定要发出吗？</translation>
+        <translation>Haluatko varmasti lähettää?</translation>
     </message>
     <message>
         <source>are added as transaction fee</source>
-        <translation>作为交易费被添加</translation>
+        <translation>lisätty siirtomaksuna</translation>
     </message>
     <message>
         <source>Total Amount = &lt;b&gt;%1&lt;/b&gt;&lt;br /&gt;= %2</source>
-        <translation>总额 = &lt;b&gt;%1&lt;/b&gt;&lt;br /&gt;= %2</translation>
+        <translation>Määrä yhteensä = &lt;b&gt;%1&lt;/b&gt;&lt;br /&gt;= %2</translation>
     </message>
     <message>
         <source>&lt;b&gt;(%1 of %2 entries displayed)&lt;/b&gt;</source>
-        <translation>&lt;b&gt;（在%2中%1个项目显示出来）&lt;/b&gt;</translation>
+        <translation>&lt;b&gt;(Näytetään %1 / %2 merkintää)&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
-        <translation>确认发送货币</translation>
+        <translation>Hyväksy lähettäminen</translation>
     </message>
     <message>
         <source>The recipient address is not valid. Please recheck.</source>
-        <translation>接收人地址无效。请重新检查。</translation>
+        <translation>Vastaanottajan osoite on virheellinen. Tarkista osoite.</translation>
     </message>
     <message>
         <source>The amount to pay must be larger than 0.</source>
-        <translation>支付金额必须大于0。</translation>
+        <translation>Maksettavan summan tulee olla suurempi kuin 0.</translation>
     </message>
     <message>
         <source>The amount exceeds your balance.</source>
-        <translation>金额超出您的账上余额。</translation>
+        <translation>Määrä ylittää käytettävissä olevan saldon.</translation>
     </message>
     <message>
         <source>The total exceeds your balance when the %1 transaction fee is included.</source>
-        <translation>计入 %1 交易费后的金额超出您的账上余额。</translation>
+        <translation>Summa yhteensä ylittää saldosi kun siihen lisätään siirtomaksu %1.</translation>
     </message>
     <message>
         <source>Duplicate address found: addresses should only be used once each.</source>
-        <translation>发现重复地址：每个地址应该只使用一次。</translation>
+        <translation>Osoitteen kaksoiskappale löydetty, osoitetta tulisi käyttää vain kerran.</translation>
     </message>
     <message>
         <source>Transaction creation failed!</source>
-        <translation>交易创建失败！</translation>
+        <translation>Siirtotapahtuman luonti epäonnistui!</translation>
     </message>
     <message>
         <source>The transaction was rejected with the following reason: %1</source>
-        <translation>交易因以下原因拒绝：%1</translation>
+        <translation>Siirto hylättiin seuraavasta syystä: %1</translation>
     </message>
     <message>
         <source>A fee higher than %1 is considered an absurdly high fee.</source>
-        <translation>交易费一般不应超过 %1。</translation>
+        <translation>Siirtomaksu joka on korkeampi kuin %1, katsotaan erittäin korkeaksi siirtomaksuksi.</translation>
     </message>
     <message>
         <source>Payment request expired.</source>
-        <translation>付款请求已过期。</translation>
+        <translation>Maksupyyntö vanhentunut.</translation>
     </message>
     <message numerus="yes">
         <source>%n block(s)</source>
-        <translation><numerusform>%n 区块</numerusform></translation>
+        <translation><numerusform>%n lohko</numerusform><numerusform>%n lohkot</numerusform></translation>
     </message>
     <message>
         <source>Pay only the required fee of %1</source>
-        <translation>只支付必要费用 %1</translation>
+        <translation>Maksa vain tarpeellinen siirtomaksu %1</translation>
     </message>
     <message numerus="yes">
         <source>Estimated to begin confirmation within %n block(s).</source>
-        <translation><numerusform>预计在%n 个区块内开始确认。</numerusform></translation>
+        <translation><numerusform>Arvioitu vahvistuksen aloitus %n lohkon kuluessa.</numerusform><numerusform>Arvioitu vahvistuksen aloitus %n lohkon kuluessa.</numerusform></translation>
     </message>
     <message>
-        <source>Warning: Invalid Dash address</source>
-        <translation>警告：无效的达世币地址</translation>
+        <source>Warning: Invalid Ion address</source>
+        <translation>Varoitus: Virheellinen Ion osoite</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
-        <translation>警告：未知的更改地址</translation>
+        <translation>Varoitus: Tuntematon vaihtorahan osoite</translation>
     </message>
     <message>
         <source>Confirm custom change address</source>
-        <translation>确认用户找零地址</translation>
+        <translation>Vahvista kustomoitu vaihtorahan osoite</translation>
     </message>
     <message>
         <source>The address you selected for change is not part of this wallet. Any or all funds in your wallet may be sent to this address. Are you sure?</source>
-        <translation>你选择的找零地址未被包含在本钱包中，你钱包中的部分或全部金额将被发送至该地址。你确定要这样做吗？</translation>
+        <translation>Valitsemasi vaihtorahan osoite ei kuulu tähän lompakkoon. Osa tai kaikki varoista lompakossasi voidaan lähettää tähän osoitteeseen. Oletko varma?</translation>
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(无标签)</translation>
+        <translation>(ei nimeä)</translation>
     </message>
 </context>
 <context>
     <name>SendCoinsEntry</name>
     <message>
         <source>This is a normal payment.</source>
-        <translation>这是笔正常的支付。</translation>
+        <translation>Tämä on normaali maksu.</translation>
     </message>
     <message>
         <source>Pay &amp;To:</source>
-        <translation>付给(&amp;T)：</translation>
+        <translation>Maksun &amp;saaja:</translation>
     </message>
     <message>
-        <source>The Dash address to send the payment to</source>
-        <translation>选择发款地址</translation>
+        <source>The Ion address to send the payment to</source>
+        <translation>Ion osoite johon maksu lähetetään</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
-        <translation>选择以前用过的地址</translation>
+        <translation>Valitse aikaisemmin käytetty osoite</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -2953,7 +2957,7 @@ https://www.transifex.com/projects/p/dash/</translation>
     </message>
     <message>
         <source>Paste address from clipboard</source>
-        <translation>从剪贴板粘贴地址</translation>
+        <translation>Liitä osoite leikepöydältä</translation>
     </message>
     <message>
         <source>Alt+P</source>
@@ -2961,96 +2965,96 @@ https://www.transifex.com/projects/p/dash/</translation>
     </message>
     <message>
         <source>Remove this entry</source>
-        <translation>移除此项</translation>
+        <translation>Poista tämä alkio</translation>
     </message>
     <message>
         <source>&amp;Label:</source>
-        <translation>标签(&amp;L)：</translation>
+        <translation>&amp;Nimi:</translation>
     </message>
     <message>
         <source>Enter a label for this address to add it to the list of used addresses</source>
-        <translation>请为此地址输入一个标签以将它加入用过的地址列表</translation>
+        <translation>Aseta nimi tälle osoitteelle lisätäksesi sen käytettyjen osoitteiden listaan</translation>
     </message>
     <message>
         <source>A&amp;mount:</source>
-        <translation>金额(&amp;M)</translation>
+        <translation>&amp;Määrä:</translation>
     </message>
     <message>
-        <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Dash than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
-        <translation>手续费将从发送金额中扣除。接收者将收到的达世币金额将会比您在金额字段中输入的金额为少。如果选择了多个收款人，该费用将会被平均摊分。</translation>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive a lower amount of Ion than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <translation>Siirtomaksu vähennetään lähetettävästä summasta. Vastaanottaja saa pienemmän summan kuin mitä laitoit määrä kenttään. Jos useampia vastaanottajia on valittu, siirtomaksu jaetaan tasan.</translation>
     </message>
     <message>
         <source>S&amp;ubtract fee from amount</source>
-        <translation>从金额中减去交易费(&amp;U)</translation>
+        <translation>Vähennä siirtomaksu lähetettävästä määrästä</translation>
     </message>
     <message>
         <source>Message:</source>
-        <translation>消息：</translation>
+        <translation>Viesti:</translation>
     </message>
     <message>
-        <source>A message that was attached to the dash: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Dash network.</source>
-        <translation>附加在达世币付款协议URI中的信息，会和交易内容一并存储，可供您参考。提示：此信息不会发送到达世币网络上。</translation>
+        <source>A message that was attached to the ion: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Ion network.</source>
+        <translation>Viesti joka liitettiin Ion: URI joka tallenetaan siirtotapahtuman kanssa viitteeksi sinulle. Huomio: Tätä viestiä ei lähetetä Ion verkkoon.</translation>
     </message>
     <message>
         <source>This is an unauthenticated payment request.</source>
-        <translation>这是一个未经验证的支付请求。</translation>
+        <translation>Tämä on vahvistamaton maksupyyntö</translation>
     </message>
     <message>
         <source>This is an authenticated payment request.</source>
-        <translation>这是一个已经验证的支付请求。</translation>
+        <translation>Tämä on vahvistettu maksupyyntö.</translation>
     </message>
     <message>
         <source>Pay To:</source>
-        <translation>支付给：</translation>
+        <translation>Saaja:</translation>
     </message>
     <message>
         <source>Memo:</source>
-        <translation>便条：</translation>
+        <translation>Muistio:</translation>
     </message>
     <message>
         <source>Enter a label for this address to add it to your address book</source>
-        <translation>为这个地址输入一个标签，以便将它添加到您的地址簿</translation>
+        <translation>Anna nimi tälle osoitteelle, jos haluat lisätä sen osoitekirjaan</translation>
     </message>
 </context>
 <context>
     <name>SendConfirmationDialog</name>
     <message>
         <source>Yes</source>
-        <translation>是</translation>
+        <translation>Kyllä</translation>
     </message>
 </context>
 <context>
     <name>ShutdownWindow</name>
     <message>
         <source>%1 is shutting down...</source>
-        <translation>正在关闭 %1 ...</translation>
+        <translation>%1 sulkeutuu...</translation>
     </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
-        <translation>在此窗口消失前不要关闭计算机。</translation>
+        <translation>Älä sammuta tietokonetta ennen kuin tämä ikkuna katoaa.</translation>
     </message>
 </context>
 <context>
     <name>SignVerifyMessageDialog</name>
     <message>
         <source>Signatures - Sign / Verify a Message</source>
-        <translation>签名 - 签署/验证消息</translation>
+        <translation>Allekirjoitukset - Allekirjoita / Tarkista viesti</translation>
     </message>
     <message>
         <source>&amp;Sign Message</source>
-        <translation>签名消息(&amp;S)</translation>
+        <translation>&amp;Allekirjoita viesti</translation>
     </message>
     <message>
-        <source>You can sign messages/agreements with your addresses to prove you can receive Dash sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>您可以用自己的地址签署信息/协议，来证明您对地址的所有权。但是请小心，不要签署语意含糊不清的内容，因为钓鱼式诈骗可能会用骗您签署的手法来冒充是您。只有在语句中的细节您都同意时才签署。</translation>
+        <source>You can sign messages/agreements with your addresses to prove you can receive Ion sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <translation>Voit allekirjoittaa viestit/sopimukset omilla osoitteillasi todistaaksesi että omistat ne. Ole huolellinen että et allekirjoita mitään epämääräistä, satunnaista, phishing hyökkääjä voi huijata sinua allekirjoittamaan henkilöllisyytesi omasta puolestaan. Allekirjoita vain yksityiskohtaisesti täytetty selvitys johon sitoudut.</translation>
     </message>
     <message>
-        <source>The Dash address to sign the message with</source>
-        <translation>对此地址进行签名</translation>
+        <source>The Ion address to sign the message with</source>
+        <translation>Ion osoite jolla viesti allekirjoitetaan</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
-        <translation>选择以前用过的地址</translation>
+        <translation>Valitse aikaisemmin käytetty osoite</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -3058,7 +3062,7 @@ https://www.transifex.com/projects/p/dash/</translation>
     </message>
     <message>
         <source>Paste address from clipboard</source>
-        <translation>从剪贴板粘贴地址</translation>
+        <translation>Liitä osoite leikepöydältä</translation>
     </message>
     <message>
         <source>Alt+P</source>
@@ -3066,118 +3070,118 @@ https://www.transifex.com/projects/p/dash/</translation>
     </message>
     <message>
         <source>Enter the message you want to sign here</source>
-        <translation>请输入您要发送的签名消息</translation>
+        <translation>Kirjoita tähän viesti jonka haluat allekirjoittaa</translation>
     </message>
     <message>
         <source>Signature</source>
-        <translation>签名</translation>
+        <translation>Allekirjoitus</translation>
     </message>
     <message>
         <source>Copy the current signature to the system clipboard</source>
-        <translation>复制当前签名至剪切板</translation>
+        <translation>Kopioi tämän hetkinen allekirjoitus leikepöydälle</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Dash address</source>
-        <translation>签署信息证明您拥有此达世币地址</translation>
+        <source>Sign the message to prove you own this Ion address</source>
+        <translation>Allekirjoita viesti todistaaksesi että omistat tämän Ion osoitteen</translation>
     </message>
     <message>
         <source>Sign &amp;Message</source>
-        <translation>消息签名(&amp;M)</translation>
+        <translation>Allekirjoita &amp;Viesti</translation>
     </message>
     <message>
         <source>Reset all sign message fields</source>
-        <translation>清空所有签名消息栏</translation>
+        <translation>Tyhjennä kaikki kentät</translation>
     </message>
     <message>
         <source>Clear &amp;All</source>
-        <translation>清除所有(&amp;A)</translation>
+        <translation>T&amp;yhjennä Kaikki</translation>
     </message>
     <message>
         <source>&amp;Verify Message</source>
-        <translation>验证消息(&amp;V)</translation>
+        <translation>&amp;Tarkista viesti</translation>
     </message>
     <message>
         <source>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</source>
-        <translation>请在下面输入接收者地址、消息（确保换行符、空格符、制表符等完全相同）和签名以验证消息。请仔细核对签名信息，以提防中间人攻击。请注意，这只是证明接收方签名的地址，它不能证明任何交易！</translation>
+        <translation>Syötä allekirjoittava osoite, viesti (varmista että kopioit rivinvaihdot, välilyönnit, tabulaattorit, jne täsmälleen oikein) ja allekirjoitus alla oleviin kenttiin varmistaaksesi allekirjoituksen aitouden. Varo lukemasta enempää allekirjoitukseen kuin kuin mitä itse viestissä on, välttääksesi man-in-the-middle hyökkäyksen. Huom. tämä todistaa vain että allekirjoittava osapuoli vastaanottaa osoitteella, se ei voi todistaa lähettäjää.</translation>
     </message>
     <message>
-        <source>The Dash address the message was signed with</source>
-        <translation>已签名的地址</translation>
+        <source>The Ion address the message was signed with</source>
+        <translation>Ion osoite jolla viesti on allekirjoitettu</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Dash address</source>
-        <translation>验证信息用来确保此被签署信息对应相对的达世币地址</translation>
+        <source>Verify the message to ensure it was signed with the specified Ion address</source>
+        <translation>Tarkista että viesti on allekirjoitettu määritetyllä Ion osoitteella</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>
-        <translation>验证消息签名(&amp;M)</translation>
+        <translation>Tarkista &amp;Viesti...</translation>
     </message>
     <message>
         <source>Reset all verify message fields</source>
-        <translation>清空所有验证消息栏</translation>
+        <translation>Tyhjennä kaikki kentät</translation>
     </message>
     <message>
         <source>Click "Sign Message" to generate signature</source>
-        <translation>单击“签名消息“产生签名。</translation>
+        <translation>Klikkaa "Allekirjoita Viesti" luodaksesi allekirjoituksen</translation>
     </message>
     <message>
         <source>The entered address is invalid.</source>
-        <translation>输入的地址非法。</translation>
+        <translation>Syötetty osoite on virheellinen.</translation>
     </message>
     <message>
         <source>Please check the address and try again.</source>
-        <translation>请检查地址后重试。</translation>
+        <translation>Tarkista osoite ja yritä uudelleen.</translation>
     </message>
     <message>
         <source>The entered address does not refer to a key.</source>
-        <translation>输入的地址没有关联的密匙。</translation>
+        <translation>Syötetyn osoitteen avainta ei löydy.</translation>
     </message>
     <message>
         <source>Wallet unlock was cancelled.</source>
-        <translation>钱包解锁已取消。</translation>
+        <translation>Lompakon lukituksen avaus peruttiin.</translation>
     </message>
     <message>
         <source>Private key for the entered address is not available.</source>
-        <translation>找不到输入地址关联的私钥。</translation>
+        <translation>Yksityistä avainta syötetylle osoitteelle ei ole saatavilla.</translation>
     </message>
     <message>
         <source>Message signing failed.</source>
-        <translation>消息签名失败。</translation>
+        <translation>Viestin allekirjoitus epäonnistui.</translation>
     </message>
     <message>
         <source>Message signed.</source>
-        <translation>消息已签名。</translation>
+        <translation>Viesti allekirjoitettu.</translation>
     </message>
     <message>
         <source>The signature could not be decoded.</source>
-        <translation>签名无法解码。</translation>
+        <translation>Allekirjoitusta ei pystytty tulkitsemaan.</translation>
     </message>
     <message>
         <source>Please check the signature and try again.</source>
-        <translation>请检查签名后重试。</translation>
+        <translation>Tarkista allekirjoitus ja yritä uudelleen.</translation>
     </message>
     <message>
         <source>The signature did not match the message digest.</source>
-        <translation>签名与消息摘要不匹配。</translation>
+        <translation>Allekirjoitus ei täsmää viestin tiivisteeseen.</translation>
     </message>
     <message>
         <source>Message verification failed.</source>
-        <translation>消息验证失败。</translation>
+        <translation>Viestin tarkistus epäonnistui.</translation>
     </message>
     <message>
         <source>Message verified.</source>
-        <translation>消息验证成功。</translation>
+        <translation>Viesti vahvistettu.</translation>
     </message>
 </context>
 <context>
     <name>SplashScreen</name>
     <message>
         <source>[testnet]</source>
-        <translation>[testnet]</translation>
+        <translation>[testiverkko]</translation>
     </message>
     <message>
         <source>Version %1</source>
-        <translation>版本 %1</translation>
+        <translation>Versio %1</translation>
     </message>
 </context>
 <context>
@@ -3191,512 +3195,512 @@ https://www.transifex.com/projects/p/dash/</translation>
     <name>TransactionDesc</name>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>到下%n个区块产生前可修改</numerusform></translation>
+        <translation><numerusform>Avoinna %n lisälohkolle</numerusform><numerusform>Avoinna %n lisälohkolle</numerusform></translation>
     </message>
     <message>
         <source>Open until %1</source>
-        <translation>至 %1 个区块时开启</translation>
+        <translation>Lukitsematta %1 asti</translation>
     </message>
     <message>
         <source>conflicted</source>
-        <translation>发现冲突</translation>
+        <translation>ristiriitainen</translation>
     </message>
     <message>
         <source>%1/offline</source>
-        <translation>%1 / 离线</translation>
+        <translation>%1/ei yhteyttä</translation>
     </message>
     <message>
         <source>0/unconfirmed, %1</source>
-        <translation>0/未确认，%1</translation>
+        <translation>0/vahvistamaton, %1</translation>
     </message>
     <message>
         <source>in memory pool</source>
-        <translation>在内存池中</translation>
+        <translation>muistivarannossa</translation>
     </message>
     <message>
         <source>not in memory pool</source>
-        <translation>不在内存池中</translation>
+        <translation>ei muistivarannossa</translation>
     </message>
     <message>
         <source>abandoned</source>
-        <translation>已丢弃</translation>
+        <translation>hylätty</translation>
     </message>
     <message>
         <source>%1/unconfirmed</source>
-        <translation>%1/未确认</translation>
+        <translation>%1/vahvistamaton</translation>
     </message>
     <message>
         <source>%1 confirmations</source>
-        <translation>确认%1次</translation>
+        <translation>%1 vahvistusta</translation>
     </message>
     <message>
         <source>locked via LLMQ based ChainLocks</source>
-        <translation>通过基于LLMQ的链锁功能锁定</translation>
+        <translation>lukittu LLMQ-pohjaisella ChainLocks:illa</translation>
     </message>
     <message>
         <source>verified via LLMQ based InstantSend</source>
-        <translation>通过基于LLMQ的即时发送功能验证</translation>
+        <translation>vahvistettu LLMQ-pohjaisella InstantSend:illä</translation>
     </message>
     <message>
         <source>verified via InstantSend</source>
-        <translation>经即时发送系统核实</translation>
+        <translation>vahvistettu InstanSend:illä</translation>
     </message>
     <message>
         <source>InstantSend verification in progress - %1 of %2 signatures</source>
-        <translation>即时发送验证正在进行 - %2个签署中的第%1个</translation>
+        <translation>InstantSend vahvistus käynnissä - %1 / %2 allekirjoitusta</translation>
     </message>
     <message>
         <source>InstantSend verification failed</source>
-        <translation>即时发送验证失败</translation>
+        <translation>InstantSend vahvistus epäonnistui</translation>
     </message>
     <message>
         <source>Status</source>
-        <translation>状态</translation>
+        <translation>Tila</translation>
     </message>
     <message>
         <source>, has not been successfully broadcast yet</source>
-        <translation>，未被成功广播</translation>
+        <translation>, lähetys ei ole vielä onnistunut</translation>
     </message>
     <message numerus="yes">
         <source>, broadcast through %n node(s)</source>
-        <translation><numerusform>，通过%n个节点广播</numerusform></translation>
+        <translation><numerusform>, lähetys %n solmun läpi</numerusform><numerusform>, lähetys %n solmun läpi</numerusform></translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>日期</translation>
+        <translation>Päivämäärä</translation>
     </message>
     <message>
         <source>Source</source>
-        <translation>源</translation>
+        <translation>Lähde</translation>
     </message>
     <message>
         <source>Generated</source>
-        <translation>生成</translation>
+        <translation>Luotu</translation>
     </message>
     <message>
         <source>From</source>
-        <translation>来自</translation>
+        <translation>Lähettäjä</translation>
     </message>
     <message>
         <source>unknown</source>
-        <translation>未知</translation>
+        <translation>tuntematon</translation>
     </message>
     <message>
         <source>To</source>
-        <translation>到</translation>
+        <translation>Saaja</translation>
     </message>
     <message>
         <source>own address</source>
-        <translation>自己的地址</translation>
+        <translation>oma osoite</translation>
     </message>
     <message>
         <source>watch-only</source>
-        <translation>仅限查看</translation>
+        <translation>vain-luku</translation>
     </message>
     <message>
         <source>label</source>
-        <translation>标签</translation>
+        <translation>nimi</translation>
     </message>
     <message>
         <source>Credit</source>
-        <translation>收入</translation>
+        <translation>Suoritus</translation>
     </message>
     <message numerus="yes">
         <source>matures in %n more block(s)</source>
-        <translation><numerusform>再过%n个区块产生后成熟</numerusform></translation>
+        <translation><numerusform>kypsyy %n lohkon kuluttua</numerusform><numerusform>kypsyy %n lohkon kuluttua</numerusform></translation>
     </message>
     <message>
         <source>not accepted</source>
-        <translation>未被接受</translation>
+        <translation>ei hyväksytty</translation>
     </message>
     <message>
         <source>Debit</source>
-        <translation>支出</translation>
+        <translation>Veloitus</translation>
     </message>
     <message>
         <source>Total debit</source>
-        <translation>支出总额</translation>
+        <translation>Veloitus yhteensä</translation>
     </message>
     <message>
         <source>Total credit</source>
-        <translation>入账总额</translation>
+        <translation>Suoritus yhteensä</translation>
     </message>
     <message>
         <source>Transaction fee</source>
-        <translation>交易费</translation>
+        <translation>Siirtomaksu</translation>
     </message>
     <message>
         <source>Net amount</source>
-        <translation>净额</translation>
+        <translation>Nettosumma</translation>
     </message>
     <message>
         <source>Message</source>
-        <translation>消息</translation>
+        <translation>Viesti</translation>
     </message>
     <message>
         <source>Comment</source>
-        <translation>备注</translation>
+        <translation>Kommentti</translation>
     </message>
     <message>
         <source>Transaction ID</source>
-        <translation>交易ID</translation>
+        <translation>Siirtotunnus</translation>
     </message>
     <message>
         <source>Output index</source>
-        <translation>输出索引</translation>
+        <translation>Lähtöjen indeksi</translation>
     </message>
     <message>
         <source>Transaction total size</source>
-        <translation>交易总大小</translation>
+        <translation>Siirtotapahtuman koko yhteensä</translation>
     </message>
     <message>
         <source>Merchant</source>
-        <translation>商店</translation>
+        <translation>Kauppias</translation>
     </message>
     <message>
         <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>生成的达世币在可以使用前必须有 %1 个成熟的区块。当您生成了此区块后，它将被广播到网络中以加入区块链。如果它未成功进入区块链，其状态将变更为“不接受”并且不可使用。这可能偶尔会发生，如果另一个节点比你早几秒钟成功生成一个区块。</translation>
+        <translation>Luodut (louhitut) varat täytyy kypsyä %1 lohkon ajan kunnes ne voidaan käyttää. Kun generoit tämän lohkon, se lähetettiin verkkoon lohkoketjuun. Jos se epäonnistuu pääsemään lohkoketjuun sen tila tulee muuttumaan "ei hyväksytty" ja sitä ei voida käyttää. Näin voi ajoittain tapahtua kun toisen solmun lohko luodaan samanaikaisesti omasi kanssa.</translation>
     </message>
     <message>
         <source>Debug information</source>
-        <translation>调试信息</translation>
+        <translation>Debug tiedot</translation>
     </message>
     <message>
         <source>Transaction</source>
-        <translation>交易</translation>
+        <translation>Siirtotapahtuma</translation>
     </message>
     <message>
         <source>Inputs</source>
-        <translation>输入</translation>
+        <translation>Sisääntulot</translation>
     </message>
     <message>
         <source>Amount</source>
-        <translation>金额</translation>
+        <translation>Määrä</translation>
     </message>
     <message>
         <source>true</source>
-        <translation>正确</translation>
+        <translation>tosi</translation>
     </message>
     <message>
         <source>false</source>
-        <translation>错误</translation>
+        <translation>epätosi</translation>
     </message>
 </context>
 <context>
     <name>TransactionDescDialog</name>
     <message>
         <source>This pane shows a detailed description of the transaction</source>
-        <translation>当前面板显示了交易的详细信息</translation>
+        <translation>Tämä ruutu näyttää yksityiskohtaiset tiedot siirtotapahtumasta</translation>
     </message>
     <message>
         <source>Details for %1</source>
-        <translation>%1 详情</translation>
+        <translation>%1:n yksityiskohdat</translation>
     </message>
 </context>
 <context>
     <name>TransactionTableModel</name>
     <message>
         <source>Date</source>
-        <translation>日期</translation>
+        <translation>Päivämäärä</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>类型</translation>
+        <translation>Tyyppi</translation>
     </message>
     <message>
         <source>Address / Label</source>
-        <translation>地址/标签</translation>
+        <translation>Osoite / Nimi</translation>
     </message>
     <message numerus="yes">
         <source>Open for %n more block(s)</source>
-        <translation><numerusform>到下%n个区块产生前可修改</numerusform></translation>
+        <translation><numerusform>Avoinna %n lisälohkolle</numerusform><numerusform>Avoinna %n lisälohkolle</numerusform></translation>
     </message>
     <message>
         <source>Open until %1</source>
-        <translation>至 %1 个区块时开启</translation>
+        <translation>Lukitsematta %1 asti</translation>
     </message>
     <message>
         <source>Offline</source>
-        <translation>掉线</translation>
+        <translation>Ei yhteyttä</translation>
     </message>
     <message>
         <source>Unconfirmed</source>
-        <translation>未确认的 </translation>
+        <translation>Vahvistamaton</translation>
     </message>
     <message>
         <source>Abandoned</source>
-        <translation>已丢弃</translation>
+        <translation>Hylätty</translation>
     </message>
     <message>
         <source>Confirming (%1 of %2 recommended confirmations)</source>
-        <translation>确认中 (推荐 %2个确认，已经有 %1个确认)</translation>
+        <translation>Vahvistetaan (%1 / %2 vahvistusta)</translation>
     </message>
     <message>
         <source>Confirmed (%1 confirmations)</source>
-        <translation>已确认 (%1 次)</translation>
+        <translation>Vahvistettu (%1 vahvistusta)</translation>
     </message>
     <message>
         <source>Conflicted</source>
-        <translation>冲突的</translation>
+        <translation>Ristiriitainen</translation>
     </message>
     <message>
         <source>Immature (%1 confirmations, will be available after %2)</source>
-        <translation>未成熟 (%1 个确认，将在 %2 个后可用)</translation>
+        <translation>Epäkypsä (%1 vahvistusta, saatavilla %2 jälkeen)</translation>
     </message>
     <message>
         <source>This block was not received by any other nodes and will probably not be accepted!</source>
-        <translation>此区块未被任何其他节点接收。以后可能也不会被接受！</translation>
+        <translation>Tätä lohkoa ei vastaanotettu mistään muusta solmusta ja sitä ei mahdollisesti hyväksytä!</translation>
     </message>
     <message>
         <source>Generated but not accepted</source>
-        <translation>已生成但未被接受</translation>
+        <translation>Luotu mutta ei hyväksytty</translation>
     </message>
     <message>
         <source>Received with</source>
-        <translation>接收于</translation>
+        <translation>Vastaanotettu osoitteeseen</translation>
     </message>
     <message>
         <source>Received from</source>
-        <translation>收款来自</translation>
+        <translation>Vastaanotettu osoitteesta</translation>
     </message>
     <message>
         <source>Received via PrivateSend</source>
-        <translation>经由匿名发送收到</translation>
+        <translation>PrivateSend vastaanotettu</translation>
     </message>
     <message>
         <source>Sent to</source>
-        <translation>发送给</translation>
+        <translation>Lähetetty osoitteeseen</translation>
     </message>
     <message>
         <source>Payment to yourself</source>
-        <translation>付款给自己</translation>
+        <translation>Maksu itsellesi</translation>
     </message>
     <message>
         <source>Mined</source>
-        <translation>挖矿所得</translation>
+        <translation>Louhittu</translation>
     </message>
     <message>
         <source>PrivateSend Denominate</source>
-        <translation>匿名发送面额化</translation>
+        <translation>PrivateSend denominointi</translation>
     </message>
     <message>
         <source>PrivateSend Collateral Payment</source>
-        <translation>匿名发送附加费用</translation>
+        <translation>PrivateSend vakuus maksu</translation>
     </message>
     <message>
         <source>PrivateSend Make Collateral Inputs</source>
-        <translation>匿名发送会产生附加费用</translation>
+        <translation>PrivateSend luo vakuus syötteet</translation>
     </message>
     <message>
         <source>PrivateSend Create Denominations</source>
-        <translation>匿名发送会生成面值额度</translation>
+        <translation>PrivateSend denominointien luonti</translation>
     </message>
     <message>
         <source>PrivateSend</source>
-        <translation>匿名发送</translation>
+        <translation>PrivateSend</translation>
     </message>
     <message>
         <source>watch-only</source>
-        <translation>仅限查看</translation>
+        <translation>vain-luku</translation>
     </message>
     <message>
         <source>(n/a)</source>
-        <translation>(不可用)</translation>
+        <translation>(e/s)</translation>
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(无标签)</translation>
+        <translation>(ei nimeä)</translation>
     </message>
     <message>
         <source>Transaction status. Hover over this field to show number of confirmations.</source>
-        <translation>交易状态。 鼠标移到此区域可显示确认项数量。</translation>
+        <translation>Siirtotapahtuman tila. Siirrä osoitin kentän päälle nähdäksesi vahvistusten lukumäärä.</translation>
     </message>
     <message>
         <source>Date and time that the transaction was received.</source>
-        <translation>接收到交易的时间</translation>
+        <translation>Siirtotapahtuman päivämäärä ja aika.</translation>
     </message>
     <message>
         <source>Type of transaction.</source>
-        <translation>交易类别。</translation>
+        <translation>Siirtotapahtuman tyyppi.</translation>
     </message>
     <message>
         <source>Whether or not a watch-only address is involved in this transaction.</source>
-        <translation>决定是否有一个仅限查看的地址参与这次交易.</translation>
+        <translation>Käytetäänkö vai ei lue-vain osoitetta tässä tapahtumassa.</translation>
     </message>
     <message>
         <source>Whether or not this transaction was locked by InstantSend.</source>
-        <translation>无论此交易是否被即时发送锁定。</translation>
+        <translation>Onko vai ei tämä siirtotapahtuma InstantSend lukittu.</translation>
     </message>
     <message>
         <source>User-defined intent/purpose of the transaction.</source>
-        <translation>用户定义的该交易的意图/目的。</translation>
+        <translation>Käyttäjän määrittämä siirtotapahtuman käyttötarkoitus.</translation>
     </message>
     <message>
         <source>Amount removed from or added to balance.</source>
-        <translation>从余额添加或移除的金额。</translation>
+        <translation>Vähennetty tai lisätty määrä saldoon.</translation>
     </message>
 </context>
 <context>
     <name>TransactionView</name>
     <message>
         <source>All</source>
-        <translation>全部</translation>
+        <translation>Kaikki</translation>
     </message>
     <message>
         <source>Locked by InstantSend</source>
-        <translation>被即时发送锁定</translation>
+        <translation>InstantSend lukittu</translation>
     </message>
     <message>
         <source>Not locked by InstantSend</source>
-        <translation>未被即时发送锁定</translation>
+        <translation>Ei ole InstantSend lukittu</translation>
     </message>
     <message>
         <source>Today</source>
-        <translation>今天</translation>
+        <translation>Tänään</translation>
     </message>
     <message>
         <source>This week</source>
-        <translation>本周</translation>
+        <translation>Tällä viikolla</translation>
     </message>
     <message>
         <source>This month</source>
-        <translation>本月</translation>
+        <translation>Tässä kuussa</translation>
     </message>
     <message>
         <source>Last month</source>
-        <translation>上月</translation>
+        <translation>Viime kuussa</translation>
     </message>
     <message>
         <source>This year</source>
-        <translation>今年</translation>
+        <translation>Tänä vuonna</translation>
     </message>
     <message>
         <source>Range...</source>
-        <translation>范围...</translation>
+        <translation>Alue...</translation>
     </message>
     <message>
         <source>Most Common</source>
-        <translation>最常用的</translation>
+        <translation>Yleiset</translation>
     </message>
     <message>
         <source>Received with</source>
-        <translation>接收于</translation>
+        <translation>Vastaanotettu</translation>
     </message>
     <message>
         <source>Sent to</source>
-        <translation>发送给</translation>
+        <translation>Lähetetty</translation>
     </message>
     <message>
         <source>PrivateSend</source>
-        <translation>匿名发送</translation>
+        <translation>PrivateSend</translation>
     </message>
     <message>
         <source>PrivateSend Make Collateral Inputs</source>
-        <translation>匿名发送会产生附加费用</translation>
+        <translation>PrivateSend luo vakuus syötteet</translation>
     </message>
     <message>
         <source>PrivateSend Create Denominations</source>
-        <translation>匿名发送会生成面值额度</translation>
+        <translation>PrivateSend denominointien luonti</translation>
     </message>
     <message>
         <source>PrivateSend Denominate</source>
-        <translation>匿名发送面额化</translation>
+        <translation>PrivateSend denominointi</translation>
     </message>
     <message>
         <source>PrivateSend Collateral Payment</source>
-        <translation>匿名发送附加费用</translation>
+        <translation>PrivateSend vakuus maksu</translation>
     </message>
     <message>
         <source>To yourself</source>
-        <translation>付款给自己</translation>
+        <translation>Itsellesi</translation>
     </message>
     <message>
         <source>Mined</source>
-        <translation>挖矿所得</translation>
+        <translation>Louhittu</translation>
     </message>
     <message>
         <source>Other</source>
-        <translation>其他</translation>
+        <translation>Muu</translation>
     </message>
     <message>
         <source>Enter address or label to search</source>
-        <translation>输入地址或标签进行搜索</translation>
+        <translation>Anna etsittävä osoite tai tunniste</translation>
     </message>
     <message>
         <source>Min amount</source>
-        <translation>最小金额</translation>
+        <translation>Minimimäärä</translation>
     </message>
     <message>
         <source>Abandon transaction</source>
-        <translation>放弃交易</translation>
+        <translation>Hylätty siirtotapahtuma</translation>
     </message>
     <message>
         <source>Copy address</source>
-        <translation>复制地址</translation>
+        <translation>Kopioi osoite</translation>
     </message>
     <message>
         <source>Copy label</source>
-        <translation>复制标签</translation>
+        <translation>Kopioi nimi</translation>
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>复制金额</translation>
+        <translation>Kopioi määrä</translation>
     </message>
     <message>
         <source>Copy transaction ID</source>
-        <translation>复制交易编号</translation>
+        <translation>Kopioi siirtotunnus</translation>
     </message>
     <message>
         <source>Copy raw transaction</source>
-        <translation>复制原始交易</translation>
+        <translation>Kopioi käsittelemätön siirtotapahtuma</translation>
     </message>
     <message>
         <source>Copy full transaction details</source>
-        <translation>复制完整交易详情</translation>
+        <translation>Kopioi siirtotapahtuman yksityiskohdat</translation>
     </message>
     <message>
         <source>Edit label</source>
-        <translation>编辑标签</translation>
+        <translation>Muokkaa nimeä</translation>
     </message>
     <message>
         <source>Show transaction details</source>
-        <translation>显示交易详情</translation>
+        <translation>Näytä siirtotapahtuman yksityiskohdat</translation>
     </message>
     <message>
         <source>Show address QR code</source>
-        <translation>显示地址二维码</translation>
+        <translation>Näytä osoitteen QR koodi</translation>
     </message>
     <message>
         <source>Export Transaction History</source>
-        <translation>导出交易历史</translation>
+        <translation>Vie siirtotapahtumien historia</translation>
     </message>
     <message>
         <source>Comma separated file (*.csv)</source>
-        <translation>逗号分隔文件 (*.csv)</translation>
+        <translation>Pilkuilla eritelty tiedosto (*.csv)</translation>
     </message>
     <message>
         <source>Confirmed</source>
-        <translation>已确认</translation>
+        <translation>Vahvistettu</translation>
     </message>
     <message>
         <source>Watch-only</source>
-        <translation>仅限查看</translation>
+        <translation>Vain-luku</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>日期</translation>
+        <translation>Päivämäärä</translation>
     </message>
     <message>
         <source>Type</source>
-        <translation>类别</translation>
+        <translation>Tyyppi</translation>
     </message>
     <message>
         <source>Label</source>
-        <translation>标签</translation>
+        <translation>Nimi</translation>
     </message>
     <message>
         <source>Address</source>
-        <translation>地址</translation>
+        <translation>Osoite</translation>
     </message>
     <message>
         <source>ID</source>
@@ -3704,1590 +3708,1591 @@ https://www.transifex.com/projects/p/dash/</translation>
     </message>
     <message>
         <source>Exporting Failed</source>
-        <translation>导出失败</translation>
+        <translation>Vienti epäonnistui</translation>
     </message>
     <message>
         <source>There was an error trying to save the transaction history to %1.</source>
-        <translation>导出交易历史到 %1 时发生错误。</translation>
+        <translation>Siirtotapahtumien historian tallentamisessa tapahtui virhe paikkaan %1.</translation>
     </message>
     <message>
         <source>Exporting Successful</source>
-        <translation>导出成功</translation>
+        <translation>Vienti onnistui</translation>
     </message>
     <message>
         <source>The transaction history was successfully saved to %1.</source>
-        <translation>交易历史已成功保存到 %1。</translation>
+        <translation>Siirtotapahtumien historia tallennettiin onnistuneesti paikkaan %1.</translation>
     </message>
     <message>
         <source>QR code</source>
-        <translation>二维码</translation>
+        <translation>QR koodi</translation>
     </message>
     <message>
         <source>Range:</source>
-        <translation>范围：</translation>
+        <translation>Alue:</translation>
     </message>
     <message>
         <source>to</source>
-        <translation>到</translation>
+        <translation>-&gt;</translation>
     </message>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
     <message>
         <source>Unit to show amounts in. Click to select another unit.</source>
-        <translation>金额显示单位。单击选择其他单位。</translation>
+        <translation>Yksikkö jona summat näytetään. Klikkaa valitaksesi yksikön.</translation>
     </message>
 </context>
 <context>
     <name>WalletFrame</name>
     <message>
         <source>No wallet has been loaded.</source>
-        <translation>没有载入钱包。</translation>
+        <translation>Lompakkoa ei ole ladattu.</translation>
     </message>
 </context>
 <context>
     <name>WalletModel</name>
     <message>
         <source>Send Coins</source>
-        <translation>发送达世币</translation>
+        <translation>Lähetä Ioneja</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 DASH.</source>
-        <translation>即时发送功能目前还不支持发送如此高的金额。目前限制在%1达世币。</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 ION.</source>
+        <translation>InstantSend ei tue näin korkeaa lähetysmäärää vielä. Siirtotapahtumat on tällä hetkellä rajoitettu %1 ION.</translation>
     </message>
     <message>
         <source>Used way too many inputs (&gt;%1) for this InstantSend transaction, fees could be huge.</source>
-        <translation>这个即时发送交易使用过多的输入（&gt;%1），费用可能很大。</translation>
+        <translation>Käytetty liian monia syötteitä (&gt;%1) tähän InstantSend siirtotapahtumaan, siirtokulut voivat olla todella isot.</translation>
     </message>
 </context>
 <context>
     <name>WalletView</name>
     <message>
         <source>&amp;Export</source>
-        <translation>导出(&amp;E)</translation>
+        <translation>&amp;Vie...</translation>
     </message>
     <message>
         <source>Export the data in the current tab to a file</source>
-        <translation>导出当前数据到文件</translation>
+        <translation>Vie tällä hetkellä valitun välilehden tiedot tiedostoon</translation>
     </message>
     <message>
         <source>Selected amount:</source>
-        <translation>选择总额:</translation>
+        <translation>Valittu määrä:</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
-        <translation>备份钱包</translation>
+        <translation>Varmuuskopioi lompakko</translation>
     </message>
     <message>
         <source>Wallet Data (*.dat)</source>
-        <translation>钱包文件(*.dat)</translation>
+        <translation>Lompakkodata (*.dat)</translation>
     </message>
     <message>
         <source>Backup Failed</source>
-        <translation>备份失败</translation>
+        <translation>Varmuuskopiointi epäonnistui</translation>
     </message>
     <message>
         <source>There was an error trying to save the wallet data to %1.</source>
-        <translation>尝试保存钱包数据至 %1 时发生错误。</translation>
+        <translation>Lompakon tallennuksessa tapahtui virhe %1.</translation>
     </message>
     <message>
         <source>Backup Successful</source>
-        <translation>备份成功</translation>
+        <translation>Varmuuskopiointi onnistui</translation>
     </message>
     <message>
         <source>The wallet data was successfully saved to %1.</source>
-        <translation>钱包数据成功保存至 %1 。</translation>
+        <translation>Lompakko tallennettiin onnistuneesti tiedostoon %1.</translation>
     </message>
 </context>
 <context>
-    <name>dash-core</name>
+    <name>ion-core</name>
     <message>
         <source>Bind to given address and always listen on it. Use [host]:port notation for IPv6</source>
-        <translation>与提供地址绑定，持续监听。IPv6请用[host]:port格式</translation>
+        <translation>Kytkeydy annettuun osoitteeseen ja pidä linja aina auki. Käytä [host]:port merkintätapaa IPv6:lle.</translation>
     </message>
     <message>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
-        <translation>错误：监听外来连接失败(监听回馈错误 %s)</translation>
+        <translation>Virhe: Sisääntulevien yhteyksien kuuntelu epäonnistui (kuuntelu palautti virheen %s)</translation>
     </message>
     <message>
         <source>Execute command when a relevant alert is received or we see a really long fork (%s in cmd is replaced by message)</source>
-        <translation>当收到相关警示或产生相当长的分叉时，执行命令(命令中的 %s 会被警示信息代替)</translation>
+        <translation>Aja komento kun olennainen hälytys vastaanotetaan tai nähdään todella pitkä haara (%s cmd korvataan viestillä)</translation>
     </message>
     <message>
         <source>Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)</source>
-        <translation>当钱包有交易改变时需要执行命令(命令中的 %s 会被交易识别码代替)</translation>
+        <translation>Suorita käsky kun lompakon siirtotapahtuma muuttuu (%s cmd on vaihdettu TxID kanssa)</translation>
     </message>
     <message>
         <source>Execute command when the best block changes (%s in cmd is replaced by block hash)</source>
-        <translation>当最新区块改变时需要执行的命令(命令中的 %s 会被区块哈希值代替)</translation>
+        <translation>Suorita käsky kun paras lohko muuttuu (%s cmd on korvattu lohko tarkisteella)</translation>
     </message>
     <message>
         <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
-        <translation>为存储钱包密码的KeePass入口链接命名</translation>
+        <translation>Rakenne url nimi KeePass merkinnälle joka tallentaa lompakon salasanan</translation>
     </message>
     <message>
         <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
-        <translation>设置以字节为单位的高优先级或低费率交易的最大数(默认：%d)</translation>
+        <translation>Aseta maksimikoko korkea prioriteetti/pienen siirtomaksun siirtotapahtumiin tavuissa (oletus: %d)</translation>
     </message>
     <message>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
-        <translation>设置脚本确认线程数(%u到%d，0 = 自动，&lt;0 = 保留处理器核心不用的数目， 默认：%d)</translation>
+        <translation>Aseta script vahvistuksen säikeiden määrä (%u - %d, 0= auto, &lt;0 = jätä näin monta prosessorin ydintä vapaaksi, oletus: %d)</translation>
     </message>
     <message>
         <source>This is a pre-release test build - use at your own risk - do not use for mining or merchant applications</source>
-        <translation>这是一个预发布测试版本 - 您自己承担风险使用 - 采矿商或交易商不要使用本应用程序</translation>
+        <translation>Tämä on esijulkaistu testiversio - Käytä omalla vastuulla - Älä käytä louhimiseen tai kauppasovelluksiin.</translation>
     </message>
     <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
-        <translation>警告: 达世币网路对于区块链结的决定目前有分歧！看来有些矿工会有问题。</translation>
+        <translation>Varoitus: Ion verkossa on ristiriitoja! Louhijat näyttävät kokevan virhetilanteita.</translation>
     </message>
     <message>
         <source>Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade.</source>
-        <translation>警告: 我们和某些连线的节点对于区块链结的决定不同！你可能需要升级，或是需要等其它的节点升级。</translation>
+        <translation>Varoitus: Olemme vertaisverkon kanssa ristiriidassa! Sinun ja/tai solmujen tulee päivitää uusimpaan versioon.</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>
-        <translation>接受命令行以及JSON-RPC命令</translation>
+        <translation>Hyväksy merkkipohjaiset ja JSON-RPC käskyt</translation>
     </message>
     <message>
         <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>添加一个可连接节点，并尝试保持连接开放。</translation>
+        <translation>Lisää solmu mihin liittyä pitääksesi yhteyden auki</translation>
     </message>
     <message>
         <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
-        <translation>允许对-addnode，-seednode，-connect的参数使用DNS查询</translation>
+        <translation>Salli DNS kyselyt -addnode, -seednode ja -connect yhteydessä</translation>
     </message>
     <message>
         <source>Already have that input.</source>
-        <translation>输入已存在。</translation>
+        <translation>Syöte on jo olemassa.</translation>
     </message>
     <message>
         <source>Block creation options:</source>
-        <translation>区块创建选项：</translation>
+        <translation>Lohkon luonnin asetukset:</translation>
     </message>
     <message>
         <source>Cannot downgrade wallet</source>
-        <translation>不能降级钱包</translation>
+        <translation>Et voi päivittää lompakkoasi vanhempaan versioon</translation>
     </message>
     <message>
         <source>Cannot write default address</source>
-        <translation>不能写入默认地址</translation>
+        <translation>Oletusosoitetta ei voi kirjoittaa</translation>
     </message>
     <message>
         <source>Collateral not valid.</source>
-        <translation>并行无效。</translation>
+        <translation>Vakuus ei ole pätevä.</translation>
     </message>
     <message>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
-        <translation>连接至节点来取得其地址后断开连接</translation>
+        <translation>Yhdistä solmuun hakeaksesi peers osoitteet ja katkaise yhteys</translation>
     </message>
     <message>
         <source>Connection options:</source>
-        <translation>连接选项：</translation>
+        <translation>Yhteyden valinnat:</translation>
     </message>
     <message>
         <source>Corrupted block database detected</source>
-        <translation>区块数据库已损坏</translation>
+        <translation>Vioittunut lohkotietokanta havaittu</translation>
     </message>
     <message>
         <source>Debugging/Testing options:</source>
-        <translation>调试/测试 选项：</translation>
+        <translation>Debuggaus/Testauksen valinnat:</translation>
     </message>
     <message>
         <source>Do not load the wallet and disable wallet RPC calls</source>
-        <translation>不要载入钱包并禁用钱包的RPC调用</translation>
+        <translation>Älä lataa lompakkoa ja poista käytöstä lompakon RPC kutsut</translation>
     </message>
     <message>
         <source>Do you want to rebuild the block database now?</source>
-        <translation>您想要现在重建区块数据库吗？</translation>
+        <translation>Haluatko uudelleen rakentaa lohkotietokannan nyt?</translation>
     </message>
     <message>
         <source>Done loading</source>
-        <translation>读取完成</translation>
+        <translation>Lataus on valmis</translation>
     </message>
     <message>
         <source>Entries are full.</source>
-        <translation>词条已满。</translation>
+        <translation>Merkinnät on täynnä.</translation>
     </message>
     <message>
         <source>Error initializing block database</source>
-        <translation>初始化区块数据库错误</translation>
+        <translation>Virhe lohkotietokannan alustuksessa</translation>
     </message>
     <message>
         <source>Error initializing wallet database environment %s!</source>
-        <translation>初始化钱包数据库环境错误 %s！</translation>
+        <translation>Virhe lompakon tietokantaympäristön alustuksessa %s!</translation>
     </message>
     <message>
         <source>Error loading block database</source>
-        <translation>读取区块数据库错误</translation>
+        <translation>Virhe lohkotietokannan latauksessa</translation>
     </message>
     <message>
         <source>Error opening block database</source>
-        <translation>打开区块数据库错误</translation>
+        <translation>Virhe lohkotietokannan avauksessa</translation>
     </message>
     <message>
         <source>Error reading from database, shutting down.</source>
-        <translation>读取数据库错误，正在关闭。</translation>
+        <translation>Virhe luettaessa tietokantaa, ohjelma suljetaan.</translation>
     </message>
     <message>
         <source>Error</source>
-        <translation>错误</translation>
+        <translation>Virhe</translation>
     </message>
     <message>
         <source>Error: Disk space is low!</source>
-        <translation>错误：磁盘空间不够！</translation>
+        <translation>Virhe: Levytila on alhainen!</translation>
     </message>
     <message>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
-        <translation>监听端口失败。如果想使用此项，可设定-listen=0。</translation>
+        <translation>Ei onnistuttu kuuntelemaan mitään porttia. Käytä -listen=0 jos haluat tätä.</translation>
     </message>
     <message>
         <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
-        <translation>(1 = 保留交易描述数据，例如账户持有人和交易请求信息，2 = 丢弃交易描述数据)</translation>
+        <translation>(1 = pidä tx meta data esim. tilin omistaja ja maksupyyntö tiedot, 2 = poista tx meta data)</translation>
     </message>
     <message>
         <source>-maxtxfee is set very high! Fees this large could be paid on a single transaction.</source>
-        <translation>-maxtxfee 设定了很高的金额！这是您一次交易就有可能付出的手续费。</translation>
+        <translation>-maxtxfee on asetettu erittäin korkeaksi! Näin isot siirtomaksut voitaisiin maksaa yhdessä siirtotapahtumassa.</translation>
     </message>
     <message>
         <source>A fee rate (in %s/kB) that will be used when fee estimation has insufficient data (default: %s)</source>
-        <translation>费用估算数据不足时将使用的费用（以%s/kB为单位）（预设值：%s）</translation>
+        <translation>Siirtomaksun taso (%s/kB) jota käytetään kun siirtomaksun arvion tiedot ovat puutteelliset (oletus: %s)</translation>
     </message>
     <message>
         <source>Accept relayed transactions received from whitelisted peers even when not relaying transactions (default: %d)</source>
-        <translation>即使在没有中继交易发生的情况下仍然接受来自节点白名单的中继交易（预设值：%d）</translation>
+        <translation>Hyväksy välitetyt siirtopahtumat jotka on vastaanotettu luotettavilta solmuilta, vaikka ei välitetä siirtopahtumia (oletus: %d)</translation>
     </message>
     <message>
         <source>Allow JSON-RPC connections from specified source. Valid for &lt;ip&gt; are a single IP (e.g. 1.2.3.4), a network/netmask (e.g. 1.2.3.4/255.255.255.0) or a network/CIDR (e.g. 1.2.3.4/24). This option can be specified multiple times</source>
-        <translation>允许指定来源建立与JSON-RPC的连接。&lt;ip&gt; 的有效值可以是单独IP(例如1.2.3.4)，一个网络/子网掩码(例如 1.2.3.4/255.255.255.0)，或网络/CIDR(例如1.2.3.4/24)。这个选项可以多次设定。</translation>
+        <translation>Salli JSON-RPC yhteydet määritetystä lähteestä. Pätee &lt;ip&gt; yksittäiseen IP:n (esim. 1.2.3.4), verkko/verkkomaski (esim. 1.2.3.4/255.255.255.0) tai verkko/CIDR (esim. 1.2.3.4/24). Tämä asetus voidaan määrittää useita kertoja.</translation>
     </message>
     <message>
         <source>Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6</source>
-        <translation>和指定的地址连接，並且将连接的节点放入白名单中。IPv6请用[host]:port格式</translation>
+        <translation>Kytkeydy annettuun osoitteeseen ja merkitse siihen kytkeytyvät peers:it luotettaviksi. Käytä [host]:port merkintätapaa IPv6:lle.</translation>
     </message>
     <message>
         <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
-        <translation>创建系统默认权限的文件，而不是 umask 077 (只在关闭钱包功能时有效) </translation>
+        <translation>Luo uudet tiedostot järjestelmän oletus oikeuksilla, paitsi umask 077 (voimassa vain käytöstä poistettujen lompakon toimintojen kanssa)</translation>
     </message>
     <message>
         <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
-        <translation>删除钱包里的所有交易信息, 并且在下次启动时, 使用 -rescan 来从区块链中恢复</translation>
+        <translation>Poista kaikki lompakon siirtotapahtumat ja palauta vain nuo osat lohkoketjusta -rescan valinnan avulla käynnistyksessä</translation>
     </message>
     <message>
         <source>Enable publish raw transactions of attempted InstantSend double spend in &lt;address&gt;</source>
-        <translation>允许在 &lt;address&gt;中发布尝试即时支付双花的原始交易</translation>
+        <translation>Ota käyttöön julkaise raaka siirtotapahtuma kaksoiskäytön yrityksessä InstantSend osoitteessa &lt;address&gt;</translation>
     </message>
     <message>
         <source>Enable publish transaction hashes of attempted InstantSend double spend in &lt;address&gt;</source>
-        <translation>允许在 &lt;address&gt;中发布尝试即时支付双花的交易哈希值</translation>
+        <translation>Ota käyttöön julkaise siirtotapahtuman tarkisteet kaksoiskäytön yrityksessä InstantSend osoitteessa &lt;address&gt;</translation>
     </message>
     <message>
         <source>Error loading %s: You can't enable HD on a already existing non-HD wallet</source>
-        <translation>加载%s时出错：您不能够在非HD钱包上启用HD功能</translation>
+        <translation>Virhe latauksessa %s: Et voi ottaa käyttöön HD:tä jo olemassa olevassa ei-HD lompakossa</translation>
     </message>
     <message>
         <source>Found unconfirmed denominated outputs, will wait till they confirm to continue.</source>
-        <translation>未确认的面额化输出，将等待他们确认后继续。</translation>
+        <translation>Löytyi vahvistamattomia denominoituja lähtöjä, odotetaan että ne vahvistetaan.</translation>
     </message>
     <message>
         <source>How thorough the block verification of -checkblocks is (0-4, default: %u)</source>
-        <translation>使用 -checkblocks 检查区块的仔细程度 (0-4，默认：%u)</translation>
+        <translation>Kuinka vaativa lohkon vahvistus -checkblocks on (0-4, oletus: %u)</translation>
     </message>
     <message>
         <source>If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)</source>
-        <translation>当没有设定 paytxfee 时, 自动包含可以让交易能在平均 n 个区块内开始确认的手续费 (默认：%u)</translation>
+        <translation>Jos paytxfee ei ole asetettu, sisällytä tarpeeksi siirtomaksua jotta siirtotapahtuman vahvistus alkaa keskimäärin lohkon aikana (oletus: %u)</translation>
     </message>
     <message>
         <source>If this block is in the chain assume that it and its ancestors are valid and potentially skip their script verification (0 to verify all, default: %s, testnet: %s)</source>
-        <translation>如果在这条链中的区块假设它和它之前的内存块是有效的，并有可能跳过他们的脚本验证（0是验证全部，默认：%s，testnet：%s）</translation>
+        <translation>Jos tämä lohko on ketjussa, oletetaan että se ja esivanhemmat ovat validit ja mahdollisesti ohita niiden koodivahvistus (0 vahvista kaikki, oletus: %s, testiverkko: %s)</translation>
     </message>
     <message>
         <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
-        <translation>设定 -maxtxfee=&lt;金额&gt;  的金额无效&lt;amount&gt;：'%s' (必须大于等于最低转发手续费%s 以避免交易无法被确认)</translation>
+        <translation>Virheellinen määrä -maxtxfee=&lt;amount&gt;: '%s' (oltava vähintään minimi välitysmaksun verran %s:sta välttääksesi jumissa olevia siirtotapahtumia)</translation>
     </message>
     <message>
         <source>Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)</source>
-        <translation>维护一份完整的交易索引, 用于 getrawtransaction RPC调用 (默认：%u)</translation>
+        <translation>Ylläpidä täyttä siirtotapahtumien indeksiä, jota käyttää getrawtransaction rpc kutsu (oletus: %u)</translation>
     </message>
     <message>
         <source>Make sure to encrypt your wallet and delete all non-encrypted backups after you verified that wallet works!</source>
-        <translation>请确保加密您的钱包，并在验证您的钱包能够运作后删除所有未加密的备份！</translation>
+        <translation>Muista salata lompakkosi ja poistaa kaikki salaamattomat varmistukset sen jälkeen kun olet todennut että lompakko toimii!</translation>
     </message>
     <message>
         <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
-        <translation>转发和挖矿时，对只带数据的交易的大小上限（默认：%u）</translation>
+        <translation>Maksimi koko datalle datan kuljetustapahtumissa jotka välitämme ja louhimme (oletus: %u)</translation>
     </message>
     <message>
         <source>Number of seconds to keep misbehaving peers from reconnecting (default: %u)</source>
-        <translation>避免与异常的节点重新连接的秒数（预设：%u）</translation>
+        <translation>Sekuntien määrä, kuinka kauan estetään huonosti käyttäytyviä peers:ejä uudelleen kytkeytymästä (oletus: %u)</translation>
     </message>
     <message>
         <source>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</source>
-        <translation>输出调试信息(默认：%u，&lt;category&gt;是可选项)</translation>
+        <translation>Tulosta debuggaustieto (oletus: %u, tarjottava &lt;category&gt; on valinnainen)</translation>
     </message>
     <message>
         <source>Overrides minimum spork signers to change spork value. Only useful for regtest and devnet. Using this on mainnet or testnet will ban you.</source>
-        <translation>重写最少数叉勺签名人以更改叉勺值。仅适用于 regtest 和 devnet。在主网或测试网络使用会被禁止。</translation>
+        <translation>Ohittaa vähimmäis spork allekirjoittajat jotka vaihtavat spork arvoja. Käyttökelpoinen vain regtest tai devnet. Jos käytät tätä pääverkossa tai testiverkossa, joudut estolistalle, eli bannataan.</translation>
     </message>
     <message>
         <source>Use N separate masternodes in parallel to mix funds (%u-%u, default: %u)</source>
-        <translation>同时使用 N 个独立主节点来混淆资金 (%u-%u, default: %u)</translation>
+        <translation>Käytä N erillistä masternodea yhtäaikaiseen varojen sekoitukseen (%u-%u, oletus: %u)</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
-        <translation>使用独立的SOCK5 代理服务器, 来通过Tor 隐藏服务器与节点的连接 (默认: %s)</translation>
+        <translation>Käytä erillistä SOCKS5 proxya tavoittaaksesi peers:it Tor piilotetun palvelun kautta (oletus: %s)</translation>
     </message>
     <message>
         <source>User defined mnemonic for HD wallet (bip39). Only has effect during wallet creation/first start (default: randomly generated)</source>
-        <translation>用户自定义的HD钱包（bip39）。仅在创建钱包/首次启动时有效（默认：随机生成）</translation>
+        <translation>Käyttäjän määrittelemä mnemonic salasana HD lompakolle (bip39). Vaikuttaa vain uuden lompakon luomisessa/ensimmäisessä käynnistyksessä (oletus: satunnaisesti generoitu)</translation>
     </message>
     <message>
         <source>User defined seed for HD wallet (should be in hex). Only has effect during wallet creation/first start (default: randomly generated)</source>
-        <translation>用户自定义的HD钱包种子（应该是十六进制）。仅在创建钱包/首次启动时有效（默认：随机生成）</translation>
+        <translation>Käyttäjän määrittelemä siemen HD lompakolle (pitäisi olla hex muodossa). Vaikuttaa vain uuden lompakon luomisessa/ensimmäisessä käynnistyksessä (oletus: satunnaisesti generoitu)</translation>
     </message>
     <message>
         <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
-        <translation>在白名单中的节点不会因为检测到DoS攻击而被停用。来自这些节点的交易也一定会被转发，即使说交易本来就在记忆池里了也一样。适用于像是网关服务器</translation>
+        <translation>Luotettaviksi merkittyjä peers:jä ei voida DoS estää, ja niiden siirtotapahtumat välitetään aina, vaikka ne olisvatkin jo muistivarannossa, käyttökelpoinen esim. yhdyskäytävään</translation>
     </message>
     <message>
         <source>You need to rebuild the database using -reindex-chainstate to change -txindex</source>
-        <translation>你需要通过使用 -reindex-chainstate改变-txindex来重建数据库</translation>
+        <translation>Sinun tulee uudelleen rakentaa tietokanta käyttäen -reindex-chainstate vaihtaen -txindex</translation>
     </message>
     <message>
         <source>You should specify a masternodeblsprivkey in the configuration. Please see documentation for help.</source>
-        <translation>您应当在设置中具体标注 masternodeblsprivkey。请阅读文档获得帮助。</translation>
+        <translation>Sinun täytyy määritellä masternodeblsprivkey asetustiedostoon. Katso lisätietoja dokumentaatiosta.</translation>
     </message>
     <message>
         <source>(default: %s)</source>
-        <translation>(默认：%s)</translation>
+        <translation>(oletus: %s)</translation>
     </message>
     <message>
         <source>-wallet parameter must only specify a filename (not a path)</source>
-        <translation>-wallet 参数必须仅指定文件名 (非路径)</translation>
+        <translation>-wallet parametrin täytyy määrittää vain tiedostonimi (ei polkua)</translation>
     </message>
     <message>
         <source>Accept public REST requests (default: %u)</source>
-        <translation>接受公开的REST请求(默认：%u)</translation>
+        <translation>Hyväksy julkiset REST pyynnöt (oletus: %u)</translation>
     </message>
     <message>
         <source>Always query for peer addresses via DNS lookup (default: %u)</source>
-        <translation>是否总是通过DNS查询来搜寻节点（预设值：%u）</translation>
+        <translation>Tiedustele aina peers osoitteita DNS hakua käyttäen (oletus: %u)</translation>
     </message>
     <message>
         <source>Can't mix: no compatible inputs found!</source>
-        <translation>无法混合：没有找到兼容的输入！</translation>
+        <translation>Ei voida sekoittaa: yhteensopivia syötteitä ei löytynyt!</translation>
     </message>
     <message>
         <source>Chain selection options:</source>
-        <translation>选择区块链选项：</translation>
+        <translation>Ketjun valinta-asetukset: </translation>
     </message>
     <message>
         <source>Connect through SOCKS5 proxy</source>
-        <translation>通过SOCKS5代理连接</translation>
+        <translation>Yhdistä SOCKS5 proxyn kautta</translation>
     </message>
     <message>
         <source>Connect to KeePassHttp on port &lt;port&gt; (default: %u)</source>
-        <translation>连接至 KeePassHttp 端口 &lt;port&gt; (默认：%u)</translation>
+        <translation>Yhdistä KeePassHttp porttiin &lt;port&gt; (oletus: %u)</translation>
     </message>
     <message>
         <source>Enable the client to act as a masternode (0-1, default: %u)</source>
-        <translation>激活客户端，使其作为主节点(0-1，默认：%u)</translation>
+        <translation>Aktivoi asiakasohjelman käyttö masternode:na (0-1, oletus: %u)</translation>
     </message>
     <message>
         <source>Entry exceeds maximum size.</source>
-        <translation>条目超过最大值。</translation>
+        <translation>Merkintä ylittää maksimin.</translation>
     </message>
     <message>
         <source>Error loading %s: You can't disable HD on a already existing HD wallet</source>
-        <translation>加载%s时出错：您不能在HD钱包上禁用HD功能</translation>
+        <translation>Virhe latauksessa %s: Et voi poistaa käytöstä HD:tä jo olemassa olevassa HD lompakossa</translation>
     </message>
     <message>
         <source>Failed to load fulfilled requests cache from</source>
-        <translation>无法加载完成请求缓存</translation>
+        <translation>Täytettyjen pyyntöjen välimuistin lataaminen epäonnistui</translation>
     </message>
     <message>
         <source>Failed to load governance cache from</source>
-        <translation>无法加载治理缓存</translation>
+        <translation>Hallinnon välimuistin lataaminen epäonnistui</translation>
     </message>
     <message>
         <source>Failed to load masternode cache from</source>
-        <translation>无法加载主节点缓存</translation>
+        <translation>Masternode välimuistin lataaminen epäonnistui</translation>
     </message>
     <message>
         <source>Found enough users, signing ( waiting %s )</source>
-        <translation>用户数已满足，开始签名 (等待 %s)</translation>
+        <translation>Löytyi tarpeeksi käyttäjiä, kirjaudutaan ( odotetaan %s )</translation>
     </message>
     <message>
         <source>Found enough users, signing ...</source>
-        <translation>用户数已满足，开始签名 ... </translation>
+        <translation>Löytyi tarpeeksi käyttäjiä, kirjaudutaan ...</translation>
     </message>
     <message>
         <source>How many blocks to check at startup (default: %u, 0 = all)</source>
-        <translation>启动时检测多少个区块(默认：%u，0=所有)</translation>
+        <translation>Kuinka monta lohkoa tarkistetaan käynnistyksessä (oletus: %u, 0 = kaikki)</translation>
     </message>
     <message>
         <source>Importing...</source>
-        <translation>正在导入...</translation>
+        <translation>Tuodaan...</translation>
     </message>
     <message>
         <source>Include IP addresses in debug output (default: %u)</source>
-        <translation>在调试输出内容中包含网络IP地址(默认: %u)</translation>
+        <translation>Sisällytä IP osoitteet virhelogiin (oletus: %u)</translation>
     </message>
     <message>
         <source>Incompatible mode.</source>
-        <translation>不兼容模式。</translation>
+        <translation>Yhteensopimaton tila.</translation>
     </message>
     <message>
         <source>Incompatible version.</source>
-        <translation>不兼容版本。</translation>
+        <translation>Yhteensopimaton versio.</translation>
     </message>
     <message>
         <source>Incorrect or no genesis block found. Wrong datadir for network?</source>
-        <translation>不正确或没有找到创世区块。错误的数据目录？</translation>
+        <translation>Väärä tai ei alkuperäinen lohko löydetty. Väärä datahakemisto verkolle?</translation>
     </message>
     <message>
         <source>Information</source>
-        <translation>信息</translation>
+        <translation>Tietoja</translation>
     </message>
     <message>
         <source>Input is not valid.</source>
-        <translation>输入是无效的。</translation>
+        <translation>Syöte ei ole pätevä.</translation>
     </message>
     <message>
         <source>Insufficient funds.</source>
-        <translation>余额不足。</translation>
+        <translation>Saldo ei riitä.</translation>
     </message>
     <message>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
-        <translation>设定 -paytxfee=&lt;金额&gt;  的金额无效：'%s' (至少要有%s)</translation>
+        <translation>Virheellinen määrä -maxtxfee=&lt;amount&gt;: '%s' (oltava vähintään %s)</translation>
     </message>
     <message>
         <source>Invalid masternodeblsprivkey. Please see documenation.</source>
-        <translation>无效的 masternodeblsprivkey。请阅读文档。</translation>
+        <translation>Virheellinen masternodeblsprivkey. Katso lisätietoja dokumentaatiosta.</translation>
     </message>
     <message>
         <source>Invalid minimum number of spork signers specified with -minsporkkeys</source>
-        <translation>无效的最少数叉勺签名人以  -minsporkkeys 标识</translation>
+        <translation>Virheellinen minimi määrä spork allekirjoittajia määritelty -minsporkkeys</translation>
     </message>
     <message>
         <source>Keypool ran out, please call keypoolrefill first</source>
-        <translation>Keypool用完了，请先调用keypoolrefill</translation>
+        <translation>Osoitevaranto on tyhjä, tee ensin uudelleen täyttö komennolla keypoolrefill</translation>
     </message>
     <message>
         <source>Listen for JSON-RPC connections on &lt;port&gt; (default: %u or testnet: %u)</source>
-        <translation>在通信端口&lt;port&gt;监听JSON-RPC连接(默认：%u 或 测试网络：%u)</translation>
+        <translation>Kuuntele JSON-RPC yhteyksiä portissa &lt;port&gt; (oletus: %u tai testiverkossa: %u)</translation>
     </message>
     <message>
         <source>Listen for connections on &lt;port&gt; (default: %u or testnet: %u)</source>
-        <translation>在通信端口&lt;port&gt;监听连接（默认：%u，或若为测试网络：%u）</translation>
+        <translation>Kuuntele yhteyksiä portissa &lt;port&gt; (oletus: %u tai testiverkossa: %u)</translation>
     </message>
     <message>
         <source>Loading banlist...</source>
-        <translation>正在加载黑名单...</translation>
+        <translation>Ladataan estolistaa...</translation>
     </message>
     <message>
         <source>Loading fulfilled requests cache...</source>
-        <translation>正在加载己完成请求的缓存…</translation>
+        <translation>Ladataan toteutuneiden pyyntöjen välimuistia...</translation>
     </message>
     <message>
         <source>Loading masternode cache...</source>
-        <translation>正在读取主节点缓存...</translation>
+        <translation>Ladataan masternode välimuistia...</translation>
     </message>
     <message>
         <source>Lock is already in place.</source>
-        <translation>已锁定。</translation>
+        <translation>On jo lukittu.</translation>
     </message>
     <message>
         <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
-        <translation>每个连接的最大接收缓存，&lt;n&gt;*1000 字节 (默认：%u)</translation>
+        <translation>Maksimi per yhteys vastaanotto puskuri, &lt;n&gt;*1000 tavua (oletus: %u)</translation>
     </message>
     <message>
         <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
-        <translation>每个连接的最大发送缓存，&lt;n&gt;*1000 字节 (默认：%u)</translation>
+        <translation>Maksimi per yhteys lähetys puskuri, &lt;n&gt;*1000 tavua (oletus: %u)</translation>
     </message>
     <message>
         <source>Mixing in progress...</source>
-        <translation>正在混合...</translation>
+        <translation>Sekoitus käynnissä...</translation>
     </message>
     <message>
         <source>Mnemonic passphrase is too long, must be at most 256 characters</source>
-        <translation>助记密码太长，不得超过256个字符</translation>
+        <translation>Mnemonic salasana on liian pitkä, maksimi on 256 merkkiä</translation>
     </message>
     <message>
         <source>Need to specify a port with -whitebind: '%s'</source>
-        <translation>指定-whitebind时必须包含通信端口： '%s'</translation>
+        <translation>Tarvitaan määritellä portti -whitebind: '%s'</translation>
     </message>
     <message>
         <source>No Masternodes detected.</source>
-        <translation>没有检测到任何主节点。</translation>
+        <translation>Masternodeja ei havaittu.</translation>
     </message>
     <message>
         <source>No compatible Masternode found.</source>
-        <translation>没有找到任何兼容的主节点。</translation>
+        <translation>Yhteensopivaa Masternodea ei löytynyt.</translation>
     </message>
     <message>
         <source>Not in the Masternode list.</source>
-        <translation>在主节点列表中不存在。</translation>
+        <translation>Ei ole Masternodet listassa.</translation>
     </message>
     <message>
         <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
-        <translation>在网络中只连接至节点 &lt;net&gt; (ipv4，ipv6 或 onion)</translation>
+        <translation>Kytkeydy verkon solmuihin vain &lt;net&gt; (ipv4, ipv6 tai onion)</translation>
     </message>
     <message>
         <source>Prepend debug output with timestamp (default: %u)</source>
-        <translation>在调试输出内容前附加时间戳 (默认：%u)</translation>
+        <translation>Lisää debug lokitiedoston merkinnän alkuun pvm/aika (oletus: %u)</translation>
     </message>
     <message>
         <source>Rebuild chain state and block index from the blk*.dat files on disk</source>
-        <translation>从磁盘上的blk*.dat文件重建区块链状态和区块索引</translation>
+        <translation>Uudelleen rakenna ketjun tila ja lohkoindeksi nykyisistä blk*.dat tiedostoista levyllä</translation>
     </message>
     <message>
         <source>Rebuild chain state from the currently indexed blocks</source>
-        <translation>从当前索引的区块中重建链状态</translation>
+        <translation>Uudelleen rakenna ketjun tila nykyisistä indeksoiduista lohkoista</translation>
     </message>
     <message>
         <source>Send trace/debug info to debug.log file (default: %u)</source>
-        <translation>发送追踪或除错信息到debug.log中 (默认：%u)</translation>
+        <translation>Lähetä jäljitys/debug tiedot debug.log tiedostoon (default: %u)</translation>
     </message>
     <message>
         <source>Send transactions as zero-fee transactions if possible (default: %u)</source>
-        <translation>如果可能，发送零手续费的交易(默认：%u)</translation>
+        <translation>Lähetä siirtotapahtumat nolla siirtomaksulla jos mahdollista (oletus: %u)</translation>
     </message>
     <message>
         <source>Set key pool size to &lt;n&gt; (default: %u)</source>
-        <translation>设置密匙池大小至&lt;n&gt; (默认：%u)</translation>
+        <translation>Aseta avainvarannon koko &lt;n&gt; (oletus: %u)</translation>
     </message>
     <message>
         <source>Set the masternode BLS private key</source>
-        <translation>设置主节点 BLS 私钥</translation>
+        <translation>Aseta masternoden BLS yksityisavain</translation>
     </message>
     <message>
         <source>Set the number of threads to service RPC calls (default: %d)</source>
-        <translation>设定处理RPC 服务请求的线程数(默认：%d)</translation>
+        <translation>Aseta säikeiden lukumäärä RPC kutsuille (oletus: %d)</translation>
     </message>
     <message>
         <source>Specify configuration file (default: %s)</source>
-        <translation>指定配置文件(默认：%s)</translation>
+        <translation>Määritä asetustiedosto (oletus: %s)</translation>
     </message>
     <message>
         <source>Specify connection timeout in milliseconds (minimum: 1, default: %d)</source>
-        <translation>指定连接超时毫秒数 (最小值：1，默认：%d)</translation>
+        <translation>Määritä yhteyden aikakatkaisu millisekunneissa (minimi: 1, oletus: %d)</translation>
     </message>
     <message>
         <source>Specify pid file (default: %s)</source>
-        <translation>指定pid 文件 (默认：%s)</translation>
+        <translation>Määritä pid tiedosto (oletus: %s)</translation>
     </message>
     <message>
         <source>Spend unconfirmed change when sending transactions (default: %u)</source>
-        <translation>发送交易时花费未确认的费用(默认：%u)</translation>
+        <translation>Käytä vahvistamattomia vaihtorahoja lähetettäessä siirtotapahtumia (oletus: %u)</translation>
     </message>
     <message>
         <source>Submitted to masternode, waiting in queue %s</source>
-        <translation>提交到主节点，在队列 %s 中等待</translation>
+        <translation>Lähetetty masternodelle, odotetaan jonossa %s</translation>
     </message>
     <message>
         <source>Synchronization failed</source>
-        <translation>同步失败</translation>
+        <translation>Synkronointi epäonnistui</translation>
     </message>
     <message>
         <source>Synchronization finished</source>
-        <translation>同步完成</translation>
+        <translation>Synkronointi valmis</translation>
     </message>
     <message>
         <source>This is not a Masternode.</source>
-        <translation>这并不是一个主节点。</translation>
+        <translation>Tämä ei ole Masternode.</translation>
     </message>
     <message>
         <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
-        <translation>断开无效节点的临界值(默认：%u)</translation>
+        <translation>Yhteyden kynnysaika huonosti käyttäytyville peers:lle (oletus: %u)</translation>
     </message>
     <message>
         <source>Too many %f denominations, removing.</source>
-        <translation>太多%f面额化资金，正在移除。</translation>
+        <translation>Liian monta %f denominointia, poistetaan.</translation>
     </message>
     <message>
         <source>Too many %f denominations, skipping.</source>
-        <translation>太多 %f 面额，跳过。</translation>
+        <translation>Liian monta %f denominointia, ohitetaan.</translation>
     </message>
     <message>
         <source>Tor control port password (default: empty)</source>
-        <translation>Tor 控制端口密码 (默认值：空白)</translation>
+        <translation>Tor hallintaportin salasana (oletus: tyhjä)</translation>
     </message>
     <message>
         <source>Tor control port to use if onion listening enabled (default: %s)</source>
-        <translation>开启监听 onion 连接时的 Tor 控制端口 (默认：%s)</translation>
+        <translation>Käytettävä Tor hallintaportti jos onion kuuntelu käytössä (oletus: %s)</translation>
     </message>
     <message>
         <source>Unable to start HTTP server. See debug log for details.</source>
-        <translation>无法启动HTTP服务，查看日志获取更多信息。</translation>
+        <translation>HTTP palvelinta ei voitu käynnistää. Katso debug.log lisätietoja.</translation>
     </message>
     <message>
         <source>Unknown response.</source>
-        <translation>未知响应。</translation>
+        <translation>Tuntematon vastaus.</translation>
     </message>
     <message>
         <source>Unsupported argument -benchmark ignored, use -debug=bench.</source>
-        <translation>忽略不支持的选项 -benchmark，使用 -debug=bench</translation>
+        <translation>Ei tuettu argumentti -benchmark jätetty huomiotta, käytä -debug=bench.</translation>
     </message>
     <message>
         <source>Unsupported argument -debugnet ignored, use -debug=net.</source>
-        <translation>忽略不支持的选项 -debugnet，使用 -debug=net。</translation>
+        <translation>Ei tuettu argumentti -debugnet jätetty huomiotta, käytä -debug=net.</translation>
     </message>
     <message>
         <source>Unsupported argument -tor found, use -onion.</source>
-        <translation>忽略不支持的选项 -tor，使用 -oinon</translation>
+        <translation>Ei tuettu argumentti -tor löytyi, käytä -onion.</translation>
     </message>
     <message>
         <source>Upgrade wallet to latest format on startup</source>
-        <translation>程序启动时升级钱包到最新格式</translation>
+        <translation>Päivitä lompakkotiedosto uusimpaan formaattiin käynnistyksessä</translation>
     </message>
     <message>
         <source>Use KeePass 2 integration using KeePassHttp plugin (default: %u)</source>
-        <translation>使用KeePass 2集成KeePassHttp插件(默认：%u)</translation>
+        <translation>Käytä KeePass 2 integraatiota käyttäen KeePassHttp liitännäistä (oletus: %u)</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: %u)</source>
-        <translation>使用UPnP来映射监听端口(默认：%u)</translation>
+        <translation>Käytä UPnP:tä kuunneltavan portin kartoitukseen (oletus: %u)</translation>
     </message>
     <message>
         <source>Use the test chain</source>
-        <translation>使用测试链</translation>
+        <translation>Käytä testilohkoketjua</translation>
     </message>
     <message>
         <source>User Agent comment (%s) contains unsafe characters.</source>
-        <translation>用户代理评论(%s)包含不安全的字符。</translation>
+        <translation>Käyttäjä toimijan kommentti (%s) sisältää ei suositeltuja merkkejä.</translation>
     </message>
     <message>
         <source>Will retry...</source>
-        <translation>即将重试...</translation>
+        <translation>Yritetään uudelleen...</translation>
     </message>
     <message>
         <source>Can't find random Masternode.</source>
-        <translation>无法找到随机主节点。</translation>
+        <translation>Satunnaista Masternodea ei löydy.</translation>
     </message>
     <message>
         <source>Can't mix while sync in progress.</source>
-        <translation>无法在同步过程中进行混合。</translation>
+        <translation>Ei voida sekoittaa synkronoinnin aikana.</translation>
     </message>
     <message>
         <source>Invalid netmask specified in -whitelist: '%s'</source>
-        <translation>在 -whitelist中指定了无效的子网掩码：'%s'</translation>
+        <translation>Virheellinen verkkomaski määritelty -whitelist: '%s'</translation>
     </message>
     <message>
         <source>Invalid script detected.</source>
-        <translation>检测到无效脚本。</translation>
+        <translation>Virheellinen scripti havaittu.</translation>
     </message>
     <message>
         <source>KeePassHttp id for the established association</source>
-        <translation>KeePassHttp id，用作建立关联</translation>
+        <translation>KeePassHttp tunnus (id) yhdistymiseen</translation>
     </message>
     <message>
         <source>KeePassHttp key for AES encrypted communication with KeePass</source>
-        <translation>KeePassHttp的密钥，用作与KeePass的AES加密通信</translation>
+        <translation>KeePassHttp avain AES salattuun viestintään</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
-        <translation>内存中最多保留 &lt;n&gt; 笔孤立的交易 (默认：%u) </translation>
+        <translation>Pidä enintään &lt;n&gt; ei yhdistettyä siirtotapahtumaa muistissa (oletus: %u)</translation>
     </message>
     <message>
-        <source>Disable all Dash specific functionality (Masternodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
-        <translation>禁止所有达世币的附加功能（主节点，匿名发送，即时发送，预算案）（0-1，默认：%u）</translation>
+        <source>Disable all Ion specific functionality (Masternodes, PrivateSend, InstantSend, Governance) (0-1, default: %u)</source>
+        <translation>Kytke pois käytöstä kaikki Ion:in erityistoiminnot (Masternodet, PrivateSend, InstantSend, Hallinto) (0-1, oletus: %u)</translation>
     </message>
     <message>
         <source>%s file contains all private keys from this wallet. Do not share it with anyone!</source>
-        <translation>%s 文件包含此钱包中的所有私钥。不要与任何人分享！</translation>
+        <translation>%s tiedosto sisältää kaikki yksityisavaimet tähän lompakkoon. Älä luovuta sitä kenellekkän!</translation>
     </message>
     <message>
         <source>Bind to given address to listen for JSON-RPC connections. This option is ignored unless -rpcallowip is also passed. Port is optional and overrides -rpcport. Use [host]:port notation for IPv6. This option can be specified multiple times (default: 127.0.0.1 and ::1 i.e., localhost, or if -rpcallowip has been specified, 0.0.0.0 and :: i.e., all addresses)</source>
-        <translation>与指定的地址绑定, 监听JSON-RPC连接. 请忽略此选项, 除非-rpcallowip也被通过. 端口是可选的并且取代-rpcport. IPv6请用[host]:port格式. 此选项可以多次设定 (默认: 127.0.0.1 和 ::1 例如, localhost, 或 如果 -rpcallowip 已经被指定, 0.0.0.0 和 :: 例如, 所有地址)</translation>
+        <translation>Kytkeydy annettuun osoitteeseen kuunnellaksesi JSON-RPC yhteyksiä. Tämä optio ohitetaan ellei -rpcallowip optiota myös anneta. Portti on valinnainen ja syrjäyttää -rpcport. Käytä [host]:port merkintätapaa IPv6:lle. Tämä asetus voidaan määrittää useita kertoja (oletus: 127.0.0.1 ja ::1 esim., localhost, tai jos -rpcallowip on määritetty, 0.0.0.0 ja :: esim., kaikki osoitteet)</translation>
     </message>
     <message>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
-        <translation>找出自己的 IP 地址（默认：监听并且无 -externalip 或 -proxy 时为 1）</translation>
+        <translation>Selvitä oma IP osoite (oletus: 1 kun kuunnellaan ja ei -externalip tai -proxy)</translation>
     </message>
     <message>
         <source>Do not keep transactions in the mempool longer than &lt;n&gt; hours (default: %u)</source>
-        <translation>不要让交易留在内存池中超过 &lt;n&gt; 个小时 (默认：%u)</translation>
+        <translation>Älä pidä siirtotapahtumia muistivarannossa pidempään kuin &lt;n&gt; tuntia (oletus: %u)</translation>
     </message>
     <message>
         <source>Enable InstantSend, show confirmations for locked transactions (0-1, default: %u)</source>
-        <translation>启用即时发送，显示锁定交易的确认次数（0-1，默认：%u）</translation>
+        <translation>Ota InstantSend käyttöön, näytä lukittujen siirtojen vahvistukset (0-1, oletus: %u)</translation>
     </message>
     <message>
         <source>Enable multiple PrivateSend mixing sessions per block, experimental (0-1, default: %u)</source>
-        <translation>允许在每个区块中使用多重匿名发送混合会话，实验性功能（0-1，预设值：%u）</translation>
+        <translation>Käytä useita PrivateSend sekoitus sessioita per lohko, kokeellinen (0-1, oletus: %u)</translation>
     </message>
     <message>
         <source>Enable use of automated PrivateSend for funds stored in this wallet (0-1, default: %u)</source>
-        <translation>允许存储在这个钱包内的资金自动使用匿名发送（0-1，默认：%u）</translation>
+        <translation>Ota käyttöön automaattinen PrivateSend rahavaroille tässä lompakossa  (0-1, oletus: %u)</translation>
     </message>
     <message>
         <source>Execute command when a wallet InstantSend transaction is successfully locked (%s in cmd is replaced by TxID)</source>
-        <translation>当钱包有交易改变时要执行的指令（命令中的%s会被取代成交易识别码）</translation>
+        <translation>Suorita käsky kun lompakon InstantSend siirtotapahtuma on hyväksytysti lukittu (%s cmd on korvattu TxID:llä)</translation>
     </message>
     <message>
         <source>Extra transactions to keep in memory for compact block reconstructions (default: %u)</source>
-        <translation>额外的交易储存在内存中用于致密区块的重建 (默认: %u)</translation>
+        <translation>Ekstra siirtotapahtumat pidetään muistivarannossa kompaktia lohkon rekonstruktiota varten (oletus: %u)</translation>
     </message>
     <message>
         <source>Failed to create backup, file already exists! This could happen if you restarted wallet in less than 60 seconds. You can continue if you are ok with this.</source>
-        <translation>无法创建备份，文件已经存在！如果您在60秒内重新启动钱包，则可能发生这种情况。如果您觉得这样没问题的话，您可以继续。</translation>
+        <translation>Varmistus epäonnistui, tiedosto on jo olemassa! Tämä voi tapahtua jos olet käynnistänyt lompakon uudelleen alle 60 sek aikana. Voit jatkaa jos hyväksyt tämän.</translation>
     </message>
     <message>
         <source>Fees (in %s/kB) smaller than this are considered zero fee for relaying, mining and transaction creation (default: %s)</source>
-        <translation>当在建立交易、中继交易和采矿时，如果每千字节（%s/Kb）的手续费比这个值低，就视为没付手续费（预设值：%s）</translation>
+        <translation>Siirtomaksut (%s/kB) jotka ovat pienempiä kuin tämä, tulkitaan nollamaksuksi välityksessä, louhimisessa ja siirtotapahtuman luonnissa (oletus: %s)</translation>
     </message>
     <message>
         <source>Fees (in %s/kB) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>当产生交易时，如果每千字节 (%s/Kb) 的手续费比这个值 低，就视为没支付手续费 (默认：%s)</translation>
+        <translation>Siirtomaksut (%s/kB) jotka ovat pienempiä kuin tämä, tulkitaan nollamaksuksi siirtotapahtuman luonnissa (oletus: %s)</translation>
     </message>
     <message>
         <source>If &lt;category&gt; is not supplied or if &lt;category&gt; = 1, output all debugging information.</source>
-        <translation>如果&lt;category&gt;未提供或&lt;category&gt; = 1，输出所有调试信息。</translation>
+        <translation>Jos &lt;category&gt; ei ole toimitettu, tai &lt;category&gt; = 1, tulosta kaikki debug tiedot.</translation>
     </message>
     <message>
-        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 DASH.</source>
-        <translation>即时发送系统暂时并不支持这么高的交易金额。目前的金额仅限于%1达世币。</translation>
+        <source>InstantSend doesn't support sending values that high yet. Transactions are currently limited to %1 ION.</source>
+        <translation>InstantSend ei tue näin korkeaa lähetysmäärää vielä. Siirtotapahtumat on tällä hetkellä rajoitettu %1 ION.</translation>
     </message>
     <message>
         <source>InstantSend requires inputs with at least %d confirmations, you might need to wait a few minutes and try again.</source>
-        <translation>即时发送系统要求输入的资金最少要有%d个确认，您可能需要等待数分钟然后再重试。</translation>
+        <translation>InstantSend vaatii syötteille vähintään %d vahvistusta, odota muutama minuutti ja yritä uudelleen.</translation>
     </message>
     <message>
         <source>Maintain a full address index, used to query for the balance, txids and unspent outputs for addresses (default: %u)</source>
-        <translation>维护一个完整的地址索引，用于查询余额，txids和未使用的位址输出（默认：%u）</translation>
+        <translation>Ylläpidä täyttä osoiteindeksiä, jota käyttää saldokysely, siirtotapahtuma tunnus ja käyttämättömät lähdöt osoitteille (oletus: %u)</translation>
     </message>
     <message>
         <source>Maintain a full spent index, used to query the spending txid and input index for an outpoint (default: %u)</source>
-        <translation>维护一个完整的花费索引，用于查询支出的txid与及出点的输入索引（默认：%u）</translation>
+        <translation>Ylläpidä täyttä käyttöindeksiä, jota käyttää käyttävän siirtotapahtuman tunnus ja syötteen indeksin lähtöpiste (oletus: %u)</translation>
     </message>
     <message>
         <source>Maintain a timestamp index for block hashes, used to query blocks hashes by a range of timestamps (default: %u)</source>
-        <translation>维护一个内存块哈希值的时间戳索引，用于通过一系列时间戳来查询内存块哈希值（默认：%u）</translation>
+        <translation>Ylläpidä aikamerkinnän indeksiä lohkojen tarkisteille, jota käyttää lohkotarkisteiden haku aikamerkintöjen haarukassa (oletus: %u)</translation>
     </message>
     <message>
         <source>Maintain at most &lt;n&gt; connections to peers (temporary service connections excluded) (default: %u)</source>
-        <translation>维持与节点联机数的上限为&lt;n&gt;个（临时服务连接除外）（默认：%u）</translation>
+        <translation>Ylläpidä enintään &lt;n&gt; solmu yhteyttä (poislukien väliaikaiset huoltoyhteydet) (oletus: %u)</translation>
     </message>
     <message>
         <source>PrivateSend uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
-        <translation>匿名发送要求使用准确的已除名资金来发送，你可能需要再匿名处理一些资金。</translation>
+        <translation>PrivateSend käyttää tarkalleen denominoituja syötteitä lähettäessään varoja, saatat tarvita anonymisoida lisää kolikoita.</translation>
     </message>
     <message>
         <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
-        <translation>修剪值被设置为低于最小值%d MiB。请使用更大的数值。</translation>
+        <translation>Karsinta asetettu alle minimin %d MiB. Käytä isompaa arvoa.</translation>
     </message>
     <message>
         <source>Prune: last wallet synchronisation goes beyond pruned data. You need to -reindex (download the whole blockchain again in case of pruned node)</source>
-        <translation>修剪：最后的钱包同步超过了修剪的数据。你需要通过 -reindex (重新下载整个区块链以防止节点被修剪)</translation>
+        <translation>Karsinta: viimeinen lompakon synkronointi menee yli karsitun datan. Sinun täytyy tehdä -reindex (lataa koko lohkoketju uudelleen)</translation>
     </message>
     <message>
         <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
-        <translation>随机化每个代理连接的凭证。这能使Tor流隔离（默认：%u）</translation>
+        <translation>Satunnaista käyttäjätiedot jokaiselle proxy yhteydelle. Tämä ottaa käyttöön Tor virran eristämisen (oletus: %u)</translation>
     </message>
     <message>
         <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
-        <translation>无法在开启修剪的状态下重扫描。请使用 -reindex重新下载完整的区块链。</translation>
+        <translation>Uudelleen skannaus ei ole mahdollista karsintatilassa. Sinun on käytettävä -reindex joka lataa koko lohkoketjun uudelleen.</translation>
     </message>
     <message>
         <source>Specify full path to directory for automatic wallet backups (must exist)</source>
-        <translation>指定钱包自动备份目录的完整路径（必须存在）</translation>
+        <translation>Määritä täysi polku automaattiselle lompakon varmistushakemistolle (hakemisto on oltava jo olemassa)</translation>
     </message>
     <message>
         <source>Support filtering of blocks and transaction with bloom filters (default: %u)</source>
-        <translation>支持用 Bloom 过滤器来过滤区块和交易(默认：%u)</translation>
+        <translation>Tue lohkojen ja siirtotapahtumien suodatusta bloom suotimilla (oletus: %u)</translation>
     </message>
     <message>
         <source>The block database contains a block which appears to be from the future. This may be due to your computer's date and time being set incorrectly. Only rebuild the block database if you are sure that your computer's date and time are correct</source>
-        <translation>区块数据库包含未来的交易，这可能是由本机错误的日期时间引起。若确认本机日期时间正确，请重新建立区块数据库。</translation>
+        <translation>Lohkotietokanta sisältää lohkon joka näyttäisi olevan tulevaisuudesta. Tämä voi johtua siitä että tietokoneesi kello/päivämäärä on väärin asetettu. Uudelleen rakenna lohkotietokanta vain jos olet varma että kello/päivämäärä on oikein.</translation>
     </message>
     <message>
         <source>The transaction amount is too small to send after the fee has been deducted</source>
-        <translation>在交易费被扣除后发送的交易金额太小</translation>
+        <translation>Siirtomäärä on liian pieni lähettämiseen, kun siirtomaksut on siitä  vähennetty.</translation>
     </message>
     <message>
         <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
-        <translation>网络版本字符串的总长度 (%i) 超过最大长度 (%i) 了。请减少 uacomment 参数的数量或大小。</translation>
+        <translation>Verkon version merkkijonon (%i) kokonaispituus ylittää maksimi pituuden (%i).
+Vähennä uakommenttien määrää tai kokoa.</translation>
     </message>
     <message>
         <source>Transaction index can't be disabled in full mode. Either start with -litemode command line switch or enable transaction index.</source>
-        <translation>交易索引无法在全节点中禁用。可以通过 -litemode 来切换或开启交易索引。</translation>
+        <translation>Siirtotapahtumaindeksiä ei voi poistaa käytöstä normaalitilassa. Joko käynnistä -litemode komentorivin valinnalla tai ota käyttöön siirtotapahtumaindeksi.</translation>
     </message>
     <message>
         <source>Tries to keep outbound traffic under the given target (in MiB per 24h), 0 = no limit (default: %d)</source>
-        <translation>尝试保持上传带宽低于（MiB/24h），0=无限制（默认：%d）</translation>
+        <translation>Yrittää pitää ulos menevän liikenteen alle annetun tavoitteen (MiB per 24h), 0 = ei rajaa (oletus: %d)</translation>
     </message>
     <message>
         <source>Unable to locate enough PrivateSend denominated funds for this transaction.</source>
-        <translation>在本之交易中，无法找到足够的匿名发送面额化资金。</translation>
+        <translation>Ei tarpeeksi PrivateSend sekoitettuja varoja tälle siirtotapahtumalle.</translation>
     </message>
     <message>
         <source>Unsupported argument -socks found. Setting SOCKS version isn't possible anymore, only SOCKS5 proxies are supported.</source>
-        <translation>找到不再支持的 -socks 参数。现在只支持 SOCKS5 协议的代理服务器，因此不可以指定 SOCKS 协议版本。</translation>
+        <translation>Ei tuettu argumentti -socks löydetty. SOCKS version asettaminen ei ole enää mahdollista, vain SOCKS5 proxyt ovat tuettuja.</translation>
     </message>
     <message>
         <source>Unsupported argument -whitelistalwaysrelay ignored, use -whitelistrelay and/or -whitelistforcerelay.</source>
-        <translation>一个不被支持的参数 -whitelistalwaysrelay 被忽略了。请使用 -whitelistrelay 和/或 -whitelistforcerelay。</translation>
+        <translation>Ei tuettu argumentti -whitelistalwaysrelay sivuutettu, käytä -whitelistrelay ja/tai -whitelistforcerelay.</translation>
     </message>
     <message>
         <source>Use UPnP to map the listening port (default: 1 when listening and no -proxy)</source>
-        <translation>使用UPnP来映射监听端口(默认：1为监听中且不使用代理)</translation>
+        <translation>Käytä UPnP:tä kuunneltavan portin kartoitukseen (oletus: 1 kun kuunellaan ja ei käytetä -proxy)</translation>
     </message>
     <message>
         <source>WARNING! Failed to replenish keypool, please unlock your wallet to do so.</source>
-        <translation>警告！无法补充公钥池，请解锁您的钱包。</translation>
+        <translation>VAROITUS! Osoitevarannon täydentäminen epäonnistui, avaa lompakon lukitus.</translation>
     </message>
     <message>
         <source>Wallet is locked, can't replenish keypool! Automatic backups and mixing are disabled, please unlock your wallet to replenish keypool.</source>
-        <translation>钱包被锁定，无法补充keypool！自动备份和混合功能被禁用，请解锁您的钱包以补充keypool。</translation>
+        <translation>Lompakko on lukittu, osoitevarannon täydentäminen ei onnistu! Automaattinen varmistus ja sekoitus ei ole käytössä, avaa lompakon lukitus täydentääksesi osoitevarannon.</translation>
     </message>
     <message>
         <source>Warning: Unknown block versions being mined! It's possible unknown rules are in effect</source>
-        <translation>警告：未知的区块版本被挖出！未知规则可能已生效</translation>
+        <translation>Varoitus: Tuntemattomia lohkoversioita louhitaan! On mahdollista että tuntemattomia sääntöjä on käytössä</translation>
     </message>
     <message>
-        <source>You are starting in lite mode, all Dash-specific functionality is disabled.</source>
-        <translation>您启动了简化模式，所有达世币特有的功能已禁用。</translation>
+        <source>You are starting in lite mode, all Ion-specific functionality is disabled.</source>
+        <translation>Olet käynnistämässä lite tilassa, kaikki Ion-toiminnot ovat pois käytöstä.</translation>
     </message>
     <message>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
-        <translation>您需要使用 -reindex 重新构建数据库以返回未修剪的模式。这将重新下载整个区块链</translation>
+        <translation>Sinun tulee uudelleen rakentaa tietokanta käyttäen -reindex palataksesi takaisin 'ei karsita' tilaan. Tämä aiheuttaa koko lohkoketjun uudelleen lataamisen</translation>
     </message>
     <message>
         <source>(default: %u)</source>
-        <translation>(默认: %u)</translation>
+        <translation>(oletus: %u)</translation>
     </message>
     <message>
         <source>-maxmempool must be at least %d MB</source>
-        <translation>-maxmempool 最小为%d MB</translation>
+        <translation>-maxmempool on oltava vähintään %d MB</translation>
     </message>
     <message>
         <source>&lt;category&gt; can be:</source>
-        <translation>&lt;category&gt; 可能是：</translation>
+        <translation>&lt;category&gt; voi olla:</translation>
     </message>
     <message>
         <source>Append comment to the user agent string</source>
-        <translation>为用户代理字符串附加说明</translation>
+        <translation>Lisää kommentti käyttäjäohjelman merkkijonoon</translation>
     </message>
     <message>
         <source>Automatic backups disabled</source>
-        <translation>自动备份已停用</translation>
+        <translation>Automaattinen varmistus ei ole käytössä</translation>
     </message>
     <message>
         <source>Automatically create Tor hidden service (default: %d)</source>
-        <translation>自动建立Tor隐藏服务 (默认：%d)</translation>
+        <translation>Luo automaattisesti Tor piilopalvelu (oletus: %d)</translation>
     </message>
     <message>
         <source>ERROR! Failed to create automatic backup</source>
-        <translation>错误！无法创建自动备份</translation>
+        <translation>VIRHE! Automaattinen varmistus epäonnistui</translation>
     </message>
     <message>
         <source>Enable publish hash block in &lt;address&gt;</source>
-        <translation>允许在&lt;address&gt;中发布哈希区块</translation>
+        <translation>Ota käyttöön julkaise tarkistelohko osoitteessa &lt;address&gt;</translation>
     </message>
     <message>
         <source>Enable publish hash of governance objects (like proposals) in &lt;address&gt;</source>
-        <translation>允许在 &lt;address&gt;中发布管理对象哈希值（如提案）</translation>
+        <translation>Ota käyttöön julkaise hallinnon objektien tarkiste (esim ehdotus) &lt;address&gt;</translation>
     </message>
     <message>
         <source>Enable publish hash of governance votes in &lt;address&gt;</source>
-        <translation>允许在 &lt;address&gt;中发布管理投票哈希值</translation>
+        <translation>Ota käyttöön julkaise hallinnon äänten tarkiste &lt;address&gt;</translation>
     </message>
     <message>
         <source>Enable publish hash transaction (locked via InstantSend) in &lt;address&gt;</source>
-        <translation>允许在&lt;address&gt;中发布哈希交易（通过即时发送来锁定）</translation>
+        <translation>Ota käyttöön julkaise siirtotapahtuman tarkiste (lukittu InstantSend kautta) osoitteessa &lt;address&gt;</translation>
     </message>
     <message>
         <source>Enable publish hash transaction in &lt;address&gt;</source>
-        <translation>允许在&lt;address&gt;中发布哈希交易</translation>
+        <translation>Ota käyttöön julkaise siirtotapahtuman tarkiste osoitteessa &lt;address&gt;</translation>
     </message>
     <message>
         <source>Enable publish raw block in &lt;address&gt;</source>
-        <translation>允许在&lt;address&gt;中发布原始区块</translation>
+        <translation>Ota käyttöön julkaise raakalohko osoitteessa &lt;address&gt;</translation>
     </message>
     <message>
         <source>Enable publish raw transaction (locked via InstantSend) in &lt;address&gt;</source>
-        <translation>允许在&lt;address&gt;中发布原始交易（通过即时发送来锁定）</translation>
+        <translation>Ota käyttöön julkaise raaka siirtotapahtuma (lukittu InstantSend kautta) osoitteessa &lt;address&gt;</translation>
     </message>
     <message>
         <source>Enable publish raw transaction in &lt;address&gt;</source>
-        <translation>允许在&lt;address&gt;中发布原始交易</translation>
+        <translation>Ota käyttöön julkaise raaka siirtotapahtuma osoitteessa &lt;address&gt;</translation>
     </message>
     <message>
         <source>Error: A fatal internal error occurred, see debug.log for details</source>
-        <translation>错误：发生了致命的内部错误，详情见 debug.log 文件</translation>
+        <translation>Virhe: Vakava sisäinen virhe, katso debug.log lisätietoja</translation>
     </message>
     <message>
         <source>Failed to create backup %s!</source>
-        <translation>无法创建备份%s！</translation>
+        <translation>Varmistuksen luonti epäonnistui %s!</translation>
     </message>
     <message>
         <source>Failed to create backup, error: %s</source>
-        <translation>无法创建备份，错误：%s</translation>
+        <translation>Varmistuksen luonti epäonnistui, virhe: %s</translation>
     </message>
     <message>
         <source>Failed to delete backup, error: %s</source>
-        <translation>无法删除备份，错误：%s</translation>
+        <translation>Varmistuksen poisto epäonnistui, virhe: %s</translation>
     </message>
     <message>
         <source>Failed to load InstantSend data cache from</source>
-        <translation>从... 读取即时发送数据缓存失败</translation>
+        <translation>InstantSend välimuistin lataaminen epäonnistui</translation>
     </message>
     <message>
         <source>Failed to load sporks cache from</source>
-        <translation>从... 读取叉勺缓存失败</translation>
+        <translation>Spork välimuistin lataaminen epäonnistui</translation>
     </message>
     <message>
         <source>Fee (in %s/kB) to add to transactions you send (default: %s)</source>
-        <translation>为付款交易添加交易费 (%s/kB) (默认：%s) </translation>
+        <translation>Siirtomaksu (%s/kB) lisätään lähetettävään siirtotapahtumaan (oletus: %s)</translation>
     </message>
     <message>
         <source>Imports blocks from external blk000??.dat file on startup</source>
-        <translation>启动时从其他来源的  blk000??.dat 文件导入区块</translation>
+        <translation>Tuodaan lohkoja ulkoisesta blk000??.dat tiedostosta käynnistyksessä</translation>
     </message>
     <message>
         <source>InstantSend options:</source>
-        <translation>即时发送选项：</translation>
+        <translation>InstantSend valinnat:</translation>
     </message>
     <message>
         <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
-        <translation>设定-fallbackfee=&lt;amount&gt;的金额无效：'%s'</translation>
+        <translation>Virheellinen määrä -fallbackfee=&lt;amount&gt;: '%s'</translation>
     </message>
     <message>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
-        <translation>保持交易内存池大小低于&lt;n&gt;MB（默认：%u）</translation>
+        <translation>Pidä siirtotapahtuma muistivaranto alle &lt;n&gt; megatavun (oletus: %u)</translation>
     </message>
     <message>
         <source>Last PrivateSend was too recent.</source>
-        <translation>距离上一次匿名发送的时间过短。</translation>
+        <translation>Viimeisin PrivateSend oli liian äskettäin.</translation>
     </message>
     <message>
         <source>Last successful PrivateSend action was too recent.</source>
-        <translation>距离上一次成功送出匿名发送的时间过短。</translation>
+        <translation>Viimeisin onnistunut PrivateSend tapahtuma oli liian äskettäin.</translation>
     </message>
     <message>
         <source>Loading InstantSend data cache...</source>
-        <translation>正在读取即时支付数据缓存...</translation>
+        <translation>Ladataan InstantSend välimuistia...</translation>
     </message>
     <message>
         <source>Loading block index...</source>
-        <translation>正在读取区块索引...</translation>
+        <translation>Ladataan lohkoindeksiä...</translation>
     </message>
     <message>
         <source>Loading governance cache...</source>
-        <translation>正在加载治理缓存…</translation>
+        <translation>Ladataan hallinnon välimuistia...</translation>
     </message>
     <message>
         <source>Loading sporks cache...</source>
-        <translation>正在读取叉勺缓存...</translation>
+        <translation>Ladataan spork välimuistia...</translation>
     </message>
     <message>
         <source>Loading wallet... (%3.2f %%)</source>
-        <translation>正在读取钱包...(%3.2f%%)</translation>
+        <translation>Ladataan lompakkoa... (%3.2f %%)</translation>
     </message>
     <message>
         <source>Loading wallet...</source>
-        <translation>正在读取钱包...</translation>
+        <translation>Ladataan lompakkoa...</translation>
     </message>
     <message>
         <source>Location of the auth cookie (default: data dir)</source>
-        <translation>auth cookie的位置 (默认: data dir)</translation>
+        <translation>Vahvistuskeksin sijainti (oletus: datahakemisto)</translation>
     </message>
     <message>
         <source>Make the wallet broadcast transactions</source>
-        <translation>使钱包广播交易</translation>
+        <translation>Laita lompakko julkaisemaan siirtotapahtumat</translation>
     </message>
     <message>
         <source>Masternode options:</source>
-        <translation>主节点选项：</translation>
+        <translation>Masternode valinnat:</translation>
     </message>
     <message>
         <source>Masternode queue is full.</source>
-        <translation>主节点列队已满。</translation>
+        <translation>Masternode jono on täysi.</translation>
     </message>
     <message>
         <source>Masternode:</source>
-        <translation>主节点：</translation>
+        <translation>Masternode:</translation>
     </message>
     <message>
         <source>Minimum bytes per sigop in transactions we relay and mine (default: %u)</source>
-        <translation>在中继和挖矿交易中，每个sigop中的最小字节数（默认：%u）</translation>
+        <translation>Minimit tavut per sigop siirtotapahtumassa jotka välitetään ja louhitaan (oletus: %u)</translation>
     </message>
     <message>
         <source>Missing input transaction information.</source>
-        <translation>缺少交易信息的输入数据。</translation>
+        <translation>Puuttuva siirtotapahtuman tieto.</translation>
     </message>
     <message>
         <source>No errors detected.</source>
-        <translation>未检测到错误。</translation>
+        <translation>Virheitä ei havaittu.</translation>
     </message>
     <message>
         <source>No matching denominations found for mixing.</source>
-        <translation>没有找到匹配的金额用作资金混合。</translation>
+        <translation>Vastaavia denominointeja sekoitukseen ei löydy.</translation>
     </message>
     <message>
         <source>Node relay options:</source>
-        <translation>节点中继选项：</translation>
+        <translation>Solmun välitysasetukset:</translation>
     </message>
     <message>
         <source>Non-standard public key detected.</source>
-        <translation>检测到非标准的公钥。</translation>
+        <translation>Epästandardi yleinen avain havaittu.</translation>
     </message>
     <message>
         <source>Not compatible with existing transactions.</source>
-        <translation>与已存在交易不匹配。</translation>
+        <translation>Ei yhteensopiva olemassa olevien siirtotapahtumien kanssa.</translation>
     </message>
     <message>
         <source>Not enough file descriptors available.</source>
-        <translation>文件说明符不足</translation>
+        <translation>Ei tarpeeksi tiedostomerkintöjä saatavilla.</translation>
     </message>
     <message>
         <source>Not enough funds to anonymize.</source>
-        <translation>没有足够的资金进行匿名处理。</translation>
+        <translation>Ei tarpeeksi varoja anonymisointiin.</translation>
     </message>
     <message>
         <source>Number of automatic wallet backups (default: %u)</source>
-        <translation>自动备份的钱包数目 (默认：%u)</translation>
+        <translation>Automaattisten lompakon varmistuksien määrä (oletus: %u)</translation>
     </message>
     <message>
         <source>Options:</source>
-        <translation>选项：</translation>
+        <translation>Asetukset:</translation>
     </message>
     <message>
         <source>Password for JSON-RPC connections</source>
-        <translation>JSON-RPC连接密码</translation>
+        <translation>Salasana JSON-RPC yhteyksille</translation>
     </message>
     <message>
         <source>Print version and exit</source>
-        <translation>打印版本信息并退出</translation>
+        <translation>Tulosta versio ja poistu</translation>
     </message>
     <message>
         <source>PrivateSend is idle.</source>
-        <translation>匿名发送处于闲置状态。</translation>
+        <translation>PrivateSend odottaa.</translation>
     </message>
     <message>
         <source>PrivateSend options:</source>
-        <translation>匿名发送选项：</translation>
+        <translation>PrivateSend asetukset:</translation>
     </message>
     <message>
         <source>PrivateSend request complete:</source>
-        <translation>完成匿名发送请求：</translation>
+        <translation>PrivateSend pyyntö valmis:</translation>
     </message>
     <message>
         <source>PrivateSend request incomplete:</source>
-        <translation>未完成匿名发送请求：</translation>
+        <translation>PrivateSend pyyntö kesken:</translation>
     </message>
     <message>
         <source>Prune cannot be configured with a negative value.</source>
-        <translation>修剪不能设置为负数。</translation>
+        <translation>Karsinta ei voi olla asetettu negatiiviseksi arvoksi.</translation>
     </message>
     <message>
         <source>Prune mode is incompatible with -txindex.</source>
-        <translation>修剪模式与 -txindex 不兼容。</translation>
+        <translation>Karsintatila on epäyhteensopiva -txindex kanssa.</translation>
     </message>
     <message>
         <source>Pruning blockstore...</source>
-        <translation>正在修剪区块存储...</translation>
+        <translation>Karsitaan lohkoja...</translation>
     </message>
     <message>
         <source>Rescan the block chain for missing wallet transactions on startup</source>
-        <translation>启动时重新扫描区块链以查找遗漏的钱包交易</translation>
+        <translation>Skannaa lohkoketju uudelleen lompakon puuttuvien siirtotapahtumien vuoksi käynnistyksessä</translation>
     </message>
     <message>
         <source>Submitted following entries to masternode: %u</source>
-        <translation>已提交下列条目到主节点: %u</translation>
+        <translation>Lähetettiin seuraavia merkintöjä masternodelle: %u</translation>
     </message>
     <message>
         <source>Submitted to masternode, waiting for more entries ( %u ) %s</source>
-        <translation>已提到到主节点, 正在等待更多条目 ( %u ) %s</translation>
+        <translation>Lähetetty masternodelle, odotetaan lisää merkintöjä ( %u ) %s</translation>
     </message>
     <message>
         <source>Synchronizing blockchain...</source>
-        <translation>正在同步区块链...</translation>
+        <translation>Synkronoidaan lohkoketju...</translation>
     </message>
     <message>
         <source>The wallet will avoid paying less than the minimum relay fee.</source>
-        <translation>钱包避免低于最小交易费的支付</translation>
+        <translation>Lompakko välttää maksamasta vähemän kuin vähimmäisvälitysmaksun.</translation>
     </message>
     <message>
         <source>This is the minimum transaction fee you pay on every transaction.</source>
-        <translation>这是你每次交易付款时最少要付的手续费。</translation>
+        <translation>Tämä on jokaisesta siirrosta maksettava vähimmäismaksu.</translation>
     </message>
     <message>
         <source>This is the transaction fee you will pay if you send a transaction.</source>
-        <translation>如果发送交易，这将是你要支付的交易费。</translation>
+        <translation>Tämä on lähetyksestä maksettava maksu jonka maksat</translation>
     </message>
     <message>
         <source>Transaction amounts must not be negative</source>
-        <translation>交易金额不不可为负数</translation>
+        <translation>Lähetyksen siirtosumman tulee olla positiivinen</translation>
     </message>
     <message>
         <source>Transaction has too long of a mempool chain</source>
-        <translation>交易造成内存池中的交易链太长</translation>
+        <translation>Maksutapahtumalla on liian pitkä muistivarannon ketju</translation>
     </message>
     <message>
         <source>Transaction must have at least one recipient</source>
-        <translation>交易必须包含至少一个接收人</translation>
+        <translation>Lähetyksessä tulee olla ainakin yksi vastaanottaja</translation>
     </message>
     <message>
         <source>Transaction too large</source>
-        <translation>交易过大</translation>
+        <translation>Siirtotapahtuma on liian iso</translation>
     </message>
     <message>
         <source>Trying to connect...</source>
-        <translation>尝试连接中...</translation>
+        <translation>Yritetään kytkeytyä...</translation>
     </message>
     <message>
         <source>Unable to bind to %s on this computer. %s is probably already running.</source>
-        <translation>无法在本机绑定 %s 端口。%s 可能已经在运行。</translation>
+        <translation>Kytkeytyminen kohteeseen %s ei onnistu tällä tietokoneella. %s on luultavasti jo käynnissä.</translation>
     </message>
     <message>
         <source>Upgrading UTXO database</source>
-        <translation>升级UTXO数据库</translation>
+        <translation>Päivitetään UTXO tietokantaa</translation>
     </message>
     <message>
         <source>Use devnet chain with provided name</source>
-        <translation>以提供的名称来使用devnet</translation>
+        <translation>Käytä devnet ketjua tarjotulla nimellä</translation>
     </message>
     <message>
         <source>Wallet debugging/testing options:</source>
-        <translation>钱包调试/测试选项：</translation>
+        <translation>Lompakon debug ja testausvalinnat:</translation>
     </message>
     <message>
         <source>Wallet is not initialized</source>
-        <translation>钱包未初始化</translation>
+        <translation>Lompakko ei ole alustettu</translation>
     </message>
     <message>
         <source>Wallet needed to be rewritten: restart %s to complete</source>
-        <translation>钱包需要被重写：请重新启动%s来完成</translation>
+        <translation>Lompakko tarvitsee uudelleenkirjoittaa: käynnistä %s uudelleen</translation>
     </message>
     <message>
         <source>Warning: unknown new rules activated (versionbit %i)</source>
-        <translation>警告：不明的新规则被激活(versionbit %i)</translation>
+        <translation>Varoitus: tuntemattomia uusia sääntöjä aktivoitu (versionbit %i)</translation>
     </message>
     <message>
         <source>Wasn't able to create wallet backup folder %s!</source>
-        <translation>无法创建钱包备份文件夹%s！</translation>
+        <translation>Varmistushakemiston luonti epäonnistui %s!</translation>
     </message>
     <message>
         <source>Whether to operate in a blocks only mode (default: %u)</source>
-        <translation>是否在区块模式下操作（默认：%u）</translation>
+        <translation>Käytä vain lohkoja moodia (default: %u)</translation>
     </message>
     <message>
         <source>You can not start a masternode in lite mode.</source>
-        <translation>您无法在简化模式中启动主节点。</translation>
+        <translation>Et voi käynnistää masternodea lite tilassa.</translation>
     </message>
     <message>
         <source>ZeroMQ notification options:</source>
-        <translation>ZeroMQ 通知选项：</translation>
+        <translation>ZeroMQ ilmoitus asetukset:</translation>
     </message>
     <message>
         <source>no mixing available.</source>
-        <translation>无法进行混合。</translation>
+        <translation>sekoitus ei käytettävissä.</translation>
     </message>
     <message>
         <source>see debug.log for details.</source>
-        <translation>详细信息请参阅debug.log。</translation>
+        <translation>katso debug.log lisätietoja.</translation>
     </message>
     <message>
         <source>RPC server options:</source>
-        <translation>RPC服务器选项：</translation>
+        <translation>RPC palvelimen valinnat:</translation>
     </message>
     <message>
-        <source>Dash Core</source>
-        <translation>达世币核心</translation>
+        <source>Ion Core</source>
+        <translation>Ion Core</translation>
     </message>
     <message>
         <source>The %s developers</source>
-        <translation>%s 开发人员</translation>
+        <translation>%s kehittäjät</translation>
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect/-noconnect)</source>
-        <translation>接收来自外部链接 (默认: 1 当没有 -proxy 或 -connect/-noconnect)</translation>
+        <translation>Hyväksy yhteyksiä ulkopuolelta (oletus: 1 jos ei -proxy tai -connect/-noconnect)</translation>
     </message>
     <message>
         <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
-        <translation>无法锁定数据目录 %s。%s 可能已经在运行。</translation>
+        <translation>Ei voida lukita datahakemistoa %s. %s on luultavasti jo käynnissä.</translation>
     </message>
     <message>
         <source>Connect only to the specified node(s); -noconnect or -connect=0 alone to disable automatic connections</source>
-        <translation>只连接指定节点(或多个); -noconnect or connect=0 来仅用自动链接</translation>
+        <translation>Kytkeydy vain määriteltyyn solmu(un); -noconnect tai connect=0 yksin poistaaksesi automaattiset yhteydet</translation>
     </message>
     <message>
         <source>Distributed under the MIT software license, see the accompanying file %s or %s</source>
-        <translation>在MIT协议下分发，参见附带的 %s 文件或 %s</translation>
+        <translation>Jaettu MIT ohjelmistolisenssin alaisuudessa, katso mukana tuleva %s tiedosto tai %s</translation>
     </message>
     <message>
         <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>读取 %s 时发生错误！所有的密钥都可以正确读取，但是交易记录或地址簿数据可能已经丢失或出错。</translation>
+        <translation>Virhe luettaessa %s! Avaimet luetttiin oikein, mutta rahansiirtotiedot tai osoitekirjan sisältö saattavat olla puutteellisia tai vääriä.</translation>
     </message>
     <message>
         <source>Force relay of transactions from whitelisted peers even if they violate local relay policy (default: %d)</source>
-        <translation>强制转发从白名点节点收到的交易，即使它们违反了本机的转发准则（默认：%d）</translation>
+        <translation>Pakota siirtopahtumien välitys luotettavilta solmuilta, vaikka ne loukkaisivat paikallista välityskäytäntöä (oletus: %d)</translation>
     </message>
     <message>
         <source>Incorrect or no devnet genesis block found. Wrong datadir for devnet specified?</source>
-        <translation>devnet的创世区块错误或未找到. devnet的数据目录错误?</translation>
+        <translation>Väärä tai ei devnet alkuperäinen lohko löydetty. Väärä data hakemisto devnet verkolle?</translation>
     </message>
     <message>
         <source>Maximum allowed median peer time offset adjustment. Local perspective of time may be influenced by peers forward or backward by this amount. (default: %u seconds)</source>
-        <translation>跟其他节点的时间差最高可接受的中位数值。本机所认为的时间可能会被其他节点影响，往前或往后在这个值之内。（默认：%u秒）</translation>
+        <translation>Suurin sallittu keskimääräinen peer aikaero -korjaus. Tähän aikaan voivat vaikuttaa paikalliset peer näkökulmat eteenpäin tai taaksepäin tämän verran. (oletus: %u sekuntia)</translation>
     </message>
     <message>
         <source>Maximum total fees (in %s) to use in a single wallet transaction or raw transaction; setting this too low may abort large transactions (default: %s)</source>
-        <translation>最大的单次钱包或原始转账费用(%s)，设置太低可能导致大尺寸交易失败(默认：%s)</translation>
+        <translation>Yksittäisen tai raw siirtotapahtuman maksimi siirtomaksu (%s), jos tämä asetetaan liian matalaksi, se voi keskeyttää isot siirtotapahtumat (oletus: %s)</translation>
     </message>
     <message>
         <source>Override spork address. Only useful for regtest and devnet. Using this on mainnet or testnet will ban you.</source>
-        <translation>覆盖spork地址. 仅对regtest及devnet有用. 在主网或测试网络使用会被封.</translation>
+        <translation>Ohita spork osoite. Käyttökelpoinen vain regtest tai devnet. Jos käytät tätä pääverkossa tai testiverkossa, joudut estolistalle, eli bannataan.</translation>
     </message>
     <message>
         <source>Please check that your computer's date and time are correct! If your clock is wrong, %s will not work properly.</source>
-        <translation>请检查电脑的日期时间设置是否正确！时间错误可能会导致 %s 运行异常。</translation>
+        <translation>Tarkistathan että tietokoneesi päivämäärä ja kellonaika ovat oikeassa! Jos kellosi on väärässä, %s ei toimi oikein.</translation>
     </message>
     <message>
         <source>Please contribute if you find %s useful. Visit %s for further information about the software.</source>
-        <translation>如果你认为%s对你比较有用的话，请对我们进行一些捐赠支持。请访问%s网站来获取有关这个软件的更多信息。</translation>
+        <translation>Ole hyvä ja avusta, jos %s on mielestäsi hyödyllinen. Vieraile %s saadaksesi lisää tietoa ohjelmistosta.</translation>
     </message>
     <message>
         <source>Provide liquidity to PrivateSend by infrequently mixing coins on a continual basis (%u-%u, default: %u, 1=very frequent, high fees, %u=very infrequent, low fees)</source>
-        <translation>透过偶尔混币来为匿名发送提供流动性 (%u-%u, 默认: %u, 1=非常频繁, 高手续费, %u=非常偶尔，低手续费)</translation>
+        <translation>Tarjoa PrivateSend:ille likviditeettiä jatkuvaa kolikoiden sekoitusta varten (%u-%u, oletus: %u, 1=usein, isot maksukulut, %u=harvoin, pienet maksukulut)</translation>
     </message>
     <message>
         <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect/-noconnect)</source>
-        <translation>如果地址不足, 则通过DNS查询对等地址(默认: 1 除非 -connect/-noconnect)</translation>
+        <translation>Tiedustele vertaisverkon osoitteita DNS hakua käyttäen jos osoitteita ei ole riittävästi (oletus: 1 paitsi jos -connect/-noconnect)</translation>
     </message>
     <message>
         <source>Reduce storage requirements by enabling pruning (deleting) of old blocks. This allows the pruneblockchain RPC to be called to delete specific blocks, and enables automatic pruning of old blocks if a target size in MiB is provided. This mode is incompatible with -txindex and -rescan. Warning: Reverting this setting requires re-downloading the entire blockchain. (default: 0 = disable pruning blocks, 1 = allow manual pruning via RPC, &gt;%u = automatically prune block files to stay under the specified target size in MiB)</source>
-        <translation>修剪（删除）掉老旧区块以降低需要的储存空间。这样会增加一个RPC指令pruneblockchain，可以使用它来删除指定的区块；也可以指定目标储存空间大小，以启用对老旧内存块的自动修剪功能。这个模式跟-txindex和-rescan参数不兼容。警告：还原回不修剪模式会需要重新下载整个区块链。（默认：0表示不修剪内存块，1表示允许使用RPC指令做修剪，&gt;%u的值表示为区块数据的目标大小，单位是百万字节，MiB）</translation>
+        <translation>Pienennä tilan tarvetta karsimalla (poistamalla) vanhoja lohkoja. Tämä mahdollistaa pruneblockchain RPC kutsun joka poistaa tietyt lohkot ja ottaa käyttöön automaattisen vanhojen lohkojen puhdistuksen jos tavoitekoko on annettu yksikkö MiB. Tämä tila on epäyhteensopiva -txindex ja -rescan kanssa. Varoitus: Tämän asetuksen peruminen vaatii koko lohkoketjun uudelleen lataamisen. (oletus: 0 = lohkojen karsinta ei käytössä, 1 =  salli manuaalinen puhdistus RPC:tä käyttäen, &gt;%u = automaattisesti puhdista lohkotiedostot että pysytään alle tavoitetilan MiB)</translation>
     </message>
     <message>
         <source>Set lowest fee rate (in %s/kB) for transactions to be included in block creation. (default: %s)</source>
-        <translation>设定生成区块时，所要包含交易每千字节的最低手续费（单位是%s）。（默认：%s）</translation>
+        <translation>Aseta lohkon luonnissa lisättävien siirtojen vähimmäispalkkion suhde (%s/kt) (oletus: %s)</translation>
     </message>
     <message>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
-        <translation>这是在费用估计不可用时你可能会支付的交易费。</translation>
+        <translation>Tämä on siirtomaksu jonka saatat maksaa jos siirtomaksun arviota ei ole mahdollista saada.</translation>
     </message>
     <message>
         <source>This product includes software developed by the OpenSSL Project for use in the OpenSSL Toolkit %s and cryptographic software written by Eric Young and UPnP software written by Thomas Bernard.</source>
-        <translation>此产品包含了由OpenSSL Project所开发的OpenSSL Toolkit软件%s，由Eric Young撰写的加解密软件，以及由Thomas Bernard所撰写的UPnP软件。</translation>
+        <translation>Tämä tuote sisältää OpenSSL projektin kehittämää ohjelmistoa käytettäväksi OpenSSL Toolkit ohjelmistossa %s sekä Eric Youngin kehittämän salausohjelmiston ja Thomas Bernardin kehittämän UPnP ohjelmiston.</translation>
     </message>
     <message>
         <source>Unable to locate enough PrivateSend non-denominated funds for this transaction.</source>
-        <translation>在本次交易中, 无法找到足够的未面额化资金.</translation>
+        <translation>Ei tarpeeksi PrivateSend ei-denominoituja varoja tälle siirtotapahtumalle.</translation>
     </message>
     <message>
         <source>Use N separate masternodes for each denominated input to mix funds (%u-%u, default: %u)</source>
-        <translation>使用N个独立的主节点来为各个面额化的输入进行混币 (%u-%u, 默认: %u)</translation>
+        <translation>Käytä N erillistä masternodea jokaiseen denominoituun syötteeseen sekoittaaksesi varoja (%u-%u, oletus: %u)</translation>
     </message>
     <message>
         <source>Use hierarchical deterministic key generation (HD) after BIP39/BIP44. Only has effect during wallet creation/first start</source>
-        <translation>在BIP39/BIP44后使用分层确定性(HD)规则生成密钥. 仅在创建钱包/首次启动时才有效</translation>
+        <translation>Käytä hierarkkista determinististä avain generaatiota (HD) BIP39/BIP44 jälkeen. Vaikuttaa vain uuden lompakon luomisessa/ensimmäisessä käynnistyksessä</translation>
     </message>
     <message>
         <source>User defined mnemonic passphrase for HD wallet (BIP39). Only has effect during wallet creation/first start (default: empty string)</source>
-        <translation>HD钱包(BIP39)的用户自定义记忆密码. 仅在创建钱包/首次启动时才有效 (默认: 空白字符)</translation>
+        <translation>Käyttäjän määrittelemä mnemonic salasana HD lompakolle (BIP39). Vaikuttaa vain uuden lompakon luomisessa/ensimmäisessä käynnistyksessä (oletus: tyhjä)</translation>
     </message>
     <message>
         <source>Username and hashed password for JSON-RPC connections. The field &lt;userpw&gt; comes in the format: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. A canonical python script is included in share/rpcuser. The client then connects normally using the rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; pair of arguments. This option can be specified multiple times</source>
-        <translation>JSON-RPC 连接要使用的用户名和散列密码。&lt;userpw&gt; 的格式是：&lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;。在 share/rpcuser 目录下有一个示范的 python 脚本。之后客户端程序就可以用这对参数正常连接：rpcuser=&lt;USERNAME&gt;和rpcpassword=&lt;PASSWORD&gt;。这个选项可以被多次指定。</translation>
+        <translation>Käyttäjänimi ja salattu salasana JSON-RPC yhteyksille. Kenttä &lt;userpw&gt; tulee olla formaatissa: &lt;USERNAME&gt;:&lt;SALT&gt;$&lt;HASH&gt;. Sääntöjen mukainen python scripti on sisällytetty share/rpcuser:ään. Sitten asiakasohjelma kytkeytyy normaalisti kayttäen rpcuser=&lt;USERNAME&gt;/rpcpassword=&lt;PASSWORD&gt; paria perusteena. Tämä optio voidaan määritellä useita kertoja</translation>
     </message>
     <message>
         <source>Wallet will not create transactions that violate mempool chain limits (default: %u)</source>
-        <translation>钱包软件不会产生违反内存池交易链限制的交易（默认：%u）</translation>
+        <translation>Lompakko ei luo siirtotapahtumia jotka rikkovat muistivarannon ketjun rajoja (oletus: %u)</translation>
     </message>
     <message>
         <source>Warning: Wallet file corrupt, data salvaged! Original %s saved as %s in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>警告：钱包文件损坏，但数据被救回！原始的钱包文件%s已经重命名为%s并存储到%s目录下 。如果您的账户余额或者交易记录不正确，请使用您的钱包备份文件恢复。</translation>
+        <translation>Varoitus: Lompakkotiedosto on vioittunut, tiedot pelastettu. Alkuperäinen %s on tallennettu nimellä %s tänne %s, jos saldosi tai siirtohistoria on virheellinen, sinun tulisi palauttaa lompakkotiedosto varmuuskopiosta.</translation>
     </message>
     <message>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
-        <translation>把来自指定地址（例如：1.2.3.4）或CIDR格式网段（例如：1.2.3.0/24）的节点放进白名单。这个选项可以设定多次。</translation>
+        <translation>Merkitse solmut luotettaviksi jotka kytkeytyvät annetusta verkkomaskista tai IP osoitteesta (esim. 1.2.3.4) tai CIDR merkitty verkosta (esim. 1.2.3.4/24). Voidaan määrittää useita kertoja.</translation>
     </message>
     <message>
         <source>%s corrupt, salvage failed</source>
-        <translation>%s 已损坏，抢救备份失败</translation>
+        <translation>%s korruptoitunut, korjaaminen epäonnistui</translation>
     </message>
     <message>
         <source>%s is not a valid backup folder!</source>
-        <translation>%s 不是一个有效的备份文件夹!</translation>
+        <translation>%s ei ole pätevä varmistus hakemisto!</translation>
     </message>
     <message>
         <source>%s is set very high!</source>
-        <translation>%s非常高！</translation>
+        <translation>%s on asetettu todella korkeaksi!</translation>
     </message>
     <message>
         <source>(press q to shutdown and continue later)</source>
-        <translation>(按 q 关闭并稍后继续)</translation>
+        <translation>(paina q sammuttaaksesi ja jatkaaksesi myöhemmin)</translation>
     </message>
     <message>
         <source>-devnet can only be specified once</source>
-        <translation>-devnet 只能被指定一次</translation>
+        <translation>-devnet voidaan määrittää vain kerran</translation>
     </message>
     <message>
         <source>-port must be specified when -devnet and -listen are specified</source>
-        <translation>当 -devnet 和 -listen 被指定时, 必须指定 -port</translation>
+        <translation>-port täytyy määritellä kun -devnet ja -listen on määritelty</translation>
     </message>
     <message>
         <source>-rpcport must be specified when -devnet and -server are specified</source>
-        <translation>当 -devnet 和 -server 被指定时, 必须指定 -rpcport</translation>
+        <translation>-rpcport täytyy määritellä kun -devnet ja -server on määritelty</translation>
     </message>
     <message>
         <source>Allow RFC1918 addresses to be relayed and connected to (default: %u)</source>
-        <translation>允许 RFC1918 地址能被中继并连接到 (默认: %u)</translation>
+        <translation>Salli RFC1918 osoitteiden tulla välitetyksi ja kytketyksi (oletus: %u)</translation>
     </message>
     <message>
         <source>Attempt to recover private keys from a corrupt wallet on startup</source>
-        <translation>启动时尝试从已损坏的钱包文件中恢复私钥</translation>
+        <translation>Yritä palauttaa yksityiset avaimet korruptoituneesta lompakosta käynnistyksen yhteydessä</translation>
     </message>
     <message>
         <source>Cannot resolve -%s address: '%s'</source>
-        <translation>无法解析 - %s 地址： '%s'</translation>
+        <translation>-%s -osoitteen '%s' selvittäminen epäonnistui</translation>
     </message>
     <message>
         <source>Change index out of range</source>
-        <translation>修改索引超过范围</translation>
+        <translation>Vaihtoindeksi rajarvojen ulkopuolella</translation>
     </message>
     <message>
         <source>Copyright (C)</source>
-        <translation>版权 (C)</translation>
+        <translation>Tekijänoikeus (C)</translation>
     </message>
     <message>
         <source>Error loading %s</source>
-        <translation>载入 %s 时发生错误</translation>
+        <translation>Virhe ladattaessa %s</translation>
     </message>
     <message>
         <source>Error loading %s: Wallet corrupted</source>
-        <translation>%s 加载出错：钱包损坏</translation>
+        <translation>Virhe ladattaessa %s: Lompakko vioittunut</translation>
     </message>
     <message>
         <source>Error loading %s: Wallet requires newer version of %s</source>
-        <translation>%s 加载错误：请升级到最新版 %s</translation>
+        <translation>Virhe ladattaessa %s: Tarvitset uudemman %s version</translation>
     </message>
     <message>
         <source>Error upgrading chainstate database</source>
-        <translation>升级链状态数据库出错</translation>
+        <translation>Virhe ketjutilan tietokannan päivityksessä</translation>
     </message>
     <message>
         <source>Failed to find mixing queue to join</source>
-        <translation>无法找到混币队列并加入</translation>
+        <translation>Ei löytynyt sekoitusjonoa johon liittyä</translation>
     </message>
     <message>
         <source>Failed to start a new mixing queue</source>
-        <translation>无法开始一个新的混币队列</translation>
+        <translation>Uuden sekoitusjonon käynnistys ei onnistunut</translation>
     </message>
     <message>
         <source>Initialization sanity check failed. %s is shutting down.</source>
-        <translation>初始化完整性检查失败。%s即将关闭。</translation>
+        <translation>Alustava järkevyyden tarkistus epäonnistui. %s sulkeutuu.</translation>
     </message>
     <message>
         <source>Invalid -onion address or hostname: '%s'</source>
-        <translation>无效的 -onion 地址: '%s'</translation>
+        <translation>Virheellinen -onion osoite tai isäntänimi: '%s'</translation>
     </message>
     <message>
         <source>Invalid -proxy address or hostname: '%s'</source>
-        <translation>无效的 -proxy 地址: '%s'</translation>
+        <translation>Virheellinen -proxy osoite tai isäntänimi: '%s'</translation>
     </message>
     <message>
         <source>Invalid amount for -%s=&lt;amount&gt;: '%s'</source>
-        <translation>无效的金额 -%s=&lt;amount&gt;: '%s'</translation>
+        <translation>Virheellinen määrä -%s=&lt;amount&gt;: '%s'</translation>
     </message>
     <message>
         <source>Invalid characters in -wallet filename</source>
-        <translation>-wallet文件名中含无效字符</translation>
+        <translation>Virheellisiä merkkejä -wallet tiedostonimessä</translation>
     </message>
     <message>
         <source>Invalid spork address specified with -sporkaddr</source>
-        <translation>使用 -sporkaddr 指定的spork地址无效</translation>
+        <translation>Virheellinen spork osoite määritelty -sporkaddr</translation>
     </message>
     <message>
-        <source>Keep N DASH anonymized (%u-%u, default: %u)</source>
-        <translation>保持 N 个匿名处理的达世币 (%u-%u, default: %u)</translation>
+        <source>Keep N ION anonymized (%u-%u, default: %u)</source>
+        <translation>Pidä N ION anonymisoituna (%u-%u, oletus: %u)</translation>
     </message>
     <message>
         <source>Loading P2P addresses...</source>
-        <translation>正在加载P2P地址...</translation>
+        <translation>Ladataan P2P osoitteita...</translation>
     </message>
     <message>
         <source>Print this help message and exit</source>
-        <translation>打印出这段帮助信息并退出</translation>
+        <translation>Näytä tämä ohjeviesti ja poistu</translation>
     </message>
     <message>
         <source>Receive and display P2P network alerts (default: %u)</source>
-        <translation>接收并显示P2P网络警报（默认：%u）</translation>
+        <translation>Vastaanota ja näytä P2P verkon hälytykset (oletus: %u)</translation>
     </message>
     <message>
         <source>Reducing -maxconnections from %d to %d, because of system limitations.</source>
-        <translation>因为系统的限制，将 -maxconnections 参数从 %d 降到了 %d</translation>
+        <translation>Vähennetään -maxconnections %d -&gt; %d, järjestelmän rajoituksien takia.</translation>
     </message>
     <message>
         <source>Relay and mine data carrier transactions (default: %u)</source>
-        <translation>允许转发和开采只带数据的交易（默认：%u）</translation>
+        <translation>Välitä ja louhi datan kuljetustapahtumia (oletus: %u)</translation>
     </message>
     <message>
         <source>Relay non-P2SH multisig (default: %u)</source>
-        <translation>是否转发非P2SH格式的多签名交易 (默认: %u) </translation>
+        <translation>Välitä non-P2SH multisig (oletus: %u)</translation>
     </message>
     <message>
         <source>Rescanning...</source>
-        <translation>正在重新扫描...</translation>
+        <translation>Skannataan uudelleen...</translation>
     </message>
     <message>
         <source>Run in the background as a daemon and accept commands</source>
-        <translation>后台运行并且接受命令</translation>
+        <translation>Aja taustalla palveluprosessina ja hyväksy komennot</translation>
     </message>
     <message>
         <source>Send trace/debug info to console instead of debug.log file</source>
-        <translation>跟踪/调试信息输出到控制台，而不是debug.log文件</translation>
+        <translation>Lähetä jäljitys/debug tieto konsoliin, debug.log tiedoston sijaan</translation>
     </message>
     <message>
         <source>Session not complete!</source>
-        <translation>会话未完成！</translation>
+        <translation>Istunto ei ole valmis!</translation>
     </message>
     <message>
         <source>Session timed out.</source>
-        <translation>会话超时。</translation>
+        <translation>Istunnon aikaraja.</translation>
     </message>
     <message>
         <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
-        <translation>以兆字节为单位设置数据库缓存数据大小 (%d 到 %d，默认：%d)</translation>
+        <translation>Aseta tietokannan välimuistin koko megatavuissa (%d - %d, oletus: %d</translation>
     </message>
     <message>
         <source>Set maximum block size in bytes (default: %d)</source>
-        <translation>以字节为单位设置最大区块的大小(默认：%d)</translation>
+        <translation>Aseta lohkon maksimikoko tavuissa (oletus: %d)</translation>
     </message>
     <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>
-        <translation>显示所有debug选项(用法：--help -help-debug)</translation>
+        <translation>Näytä kaikki debuggaus valinnat: (käyttö: --help -help-debug)</translation>
     </message>
     <message>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
-        <translation>客户启动时缩小debug.log文件(默认：当没有-debug时为1)</translation>
+        <translation>Pienennä debug.log tiedosto käynnistyksen yhteydessä (vakioasetus: 1 kun ei -debug)</translation>
     </message>
     <message>
         <source>Signing transaction failed</source>
-        <translation>交易签名失败</translation>
+        <translation>Siirtotapahtuman allekirjoitus epäonnistui</translation>
     </message>
     <message>
         <source>Specify data directory</source>
-        <translation>指定数据目录</translation>
+        <translation>Määritä datahakemisto</translation>
     </message>
     <message>
         <source>Specify wallet file (within data directory)</source>
-        <translation>指定钱包文件(在数据目录中)</translation>
+        <translation>Määritä lompakkotiedosto (datahakemiston sisällä)</translation>
     </message>
     <message>
         <source>Specify your own public address</source>
-        <translation>指定您自己的公开地址</translation>
+        <translation>Määritä julkinen osoitteesi</translation>
     </message>
     <message>
         <source>Starting network threads...</source>
-        <translation>正在启动网络线程...</translation>
+        <translation>Käynnistetään verkkoa...</translation>
     </message>
     <message>
         <source>Synchronization pending...</source>
-        <translation>同步即将开始...</translation>
+        <translation>Synkronointi odottaa...</translation>
     </message>
     <message>
         <source>Synchronizing governance objects...</source>
-        <translation>正在同步治理对象…</translation>
+        <translation>Ladataan hallinnon objekteja...</translation>
     </message>
     <message>
         <source>The source code is available from %s.</source>
-        <translation>源代码可以在 %s 获得。</translation>
+        <translation>Lähdekoodi löytyy %s.</translation>
     </message>
     <message>
         <source>The transaction amount is too small to pay the fee</source>
-        <translation>交易金额太小，不足以支付交易费</translation>
+        <translation>Siirtomäärä on liian pieni siirtomaksun maksamiseen</translation>
     </message>
     <message>
         <source>This is experimental software.</source>
-        <translation>这是一款实验软件。</translation>
+        <translation>Tämä on kokeellinen ohjelmisto.</translation>
     </message>
     <message>
         <source>Transaction amount too small</source>
-        <translation>交易额过小</translation>
+        <translation>Siirtosumma on liian pieni</translation>
     </message>
     <message>
         <source>Transaction created successfully.</source>
-        <translation>交易创建成功。</translation>
+        <translation>Siirtotapahtuma luotu onnistuneesti.</translation>
     </message>
     <message>
         <source>Transaction fees are too high.</source>
-        <translation>交易费用过高。</translation>
+        <translation>Siirtotapahtuman siirtomaksu on liian iso.</translation>
     </message>
     <message>
         <source>Transaction not valid.</source>
-        <translation>交易无效。</translation>
+        <translation>Siirtotapahtuma ei ole voimassa.</translation>
     </message>
     <message>
         <source>Transaction too large for fee policy</source>
-        <translation>根据交易手续费准则，本交易过大</translation>
+        <translation>Siirtotapahtuma on liian iso suhteessa siirtomaksujen käytäntöön.</translation>
     </message>
     <message>
         <source>Unable to bind to %s on this computer (bind returned error %s)</source>
-        <translation>无法绑定此计算机上的%s (绑定返回错误 %s)</translation>
+        <translation>Ei voida yhdistää %s tässä tietokoneessa (yhdistäminen palautti virheen %s)</translation>
     </message>
     <message>
         <source>Unable to sign spork message, wrong key?</source>
-        <translation>无法签署交叉信息，错误的密钥？</translation>
+        <translation>En voida allekirjoittaa spork viestiä, väärä avain?</translation>
     </message>
     <message>
         <source>Unknown network specified in -onlynet: '%s'</source>
-        <translation>在 -onlynet 指定了不明的网路：'%s'</translation>
+        <translation>Tuntematon verkkomääritys -onlynet parametrissa: '%s'</translation>
     </message>
     <message>
         <source>Unknown state: id = %u</source>
-        <translation>未知状态：id = %u</translation>
+        <translation>Tuntematon tila: id = %u</translation>
     </message>
     <message>
         <source>Username for JSON-RPC connections</source>
-        <translation>JSON-RPC连接用户名</translation>
+        <translation>Käyttäjätunnus JSON-RPC yhteyksille</translation>
     </message>
     <message>
         <source>Verifying blocks...</source>
-        <translation>验证区块中...</translation>
+        <translation>Tarkistetaan lohkoja...</translation>
     </message>
     <message>
         <source>Verifying wallet...</source>
-        <translation>验证钱包中...</translation>
+        <translation>Tarkistetaan lompakko...</translation>
     </message>
     <message>
         <source>Very low number of keys left: %d</source>
-        <translation>尚余少量的密匙：%d</translation>
+        <translation>Osoitteita vähän jäljellä: %d</translation>
     </message>
     <message>
         <source>Wallet %s resides outside data directory %s</source>
-        <translation>钱包%s没有在数据目录%s里面</translation>
+        <translation>Lompakko %s sijaitsee datahakemiston ulkopuolella %s</translation>
     </message>
     <message>
         <source>Wallet is locked.</source>
-        <translation>钱包被锁定。</translation>
+        <translation>Lompakko on lukittu.</translation>
     </message>
     <message>
         <source>Wallet options:</source>
-        <translation>钱包选项：</translation>
+        <translation>Lompakon valinnat:</translation>
     </message>
     <message>
         <source>Wallet window title</source>
-        <translation>钱包窗口标题</translation>
+        <translation>Lompakon ikkunaotsikko</translation>
     </message>
     <message>
         <source>Warning</source>
-        <translation>警告</translation>
+        <translation>Varoitus</translation>
     </message>
     <message>
         <source>Your entries added successfully.</source>
-        <translation>您的词条已添加成功.</translation>
+        <translation>Merkinnnät lisätty onnistuneesti.</translation>
     </message>
     <message>
         <source>Your transaction was accepted into the pool!</source>
-        <translation>您的交易成功被矿池接受！</translation>
+        <translation>Siirtotapahtuma hyväksytty varantoon!</translation>
     </message>
     <message>
         <source>Zapping all transactions from wallet...</source>
-        <translation>正在清除钱包中的所有交易...</translation>
+        <translation>Tyhjennetään kaikki siirtotapahtumat lompakosta....</translation>
     </message>
 </context>
 </TS>
