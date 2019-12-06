@@ -1,25 +1,25 @@
-# /etc/conf.d/dashd: config file for /etc/init.d/dashd
+# /etc/conf.d/iond: config file for /etc/init.d/iond
 
 # Config file location
-#BITCOIND_CONFIGFILE="/etc/dashcore/dash.conf"
+#BITCOIND_CONFIGFILE="/etc/ioncoin/ioncoin.conf"
 
 # What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
-#BITCOIND_PIDDIR="/var/run/dashd"
+#BITCOIND_PIDDIR="/var/run/iond"
 
 # What filename to give the pidfile
-#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/dashd.pid"
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/iond.pid"
 
-# Where to write dashd data (be mindful that the blockchain is large)
-#BITCOIND_DATADIR="/var/lib/dashd"
+# Where to write iond data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/iond"
 
-# User and group to own dashd process
-#BITCOIND_USER="dashcore"
-#BITCOIND_GROUP="dashcore"
+# User and group to own iond process
+#BITCOIND_USER="ioncoin"
+#BITCOIND_GROUP="ioncoin"
 
-# Path to dashd executable
-#BITCOIND_BIN="/usr/bin/dashd"
+# Path to iond executable
+#BITCOIND_BIN="/usr/bin/iond"
 
-# Nice value to run dashd under
+# Nice value to run iond under
 #BITCOIND_NICE=0
 
 # Additional options (avoid -conf and -datadir, use flags above)
