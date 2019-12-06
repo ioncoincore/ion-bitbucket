@@ -2328,7 +2328,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
 
     // ION : CHECK TRANSACTIONS FOR INSTANTSEND
 
-    if (sporkManager.IsSporkActive(SPORK_3_INSTANTSEND_BLOCK_FILTERING)) {
+    if (sporkManager.IsSporkActive(SPORK_13_INSTANTSEND_BLOCK_FILTERING)) {
         // Require other nodes to comply, send them some data in case they are missing it.
         for (const auto& tx : block.vtx) {
             // skip txes that have no inputs

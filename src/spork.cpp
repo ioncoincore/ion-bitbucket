@@ -17,15 +17,26 @@ const std::string CSporkManager::SERIALIZATION_VERSION_STRING = "CSporkManager-V
 
 #define MAKE_SPORK_DEF(name, defaultValue) CSporkDef{name, defaultValue, #name}
 std::vector<CSporkDef> sporkDefs = {
-    MAKE_SPORK_DEF(SPORK_2_INSTANTSEND_ENABLED,            4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_3_INSTANTSEND_BLOCK_FILTERING,    4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_6_NEW_SIGS,                       4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_9_SUPERBLOCKS_ENABLED,            4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_15_DETERMINISTIC_MNS_ENABLED,     4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_16_INSTANTSEND_AUTOLOCKS,         4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_17_QUORUM_DKG_ENABLED,            4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_19_CHAINLOCKS_ENABLED,            4070908800ULL), // OFF
-    MAKE_SPORK_DEF(SPORK_20_INSTANTSEND_LLMQ_BASED,        4070908800ULL), // OFF
+    MAKE_SPORK_DEF(SPORK_1_SWIFTTX,                         978307200),     // 2001-1-1
+    MAKE_SPORK_DEF(SPORK_2_SWIFTTX_BLOCK_FILTERING,         1424217600),    // 2015-2-18
+    MAKE_SPORK_DEF(SPORK_5_MAX_VALUE,                       1000),          // 1000 ION
+    MAKE_SPORK_DEF(SPORK_4_MASTERNODE_PAYMENT_ENFORCEMENT,  4070908800),    // OFF 
+    MAKE_SPORK_DEF(SPORK_5_MASTERNODE_BUDGET_ENFORCEMENT,   4070908800),    // OFF 
+    MAKE_SPORK_DEF(SPORK_6_MASTERNODE_ENABLE_SUPERBLOCKS,   4070908800),    // OFF 
+    MAKE_SPORK_DEF(SPORK_7_MASTERNODE_PAY_UPDATED_NODES,    1521851265),    // GMT: Saturday, March 24, 2018 12:27:45 AM (OFF 4070908800)
+    MAKE_SPORK_DEF(SPORK_8_NEW_PROTOCOL_ENFORCEMENT,        1556668800),    // GMT: Wednesday, May 1, 2019 12:00:00 AM (OFF 4070908800)
+    MAKE_SPORK_DEF(SPORK_9_ZEROCOIN_MAINTENANCE_MODE,       4070908800),    // OFF 
+    MAKE_SPORK_DEF(SPORK_10_TOKENGROUP_MAINTENANCE_MODE,    4070908800),    // OFF 
+    MAKE_SPORK_DEF(SPORK_11_NEW_PROTOCOL_ENFORCEMENT_2,     4070908800),    // OFF 
+    MAKE_SPORK_DEF(SPORK_12_INSTANTSEND_ENABLED,                    4070908800ULL), // OFF
+    MAKE_SPORK_DEF(SPORK_13_INSTANTSEND_BLOCK_FILTERING,            4070908800ULL), // OFF
+    MAKE_SPORK_DEF(SPORK_14_NEW_SIGS,                               4070908800ULL), // OFF
+    MAKE_SPORK_DEF(SPORK_15_SUPERBLOCKS_ENABLED,                    4070908800ULL), // OFF
+    MAKE_SPORK_DEF(SPORK_16_DETERMINISTIC_MNS_ENABLED,              4070908800ULL), // OFF
+    MAKE_SPORK_DEF(SPORK_17_INSTANTSEND_AUTOLOCKS,                  4070908800ULL), // OFF
+    MAKE_SPORK_DEF(SPORK_18_QUORUM_DKG_ENABLED,                     4070908800ULL), // OFF
+    MAKE_SPORK_DEF(SPORK_19_CHAINLOCKS_ENABLED,                     4070908800ULL), // OFF
+    MAKE_SPORK_DEF(SPORK_20_INSTANTSEND_LLMQ_BASED,                 4070908800ULL), // OFF
 };
 
 CSporkManager sporkManager;
@@ -143,10 +154,10 @@ void CSporkManager::ProcessSpork(CNode* pfrom, const std::string& strCommand, CD
         }
 
         CKeyID keyIDSigner;
-        bool fSpork6IsActive = IsSporkActive(SPORK_6_NEW_SIGS);
+        bool fSpork6IsActive = IsSporkActive(SPORK_14_NEW_SIGS);
         if (!spork.GetSignerKeyID(keyIDSigner, fSpork6IsActive) || !setSporkPubKeyIDs.count(keyIDSigner)) {
-            // Note: unlike for other messages we have to check for new format even with SPORK_6_NEW_SIGS
-            // inactive because SPORK_6_NEW_SIGS default is OFF and it is not the first spork to sync
+            // Note: unlike for other messages we have to check for new format even with SPORK_14_NEW_SIGS
+            // inactive because SPORK_14_NEW_SIGS default is OFF and it is not the first spork to sync
             // (and even if it would, spork order can't be guaranteed anyway).
             if (!spork.GetSignerKeyID(keyIDSigner, !fSpork6IsActive) || !setSporkPubKeyIDs.count(keyIDSigner)) {
                 LOCK(cs_main);
@@ -199,7 +210,7 @@ bool CSporkManager::UpdateSpork(SporkId nSporkID, int64_t nValue, CConnman& conn
 
     LOCK(cs);
 
-    bool fSpork6IsActive = IsSporkActive(SPORK_6_NEW_SIGS);
+    bool fSpork6IsActive = IsSporkActive(SPORK_14_NEW_SIGS);
     if (!spork.Sign(sporkPrivKey, fSpork6IsActive)) {
         LogPrintf("CSporkManager::%s -- ERROR: signing failed for spork %d\n", __func__, nSporkID);
         return false;
@@ -316,7 +327,7 @@ bool CSporkManager::SetPrivKey(const std::string& strPrivKey)
     }
 
     CSporkMessage spork;
-    if (!spork.Sign(key, IsSporkActive(SPORK_6_NEW_SIGS))) {
+    if (!spork.Sign(key, IsSporkActive(SPORK_14_NEW_SIGS))) {
         LogPrintf("CSporkManager::SetPrivKey -- Test signing failed\n");
         return false;
     }
@@ -395,7 +406,7 @@ bool CSporkMessage::CheckSignature(const CKeyID& pubKeyId, bool fSporkSixActive)
         uint256 hash = GetSignatureHash();
 
         if (!CHashSigner::VerifyHash(hash, pubKeyId, vchSig, strError)) {
-            // Note: unlike for many other messages when SPORK_6_NEW_SIGS is ON sporks with sigs in old format
+            // Note: unlike for many other messages when SPORK_14_NEW_SIGS is ON sporks with sigs in old format
             // and newer timestamps should not be accepted, so if we failed here - that's it
             LogPrintf("CSporkMessage::CheckSignature -- VerifyHash() failed, error: %s\n", strError);
             return false;
@@ -404,8 +415,8 @@ bool CSporkMessage::CheckSignature(const CKeyID& pubKeyId, bool fSporkSixActive)
         std::string strMessage = std::to_string(nSporkID) + std::to_string(nValue) + std::to_string(nTimeSigned);
 
         if (!CMessageSigner::VerifyMessage(pubKeyId, vchSig, strMessage, strError)){
-            // Note: unlike for other messages we have to check for new format even with SPORK_6_NEW_SIGS
-            // inactive because SPORK_6_NEW_SIGS default is OFF and it is not the first spork to sync
+            // Note: unlike for other messages we have to check for new format even with SPORK_14_NEW_SIGS
+            // inactive because SPORK_14_NEW_SIGS default is OFF and it is not the first spork to sync
             // (and even if it would, spork order can't be guaranteed anyway).
             uint256 hash = GetSignatureHash();
             if (!CHashSigner::VerifyHash(hash, pubKeyId, vchSig, strError)) {

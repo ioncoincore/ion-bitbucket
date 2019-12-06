@@ -28,7 +28,7 @@ class LLMQChainLocksTest(IonTestFramework):
             self.nodes[0].generate(10)
         sync_blocks(self.nodes, timeout=60*5)
 
-        self.nodes[0].spork("SPORK_17_QUORUM_DKG_ENABLED", 0)
+        self.nodes[0].spork("SPORK_18_QUORUM_DKG_ENABLED", 0)
         self.wait_for_sporks_same()
 
         self.log.info("Mining 4 quorums")
@@ -99,8 +99,8 @@ class LLMQChainLocksTest(IonTestFramework):
         assert(self.nodes[0].getbestblockhash() == self.nodes[1].getbestblockhash())
 
         self.log.info("Enable LLMQ bases InstantSend, which also enables checks for \"safe\" transactions")
-        self.nodes[0].spork("SPORK_2_INSTANTSEND_ENABLED", 0)
-        self.nodes[0].spork("SPORK_3_INSTANTSEND_BLOCK_FILTERING", 0)
+        self.nodes[0].spork("SPORK_12_INSTANTSEND_ENABLED", 0)
+        self.nodes[0].spork("SPORK_13_INSTANTSEND_BLOCK_FILTERING", 0)
         self.wait_for_sporks_same()
 
         self.log.info("Isolate a node and let it create some transactions which won't get IS locked")
@@ -117,10 +117,10 @@ class LLMQChainLocksTest(IonTestFramework):
         time.sleep(1)
         assert(not self.nodes[0].getblock(self.nodes[0].getbestblockhash())["chainlock"])
         self.log.info("Disable LLMQ based InstantSend for a very short time (this never gets propagated to other nodes)")
-        self.nodes[0].spork("SPORK_2_INSTANTSEND_ENABLED", 4070908800)
+        self.nodes[0].spork("SPORK_12_INSTANTSEND_ENABLED", 4070908800)
         self.log.info("Now the TXs should be included")
         self.nodes[0].generate(1)
-        self.nodes[0].spork("SPORK_2_INSTANTSEND_ENABLED", 0)
+        self.nodes[0].spork("SPORK_12_INSTANTSEND_ENABLED", 0)
         self.log.info("Assert that TXs got included now")
         for txid in txs:
             tx = self.nodes[0].getrawtransaction(txid, 1)

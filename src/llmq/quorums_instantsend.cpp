@@ -1496,7 +1496,7 @@ void CInstantSendManager::WorkThreadMain()
 
 bool IsInstantSendEnabled()
 {
-    return sporkManager.IsSporkActive(SPORK_2_INSTANTSEND_ENABLED);
+    return sporkManager.IsSporkActive(SPORK_12_INSTANTSEND_ENABLED);
 }
 
 } // namespace llmq

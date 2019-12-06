@@ -23,12 +23,12 @@ class InstantSendTest(IonTestFramework):
         self.sender_idx = 3
 
     def run_test(self):
-        self.nodes[0].spork("SPORK_17_QUORUM_DKG_ENABLED", 0)
+        self.nodes[0].spork("SPORK_18_QUORUM_DKG_ENABLED", 0)
         self.wait_for_sporks_same()
         self.mine_quorum()
 
-        self.nodes[0].spork("SPORK_2_INSTANTSEND_ENABLED", 0)
-        self.nodes[0].spork("SPORK_3_INSTANTSEND_BLOCK_FILTERING", 0)
+        self.nodes[0].spork("SPORK_12_INSTANTSEND_ENABLED", 0)
+        self.nodes[0].spork("SPORK_13_INSTANTSEND_BLOCK_FILTERING", 0)
         self.wait_for_sporks_same()
 
         self.test_mempool_doublespend()
