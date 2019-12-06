@@ -626,7 +626,7 @@ fs::path GetDefaultDataDir()
     // Windows < Vista: C:\Documents and Settings\Username\Application Data\ioncoin
     // Windows >= Vista: C:\Users\Username\AppData\Roaming\ioncoin
     // Mac: ~/Library/Application Support/ioncoin
-    // Unix: ~/.ioncore
+    // Unix: ~/.ioncoin
 #ifdef WIN32
     // Windows
     return GetSpecialFolderPath(CSIDL_APPDATA) / "ioncoin";
@@ -642,7 +642,7 @@ fs::path GetDefaultDataDir()
     return pathRet / "Library/Application Support/ioncoin";
 #else
     // Unix
-    return pathRet / ".ioncore";
+    return pathRet / ".ioncoin";
 #endif
 #endif
 }
