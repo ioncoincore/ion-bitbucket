@@ -18,7 +18,6 @@ License: GPL-2+
 Files: src/qt/res/icons/add.png
        src/qt/res/icons/address-book.png
        src/qt/res/icons/chevron.png
-       src/qt/res/icons/configure.png
        src/qt/res/icons/debugwindow.png
        src/qt/res/icons/edit.png
        src/qt/res/icons/editcopy.png
@@ -29,16 +28,11 @@ Files: src/qt/res/icons/add.png
        src/qt/res/icons/history.png
        src/qt/res/icons/info.png
        src/qt/res/icons/key.png
-       src/qt/res/icons/lock_*.png
        src/qt/res/icons/open.png
        src/qt/res/icons/overview.png
        src/qt/res/icons/quit.png
-       src/qt/res/icons/receive.png
        src/qt/res/icons/remove.png
-       src/qt/res/icons/send.png
        src/qt/res/icons/synced.png
-       src/qt/res/icons/transaction*.png
-       src/qt/res/icons/tx_output.png
        src/qt/res/icons/warning.png
 Copyright: Stephen Hutchings (and more)
            http://typicons.com
@@ -47,15 +41,12 @@ Comment: Site: https://github.com/stephenhutchings/typicons.font
 
 Files: src/qt/res/icons/connect*.png
        src/qt/res/src/connect-*.svg
-       src/qt/res/icons/*/network_disabled.png
-       src/qt/res/src/network_disabled.svg
 Copyright: Marco Falke
            Luke Ionjr
 License: Expat
 Comment: Inspired by Stephan Hutchings Typicons
 
-Files: src/qt/res/icons/tx_mined.png
-       src/qt/res/src/mine.svg
+Files: src/qt/res/src/mine.svg
        src/qt/res/icons/fontbigger.png
        src/qt/res/icons/fontsmaller.png
        src/qt/res/icons/*/hd_disabled.png
@@ -69,9 +60,7 @@ Comment:
 Files: src/qt/res/icons/clock*.png
        src/qt/res/icons/eye_*.png
        src/qt/res/icons/verify.png
-       src/qt/res/icons/tx_in*.png
        src/qt/res/src/clock_*.svg
-       src/qt/res/src/tx_*.svg
        src/qt/res/src/verify.svg
 Copyright: Stephan Hutching, Jonas Schnelli
 License: Expat
@@ -85,6 +74,67 @@ Copyright: Bitboy, Jonas Schnelli
 License: public-domain
 Comment: Site: https://bitcointalk.org/?topic=1756.0
 
+Files: src/qt/res/icons/about.png
+       src/qt/res/icons/ion.icns
+       src/qt/res/icons/ion.ico
+       src/qt/res/icons/ion.png
+       src/qt/res/icons/ion_regtest.icns
+       src/qt/res/icons/ion_regtest.ico
+       src/qt/res/icons/ion_regtest.png
+       src/qt/res/icons/ion_testnet.icns
+       src/qt/res/icons/ion_testnet.ico
+       src/qt/res/icons/ion_testnet.png
+       src/qt/res/icons/lock_closed.png
+       src/qt/res/icons/lock_open.png
+       src/qt/res/icons/notsynced.png
+       src/qt/res/icons/notsynced_regtest.png
+       src/qt/res/icons/notsynced_testnet.png
+       src/qt/res/icons/receive.png
+       src/qt/res/icons/send.png
+       src/qt/res/icons/transaction2.png
+       src/qt/res/icons/transaction2_regtest.png
+       src/qt/res/icons/transaction2_testnet.png
+       src/qt/res/icons/tx_inout.png
+       src/qt/res/icons/tx_input.png
+       src/qt/res/icons/tx_mined.png
+       src/qt/res/icons/tx_output.png
+       share/pixmaps/ion.ico
+       share/pixmaps/ion16.png
+       share/pixmaps/ion16.xpm
+       share/pixmaps/ion32.png
+       share/pixmaps/ion32.xpm
+       share/pixmaps/ion48.png
+       share/pixmaps/ion48.xpm
+       share/pixmaps/ion64.png
+       share/pixmaps/ion64.xpm
+       share/pixmaps/ion128.png
+       share/pixmaps/ion128.xpm
+       share/pixmaps/ion256.png
+       share/pixmaps/ion256.xpm
+       share/pixmaps/iond.ico
+       share/pixmaps/iond_regtest.ico
+       share/pixmaps/iond_testnet.ico
+       share/pixmaps/ion_regtest.ico
+       share/pixmaps/ion_testnet.ico
+       share/pixmaps/nsis-header.bmp
+       share/pixmaps/nsis-wizard.bmp
+       src/qt/res/src/icons.svg
+       src/qt/res/src/ion.svg
+       src/qt/res/src/ionomy_banner_logo_horizontal.svg
+       src/qt/res/src/nsis-wizard.svg
+       src/qt/res/src/reload.svg
+       src/qt/res/src/spinner.png
+       src/qt/res/src/spinner.svg
+       src/qt/res/src/splash.svg
+       src/qt/res/src/transaction.svg
+       src/qt/res/src/transaction0.svg
+       src/qt/res/src/tx_in.svg
+       src/qt/res/src/tx_inout.svg
+       src/qt/res/src/unit_ion.svg
+       doc/ion_logo_doxygen.png
+Copyright: Cevap
+License: Expat
+Comment: Modifications of Cevap
 
 License: Expat
  Permission is hereby granted, free of charge, to any person obtaining a
