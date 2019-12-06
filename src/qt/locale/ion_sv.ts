@@ -2140,6 +2140,10 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Bitcoin Core-utvecklarna</translation>
     </message>
     <message>
+        <source>The Dash Core developers</source>
+        <translation>Dash Core-utvecklarna</translation>
+    </message>
+    <message>
         <source>The Ion Core developers</source>
         <translation>Ion Core-utvecklarna</translation>
     </message>
