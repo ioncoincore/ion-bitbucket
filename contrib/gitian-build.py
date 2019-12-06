@@ -57,7 +57,7 @@ def build():
 
     subprocess.check_call(['wget', '-O', 'inputs/osslsigncode-1.7.1.tar.xz', '-N', '-P', 'inputs', 'https://bitbucket.org/ioncoin/osslsigncode/downloads/osslsigncode-1.7.1.tar.xz'])
     subprocess.check_call(['wget', '-O', 'inputs/osslsigncode-Backports-to-1.7.1.patch', '-N', '-P', 'inputs', 'https://bitbucket.org/ioncoin/osslsigncode/downloads/osslsigncode-Backports-to-1.7.1.patch'])
-    subprocess.check_call(['wget', '-O', 'inputs/MacOSX10.11.sdk.tar.xz', '-N', '-P', 'inputs', 'https://github.com/gitianuser/MacOSX-SDKs/releases/download/MacOSX10.11.sdk/MacOSX10.11.sdk.tar.xz'])
+    subprocess.check_call(['wget', '-O', 'inputs/MacOSX10.11.sdk.tar.xz', '-N', '-P', 'inputs', 'https://bitbucket.org/ioncoin/downloads/MacOSX10.11.sdk.tar.xz'])
 
     subprocess.check_call(["echo 'a8c4e9cafba922f89de0df1f2152e7be286aba73f78505169bc351a7938dd911 inputs/osslsigncode-Backports-to-1.7.1.patch' | sha256sum -c"], shell=True)
     subprocess.check_call(["echo 'f9a8cdb38b9c309326764ebc937cba1523a3a751a7ab05df3ecc99d18ae466c9 inputs/osslsigncode-1.7.1.tar.gz' | sha256sum -c"], shell=True)
