@@ -1,5 +1,6 @@
 ---
 name: "ion-dmg-signer"
+distro: "ubuntu"
 suites:
 - "bionic"
 architectures:
@@ -7,11 +8,13 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://bitbucket.org/ioncoin/ion-detached-sigs.git"
+- "url": "https://github.com/gitianuser/ion-detached-sigs.git"
   "dir": "signature"
 files:
-- "ioncore-osx-unsigned.tar.gz"
+- "ion-osx-unsigned.tar.xz"
 script: |
+  set -e -o pipefail
+
   WRAP_DIR=$HOME/wrapped
   mkdir -p ${WRAP_DIR}
   export PATH=`pwd`:$PATH
@@ -19,7 +22,7 @@ script: |
 
   # Create global faketime wrappers
   for prog in ${FAKETIME_PROGS}; do
-    echo '#!/bin/bash' > ${WRAP_DIR}/${prog}
+    echo '#!/usr/bin/env bash' > ${WRAP_DIR}/${prog}
     echo "REAL=\`which -a ${prog} | grep -v ${WRAP_DIR}/${prog} | head -1\`" >> ${WRAP_DIR}/${prog}
     echo 'export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/faketime/libfaketime.so.1' >> ${WRAP_DIR}/${prog}
     echo "export FAKETIME=\"${REFERENCE_DATETIME}\"" >> ${WRAP_DIR}/${prog}
@@ -27,10 +30,10 @@ script: |
     chmod +x ${WRAP_DIR}/${prog}
   done
 
-  UNSIGNED=ioncore-osx-unsigned.tar.gz
-  SIGNED=ioncore-osx-signed.dmg
+  UNSIGNED=ion-osx-unsigned.tar.xz
+  SIGNED=ion-osx-signed.dmg
 
-  tar -xf ${UNSIGNED}
+  tar -xJf ${UNSIGNED}
   OSX_VOLNAME="$(cat osx_volname)"
   ./detached-sig-apply.sh ${UNSIGNED} signature/osx
   ${WRAP_DIR}/genisoimage -no-cache-inodes -D -l -probe -V "${OSX_VOLNAME}" -no-pad -r -dir-mode 0755 -apple -o uncompressed.dmg signed-app
