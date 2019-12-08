@@ -3,8 +3,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIVX_ZEROCOINDB_H
-#define PIVX_ZEROCOINDB_H
+#ifndef ION_ZEROCOINDB_H
+#define ION_ZEROCOINDB_H
 
 #include "dbwrapper.h"
 #include "xion/zerocoin.h"
@@ -38,4 +38,4 @@ public:
     bool EraseAccumulatorValue(const uint32_t& nChecksum);
 };
 
-#endif //PIVX_ZEROCOINDB_H
+#endif //ION_ZEROCOINDB_H
