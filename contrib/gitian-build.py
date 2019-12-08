@@ -75,21 +75,21 @@ def build():
         print('\nCompiling ' + args.version + ' Linux')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'ion='+args.commit, '--url', 'ion='+args.url, '../ion/contrib/gitian-descriptors/gitian-linux.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-linux', '--destination', '../gitian.sigs/', '../ion/contrib/gitian-descriptors/gitian-linux.yml'])
-        subprocess.check_call('mv build/out/ion-*.tar.xz build/out/src/ion-*.tar.gz ../ion-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/ioncore-*.tar.xz build/out/src/ioncore-*.tar.gz ../ion-binaries/'+args.version, shell=True)
 
     if args.windows:
         print('\nCompiling ' + args.version + ' Windows')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'ion='+args.commit, '--url', 'ion='+args.url, '../ion/contrib/gitian-descriptors/gitian-win.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-unsigned', '--destination', '../gitian.sigs/', '../ion/contrib/gitian-descriptors/gitian-win.yml'])
-        subprocess.check_call('mv build/out/ion-*-win-unsigned.tar.xz inputs/', shell=True)
-        subprocess.check_call('mv build/out/ion-*.zip build/out/ion-*.exe ../ion-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/ioncore-*-win-unsigned.tar.xz inputs/', shell=True)
+        subprocess.check_call('mv build/out/ioncore-*.zip build/out/ioncore-*.exe ../ion-binaries/'+args.version, shell=True)
 
     if args.macos:
         print('\nCompiling ' + args.version + ' MacOS')
         subprocess.check_call(['bin/gbuild', '-j', args.jobs, '-m', args.memory, '--commit', 'ion='+args.commit, '--url', 'ion='+args.url, '../ion/contrib/gitian-descriptors/gitian-osx.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-unsigned', '--destination', '../gitian.sigs/', '../ion/contrib/gitian-descriptors/gitian-osx.yml'])
-        subprocess.check_call('mv build/out/ion-*-osx-unsigned.tar.xz inputs/', shell=True)
-        subprocess.check_call('mv build/out/ion-*.tar.xz build/out/ion-*.dmg ../ion-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/ioncore-*-osx-unsigned.tar.gz inputs/', shell=True)
+        subprocess.check_call('mv build/out/ioncore-*.tar.gz build/out/ioncore-*.dmg ../ion-binaries/'+args.version, shell=True)
 
     os.chdir(workdir)
 
@@ -134,12 +134,12 @@ def sign():
         subprocess.check_call('cp inputs/ion-' + args.version + '-win-unsigned.tar.xz inputs/ion-win-unsigned.tar.xz', shell=True)
         subprocess.check_call(['bin/gbuild', '-i', '--commit', 'signature='+args.commit, '../ion/contrib/gitian-descriptors/gitian-win-signer.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-signed', '--destination', '../gitian.sigs/', '../ion/contrib/gitian-descriptors/gitian-win-signer.yml'])
-        subprocess.check_call('mv build/out/ion-*win64-setup.exe ../ion-binaries/'+args.version, shell=True)
-        subprocess.check_call('mv build/out/ion-*win32-setup.exe ../ion-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/ioncore-*win64-setup.exe ../ion-binaries/'+args.version, shell=True)
+        subprocess.check_call('mv build/out/ioncore-*win32-setup.exe ../ion-binaries/'+args.version, shell=True)
 
     if args.macos:
         print('\nSigning ' + args.version + ' MacOS')
-        subprocess.check_call('cp inputs/ion-' + args.version + '-osx-unsigned.tar.xz inputs/ion-osx-unsigned.tar.xz', shell=True)
+        subprocess.check_call('cp inputs/ion-' + args.version + '-osx-unsigned.tar.gz inputs/ion-osx-unsigned.tar.gz', shell=True)
         subprocess.check_call(['bin/gbuild', '-i', '--commit', 'signature='+args.commit, '../ion/contrib/gitian-descriptors/gitian-osx-signer.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-signed', '--destination', '../gitian.sigs/', '../ion/contrib/gitian-descriptors/gitian-osx-signer.yml'])
         subprocess.check_call('mv build/out/ion-osx-signed.dmg ../ion-binaries/'+args.version+'/ion-'+args.version+'-osx.dmg', shell=True)
