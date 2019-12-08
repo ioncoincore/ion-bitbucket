@@ -2,7 +2,7 @@
 cd $HOME
 
 # mandatory settings
-export SIGNER="ABD818486CBB35BB"        # Signer ID,Name, Email ... (use ID listed in gpg --list-keys)
+export SIGNER="7FDF93BCDE169B04"        # Signer ID,Name, Email ... (use ID listed in gpg --list-keys)
 export VERSION="develop"                # version (tag)/branch/hash
 
 # optional settings
