@@ -127,6 +127,9 @@ contrib/devtools/split-debug.sh
 src/qt/ion-qt.bash
 qa/pull-tester/tests-config.sh
 
+# gpg
+contrib/gitian-additional-scripts/gpgtemplate
+
 #development symlinks
 ion-cli
 iond
