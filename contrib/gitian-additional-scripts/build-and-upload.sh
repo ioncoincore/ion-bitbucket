@@ -45,7 +45,7 @@ else
 fi
 
 # copy gitian-build.py script to current dir (normally home)
-if [ -f ./ion/contrib/gitian-build.py ]
+if [ -f ./ion/contrib/gitian-build.py ]; then
     cp -f ./ion/contrib/gitian-build.py ./gitian-build.py
     chmod +x ./gitian-build.py
 else
