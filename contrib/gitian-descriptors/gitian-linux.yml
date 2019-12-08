@@ -32,6 +32,7 @@ packages:
 - "bsdmainutils"
 - "ca-certificates"
 - "python3"
+- "cmake"
 remotes:
 - "url": "https://bitbucket.org/ioncoin/ion.git"
   "dir": "ion"
