@@ -69,7 +69,6 @@
 #include "warnings.h"
 
 #include "xion/accumulatorcheckpoints.h"
-#include "xion/zerocoindb.h"
 
 #include "tokens/tokengroupmanager.h"
 #include "tokens/tokendb.h"
