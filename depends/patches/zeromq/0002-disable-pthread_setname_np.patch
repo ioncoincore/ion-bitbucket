@@ -1,7 +1,7 @@
-From cc39915085553a99f74f9c69b46fe3697534197d Mon Sep 17 00:00:00 2001
+From 672d097e07125c229c1a39d94bb4b4da2f0b6fd0 Mon Sep 17 00:00:00 2001
 From: cevap <dev@i2pmail.org>
-Date: Sun, 8 Dec 2019 09:52:00 +0100
-Subject: [PATCH] disable-pthread_set_name_np
+Date: Sun, 8 Dec 2019 15:24:54 +0100
+Subject: [PATCH] disable pthread_setname_np
 
 ---
  src/thread.cpp | 3 +++
