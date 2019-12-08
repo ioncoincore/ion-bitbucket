@@ -109,7 +109,7 @@ The gbuild invocations below <b>DO NOT DO THIS</b> by default.
     pushd ./gitian-builder
     ./bin/gbuild --num-make 2 --memory 3000 --commit ion=v${VERSION} ../ion/contrib/gitian-descriptors/gitian-linux.yml
     ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/ion-*.tar.gz build/out/src/ion-*.tar.gz ../
+    mv build/out/ioncore-*.tar.gz build/out/src/ioncore-*.tar.gz ../
 
     ./bin/gbuild --num-make 2 --memory 3000 --commit ion=v${VERSION} ../ion/contrib/gitian-descriptors/gitian-win.yml
     ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-win.yml
@@ -119,7 +119,7 @@ The gbuild invocations below <b>DO NOT DO THIS</b> by default.
     ./bin/gbuild --num-make 2 --memory 3000 --commit ion=v${VERSION} ../ion/contrib/gitian-descriptors/gitian-osx.yml
     ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-osx.yml
     mv build/out/ion-*-osx-unsigned.tar.gz inputs/ion-osx-unsigned.tar.gz
-    mv build/out/ion-*.tar.gz build/out/ion-*.dmg ../
+    mv build/out/ioncore-*.tar.gz build/out/ion-*.dmg ../
     popd
 
 Build output expected:
