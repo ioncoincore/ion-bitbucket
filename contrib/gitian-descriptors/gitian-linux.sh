@@ -10,6 +10,7 @@ HOST_LDFLAGS=-static-libstdc++
 export QT_RCC_TEST=1
 export QT_RCC_SOURCE_DATE_OVERRIDE=1
 export GZIP="-9n"
+export XZ_OPT="-9"
 export TAR_OPTIONS="--mtime="$REFERENCE_DATE\\\ $REFERENCE_TIME""
 export TZ="UTC"
 export BUILD_DIR=$SNAPCRAFT_PART_BUILD
@@ -104,7 +105,7 @@ export PATH=${WRAP_DIR}:${PATH}
 ./autogen.sh
 CONFIG_SITE=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`/share/config.site ./configure --prefix=/
 make dist
-SOURCEDIST=`echo ion-*.tar.gz`
+SOURCEDIST=`echo ioncore-*.tar.gz`
 DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
 # Correct tar file order
 mkdir -p temp

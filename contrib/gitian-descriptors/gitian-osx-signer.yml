@@ -30,8 +30,8 @@ script: |
     chmod +x ${WRAP_DIR}/${prog}
   done
 
-  UNSIGNED=ion-osx-unsigned.tar.xz
-  SIGNED=ion-osx-signed.dmg
+  UNSIGNED=ioncore-osx-unsigned.tar.xz
+  SIGNED=ioncore-osx-signed.dmg
 
   tar -xJf ${UNSIGNED}
   OSX_VOLNAME="$(cat osx_volname)"
