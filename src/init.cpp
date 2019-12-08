@@ -68,7 +68,7 @@
 #include "spork.h"
 #include "warnings.h"
 
-#include "xion/accumulatorcheckpoints.h"
+#include "libzerocoin/CoinSpend.h"
 
 #include "tokens/tokengroupmanager.h"
 #include "tokens/tokendb.h"
