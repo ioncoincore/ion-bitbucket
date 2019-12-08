@@ -1,0 +1,33 @@
+From cc39915085553a99f74f9c69b46fe3697534197d Mon Sep 17 00:00:00 2001
+From: cevap <dev@i2pmail.org>
+Date: Sun, 8 Dec 2019 09:52:00 +0100
+Subject: [PATCH] disable-pthread_set_name_np
+
+---
+ src/thread.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/thread.cpp b/src/thread.cpp
+index b14d707..3ba2040 100644
+--- a/src/thread.cpp
++++ b/src/thread.cpp
+@@ -360,6 +360,7 @@ void zmq::thread_t::
+     return;
+ #endif
+ 
++#if 0
+ #if defined(ZMQ_HAVE_PTHREAD_SETNAME_1)
+     int rc = pthread_setname_np (_name);
+     if (rc)
+@@ -375,6 +376,8 @@ void zmq::thread_t::
+ #elif defined(ZMQ_HAVE_PTHREAD_SET_NAME)
+     pthread_set_name_np (pthread_self (), _name);
+ #endif
++#endif
++    return;
+ }
+ 
+ #endif
+-- 
+2.17.1
+
