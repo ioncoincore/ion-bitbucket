@@ -11,10 +11,10 @@
 #define CLIENT_VERSION_IS_RELEASE false
 
 /* Major version */
-#define CLIENT_VERSION_MAJOR 1
+#define CLIENT_VERSION_MAJOR 5
 
 /* Minor version */
-#define CLIENT_VERSION_MINOR 17
+#define CLIENT_VERSION_MINOR 0
 
 /* Build revision */
 #define CLIENT_VERSION_REVISION 99
