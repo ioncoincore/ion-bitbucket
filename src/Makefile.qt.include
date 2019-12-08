@@ -187,6 +187,8 @@ RES_ICONS = \
   qt/res/icons/ion_testnet.ico \
   qt/res/icons/ion_regtest.ico \
   qt/res/icons/ion.png \
+  qt/res/icons/ion_testnet.png \
+  qt/res/icons/ion_regtest.png \
   qt/res/icons/chevron.png \
   qt/res/icons/warning.png \
   qt/res/icons/add.png \
