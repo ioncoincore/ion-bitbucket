@@ -493,7 +493,7 @@ UniValue decoderawtransaction(const JSONRPCRequest& request)
             "         \"reqSigs\" : n,            (numeric) The required sigs\n"
             "         \"type\" : \"pubkeyhash\",  (string) The type, eg 'pubkeyhash'\n"
             "         \"addresses\" : [           (json array of string)\n"
-            "           \"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\"   (string) Ion address\n"
+            "           \"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"   (string) Ion address\n"
             "           ,...\n"
             "         ]\n"
             "       }\n"

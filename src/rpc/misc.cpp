@@ -357,8 +357,8 @@ UniValue validateaddress(const JSONRPCRequest& request)
             "  \"hdchainid\" : \"<hash>\"        (string, optional) The ID of the HD chain\n"
             "}\n"
             "\nExamples:\n"
-            + HelpExampleCli("validateaddress", "\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\"")
-            + HelpExampleRpc("validateaddress", "\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\"")
+            + HelpExampleCli("validateaddress", "\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"")
+            + HelpExampleRpc("validateaddress", "\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"")
         );
 
 #ifdef ENABLE_WALLET
@@ -511,9 +511,9 @@ UniValue createmultisig(const JSONRPCRequest& request)
 
             "\nExamples:\n"
             "\nCreate a multisig address from 2 addresses\n"
-            + HelpExampleCli("createmultisig", "2 \"[\\\"Xt4qk9uKvQYAonVGSZNXqxeDmtjaEWgfrs\\\",\\\"XoSoWQkpgLpppPoyyzbUFh1fq2RBvW6UK1\\\"]\"") +
+            + HelpExampleCli("createmultisig", "2 \"[\\\"iTUsSxT1BrUsJj2BuBb4mLD1dhGbyyhrxn\\\",\\\"ibhWLtq6WuAUCprQnBcMpgwLXMiLQX5H5J\\\"]\"") +
             "\nAs a json rpc call\n"
-            + HelpExampleRpc("createmultisig", "2, \"[\\\"Xt4qk9uKvQYAonVGSZNXqxeDmtjaEWgfrs\\\",\\\"XoSoWQkpgLpppPoyyzbUFh1fq2RBvW6UK1\\\"]\"")
+            + HelpExampleRpc("createmultisig", "2, \"[\\\"iTUsSxT1BrUsJj2BuBb4mLD1dhGbyyhrxn\\\",\\\"ibhWLtq6WuAUCprQnBcMpgwLXMiLQX5H5J\\\"]\"")
         ;
         throw std::runtime_error(msg);
     }
@@ -546,11 +546,11 @@ UniValue verifymessage(const JSONRPCRequest& request)
             "\nUnlock the wallet for 30 seconds\n"
             + HelpExampleCli("walletpassphrase", "\"mypassphrase\" 30") +
             "\nCreate the signature\n"
-            + HelpExampleCli("signmessage", "\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\" \"my message\"") +
+            + HelpExampleCli("signmessage", "\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\" \"my message\"") +
             "\nVerify the signature\n"
-            + HelpExampleCli("verifymessage", "\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\" \"signature\" \"my message\"") +
+            + HelpExampleCli("verifymessage", "\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\" \"signature\" \"my message\"") +
             "\nAs json rpc\n"
-            + HelpExampleRpc("verifymessage", "\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\", \"signature\", \"my message\"")
+            + HelpExampleRpc("verifymessage", "\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\", \"signature\", \"my message\"")
         );
 
     LOCK(cs_main);
@@ -599,7 +599,7 @@ UniValue signmessagewithprivkey(const JSONRPCRequest& request)
             "\nCreate the signature\n"
             + HelpExampleCli("signmessagewithprivkey", "\"privkey\" \"my message\"") +
             "\nVerify the signature\n"
-            + HelpExampleCli("verifymessage", "\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\" \"signature\" \"my message\"") +
+            + HelpExampleCli("verifymessage", "\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\" \"signature\" \"my message\"") +
             "\nAs json rpc\n"
             + HelpExampleRpc("signmessagewithprivkey", "\"privkey\", \"my message\"")
         );
@@ -738,8 +738,8 @@ UniValue getaddressmempool(const JSONRPCRequest& request)
             "  }\n"
             "]\n"
             "\nExamples:\n"
-            + HelpExampleCli("getaddressmempool", "'{\"addresses\": [\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\"]}'")
-            + HelpExampleRpc("getaddressmempool", "{\"addresses\": [\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\"]}")
+            + HelpExampleCli("getaddressmempool", "'{\"addresses\": [\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"]}'")
+            + HelpExampleRpc("getaddressmempool", "{\"addresses\": [\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"]}")
         );
 
     std::vector<std::pair<uint160, int> > addresses;
@@ -808,8 +808,8 @@ UniValue getaddressutxos(const JSONRPCRequest& request)
             "  }\n"
             "]\n"
             "\nExamples:\n"
-            + HelpExampleCli("getaddressutxos", "'{\"addresses\": [\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\"]}'")
-            + HelpExampleRpc("getaddressutxos", "{\"addresses\": [\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\"]}")
+            + HelpExampleCli("getaddressutxos", "'{\"addresses\": [\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"]}'")
+            + HelpExampleRpc("getaddressutxos", "{\"addresses\": [\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"]}")
         );
 
     std::vector<std::pair<uint160, int> > addresses;
@@ -877,8 +877,8 @@ UniValue getaddressdeltas(const JSONRPCRequest& request)
             "  }\n"
             "]\n"
             "\nExamples:\n"
-            + HelpExampleCli("getaddressdeltas", "'{\"addresses\": [\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\"]}'")
-            + HelpExampleRpc("getaddressdeltas", "{\"addresses\": [\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\"]}")
+            + HelpExampleCli("getaddressdeltas", "'{\"addresses\": [\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"]}'")
+            + HelpExampleRpc("getaddressdeltas", "{\"addresses\": [\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"]}")
         );
 
 
@@ -957,8 +957,8 @@ UniValue getaddressbalance(const JSONRPCRequest& request)
             "  \"received\"  (string) The total number of duffs received (including change)\n"
             "}\n"
             "\nExamples:\n"
-            + HelpExampleCli("getaddressbalance", "'{\"addresses\": [\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\"]}'")
-            + HelpExampleRpc("getaddressbalance", "{\"addresses\": [\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\"]}")
+            + HelpExampleCli("getaddressbalance", "'{\"addresses\": [\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"]}'")
+            + HelpExampleRpc("getaddressbalance", "{\"addresses\": [\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"]}")
         );
 
     std::vector<std::pair<uint160, int> > addresses;
@@ -1015,8 +1015,8 @@ UniValue getaddresstxids(const JSONRPCRequest& request)
             "  ,...\n"
             "]\n"
             "\nExamples:\n"
-            + HelpExampleCli("getaddresstxids", "'{\"addresses\": [\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\"]}'")
-            + HelpExampleRpc("getaddresstxids", "{\"addresses\": [\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\"]}")
+            + HelpExampleCli("getaddresstxids", "'{\"addresses\": [\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"]}'")
+            + HelpExampleRpc("getaddresstxids", "{\"addresses\": [\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\"]}")
         );
 
     std::vector<std::pair<uint160, int> > addresses;
