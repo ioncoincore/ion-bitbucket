@@ -41,17 +41,16 @@ else
     cd ion;
     git fetch origin -f;
     git pull -f;
-    cd ..
-fi
-
-# copy gitian-build.py script to current dir (normally home)
-if [ -f ./ion/contrib/gitian-build.py ]; then
     git checkout $VERSION
-    cp -f ./contrib/gitian-build.py ../gitian-build.py
-    chmod +x ../gitian-build.py
-else
-    echo "ERROR: Can not find gitian-build script"
-    exit
+    # copy gitian-build.py script to current dir (normally home)
+    if [ -f ./contrib/gitian-build.py ]; then
+        cp -f ./contrib/gitian-build.py ../gitian-build.py
+        chmod +x ../gitian-build.py
+    else
+        echo "ERROR: Can not find gitian-build script"
+        exit
+    fi
+    cd ..
 fi
 
 if [ ! -d ./ion-detached-sigs ]; then
