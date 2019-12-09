@@ -44,6 +44,14 @@
 #include "util.h"
 #include "utilmoneystr.h"
 #include "validationinterface.h"
+#include "xion/accumulatorcheckpoints.h"
+#include "xion/zerocoindb.h"
+// #include "libzerocoin/CoinSpend.h"
+/*
+#include "dbwrapper.h"
+#include "xion/zerocoin.h"
+#include "libzerocoin/Coin.h"
+*/
 #ifdef ENABLE_WALLET
 #include "wallet/wallet.h"
 #endif
@@ -67,9 +75,6 @@
 #include "privatesend/privatesend-server.h"
 #include "spork.h"
 #include "warnings.h"
-
-#include "libzerocoin/CoinSpend.h"
-
 #include "tokens/tokengroupmanager.h"
 #include "tokens/tokendb.h"
 
