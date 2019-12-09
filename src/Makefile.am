@@ -278,6 +278,7 @@ BITCOIN_CORE_H = \
   xion/accumulatorcheckpoints.h \
   xion/accumulatorcheckpoints.json.h \
   xion/accumulatormap.h \
+  xion/deterministicmint.h \
   xion/xionchain.h \
   xion/xionmodule.h \
   xion/witness.h \
