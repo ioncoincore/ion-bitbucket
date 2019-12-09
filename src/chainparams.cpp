@@ -737,7 +737,7 @@ public:
         genesis = CreateGenesisBlock(1486045800, 1491737471, 1096447, 0x207fffff, 1, 1 * COIN);
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        devnetGenesis = FindDevNetGenesisBlock(consensus, genesis, 50 * COIN);
+        devnetGenesis = FindDevNetGenesisBlock(consensus, genesis, 1 * COIN);
         consensus.hashDevnetGenesisBlock = devnetGenesis.GetHash();
 
         vFixedSeeds.clear();
