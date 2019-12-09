@@ -278,16 +278,15 @@ BITCOIN_CORE_H = \
   xion/accumulatorcheckpoints.h \
   xion/accumulatorcheckpoints.json.h \
   xion/accumulatormap.h \
-  xion/deterministicmint.h \
   xion/xionchain.h \
   xion/xionmodule.h \
   xion/witness.h \
   xion/zerocoin.h \
+  xion/zerocoindb.h \
   zmq/zmqabstractnotifier.h \
   zmq/zmqconfig.h\
   zmq/zmqnotificationinterface.h \
   zmq/zmqpublishnotifier.h
-
 
 obj/build.h: FORCE
 	@$(MKDIR_P) $(builddir)/obj
@@ -422,6 +421,11 @@ libion_wallet_a_SOURCES = \
   wallet/rpcwallet.cpp \
   wallet/wallet.cpp \
   wallet/walletdb.cpp \
+  xion/deterministicmint.cpp \
+  xion/accumulators.cpp \
+  xion/xionmodule.cpp \
+  xion/witness.cpp \
+  xion/zerocoin.cpp \
   $(BITCOIN_CORE_H)
 
 libioncore_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
@@ -627,6 +631,11 @@ libion_common_a_SOURCES = \
   script/sign.cpp \
   script/standard.cpp \
   warnings.cpp \
+  xion/accumulators.cpp \
+  xion/accumulatorcheckpoints.cpp \
+  xion/accumulatormap.cpp \
+  xion/deterministicmint.cpp \
+  xion/zerocoin.cpp \
   $(BITCOIN_CORE_H)
 
 # util: shared between all executables.
@@ -795,6 +804,7 @@ CLEANFILES += univalue/*.gcda univalue/*.gcno
 CLEANFILES += wallet/*.gcda wallet/*.gcno
 CLEANFILES += wallet/test/*.gcda wallet/test/*.gcno
 CLEANFILES += zmq/*.gcda zmq/*.gcno
+CLEANFILES += xion/*.gcda xion/*.gcno
 
 IMMER_DIST = immer
 
