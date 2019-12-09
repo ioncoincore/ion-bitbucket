@@ -29,6 +29,8 @@ namespace AccumulatorCheckpoints
             v = read_json(GetTestCheckpoints());
         else if (strNetwork == "regtest")
             v = read_json(GetRegTestCheckpoints());
+        else if (strNetwork == "dev")
+            v = read_json(GetDevNetCheckpoints());
         else
             return false;
 
