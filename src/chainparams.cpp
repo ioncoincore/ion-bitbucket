@@ -890,12 +890,11 @@ public:
         nDefaultPort = 19994;
         nPruneAfterHeight = 1000;
 
-        genesis = CreateGenesisBlock(1486045800, 1491737471, 2263997, 0x1e0ffff0, 1, 1 * COIN);
+        genesis = CreateGenesisBlock(1575851148, 1575851149, 2263997, 0x207fffff, 1, 1 * COIN);
 
         arith_uint256 bnTarget;
         bnTarget.SetCompact(genesis.nBits);
 
-/*
         for (uint32_t nNonce = 0; nNonce < UINT32_MAX; nNonce++) {
             genesis.nNonce = nNonce;
 
@@ -904,9 +903,8 @@ public:
                 break;
             }
         }
-*/
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("00000a5e695356de7ccae09478a4aa7053a402f7c2f57a40c44310d8fbe5d3c7"));
+        assert(consensus.hashGenesisBlock == uint256S("096c2a836db3e72323c8486865a266f422778852a38f62e3af9691b95ae28eab"));
 
         vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();      //!< Regtest mode doesn't have any DNS seeds.
