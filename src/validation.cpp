@@ -1064,11 +1064,23 @@ CAmount GetBlockSubsidyION(int nPrevBits, int nPrevHeight, const Consensus::Para
         } else if (nHeight < 86400 && nHeight >= 200) {
             nSubsidy = 250 * COIN;
         }
-    } else if ((Params().NetworkIDString() == CBaseChainParams::TESTNET || Params().NetworkIDString() == CBaseChainParams::DEVNET) && nHeight <= 570062) {
+    } else if ((Params().NetworkIDString() == CBaseChainParams::TESTNET) && nHeight <= 570062) {
         if (nHeight == 0) {
             nSubsidy = 1 * COIN;
         } else if (nHeight == 1) {
             nSubsidy = 16400000 * COIN;
+        } else if (nHeight >= 2 && nHeight <= 125146) {
+            nSubsidy = 23 * COIN;
+        } else if (nHeight > 125146 && nHeight <= 570062) {
+            nSubsidy = 17 * COIN;
+        }
+    } else if ((Params().NetworkIDString() == CBaseChainParams::DEVNET) && nHeight <= 570062) {
+        if (nHeight == 0) {
+            nSubsidy = 1 * COIN;
+        } else if (nHeight == 1) {
+            nSubsidy = 1 * COIN;
+        } else if (nHeight == 2) {
+            nSubsidy = 16399999 * COIN;
         } else if (nHeight >= 2 && nHeight <= 125146) {
             nSubsidy = 23 * COIN;
         } else if (nHeight > 125146 && nHeight <= 570062) {
