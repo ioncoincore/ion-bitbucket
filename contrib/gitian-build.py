@@ -105,13 +105,13 @@ def build():
     os.chdir('ion-binaries/'+args.version)
 
     if args.hash == 'SHA1':
-        subprocess.check_call(['gpg', '--digest-algo', sha1, '--clearsign', args.hash+'SUMS', args.signer])
+        subprocess.check_call(['gpg', '--digest-algo', 'sha1', '--clearsign', args.hash+'SUMS', args.signer])
 
     if args.hash == 'SHA256':
-        subprocess.check_call(['gpg', '--digest-algo', sha256, '--clearsign', args.hash+'SUMS', args.signer])
+        subprocess.check_call(['gpg', '--digest-algo', 'sha256', '--clearsign', args.hash+'SUMS', args.signer])
 
     if args.hash == 'SHA512':
-        subprocess.check_call(['gpg', '--digest-algo', sha512, '--clearsign', args.hash+'SUMS', args.signer])
+        subprocess.check_call(['gpg', '--digest-algo', 'sha512', '--clearsign', args.hash+'SUMS', args.signer])
 
     subprocess.check_call(['rm', '-f', args.hash+'SUMS', args.signer])
 
@@ -131,7 +131,7 @@ def sign():
 
     if args.windows:
         print('\nSigning ' + args.version + ' Windows')
-        subprocess.check_call('cp inputs/ion-' + args.version + '-win-unsigned.tar.gz inputs/ion-win-unsigned.tar.gz', shell=True)
+        subprocess.check_call('cp inputs/ioncore-' + args.version + '-win-unsigned.tar.gz inputs/ioncore-win-unsigned.tar.gz', shell=True)
         subprocess.check_call(['bin/gbuild', '-i', '--commit', 'signature='+args.commit, '../ion/contrib/gitian-descriptors/gitian-win-signer.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-win-signed', '--destination', '../gitian.sigs/', '../ion/contrib/gitian-descriptors/gitian-win-signer.yml'])
         subprocess.check_call('mv build/out/ioncore-*win64-setup.exe ../ion-binaries/'+args.version, shell=True)
