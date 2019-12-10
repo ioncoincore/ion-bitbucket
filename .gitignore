@@ -147,9 +147,50 @@ make
 .idea
 cmake-build-debug
 
+# exclude additional archives/images
+*.tar
+*.tar.xz
+*.tar.bz2
+*.zip
+*.iso
+*.img
+
+# exclude 5.hfs file created by the script
+*.hfs
+*.dmg
+MacOSX10.11.sdk/
+
 # VSCode
 !.vscode/launch.json
 .vscode/settings.json
 
+#SNAP
+parts/
+prime/
+snap/.snapcraft/
+stage/
+*.snap
+
 # datadir
 datadir/
+datadir*/
+
+# debian build
+debian/.debhelper/
+debian/files
+debian/ion-cli.substvars
+debian/ion-cli/
+debian/ion-dev.substvars
+debian/ion-dev/
+debian/ion-full.substvars
+debian/ion-full/
+debian/ion-qt.substvars
+debian/ion-tx.substvars
+debian/ion-tx/
+debian/iond.substvars
+debian/iond/
+debian/tmp/
+
+# depends
+depends/config.guess
+depends/config.sub
