@@ -1,7 +1,17 @@
 Uploading and Downloading Torrents
 ==================================
+
+## Transmission
+ 
 Uploading -- note: transmission bittorrent client is used in examples below
 ---------
+
+### install transmission-cli
+
+```
+sudo apt-get install transmission-cli
+```
+
 ### create a .torrent file using the command "transmission-create -t <tracker\> <file\>" using the following trackers:
 - http://tracker.tfile.me:80/announce
 - udp://tracker.cyberia.is:6969/announce
