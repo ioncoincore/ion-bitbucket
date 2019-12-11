@@ -1,3 +1,30 @@
+- [Developer Notes](#developer-notes)
+  - [Doxygen comments](#doxygen-comments)
+  - [Development tips and tricks](#development-tips-and-tricks)
+  - [Locking/mutex usage notes](#lockingmutex-usage-notes)
+  - [Threads](#threads)
+  - [Thread pools](#thread-pools)
+  - [Ignoring IDE/editor files](#ignoring-ideeditor-files)
+- [Development guidelines](#development-guidelines)
+  - [General Ion Core](#general-ion-core)
+  - [Wallet](#wallet)
+  - [General C++](#general-c)
+  - [C++ data structures](#c-data-structures)
+  - [Strings and formatting](#strings-and-formatting)
+  - [Variable names](#variable-names)
+  - [Threads and synchronization](#threads-and-synchronization)
+  - [Source code organization](#source-code-organization)
+  - [GUI](#gui)
+  - [Subtrees](#subtrees)
+    - [ion subtrees overview table](#ion-subtrees-overview-table)
+  - [How to Export subtrees (example)](#how-to-export-subtrees-example)
+    - [sub-project as remote](#sub-project-as-remote)
+    - [add the subtree, refer to the remote in short form](#add-the-subtree-refer-to-the-remote-in-short-form)
+    - [update the sub-project at a later date](#update-the-sub-project-at-a-later-date)
+    - [Contributing back upstream](#contributing-back-upstream)
+  - [Git and GitHub tips](#git-and-github-tips)
+  - [RPC interface guidelines](#rpc-interface-guidelines)
+
 Developer Notes
 ===============
 
@@ -30,7 +57,7 @@ class Class
 {
     bool Function(const std::string& s, int n)
     {
-        // Comment summarising what this section of code does
+        // Comment summarizing what this section of code does
         for (int i = 0; i < n; ++i) {
             // When something fails, return early
             if (!Something()) return false;
@@ -221,7 +248,7 @@ to do this is thus to create your local gitignore. Add this to `~/.gitconfig`:
 (alternatively, type the command `git config --global core.excludesfile ~/.gitignore_global`
 on a terminal)
 
-Then put your favourite tool's temporary filenames in that file, e.g.
+Then put your favorite tool's temporary filenames in that file, e.g.
 ```
 # NetBeans
 nbproject/
@@ -472,7 +499,7 @@ Current subtrees include:
   - Upstream at https://github.com/google/leveldb ; Maintained by Google, but open important PRs to Core to avoid delay
 
 - src/libsecp256k1
-  - Upstream at https://github.com/bitcoin-core/secp256k1/ ; actively maintaned by Core contributors.
+  - Upstream at https://github.com/bitcoin-core/secp256k1/ ; actively maintained by Core contributors.
 
 - src/crypto/ctaes
   - Upstream at https://github.com/bitcoin-core/ctaes ; actively maintained by Core contributors.
@@ -480,21 +507,103 @@ Current subtrees include:
 - src/univalue
   - Upstream at https://github.com/jgarzik/univalue ; report important PRs to Core to avoid delay.
 
+- snap
+  - Upstream at https://github.com/ioncoincore/snap
+
+### ion subtrees overview table
+
+  subtree | remote | upstream at | branch | add branch/commit as subtree
+  :-|:-|:-|:-:|:-:
+  src/leveldb | leveldb | https://github.com/bitcoin-core/leveldb.git | master | master
+  src/secp256k1 | secp256k1 | https://github.com/bitcoin-core/secp256k1.git | master | master
+  src/crypto/ctaes | ctaes | https://github.com/bitcoin-core/ctaes | master | master
+  src/univalue | univalue | https://github.com/jgarzik/univalue | master | [9f0b997](https://github.com/jgarzik/univalue/pull/28/commits/9f0b9975925b202ab130714e5422f8dd8bf40ac3)
+  snap | snap | https://github.com/ioncoincore/ion | snap | snap
+
+## How to Export subtrees (example)
+
+For more info please refer to [git-subtree tutorial](https://www.atlassian.com/git/tutorials/git-subtree) .
+
+
+### sub-project as remote
+
+Adding the subtree as a remote allows us to refer to it in shorter form
+
+```sh
+# LevelDB
+git remote add -f leveldb https://github.com/bitcoin-core/leveldb.git
+# secp256k1
+git remote add -f secp256k1 https://github.com/bitcoin-core/secp256k1.git
+# ctaes
+git remote add -f ctaes https://github.com/bitcoin-core/ctaes
+# univalue
+git remote add -f univalue https://github.com/jgarzik/univalue
+# snap
+git remote add -f snap https://github.com/ioncoincore/snap
+```
+
+### add the subtree, refer to the remote in short form
+
+```sh
+# leveldb
+git subtree add --prefix src/leveldb leveldb bitcoin-fork --squash
+# secp256k1
+git subtree add --prefix src/secp256k1 secp256k1 master --squash
+# ctaes
+git subtree add --prefix src/crypto/ctaes ctaes master --squash
+# univalue
+git subtree add --prefix src/univalue univalue 9f0b9975925b202ab130714e5422f8dd8bf40ac3 --squash
+# snap
+git subtree add --prefix snap snap snap --squash
+```
+
+### update the sub-project at a later date
+
+```sh
+git fetch leveldb
+git subtree pull --prefix src/leveldb leveldb master --squash
+
+git fetch secp256k1
+git subtree pull --prefix src/secp256k1 secp256k1 master --squash
+
+git fetch ctaes
+git subtree pull --prefix src/crypto/ctaes ctaes master --squash
+
+git fetch univalue
+git subtree pull --prefix src/univalue 9f0b9975925b202ab130714e5422f8dd8bf40ac3 --squash
+
+git fetch snap
+git subtree pull --prefix snap snap snap --squash
+```
+
+### Contributing back upstream
+
+When it’s time to contribute back to the upstream project, we need to fork the project and add it as another remote:
+
+```sh
+git remote add leveldb
+ git subtree push --prefix=src/leveldb leveldb master --squash
+git remote add secp256k1
+ git subtree push --prefix=src/secp256k1 secp256k1 master --squash
+git remote add ctaes
+ git subtree push --prefix=src/crypto/ctaes ctaes master --squash
+git remote add univalue
+ git subtree push --prefix=src/univalue master --squash
+```
 
 Git and GitHub tips
 ---------------------
 
 - For resolving merge/rebase conflicts, it can be useful to enable diff3 style using
   `git config merge.conflictstyle diff3`. Instead of
-
+  
         <<<
         yours
         ===
         theirs
         >>>
-
   you will see
-
+  
         <<<
         yours
         |||
