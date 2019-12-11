@@ -37,7 +37,7 @@ pipelines:
             - echo $TRAVIS_COMMIT_LOG
             #- set -o errexit; source .travis/lint_04_install.sh
             - set -o errexit; source .travis/lint_05_before_script.sh
-            - set -o errexit; source .travis/lint_06_script.sh
+            #- set -o errexit; source .travis/lint_06_script.sh
       - step:
           name: 'ARM 32-bit  [GOAL: install]  [no unit or functional tests]'
           script: # Modify the commands below to build your repository.
