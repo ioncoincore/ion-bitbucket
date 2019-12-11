@@ -1,17 +1,21 @@
 
 Debian
 ====================
-This directory contains files used to package iond/ion-qt for deb builds
+This directory contains files used to package iond/ion-qt
+for Debian-based Linux systems. If you compile iond/ion-qt yourself, there are some useful files here.
 
-## build-dpkg.sh
-
-this is a script to be runned from ion root
-
-	./contrib/debian/build-dpkg.sh
+## ion: URI support ##
 
 
-## prepare-dpkg.sh
+ion-qt.desktop  (Gnome / Open Desktop)
+To install:
 
-To create man pages for debian, run prepare.dpkg (_same script as gen manpages with simply different manpages folder_)
+	sudo desktop-file-install ion-qt.desktop
+	sudo update-desktop-database
 
-	./contrib/debian/prepare-dpkg.sh
+If you build yourself, you will either need to modify the paths in
+the .desktop file or copy or symlink your ion-qt binary to `/usr/bin`
+and the `../../share/pixmaps/ion128.png` to `/usr/share/pixmaps`
+
+ion-qt.protocol (KDE)
+

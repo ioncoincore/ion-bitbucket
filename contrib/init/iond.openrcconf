@@ -13,8 +13,8 @@
 #BITCOIND_DATADIR="/var/lib/iond"
 
 # User and group to own iond process
-#BITCOIND_USER="ion"
-#BITCOIND_GROUP="ion"
+#BITCOIND_USER="ioncoin"
+#BITCOIND_GROUP="ioncoin"
 
 # Path to iond executable
 #BITCOIND_BIN="/usr/bin/iond"

@@ -9,7 +9,7 @@
  * @copyright  Copyright 2013 Ian Miers, Christina Garman and Matthew Green
  * @license    This project is released under the MIT license.
  **/
-// Copyright (c) 2017 The PIVX developers
+// Copyright (c) 2017-2019 The PIVX developers
 
 #ifndef COMMITMENT_H_
 #define COMMITMENT_H_
@@ -48,7 +48,8 @@ private:
 	CBigNum randomness;
 	const CBigNum contents;
 	ADD_SERIALIZE_METHODS;
-  template <typename Stream, typename Operation>  inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action) {
 	    READWRITE(commitmentValue);
 	    READWRITE(randomness);
 	    READWRITE(contents);
@@ -92,7 +93,8 @@ public:
 	 */
 	bool Verify(const CBigNum& A, const CBigNum& B) const;
 	ADD_SERIALIZE_METHODS;
-  template <typename Stream, typename Operation>  inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action) {
 	    READWRITE(S1);
 	    READWRITE(S2);
 	    READWRITE(S3);

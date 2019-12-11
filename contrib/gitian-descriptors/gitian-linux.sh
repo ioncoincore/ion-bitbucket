@@ -104,7 +104,7 @@ export PATH=${WRAP_DIR}:${PATH}
 ./autogen.sh
 CONFIG_SITE=${BASEPREFIX}/`echo "${HOSTS}" | awk '{print $1;}'`/share/config.site ./configure --prefix=/
 make dist
-SOURCEDIST=`echo ion-*.tar.gz`
+SOURCEDIST=`echo ioncore-*.tar.gz`
 DISTNAME=`echo ${SOURCEDIST} | sed 's/.tar.*//'`
 # Correct tar file order
 mkdir -p temp

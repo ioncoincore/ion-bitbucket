@@ -9,8 +9,9 @@
 #include "coins.h"
 #include "consensus/validation.h"
 #include "pubkey.h"
-//#include "script/standard.h"
+#include "util.h"
 #include <unordered_map>
+
 class CWallet;
 
 /** Transaction cannot be committed on my fork */
@@ -84,7 +85,7 @@ public:
     {
         // for the conceivable future there is no possible way a group could be bigger but the spec does allow larger
         if (!(id.size() < OP_PUSHDATA1)) {
-            LogPrint("token", "%s - Debug Assertion failed", __func__);
+            LogPrint(BCLog::TOKEN, "%s - Debug Assertion failed", __func__);
         };
     }
 
@@ -109,7 +110,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+    inline void SerializationOp(Stream& s, Operation ser_action) {
         READWRITE(data);
     }
 
@@ -234,7 +235,7 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+    inline void SerializationOp(Stream& s, Operation ser_action) {
         READWRITE(this->associatedGroup);
         READWRITE(this->quantity);
         READWRITE(this->invalid);

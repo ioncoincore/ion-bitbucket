@@ -5,14 +5,14 @@
 #ifndef ION_CTOKENDB_H
 #define ION_CTOKENDB_H
 
-#include "leveldbwrapper.h"
+#include "dbwrapper.h"
 
 #include <boost/filesystem/path.hpp>
 
 class CTokenGroupCreation;
 class CTokenGroupID;
 
-class CTokenDB : public CLevelDBWrapper
+class CTokenDB : public CDBWrapper
 {
 public:
     CTokenDB(size_t nCacheSize, bool fMemory = false, bool fWipe = false);

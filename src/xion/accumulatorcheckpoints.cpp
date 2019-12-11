@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "xion/accumulatorcheckpoints.h"
-#include "accumulatorcheckpoints.json.h"
+#include "xion/accumulatorcheckpoints.json.h"
 
 namespace AccumulatorCheckpoints
 {
@@ -29,6 +29,8 @@ namespace AccumulatorCheckpoints
             v = read_json(GetTestCheckpoints());
         else if (strNetwork == "regtest")
             v = read_json(GetRegTestCheckpoints());
+        else if (strNetwork == "dev")
+            v = read_json(GetDevNetCheckpoints());
         else
             return false;
 
@@ -82,4 +84,3 @@ namespace AccumulatorCheckpoints
         return Checkpoint();
     }
 }
-

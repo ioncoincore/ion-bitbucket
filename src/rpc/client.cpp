@@ -1,186 +1,205 @@
 // Copyright (c) 2010 Satoshi Nakamoto
-// Copyright (c) 2009-2014 The Bitcoin developers
-// Copyright (c) 2014-2015 The Dash developers
-// Copyright (c) 2015-2018 The PIVX developers
+// Copyright (c) 2009-2015 The Bitcoin Core developers
+// Copyright (c) 2014-2019 The Dash Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "rpc/client.h"
-
 #include "rpc/protocol.h"
-#include "guiinterface.h"
 #include "util.h"
 
 #include <set>
 #include <stdint.h>
 
-#include <boost/algorithm/string/case_conv.hpp> // for to_lower()
 #include <univalue.h>
-
 
 class CRPCConvertParam
 {
 public:
-    std::string methodName; //! method whose params want conversion
-    int paramIdx;           //! 0-based idx of param to convert
+    std::string methodName; //!< method whose params want conversion
+    int paramIdx;           //!< 0-based idx of param to convert
+    std::string paramName;  //!< parameter name
 };
-// ***TODO***
+
+/**
+ * Specify a (method, idx, name) here if the argument is a non-string RPC
+ * argument and needs to be converted from JSON.
+ *
+ * @note Parameter indexes start from 0.
+ */
 static const CRPCConvertParam vRPCConvertParams[] =
-    {
-        {"stop", 0},
-        {"setmocktime", 0},
-        {"getaddednodeinfo", 0},
-        {"setgenerate", 0},
-        {"setgenerate", 1},
-        {"generate", 0},
-        {"getnetworkhashps", 0},
-        {"getnetworkhashps", 1},
-        {"sendtoaddress", 1},
-        {"sendtoaddress", 4},
-        {"sendtoaddressix", 1},
-        {"settxfee", 0},
-        {"getreceivedbyaddress", 1},
-        {"getreceivedbyaccount", 1},
-        {"listreceivedbyaddress", 0},
-        {"listreceivedbyaddress", 1},
-        {"listreceivedbyaddress", 2},
-        {"listreceivedbyaccount", 0},
-        {"listreceivedbyaccount", 1},
-        {"listreceivedbyaccount", 2},
-        {"getbalance", 1},
-        {"getbalance", 2},
-        {"getblockhash", 0},
-        { "waitforblockheight", 0 },
-        { "waitforblockheight", 1 },
-        { "waitforblock", 1 },
-        { "waitforblock", 2 },
-        { "waitfornewblock", 0 },
-        { "waitfornewblock", 1 },
-        {"move", 2},
-        {"move", 3},
-        {"sendfrom", 2},
-        {"sendfrom", 3},
-        {"listtransactions", 1},
-        {"listtransactions", 2},
-        {"listtransactions", 3},
-        {"listaccounts", 0},
-        {"listaccounts", 1},
-        {"walletpassphrase", 1},
-        {"walletpassphrase", 2},
-        {"getblocktemplate", 0},
-        {"listsinceblock", 1},
-        {"listsinceblock", 2},
-        {"scantxoutset", 1},
-        {"sendmany", 1},
-        {"sendmany", 2},
-        {"sendmany", 4},
-        {"addmultisigaddress", 0},
-        {"addmultisigaddress", 1},
-        {"createmultisig", 0},
-        {"createmultisig", 1},
-        {"listunspent", 0},
-        {"listunspent", 1},
-        {"listunspent", 2},
-        {"listunspent", 3},
-        {"getblock", 1},
-        {"getblockheader", 1},
-        {"gettransaction", 1},
-        {"getrawtransaction", 1},
-        {"createrawtransaction", 0},
-        {"createrawtransaction", 1},
-        {"createrawtransaction", 2},
-        {"signrawtransaction", 1},
-        {"signrawtransaction", 2},
-        {"sendrawtransaction", 1},
-        {"sendrawtransaction", 2},
-        {"gettxout", 1},
-        {"gettxout", 2},
-        {"lockunspent", 0},
-        {"lockunspent", 1},
-        {"importprivkey", 2},
-        {"importaddress", 2},
-        {"verifychain", 0},
-        {"verifychain", 1},
-        {"keypoolrefill", 0},
-        {"getrawmempool", 0},
-        {"estimatefee", 0},
-        {"estimatepriority", 0},
-        {"prioritisetransaction", 1},
-        {"prioritisetransaction", 2},
-        {"setban", 2},
-        {"setban", 3},
-        {"spork", 1},
-        {"preparebudget", 2},
-        {"preparebudget", 3},
-        {"preparebudget", 5},
-        {"submitbudget", 2},
-        {"submitbudget", 3},
-        {"submitbudget", 5},
-        {"submitbudget", 7},
-        // disabled until removal of the legacy 'masternode' command
-        //{"startmasternode", 1},
-        {"mnvoteraw", 1},
-        {"mnvoteraw", 4},
-        {"reservebalance", 0},
-        {"reservebalance", 1},
-        {"setstakesplitthreshold", 0},
-        {"autocombinerewards", 0},
-        {"autocombinerewards", 1},
-        {"getzerocoinbalance", 0},
-        {"listmintedzerocoins", 0},
-        {"listmintedzerocoins", 1},
-        {"listspentzerocoins", 0},
-        {"listzerocoinamounts", 0},
-        {"mintzerocoin", 0},
-        {"mintzerocoin", 1},
-        {"spendzerocoin", 0},
-        {"spendzerocoin", 1},
-        {"spendzerocoin", 2},
-        {"spendrawzerocoin", 2},
-        {"spendzerocoinmints", 0},
-        {"importzerocoins", 0},
-        {"exportzerocoins", 0},
-        {"exportzerocoins", 1},
-        {"resetmintzerocoin", 0},
-        {"getspentzerocoinamount", 1},
-        {"generatemintlist", 0},
-        {"generatemintlist", 1},
-        {"searchdxion", 0},
-        {"searchdxion", 1},
-        {"searchdxion", 2},
-        {"getaccumulatorvalues", 0},
-        {"getaccumulatorwitness",2},
-        {"getmintsvalues", 2},
-        {"getaccumulatorcheckpoints", 0},
-        {"getblockindexstats", 0},
-        {"getblockindexstats", 1},
-        {"getblockindexstats", 2},
-        {"getmintsinblocks", 0},
-        {"getmintsinblocks", 1},
-        {"getmintsinblocks", 2},
-        {"getserials", 0},
-        {"getserials", 1},
-        {"getserials", 2},
-        {"getfeeinfo", 0},
-        {"getchecksumblock", 1},
-        {"getchecksumblock", 2},
-        {"enableautomintaddress", 0},
-        {"listtokentransactions", 1},
-        {"listtokentransactions", 2},
-        {"listtokentransactions", 3},
-    };
+{
+    { "setmocktime", 0, "timestamp" },
+#if ENABLE_MINER
+    { "generate", 0, "nblocks" },
+    { "generate", 1, "maxtries" },
+    { "generatetoaddress", 0, "nblocks" },
+    { "generatetoaddress", 2, "maxtries" },
+#endif // ENABLE_MINER
+    { "getnetworkhashps", 0, "nblocks" },
+    { "getnetworkhashps", 1, "height" },
+    { "sendtoaddress", 1, "amount" },
+    { "sendtoaddress", 4, "subtractfeefromamount" },
+    { "sendtoaddress", 5, "use_is" },
+    { "sendtoaddress", 6, "use_ps" },
+    { "sendtoaddress", 7, "conf_target" },
+    { "instantsendtoaddress", 1, "address" },
+    { "instantsendtoaddress", 4, "comment_to" },
+    { "settxfee", 0, "amount" },
+    { "getreceivedbyaddress", 1, "minconf" },
+    { "getreceivedbyaddress", 2, "addlocked" },
+    { "getreceivedbyaccount", 1, "minconf" },
+    { "getreceivedbyaccount", 2, "addlocked" },
+    { "listaddressbalances", 0, "minamount" },
+    { "listreceivedbyaddress", 0, "minconf" },
+    { "listreceivedbyaddress", 1, "addlocked" },
+    { "listreceivedbyaddress", 2, "include_empty" },
+    { "listreceivedbyaddress", 3, "include_watchonly" },
+    { "listreceivedbyaccount", 0, "minconf" },
+    { "listreceivedbyaccount", 1, "addlocked" },
+    { "listreceivedbyaccount", 2, "include_empty" },
+    { "listreceivedbyaccount", 3, "include_watchonly" },
+    { "getbalance", 1, "minconf" },
+    { "getbalance", 2, "addlocked" },
+    { "getbalance", 3, "include_watchonly" },
+    { "getchaintips", 0, "count" },
+    { "getchaintips", 1, "branchlen" },
+    { "getblockhash", 0, "height" },
+    { "getsuperblockbudget", 0, "index" },
+    { "waitforblockheight", 0, "height" },
+    { "waitforblockheight", 1, "timeout" },
+    { "waitforblock", 1, "timeout" },
+    { "waitfornewblock", 0, "timeout" },
+    { "move", 2, "amount" },
+    { "move", 3, "minconf" },
+    { "sendfrom", 2, "amount" },
+    { "sendfrom", 3, "minconf" },
+    { "sendfrom", 4, "addlocked" },
+    { "listtransactions", 1, "count" },
+    { "listtransactions", 2, "skip" },
+    { "listtransactions", 3, "include_watchonly" },
+    { "listaccounts", 0, "minconf" },
+    { "listaccounts", 1, "addlocked" },
+    { "listaccounts", 2, "include_watchonly" },
+    { "walletpassphrase", 1, "timeout" },
+    { "walletpassphrase", 2, "mixingonly" },
+    { "getblocktemplate", 0, "template_request" },
+    { "listsinceblock", 1, "target_confirmations" },
+    { "listsinceblock", 2, "include_watchonly" },
+    { "listsinceblock", 3, "include_removed" },
+    { "sendmany", 1, "amounts" },
+    { "sendmany", 2, "minconf" },
+    { "sendmany", 3, "addlocked" },
+    { "sendmany", 5, "subtractfeefrom" },
+    { "sendmany", 6, "use_is" },
+    { "sendmany", 7, "use_ps" },
+    { "sendmany", 8, "conf_target" },
+    { "scantxoutset", 1, "scanobjects" },
+    { "addmultisigaddress", 0, "nrequired" },
+    { "addmultisigaddress", 1, "keys" },
+    { "createmultisig", 0, "nrequired" },
+    { "createmultisig", 1, "keys" },
+    { "listunspent", 0, "minconf" },
+    { "listunspent", 1, "maxconf" },
+    { "listunspent", 2, "addresses" },
+    { "listunspent", 3, "include_unsafe" },
+    { "listunspent", 4, "query_options" },
+    { "getblock", 1, "verbosity" },
+    { "getblock", 1, "verbose" },
+    { "getblockheader", 1, "verbose" },
+    { "getblockheaders", 1, "count" },
+    { "getblockheaders", 2, "verbose" },
+    { "getchaintxstats", 0, "nblocks" },
+    { "getmerkleblocks", 2, "count" },
+    { "gettransaction", 1, "include_watchonly" },
+    { "getrawtransaction", 1, "verbose" },
+    { "createrawtransaction", 0, "inputs" },
+    { "createrawtransaction", 1, "outputs" },
+    { "createrawtransaction", 2, "locktime" },
+    { "signrawtransaction", 1, "prevtxs" },
+    { "signrawtransaction", 2, "privkeys" },
+    { "sendrawtransaction", 1, "allowhighfees" },
+    { "sendrawtransaction", 2, "instantsend" },
+    { "sendrawtransaction", 3, "bypasslimits" },
+    { "combinerawtransaction", 0, "txs" },
+    { "fundrawtransaction", 1, "options" },
+    { "gettxout", 1, "n" },
+    { "gettxout", 2, "include_mempool" },
+    { "gettxoutproof", 0, "txids" },
+    { "lockunspent", 0, "unlock" },
+    { "lockunspent", 1, "transactions" },
+    { "importprivkey", 2, "rescan" },
+    { "importelectrumwallet", 1, "index" },
+    { "importaddress", 2, "rescan" },
+    { "importaddress", 3, "p2sh" },
+    { "importpubkey", 2, "rescan" },
+    { "importmulti", 0, "requests" },
+    { "importmulti", 1, "options" },
+    { "verifychain", 0, "checklevel" },
+    { "verifychain", 1, "nblocks" },
+    { "getblockstats", 0, "hash_or_height" },
+    { "getblockstats", 1, "stats" },
+    { "pruneblockchain", 0, "height" },
+    { "keypoolrefill", 0, "newsize" },
+    { "getrawmempool", 0, "verbose" },
+    { "estimatefee", 0, "nblocks" },
+    { "estimatesmartfee", 0, "conf_target" },
+    { "estimaterawfee", 0, "conf_target" },
+    { "estimaterawfee", 1, "threshold" },
+    { "prioritisetransaction", 1, "fee_delta" },
+    { "setban", 2, "bantime" },
+    { "setban", 3, "absolute" },
+    { "setnetworkactive", 0, "state" },
+    { "setprivatesendrounds", 0, "rounds" },
+    { "setprivatesendamount", 0, "amount" },
+    { "getmempoolancestors", 1, "verbose" },
+    { "getmempooldescendants", 1, "verbose" },
+    { "logging", 0, "include" },
+    { "logging", 1, "exclude" },
+    { "spork", 1, "value" },
+    { "voteraw", 1, "tx_index" },
+    { "voteraw", 5, "time" },
+    { "getblockhashes", 0, "high"},
+    { "getblockhashes", 1, "low" },
+    { "getspentinfo", 0, "json" },
+    { "getaddresstxids", 0, "addresses" },
+    { "getaddressbalance", 0, "addresses" },
+    { "getaddressdeltas", 0, "addresses" },
+    { "getaddressutxos", 0, "addresses" },
+    { "getaddressmempool", 0, "addresses" },
+    { "getspecialtxes", 1, "type" },
+    { "getspecialtxes", 2, "count" },
+    { "getspecialtxes", 3, "skip" },
+    { "getspecialtxes", 4, "verbosity" },
+    { "disconnectnode", 1, "nodeid" },
+    // Echo with conversion (For testing only)
+    { "echojson", 0, "arg0" },
+    { "echojson", 1, "arg1" },
+    { "echojson", 2, "arg2" },
+    { "echojson", 3, "arg3" },
+    { "echojson", 4, "arg4" },
+    { "echojson", 5, "arg5" },
+    { "echojson", 6, "arg6" },
+    { "echojson", 7, "arg7" },
+    { "echojson", 8, "arg8" },
+    { "echojson", 9, "arg9" },
+    { "stop", 0, "wait" },
+};
 
 class CRPCConvertTable
 {
 private:
-    std::set<std::pair<std::string, int> > members;
+    std::set<std::pair<std::string, int>> members;
+    std::set<std::pair<std::string, std::string>> membersByName;
 
 public:
     CRPCConvertTable();
 
-    bool convert(const std::string& method, int idx)
-    {
+    bool convert(const std::string& method, int idx) {
         return (members.count(std::make_pair(method, idx)) > 0);
+    }
+    bool convert(const std::string& method, const std::string& name) {
+        return (membersByName.count(std::make_pair(method, name)) > 0);
     }
 };
 
@@ -191,7 +210,9 @@ CRPCConvertTable::CRPCConvertTable()
 
     for (unsigned int i = 0; i < n_elem; i++) {
         members.insert(std::make_pair(vRPCConvertParams[i].methodName,
-            vRPCConvertParams[i].paramIdx));
+                                      vRPCConvertParams[i].paramIdx));
+        membersByName.insert(std::make_pair(vRPCConvertParams[i].methodName,
+                                            vRPCConvertParams[i].paramName));
     }
 }
 
@@ -209,7 +230,6 @@ UniValue ParseNonRFCJSONValue(const std::string& strVal)
     return jVal[0];
 }
 
-/** Convert strings to command-specific RPC representation */
 UniValue RPCConvertValues(const std::string &strMethod, const std::vector<std::string> &strParams)
 {
     UniValue params(UniValue::VARR);
@@ -223,6 +243,31 @@ UniValue RPCConvertValues(const std::string &strMethod, const std::vector<std::s
         } else {
             // parse string as JSON, insert bool/number/object/etc. value
             params.push_back(ParseNonRFCJSONValue(strVal));
+        }
+    }
+
+    return params;
+}
+
+UniValue RPCConvertNamedValues(const std::string &strMethod, const std::vector<std::string> &strParams)
+{
+    UniValue params(UniValue::VOBJ);
+
+    for (const std::string &s: strParams) {
+        size_t pos = s.find("=");
+        if (pos == std::string::npos) {
+            throw(std::runtime_error("No '=' in named argument '"+s+"', this needs to be present for every argument (even if it is empty)"));
+        }
+
+        std::string name = s.substr(0, pos);
+        std::string value = s.substr(pos+1);
+
+        if (!rpcCvtTable.convert(strMethod, name)) {
+            // insert string value directly
+            params.pushKV(name, value);
+        } else {
+            // parse string as JSON, insert bool/number/object/etc. value
+            params.pushKV(name, ParseNonRFCJSONValue(value));
         }
     }
 

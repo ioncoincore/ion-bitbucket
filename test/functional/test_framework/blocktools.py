@@ -5,7 +5,7 @@
 """Utilities for manipulating blocks and transactions."""
 
 from .mininode import *
-from .script import CScript, OP_TRUE, OP_CHECKSIG, OP_RETURN
+from .script import CScript, OP_TRUE, OP_CHECKSIG
 
 # Create a block (with regtest difficulty)
 def create_block(hashprev, coinbase, nTime=None):
@@ -16,8 +16,7 @@ def create_block(hashprev, coinbase, nTime=None):
     else:
         block.nTime = nTime
     block.hashPrevBlock = hashprev
-    block.nBits = 0x1e00ffff # Will break after a difficulty adjustment...
-    block.nAccumulatorCheckpoint = 0
+    block.nBits = 0x207fffff # Will break after a difficulty adjustment...
     block.vtx.append(coinbase)
     block.hashMerkleRoot = block.calc_merkle_root()
     block.calc_sha256()
@@ -41,12 +40,12 @@ def serialize_script_num(value):
 # Create a coinbase transaction, assuming no miner fees.
 # If pubkey is passed in, the coinbase output will be a P2PK output;
 # otherwise an anyone-can-spend output.
-def create_coinbase(height, pubkey = None):
+def create_coinbase(height, pubkey = None, dip4_activated=False):
     coinbase = CTransaction()
-    coinbase.vin.append(CTxIn(COutPoint(0, 0xffffffff),
+    coinbase.vin.append(CTxIn(COutPoint(0, 0xffffffff), 
                 ser_string(serialize_script_num(height)), 0xffffffff))
     coinbaseoutput = CTxOut()
-    coinbaseoutput.nValue = 50 * COIN
+    coinbaseoutput.nValue = 500 * COIN
     halvings = int(height/150) # regtest
     coinbaseoutput.nValue >>= halvings
     if (pubkey != None):
@@ -54,6 +53,11 @@ def create_coinbase(height, pubkey = None):
     else:
         coinbaseoutput.scriptPubKey = CScript([OP_TRUE])
     coinbase.vout = [ coinbaseoutput ]
+    if dip4_activated:
+        coinbase.nVersion = 3
+        coinbase.nType = 5
+        cbtx_payload = CCbTx(2, height, 0, 0)
+        coinbase.vExtraPayload = cbtx_payload.serialize()
     coinbase.calc_sha256()
     return coinbase
 
@@ -81,3 +85,31 @@ def get_legacy_sigopcount_tx(tx, fAccurate=True):
         # scriptSig might be of type bytes, so convert to CScript for the moment
         count += CScript(j.scriptSig).GetSigOpCount(fAccurate)
     return count
+
+# Identical to GetMasternodePayment in C++ code
+def get_masternode_payment(nHeight, blockValue):
+    ret = int(blockValue / 5)
+
+    nMNPIBlock = 350
+    nMNPIPeriod = 10
+
+    if nHeight > nMNPIBlock:
+        ret += int(blockValue / 20)
+    if nHeight > nMNPIBlock+(nMNPIPeriod* 1):
+        ret += int(blockValue / 20)
+    if nHeight > nMNPIBlock+(nMNPIPeriod* 2):
+        ret += int(blockValue / 20)
+    if nHeight > nMNPIBlock+(nMNPIPeriod* 3):
+        ret += int(blockValue / 40)
+    if nHeight > nMNPIBlock+(nMNPIPeriod* 4):
+        ret += int(blockValue / 40)
+    if nHeight > nMNPIBlock+(nMNPIPeriod* 5):
+        ret += int(blockValue / 40)
+    if nHeight > nMNPIBlock+(nMNPIPeriod* 6):
+        ret += int(blockValue / 40)
+    if nHeight > nMNPIBlock+(nMNPIPeriod* 7):
+        ret += int(blockValue / 40)
+    if nHeight > nMNPIBlock+(nMNPIPeriod* 9):
+        ret += int(blockValue / 40)
+
+    return ret

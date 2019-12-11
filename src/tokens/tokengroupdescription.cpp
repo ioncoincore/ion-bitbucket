@@ -27,7 +27,7 @@ bool CTokenGroupDescription::BuildGroupDescData(const CScript& script, std::vect
     if (OpRetGroupId != 88888888) return false;
 
     while (script.GetOp(pc, opcode, data)) {
-        LogPrint("token", "Token description data: opcode=[%d] data=[%s]\n", opcode, std::string(data.begin(), data.end()));
+        LogPrint(BCLog::TOKEN, "Token description data: opcode=[%d] data=[%s]\n", opcode, std::string(data.begin(), data.end()));
         desc.emplace_back(data);
     }
     descriptionData = desc;

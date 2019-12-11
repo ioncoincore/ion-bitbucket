@@ -13,7 +13,7 @@
 #include "chain.h"
 #include "uint256.h"
 #include "bloom.h"
-#include "witness.h"
+//#include "witness.h"
 
 class CBlockIndex;
 
@@ -24,6 +24,7 @@ std::map<libzerocoin::CoinDenomination, int> GetMintMaturityHeight();
  * @return true if the witness was calculated well
  */
 
+/*
 bool CalculateAccumulatorWitnessFor(
         const libzerocoin::ZerocoinParams* params,
         int startingHeight,
@@ -48,6 +49,7 @@ bool GenerateAccumulatorWitness(
 
 
 bool GenerateAccumulatorWitness(CoinWitnessData* coinWitness, AccumulatorMap& mapAccumulators, CBlockIndex* pindexCheckpoint);
+*/
 std::list<libzerocoin::PublicCoin> GetPubcoinFromBlock(const CBlockIndex* pindex);
 bool GetAccumulatorValueFromDB(uint256 nCheckpoint, libzerocoin::CoinDenomination denom, CBigNum& bnAccValue);
 bool GetAccumulatorValue(int& nHeight, const libzerocoin::CoinDenomination denom, CBigNum& bnAccValue);
@@ -92,4 +94,3 @@ public:
 };
 
 #endif //ION_ACCUMULATORS_H
-

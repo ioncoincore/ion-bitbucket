@@ -55,7 +55,7 @@ bool CTokenGroupManager::MatchesAtom(CTokenGroupID tgID) {
 bool CTokenGroupManager::AddTokenGroups(const std::vector<CTokenGroupCreation>& newTokenGroups) {
     for (auto tokenGroupCreation : newTokenGroups) {
         if (!tokenGroupCreation.ValidateDescription()) {
-            LogPrint("token", "%s - Validation of token %s failed", __func__, EncodeTokenGroup(tokenGroupCreation.tokenGroupInfo.associatedGroup));
+            LogPrint(BCLog::TOKEN, "%s - Validation of token %s failed", __func__, EncodeTokenGroup(tokenGroupCreation.tokenGroupInfo.associatedGroup));
         }
 
         StoreManagementTokenGroups(tokenGroupCreation);
@@ -65,7 +65,7 @@ bool CTokenGroupManager::AddTokenGroups(const std::vector<CTokenGroupCreation>& 
         CTokenGroupCreation& tokenGroupCreationRet = (*ret.first).second;
         bool fInsertedNew = ret.second;
         if (!fInsertedNew) {
-            LogPrint("token", "%s - Double token creation with tokenGroupID %s.\n", __func__, EncodeTokenGroup(tokenGroupCreationRet.tokenGroupInfo.associatedGroup));
+            LogPrint(BCLog::TOKEN, "%s - Double token creation with tokenGroupID %s.\n", __func__, EncodeTokenGroup(tokenGroupCreationRet.tokenGroupInfo.associatedGroup));
         }
     }
     return true;
@@ -77,9 +77,9 @@ void CTokenGroupManager::ResetTokenGroups() {
 
     CTokenGroupInfo tgInfoION(NoGroup, (CAmount)GroupAuthorityFlags::ALL);
     CTransaction tgTxION;
-    CTokenGroupDescription tgDescriptionION("ION", "Ion", 8, "https://www.ionomy.com", 0);
+    CTokenGroupDescription tgDescriptionION("ION", "Ion", 8, "https://www.ionomy.com", uint256());
     CTokenGroupStatus tokenGroupStatus;
-    CTokenGroupCreation tgCreationION(tgTxION, tgInfoION, tgDescriptionION, tokenGroupStatus);
+    CTokenGroupCreation tgCreationION(MakeTransactionRef(tgTxION), tgInfoION, tgDescriptionION, tokenGroupStatus);
     mapTokenGroups.insert(std::pair<CTokenGroupID, CTokenGroupCreation>(NoGroup, tgCreationION));
 
 }
@@ -189,7 +189,7 @@ unsigned int CTokenGroupManager::GetTokenTxStats(const CTransaction &tx, const C
             const COutPoint &prevout = inp.prevout;
             const Coin &coin = view.AccessCoin(prevout);
 
-            if (coin.nHeight < Params().OpGroup_StartHeight())
+            if (coin.nHeight < Params().GetConsensus().ATPStartHeight)
                 continue;
             const CScript &script = coin.out.scriptPubKey;
 
@@ -316,7 +316,7 @@ bool CTokenGroupManager::CheckXDMFees(const CTransaction &tx, const std::unorder
             // TODO: change this to paying fees to the latest address that received an XDM Melt Authority
             CTxDestination payeeDest;
             ExtractDestination(txout.scriptPubKey, payeeDest);
-            if (EncodeDestination(payeeDest) == Params().TokenManagementKey()) {
+            if (EncodeDestination(payeeDest) == Params().GetConsensus().strTokenManagementKey) {
                 XDMFeesPaid += grp.quantity;
             }
         }
@@ -357,7 +357,7 @@ CAmount CTokenGroupManager::GetXDMFeesPaid(const std::vector<CRecipient> outputs
         CTxDestination payeeDest;
         if (ExtractDestination(output.scriptPubKey, payeeDest))
         {
-            if (EncodeDestination(payeeDest) == Params().TokenManagementKey()) {
+            if (EncodeDestination(payeeDest) == Params().GetConsensus().strTokenManagementKey) {
                 CTokenGroupInfo tgInfo(output.scriptPubKey);
                 if (MatchesDarkMatter(tgInfo.associatedGroup)) {
                     XDMFeesPaid += tgInfo.isAuthority() ? 0 : tgInfo.quantity;
@@ -378,7 +378,7 @@ bool CTokenGroupManager::EnsureXDMFee(std::vector<CRecipient> &outputs, CAmount 
     for (auto &output : outputs) {
         if (ExtractDestination(output.scriptPubKey, payeeDest))
         {
-            if (EncodeDestination(payeeDest) == Params().TokenManagementKey()) {
+            if (EncodeDestination(payeeDest) == Params().GetConsensus().strTokenManagementKey) {
                 CTokenGroupInfo tgInfo(output.scriptPubKey);
                 if (MatchesDarkMatter(tgInfo.associatedGroup) && !tgInfo.isAuthority()) {
                     if (tgInfo.quantity < XDMFee) {
@@ -394,7 +394,7 @@ bool CTokenGroupManager::EnsureXDMFee(std::vector<CRecipient> &outputs, CAmount 
             }
         }
     }
-    CScript script = GetScriptForDestination(DecodeDestination(Params().TokenManagementKey()), tgDarkMatterCreation->tokenGroupInfo.associatedGroup, XDMFee);
+    CScript script = GetScriptForDestination(DecodeDestination(Params().GetConsensus().strTokenManagementKey), tgDarkMatterCreation->tokenGroupInfo.associatedGroup, XDMFee);
     CRecipient recipient = {script, GROUPED_SATOSHI_AMT, false};
     outputs.push_back(recipient);
 

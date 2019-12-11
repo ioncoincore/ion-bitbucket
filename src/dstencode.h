@@ -20,4 +20,10 @@ std::string EncodeDestination(const CTxDestination &);
 CTxDestination DecodeDestination(const std::string &addr);
 bool IsValidDestinationString(const std::string &addr);
 
+/// Encode an old-style bitcoin address
+std::string EncodeLegacyAddr(const CTxDestination &dest, const CChainParams &);
+
+/// Decode an old-style bitcoin address
+CTxDestination DecodeLegacyAddr(const std::string &str, const CChainParams &);
+
 #endif // BITCOIN_DSTENCODE_H

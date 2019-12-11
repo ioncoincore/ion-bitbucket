@@ -2,7 +2,7 @@ usr/local/bin/ion-qt usr/bin
 share/pixmaps/ion32.xpm usr/share/pixmaps
 share/pixmaps/ion16.xpm usr/share/pixmaps
 share/pixmaps/ion128.png usr/share/pixmaps
-share/pixmaps/ion_testnet32.xpm usr/share/pixmaps
+share/pixmaps/ion_testnet2.xpm usr/share/pixmaps
 share/pixmaps/ion_testnet16.xpm usr/share/pixmaps
 share/pixmaps/ion_testnet128.png usr/share/pixmaps
 share/pixmaps/ion_regtest32.xpm usr/share/pixmaps
@@ -15,7 +15,7 @@ share/pixmaps/iond64.xpm usr/share/pixmaps
 share/pixmaps/iond128.png usr/share/pixmaps
 share/pixmaps/iond256.xpm usr/share/pixmaps
 share/pixmaps/iond_testnet16.xpm usr/share/pixmaps
-share/pixmaps/iond_testnet32.xpm usr/share/pixmaps
+share/pixmaps/iond_testnet2.xpm usr/share/pixmaps
 share/pixmaps/iond_testnet48.xpm usr/share/pixmaps
 share/pixmaps/iond_testnet64.xpm usr/share/pixmaps
 share/pixmaps/iond_testnet128.png usr/share/pixmaps

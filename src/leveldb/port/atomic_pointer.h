@@ -42,7 +42,6 @@
 #elif defined(__mips__) || defined(__mipsel__) || defined(__mips64el__)
 #define ARCH_CPU_MIPS_FAMILY 1
 #elif defined(__sparc__) || defined(__sparc) || defined(__s390__) || defined(__s390x__)
-#define ARCH_CPU_SPARC_FAMILY 1
 #endif
 
 namespace leveldb {

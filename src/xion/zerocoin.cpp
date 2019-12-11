@@ -79,24 +79,24 @@ int CZerocoinSpendReceipt::GetNeededSpends()
 
 
 int GetWrapppedSerialInflation(libzerocoin::CoinDenomination denom){
-    if(Params().NetworkID() == CBaseChainParams::MAIN) {
+    if(Params().NetworkIDString() != CBaseChainParams::MAIN) {
         switch (denom) {
             case libzerocoin::CoinDenomination::ZQ_ONE:
-                return 0;
+                return 7;
             case libzerocoin::CoinDenomination::ZQ_FIVE:
-                return 0;
+                return 6;
             case libzerocoin::CoinDenomination::ZQ_TEN:
-                return 0;
+                return 36;
             case libzerocoin::CoinDenomination::ZQ_FIFTY:
-                return 0;
+                return 22;
             case libzerocoin::CoinDenomination::ZQ_ONE_HUNDRED:
-                return 0;
+                return 244;
             case libzerocoin::CoinDenomination::ZQ_FIVE_HUNDRED:
-                return 0;
+                return 22;
             case libzerocoin::CoinDenomination::ZQ_ONE_THOUSAND:
-                return 0;
+                return 42;
             case libzerocoin::CoinDenomination::ZQ_FIVE_THOUSAND:
-                return 0;
+                return 98;
             default:
                 throw std::runtime_error("GetWrapSerialInflation :: Invalid denom");
         }
@@ -113,4 +113,3 @@ int64_t GetWrapppedSerialInflationAmount(){
     }
     return amount;
 }
-

@@ -30,7 +30,7 @@
        <item>
         <widget class="QLabel" name="infoLabel_SM">
          <property name="text">
-          <string>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</string>
+          <string>You can sign messages/agreements with your addresses to prove you can receive Ion sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</string>
          </property>
          <property name="textFormat">
           <enum>Qt::PlainText</enum>
@@ -42,44 +42,45 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_1_SM">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QValidatedLineEdit" name="addressIn_SM">
            <property name="toolTip">
-            <string>The ION address to sign the message with</string>
+            <string>The Ion address to sign the message with</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QToolButton" name="addressBookButton_SM">
+          <widget class="QPushButton" name="addressBookButton_SM">
            <property name="toolTip">
             <string>Choose previously used address</string>
            </property>
            <property name="text">
             <string/>
            </property>
-           <property name="icon">
-            <iconset resource="../ion.qrc">
-             <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
-           </property>
            <property name="shortcut">
             <string>Alt+A</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QToolButton" name="pasteButton_SM">
+          <widget class="QPushButton" name="pasteButton_SM">
            <property name="toolTip">
             <string>Paste address from clipboard</string>
            </property>
            <property name="text">
             <string/>
            </property>
-           <property name="icon">
-            <iconset resource="../ion.qrc">
-             <normaloff>:/icons/editpaste</normaloff>:/icons/editpaste</iconset>
-           </property>
            <property name="shortcut">
             <string>Alt+P</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -104,6 +105,9 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2_SM">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QLineEdit" name="signatureOut_SM">
            <property name="font">
@@ -117,16 +121,15 @@
           </widget>
          </item>
          <item>
-          <widget class="QToolButton" name="copySignatureButton_SM">
+          <widget class="QPushButton" name="copySignatureButton_SM">
            <property name="toolTip">
             <string>Copy the current signature to the system clipboard</string>
            </property>
            <property name="text">
             <string/>
            </property>
-           <property name="icon">
-            <iconset resource="../ion.qrc">
-             <normaloff>:/icons/editcopy</normaloff>:/icons/editcopy</iconset>
+           <property name="autoDefault">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -137,14 +140,10 @@
          <item>
           <widget class="QPushButton" name="signMessageButton_SM">
            <property name="toolTip">
-            <string>Sign the message to prove you own this ION address</string>
+            <string>Sign the message to prove you own this Ion address</string>
            </property>
            <property name="text">
             <string>Sign &amp;Message</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../ion.qrc">
-             <normaloff>:/icons/edit</normaloff>:/icons/edit</iconset>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -158,10 +157,6 @@
            </property>
            <property name="text">
             <string>Clear &amp;All</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../ion.qrc">
-             <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -222,7 +217,7 @@
        <item>
         <widget class="QLabel" name="infoLabel_VM">
          <property name="text">
-          <string>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</string>
+          <string>Enter the receiver's address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack. Note that this only proves the signing party receives with the address, it cannot prove sendership of any transaction!</string>
          </property>
          <property name="textFormat">
           <enum>Qt::PlainText</enum>
@@ -237,27 +232,29 @@
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_1_VM">
+         <property name="spacing">
+          <number>0</number>
+         </property>
          <item>
           <widget class="QValidatedLineEdit" name="addressIn_VM">
            <property name="toolTip">
-            <string>The ION address the message was signed with</string>
+            <string>The Ion address the message was signed with</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QToolButton" name="addressBookButton_VM">
+          <widget class="QPushButton" name="addressBookButton_VM">
            <property name="toolTip">
             <string>Choose previously used address</string>
            </property>
            <property name="text">
             <string/>
            </property>
-           <property name="icon">
-            <iconset resource="../ion.qrc">
-             <normaloff>:/icons/address-book</normaloff>:/icons/address-book</iconset>
-           </property>
            <property name="shortcut">
             <string>Alt+A</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -274,14 +271,10 @@
          <item>
           <widget class="QPushButton" name="verifyMessageButton_VM">
            <property name="toolTip">
-            <string>Verify the message to ensure it was signed with the specified ION address</string>
+            <string>Verify the message to ensure it was signed with the specified Ion address</string>
            </property>
            <property name="text">
             <string>Verify &amp;Message</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../ion.qrc">
-             <normaloff>:/icons/transaction_0</normaloff>:/icons/transaction_0</iconset>
            </property>
            <property name="autoDefault">
             <bool>false</bool>
@@ -295,10 +288,6 @@
            </property>
            <property name="text">
             <string>Clear &amp;All</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../ion.qrc">
-             <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
            </property>
            <property name="autoDefault">
             <bool>false</bool>

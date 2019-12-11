@@ -2,12 +2,12 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "libzerocoin/Denominations.h"
+#include "txdb.h"
+#include "validation.h"
 #include "xion/accumulatormap.h"
 #include "xion/accumulators.h"
-#include "main.h"
-#include "txdb.h"
-#include "libzerocoin/Denominations.h"
-
+#include "xion/zerocoindb.h"
 
 //Construct accumulators for all denominations
 AccumulatorMap::AccumulatorMap(libzerocoin::ZerocoinParams* params)
@@ -87,7 +87,7 @@ CBigNum AccumulatorMap::GetValue(libzerocoin::CoinDenomination denom)
 //Calculate a 32bit checksum of each accumulator value. Concatenate checksums into uint256
 uint256 AccumulatorMap::GetCheckpoint()
 {
-    uint256 nCheckpoint;
+    arith_uint256 nCheckpoint;
 
     //Prevent possible overflows from future changes to the list and forgetting to update this code
     assert(libzerocoin::zerocoinDenomList.size() == 8);
@@ -97,7 +97,5 @@ uint256 AccumulatorMap::GetCheckpoint()
         nCheckpoint = nCheckpoint << 32 | nCheckSum;
     }
 
-    return nCheckpoint;
+    return ArithToUint256(nCheckpoint);
 }
-
-

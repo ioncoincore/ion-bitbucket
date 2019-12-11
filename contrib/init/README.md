@@ -5,7 +5,7 @@ Upstart: iond.conf
 OpenRC:  iond.openrc
          iond.openrcconf
 CentOS:  iond.init
-macOS:    org.ion.iond.plist
+OS X:    org.ion.iond.plist
 ```
 have been made available to assist packagers in creating node packages here.
 

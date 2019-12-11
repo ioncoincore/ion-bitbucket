@@ -6,8 +6,6 @@
 #include "consensus/tokengroups.h"
 #include "dstencode.h"
 #include "init.h"
-#include "main.h"
-#include "coincontrol.h"
 #include "primitives/transaction.h"
 #include "rpc/protocol.h"
 #include "script/script.h"
@@ -17,7 +15,9 @@
 #include "random.h"
 #include "rpc/server.h"
 #include "tokens/tokengroupmanager.h"
+#include "util.h"
 #include "utilmoneystr.h"
+#include "wallet/coincontrol.h"
 #include "wallet/wallet.h"
 #include "tokens/tokengroupwallet.h"
 
@@ -138,18 +138,18 @@ bool AnyInputsGrouped(const CTransaction &transaction, const int nHeight, const 
         if (!view.HaveInputs(transaction))
             return false;
 
-        if (nHeight >= Params().OpGroup_StartHeight()) {
+        if (nHeight >= Params().GetConsensus().ATPStartHeight) {
             // Now iterate through the inputs to match to DarkMatter inputs
             for (const auto &inp : transaction.vin)
             {
                 const COutPoint &prevout = inp.prevout;
                 const Coin &coin = view.AccessCoin(prevout);
                 if (coin.IsSpent()) {
-                    LogPrint("token", "%s - Checking token group for spent coin\n", __func__);
+                    LogPrint(BCLog::TOKEN, "%s - Checking token group for spent coin\n", __func__);
                     return false;
                 }
                 // no prior coins can be grouped.
-                if (coin.nHeight < Params().OpGroup_StartHeight())
+                if (coin.nHeight < Params().GetConsensus().ATPStartHeight)
                     continue;
                 const CScript &script = coin.out.scriptPubKey;
 
@@ -159,7 +159,7 @@ bool AnyInputsGrouped(const CTransaction &transaction, const int nHeight, const 
                 if (tokenGrp.invalid)
                     continue;
                 if (tokenGrp.associatedGroup == tgID) {
-                    LogPrint("token", "%s - Matched a TokenGroup input: [%s] at height [%d]\n", __func__, coin.out.ToString(), coin.nHeight);
+                    LogPrint(BCLog::TOKEN, "%s - Matched a TokenGroup input: [%s] at height [%d]\n", __func__, coin.out.ToString(), coin.nHeight);
                     anyInputsGrouped = true;
                 }
             }
@@ -174,35 +174,26 @@ std::vector<unsigned char> SerializeAmount(CAmount num)
     CDataStream strm(SER_NETWORK, CLIENT_VERSION);
     if (num < 0) // negative numbers are serialized at full length
     {
-        int64_t xSize = num;
-        WRITEDATA(strm, xSize);
+        ser_writedata64(strm, num);
     }
     /* Disallow amounts to be encoded as a single byte because these may need to have special encodings if
        the SCRIPT_VERIFY_MINIMALDATA flag is set
     else if (num < 256)
     {
-        unsigned char chSize = num;
-        WRITEDATA(strm, chSize);
-//        ser_writedata8(strm, num);
+        ser_writedata8(strm, num);
     }
     */
     else if (num <= std::numeric_limits<unsigned short>::max())
     {
-        unsigned short xSize = num;
-        WRITEDATA(strm, xSize);
-//        ser_writedata16(strm, num);
+        ser_writedata16(strm, num);
     }
     else if (num <= std::numeric_limits<unsigned int>::max())
     {
-        unsigned int xSize = num;
-        WRITEDATA(strm, xSize);
-//        ser_writedata32(strm, num);
+        ser_writedata32(strm, num);
     }
     else
     {
-        uint64_t xSize = num;
-        WRITEDATA(strm, xSize);
-//        ser_writedata64(strm, num);
+        ser_writedata64(strm, num);
     }
     return std::vector<unsigned char>(strm.begin(), strm.end());
 }
@@ -229,24 +220,16 @@ CAmount DeserializeAmount(opcodetype opcodeQty, std::vector<unsigned char> &vec)
     CDataStream strm(vec, SER_NETWORK, CLIENT_VERSION);
     if (sz == 2)
     {
-        unsigned short xSize;
-        READDATA(strm, xSize);
-        return xSize;
-//        return ser_readdata16(strm);
+        return ser_readdata16(strm);
     }
     if (sz == 4)
     {
-        unsigned int xSize;
-        READDATA(strm, xSize);
-        return xSize;
-//        return ser_readdata32(strm);
+        return ser_readdata32(strm);
     }
     if (sz == 8)
     {
-        uint64_t v;
-        READDATA(strm, v);
-//        uint64_t v = ser_readdata64(strm);
-        return (CAmount) v;
+        uint64_t v = ser_readdata64(strm);
+        return (CAmount)v;
     }
     throw std::ios_base::failure("DeserializeAmount(): invalid format");
 }
@@ -350,7 +333,7 @@ bool IsTokenManagementKey(CScript script) {
     if (!tokenGroupManager->MagicTokensCreated()) {
         CTxDestination payeeDest;
         ExtractDestination(script, payeeDest);
-        return EncodeDestination(payeeDest) == Params().TokenManagementKey();
+        return EncodeDestination(payeeDest) == Params().GetConsensus().strTokenManagementKey;
     }
     return false;
 }
@@ -414,7 +397,7 @@ bool CheckTokenGroups(const CTransaction &tx, CValidationState &state, const CCo
         const Coin &coin = view.AccessCoin(prevout);
         if (coin.IsSpent()) // should never happen because you've already CheckInputs(tx,...)
         {
-            LogPrint("token", "%s - Checking token group for spent coin\n", __func__);
+            LogPrint(BCLog::TOKEN, "%s - Checking token group for spent coin\n", __func__);
             return state.Invalid(false, REJECT_INVALID, "already-spent");
         }
 
@@ -422,7 +405,7 @@ bool CheckTokenGroups(const CTransaction &tx, CValidationState &state, const CCo
         anyInputsGroupManagement = anyInputsGroupManagement || IsTokenManagementKey(script);
 
         // no prior coins can be grouped.
-        if (coin.nHeight < Params().OpGroup_StartHeight())
+        if (coin.nHeight < Params().GetConsensus().ATPStartHeight)
             continue;
 
         anyInputsGroupManagement = anyInputsGroupManagement || IsMagicInput(script);
@@ -508,7 +491,7 @@ bool CheckTokenGroups(const CTransaction &tx, CValidationState &state, const CCo
                 if (newGrpId.hasFlag(TokenGroupIdFlags::MGT_TOKEN))
                 {
                     if (anyInputsGroupManagement) {
-                        LogPrint("token", "%s - Group management creation transaction. newGrpId=[%s]\n", __func__, EncodeTokenGroup(newGrpId));
+                        LogPrint(BCLog::TOKEN, "%s - Group management creation transaction. newGrpId=[%s]\n", __func__, EncodeTokenGroup(newGrpId));
                     } else {
                         return state.Invalid(false, REJECT_INVALID, "grp-invalid-tx",
                             "No group management capability at any input address");

@@ -5,6 +5,7 @@
 #ifndef TOKEN_GROUP_CONFIGURATION_H
 #define TOKEN_GROUP_CONFIGURATION_H
 
+#include "blockencodings.h"
 #include "tokens/tokengroupdescription.h"
 #include "wallet/wallet.h"
 
@@ -28,14 +29,14 @@ public:
 class CTokenGroupCreation
 {
 public:
-    CTransaction creationTransaction;
+    CTransactionRef creationTransaction;
     CTokenGroupInfo tokenGroupInfo;
     CTokenGroupDescription tokenGroupDescription;
     CTokenGroupStatus status;
 
-    CTokenGroupCreation(){};
+    CTokenGroupCreation() : creationTransaction(MakeTransactionRef()){};
 
-    CTokenGroupCreation(CTransaction creationTransaction, CTokenGroupInfo tokenGroupInfo, CTokenGroupDescription tokenGroupDescription, CTokenGroupStatus tokenGroupStatus)
+    CTokenGroupCreation(CTransactionRef creationTransaction, CTokenGroupInfo tokenGroupInfo, CTokenGroupDescription tokenGroupDescription, CTokenGroupStatus tokenGroupStatus)
         : creationTransaction(creationTransaction), tokenGroupInfo(tokenGroupInfo), tokenGroupDescription(tokenGroupDescription), status(tokenGroupStatus) {}
 
     bool ValidateDescription();
@@ -43,9 +44,9 @@ public:
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
+    inline void SerializationOp(Stream& s, Operation ser_action)
     {
-        READWRITE(creationTransaction);
+        READWRITE(REF(TransactionCompressor(creationTransaction)));
         READWRITE(tokenGroupInfo);
         READWRITE(tokenGroupDescription);
     }
@@ -62,6 +63,6 @@ void TGFilterUniqueness(CTokenGroupCreation &tokenGroupCreation);
 void TGFilterUpperCaseTicker(CTokenGroupCreation &tokenGroupCreation);
 
 bool GetTokenConfigurationParameters(const CTransaction &tx, CTokenGroupInfo &tokenGroupInfo, CScript &firstOpReturn);
-bool CreateTokenGroup(CTransaction tx, CTokenGroupCreation &newTokenGroupCreation);
+bool CreateTokenGroup(CTransactionRef tx, CTokenGroupCreation &newTokenGroupCreation);
 
 #endif

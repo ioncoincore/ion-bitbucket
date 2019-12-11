@@ -1,14 +1,5 @@
 # Block and Transaction Broadcasting with ZeroMQ
 
-Table of Contents
------------------
-- [Block and Transaction Broadcasting with ZeroMQ](#Block-and-Transaction-Broadcasting-with-ZeroMQ)
-  - [Table of Contents](#Table-of-Contents)
-  - [Prerequisites](#Prerequisites)
-  - [Enabling](#Enabling)
-  - [Usage](#Usage)
-  - [Remarks](#Remarks)
-
 [ZeroMQ](http://zeromq.org/) is a lightweight wrapper around TCP
 connections, inter-process communication, and shared-memory,
 providing various message-oriented semantics such as publish/subscribe,
@@ -42,10 +33,8 @@ buffering or reassembly.
 
 ## Prerequisites
 
-The ZeroMQ feature in ION Core requires the ZeroMQ API >= 4.0.0
-[libzmq](https://github.com/zeromq/libzmq/releases).
-For version information, see [dependencies.md](dependencies.md).
-Typically, it is packaged by distributions as something like
+The ZeroMQ feature in Ion Core requires ZeroMQ API version 4.x or
+newer. Typically, it is packaged by distributions as something like
 *libzmq3-dev*. The C++ wrapper for ZeroMQ is *not* needed.
 
 In order to run the example Python client scripts in contrib/ one must
@@ -56,7 +45,7 @@ operation.
 
 By default, the ZeroMQ feature is automatically compiled in if the
 necessary prerequisites are found.  To disable, use --disable-zmq
-during the *configure* step of building iond:
+during the *configure* step of building bitcoind:
 
     $ ./configure --disable-zmq (other options)
 
@@ -67,12 +56,22 @@ the command line or in the configuration file.
 
 Currently, the following notifications are supported:
 
+    -zmqpubhashblock=address
+    -zmqpubhashchainlock=address
     -zmqpubhashtx=address
     -zmqpubhashtxlock=address
-    -zmqpubhashblock=address
+    -zmqpubhashgovernancevote=address
+    -zmqpubhashgovernanceobject=address
+    -zmqpubhashinstantsenddoublespend=address
     -zmqpubrawblock=address
+    -zmqpubrawchainlock=address
+    -zmqpubrawchainlocksig=address
     -zmqpubrawtx=address
     -zmqpubrawtxlock=address
+    -zmqpubrawtxlocksig=address
+    -zmqpubrawgovernancevote=address
+    -zmqpubrawgovernanceobject=address
+    -zmqpubrawinstantsenddoublespend=address
 
 The socket type is PUB and the address must be a valid ZeroMQ socket
 address. The same address can be used in more than one notification.
@@ -114,6 +113,6 @@ and just the tip will be notified. It is up to the subscriber to
 retrieve the chain from the last known block to the new tip.
 
 There are several possibilities that ZMQ notification can get lost
-during transmission depending on the communication type you are
-using. iond appends an up-counting sequence number to each
+during transmission depending on the communication type your are
+using. Iond appends an up-counting sequence number to each
 notification which allows listeners to detect lost notifications.

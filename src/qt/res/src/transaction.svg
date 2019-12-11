@@ -409,7 +409,7 @@ small icons 16x16</dc:description>
      sodipodi:insensitive="true">
     <use
        id="use87229"
-       style="fill:#cccccc;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none"
+       style="fill:#cccccc;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-ionarray:none"
        xlink:href="#icon-target"
        x="0"
        y="0"
@@ -430,7 +430,7 @@ small icons 16x16</dc:description>
        y="0"
        x="0"
        xlink:href="#icon-target"
-       style="fill:#34ba27;fill-opacity:1;stroke:#e0e026;stroke-width:10.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#34ba27;fill-opacity:1;stroke:#e0e026;stroke-width:10.5;stroke-miterlimit:4;stroke-ionarray:none;stroke-opacity:1"
        id="use87243" />
   </g>
 </svg>

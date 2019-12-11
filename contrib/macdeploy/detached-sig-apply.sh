@@ -24,7 +24,7 @@ if [ -z "$SIGNATURE" ]; then
 fi
 
 rm -rf ${TEMPDIR} && mkdir -p ${TEMPDIR}
-tar -C ${TEMPDIR} -xJf ${UNSIGNED}
+tar -C ${TEMPDIR} -xf ${UNSIGNED}
 cp -rf "${SIGNATURE}"/* ${TEMPDIR}
 
 if [ -z "${PAGESTUFF}" ]; then

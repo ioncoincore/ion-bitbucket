@@ -9,7 +9,7 @@
 * @copyright  Copyright 2013 Ian Miers, Christina Garman and Matthew Green
 * @license    This project is released under the MIT license.
 **/
-// Copyright (c) 2017 The PIVX developers
+// Copyright (c) 2017-2018 The PIVX developers
 
 #ifndef PARAMS_H_
 #define PARAMS_H_
@@ -57,13 +57,15 @@ public:
 	CBigNum groupOrder;
 
 	ADD_SERIALIZE_METHODS;
-  template <typename Stream, typename Operation>  inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action) {
 		    READWRITE(initialized);
 		    READWRITE(g);
 		    READWRITE(h);
 		    READWRITE(modulus);
 		    READWRITE(groupOrder);
-	}	
+	}
 };
 
 class AccumulatorAndProofParams {
@@ -140,7 +142,8 @@ public:
 	 */
 	uint32_t k_dprime;
 	ADD_SERIALIZE_METHODS;
-  template <typename Stream, typename Operation>  inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action) {
 	    READWRITE(initialized);
 	    READWRITE(accumulatorModulus);
 	    READWRITE(accumulatorBase);
@@ -203,9 +206,10 @@ public:
 	 * proofs.
 	 */
 	uint32_t zkp_hash_len;
-	
+
 	ADD_SERIALIZE_METHODS;
-  template <typename Stream, typename Operation>  inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action) {
 	    READWRITE(initialized);
 	    READWRITE(accumulatorParams);
 	    READWRITE(coinCommitmentGroup);

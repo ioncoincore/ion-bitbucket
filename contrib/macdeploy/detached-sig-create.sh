@@ -7,11 +7,11 @@ export LC_ALL=C
 set -e
 
 ROOTDIR=dist
-BUNDLE=${ROOTDIR}/ION-Qt.app
+BUNDLE="${ROOTDIR}/Ion-Qt.app"
 CODESIGN=codesign
 TEMPDIR=sign.temp
 TEMPLIST=${TEMPDIR}/signatures.txt
-OUT=signature-osx.tar.xz
+OUT=signature-osx.tar.gz
 OUTROOT=osx
 
 if [ ! -n "$1" ]; then
@@ -41,12 +41,12 @@ grep CodeResources < "${TEMPLIST}" | while read i; do
   RESOURCE="${TEMPDIR}/${OUTROOT}/${TARGETFILE}"
   DIRNAME="`dirname "${RESOURCE}"`"
   mkdir -p "${DIRNAME}"
-  echo "Adding resource for: \"${TARGETFILE}\""
+  echo "Adding resource for: "${TARGETFILE}""
   cp "${i}" "${RESOURCE}"
 done
 
 rm ${TEMPLIST}
 
-tar -C "${TEMPDIR}" -cJf "${OUT}" .
+tar -C "${TEMPDIR}" -czf "${OUT}" .
 rm -rf "${TEMPDIR}"
 echo "Created ${OUT}"

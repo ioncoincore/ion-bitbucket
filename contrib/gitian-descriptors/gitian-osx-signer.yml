@@ -8,10 +8,10 @@ architectures:
 packages:
 - "faketime"
 remotes:
-- "url": "https://github.com/gitianuser/ion-detached-sigs.git"
+- "url": "https://bitbucket.org/ioncoin/ion-detached-sigs.git"
   "dir": "signature"
 files:
-- "ion-osx-unsigned.tar.xz"
+- "ion-osx-unsigned.tar.gz"
 script: |
   set -e -o pipefail
 
@@ -30,10 +30,10 @@ script: |
     chmod +x ${WRAP_DIR}/${prog}
   done
 
-  UNSIGNED=ion-osx-unsigned.tar.xz
-  SIGNED=ion-osx-signed.dmg
+  UNSIGNED=ioncore-osx-unsigned.tar.gz
+  SIGNED=ioncore-osx-signed.dmg
 
-  tar -xJf ${UNSIGNED}
+  tar -xf ${UNSIGNED}
   OSX_VOLNAME="$(cat osx_volname)"
   ./detached-sig-apply.sh ${UNSIGNED} signature/osx
   ${WRAP_DIR}/genisoimage -no-cache-inodes -D -l -probe -V "${OSX_VOLNAME}" -no-pad -r -dir-mode 0755 -apple -o uncompressed.dmg signed-app

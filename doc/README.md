@@ -1,27 +1,11 @@
-# Ion Core Documentation
+Ion Core
+==========
 
-Table of Contents
------------------
-- [Ion Core Documentation](#Ion-Core-Documentation)
-  - [Table of Contents](#Table-of-Contents)
-  - [Setup](#Setup)
-  - [Running](#Running)
-    - [Unix](#Unix)
-    - [Windows](#Windows)
-    - [macOS](#macOS)
-    - [Need Help?](#Need-Help)
-  - [Building](#Building)
-  - [Development](#Development)
-  - [Resources](#Resources)
-  - [Miscellaneous](#Miscellaneous)
-  - [License](#License)
+This is the official reference wallet for Ion digital currency and comprises the backbone of the Ion peer-to-peer network. You can [download Ion Core](https://www.ionomy.com/downloads/) or [build it yourself](#building) using the guides below.
 
-## Setup
-[Ion Core](http://core.ioncoin.org/) is the original ION client and it builds the backbone of the network. However, it downloads and stores the entire history of ION transactions; depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more. Thankfully you only have to do this once.
-
-## Running
-
-The following are some helpful notes on how to run ION Core on your native platform.
+Running
+---------------------
+The following are some helpful notes on how to run Ion on your native platform.
 
 ### Unix
 
@@ -34,50 +18,61 @@ Unpack the files into a directory and run:
 
 Unpack the files into a directory, and then run ion-qt.exe.
 
-### macOS
+### OS X
 
 Drag Ion-Qt to your applications folder, and then run Ion-Qt.
 
 ### Need Help?
 
-- See the documentation at the [Ion Wiki](https://github.com/cevap/ion/wiki) and [Ionomy Wiki](https://github.com/ionomy/ion/wiki)
+* See the [Ion documentation](https://docs.ionomy.com)
 for help and more information.
-- Ask for help on [Discord chat](https://discord.gg/vuZn7gC)
+* See the [Ion Developer Documentation](https://ion-docs.github.io/) 
+for technical specifications and implementation details.
+* Ask for help on [Ion Nation Discord](http://ionchat.org)
+* Ask for help on the [Ion Forum](https://ionomy.com/forum)
 
-## Building
-The following are developer notes on how to build ION Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+Building
+---------------------
+The following are developer notes on how to build Ion Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
-- [Dependencies](dependencies.md)
-- [macOS Build Notes](build-osx.md)
+- [OS X Build Notes](build-osx.md)
 - [Unix Build Notes](build-unix.md)
 - [Windows Build Notes](build-windows.md)
+- [OpenBSD Build Notes](build-openbsd.md)
 - [Gitian Building Guide](gitian-building.md)
 
-## Development
-The ION Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+Development
+---------------------
+The Ion Core repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
-- [Multiwallet Qt Development](multiwallet-qt.md)
 - [Release Notes](release-notes.md)
 - [Release Process](release-process.md)
-- [Source Code Documentation](https://cevap.github.io/ion-docs/)
+- Source Code Documentation ***TODO***
 - [Translation Process](translation_process.md)
-- [Unit Tests](unit-tests.md)
+- [Translation Strings Policy](translation_strings_policy.md)
+- [Travis CI](travis-ci.md)
 - [Unauthenticated REST Interface](REST-interface.md)
+- [Shared Libraries](shared-libraries.md)
+- [BIPS](bips.md)
 - [Dnsseed Policy](dnsseed-policy.md)
+- [Benchmarking](benchmarking.md)
 
-## Resources
+### Resources
+* Discuss on the [Ion Forum](https://ionomy.com/forum), in the Development & Technical Discussion board.
+* Discuss on [Ion Nation Discord](http://ionchat.org)
 
-- Discuss on the [ION community](https://ion.community/) forum.
-- Join [Ion Discord](https://discord.gg/vuZn7gC).
-
-## Miscellaneous
+### Miscellaneous
 - [Assets Attribution](assets-attribution.md)
 - [Files](files.md)
+- [Fuzz-testing](fuzzing.md)
+- [Reduce Traffic](reduce-traffic.md)
 - [Tor Support](tor.md)
 - [Init Scripts (systemd/upstart/openrc)](init.md)
+- [ZMQ](zmq.md)
 
-## License
+License
+---------------------
 Distributed under the [MIT software license](/COPYING).
 This product includes software developed by the OpenSSL Project for use in the [OpenSSL Toolkit](https://www.openssl.org/). This product includes
 cryptographic software written by Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)), and UPnP software written by Thomas Bernard.

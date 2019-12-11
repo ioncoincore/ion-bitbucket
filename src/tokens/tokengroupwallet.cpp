@@ -4,14 +4,14 @@
 #include "tokens/tokengroupwallet.h"
 #include "base58.h"
 #include "ionaddrenc.h"
-#include "coincontrol.h"
+#include "wallet/coincontrol.h"
 #include "coins.h"
 #include "consensus/tokengroups.h"
 #include "consensus/validation.h"
 #include "core_io.h"
 #include "dstencode.h"
 #include "init.h"
-#include "main.h" // for BlockMap
+#include "net.h"
 #include "primitives/transaction.h"
 #include "pubkey.h"
 #include "random.h"
@@ -22,6 +22,7 @@
 #include "tokens/tokengroupmanager.h"
 #include "utilmoneystr.h"
 #include "utilstrencodings.h"
+#include "validation.h" // for BlockMap
 #include "wallet/wallet.h"
 #include <algorithm>
 
@@ -365,7 +366,7 @@ CAmount GroupCoinSelection(const std::vector<COutput> &coins, CAmount amt, std::
     for (const auto &coin : coins)
     {
         chosenCoins.push_back(coin);
-        CTokenGroupInfo tg(coin.tx->vout[coin.i].scriptPubKey);
+        CTokenGroupInfo tg(coin.tx->tx->vout[coin.i].scriptPubKey);
         cur += tg.quantity;
         if (cur >= amt)
             break;
@@ -385,7 +386,7 @@ uint64_t RenewAuthority(const COutput &authority, std::vector<CRecipient> &outpu
     {
         // Get a new address from the wallet to put the new mint authority in.
         CPubKey pubkey;
-        childAuthorityKey.GetReservedKey(pubkey);
+        childAuthorityKey.GetReservedKey(pubkey, true);
         CTxDestination authDest = pubkey.GetID();
         CScript script = GetScriptForDestination(authDest, tg.associatedGroup, (CAmount)(tg.controllingGroupFlags() & GroupAuthorityFlags::ALL_BITS));
         CRecipient recipient = {script, GROUPED_SATOSHI_AMT, false};
@@ -430,7 +431,7 @@ void ConstructTx(CWalletTx &wtxNew, const std::vector<COutput> &chosenCoins, con
         {
             CPubKey newKey;
 
-            if (!groupChangeKeyReservation.GetReservedKey(newKey))
+            if (!groupChangeKeyReservation.GetReservedKey(newKey, true))
                 throw JSONRPCError(
                     RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
 
@@ -444,7 +445,7 @@ void ConstructTx(CWalletTx &wtxNew, const std::vector<COutput> &chosenCoins, con
         {
             CPubKey newKey;
 
-            if (!groupChangeKeyReservation.GetReservedKey(newKey))
+            if (!groupChangeKeyReservation.GetReservedKey(newKey, true))
                 throw JSONRPCError(
                     RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
 
@@ -470,7 +471,7 @@ void ConstructTx(CWalletTx &wtxNew, const std::vector<COutput> &chosenCoins, con
                 return NoGroup == tg.associatedGroup;
             });
 
-            COutput feeCoin(nullptr, 0, 0, false);
+            COutput feeCoin(nullptr, 0, 0, false, false, false);
             if (!NearestGreaterCoin(bchcoins, fee, feeCoin))
             {
                 strError = strprintf("Not enough funds for fee of %d ION.", FormatMoney(fee));
@@ -487,7 +488,7 @@ void ConstructTx(CWalletTx &wtxNew, const std::vector<COutput> &chosenCoins, con
         {
             CPubKey newKey;
 
-            if (!feeChangeKeyReservation.GetReservedKey(newKey))
+            if (!feeChangeKeyReservation.GetReservedKey(newKey, true))
                 throw JSONRPCError(
                     RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
 
@@ -503,20 +504,21 @@ void ConstructTx(CWalletTx &wtxNew, const std::vector<COutput> &chosenCoins, con
 
     wtxNew.BindWallet(wallet);
     wtxNew.fFromMe = true;
-    *static_cast<CTransaction *>(&wtxNew) = CTransaction(tx);
+    wtxNew.SetTx(MakeTransactionRef(std::move(tx)));
 
-    for (auto vout : wtxNew.vout) {
+    for (auto vout : wtxNew.tx->vout) {
         CTokenGroupInfo tgInfo(vout.scriptPubKey);
         if (!tgInfo.isInvalid()) {
             CTokenGroupCreation tgCreation;
             tokenGroupManager->GetTokenGroupCreation(tgInfo.associatedGroup, tgCreation);
-            LogPrint("token", "%s - name[%s] amount[%d]\n", __func__, tgCreation.tokenGroupDescription.strName, tgInfo.quantity);
+            LogPrint(BCLog::TOKEN, "%s - name[%s] amount[%d]\n", __func__, tgCreation.tokenGroupDescription.strName, tgInfo.quantity);
         }
     }
 
     // I'll manage my own keys because I have multiple.  Passing a valid key down breaks layering.
     CReserveKey dummy(wallet);
-    if (!wallet->CommitTransaction(wtxNew, dummy))
+    CValidationState state;
+    if (!wallet->CommitTransaction(wtxNew, dummy, g_connman.get(), state))
         throw JSONRPCError(RPC_WALLET_ERROR, "Error: The transaction was rejected! This might happen if some of the "
                                              "coins in your wallet were already spent, such as if you used a copy of "
                                              "wallet.dat and coins were spent in the copy but not marked as spent "
@@ -570,11 +572,11 @@ void GroupMelt(CWalletTx &wtxNew, const CTokenGroupID &grpID, CAmount totalNeede
         strError = _("To melt coins, an authority output with melt capability is needed.");
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strError);
     }
-    COutput authority(nullptr, 0, 0, false);
+    COutput authority(nullptr, 0, 0, false, false, false);
     // Just pick the first one for now.
     for (auto coin : coins)
     {
-        totalBchAvailable += coin.tx->vout[coin.i].nValue; // The melt authority may have some BCH in it
+        totalBchAvailable += coin.tx->tx->vout[coin.i].nValue; // The melt authority may have some BCH in it
         authority = coin;
         break;
     }
@@ -677,7 +679,7 @@ void GroupSend(CWalletTx &wtxNew,
         if (!tgInfo.isInvalid()) {
             CTokenGroupCreation tgCreation;
             tokenGroupManager->GetTokenGroupCreation(tgInfo.associatedGroup, tgCreation);
-            LogPrint("token", "%s - name[%s] amount[%d]\n", __func__, tgCreation.tokenGroupDescription.strName, tgInfo.quantity);
+            LogPrint(BCLog::TOKEN, "%s - name[%s] amount[%d]\n", __func__, tgCreation.tokenGroupDescription.strName, tgInfo.quantity);
         }
     }
 

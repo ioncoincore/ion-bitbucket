@@ -1,103 +1,64 @@
-# Release Process
+Release Process
+====================
 
-Table of Contents
------------------
-- [Release Process](#Release-Process)
-  - [Table of Contents](#Table-of-Contents)
-  - [Branch updates](#Branch-updates)
-    - [Before every release candidate](#Before-every-release-candidate)
-    - [Before every major and minor release](#Before-every-major-and-minor-release)
-    - [Before every major release:](#Before-every-major-release)
-      - [After branch-off (on master)](#After-branch-off-on-master)
-      - [After branch-off (on the major release branch)](#After-branch-off-on-the-major-release-branch)
-      - [Before final release](#Before-final-release)
-  - [Building](#Building)
-    - [First time / New builders](#First-time--New-builders)
-    - [ION maintainers/release engineers, suggestion for writing release notes](#ION-maintainersrelease-engineers-suggestion-for-writing-release-notes)
-    - [Setup and perform Gitian builds](#Setup-and-perform-Gitian-builds)
-    - [Fetch and create inputs: (first time, or when dependency versions change)](#Fetch-and-create-inputs-first-time-or-when-dependency-versions-change)
-    - [Optional: Seed the Gitian sources cache and offline git repositories](#Optional-Seed-the-Gitian-sources-cache-and-offline-git-repositories)
-    - [Build and sign ION Core for Linux, Windows, and macOS:](#Build-and-sign-ION-Core-for-Linux-Windows-and-macOS)
-    - [Verify other gitian builders signatures to your own. (Optional)](#Verify-other-gitian-builders-signatures-to-your-own-Optional)
-    - [Next steps:](#Next-steps)
-    - [After 3 or more people have gitian-built and their results match:](#After-3-or-more-people-have-gitian-built-and-their-results-match)
+* Update translations, see [translation_process.md](https://bitbucket.org/ioncoin/ion/blob/master/doc/translation_process.md#synchronising-translations).
 
+* Update manpages, see [gen-manpages.sh](https://bitbucket.org/ioncoin/ion/blob/master/contrib/devtools/README.md#gen-manpagessh).
 
-## Branch updates
+Before every minor and major release:
 
-### Before every release candidate
-
-* Update translations (ask for more info on discord or support) see [translation_process.md](https://github.com/cevap/ion/blob/master/doc/translation_process.md#synchronising-translations).
-* Update manpages, see [gen-manpages.sh](https://github.com/ion-project/ion/blob/master/contrib/devtools/README.md#gen-manpagessh).
-
-### Before every major and minor release
-
+* Update [bips.md](bips.md) to account for changes since the last release.
 * Update version in `configure.ac` (don't forget to set `CLIENT_VERSION_IS_RELEASE` to `true`)
 * Write release notes (see below)
+* Update `src/chainparams.cpp` nMinimumChainWork with information from the getblockchaininfo rpc.
+* Update `src/chainparams.cpp` defaultAssumeValid  with information from the getblockhash rpc.
+  - The selected value must not be orphaned so it may be useful to set the value two blocks back from the tip.
+  - Testnet should be set some tens of thousands back from the tip due to reorgs there.
+  - This update should be reviewed with a reindex-chainstate with assumevalid=0 to catch any defect
+     that causes rejection of blocks in the past history.
 
-### Before every major release:
+Before every major release:
 
-* Update hardcoded [seeds](/contrib/seeds/README.md), see [this pull request](https://github.com/bitcoin/bitcoin/pull/7415) for an example.
+* Update hardcoded [seeds](/contrib/seeds/README.md). TODO: Give example PR for Ion
 * Update [`BLOCK_CHAIN_SIZE`](/src/qt/intro.cpp) to the current size plus some overhead.
-* Update `src/chainparams.cpp` with statistics about the transaction count and rate.
-* On both the master branch and the new release branch:
-  - update `CLIENT_VERSION_MINOR` in [`configure.ac`](../configure.ac)
-* On the new release branch in [`configure.ac`](../configure.ac):
-  - set `CLIENT_VERSION_REVISION` to `0`
-  - set `CLIENT_VERSION_IS_RELEASE` to `true`
-
-
-#### After branch-off (on master)
-
-- Update the version of `contrib/gitian-descriptors/*.yml`.
-
-#### After branch-off (on the major release branch)
-
-- Update the versions and the link to the release notes draft in `doc/release-notes.md`.
-
-#### Before final release
-
-- Merge the release notes into the branch.
-- Ensure the "Needs release note" label is removed from all relevant pull requests and issues.
-
-## Building
+* Update `src/chainparams.cpp` chainTxData with statistics about the transaction count and rate.
+* Update version of `contrib/gitian-descriptors/*.yml`: usually one'd want to do this on master after branching off the release - but be sure to at least do it before a new major release
 
 ### First time / New builders
 
-If you're using the automated script (found in [contrib/gitian-build.sh](/contrib/gitian-build.sh)), then at this point you should run it with the "--setup" command. Otherwise ignore this.
+If you're using the automated script (found in [contrib/gitian-build.py](/contrib/gitian-build.py)), then at this point you should run it with the "--setup" command. Otherwise ignore this.
 
 Check out the source code in the following directory hierarchy.
 
-    cd /path/to/your/toplevel/build
-    git clone https://github.com/gitianuser/gitian.sigs.git
-    git clone https://github.com/gitianuser/ion-detached-sigs.git
-    git clone https://github.com/devrandom/gitian-builder.git
-    git clone https://github.com/cevap/ion.git
+	cd /path/to/your/toplevel/build
+	git clone https://bitbucket.org/ioncoin/gitian.sigs.git
+	git clone https://bitbucket.org/ioncoin/ion-detached-sigs.git
+	git clone https://github.com/devrandom/gitian-builder.git
+	git clone https://bitbucket.org/ioncoin/ion.git
 
-### ION maintainers/release engineers, suggestion for writing release notes
+### Ion Core maintainers/release engineers, suggestion for writing release notes
 
 Write release notes. git shortlog helps a lot, for example:
 
-    git shortlog --email --no-merges --format="* [%h] %s" v(current version, e.g. 3.2.00-beta1)..(new version, e.g. v3.2.0-rc1)
-
+    git shortlog --no-merges v(current version, e.g. 0.12.2)..v(new version, e.g. 0.12.3)
 
 Generate list of authors:
 
-    git log  --format='- %aN <%aE>' v(current version, e.g. 3.1.00-beta1)..(new version, e.g. v3.2.0-rc1) | sort -fiu
+    git log --format='%aN' "$*" | sort -ui | sed -e 's/^/- /'
 
-Tag the version (or release candidate) in git:
+Tag version (or release candidate) in git
 
-    git tag -s v(new version, e.g. 3.2.0)
+    git tag -s v(new version, e.g. 0.12.3)
 
 ### Setup and perform Gitian builds
 
-If you're using the automated script (found in [contrib/gitian-build.sh](/contrib/gitian-build.sh)), then at this point you should run it with the "--build" command. Otherwise ignore this.
+If you're using the automated script (found in [contrib/gitian-build.py](/contrib/gitian-build.py)), then at this point you should run it with the "--build" command. Otherwise ignore this.
 
 Setup Gitian descriptors:
 
     pushd ./ion
     export SIGNER=(your Gitian key, ie bluematt, sipa, etc)
-    export VERSION=(new version, e.g. 0.8.0)
+    export VERSION=(new version, e.g. 0.12.3)
     git fetch
     git checkout v${VERSION}
     popd
@@ -114,22 +75,20 @@ Ensure gitian-builder is up-to-date:
     git pull
     popd
 
+
 ### Fetch and create inputs: (first time, or when dependency versions change)
 
     pushd ./gitian-builder
     mkdir -p inputs
-    wget -P inputs https://github.com/cevap/osslsigncode/releases/download/v1.7.1/osslsigncode-Backports-to-1.7.1.patch
-    wget -P inputs https://github.com/cevap/osslsigncode/archive/v1.7.1.tar.gz && mv inputs/v1.7.1.tar.gz inputs/osslsigncode-1.7.1.tar.gz
-    wget -P inputs https://github.com/gitianuser/MacOSX-SDKs/releases/download/MacOSX10.11.sdk/MacOSX10.11.sdk.tar.xz
+    wget -P inputs https://bitcoincore.org/cfields/osslsigncode-Backports-to-1.7.1.patch
+    wget -P inputs http://downloads.sourceforge.net/project/osslsigncode/osslsigncode/osslsigncode-1.7.1.tar.gz
     popd
 
-Create the macOS SDK tarball, see the [macOS build instructions](build-osx.md#deterministic-macos-dmg-notes) for details, and copy it into the inputs directory.
+Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, and copy it into the inputs directory.
 
 ### Optional: Seed the Gitian sources cache and offline git repositories
 
-NOTE: Gitian is sometimes unable to download files. If you have errors, try the step below.
-
-By default, Gitian will fetch source files as needed. To cache them ahead of time, make sure you have checked out the tag you want to build in ion, then:
+By default, Gitian will fetch source files as needed. To cache them ahead of time:
 
     pushd ./gitian-builder
     make -C ../ion/depends download SOURCES_PATH=`pwd`/cache/common
@@ -145,22 +104,22 @@ NOTE: Offline builds must use the --url flag to ensure Gitian fetches only from 
 
 The gbuild invocations below <b>DO NOT DO THIS</b> by default.
 
-### Build and sign ION Core for Linux, Windows, and macOS:
+### Build and sign Ion Core for Linux, Windows, and OS X:
 
     pushd ./gitian-builder
     ./bin/gbuild --num-make 2 --memory 3000 --commit ion=v${VERSION} ../ion/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gsign --signer "$SIGNER" --release ${VERSION}-linux --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-linux.yml
-    mv build/out/ion-*.tar.gz build/out/src/ion-*.tar.gz ../
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-linux.yml
+    mv build/out/ioncore-*.tar.gz build/out/src/ioncore-*.tar.gz ../
 
     ./bin/gbuild --num-make 2 --memory 3000 --commit ion=v${VERSION} ../ion/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gsign --signer "$SIGNER" --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-win.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-unsigned --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-win.yml
     mv build/out/ion-*-win-unsigned.tar.gz inputs/ion-win-unsigned.tar.gz
     mv build/out/ion-*.zip build/out/ion-*.exe ../
 
     ./bin/gbuild --num-make 2 --memory 3000 --commit ion=v${VERSION} ../ion/contrib/gitian-descriptors/gitian-osx.yml
-    ./bin/gsign --signer "$SIGNER" --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-osx.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-unsigned --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-osx.yml
     mv build/out/ion-*-osx-unsigned.tar.gz inputs/ion-osx-unsigned.tar.gz
-    mv build/out/ion-*.tar.gz build/out/ion-*.dmg ../
+    mv build/out/ioncore-*.tar.gz build/out/ion-*.dmg ../
     popd
 
 Build output expected:
@@ -168,7 +127,7 @@ Build output expected:
   1. source tarball (`ion-${VERSION}.tar.gz`)
   2. linux 32-bit and 64-bit dist tarballs (`ion-${VERSION}-linux[32|64].tar.gz`)
   3. windows 32-bit and 64-bit unsigned installers and dist zips (`ion-${VERSION}-win[32|64]-setup-unsigned.exe`, `ion-${VERSION}-win[32|64].zip`)
-  4. macOS unsigned installer and dist tarball (`ion-${VERSION}-osx-unsigned.dmg`, `ion-${VERSION}-osx64.tar.gz`)
+  4. OS X unsigned installer and dist tarball (`ion-${VERSION}-osx-unsigned.dmg`, `ion-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
 ### Verify other gitian builders signatures to your own. (Optional)
@@ -191,35 +150,35 @@ Verify the signatures
 Commit your signature to gitian.sigs:
 
     pushd gitian.sigs
-    git add ${VERSION}-linux/"${SIGNER}"
-    git add ${VERSION}-win-unsigned/$"${SIGNER}"
-    git add ${VERSION}-osx-unsigned/"${SIGNER}"
+    git add ${VERSION}-linux/${SIGNER}
+    git add ${VERSION}-win-unsigned/${SIGNER}
+    git add ${VERSION}-osx-unsigned/${SIGNER}
     git commit -a
     git push  # Assuming you can push to the gitian.sigs tree
     popd
 
-Codesigner only: Create Windows/macOS detached signatures:
+Codesigner only: Create Windows/OS X detached signatures:
 - Only one person handles codesigning. Everyone else should skip to the next step.
-- Only once the Windows/macOS builds each have 3 matching signatures may they be signed with their respective release keys.
+- Only once the Windows/OS X builds each have 3 matching signatures may they be signed with their respective release keys.
 
-Codesigner only: Sign the macOS binary:
+Codesigner only: Sign the osx binary:
 
-    transfer ion-osx-unsigned.tar.gz to osx for signing
-    tar xf ion-osx-unsigned.tar.gz
-    ./detached-sig-create.sh -s "Key ID"
+    transfer ioncore-osx-unsigned.tar.gz to osx for signing
+    tar xf ioncore-osx-unsigned.tar.gz
+    ./detached-sig-create.sh -s "Key ID" -o runtime
     Enter the keychain password and authorize the signature
     Move signature-osx.tar.gz back to the gitian host
 
 Codesigner only: Sign the windows binaries:
 
-    tar xf ion-win-unsigned.tar.gz
+    tar xf ioncore-win-unsigned.tar.gz
     ./detached-sig-create.sh -key /path/to/codesign.key
     Enter the passphrase for the key when prompted
     signature-win.tar.gz will be created
 
 Codesigner only: Commit the detached codesign payloads:
 
-    cd ~/ion-detached-sigs
+    cd ~/ioncore-detached-sigs
     checkout the appropriate branch for this release series
     rm -rf *
     tar xf signature-osx.tar.gz
@@ -229,16 +188,16 @@ Codesigner only: Commit the detached codesign payloads:
     git tag -s v${VERSION} HEAD
     git push the current branch and new tag
 
-Non-codesigners: wait for Windows/macOS detached signatures:
+Non-codesigners: wait for Windows/OS X detached signatures:
 
-- Once the Windows/macOS builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [ion-detached-sigs](https://github.com/gitianuser/ion-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+- Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
+- Detached signatures will then be committed to the [ion-detached-sigs](https://bitbucket.org/ioncoin/ion-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
-Create (and optionally verify) the signed macOS binary:
+Create (and optionally verify) the signed OS X binary:
 
     pushd ./gitian-builder
     ./bin/gbuild -i --commit signature=v${VERSION} ../ion/contrib/gitian-descriptors/gitian-osx-signer.yml
-    ./bin/gsign --signer "$SIGNER" --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-osx-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-osx-signed --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-osx-signer.yml
     ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-signed ../ion/contrib/gitian-descriptors/gitian-osx-signer.yml
     mv build/out/ion-osx-signed.dmg ../ion-${VERSION}-osx.dmg
     popd
@@ -247,18 +206,18 @@ Create (and optionally verify) the signed Windows binaries:
 
     pushd ./gitian-builder
     ./bin/gbuild -i --commit signature=v${VERSION} ../ion/contrib/gitian-descriptors/gitian-win-signer.yml
-    ./bin/gsign --signer "$SIGNER" --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-win-signer.yml
+    ./bin/gsign --signer $SIGNER --release ${VERSION}-win-signed --destination ../gitian.sigs/ ../ion/contrib/gitian-descriptors/gitian-win-signer.yml
     ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-signed ../ion/contrib/gitian-descriptors/gitian-win-signer.yml
     mv build/out/ion-*win64-setup.exe ../ion-${VERSION}-win64-setup.exe
     mv build/out/ion-*win32-setup.exe ../ion-${VERSION}-win32-setup.exe
     popd
 
-Commit your signature for the signed macOS/Windows binaries:
+Commit your signature for the signed OS X/Windows binaries:
 
     pushd gitian.sigs
-    git add ${VERSION}-osx-signed/"${SIGNER}"
-    git add ${VERSION}-win-signed/"${SIGNER}"
-    git commit -m "Add ${SIGNER} ${VERSION} signed binaries signatures"
+    git add ${VERSION}-osx-signed/${SIGNER}
+    git add ${VERSION}-win-signed/${SIGNER}
+    git commit -a
     git push  # Assuming you can push to the gitian.sigs tree
     popd
 
@@ -275,7 +234,6 @@ The list of files should be:
 ion-${VERSION}-aarch64-linux-gnu.tar.gz
 ion-${VERSION}-arm-linux-gnueabihf.tar.gz
 ion-${VERSION}-i686-pc-linux-gnu.tar.gz
-ion-${VERSION}-riscv64-linux-gnu.tar.gz
 ion-${VERSION}-x86_64-linux-gnu.tar.gz
 ion-${VERSION}-osx64.tar.gz
 ion-${VERSION}-osx.dmg
@@ -289,7 +247,7 @@ The `*-debug*` files generated by the gitian build contain debug symbols
 for troubleshooting by developers. It is assumed that anyone that is interested
 in debugging can run gitian to generate the files for themselves. To avoid
 end-user confusion about which file to pick, as well as save storage
-space *do not upload these to github*.
+space *do not upload these to the ionomy.com server*.
 
 - GPG-sign it, delete the unsigned file:
 ```
@@ -299,16 +257,20 @@ rm SHA256SUMS
 (the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spurious/nonsensical entry.
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the GitHub release (see below)
+- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the ionomy.com server
+
+- Update ionomy.com
 
 - Announce the release:
 
-  - bitcointalk announcement thread
+  - Release on Ion forum: https://www.ionomy.com/forum/topic/official-announcements.54/
 
-  - Optionally twitter, reddit /r/ion, ... but this will usually sort out itself
+  - Optionally Discord, twitter, reddit /r/Ionpay, ... but this will usually sort out itself
+
+  - Notify flare so that he can start building [the PPAs](https://launchpad.net/~ionomy.com/+archive/ubuntu/ion)
 
   - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
-  - Create a [new GitHub release](https://github.com/cevap/ion/releases/new) with a link to the archived release notes.
+  - Create a [new GitHub release](https://bitbucket.org/ioncoin/ion/releases/new) with a link to the archived release notes.
 
   - Celebrate

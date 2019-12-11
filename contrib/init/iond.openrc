@@ -1,9 +1,9 @@
 #!/sbin/openrc-run
 
-# backward compatibility for existing gentoo layout
+# backward compatibility for existing gentoo layout 
 #
-if [ -d "/var/lib/ion/.ion" ]; then
-	BITCOIND_DEFAULT_DATADIR="/var/lib/ion/.ion"
+if [ -d "/var/lib/ioncoin/.ioncoin" ]; then
+	BITCOIND_DEFAULT_DATADIR="/var/lib/ioncoin/.ioncoin"
 else
 	BITCOIND_DEFAULT_DATADIR="/var/lib/iond"
 fi
@@ -12,14 +12,14 @@ BITCOIND_CONFIGFILE=${BITCOIND_CONFIGFILE:-/etc/ioncoin/ioncoin.conf}
 BITCOIND_PIDDIR=${BITCOIND_PIDDIR:-/var/run/iond}
 BITCOIND_PIDFILE=${BITCOIND_PIDFILE:-${BITCOIND_PIDDIR}/iond.pid}
 BITCOIND_DATADIR=${BITCOIND_DATADIR:-${BITCOIND_DEFAULT_DATADIR}}
-BITCOIND_USER=${BITCOIND_USER:-${BITCOIN_USER:-ion}
-BITCOIND_GROUP=${BITCOIND_GROUP:-ion}
+BITCOIND_USER=${BITCOIND_USER:-${BITCOIN_USER:-ioncoin}}
+BITCOIND_GROUP=${BITCOIND_GROUP:-ioncoin}
 BITCOIND_BIN=${BITCOIND_BIN:-/usr/bin/iond}
 BITCOIND_NICE=${BITCOIND_NICE:-${NICELEVEL:-0}}
 BITCOIND_OPTS="${BITCOIND_OPTS:-${BITCOIN_OPTS}}"
 
 name="Ion Core Daemon"
-description="ION crypto-currency p2p network daemon"
+description="Ion cryptocurrency P2P network daemon"
 
 command="/usr/bin/iond"
 command_args="-pid=\"${BITCOIND_PIDFILE}\" \
@@ -81,10 +81,10 @@ checkconfig()
 		eerror ""
 		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
 		eerror ""
-		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "It is also recommended that you also set alertnotify so you are "
 		eerror "notified of problems:"
 		eerror ""
-		eerror "ie: alertnotify=echo %%s | mail -s \"ION Alert\"" \
+		eerror "ie: alertnotify=echo %%s | mail -s \"Ion Core Alert\"" \
 			"admin@foo.com"
 		eerror ""
 		return 1

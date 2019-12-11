@@ -9,7 +9,7 @@
 * @copyright  Copyright 2013 Ian Miers, Christina Garman and Matthew Green
 * @license    This project is released under the MIT license.
 **/
-// Copyright (c) 2017 The PIVX developers
+// Copyright (c) 2017-2019 The PIVX developers
 
 #include <streams.h>
 #include "SerialNumberSignatureOfKnowledge.h"
@@ -19,7 +19,7 @@ namespace libzerocoin {
 SerialNumberSignatureOfKnowledge::SerialNumberSignatureOfKnowledge(const ZerocoinParams* p): params(p) { }
 
 // Use one 256 bit seed and concatenate 4 unique 256 bit hashes to make a 1024 bit hash
-CBigNum SeedTo1024(uint256 hashSeed) {
+CBigNum SeedTo1024(arith_uint256 hashSeed) {
     CHashWriter hasher(0,0);
     hasher << hashSeed;
 
@@ -66,7 +66,7 @@ SerialNumberSignatureOfKnowledge::SerialNumberSignatureOfKnowledge(const
 
         //use a random 256 bit seed that expands to 1024 bit for v[i]
         while (true) {
-            uint256 hashRand = CBigNum::randBignum(CBigNum(~uint256(0))).getuint256();
+            arith_uint256 hashRand = CBigNum::randBignum(CBigNum(~arith_uint256(0))).getuint256();
             CBigNum bnExpanded = SeedTo1024(hashRand);
 
             if(bnExpanded > params->serialNumberSoKCommitmentGroup.groupOrder)
@@ -170,7 +170,7 @@ bool SerialNumberSignatureOfKnowledge::Verify(const CBigNum& coinSerialNumber, c
             hasher << tprime[i];
         }
         return hasher.GetHash() == hash;
-    }catch (std::range_error e){
+    } catch (const std::range_error& e) {
         return error("SoK Verify() :: sprime invalid range.");
     }
 }

@@ -4,11 +4,12 @@
 
 #include "tokens/tokendb.h"
 #include "tokens/tokengroupmanager.h"
+#include "validation.h"
 
-CTokenDB::CTokenDB(size_t nCacheSize, bool fMemory, bool fWipe) : CLevelDBWrapper(GetDataDir() / "tokens", nCacheSize, fMemory, fWipe) {}
+CTokenDB::CTokenDB(size_t nCacheSize, bool fMemory, bool fWipe) : CDBWrapper(GetDataDir() / "tokens", nCacheSize, fMemory, fWipe) {}
 
 bool CTokenDB::WriteTokenGroupsBatch(const std::vector<CTokenGroupCreation>& tokenGroups) {
-    CLevelDBBatch batch;
+    CDBBatch batch(*this);
     for (std::vector<CTokenGroupCreation>::const_iterator it = tokenGroups.begin(); it != tokenGroups.end(); it++){
         batch.Write(std::make_pair('c', it->tokenGroupInfo.associatedGroup), *it);
     }
@@ -24,7 +25,7 @@ bool CTokenDB::ReadTokenGroup(const CTokenGroupID& tokenGroupID, CTokenGroupCrea
 }
 
 bool CTokenDB::EraseTokenGroupBatch(const std::vector<CTokenGroupID>& newTokenGroupIDs) {
-    CLevelDBBatch batch;
+    CDBBatch batch(*this);
     for (std::vector<CTokenGroupID>::const_iterator it = newTokenGroupIDs.begin(); it != newTokenGroupIDs.end(); it++){
         batch.Erase(std::make_pair('c', *it));
     }
@@ -50,7 +51,7 @@ bool CTokenDB::DropTokenGroups(std::string& strError) {
 }
 
 bool CTokenDB::FindTokenGroups(std::vector<CTokenGroupCreation>& vTokenGroups, std::string& strError) {
-    boost::scoped_ptr<CLevelDBIterator> pcursor(NewIterator());
+    boost::scoped_ptr<CDBIterator> pcursor(NewIterator());
     pcursor->SeekToFirst();
 
     while (pcursor->Valid()) {
@@ -89,25 +90,24 @@ bool ReindexTokenDB(std::string &strError) {
 
     uiInterface.ShowProgress(_("Reindexing token database..."), 0);
 
-    CBlockIndex* pindex = chainActive[Params().OpGroup_StartHeight()];
+    CBlockIndex* pindex = chainActive[Params().GetConsensus().ATPStartHeight];
     std::vector<CTokenGroupCreation> vTokenGroups;
     while (pindex) {
-        uiInterface.ShowProgress(_("Reindexing token database..."), std::max(1, std::min(99, (int)((double)(pindex->nHeight - Params().OpGroup_StartHeight()) / (double)(chainActive.Height() - Params().OpGroup_StartHeight()) * 100))));
+        uiInterface.ShowProgress(_("Reindexing token database..."), std::max(1, std::min(99, (int)((double)(pindex->nHeight - Params().GetConsensus().ATPStartHeight) / (double)(chainActive.Height() - Params().GetConsensus().ATPStartHeight) * 100))));
 
         if (pindex->nHeight % 1000 == 0)
             LogPrintf("Reindexing token database: block %d...\n", pindex->nHeight);
 
         CBlock block;
-        if (!ReadBlockFromDisk(block, pindex)) {
+        if (!ReadBlockFromDisk(block, pindex, Params().GetConsensus())) {
             strError = "Reindexing token database failed";
             return false;
         }
 
-        for (const CTransaction& tx : block.vtx) {
-            if (!tx.IsCoinBase() && !tx.HasZerocoinSpendInputs() && IsAnyOutputGroupedCreation(tx)) {
-                LogPrint("token", "%s - tx with token create: [%s]\n", __func__, tx.HexStr());
+        for (const CTransactionRef& ptx : block.vtx) {
+            if (!ptx->IsCoinBase() && !ptx->HasZerocoinSpendInputs() && IsAnyOutputGroupedCreation(*ptx)) {
                 CTokenGroupCreation tokenGroupCreation;
-                if (CreateTokenGroup(tx, tokenGroupCreation)) {
+                if (CreateTokenGroup(ptx, tokenGroupCreation)) {
                     vTokenGroups.push_back(tokenGroupCreation);
                 }
             }

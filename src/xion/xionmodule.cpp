@@ -1,14 +1,17 @@
-// Copyright (c) 2019 The ion developers
+// Copyright (c) 2019 The PIVX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "xion/xionmodule.h"
-#include "xionchain.h"
+
+#include "consensus/validation.h"
+#include "hash.h"
+#include "iostream"
+#include "validation.h"
+
 #include "libzerocoin/Commitment.h"
 #include "libzerocoin/Coin.h"
-#include "hash.h"
-#include "main.h"
-#include "iostream"
+#include "xion/xionchain.h"
 
 bool PublicCoinSpend::Verify(const libzerocoin::Accumulator& a, bool verifyParams) const {
     return validate();
@@ -37,8 +40,23 @@ const uint256 PublicCoinSpend::signatureHash() const
     return h.GetHash();
 }
 
+bool GetOutput(const uint256& hash, unsigned int index, CValidationState& state, CTxOut& out)
+{
+    CTransactionRef txPrev;
+    uint256 hashBlock;
+    if (!GetTransaction(hash, txPrev, Params().GetConsensus(), hashBlock, true)) {
+        return state.DoS(100, error("Output not found"));
+    }
+    if (index > txPrev->vout.size()) {
+        return state.DoS(100, error("Output not found, invalid index %d for %s",index, hash.GetHex()));
+    }
+    out = txPrev->vout[index];
+    return true;
+}
+
 namespace XIONModule {
 
+/*
     bool createInput(CTxIn &in, CZerocoinMint &mint, uint256 hashTxOut) {
         libzerocoin::ZerocoinParams *params = Params().Zerocoin_Params(false);
         uint8_t nVersion = mint.GetVersion();
@@ -73,6 +91,7 @@ namespace XIONModule {
         in.nSequence = mint.GetDenomination();
         return true;
     }
+*/
 
     PublicCoinSpend parseCoinSpend(const CTxIn &in) {
         std::vector<char, zero_after_free_allocator<char> > data;

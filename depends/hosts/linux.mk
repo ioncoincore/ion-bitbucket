@@ -1,5 +1,5 @@
 linux_CFLAGS=-pipe
-linux_CXXFLAGS=$(linux_CFLAGS)
+linux_CXXFLAGS=$(linux_CFLAGS) -static-libstdc++
 
 linux_release_CFLAGS=-O2
 linux_release_CXXFLAGS=$(linux_release_CFLAGS)
@@ -28,4 +28,14 @@ i686_linux_CC=$(default_host_CC) -m32
 i686_linux_CXX=$(default_host_CXX) -m32
 x86_64_linux_CC=$(default_host_CC) -m64
 x86_64_linux_CXX=$(default_host_CXX) -m64
+endif
+
+ifeq (s390x,$(findstring s390x,$(build_arch)))
+s390x_linux_CC=s390x-linux-gnu-gcc-8
+s390x_linux_CXX=s390x-linux-gnu-g++-8
+endif
+
+ifeq (powerpc64le,$(findstring powerpc64le,$(build_arch)))
+powerpc64le_linux_CC=powerpc64le-linux-gnu-gcc-8
+powerpc64le_linux_CXX=powerpc64le-linux-gnu-g++-8
 endif

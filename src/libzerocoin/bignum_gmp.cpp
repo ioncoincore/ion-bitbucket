@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2017-201 The PIVX developers
+// Copyright (c) 2017-2019 The PIVX developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -40,7 +40,8 @@ CBigNum::CBigNum(unsigned short n)   { mpz_init(bn); mpz_set_ui(bn, n); }
 CBigNum::CBigNum(unsigned int n)     { mpz_init(bn); mpz_set_ui(bn, n); }
 CBigNum::CBigNum(unsigned long n)    { mpz_init(bn); mpz_set_ui(bn, n); }
 
-CBigNum::CBigNum(uint256 n) { mpz_init(bn); setuint256(n); }
+CBigNum::CBigNum(arith_uint256 n) { mpz_init(bn); setuint256(n); }
+CBigNum::CBigNum(uint256 n) { arith_uint256 m = UintToArith256(n); mpz_init(bn); setuint256(m); }
 
 CBigNum::CBigNum(const std::vector<unsigned char>& vch)
 {
@@ -123,17 +124,17 @@ int CBigNum::getint() const
     }
 }
 
-void CBigNum::setuint256(uint256 n)
+void CBigNum::setuint256(arith_uint256 n)
 {
     mpz_import(bn, n.size(), -1, 1, 0, 0, (unsigned char*)&n);
 }
 
-uint256 CBigNum::getuint256() const
+arith_uint256 CBigNum::getuint256() const
 {
     if(bitSize() > 256) {
         throw std::range_error("cannot convert to uint256, bignum longer than 256 bits");
     }
-    uint256 n = uint256(0);
+    arith_uint256 n = arith_uint256(0);
     mpz_export((unsigned char*)&n, NULL, -1, 1, 0, 0, bn);
     return n;
 }
