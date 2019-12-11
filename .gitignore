@@ -11,13 +11,9 @@ src/iond
 src/ion-cli
 src/ion-tx
 src/test/test_ion
+src/test/test_ion_fuzzy
 src/qt/test/test_ion-qt
 src/bench/bench_ion
-
-src/test/test_ion_fuzzy
-
-# archs
-depends/riscv64-linux-gnu/
 
 # autoreconf
 Makefile.in
