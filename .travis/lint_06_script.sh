@@ -6,12 +6,13 @@
 
 export LC_ALL=C
 
+contrib/devtools/git-subtree-check.sh src/leveldb
+contrib/devtools/git-subtree-check.sh src/secp256k1
+contrib/devtools/git-subtree-check.sh src/crypto/ctaes
+contrib/devtools/git-subtree-check.sh src/univalue
+contrib/devtools/git-subtree-check.sh snap
 
-#contrib/devtools/git-subtree-check.sh src/secp256k1
-#contrib/devtools/git-subtree-check.sh src/univalue
-#contrib/devtools/git-subtree-check.sh src/leveldb
 contrib/devtools/check-doc.py
-contrib/devtools/logprint-scanner.py
 
 if [ "$TRAVIS_EVENT_TYPE" = "pull_request" ]; then
   contrib/devtools/lint-whitespace.sh
