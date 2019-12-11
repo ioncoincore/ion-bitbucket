@@ -1,0 +1,30 @@
+From 649b2d9a0f1c6c2c591599b07339ba3db50723c6 Mon Sep 17 00:00:00 2001
+From: cevap <dev@i2pmail.org>
+Date: Wed, 11 Dec 2019 21:41:49 +0100
+Subject: [PATCH] fix src/ipc_address.hpp:40:10: fatal error
+
+---
+ src/ipc_address.hpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/src/ipc_address.hpp b/src/ipc_address.hpp
+index 4c2277d..1723d27 100644
+--- a/src/ipc_address.hpp
++++ b/src/ipc_address.hpp
+@@ -37,9 +37,13 @@
+ #if defined _MSC_VER
+ #include <afunix.h>
+ #else
++#ifdef __WIN32__
++# include <winsock2.h>
++#else
+ #include <sys/socket.h>
+ #include <sys/un.h>
+ #endif
++#endif
+ 
+ #include "macros.hpp"
+ 
+-- 
+2.17.1
+

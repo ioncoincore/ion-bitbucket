@@ -3,10 +3,11 @@ $(package)_version=eb54966cb9393bfd990849231ea7d10e34f6319e
 $(package)_download_path=https://github.com/$(package)/libzmq/archive/
 $(package)_file_name=$($(package)_version).tar.gz
 $(package)_sha256_hash=24b8eccff926fc1838494babd4494264d5509066db02bb1213ea0a25facad44b
-$(package)_patches=0001-fix-build-with-older-mingw64.patch
+$(package)_patches=0001-fix-build-with-older-mingw64.patch 0002-fix-src-ipc_address.hpp-40-10-fatal-error.patch
 
 define $(package)_preprocess_cmds
   patch -p1 < $($(package)_patch_dir)/0001-fix-build-with-older-mingw64.patch && \
+  patch -p1 < $($(package)_patch_dir)/0002-fix-src-ipc_address.hpp-40-10-fatal-error.patch && \
   ./autogen.sh && \
   cp -f $(BASEDIR)/config.guess $(BASEDIR)/config.sub config
 endef
