@@ -20,16 +20,22 @@ VM image to avoid 'contaminating' the build.
 Table of Contents
 ------------------
 
-- [Create a new VirtualBox VM](#create-a-new-virtualbox-vm)
-- [Connecting to the VM](#connecting-to-the-vm)
-- [Setting up Debian for Gitian building](#setting-up-debian-for-gitian-building)
-- [Installing Gitian](#installing-gitian)
-- [Setting up the Gitian image](#setting-up-the-gitian-image)
-- [Getting and building the inputs](#getting-and-building-the-inputs)
-- [Building Ion Core](#building-ion-core)
-- [Building an alternative repository](#building-an-alternative-repository)
-- [Signing externally](#signing-externally)
-- [Uploading signatures](#uploading-signatures)
+- [Gitian building](#gitian-building)
+  - [Table of Contents](#table-of-contents)
+  - [Preparing the Gitian builder host](#preparing-the-gitian-builder-host)
+  - [Create a new VirtualBox VM](#create-a-new-virtualbox-vm)
+  - [Installing Debian](#installing-debian)
+  - [After Installation](#after-installation)
+  - [Connecting to the VM](#connecting-to-the-vm)
+  - [Setting up Debian for Gitian building](#setting-up-debian-for-gitian-building)
+  - [Installing Gitian](#installing-gitian)
+  - [Setting up the Gitian image](#setting-up-the-gitian-image)
+  - [Getting and building the inputs](#getting-and-building-the-inputs)
+  - [Building Ion Core](#building-ion-core)
+  - [Building an alternative repository](#building-an-alternative-repository)
+  - [Building fully offline](#building-fully-offline)
+  - [Signing externally](#signing-externally)
+  - [Uploading signatures (not yet implemented)](#uploading-signatures-not-yet-implemented)
 
 Preparing the Gitian builder host
 ---------------------------------
