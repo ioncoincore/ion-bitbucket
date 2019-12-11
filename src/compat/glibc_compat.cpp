@@ -73,6 +73,8 @@ __asm(".symver log2f_old,log2f@GLIBC_2.27");
 __asm(".symver log2f_old,log2f@GLIBC_2.27");
 #elif defined(__s390__)
 __asm(".symver log2f_old,log2f@GLIBC_2.27");
+#elif defined(__mips__)
+__asm(".symver log2f_old,log2f@GLIBC_2.27");
 #endif
 extern "C" float __wrap_log2f(float x)
 {
