@@ -1,16 +1,9 @@
 package=zeromq
-$(package)_version=eb54966cb9393bfd990849231ea7d10e34f6319e
-$(package)_download_path=https://github.com/$(package)/libzmq/archive/
-$(package)_file_name=$($(package)_version).tar.gz
-$(package)_sha256_hash=24b8eccff926fc1838494babd4494264d5509066db02bb1213ea0a25facad44b
-$(package)_patches=0001-fix-build-with-older-mingw64.patch 0002-fix-src-ipc_address.hpp-40-10-fatal-error.patch
-
-define $(package)_preprocess_cmds
-  patch -p1 < $($(package)_patch_dir)/0001-fix-build-with-older-mingw64.patch && \
-  patch -p1 < $($(package)_patch_dir)/0002-fix-src-ipc_address.hpp-40-10-fatal-error.patch && \
-  ./autogen.sh && \
-  cp -f $(BASEDIR)/config.guess $(BASEDIR)/config.sub config
-endef
+$(package)_version=4.1.5
+$(package)_download_path=https://github.com/zeromq/zeromq4-1/releases/download/v$($(package)_version)/
+$(package)_file_name=$(package)-$($(package)_version).tar.gz
+$(package)_sha256_hash=04aac57f081ffa3a2ee5ed04887be9e205df3a7ddade0027460b8042432bdbcf
+$(package)_patches=9114d3957725acd34aa8b8d011585812f3369411.patch 9e6745c12e0b100cd38acecc16ce7db02905e27c.patch
 
 define $(package)_set_vars
   $(package)_config_opts=--without-documentation --disable-shared --without-libsodium --disable-curve
@@ -18,12 +11,18 @@ define $(package)_set_vars
   $(package)_cxxflags=-std=c++11
 endef
 
+define $(package)_preprocess_cmds
+  patch -p1 < $($(package)_patch_dir)/9114d3957725acd34aa8b8d011585812f3369411.patch && \
+  patch -p1 < $($(package)_patch_dir)/9e6745c12e0b100cd38acecc16ce7db02905e27c.patch && \
+  ./autogen.sh
+endef
+
 define $(package)_config_cmds
   $($(package)_autoconf)
 endef
 
 define $(package)_build_cmds
-  $(MAKE) src/libzmq.la
+  $(MAKE) libzmq.la
 endef
 
 define $(package)_stage_cmds
@@ -31,6 +30,5 @@ define $(package)_stage_cmds
 endef
 
 define $(package)_postprocess_cmds
-  sed -i.old "s/ -lstdc++//" lib/pkgconfig/libzmq.pc && \
   rm -rf bin share
 endef
