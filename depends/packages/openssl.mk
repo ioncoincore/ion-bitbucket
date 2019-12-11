@@ -56,6 +56,7 @@ $(package)_config_opts_powerpc_linux=linux-generic32
 $(package)_config_opts_riscv32_linux=linux-generic32
 $(package)_config_opts_riscv64_linux=linux-generic64
 $(package)_config_opts_s390x_linux=linux-generic64
+$(package)_config_opts_powerpc64_linux=linux-generic64
 $(package)_config_opts_powerpc64le_linux=linux-generic64
 $(package)_config_opts_sparc64_linux=linux-generic64
 $(package)_config_opts_alpha_linux=linux-generic64
