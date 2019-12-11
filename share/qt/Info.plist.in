@@ -100,6 +100,9 @@
   <key>NSHumanReadableCopyright</key>
   <string>Copyright © 2009-@COPYRIGHT_YEAR@ The Bitcoin Core developers, 2014-@COPYRIGHT_YEAR@ The Dash Core developers, 2015-@COPYRIGHT_YEAR@ The PIVX Core developers, 2018-@COPYRIGHT_YEAR@ The Ion Core developers</string>
 
+  <key>LSAppNapIsDisabled</key>
+    <string>True</string>
+
   <key>LSApplicationCategoryType</key>
     <string>public.app-category.finance</string>
 </dict>
