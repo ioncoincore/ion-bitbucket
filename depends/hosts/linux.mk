@@ -35,6 +35,11 @@ s390x_linux_CC=s390x-linux-gnu-gcc-8
 s390x_linux_CXX=s390x-linux-gnu-g++-8
 endif
 
+ifeq (powerpc64,$(findstring powerpc64,$(build_arch)))
+powerpc64_linux_CC=powerpc64-linux-gnu-gcc-8
+powerpc64_linux_CXX=powerpc64-linux-gnu-g++-8
+endif
+
 ifeq (powerpc64le,$(findstring powerpc64le,$(build_arch)))
 powerpc64le_linux_CC=powerpc64le-linux-gnu-gcc-8
 powerpc64le_linux_CXX=powerpc64le-linux-gnu-g++-8

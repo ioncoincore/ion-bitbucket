@@ -22,8 +22,14 @@ define $(package)_set_vars
   $(package)_config_opts_x86_64+= -DWSIZE=64
   $(package)_config_opts_arm+= -DWSIZE=32
   $(package)_config_opts_armv7l+= -DWSIZE=32
+  $(package)_config_opts_aarch64+= -DWSIZE=64
   $(package)_config_opts_riscv64+= -DWSIZE=64
   $(package)_config_opts_riscv32+= -DWSIZE=32
+  $(package)_config_opts_s390x+= -DWSIZE=64
+  $(package)_config_opts_mipsel+= -DWSIZE=32
+  $(package)_config_opts_mips+= -DWSIZE=32
+  $(package)_config_opts_powerppc64+= -DWSIZE=64
+  $(package)_config_opts_powerppc64le+= -DWSIZE=64
   $(package)_config_opts_debug=-DDEBUG=ON -DCMAKE_BUILD_TYPE=Debug
 
   ifneq ($(darwin_native_toolchain),)
