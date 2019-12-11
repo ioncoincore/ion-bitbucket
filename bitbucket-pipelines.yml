@@ -42,8 +42,7 @@ pipelines:
           name: 'ARM 32-bit  [GOAL: install]  [no unit or functional tests]'
           script: # Modify the commands below to build your repository.
             - MAKEJOBS=-j3
-            - MAKEJOBS=-j3
-            - RUN_UNIT_TESTS=flase
+            - RUN_UNIT_TESTS=false
             - RUN_FUNCTIONAL_TESTS=false # Not Yet Implemented
             - RUN_BENCH=false  # Set to true for any one job that has debug enabled, to quickly check bench is not crashing or hitting assertions
             - DOCKER_NAME_TAG=ubuntu:18.04
@@ -79,7 +78,7 @@ pipelines:
           script: # Modify the commands below to build your repository.
             - MAKEJOBS=-j3
             - MAKEJOBS=-j3
-            - RUN_UNIT_TESTS=flase
+            - RUN_UNIT_TESTS=false
             - RUN_FUNCTIONAL_TESTS=false # Not Yet Implemented
             - RUN_BENCH=false  # Set to true for any one job that has debug enabled, to quickly check bench is not crashing or hitting assertions
             - DOCKER_NAME_TAG=ubuntu:18.04
@@ -113,7 +112,7 @@ pipelines:
            script: # Modify the commands below to build your repository.
              - MAKEJOBS=-j3
              - MAKEJOBS=-j3
-             - RUN_UNIT_TESTS=flase
+             - RUN_UNIT_TESTS=false
              - RUN_FUNCTIONAL_TESTS=false # Not Yet Implemented
              - RUN_BENCH=false  # Set to true for any one job that has debug enabled, to quickly check bench is not crashing or hitting assertions
              - DOCKER_NAME_TAG=ubuntu:18.04
@@ -147,7 +146,7 @@ pipelines:
            script: # Modify the commands below to build your repository.
              - MAKEJOBS=-j3
              - MAKEJOBS=-j3
-             - RUN_UNIT_TESTS=flase
+             - RUN_UNIT_TESTS=false
              - RUN_FUNCTIONAL_TESTS=false # Not Yet Implemented
              - RUN_BENCH=false  # Set to true for any one job that has debug enabled, to quickly check bench is not crashing or hitting assertions
              - DOCKER_NAME_TAG=ubuntu:18.04
@@ -182,7 +181,7 @@ pipelines:
            script: # Modify the commands below to build your repository.
              - MAKEJOBS=-j3
              - MAKEJOBS=-j3
-             - RUN_UNIT_TESTS=flase
+             - RUN_UNIT_TESTS=false
              - RUN_FUNCTIONAL_TESTS=false # Not Yet Implemented
              - RUN_BENCH=false  # Set to true for any one job that has debug enabled, to quickly check bench is not crashing or hitting assertions
              - DOCKER_NAME_TAG=ubuntu:18.04
@@ -216,7 +215,7 @@ pipelines:
            script: # Modify the commands below to build your repository.
              - MAKEJOBS=-j3
              - MAKEJOBS=-j3
-             - RUN_UNIT_TESTS=flase
+             - RUN_UNIT_TESTS=false
              - RUN_FUNCTIONAL_TESTS=false # Not Yet Implemented
              - RUN_BENCH=false  # Set to true for any one job that has debug enabled, to quickly check bench is not crashing or hitting assertions
              - DOCKER_NAME_TAG=ubuntu:18.04
@@ -250,7 +249,7 @@ pipelines:
 #           script: # Modify the commands below to build your repository.
 #             - MAKEJOBS=-j3
 #             - MAKEJOBS=-j3
-#             - RUN_UNIT_TESTS=flase
+#             - RUN_UNIT_TESTS=false
 #             - RUN_FUNCTIONAL_TESTS=false # Not Yet Implemented
 #             - RUN_BENCH=false  # Set to true for any one job that has debug enabled, to quickly check bench is not crashing or hitting assertions
 #             - DOCKER_NAME_TAG=ubuntu:18.04
@@ -286,7 +285,7 @@ pipelines:
            script: # Modify the commands below to build your repository.
              - MAKEJOBS=-j3
              - MAKEJOBS=-j3
-             - RUN_UNIT_TESTS=flase
+             - RUN_UNIT_TESTS=false
              - RUN_FUNCTIONAL_TESTS=false # Not Yet Implemented
              - RUN_BENCH=false  # Set to true for any one job that has debug enabled, to quickly check bench is not crashing or hitting assertions
              - DOCKER_NAME_TAG=ubuntu:18.04
@@ -322,7 +321,7 @@ pipelines:
            script: # Modify the commands below to build your repository.
              - MAKEJOBS=-j3
              - MAKEJOBS=-j3
-             - RUN_UNIT_TESTS=flase
+             - RUN_UNIT_TESTS=false
              - RUN_FUNCTIONAL_TESTS=false # Not Yet Implemented
              - RUN_BENCH=false  # Set to true for any one job that has debug enabled, to quickly check bench is not crashing or hitting assertions
              - DOCKER_NAME_TAG=ubuntu:18.04
@@ -357,7 +356,7 @@ pipelines:
 #           script: # Modify the commands below to build your repository.
 #             - MAKEJOBS=-j3
 #             - MAKEJOBS=-j3
-#             - RUN_UNIT_TESTS=flase
+#             - RUN_UNIT_TESTS=false
 #             - RUN_FUNCTIONAL_TESTS=false # Not Yet Implemented
 #             - RUN_BENCH=false  # Set to true for any one job that has debug enabled, to quickly check bench is not crashing or hitting assertions
 #             - DOCKER_NAME_TAG=ubuntu:18.04
@@ -391,7 +390,7 @@ pipelines:
            script: # Modify the commands below to build your repository.
              - MAKEJOBS=-j3
              - MAKEJOBS=-j3
-             - RUN_UNIT_TESTS=flase
+             - RUN_UNIT_TESTS=false
              - RUN_FUNCTIONAL_TESTS=false # Not Yet Implemented
              - RUN_BENCH=false  # Set to true for any one job that has debug enabled, to quickly check bench is not crashing or hitting assertions
              - DOCKER_NAME_TAG=ubuntu:18.04
