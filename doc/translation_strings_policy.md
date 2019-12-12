@@ -1,10 +1,22 @@
-Translation Strings Policy
-===========================
+- [Translation Strings Policy](#translation-strings-policy)
+  - [How to translate](#how-to-translate)
+  - [Strings to be translated](#strings-to-be-translated)
+    - [GUI strings](#gui-strings)
+    - [Command-line options](#command-line-options)
+  - [General recommendations](#general-recommendations)
+    - [Avoid unnecessary translation strings](#avoid-unnecessary-translation-strings)
+    - [Make translated strings understandable](#make-translated-strings-understandable)
+    - [Do not translate internal errors](#do-not-translate-internal-errors)
+    - [Avoid fragments](#avoid-fragments)
+    - [Avoid HTML in translation strings](#avoid-html-in-translation-strings)
+    - [Plurals](#plurals)
+    - [String freezes](#string-freezes)
+
+# Translation Strings Policy
 
 This document provides guidelines for internationalization of the Ion Core software.
 
-How to translate?
-------------------
+## How to translate
 
 To mark a message as translatable
 
@@ -14,8 +26,7 @@ To mark a message as translatable
 
 No internationalization is used for e.g. developer scripts outside `src`.
 
-Strings to be translated
--------------------------
+## Strings to be translated
 
 On a high level, these strings are to be translated:
 

@@ -1,5 +1,5 @@
 Fuzz-testing Ion Core
-==========================
+=====================
 
 A special test harness `test_ion_fuzzy` is provided to provide an easy
 entry point for fuzzers and the like. In this document we'll describe how to
@@ -9,7 +9,8 @@ Building AFL
 -------------
 
 It is recommended to always use the latest version of afl:
-```
+
+```bash
 wget http://lcamtuf.coredump.cx/afl/releases/afl-latest.tgz
 tar -zxvf afl-latest.tgz
 cd afl-<version>
@@ -22,12 +23,14 @@ Instrumentation
 
 To build Ion Core using AFL instrumentation (this assumes that the
 `AFLPATH` was set as above):
-```
+
+```bash
 ./configure --disable-ccache --disable-shared --enable-tests CC=${AFLPATH}/afl-gcc CXX=${AFLPATH}/afl-g++
 export AFL_HARDEN=1
 cd src/
 make test/test_ion_fuzzy
 ```
+
 We disable ccache because we don't want to pollute the ccache with instrumented
 objects, and similarly don't want to use non-instrumented cached objects linked
 in.
@@ -46,7 +49,7 @@ AFL needs an input directory with examples, and an output directory where it
 will place examples that it found. These can be anywhere in the file system,
 we'll define environment variables to make it easy to reference them.
 
-```
+```bash
 mkdir inputs
 AFLIN=$PWD/inputs
 mkdir outputs
@@ -64,7 +67,8 @@ Fuzzing
 --------
 
 To start the actual fuzzing use:
-```
+
+```bash
 $AFLPATH/afl-fuzz -i ${AFLIN} -o ${AFLOUT} -m52 -- test/test_ion_fuzzy
 ```
 

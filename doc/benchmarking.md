@@ -8,7 +8,8 @@ After compiling Ion Core, the benchmarks can be run with:
 `src/bench/bench_ion`
 
 The output will look similar to:
-```
+
+```log
 #Benchmark,count,min,max,average
 RIPEMD160,448,0.001245033173334,0.002638196945190,0.002461894814457
 RollingBloom-refresh,1,0.000635000000000,0.000635000000000,0.000635000000000
@@ -23,6 +24,7 @@ Trig,67108864,0.000000014997003,0.000000015448112,0.000000015188842
 ```
 
 More benchmarks are needed for, in no particular order:
+
 - Script Validation
 - CCoinDBView caching
 - Coins database

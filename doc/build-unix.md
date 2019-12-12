@@ -1,36 +1,43 @@
 UNIX BUILD NOTES
 ====================
+
 Some notes on how to build Ion Core in Unix.
 
 (for OpenBSD specific instructions, see [build-openbsd.md](build-openbsd.md))
 
 Base build dependencies
 -----------------------
+
 Building the dependencies and Ion Core requires some essential build tools and libraries to be installed before.
 
 Run the following commands to install required packages:
 
 ##### Debian/Ubuntu:
+
 ```bash
 $ sudo apt-get install curl build-essential libtool autotools-dev automake pkg-config python3 bsdmainutils cmake
 ```
 
 ##### Fedora:
+
 ```bash
 $ sudo dnf install gcc-c++ libtool make autoconf automake python3 cmake libstdc++-static patch
 ```
 
 ##### Arch Linux:
+
 ```bash
 $ pacman -S base-devel python3 cmake
 ```
 
 ##### Alpine Linux:
+
 ```sh
 $ sudo apk --update --no-cache add autoconf automake cmake curl g++ gcc libexecinfo-dev libexecinfo-static libtool make perl pkgconfig python3 patch linux-headers
 ```
 
 ##### FreeBSD/OpenBSD:
+
 ```bash
 pkg_add gmake cmake libtool
 pkg_add autoconf # (select highest version, e.g. 2.69)
@@ -45,6 +52,7 @@ Follow the instructions in [build-generic](build-generic.md)
 
 Security
 --------
+
 To help make your Ion installation more secure by making certain attacks impossible to
 exploit even if a vulnerability is found, binaries are hardened by default.
 This can be disabled with:
@@ -106,6 +114,7 @@ call not `getwork`.
 
 Additional Configure Flags
 --------------------------
+
 A list of additional configure flags can be displayed with:
 
     ./configure --help
@@ -134,18 +143,19 @@ compiler is used and not ancient g++ 4.2.1. This is done by appending
 within the same executable will result in linker errors.
 
 ```bash
-$ cd depends
-$ make CC=cc CXX=c++
-$ cd ..
-$ export AUTOCONF_VERSION=2.69 # replace this with the autoconf version that you installed
-$ export AUTOMAKE_VERSION=1.15 # replace this with the automake version that you installed
-$ ./autogen.sh
-$ ./configure --prefix=<prefix> CC=cc CXX=c++
-$ gmake # use -jX here for parallelism
+cd depends
+make CC=cc CXX=c++
+cd ..
+export AUTOCONF_VERSION=2.69 # replace this with the autoconf version that you installed
+export AUTOMAKE_VERSION=1.15 # replace this with the automake version that you installed
+./autogen.sh
+./configure --prefix=<prefix> CC=cc CXX=c++
+gmake # use -jX here for parallelism
 ```
 
 OpenBSD Resource limits
 -------------------
+
 If the build runs into out-of-memory errors, the instructions in this section
 might help.
 

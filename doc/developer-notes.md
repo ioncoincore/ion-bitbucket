@@ -82,6 +82,7 @@ Doxygen comments
 To facilitate the generation of documentation, use doxygen-compatible comment blocks for functions, methods and fields.
 
 For example, to describe a function use:
+
 ```c++
 /**
  * ... text ...
@@ -96,6 +97,7 @@ As Doxygen recognizes the comments by the delimiters (`/**` and `*/` in this cas
 *need* to provide any commands for a comment to be valid; just a description text is fine.
 
 To describe a class use the same construct above the class definition:
+
 ```c++
 /**
  * Alerts are for notifying old versions if they become too obsolete and
@@ -107,17 +109,20 @@ class CAlert
 ```
 
 To describe a member or variable use:
+
 ```c++
 int var; //!< Detailed description after the member
 ```
 
 or
+
 ```cpp
 //! Description before the member
 int var;
 ```
 
 Also OK:
+
 ```c++
 ///
 /// ... text ...
@@ -126,6 +131,7 @@ bool function2(int arg1, const char *arg2)
 ```
 
 Not OK (used plenty in the current source, but not picked up):
+
 ```c++
 //
 // ... text ...
@@ -523,7 +529,6 @@ Current subtrees include:
 ## How to Export subtrees (example)
 
 For more info please refer to [git-subtree tutorial](https://www.atlassian.com/git/tutorials/git-subtree) .
-
 
 ### sub-project as remote
 

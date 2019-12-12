@@ -1,35 +1,35 @@
 
 
+- [SwiftX Technical Information](#swiftx-technical-information)
+  - [ZMQ](#zmq)
+  - [Command line option](#command-line-option)
+  - [RPC](#rpc)
+  - [Transaction info examples](#transaction-info-examples)
+
 ## SwiftX Technical Information
 
-Table of Contents
------------------
-- [SwiftX Technical Information](#swiftx-technical-information)
-    - [ZMQ](#zmq)
-    - [Command line option](#command-line-option)
-    - [RPC](#rpc)
-    - [Examples](#examples)
-
 SwiftX has been integrated into the Core Daemon in two ways:
-* "push" notifications (ZMQ and `-swifttxnotify` cmd-line/config option);
-* RPC commands.
+
+- "push" notifications (ZMQ and `-swifttxnotify` cmd-line/config option);
+- RPC commands.
 
 ### ZMQ
 
 When a "Transaction Lock" occurs the hash of the related transaction is broadcasted through ZMQ using both the `zmqpubrawtxlock` and `zmqpubhashtxlock` channels.
 
-* `zmqpubrawtxlock`: publishes the raw transaction when locked via SwiftX
-* `zmqpubhashtxlock`: publishes the transaction hash when locked via SwiftX
+- `zmqpubrawtxlock`: publishes the raw transaction when locked via SwiftX
+- `zmqpubhashtxlock`: publishes the transaction hash when locked via SwiftX
 
 This mechanism has been integrated into Bitcore-Node-ION which allows for notification to be broadcast through Insight API in one of two ways:
-* WebSocket: [https://github.com/cevap/insight-api-ion#web-socket-api](https://github.com/cevap/insight-api-ion#web-socket-api) 
-* API: [https://github.com/cevap/insight-api-ion#swifttx-transactions](https://github.com/cevap/insight-api-ion#swifttx-transactions) 
+
+- WebSocket: [https://github.com/cevap/insight-api-ion#web-socket-api](https://github.com/cevap/insight-api-ion#web-socket-api)
+- API: [https://github.com/cevap/insight-api-ion#swifttx-transactions](https://github.com/cevap/insight-api-ion#swifttx-transactions)
 
 ### Command line option
 
 When a wallet SwiftX transaction is successfully locked a shell command provided in this option is executed (`%s` in `<cmd>` is replaced by TxID):
 
-```
+```bash
 -swifttxnotify=<cmd>
 ```
 
@@ -39,13 +39,13 @@ Details pertaining to an observed "Transaction Lock" can also be retrieved throu
 
 By default, the Ion Core daemon will launch using the following constant:
 
-```
+```h
 static const int DEFAULT_SWIFTTX_DEPTH = 5;
 ```
 
 This value can be overridden by passing the following argument to the Ion Core daemon:
 
-```
+```bash
 -swifttxdepth=<n>
 ```
 
@@ -53,16 +53,11 @@ The key thing to understand is that this value indicates the number of "confirma
 
 There is also a field named `bcconfirmations`. The value in this field represents the total number of `"Blockchain Confirmations"` for a given transaction without taking into account whether it was SwiftX or not.
 
-### Examples
-* SwiftX transaction just occurred:
-    * confirmations: 5
-    * bcconfirmations: 0
-* SwiftX transaction received one confirmation from blockchain:
-    * confirmations: 6
-    * bcconfirmations: 1
-* non-SwiftX transaction just occurred:
-    * confirmations: 0
-    * bcconfirmations: 0
-* non-SwiftX transaction received one confirmation from blockchain:
-    * confirmations: 1
-    * bcconfirmations: 1
+### Transaction info examples
+
+transaction info | confirmations | bcconfirmations
+:-|:-:|:-:
+SwiftX transaction just occurred | 5 | 0
+SwiftX transaction received one confirmation from blockchain | 6 | 1
+non-SwiftX transaction just occurred | 0 | 0
+non-SwiftX transaction received one confirmation from blockchain | 1 | 1

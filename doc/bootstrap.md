@@ -1,11 +1,14 @@
-### Bootstrap the Blockchain Synchronization
+# ion core boostrap file
 
-- [Bootstrap the Blockchain Synchronization](#bootstrap-the-blockchain-synchronization)
-- [Requirements](#requirements)
-- [Download the blockchain via BitTorrent](#download-the-blockchain-via-bittorrent)
-- [Importing the blockchain](#importing-the-blockchain)
-- [Importing the blockchain](#importing-the-blockchain-1)
-- [Is this safe?](#is-this-safe)
+## Bootstrap the Blockchain Synchronization
+
+- [ion core boostrap file](#ion-core-boostrap-file)
+	- [Bootstrap the Blockchain Synchronization](#bootstrap-the-blockchain-synchronization)
+		- [Requirements](#requirements)
+		- [Download the blockchain via BitTorrent](#download-the-blockchain-via-bittorrent)
+		- [Importing the blockchain](#importing-the-blockchain)
+		- [Importing the blockchain](#importing-the-blockchain-1)
+		- [Is this method safe](#is-this-method-safe)
 
 Normally the Bitcoin client will download the transaction and network information, called the blockchain, from the network by syncing with the other clients. This process can take quite some time as the [Bitcoin blockchain](https://blockchain.info/charts/blocks-size) is growing bigger and bigger for each day. Luckily there is a safe and fast way to speed up this process. We'll show you how to bootstrap your blockchain to bring your client up to speed in just a few simple steps.
 
@@ -19,10 +22,10 @@ Jeff Garzik, Bitcoin Core developer, offers an [torrent file](https://bitcointal
 
 With the client installed we'll proceed to download the blockchain torrent file. Use the following magnet link:
 
-	magnet:?xt=urn:btih:2d4e6c1f96c5d5fb260dff92aea4e600227f1aea&dn=bootstrap.dat&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.ccc.de:80&tr=udp://tracker.istole.it:80
-	
- or go to [Jeff Garzik's topic](https://bitcointalk.org/index.php?topic=145386.0) for a signed magnet link. Alternatively you can use the [.torrent file](http://sourceforge.net/projects/bitcoin/files/Bitcoin/blockchain/bootstrap.dat.torrent/download) found on SourceForge.
-     
+    magnet:?xt=urn:btih:2d4e6c1f96c5d5fb260dff92aea4e600227f1aea&dn=bootstrap.dat&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.ccc.de:80&tr=udp://tracker.istole.it:80
+
+or go to [Jeff Garzik's topic](https://bitcointalk.org/index.php?topic=145386.0) for a signed magnet link. Alternatively you can use the [.torrent file](http://sourceforge.net/projects/bitcoin/files/Bitcoin/blockchain/bootstrap.dat.torrent/download) found on SourceForge.
+
 ![Fig1](https://raw.githubusercontent.com/wiki/cevap/ion/assets/screenshots/bootstrap1.png)
 
 The download page should look like this, with a countdown to the download. If it does not work click the direct download link.
@@ -37,27 +40,28 @@ Exit the Bitcoin client software if you have it running. Be sure not to have an 
 **For Windows users:**
 Open explorer, and type into the address bar:
 
-	%APPDATA%\Bitcoin
-    
+    %APPDATA%\Bitcoin
+
 This will open up the data folder. It should look like the image below. Copy over the bootstrap.dat from your download folder to this directory.
 ![Fig4](https://raw.githubusercontent.com/wiki/cevap/ion/assets/screenshots/bootstrap4.png)
 
 **For OSX users:**
 Open Finder by pressing Press [shift] + [cmd] + [g] and enter:
 
-	~/Library/Application Support/Bitcoin/
-    
+    ~/Library/Application Support/Bitcoin/
+
 **For Linux users:**
 The directory is hidden in your User folder. Go to:
 
-	~/.bitcoin/
-    
+    ~/.bitcoin/
+
 ### Importing the blockchain
-Now start the Bitcoin client software. It should show "Importing blocks from disk" like the image below. 
+
+Now start the Bitcoin client software. It should show "Importing blocks from disk" like the image below.
 ![Fig5](https://raw.githubusercontent.com/wiki/cevap/ion/assets/screenshots/bootstrap5.png)
 
 Wait until the import finishes. The client will download the last days not covered by the import. Congratulations you have successfully imported the blockchain!
 
-### Is this safe?
+### Is this method safe
 
 Yes, the above method is safe. The download contains only raw blockchain data and the client verifies this on import. Do not download the blockchain from unofficial sources, especially if they provide `*.rev` and `*.sst` files. These files are not verified and can contain malicious edits.

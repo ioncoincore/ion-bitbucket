@@ -1,15 +1,18 @@
 GENERIC BUILD NOTES
 ====================
+
 Some notes on how to build Ion Core based on the [depends](../depends/README.md) build system.
 
 Note on old build instructions
 ------------------------------
+
 In the past, the build documentation contained instructions on how to build Ion with system-wide installed dependencies
 like BerkeleyDB 4.8, boost and Qt. Building this way is considered deprecated and only building with the `depends` prefix
 is supported today.
 
 Required build tools and environment
 ------------------------------------
+
 Building the dependencies and Ion Core requires some essential build tools to be installed before. Please see
 [build-unix](build-unix.md), [build-osx](build-osx.md) and [build-windows](build-windows.md) for details.
 
@@ -19,9 +22,9 @@ Ion inherited the `depends` folder from Bitcoin, which contains all dependencies
 dependencies must be built before Ion can actually be built. To do so, perform the following:
 
 ```bash
-$ cd depends
-$ make -j4 # Choose a good -j value, depending on the number of CPU cores available
-$ cd ..
+cd depends
+make -j4 # Choose a good -j value, depending on the number of CPU cores available
+cd ..
 ```
 
 This will download and build all dependencies required to build Ion Core. Caching of build results will ensure that only
@@ -32,16 +35,16 @@ not done, build failures might occur when building Ion.
 
 Please read the [depends](../depends/README.md) documentation for more details on supported hosts and configuration
 options. If no host is specified (as in the above example) when calling `make`, the depends system will default to your
-local host system. 
+local host system.
 
 Building Ion Core
 ---------------------
 
 ```bash
-$ ./autogen.sh
-$ ./configure --prefix=`pwd`/depends/<host>
-$ make
-$ make install # optional
+./autogen.sh
+./configure --prefix=`pwd`/depends/<host>
+make
+make install # optional
 ```
 
 Please replace `<host>` with your local system's `host-platform-triplet`. The following triplets are usually valid:
@@ -75,7 +78,7 @@ The default maximum cache size is 5G, which might not be enough to cache multipl
 very often. It is advised to increase the maximum cache size:
 
 ```bash
-$ ccache -M20G
+ccache -M20G
 ```
 
 Additional Configure Flags

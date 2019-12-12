@@ -1,5 +1,4 @@
-Gitian building
-================
+# Gitian building
 
 *Setup instructions for a Gitian build of Ion Core using a Debian VM or physical system.*
 
@@ -17,8 +16,7 @@ More independent Gitian builders are needed, which is why this guide exists.
 It is preferred you follow these steps yourself instead of using someone else's
 VM image to avoid 'contaminating' the build.
 
-Table of Contents
-------------------
+## Table of Contents
 
 - [Gitian building](#gitian-building)
   - [Table of Contents](#table-of-contents)
@@ -37,45 +35,45 @@ Table of Contents
   - [Signing externally](#signing-externally)
   - [Uploading signatures (not yet implemented)](#uploading-signatures-not-yet-implemented)
 
-Preparing the Gitian builder host
----------------------------------
+## Preparing the Gitian builder host
 
 The first step is to prepare the host environment that will be used to perform the Gitian builds.
 This guide explains how to set up the environment, and how to start the builds.
 
 Debian Linux was chosen as the host distribution because it has a lightweight install (in contrast to Ubuntu) and is readily available.
 Any kind of virtualization can be used, for example:
+
 - [VirtualBox](https://www.virtualbox.org/) (covered by this guide)
 - [KVM](http://www.linux-kvm.org/page/Main_Page)
 - [LXC](https://linuxcontainers.org/), see also [Gitian host docker container](https://github.com/gdm85/tenku/tree/master/docker/gitian-bitcoin-host/README.md).
 
 You can also install Gitian on actual hardware instead of using virtualization.
 
-Create a new VirtualBox VM
----------------------------
+## Create a new VirtualBox VM
+
 In the VirtualBox GUI click "New" and choose the following parameters in the wizard:
 
-![](gitian-building/create_new_vm.png)
+![create_new_vm](gitian-building/create_new_vm.png)
 
 - Type: Linux, Debian (64-bit)
 
-![](gitian-building/create_vm_memsize.png)
+![create_vm_memsize](gitian-building/create_vm_memsize.png)
 
 - Memory Size: at least 3000MB, anything less and the build might not complete.
 
-![](gitian-building/create_vm_hard_disk.png)
+![create_vm_hard_disk](gitian-building/create_vm_hard_disk.png)
 
 - Hard Disk: Create a virtual hard disk now
 
-![](gitian-building/create_vm_hard_disk_file_type.png)
+![create_vm_hard_disk_file_type](gitian-building/create_vm_hard_disk_file_type.png)
 
 - Hard Disk file type: Use the default, VDI (VirtualBox Disk Image)
 
-![](gitian-building/create_vm_storage_physical_hard_disk.png)
+![create_vm_storage_physical_hard_disk](gitian-building/create_vm_storage_physical_hard_disk.png)
 
 - Storage on physical hard disk: Dynamically Allocated
 
-![](gitian-building/create_vm_file_location_size.png)
+![create_vm_file_location_size](gitian-building/create_vm_file_location_size.png)
 
 - File location and size: at least 40GB; as low as 20GB *may* be possible, but better to err on the safe side
 - Click `Create`
@@ -84,16 +82,16 @@ After creating the VM, we need to configure it.
 
 - Click the `Settings` button, then go to `System` tab and `Processor` sub-tab. Increase the number of processors to the number of cores on your machine if you want builds to be faster.
 
-![](gitian-building/system_settings.png)
+![system_settings](gitian-building/system_settings.png)
 
 - Go to the `Network` tab. Adapter 1 should be attached to `NAT`.
 
-![](gitian-building/network_settings.png)
+![network_settings](gitian-building/network_settings.png)
 
 - Click `Advanced`, then `Port Forwarding`. We want to set up a port through which we can reach the VM to get files in and out.
 - Create a new rule by clicking the plus icon.
 
-![](gitian-building/port_forwarding_rules.png)
+![port_forwarding_rules](gitian-building/port_forwarding_rules.png)
 
 - Set up the new rule the following way:
   - Name: `SSH`
@@ -114,16 +112,15 @@ Unixy OSes by entering the following in a terminal:
 
 Then start the VM. On the first launch you will be asked for a CD or DVD image. Choose the downloaded ISO.
 
-![](gitian-building/select_startup_disk.png)
+![select_startup_disk](gitian-building/select_startup_disk.png)
 
-Installing Debian
-------------------
+## Installing Debian
 
 This section will explain how to install Debian on the newly created VM.
 
 - Choose the non-graphical installer.  We do not need the graphical environment; it will only increase installation time and disk usage.
 
-![](gitian-building/debian_install_1_boot_menu.png)
+![debian_install_1_boot_menu](gitian-building/debian_install_1_boot_menu.png)
 
 **Note**: Navigating in the Debian installer:
 To keep a setting at the default and proceed, just press `Enter`.
@@ -131,63 +128,63 @@ To select a different button, press `Tab`.
 
 - Choose locale and keyboard settings (doesn't matter, you can just go with the defaults or select your own information)
 
-![](gitian-building/debian_install_2_select_a_language.png)
-![](gitian-building/debian_install_3_select_location.png)
-![](gitian-building/debian_install_4_configure_keyboard.png)
+![debian_install_2_select_a_language](gitian-building/debian_install_2_select_a_language.png)
+![debian_install_3_select_location](gitian-building/debian_install_3_select_location.png)
+![debian_install_4_configure_keyboard](gitian-building/debian_install_4_configure_keyboard.png)
 
 - The VM will detect network settings using DHCP, this should all proceed automatically
 - Configure the network:
   - Hostname `debian`.
   - Leave domain name empty.
 
-![](gitian-building/debian_install_5_configure_the_network.png)
-![](gitian-building/debian_install_6_domain_name.png)
+![debian_install_5_configure_the_network](gitian-building/debian_install_5_configure_the_network.png)
+![debian_install_6_domain_name](gitian-building/debian_install_6_domain_name.png)
 
 - Choose a root password and enter it twice (remember it for later)
 
-![](gitian-building/debian_install_6a_set_up_root_password.png)
+![debian_install_6a_set_up_root_password](gitian-building/debian_install_6a_set_up_root_password.png)
 
 - Name the new user `debian` (the full name doesn't matter, you can leave it empty)
 - Set the account username as `debian`
 
-![](gitian-building/debian_install_7_set_up_user_fullname.png)
-![](gitian-building/debian_install_8_set_up_username.png)
+![debian_install_7_set_up_user_fullname](gitian-building/debian_install_7_set_up_user_fullname.png)
+![debian_install_8_set_up_username](gitian-building/debian_install_8_set_up_username.png)
 
 - Choose a user password and enter it twice (remember it for later)
 
-![](gitian-building/debian_install_9_user_password.png)
+![debian_install_9_user_password](gitian-building/debian_install_9_user_password.png)
 
 - The installer will set up the clock using a time server; this process should be automatic
 - Set up the clock: choose a time zone (depends on the locale settings that you picked earlier; specifics don't matter)  
 
-![](gitian-building/debian_install_10_configure_clock.png)
+![debian_install_10_configure_clock](gitian-building/debian_install_10_configure_clock.png)
 
 - Disk setup
   - Partitioning method: Guided - Use the entire disk
 
-![](gitian-building/debian_install_11_partition_disks.png)
+![debian_install_11_partition_disks](gitian-building/debian_install_11_partition_disks.png)
 
-  - Select disk to partition: SCSI1 (0,0,0)
+- Select disk to partition: SCSI1 (0,0,0)
 
-![](gitian-building/debian_install_12_choose_disk.png)
+![debian_install_12_choose_disk](gitian-building/debian_install_12_choose_disk.png)
 
-  - Partition Disks -> *All files in one partition*
+- Partition Disks -> *All files in one partition*
 
-![](gitian-building/all_files_in_one_partition.png)
+![all_files_in_one_partition](gitian-building/all_files_in_one_partition.png)
 
-  - Finish partitioning and write changes to disk -> *Yes* (`Tab`, `Enter` to select the `Yes` button)
+- Finish partitioning and write changes to disk -> *Yes* (`Tab`, `Enter` to select the `Yes` button)
 
-![](gitian-building/debian_install_14_finish.png)
-![](gitian-building/debian_install_15_write_changes.png)
+![debian_install_14_finish](gitian-building/debian_install_14_finish.png)
+![debian_install_15_write_changes](gitian-building/debian_install_15_write_changes.png)
 
 - The base system will be installed, this will take a minute or so
 - Choose a mirror (any will do)
 
-![](gitian-building/debian_install_16_choose_a_mirror.png)
+![debian_install_16_choose_a_mirror](gitian-building/debian_install_16_choose_a_mirror.png)
 
 - Enter proxy information (unless you are on an intranet, leave this empty)
 
-![](gitian-building/debian_install_18_proxy_settings.png)
+![debian_install_18_proxy_settings](gitian-building/debian_install_18_proxy_settings.png)
 
 - Wait a bit while 'Select and install software' runs
 - Participate in popularity contest -> *No*
@@ -195,45 +192,46 @@ To select a different button, press `Tab`.
 - Make sure only 'SSH server' and 'Standard System Utilities' are checked
 - Uncheck 'Debian Desktop Environment' and 'Print Server'
 
-![](gitian-building/debian_install_19_software_selection.png)
+![debian_install_19_software_selection](gitian-building/debian_install_19_software_selection.png)
 
 - Install the GRUB boot loader to the master boot record? -> Yes
 
-![](gitian-building/debian_install_20_install_grub.png)
+![debian_install_20_install_grub](gitian-building/debian_install_20_install_grub.png)
 
 - Device for boot loader installation -> ata-VBOX_HARDDISK
 
-![](gitian-building/debian_install_21_install_grub_bootloader.png)
+![debian_install_21_install_grub_bootloader](gitian-building/debian_install_21_install_grub_bootloader.png)
 
 - Installation Complete -> *Continue*
 - After installation, the VM will reboot and you will have a working Debian VM. Congratulations!
 
-![](gitian-building/debian_install_22_finish_installation.png)
+![debian_install_22_finish_installation](gitian-building/debian_install_22_finish_installation.png)
 
+## After Installation
 
-After Installation
--------------------
 The next step in the guide involves logging in as root via SSH.
 SSH login for root users is disabled by default, so we'll enable that now.
 
 Login to the VM using username `root` and the root password you chose earlier.
 You'll be presented with a screen similar to this.
 
-![](gitian-building/debian_root_login.png)
+![debian_root_login](gitian-building/debian_root_login.png)
 
 Type:
 
-```
+```bash
 sed -i 's/^PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
 ```
+
 and press enter. Then,
-```
+
+```bash
 /etc/init.d/ssh restart
 ```
+
 and enter to restart SSH. Logout by typing 'logout' and pressing 'enter'.
 
-Connecting to the VM
-----------------------
+## Connecting to the VM
 
 After the VM has booted you can connect to it using SSH, and files can be copied from and to the VM using a SFTP utility.
 Connect to `localhost`, port `22222` (or the port configured when installing the VM).
@@ -258,8 +256,7 @@ For example, to connect as `root` from a Linux command prompt use
 
 Replace `root` with `debian` to log in as user.
 
-Setting up Debian for Gitian building
---------------------------------------
+## Setting up Debian for Gitian building
 
 In this section we will be setting up the Debian installation for Gitian building.
 
@@ -296,8 +293,7 @@ reboot
 At the end the VM is rebooted to make sure that the changes take effect. The steps in this
 section only need to be performed once.
 
-Installing Gitian
-------------------
+## Installing Gitian
 
 Re-login as the user `debian` that was created during installation.
 The rest of the steps in this guide will be performed as that user.
@@ -324,8 +320,7 @@ git clone https://bitbucket.org/ioncoin/ion
 git clone https://bitbucket.org/ioncoin/gitian.sigs.git
 ```
 
-Setting up the Gitian image
--------------------------
+## Setting up the Gitian image
 
 Gitian needs a virtual image of the operating system to build in.
 Currently this is Ubuntu Trusty x86_64.
@@ -347,13 +342,13 @@ There will be a lot of warnings printed during the build of the image. These can
 **Note**: Repeat this step when you have upgraded to a newer version of Gitian.
 
 **Note**: if you get the error message *"bin/make-base-vm: mkfs.ext4: not found"* during this process you have to make the following change in file *"gitian-builder/bin/make-base-vm"* at line 117:
+
 ```bash
 # mkfs.ext4 -F $OUT-lxc
-/sbin/mkfs.ext4 -F $OUT-lxc # (some Gitian environents do NOT find mkfs.ext4. Some do...)
+/sbin/mkfs.ext4 -F $OUT-lxc # (some Gitian environments do NOT find mkfs.ext4. Some do...)
 ```
 
-Getting and building the inputs
---------------------------------
+## Getting and building the inputs
 
 At this point you have two options, you can either use the automated script (found in [contrib/gitian-build.py](/contrib/gitian-build.py)) or you could manually do everything by following this guide. If you're using the automated script, then run it with the "--setup" command. Afterwards, run it with the "--build" command (example: "contrib/gitian-building.sh -b signer 0.13.0"). Otherwise ignore this.
 
@@ -363,8 +358,7 @@ manual intervention. Also optionally follow the next step: 'Seed the Gitian sour
 and offline git repositories' which will fetch the remaining files required for building
 offline.
 
-Building Ion Core
-----------------
+## Building Ion Core
 
 To build Ion Core (for Linux, OS X and Windows) just follow the steps under 'perform
 Gitian builds' in [doc/release-process.md](release-process.md#perform-gitian-builds) in the Ion Core repository.
@@ -404,14 +398,15 @@ Output from `gbuild` will look something like
     lxc-start: Connection refused - inotify event with no name (mask 32768)
     Running build script (log in var/build.log)
 ```
-Building an alternative repository
------------------------------------
+
+## Building an alternative repository
 
 If you want to do a test build of a pull on GitHub it can be useful to point
 the Gitian builder at an alternative repository, using the same descriptors
 and inputs.
 
 For example:
+
 ```bash
 URL=https://github.com/crowning-/ion.git
 COMMIT=b616fb8ef0d49a919b72b0388b091aaec5849b96
@@ -420,8 +415,7 @@ COMMIT=b616fb8ef0d49a919b72b0388b091aaec5849b96
 ./bin/gbuild --commit ion=${COMMIT} --url ion=${URL} ../ion/contrib/gitian-descriptors/gitian-osx.yml
 ```
 
-Building fully offline
------------------------
+## Building fully offline
 
 For building fully offline including attaching signatures to unsigned builds, the detached-sigs repository
 and the ion git repository with the desired tag must both be available locally, and then gbuild must be
@@ -450,7 +444,7 @@ LXC_ARCH=amd64 LXC_SUITE=bionic on-target -u root -e DEBIAN_FRONTEND=noninteract
 
 And then set offline mode for apt-cacher-ng:
 
-```
+```bash
 /etc/apt-cacher-ng/acng.conf
 [...]
 Offlinemode: 1
@@ -460,6 +454,7 @@ service apt-cacher-ng restart
 ```
 
 Then when building, override the remote URLs that gbuild would otherwise pull from the Gitian descriptors::
+
 ```bash
 
 cd /some/root/path/
@@ -471,8 +466,7 @@ SIGPATH=/some/root/path/ion-detached-sigs
 ./bin/gbuild --url ion=${BTCPATH},signature=${SIGPATH} ../ion/contrib/gitian-descriptors/gitian-win-signer.yml
 ```
 
-Signing externally
--------------------
+## Signing externally
 
 If you want to do the PGP signing on another device, that's also possible; just define `SIGNER` as mentioned
 and follow the steps in the build process as normal.
@@ -483,16 +477,15 @@ When you execute `gsign` you will get an error from GPG, which can be ignored. C
 in `gitian.sigs` to your signing machine and do
 
 ```bash
-    gpg --detach-sign ${VERSION}-linux/${SIGNER}/ion-linux-build.assert
-    gpg --detach-sign ${VERSION}-win/${SIGNER}/ion-win-build.assert
-    gpg --detach-sign ${VERSION}-osx-unsigned/${SIGNER}/ion-osx-build.assert
+    gpg --detach-sign ${VERSION}-linux/${SIGNER}/ioncore-linux-build.assert
+    gpg --detach-sign ${VERSION}-win/${SIGNER}/ioncore-win-build.assert
+    gpg --detach-sign ${VERSION}-osx-unsigned/${SIGNER}/ioncore-osx-build.assert
 ```
 
 This will create the `.sig` files that can be committed together with the `.assert` files to assert your
 Gitian build.
 
-Uploading signatures (not yet implemented)
----------------------
+## Uploading signatures (not yet implemented)
 
 In the future it will be possible to push your signatures (both the `.assert` and `.assert.sig` files) to the
 [ion/gitian.sigs](https://bitbucket.org/ioncoin/gitian.sigs/) repository, or if that's not possible to create a pull

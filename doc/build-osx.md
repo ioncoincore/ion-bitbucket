@@ -1,10 +1,12 @@
 Mac OS X Build Instructions and Notes
 ====================================
+
 The commands in this guide should be executed in a Terminal application.
 The built-in one is located in `/Applications/Utilities/Terminal.app`.
 
 Preparation
 -----------
+
 Install the OS X command line tools:
 
 `xcode-select --install`
@@ -21,6 +23,7 @@ brew install automake libtool pkg-config
 ```
 
 If you want to build the disk image with `make deploy` (.dmg / optional), you need RSVG
+
 ```bash
 brew install librsvg
 ```
@@ -37,25 +40,32 @@ Ion Core is now available at `./src/iond`
 
 Before running, it's recommended you create an RPC configuration file.
 
-    echo -e "rpcuser=ionrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/ioncoin/ioncoin.conf"
+```bash
+echo -e "rpcuser=ionrpc\nrpcpassword=$(xxd -l 16 -p /dev/urandom)" > "/Users/${USER}/Library/Application Support/ioncoin/ioncoin.conf"
 
-    chmod 600 "/Users/${USER}/Library/Application Support/ioncoin/ioncoin.conf"
+chmod 600 "/Users/${USER}/Library/Application Support/ioncoin/ioncoin.conf"
+```
 
 The first time you run iond, it will start downloading the blockchain. This process could take several hours.
 
 You can monitor the download process by looking at the debug.log file:
 
-    tail -f $HOME/Library/Application\ Support/ioncoin/debug.log
+```bash
+tail -f $HOME/Library/Application\ Support/ioncoin/debug.log
+```
 
-Other commands:
+Other commands
 -------
 
-    ./src/iond -daemon # Starts the ion daemon.
-    ./src/ion-cli --help # Outputs a list of command-line options.
-    ./src/ion-cli help # Outputs a list of RPC commands when the daemon is running.
+```bash
+./src/iond -daemon # Starts the ion daemon.
+./src/ion-cli --help # Outputs a list of command-line options.
+./src/ion-cli help # Outputs a list of RPC commands when the daemon is running.
+```
 
 Using Qt Creator as IDE
 ------------------------
+
 You can use Qt Creator as an IDE, for ion development.
 Download and install the community edition of [Qt Creator](https://www.qt.io/download/).
 Uncheck everything except Qt Creator during the installation process.

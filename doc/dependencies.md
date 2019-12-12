@@ -32,9 +32,11 @@ These are the dependencies currently used by Ion Core. You can find instructions
 
 Controlling dependencies
 ------------------------
+
 Some dependencies are not needed in all configurations. The following are some factors that affect the dependency list.
 
 #### Options passed to `./configure`
+
 * MiniUPnPc is not needed with  `--with-miniupnpc=no`.
 * Berkeley DB is not needed with `--disable-wallet`.
 * Qt is not needed with `--without-gui`.
