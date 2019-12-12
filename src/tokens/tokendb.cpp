@@ -6,6 +6,8 @@
 #include "tokens/tokengroupmanager.h"
 #include "validation.h"
 
+#include <boost/thread.hpp>
+
 CTokenDB::CTokenDB(size_t nCacheSize, bool fMemory, bool fWipe) : CDBWrapper(GetDataDir() / "tokens", nCacheSize, fMemory, fWipe) {}
 
 bool CTokenDB::WriteTokenGroupsBatch(const std::vector<CTokenGroupCreation>& tokenGroups) {
