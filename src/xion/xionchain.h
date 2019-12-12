@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PIVX_XIONCHAIN_H
-#define PIVX_XIONCHAIN_H
+#ifndef ION_XIONCHAIN_H
+#define ION_XIONCHAIN_H
 
 #include "libzerocoin/Coin.h"
 #include "libzerocoin/Denominations.h"
@@ -45,4 +45,4 @@ std::list<libzerocoin::CoinDenomination> ZerocoinSpendListFromBlock(const CBlock
 
 bool UpdateXIONSupply(const CBlock& block, CBlockIndex* pindex, bool fJustCheck);
 
-#endif //PIVX_XIONCHAIN_H
+#endif //ION_XIONCHAIN_H

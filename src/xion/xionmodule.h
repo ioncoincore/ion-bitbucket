@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //
-#ifndef PIVX_XIONMODULE_H
-#define PIVX_XIONMODULE_H
+#ifndef ION_XIONMODULE_H
+#define ION_XIONMODULE_H
 
 #include "libzerocoin/bignum.h"
 #include "libzerocoin/Denominations.h"
@@ -90,4 +90,4 @@ namespace XIONModule {
 };
 
 
-#endif //PIVX_XIONMODULE_H
+#endif //ION_XIONMODULE_H
