@@ -1,5 +1,5 @@
 ---
-name: "ion-osx-5.0"
+name: "ioncore-osx-5.0"
 enable_cache: true
 distro: "ubuntu"
 suites:

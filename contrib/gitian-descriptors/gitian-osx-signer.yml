@@ -1,5 +1,5 @@
 ---
-name: "ion-dmg-signer"
+name: "ioncore-dmg-signer"
 distro: "ubuntu"
 suites:
 - "bionic"

@@ -1,5 +1,5 @@
 ---
-name: "ion-linux-5.0"
+name: "ioncore-linux-5.0"
 enable_cache: true
 distro: "ubuntu"
 suites:

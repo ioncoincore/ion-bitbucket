@@ -1,5 +1,5 @@
 ---
-name: "ion-win-signer"
+name: "ioncore-win-signer"
 distro: "ubuntu"
 suites:
 - "bionic"
