@@ -62,13 +62,14 @@ def build():
 
     if args.macos and not os.path.isfile('inputs/MacOSX10.11.sdk.tar.xz'):
     	subprocess.check_call(['wget', '-O', 'inputs/MacOSX10.11.sdk.tar.xz', '-N', '-P', 'inputs', 'https://bitbucket.org/ioncoin/macosx-sdks/downloads/MacOSX10.11.sdk.tar.xz'])
+
     if args.macos and not os.path.isfile('inputs/MacOSX10.11.sdk.tar.xz'):
     	subprocess.check_call(['wget', '-O', 'inputs/MacOSX10.11.sdk.tar.xz', '-N', '-P', 'inputs', 'https://github.com/gitianuser/MacOSX-SDKs/releases/download/MacOSX10.11.sdk/MacOSX10.11.sdk.tar.xz'])
-    if not os.path.isfile('inputs/osslsigncode-Backports-to-1.7.1.patch'):
-        subprocess.check_call(["echo 'a8c4e9cafba922f89de0df1f2152e7be286aba73f78505169bc351a7938dd911 inputs/osslsigncode-Backports-to-1.7.1.patch' | sha256sum -c"], shell=True)
-    if not os.path.isfile('inputs/osslsigncode-1.7.1.tar.xz'):
-        subprocess.check_call(["echo 'fd764f944aac5ec6beeafec67ca209ed7b11f04fd7ea748bb6825e75cb1cc4cd inputs/osslsigncode-1.7.1.tar.xz' | sha256sum -c"], shell=True)
 
+    if not os.path.isfile('inputs/osslsigncode-2.0.tar.xz'):
+        subprocess.check_call(['wget', '-O', 'inputs/osslsigncode-2.0.tar.xz', 'https://bitbucket.org/ioncoin/osslsigncode/downloads/osslsigncode-2.0.tar.xz'])
+
+    subprocess.check_call(["echo '015cb6c6fe5f5bd102059788cc9ba6015b0d6b21a91e3b929d8c63fbba75b779 inputs/osslsigncode-2.0.tar.xz' | sha256sum -c"], shell=True)
     subprocess.check_call(['make', '-C', '../ion/depends', 'download', 'SOURCES_PATH=' + os.getcwd() + '/cache/common'])
 
     if args.linux:

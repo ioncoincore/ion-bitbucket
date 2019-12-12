@@ -1,5 +1,16 @@
-Release Process
-====================
+- [Release Process](#release-process)
+  - [Before every major release](#before-every-major-release)
+    - [First time and New builders](#first-time-and-new-builders)
+    - [Ion Core maintainers/release engineers, suggestion for writing release notes](#ion-core-maintainersrelease-engineers-suggestion-for-writing-release-notes)
+    - [Setup and perform Gitian builds](#setup-and-perform-gitian-builds)
+    - [Fetch and create inputs: (first time, or when dependency versions change)](#fetch-and-create-inputs-first-time-or-when-dependency-versions-change)
+    - [Optional: Seed the Gitian sources cache and offline git repositories](#optional-seed-the-gitian-sources-cache-and-offline-git-repositories)
+    - [Build and sign Ion Core for Linux, Windows, and OS X:](#build-and-sign-ion-core-for-linux-windows-and-os-x)
+    - [Verify other gitian builders signatures to your own. (Optional)](#verify-other-gitian-builders-signatures-to-your-own-optional)
+    - [Next steps:](#next-steps)
+    - [After 3 or more people have gitian-built and their results match:](#after-3-or-more-people-have-gitian-built-and-their-results-match)
+
+# Release Process
 
 * Update translations, see [translation_process.md](https://bitbucket.org/ioncoin/ion/blob/master/doc/translation_process.md#synchronising-translations).
 
@@ -17,24 +28,24 @@ Before every minor and major release:
   - This update should be reviewed with a reindex-chainstate with assumevalid=0 to catch any defect
      that causes rejection of blocks in the past history.
 
-Before every major release:
+## Before every major release
 
 * Update hardcoded [seeds](/contrib/seeds/README.md). TODO: Give example PR for Ion
 * Update [`BLOCK_CHAIN_SIZE`](/src/qt/intro.cpp) to the current size plus some overhead.
 * Update `src/chainparams.cpp` chainTxData with statistics about the transaction count and rate.
 * Update version of `contrib/gitian-descriptors/*.yml`: usually one'd want to do this on master after branching off the release - but be sure to at least do it before a new major release
 
-### First time / New builders
+### First time and New builders
 
 If you're using the automated script (found in [contrib/gitian-build.py](/contrib/gitian-build.py)), then at this point you should run it with the "--setup" command. Otherwise ignore this.
 
 Check out the source code in the following directory hierarchy.
 
-	cd /path/to/your/toplevel/build
-	git clone https://bitbucket.org/ioncoin/gitian.sigs.git
-	git clone https://bitbucket.org/ioncoin/ion-detached-sigs.git
-	git clone https://github.com/devrandom/gitian-builder.git
-	git clone https://bitbucket.org/ioncoin/ion.git
+    cd /path/to/your/toplevel/build
+    git clone https://bitbucket.org/ioncoin/gitian.sigs.git
+    git clone https://bitbucket.org/ioncoin/ion-detached-sigs.git
+    git clone https://github.com/devrandom/gitian-builder.git
+    git clone https://bitbucket.org/ioncoin/ion.git
 
 ### Ion Core maintainers/release engineers, suggestion for writing release notes
 
@@ -81,7 +92,7 @@ Ensure gitian-builder is up-to-date:
     pushd ./gitian-builder
     mkdir -p inputs
     wget -P inputs https://bitcoincore.org/cfields/osslsigncode-Backports-to-1.7.1.patch
-    wget -P inputs http://downloads.sourceforge.net/project/osslsigncode/osslsigncode/osslsigncode-1.7.1.tar.gz
+    wget -O inputs/osslsigncode-2.0.tar.gz -P inputs https://github.com/mtrojnar/osslsigncode/archive/2.0.tar.gz
     popd
 
 Create the OS X SDK tarball, see the [OS X readme](README_osx.md) for details, and copy it into the inputs directory.
