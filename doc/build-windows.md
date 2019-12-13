@@ -110,7 +110,7 @@ To build executables for Windows 32-bit, install the following dependencies:
 
 Ubuntu Bionic 18.04 <sup>[1](#footnote1)</sup>:
 
-    sudo update-alternatives -y --config i686-w64-mingw32-g++  # Set the default mingw32 g++ compiler option to posix.
+    sudo update-alternatives --config i686-w64-mingw32-g++  # Set the default mingw32 g++ compiler option to posix.
 
 Build using:
 
