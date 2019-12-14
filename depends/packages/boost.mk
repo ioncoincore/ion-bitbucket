@@ -19,6 +19,10 @@ $(package)_config_opts_i686_android=address-model=32
 $(package)_config_opts_aarch64_android=address-model=64
 $(package)_config_opts_x86_64_android=address-model=64
 $(package)_config_opts_armv7a_android=address-model=32
+$(package)_config_opts_s390x_linux=address-model=64
+$(package)_config_opts_sparc64_linux=address-model=64
+$(package)_config_opts_alpha_linux=address-model=64
+$(package)_config_opts_m68k_linux=address-model=32
 $(package)_toolset_$(host_os)=gcc
 $(package)_archiver_$(host_os)=$($(package)_ar)
 $(package)_toolset_darwin=clang-darwin
