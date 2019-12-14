@@ -20,7 +20,7 @@ include_directories(
 if(UNIX AND NOT APPLE)
     set(DEPENDS_PREFIX depends/x86_64-pc-linux-gnu)
 elseif(APPLE)
-    set(DEPENDS_PREFIX depends/x86_64-apple-darwin14)
+    set(DEPENDS_PREFIX depends/x86_64-apple-darwin16)
 elseif(WIN32)
     set(DEPENDS_PREFIX depends/x86_64-w64-mingw32)
 endif()
@@ -53,15 +53,21 @@ file(GLOB SOURCE_FILES
         src/crypto/*.h
         src/evo/*.cpp
         src/evo/*.h
+        src/governance/*.cpp
+        src/governance/*.h 
         src/leveldb/db/*.cc
         src/leveldb/db/*.h
         src/leveldb/include/*.h
+        src/libzerocoin/*.cpp
+        src/libzerocoin/*.h 
         src/llmq/*.cpp
         src/llmq/*.h
         src/masternode/*.cpp
         src/masternode/*.h
         src/policy/*.cpp
         src/policy/*.h
+        src/pos/*.cpp
+        src/pos/*.h
         src/primitives/*.cpp
         src/primitives/*.h
         src/privatesend/*.cpp
@@ -75,14 +81,20 @@ file(GLOB SOURCE_FILES
         src/script/*.cpp
         src/script/*.h
         src/secp256k1/include/*.h
+        src/support/*.cpp
+        src/support/*.h
         src/test/*.cpp
         src/test/*.h
+        src/tokens/*.cpp
+        src/tokens/*.h
         src/univalue/include/*.h
         src/univalue/lib/*.cpp
         src/univalue/lib/*.h
         src/wallet/*.cpp
         src/wallet/*.h
         src/wallet/test/*.cpp
+        src/xion/*.cpp
+        src/xion/*.h        
         src/zmq/*.cpp
         src/zmq/*.h
         )
