@@ -51,10 +51,13 @@ file(GLOB SOURCE_FILES
         src/crypto/*.c
         src/crypto/*.cpp
         src/crypto/*.h
+        src/crypto/ctaes/*.c
+        src/crypto/ctaes/*.h
         src/evo/*.cpp
         src/evo/*.h
         src/governance/*.cpp
         src/governance/*.h 
+        src/ionlib/*.cpp
         src/leveldb/db/*.cc
         src/leveldb/db/*.h
         src/leveldb/include/*.h
@@ -64,6 +67,7 @@ file(GLOB SOURCE_FILES
         src/llmq/*.h
         src/masternode/*.cpp
         src/masternode/*.h
+        src/obj/*.h
         src/policy/*.cpp
         src/policy/*.h
         src/pos/*.cpp
@@ -76,8 +80,11 @@ file(GLOB SOURCE_FILES
         src/qt/*.h
         src/qt/test/*.cpp
         src/qt/test/*.h
+        src/qt/forms/*.ui
         src/rpc/*.cpp
         src/rpc/*.h
+        src/script/*.cpp
+        src/script/*.h
         src/script/*.cpp
         src/script/*.h
         src/secp256k1/include/*.h
