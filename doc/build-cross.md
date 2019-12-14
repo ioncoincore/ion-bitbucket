@@ -31,7 +31,7 @@ make HOST=x86_64-apple-darwin14 -j4
 When building Ion Core, use
 
 ```bash
-./configure --prefix=`pwd`/depends/x86_64-apple-darwin14
+./configure --prefix=`pwd`/depends/x86_64-apple-darwin16
 ```
 
 ## Windows 64bit/32bit Cross-compilation
