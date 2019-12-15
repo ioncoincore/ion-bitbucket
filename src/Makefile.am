@@ -152,6 +152,7 @@ BITCOIN_CORE_H = \
   crypto/sha1.h \
   crypto/sha256.h \
   crypto/sha512.h \
+  crypto/ripemd160.h \
   dstencode.h \
   evo/cbtx.h \
   evo/deterministicmns.h \
@@ -463,7 +464,21 @@ libioncore_a_SOURCES = \
   utilstrencodings.cpp \
   utilstrencodings.h \
   utiltime.cpp \
-  utiltime.h
+  utiltime.h \
+  crypto/sha1.h \
+  crypto/sha256.h \
+  crypto/sha512.h \
+  crypto/hmac_sha256.h \
+  crypto/hmac_sha512.h \
+  crypto/ripemd160.h \
+  crypto/chacha20.h \
+  crypto/sha1.cpp \
+  crypto/sha256.cpp \
+  crypto/sha512.cpp \
+  crypto/hmac_sha256.cpp \
+  crypto/hmac_sha512.cpp \
+  crypto/ripemd160.cpp \
+  crypto/chacha20.cpp \
 
 # crypto primitives library
 crypto_libion_crypto_base_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_CONFIG_INCLUDES) $(PIC_FLAGS)
@@ -510,6 +525,20 @@ crypto_libion_crypto_avx2_a_SOURCES = crypto/sha256_avx2.cpp
 
 # x11
 crypto_libion_crypto_base_a_SOURCES += \
+  crypto/sha1.h \
+  crypto/sha256.h \
+  crypto/sha512.h \
+  crypto/hmac_sha256.h \
+  crypto/hmac_sha512.h \
+  crypto/ripemd160.h \
+  crypto/chacha20.h \
+  crypto/sha1.cpp \
+  crypto/sha256.cpp \
+  crypto/sha512.cpp \
+  crypto/hmac_sha256.cpp \
+  crypto/hmac_sha512.cpp \
+  crypto/ripemd160.cpp \
+  crypto/chacha20.cpp \
   crypto/blake.c \
   crypto/bmw.c \
   crypto/cubehash.c \
@@ -568,6 +597,9 @@ libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
   libzerocoin/SerialNumberSignatureOfKnowledge.cpp
 if USE_NUM_GMP
   libzerocoin_libbitcoin_zerocoin_a_SOURCES += libzerocoin/bignum_gmp.cpp
+endif
+if USE_NUM_OPENSSL
+  libzerocoin_libbitcoin_zerocoin_a_SOURCES += libzerocoin/bignum_openssl.cpp
 endif
 
 # consensus: shared between all executables that validate any consensus rules.
@@ -635,6 +667,7 @@ libion_common_a_SOURCES = \
   scheduler.cpp \
   script/sign.cpp \
   script/standard.cpp \
+  tokens/tokengroupdescription.cpp \
   warnings.cpp \
   xion/accumulators.cpp \
   xion/accumulatorcheckpoints.cpp \
@@ -757,7 +790,7 @@ ion_tx_LDADD += $(BACKTRACE_LIB) $(BOOST_LIBS) $(CRYPTO_LIBS) $(BLS_LIBS)
 
 # ioncore library #
 if BUILD_BITCOIN_LIBS
-libioncore_la_SOURCES = $(libioncore_a_SOURCES) $(crypto_libion_crypto_a_SOURCES)
+libioncore_la_SOURCES = $(libioncore_a_SOURCES) $(crypto_libion_crypto_a_SOURCES) $(crypto_libion_crypto_base_a)
 
 if GLIBC_BACK_COMPAT
   libioncore_la_SOURCES += compat/glibc_compat.cpp
@@ -803,6 +836,7 @@ CLEANFILES += crypto/*.gcda crypto/*.gcno
 CLEANFILES += policy/*.gcda policy/*.gcno
 CLEANFILES += libzerocoin/*.gcda libzerocoin/*.gcno
 CLEANFILES += primitives/*.gcda primitives/*.gcno
+CLEANFILES += rpc/*.gcda rpc/*.gcno
 CLEANFILES += script/*.gcda script/*.gcno
 CLEANFILES += support/*.gcda support/*.gcno
 CLEANFILES += univalue/*.gcda univalue/*.gcno
@@ -840,9 +874,9 @@ clean-local:
 	## FIXME: How to get the appropriate modulename_CPPFLAGS in here?
 	$(AM_V_GEN) $(WINDRES) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(CPPFLAGS) -DWINDRES_PREPROC -i $< -o $@
 
-.mm.o:
-	$(AM_V_CXX) $(OBJCXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
-	  $(CPPFLAGS) $(AM_CXXFLAGS) $(QT_INCLUDES) $(AM_CXXFLAGS) $(PIE_FLAGS) $(CXXFLAGS) -c -o $@ $<
+#.mm.o:
+#	$(AM_V_CXX) $(OBJCXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+#	  $(CPPFLAGS) $(AM_CXXFLAGS) $(QT_INCLUDES) $(AM_CXXFLAGS) $(PIE_FLAGS) $(CXXFLAGS) -c -o $@ $<
 
 check-symbols: $(bin_PROGRAMS)
 if GLIBC_BACK_COMPAT
@@ -855,7 +889,6 @@ if HARDEN
 	@echo "Checking binary security..."
 	$(AM_V_at) READELF=$(READELF) OBJDUMP=$(OBJDUMP) $(top_srcdir)/contrib/devtools/security-check.py < $(bin_PROGRAMS)
 endif
-
 
 osx_debug: $(bin_PROGRAMS)
 	for i in $(bin_PROGRAMS); do mkdir -p $$i.dSYM/Contents/Resources/DWARF && $(DSYMUTIL_FLAT) -o $$i.dSYM/Contents/Resources/DWARF/$$(basename $$i) $$i &> /dev/null ; done
