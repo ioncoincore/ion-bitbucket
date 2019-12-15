@@ -5,7 +5,9 @@ $(package)_file_name=$(package)-$($(package)_version).tar.xz
 $(package)_sha256_hash=1ea6965b15c2106b6bbe883397271c80dfa0331cdf821b2c319591b55eadc0a4
 
 define $(package)_set_vars
-$(package)_config_opts=--disable-static
+  $(package)_config_opts=--disable-shared --without-docbook --without-tests --without-examples
+  $(package)_config_opts += --disable-dependency-tracking --enable-option-checking
+  $(package)_config_opts_linux=--with-pic
 endef
 
 define $(package)_config_cmds
