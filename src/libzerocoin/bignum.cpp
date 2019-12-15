@@ -10,6 +10,10 @@
 #include "bignum_gmp.cpp"
 #endif
 
+#if defined(USE_NUM_OPENSSL)
+#include "bignum_openssl.cpp"
+#endif
+
 std::string CBigNum::GetHex() const
 {
     return ToString(16);
