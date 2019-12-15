@@ -148,6 +148,10 @@ BITCOIN_CORE_H = \
   cuckoocache.h \
   ctpl.h \
   cxxtimer.hpp \
+  crypto/chacha20.h \
+  crypto/sha1.h \
+  crypto/sha256.h \
+  crypto/sha512.h \
   dstencode.h \
   evo/cbtx.h \
   evo/deterministicmns.h \
