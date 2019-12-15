@@ -152,6 +152,7 @@ BITCOIN_CORE_H = \
   crypto/sha1.h \
   crypto/sha256.h \
   crypto/sha512.h \
+  crypto/ripemd160.h \
   dstencode.h \
   evo/cbtx.h \
   evo/deterministicmns.h \
@@ -450,6 +451,15 @@ libioncore_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
+  crypto/sha1.h \
+  crypto/sha256.h \
+  crypto/sha512.h \
+  crypto/ripemd160.h \
+  crypto/chacha20.cpp \
+  crypto/sha1.cpp \
+  crypto/sha256.cpp \
+  crypto/sha512.cpp \
+  crypto/ripemd160.cpp \
   random.cpp \
   random.h \
   script/interpreter.cpp \
@@ -532,7 +542,17 @@ crypto_libion_crypto_base_a_SOURCES += \
   crypto/sph_shavite.h \
   crypto/sph_simd.h \
   crypto/sph_skein.h \
-  crypto/sph_types.h
+  crypto/sph_types.h \
+  crypto/chacha20.h \
+  crypto/sha1.h \
+  crypto/sha256.h \
+  crypto/sha512.h \
+  crypto/ripemd160.h \
+  crypto/chacha20.cpp \
+  crypto/sha1.cpp \
+  crypto/sha256.cpp \
+  crypto/sha512.cpp \
+  crypto/ripemd160.cpp
 
 crypto_libion_crypto_shani_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 crypto_libion_crypto_shani_a_CPPFLAGS = $(AM_CPPFLAGS)
