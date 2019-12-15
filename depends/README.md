@@ -20,19 +20,25 @@ created. To use it for Ion:
 
 Common `host-platform-triplets` for cross compilation are:
 
-- `i686-w64-mingw32` for Win32
-- `x86_64-w64-mingw32` for Win64
-- `x86_64-apple-darwin16` for MacOSX
 - `i686-pc-linux-gnu` for Linux PC 32-Bit
 - `x86_64-pc-linux-gnu` for Linux PC 64-Bit
+- `x86_64-w64-mingw32` for Win64
+- `i686-w64-mingw32` for Win32
+- `x86_64-apple-darwin16` for macOS
 - `arm-linux-gnueabihf` for Linux ARM 32 bit
 - `aarch64-linux-gnu` for Linux ARM 64 bit
+- `mipsel-linux-gnu`for Linux MIPSEL 32 bit
+- `mips-linux-gnu`for Linux MIPS 32 bit
 - `powerpc-linux-gnu` for Linux PPC 32 bit
 - `powerpc64-linux-gnu` for Linux PPC64 64 bit
 - `powerpc64el-linux-gnu` for Linux PPC64EL 64 bit
-- `mipsel-linux-gnu`for Linux MIPSEL 32 bit
-- `mips-linux-gnu`for Linux MIPS 32 bit
-- `s390x-linux-gnu` for Linux s390x
+- `riscv32-linux-gnu` for Linux RISC-V 32 bit
+- `riscv64-linux-gnu` for Linux RISC-V 64 bit
+- `s390x-linux-gnu` for Linux S390X
+- `armv7a-linux-android` for Android ARM 32 bit
+- `aarch64-linux-android` for Android ARM 64 bit
+- `i686-linux-android` for Android x86 32 bit
+- `x86_64-linux-android` for Android x86 64 bit
 
 No other options are needed, the paths are automatically configured.
 
