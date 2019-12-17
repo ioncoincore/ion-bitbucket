@@ -159,6 +159,7 @@ MacOSX10.11.sdk/
 # VSCode
 !.vscode/launch.json
 .vscode/settings.json
+.vscode/tags
 
 #SNAP
 parts/
