@@ -191,3 +191,8 @@ debian/tmp/
 # depends
 depends/config.guess
 depends/config.sub
+
+# mac make deploy
+dist/
+dpi36.background.tiff
+dpi72.background.tiff
