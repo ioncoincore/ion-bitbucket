@@ -573,7 +573,6 @@ libion_consensus_a_SOURCES = \
   script/script_error.cpp \
   script/script_error.h \
   script/sigcommon.cpp \
-  script/sigcommon.h \
   serialize.h \
   streams.h \
   tinyformat.h \
