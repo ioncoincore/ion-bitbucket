@@ -60,7 +60,6 @@ LIBBITCOIN_ZMQ=libion_zmq.a
 endif
 if BUILD_BITCOIN_LIBS
 LIBBITCOINCONSENSUS=libionconsensus.la
-LIBBITCOINCORE=libioncore.la
 endif
 if ENABLE_WALLET
 LIBBITCOIN_WALLET=libion_wallet.a
@@ -235,8 +234,6 @@ BITCOIN_CORE_H = \
   rpc/register.h \
   saltedhasher.h \
   scheduler.h \
-  script/interpreter.h \
-  script/script.h \
   script/sigcache.h \
   script/sign.h \
   script/standard.h \
@@ -250,7 +247,6 @@ BITCOIN_CORE_H = \
   support/allocators/zeroafterfree.h \
   support/cleanse.h \
   support/events.h \
-  support/lockedpool.h \
   sync.h \
   threadsafety.h \
   threadinterrupt.h \
@@ -439,55 +435,8 @@ libioncore_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 
 # base58.cpp
 #  base58.h
-
-libioncore_a_SOURCES = \
-  ionlib/ionlib.cpp \
-  script/sigcommon.cpp \
-  hash.cpp \
-  hash.h \
-  key.cpp \
-  key.h \
-  primitives/transaction.cpp \
-  primitives/transaction.h \
-  pubkey.cpp \
-  pubkey.h \
-  crypto/sha1.h \
-  crypto/sha256.h \
-  crypto/sha512.h \
-  crypto/ripemd160.h \
-  crypto/chacha20.cpp \
-  crypto/sha1.cpp \
-  crypto/sha256.cpp \
-  crypto/sha512.cpp \
-  crypto/ripemd160.cpp \
-  random.cpp \
-  random.h \
-  script/interpreter.cpp \
-  script/interpreter.h \
-  script/script.cpp \
-  script/script.h \
-  support/cleanse.cpp \
-  support/cleanse.h \
-  uint256.cpp \
-  uint256.h \
-  utilstrencodings.cpp \
-  utilstrencodings.h \
-  utiltime.cpp \
-  utiltime.h \
-  crypto/sha1.h \
-  crypto/sha256.h \
-  crypto/sha512.h \
-  crypto/hmac_sha256.h \
-  crypto/hmac_sha512.h \
-  crypto/ripemd160.h \
-  crypto/chacha20.h \
-  crypto/sha1.cpp \
-  crypto/sha256.cpp \
-  crypto/sha512.cpp \
-  crypto/hmac_sha256.cpp \
-  crypto/hmac_sha512.cpp \
-  crypto/ripemd160.cpp \
-  crypto/chacha20.cpp \
+#libioncore_a_SOURCES = \
+#  ionlib/ionlib.cpp
 
 # crypto primitives library
 crypto_libion_crypto_base_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_CONFIG_INCLUDES) $(PIC_FLAGS)
@@ -534,20 +483,6 @@ crypto_libion_crypto_avx2_a_SOURCES = crypto/sha256_avx2.cpp
 
 # x11
 crypto_libion_crypto_base_a_SOURCES += \
-  crypto/sha1.h \
-  crypto/sha256.h \
-  crypto/sha512.h \
-  crypto/hmac_sha256.h \
-  crypto/hmac_sha512.h \
-  crypto/ripemd160.h \
-  crypto/chacha20.h \
-  crypto/sha1.cpp \
-  crypto/sha256.cpp \
-  crypto/sha512.cpp \
-  crypto/hmac_sha256.cpp \
-  crypto/hmac_sha512.cpp \
-  crypto/ripemd160.cpp \
-  crypto/chacha20.cpp \
   crypto/blake.c \
   crypto/bmw.c \
   crypto/cubehash.c \
@@ -570,17 +505,7 @@ crypto_libion_crypto_base_a_SOURCES += \
   crypto/sph_shavite.h \
   crypto/sph_simd.h \
   crypto/sph_skein.h \
-  crypto/sph_types.h \
-  crypto/chacha20.h \
-  crypto/sha1.h \
-  crypto/sha256.h \
-  crypto/sha512.h \
-  crypto/ripemd160.h \
-  crypto/chacha20.cpp \
-  crypto/sha1.cpp \
-  crypto/sha256.cpp \
-  crypto/sha512.cpp \
-  crypto/ripemd160.cpp
+  crypto/sph_types.h
 
 crypto_libion_crypto_shani_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 crypto_libion_crypto_shani_a_CPPFLAGS = $(AM_CPPFLAGS)
@@ -617,9 +542,6 @@ libzerocoin_libbitcoin_zerocoin_a_SOURCES = \
 if USE_NUM_GMP
   libzerocoin_libbitcoin_zerocoin_a_SOURCES += libzerocoin/bignum_gmp.cpp
 endif
-if USE_NUM_OPENSSL
-  libzerocoin_libbitcoin_zerocoin_a_SOURCES += libzerocoin/bignum_openssl.cpp
-endif
 
 # consensus: shared between all executables that validate any consensus rules.
 libion_consensus_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
@@ -646,11 +568,12 @@ libion_consensus_a_SOURCES = \
   script/ionconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
-  script/sigcommon.cpp \
   script/script.cpp \
   script/script.h \
   script/script_error.cpp \
   script/script_error.h \
+  script/sigcommon.cpp \
+  script/sigcommon.h \
   serialize.h \
   streams.h \
   tinyformat.h \
@@ -684,9 +607,8 @@ libion_common_a_SOURCES = \
   protocol.cpp \
   saltedhasher.cpp \
   scheduler.cpp \
-  script/sign.cpp \
   script/standard.cpp \
-  tokens/tokengroupdescription.cpp \
+  script/sign.cpp \
   warnings.cpp \
   xion/accumulators.cpp \
   xion/accumulatorcheckpoints.cpp \
@@ -706,7 +628,6 @@ libion_util_a_SOURCES = \
   bls/bls_ies.h \
   bls/bls_worker.cpp \
   bls/bls_worker.h \
-  support/lockedpool.cpp \
   chainparamsbase.cpp \
   clientversion.cpp \
   compat/glibc_sanity.cpp \
@@ -729,6 +650,20 @@ if GLIBC_BACK_COMPAT
 libion_util_a_SOURCES += compat/glibc_compat.cpp
 AM_LDFLAGS += -Wl,--wrap=log2f -Wl,--wrap=__divmoddi4
 endif
+
+# woraround fix to build on windows and mac until fixed
+if TARGET_WINDOWS
+  libion_util_a_SOURCES += \
+  support/lockedpool.h \
+  support/lockedpool.cpp
+endif
+
+if TARGET_DARWIN
+  libion_consensus_a_SOURCES += \
+  support/lockedpool.h \
+  support/lockedpool.cpp
+endif
+#
 
 # cli: shared between ion-cli and ion-qt
 libion_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
@@ -805,22 +740,6 @@ ion_tx_LDADD = \
   $(LIBSECP256K1)
 
 ion_tx_LDADD += $(BACKTRACE_LIB) $(BOOST_LIBS) $(CRYPTO_LIBS) $(BLS_LIBS)
-#
-
-# ioncore library #
-if BUILD_BITCOIN_LIBS
-libioncore_la_SOURCES = $(libioncore_a_SOURCES) $(crypto_libion_crypto_a_SOURCES) $(crypto_libion_crypto_base_a)
-
-if GLIBC_BACK_COMPAT
-  libioncore_la_SOURCES += compat/glibc_compat.cpp
-endif
-
-libioncore_la_LDFLAGS = $(AM_LDFLAGS) $(SSL_LIBS) $(CRYPTO_LIBS) $(BOOST_LIBS) -no-undefined $(RELDFLAGS)
-libioncore_la_LIBADD = $(LIBSECP256K1)
-libioncore_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(BOOST_CPPFLAGS) -I$(builddir)/obj -I$(srcdir)/secp256k1/include -DBUILD_BITCOIN_INTERNAL
-libioncore_la_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-
-endif
 #
 
 # ionconsensus library #
