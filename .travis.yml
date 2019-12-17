@@ -17,7 +17,7 @@
 # ION GitHub member via the Travis web interface [0].
 #
 # Travis CI uploads the cache after the script phase of the build [1].
-# However, the build is terminated without saving the chache if it takes over
+# However, the build is terminated without saving the cache if it takes over
 # 50 minutes [2]. Thus, if we spent too much time in early build stages, fail
 # with an error and save the cache.
 #
@@ -40,7 +40,7 @@ stages:
 env:
   global:
     - MAKEJOBS=-j3
-    - RUN_UNIT_TESTS=flase
+    - RUN_UNIT_TESTS=false
     - RUN_FUNCTIONAL_TESTS=false # Not Yet Implemented
     - RUN_BENCH=false  # Set to true for any one job that has debug enabled, to quickly check bench is not crashing or hitting assertions
     - DOCKER_NAME_TAG=ubuntu:18.04
