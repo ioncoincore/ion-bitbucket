@@ -92,19 +92,13 @@ def build():
         subprocess.check_call('mv build/out/ioncore-*-osx-unsigned.tar.gz inputs/', shell=True)
         subprocess.check_call('mv build/out/ioncore-*.tar.gz build/out/ioncore-*.dmg ../ion-binaries/'+args.version, shell=True)
 
-    os.chdir('../ion-binaries/'+args.version)
-    subprocess.check_call(['sha256sum', '*.*', '>', './'+args.hash+'SUMS'])
+    os.chdir(workdir)
 
-    if args.hash == 'SHA1':
-        subprocess.check_call(['gpg', '-u', args.signer,'--digest-algo', 'sha1', '--clearsign', args.hash+'SUMS'])
-
-    if args.hash == 'SHA256':
-        subprocess.check_call(['gpg', '--digest-algo', 'sha256', '--clearsign', args.hash+'SUMS'])
-
-    if args.hash == 'SHA512':
-        subprocess.check_call(['gpg', '--digest-algo', 'sha512', '--clearsign', args.hash+'SUMS'])
-
-    subprocess.check_call(['rm', '-f', args.hash+'SUMS'])
+    if args.hash:
+        os.chdir('ion-binaries/'+args.version)
+        subprocess.check_call('sha'+args.hash+'sum ion* > SHA'+args.hash+'SUMS', shell=True)
+        subprocess.check_call('gpg -u '+args.signer+' --digest-algo sha'+args.hash+' --clearsign SHA'+args.hash+'SUMS', shell=True)
+        subprocess.check_call('rm', '-f', '/SHA'+args.hash+'SUMS', shell=True)
 
     os.chdir(workdir)
 
@@ -146,19 +140,13 @@ def sign():
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-signed', '--destination', '../gitian.sigs/', '../ion/contrib/gitian-descriptors/gitian-osx-signer.yml'])
         subprocess.check_call('mv build/out/ion-osx-signed.dmg ../ion-binaries/'+args.version+'/ion-'+args.version+'-osx.dmg', shell=True)
 
-    os.chdir('../ion-binaries/'+args.version)
-    subprocess.check_call(['sha256sum', '*.*', '>', './'+args.hash+'SUMS'])
+    os.chdir(workdir)
 
-    if args.hash == 'SHA1':
-        subprocess.check_call(['gpg', '-u', args.signer,'--digest-algo', 'sha1', '--clearsign', args.hash+'SUMS'])
-
-    if args.hash == 'SHA256':
-        subprocess.check_call(['gpg', '--digest-algo', 'sha256', '--clearsign', args.hash+'SUMS'])
-
-    if args.hash == 'SHA512':
-        subprocess.check_call(['gpg', '--digest-algo', 'sha512', '--clearsign', args.hash+'SUMS'])
-
-    subprocess.check_call(['rm', '-f', args.hash+'SUMS'])
+    if args.hash:
+        os.chdir('ion-binaries/'+args.version)
+        subprocess.check_call('sha'+args.hash+'sum ion* > SHA'+args.hash+'SUMS', shell=True)
+        subprocess.check_call('gpg -u '+args.signer+' --digest-algo sha'+args.hash+' --clearsign SHA'+args.hash+'SUMS', shell=True)
+        subprocess.check_call('rm', '-f', '/SHA'+args.hash+'SUMS', shell=True)
 
     os.chdir(workdir)
 
@@ -225,7 +213,7 @@ def main():
     parser.add_argument('-z', '--upload', dest='upload', default='defaultuploadserver', help='Use scp to upload file to the server, defines in .ssh as uploadserver, pass serverIp and path to ssh private key. Default is which is configured in your ~/.ssh/config file')
     parser.add_argument('-l', '--uploadlogs', action='store_true', dest='uploadlogs', help='Upload logs and scripts (var folder)')
     parser.add_argument('-f', '--uploadfolder', dest='uploadfolder', default='ion-binaries', help='Upload folder on uploadserver')
-    parser.add_argument('-y', '--hash', dest='hash', default='SHA256', help='Create hashes, choose beetwen SHA1, SHA256, SHA512')
+    parser.add_argument('-y', '--hash', dest='hash', default='256', help='Create SHA hashes, choose beetwen SHA1, SHA256, SHA512')
     parser.add_argument('signer', nargs='?', help='GPG signer to sign each build assert file')
     parser.add_argument('version', nargs='?', help='Version number, commit, or branch to build. If building a commit or branch, the -c option must be specified')
     args = parser.parse_args()
