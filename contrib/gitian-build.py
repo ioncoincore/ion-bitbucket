@@ -124,7 +124,7 @@ def build():
         subprocess.check_call(['scp', '-r', args.uploadfolder+'/'+args.version, args.upload+'/'+args.uploadfolder+'/'+args.version])
     
     if args.uploadlogs:
-        subprocess.check_call(['scp', '-r', 'gitian-builder/var', args.uploadfolder+'/'+args.version+'/'+args.uploadlogs])
+        subprocess.check_call(['scp', '-r', 'gitian-builder/var/*', args.upload+'/'+args.uploadfolder+'/'+args.version+'/'])
 
 def sign():
     global args, workdir
