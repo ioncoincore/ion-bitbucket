@@ -354,6 +354,7 @@
         "disablelastaccess",
         "disablewallet",
         "distro",
+        "distros",
         "distsrc",
         "dkd",
         "dnsseed",
@@ -915,8 +916,5 @@
         "zmqpubrawtxlock",
         "zmqpubrawtxlocksig",
         "zxvf"
-    ],
-    "files.associations": {
-        "atomic": "cpp"
-    }
+    ]
 }

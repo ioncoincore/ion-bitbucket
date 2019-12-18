@@ -1,6 +1,22 @@
 UNIX BUILD NOTES
 ====================
 
+- [UNIX BUILD NOTES](#unix-build-notes)
+  - [Base build dependencies](#base-build-dependencies)
+        - [Debian/Ubuntu:](#debianubuntu)
+        - [Fix asm for Debian stretch/Ubuntu bionic 64bit or later](#fix-asm-for-debian-stretchubuntu-bionic-64bit-or-later)
+        - [Fedora:](#fedora)
+        - [Arch Linux:](#arch-linux)
+        - [Alpine Linux:](#alpine-linux)
+        - [FreeBSD/OpenBSD:](#freebsdopenbsd)
+  - [Building](#building)
+  - [Security](#security)
+  - [Disable-wallet mode](#disable-wallet-mode)
+  - [Additional Configure Flags](#additional-configure-flags)
+  - [Building on FreeBSD](#building-on-freebsd)
+  - [Building on OpenBSD](#building-on-openbsd)
+  - [OpenBSD Resource limits](#openbsd-resource-limits)
+
 Some notes on how to build Ion Core in Unix.
 
 (for OpenBSD specific instructions, see [build-openbsd.md](build-openbsd.md))
