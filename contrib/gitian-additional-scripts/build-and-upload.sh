@@ -3,15 +3,15 @@ cd $HOME
 
 # mandatory settings
 export SIGNER="ABD818486CBB35BB"        # Signer ID,Name, Email ... (use ID listed in gpg --list-keys)
-export VERSION="develop"                # version (tag)/branch/hash
-
+#export VERSION="master"                # version (tag)/branch/hash
+export VERSION="5.0.99"       # version (tag)/branch/hash
 # optional settings
 export UPLOAD="defaultuploadserver"
 export HASH="SHA256"                    # hash new files
 export UPLOADFOLDER="ion-binaries"      # folder on UPLOAD server (will be created if not existing)
-export JOBS="4"                         # number of jobs, default: 2
-export MEMORY="4000"                    # RAM to be used, default: 2000
-export OS="lwm"				            # default: lwm
+export JOBS="6"                         # number of jobs, default: 2
+export MEMORY="8000"                    # RAM to be used, default: 2000
+export OS="m"				            # default: lwm
 
 # To setup run and reboot:
 #   ./gitian-build.py --setup ${SIGNER} ${VERSION}
@@ -36,7 +36,7 @@ rm -fR ./ion ./gitian-builder/inputs/ion* ./gitian-builder/cache/ion* ./gitian-b
 
 # cleanup
 if [ ! -d ./ion ]; then
-    git clone http://bitbucket.org/ioncoin/ion.git
+    git clone --recurse-submodules http://bitbucket.org/ioncoin/ion.git
 else
     cd ion;
     git fetch origin -f;
@@ -71,4 +71,11 @@ else
     cd ..
 fi
 
-./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --commit --no-commit --build --upload $UPLOAD --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH $SIGNER $VERSION
+# from branch, with upload
+#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --commit --no-commit --build --upload $UPLOAD --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH $SIGNER $VERSION
+
+# from tag, with upload
+#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --upload $UPLOAD --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH $SIGNER $VERSION
+
+# from tag, no upload
+./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --hash $HASH $SIGNER $VERSION
