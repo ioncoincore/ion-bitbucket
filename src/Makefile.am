@@ -645,24 +645,22 @@ libion_util_a_SOURCES = \
   utiltime.cpp \
   $(BITCOIN_CORE_H)
 
-if GLIBC_BACK_COMPAT
-libion_util_a_SOURCES += compat/glibc_compat.cpp
-AM_LDFLAGS += -Wl,--wrap=log2f -Wl,--wrap=__divmoddi4
-endif
-
 # woraround fix to build on windows and mac until fixed
-if TARGET_WINDOWS
-  libion_util_a_SOURCES += \
-  support/lockedpool.h \
-  support/lockedpool.cpp
-endif
-
 if TARGET_DARWIN
   libion_consensus_a_SOURCES += \
   support/lockedpool.h \
   support/lockedpool.cpp
+else
+  libion_util_a_SOURCES += \
+  support/lockedpool.h \
+  support/lockedpool.cpp
 endif
 #
+
+if GLIBC_BACK_COMPAT
+libion_util_a_SOURCES += compat/glibc_compat.cpp
+AM_LDFLAGS += -Wl,--wrap=log2f -Wl,--wrap=__divmoddi4
+endif
 
 # cli: shared between ion-cli and ion-qt
 libion_cli_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
