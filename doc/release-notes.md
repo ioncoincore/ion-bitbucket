@@ -47,39 +47,47 @@ ______
 - core: switch core from pivx to ion
 - move to bitbucket
 - token implementaion (IIP6)
-- fix regtest and testnet
-- new regtest genesis is inline with source
-- updated dependencies
-  - QT 5.9.8
-  - expat 2.2.9
-  - libevent 2.1.11
-  - [zeromq latest master](https://github.com/zeromq/libzmq/tree/eb54966cb9393bfd990849231ea7d10e34f6319e)
-  - dbus 1.13.12
-  - miniupnpc 2.0.20180203
-  - native_ds_storke 1.1.2
-  - native_biplist 1.0.3
-  - native_mac_alias 2.0.7
-- Support more architectures
-  - mips
-  - mipsel
-  - s390x
-  - powerppc64
-  - powerppc64le
-- new gui and artworks
-  - spinner
-- updated and refactored build process
-  - gitian build script extended
-    - can be used with latest debian or ubuntu
-    - added upload to a server over SSH
-  - fix latest dependencies
+- rebase to dash
+  - fix regtest and testnet
+  - new regtest genesis is inline with source
+  - updated dependencies
+    - QT 5.9.8
+    - expat 2.2.9
+    - libevent 2.1.11
+    - [zeromq latest master](https://github.com/zeromq/libzmq/tree/eb54966cb9393bfd990849231ea7d10e34f6319e)
+    - dbus 1.13.12
+    - miniupnpc 2.0.20180203
+    - native_ds_storke 1.1.2
+    - native_biplist 1.0.3
+    - native_mac_alias 2.0.7
+  - Support more architectures
+    - mips
+    - mipsel
+    - s390x
+    - powerppc64
+    - powerppc64le
+  - new gui and artworks
+    - spinner
+  - updated and refactored build process
+    - gitian build script extended
+      - can be used with latest debian or ubuntu
+      - added upload to a server over SSH
+      - added hashing of resulted archives
+    - fix latest dependencies
 - deployment process
   - snapcraft from bitbucket
   - snap on launchpad
   - ~~continuous build process on circleci~~
-    - ~~napcraft~~
+    - snapcraft
     - ~~deb packages~~
     - ~~rpm packages~~
     - ~~gitian~~
+    - ~~bitbucket pipelines~~
+- developers tools
+  - VSCode
+    - added spellchecker exclusion list
+    - build, debug and scripts for vscode debugger
+- all sources spellchecked
 - BLS
   - [BLS Signature Scheme](https://github.com/dashpay/dips/blob/master/dip-0006/bls_signature_scheme.md)
   - [BLS M-of-N Threshold Scheme and Distributed Key Generation](https://github.com/dashpay/dips/blob/master/dip-0006/bls_m-of-n_threshold_scheme_and_dkg.md#bls-m-of-n-threshold-scheme-and-distributed-key-generation)
