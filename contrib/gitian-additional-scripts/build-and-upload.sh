@@ -31,31 +31,26 @@ export OS="m"				            # default: lwm
 #       ./gitian-build.py --detach-sign --commit --no-commit --build --upload defaultuploadserver --uploadlogs --uploadfolder ion-binaries --hash SHA256 $SIGNER $VERSION
 #   build from tag/version (without --commit switch)
 #       ./gitian-build.py --detach-sign --no-commit --build --upload defaultuploadserver --uploadlogs --uploadfolder ion-binaries --hash SHA256 $SIGNER $VERSION
-
-rm -fR ./ion ./gitian-builder/inputs/ion* ./gitian-builder/cache/ion* ./gitian-builder/var/build.log
+rm -fR ./gitian-build.py ./ion ./gitian-builder/inputs/ion* ./gitian-builder/cache/ion* ./gitian-builder/var/build.log ./gitian.sigs
 
 # cleanup
 if [ ! -d ./ion ]; then
     git clone --recurse-submodules http://bitbucket.org/ioncoin/ion.git
+fi
+
+# copy gitian-build.py script to current dir (normally home)
+if [ -f ./ion/contrib/gitian-build.py ]; then
+    cp -f ./ion/contrib/gitian-build.py ./gitian-build.py
+    chmod +x ./gitian-build.py
 else
-    cd ion;
-    git fetch origin -f;
-    git pull -f;
-    git checkout $VERSION
-    # copy gitian-build.py script to current dir (normally home)
-    if [ -f ./contrib/gitian-build.py ]; then
-        cp -f ./contrib/gitian-build.py ../gitian-build.py
-        chmod +x ../gitian-build.py
-    else
-        echo "ERROR: Can not find gitian-build script"
-        exit
-    fi
-    cd ..
+    echo "ERROR: Can not find gitian-build script"
+    exit
 fi
 
 if [ ! -d ./ion-detached-sigs ]; then
     git clone https://bitbucket.org/ioncoin/ion-detached-sigs
 fi
+
 if [ ! -d ./gitian.sigs ]; then
     git clone https://bitbucket.org/ioncoin/gitian.sigs
 fi
