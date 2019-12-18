@@ -115,10 +115,10 @@ def build():
     if args.upload:
         print('\n'+args.upload+': Start uploading all files to uploadserver.\n')
         subprocess.check_call(['ssh', args.upload, 'mkdir', '-p', args.uploadfolder+'/'+args.version])
-        subprocess.check_call(['scp', '-r', args.uploadfolder+'/'+args.version, args.upload+'/'+args.uploadfolder+'/'+args.version])
+        subprocess.check_call(['scp', '-r', args.uploadfolder+'/'+args.version, args.upload+':'+args.uploadfolder+'/'+args.version])
     
     if args.uploadlogs:
-        subprocess.check_call(['scp', '-r', 'gitian-builder/var/*', args.upload+'/'+args.uploadfolder+'/'+args.version+'/'])
+        subprocess.check_call(['scp', '-r', 'gitian-builder/var/*', args.upload+':'+args.uploadfolder+'/'+args.version+'/'])
 
 def sign():
     global args, workdir
@@ -156,6 +156,16 @@ def sign():
         subprocess.check_call(['git', 'add', args.version+'-osx-signed/'+args.signer])
         subprocess.check_call(['git', 'commit', '-a', '-m', 'Add '+args.version+' signed binary sigs for '+args.signer])
         os.chdir(workdir)
+
+    os.chdir(workdir)
+
+    if args.upload:
+        print('\n'+args.upload+': Start uploading all files to uploadserver.\n')
+        subprocess.check_call(['ssh', args.upload, 'mkdir', '-p', args.uploadfolder+'/'+args.version])
+        subprocess.check_call(['scp', '-r', args.uploadfolder+'/'+args.version, args.upload+':'+args.uploadfolder+'/'+args.version])
+    
+    if args.uploadlogs:
+        subprocess.check_call(['scp', '-r', 'gitian-builder/var/*', args.upload+':'+args.uploadfolder+'/'+args.version+'/'])
 
 def verify():
     global args, workdir
