@@ -7,7 +7,7 @@ export SIGNER="ABD818486CBB35BB"        # Signer ID,Name, Email ... (use ID list
 export VERSION="5.0.99"       # version (tag)/branch/hash
 # optional settings
 export UPLOAD="defaultuploadserver"
-export HASH="SHA256"                    # hash new files
+export HASH="256"                    # hash new files
 export UPLOADFOLDER="ion-binaries"      # folder on UPLOAD server (will be created if not existing)
 export JOBS="6"                         # number of jobs, default: 2
 export MEMORY="8000"                    # RAM to be used, default: 2000
@@ -31,7 +31,8 @@ export OS="m"				            # default: lwm
 #       ./gitian-build.py --detach-sign --commit --no-commit --build --upload defaultuploadserver --uploadlogs --uploadfolder ion-binaries --hash SHA256 $SIGNER $VERSION
 #   build from tag/version (without --commit switch)
 #       ./gitian-build.py --detach-sign --no-commit --build --upload defaultuploadserver --uploadlogs --uploadfolder ion-binaries --hash SHA256 $SIGNER $VERSION
-rm -fR ./gitian-build.py ./ion ./gitian-builder/inputs/ion* ./gitian-builder/cache/ion* ./gitian-builder/var/build.log ./gitian.sigs
+rm -f ./gitian-build.py ./gitian-builder/var/build.log
+rm -fR ./ion ./gitian-builder/inputs/ion* ./gitian-builder/cache/ion* ./gitian.sigs
 
 # cleanup
 if [ ! -d ./ion ]; then
