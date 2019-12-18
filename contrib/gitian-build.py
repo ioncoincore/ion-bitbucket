@@ -104,17 +104,20 @@ def build():
         os.chdir(workdir)
 
     os.chdir('ion-binaries/'+args.version)
+    subprocess.check_call(['sha256sum', '*', '>', '../'args.hash+'SUMS'])
+
+    subprocess.check_call(['mv', '../'args.hash+'SUMS', './'args.hash+'SUMS'])
 
     if args.hash == 'SHA1':
-        subprocess.check_call(['gpg', '--digest-algo', 'sha1', '--clearsign', args.hash+'SUMS', args.signer])
+        subprocess.check_call(['gpg', '-u', args.signer,'--digest-algo', 'sha1', '--clearsign', args.hash+'SUMS'])
 
     if args.hash == 'SHA256':
-        subprocess.check_call(['gpg', '--digest-algo', 'sha256', '--clearsign', args.hash+'SUMS', args.signer])
+        subprocess.check_call(['gpg', '--digest-algo', 'sha256', '--clearsign', args.hash+'SUMS'])
 
     if args.hash == 'SHA512':
-        subprocess.check_call(['gpg', '--digest-algo', 'sha512', '--clearsign', args.hash+'SUMS', args.signer])
+        subprocess.check_call(['gpg', '--digest-algo', 'sha512', '--clearsign', args.hash+'SUMS'])
 
-    subprocess.check_call(['rm', '-f', args.hash+'SUMS', args.signer])
+    subprocess.check_call(['rm', '-f', args.hash+'SUMS'])
 
     os.chdir(workdir)
 
