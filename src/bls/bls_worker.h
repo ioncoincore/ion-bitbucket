@@ -82,7 +82,7 @@ public:
     // Inputs are in the following form:
     //   [a, b, c, d],
     // The result is simply a+b+c+d
-    // Aggregation is paralellized by splitting up the input vector into multiple batches and then aggregating the individual batch results
+    // Aggregation is parallelized by splitting up the input vector into multiple batches and then aggregating the individual batch results
     void AsyncAggregateSecretKeys(const BLSSecretKeyVector& secKeys,
                                   size_t start, size_t count, bool parallel,
                                   std::function<void(const CBLSSecretKey&)> doneCallback);
