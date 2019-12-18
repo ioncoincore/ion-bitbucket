@@ -98,7 +98,7 @@ def build():
         os.chdir('ion-binaries/'+args.version)
         subprocess.check_call('sha'+args.hash+'sum ion* > SHA'+args.hash+'SUMS', shell=True)
         subprocess.check_call('gpg -u '+args.signer+' --digest-algo sha'+args.hash+' --clearsign SHA'+args.hash+'SUMS', shell=True)
-        subprocess.check_call('rm', '-f', '/SHA'+args.hash+'SUMS', shell=True)
+        subprocess.check_call('rm', '-f', 'SHA'+args.hash+'SUMS', shell=True)
 
     os.chdir(workdir)
 
