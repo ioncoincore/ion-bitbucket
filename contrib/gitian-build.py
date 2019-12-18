@@ -92,21 +92,8 @@ def build():
         subprocess.check_call('mv build/out/ioncore-*-osx-unsigned.tar.gz inputs/', shell=True)
         subprocess.check_call('mv build/out/ioncore-*.tar.gz build/out/ioncore-*.dmg ../ion-binaries/'+args.version, shell=True)
 
-    os.chdir(workdir)
-
-    if args.commit_files:
-        print('\nCommitting '+args.version+' Unsigned Sigs\n')
-        os.chdir('gitian.sigs')
-        subprocess.check_call(['git', 'add', args.version+'-linux/'+args.signer])
-        subprocess.check_call(['git', 'add', args.version+'-win-unsigned/'+args.signer])
-        subprocess.check_call(['git', 'add', args.version+'-osx-unsigned/'+args.signer])
-        subprocess.check_call(['git', 'commit', '-m', 'Add '+args.version+' unsigned sigs for '+args.signer])
-        os.chdir(workdir)
-
-    os.chdir('ion-binaries/'+args.version)
-
-    subprocess.check_call(['sha256sum', '*', '>', '../'+args.hash+'SUMS'])
-    subprocess.check_call(['mv', '../'+args.hash+'SUMS', './'+args.hash+'SUMS'])
+    os.chdir('../ion-binaries/'+args.version)
+    subprocess.check_call(['sha256sum', '*.*', '>', './'+args.hash+'SUMS'])
 
     if args.hash == 'SHA1':
         subprocess.check_call(['gpg', '-u', args.signer,'--digest-algo', 'sha1', '--clearsign', args.hash+'SUMS'])
@@ -118,6 +105,17 @@ def build():
         subprocess.check_call(['gpg', '--digest-algo', 'sha512', '--clearsign', args.hash+'SUMS'])
 
     subprocess.check_call(['rm', '-f', args.hash+'SUMS'])
+
+    os.chdir(workdir)
+
+    if args.commit_files:
+        print('\nCommitting '+args.version+' Unsigned Sigs\n')
+        os.chdir('gitian.sigs')
+        subprocess.check_call(['git', 'add', args.version+'-linux/'+args.signer])
+        subprocess.check_call(['git', 'add', args.version+'-win-unsigned/'+args.signer])
+        subprocess.check_call(['git', 'add', args.version+'-osx-unsigned/'+args.signer])
+        subprocess.check_call(['git', 'commit', '-m', 'Add '+args.version+' unsigned sigs for '+args.signer])
+        os.chdir(workdir)
 
     os.chdir(workdir)
 
@@ -147,6 +145,20 @@ def sign():
         subprocess.check_call(['bin/gbuild', '-i', '--commit', 'signature='+args.commit, '../ion/contrib/gitian-descriptors/gitian-osx-signer.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-signed', '--destination', '../gitian.sigs/', '../ion/contrib/gitian-descriptors/gitian-osx-signer.yml'])
         subprocess.check_call('mv build/out/ion-osx-signed.dmg ../ion-binaries/'+args.version+'/ion-'+args.version+'-osx.dmg', shell=True)
+
+    os.chdir('../ion-binaries/'+args.version)
+    subprocess.check_call(['sha256sum', '*.*', '>', './'+args.hash+'SUMS'])
+
+    if args.hash == 'SHA1':
+        subprocess.check_call(['gpg', '-u', args.signer,'--digest-algo', 'sha1', '--clearsign', args.hash+'SUMS'])
+
+    if args.hash == 'SHA256':
+        subprocess.check_call(['gpg', '--digest-algo', 'sha256', '--clearsign', args.hash+'SUMS'])
+
+    if args.hash == 'SHA512':
+        subprocess.check_call(['gpg', '--digest-algo', 'sha512', '--clearsign', args.hash+'SUMS'])
+
+    subprocess.check_call(['rm', '-f', args.hash+'SUMS'])
 
     os.chdir(workdir)
 
