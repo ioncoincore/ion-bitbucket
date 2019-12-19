@@ -135,10 +135,10 @@ def sign():
 
     if args.macos:
         print('\nSigning ' + args.version + ' MacOS')
-        subprocess.check_call('cp inputs/ion-' + args.version + '-osx-unsigned.tar.gz inputs/ion-osx-unsigned.tar.gz', shell=True)
+        subprocess.check_call('cp inputs/ioncore-' + args.version + '-osx-unsigned.tar.gz inputs/ioncore-osx-unsigned.tar.gz', shell=True)
         subprocess.check_call(['bin/gbuild', '-i', '--commit', 'signature='+args.commit, '../ion/contrib/gitian-descriptors/gitian-osx-signer.yml'])
         subprocess.check_call(['bin/gsign', '-p', args.sign_prog, '--signer', args.signer, '--release', args.version+'-osx-signed', '--destination', '../gitian.sigs/', '../ion/contrib/gitian-descriptors/gitian-osx-signer.yml'])
-        subprocess.check_call('mv build/out/ion-osx-signed.dmg ../ion-binaries/'+args.version+'/ion-'+args.version+'-osx.dmg', shell=True)
+        subprocess.check_call('mv build/out/ioncore-osx-signed.dmg ../ion-binaries/'+args.version+'/ioncore-'+args.version+'-osx.dmg', shell=True)
 
     os.chdir(workdir)
 
