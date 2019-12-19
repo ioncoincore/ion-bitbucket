@@ -2,16 +2,22 @@
 cd $HOME
 
 # mandatory settings
-export SIGNER="ABD818486CBB35BB"        # Signer ID,Name, Email ... (use ID listed in gpg --list-keys)
+export SIGNER="E3FBDA7F43638C28"        # Signer ID,Name, Email ... (use ID listed in gpg --list-keys)
 #export VERSION="master"                # version (tag)/branch/hash
 export VERSION="5.0.99"       # version (tag)/branch/hash
 # optional settings
-export UPLOAD="defaultuploadserver"
+export UPLOADSERVER="defaultuploadserver"
 export HASH="256"                    # hash new files
 export UPLOADFOLDER="ion-binaries"      # folder on UPLOAD server (will be created if not existing)
 export JOBS="6"                         # number of jobs, default: 2
 export MEMORY="8000"                    # RAM to be used, default: 2000
-export OS="m"				            # default: lwm
+export OS="lwm"				            # default: lwm
+
+# get more info about gitian-build options/syntax with gitian-build.py --help
+# usage: gitian-build.py [-h] [-c] [-p] [-u URL] [-v] [-b] [-s] [-B] [-o OS]
+#                        [-j JOBS] [-m MEMORY] [-k] [-d] [-S] [-D] [-n] [-z]
+#                        [-x UPLOADSERVER] [-l] [-f UPLOADFOLDER] [-y HASH]
+#                        [signer] [version]
 
 # To setup run and reboot:
 #   ./gitian-build.py --setup ${SIGNER} ${VERSION}
@@ -68,10 +74,10 @@ else
 fi
 
 # from branch, with upload
-#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --commit --no-commit --build --upload $UPLOAD --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH $SIGNER $VERSION
+#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --commit --no-commit --build --upload --uploadserver $UPLOADSERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH $SIGNER $VERSION
 
 # from tag, with upload
-#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --upload $UPLOAD --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH $SIGNER $VERSION
+#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --upload --uploadserver $UPLOADSERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH $SIGNER $VERSION
 
 # from tag, no upload
 ./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --hash $HASH $SIGNER $VERSION
