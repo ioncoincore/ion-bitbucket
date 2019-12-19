@@ -113,12 +113,12 @@ def build():
     os.chdir(workdir)
 
     if args.upload:
-        print('\n'+args.uploadserver+': Start uploading all files to uploadserver.\n')
-        subprocess.check_call(['ssh', args.uploadserver, 'mkdir', '-p', args.uploadfolder+'/'+args.version])
-        subprocess.check_call(['scp', '-r', args.uploadfolder+'/'+args.version, args.uploadserver+':'+args.uploadfolder+'/'+args.version])
+        print('\n'+args.server+': Start uploading all files to uploadserver.\n')
+        subprocess.check_call(['ssh', args.server, 'mkdir', '-p', args.uploadfolder+'/'+args.version])
+        subprocess.check_call(['scp', '-r', args.uploadfolder+'/'+args.version, args.server+':'+args.uploadfolder+'/'+args.version])
     
     if args.uploadlogs and args.upload:
-        subprocess.check_call(['scp', '-r', 'gitian-builder/var/*', args.uploadserver+':'+args.uploadfolder+'/'+args.version+'/'])
+        subprocess.check_call(['scp', '-r', 'gitian-builder/var/*', args.server+':'+args.uploadfolder+'/'+args.version+'/'])
 
 def sign():
     global args, workdir
@@ -160,12 +160,12 @@ def sign():
     os.chdir(workdir)
 
     if args.upload:
-        print('\n'+args.uploadserver+': Start uploading all files to uploadserver.\n')
-        subprocess.check_call(['ssh', args.uploadserver, 'mkdir', '-p', args.uploadfolder+'/'+args.version])
-        subprocess.check_call(['scp', '-r', args.uploadfolder+'/'+args.version, args.uploadserver+':'+args.uploadfolder+'/'+args.version])
+        print('\n'+args.server+': Start uploading all files to uploadserver.\n')
+        subprocess.check_call(['ssh', args.server, 'mkdir', '-p', args.uploadfolder+'/'+args.version])
+        subprocess.check_call(['scp', '-r', args.uploadfolder+'/'+args.version, args.server+':'+args.uploadfolder+'/'+args.version])
     
     if args.uploadlogs and args.upload:
-        subprocess.check_call(['scp', '-r', 'gitian-builder/var/*', args.uploadserver+':'+args.uploadfolder+'/'+args.version+'/'])
+        subprocess.check_call(['scp', '-r', 'gitian-builder/var/*', args.server+':'+args.uploadfolder+'/'+args.version+'/'])
 
 def verify():
     global args, workdir
@@ -219,8 +219,8 @@ def main():
     parser.add_argument('-S', '--setup', action='store_true', dest='setup', help='Set up the Gitian building environment. Only works on Debian-based systems (Ubuntu, Debian)')
     parser.add_argument('-D', '--detach-sign', action='store_true', dest='detach_sign', help='Create the assert file for detached signing. Will not commit anything.')
     parser.add_argument('-n', '--no-commit', action='store_false', dest='commit_files', help='Do not commit anything to git')
-    parser.add_argument('-z', '--no-upload',  action='store_false', dest='upload', help='If upload is enabled, files will be uploaded to defined server')
-    parser.add_argument('-x', '--uploadserver', dest='uploadserver', default='defaultuploadserver', help='Use scp to upload file to the server, defines in .ssh as uploadserver, pass serverIp and path to ssh private key. Default is which is configured in your ~/.ssh/config file')
+    parser.add_argument('-z', '--no-upload',  action='store_false', dest='upload', help='If upload is enabled, files will be uploaded to defined server. If not specified, upload is enabled by default')
+    parser.add_argument('-x', '--server', dest='server', default='defaultuploadserver', help='Use scp to upload file to the server, defines in .ssh as uploadserver, pass serverIp and path to ssh private key. Default is which is configured in your ~/.ssh/config file')
     parser.add_argument('-l', '--uploadlogs', action='store_true', dest='uploadlogs', help='Upload logs and scripts (var folder)')
     parser.add_argument('-f', '--uploadfolder', dest='uploadfolder', default='ion-binaries', help='Upload folder on uploadserver')
     parser.add_argument('-y', '--hash', dest='hash', default='256', help='Create SHA hashes, choose beetwen SHA1, SHA256, SHA512')
