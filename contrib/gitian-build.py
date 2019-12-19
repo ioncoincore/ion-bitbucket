@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 # Copyright (c) 2018-2019 The Bitcoin Core developers
-# Copyright (c) 2018 The Ion Core Developers
+# Copyright (c) 2018-2019 The Ion Core Developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 # how to use and guide: https://github.com/ioncoincore/docs/blob/master/gitian-building.md
 # Setup: gitian-build.py --setup --build $SIGNER $VERSION 192.168.1.37 SHA256 ion-binaries
-# usage: gitian-build.py [-h] [-c] [-p] [-u URL] [-v] [-b] [-s] [-B] [-o OS]
-#                       [-j JOBS] [-m MEMORY] [-k] [-d] [-S] [-D] [-n]
-#                       [signer] [version] upload uploadlogs uploadfolder hash
+#usage: gitian-build.py [-h] [-c] [-p] [-u URL] [-v] [-b] [-s] [-B] [-o OS]
+#                       [-j JOBS] [-m MEMORY] [-k] [-d] [-S] [-D] [-n] [-z]
+#                       [-x SERVER] [-l] [-f UPLOADFOLDER] [-y HASH]
+#                       [signer] [version]
 import argparse
 import os
 import subprocess
