@@ -52,11 +52,6 @@ If you're building on Ubuntu 17.04 or later, run these two commands, selecting t
 to work around issues with mingw-w64. See issue [8732](https://github.com/bitcoin/bitcoin/issues/8732) for more information.
 This also fixes linker issues related to std::thread and other threading related standard C++ libraries.
 
-```bash
-sudo update-alternatives --config x86_64-w64-mingw32-g++
-sudo update-alternatives --config x86_64-w64-mingw32-gcc
-```
-
 For Windows 32bit, install:
 
 ```bash
@@ -66,9 +61,18 @@ sudo apt-get install g++-mingw-w64-i686
 If you're building on Ubuntu 17.04 or later, run these two commands, selecting the 'posix' variant for both,
 to fix linker issues related to std::thread and other threading related standard C++ libraries.
 
+for win 64 bit:
+
 ```bash
 sudo update-alternatives --config x86_64-w64-mingw32-g++
 sudo update-alternatives --config x86_64-w64-mingw32-gcc
+```
+
+for win 64bit:
+
+```bash
+sudo update-alternatives --config i686-w64-mingw32-g++
+sudo update-alternatives --config i686-w64-mingw32-gcc
 ```
 
 Before building for Windows 32bit or 64bit, run
