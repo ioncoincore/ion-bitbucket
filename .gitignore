@@ -196,3 +196,7 @@ depends/config.sub
 dist/
 dpi36.background.tiff
 dpi72.background.tiff
+
+# test builds and binaries
+ion-binaries/
+ioncore-binaries/
