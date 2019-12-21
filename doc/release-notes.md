@@ -51,6 +51,7 @@ ______
   - fix regtest and testnet
   - new regtest genesis is inline with source
   - updated dependencies
+    - boost 1.70
     - QT 5.9.8
     - expat 2.2.9
     - libevent 2.1.11
@@ -60,6 +61,16 @@ ______
     - native_ds_storke 1.1.2
     - native_biplist 1.0.3
     - native_mac_alias 2.0.7
+    - X11
+      - libSM 1.2.3
+      - libX11 1.6.9
+      - libICE 1.0.10
+      - libXau 1.0.9
+      - libxcb 1.13
+      - libXext 1.3.4
+      - xcb_proto 1.13
+      - xproto 7.0.31
+      - xtrans 1.4.0
   - Support more architectures
     - mips
     - mipsel
