@@ -24,6 +24,7 @@
     - [Contributing back upstream](#contributing-back-upstream)
   - [Git and GitHub tips](#git-and-github-tips)
   - [RPC interface guidelines](#rpc-interface-guidelines)
+  - [build with google cloud api](#build-with-google-cloud-api)
 
 Developer Notes
 ===============
@@ -715,3 +716,18 @@ A few guidelines for introducing and reviewing new RPC interfaces:
   - *Rationale*: as well as complicating the implementation and interfering
     with the introduction of multi-wallet, wallet and non-wallet code should be
     separated to avoid introducing circular dependencies between code units.
+
+## build with google cloud api
+
+1. Start gitian instance
+  ```bash
+  gcloud compute instances start gitian-ubuntu-bionic-stable --zone us-west1-b
+  ```
+1. SSH into your vm
+   ```bash
+   ssh gitian-ubuntu-bionic-stable
+   ```
+1. Build for all architectures 
+   ```bash
+   ./build-and-upload.sh
+   ```
