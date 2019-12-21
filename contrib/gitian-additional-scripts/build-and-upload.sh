@@ -38,6 +38,9 @@ export OS="lwm"				            # default: lwm
 #       ./gitian-build.py --detach-sign --commit --no-commit --build --upload defaultuploadserver --uploadlogs --uploadfolder ion-binaries --hash SHA256 $SIGNER $VERSION
 #   build from tag/version (without --commit switch)
 #       ./gitian-build.py --detach-sign --no-commit --build --upload defaultuploadserver --uploadlogs --uploadfolder ion-binaries --hash SHA256 $SIGNER $VERSION
+if [ -z ${1} ]; then echo "SIGNER not passed, using: $SIGNER"; else SIGNER=$1 && echo "SIGNER not passed, using: $SIGNER"; fi
+if [ -z ${2} ]; then echo "SIGNER not passed, using: $VERSION"; else VERSION=$1 && echo "VERSION not passed, using: $VERSION"; fi
+
 rm -f ./gitian-build.py ./gitian-builder/var/build.log
 rm -fR ./ion ./gitian-builder/inputs/ion* ./gitian-builder/cache/ion* ./gitian.sigs
 
@@ -74,14 +77,31 @@ else
     cd ..
 fi
 
-# from branch, with upload
-#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --commit --no-commit --build --server $SERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH --previousver $PREVIOUSVER $SIGNER $VERSION
+# if vars are not being passed
+if [ -z ${3} ]; then
+    echo "Gitian build parameters not passed, using script default: $VERSION"
+    echo "SIGNER=$SIGNER"        # Signer ID,Name, Email ... (use ID listed in gpg --list-keys)
+    echo "VERSION=$VERSION"       # version (tag)/branch/hash
+    echo "PREVIOUSVER=$PREVIOUSVER"
+    echo "SERVER=$SERVER"
+    echo "HASH=$HASH"                    # hash new files
+    echo "UPLOADFOLDER=$UPLOADFOLDER"      # folder on UPLOAD server (will be created if not existing)
+    echo "JOBS=$JOBS"                         # number of jobs, default: 2
+    echo "MEMORY=$MEMORY"                    # RAM to be used, default: 2000
+    echo "OS=$OS"				            # default: lwm
 
-# from tag, with upload
-#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --server $SERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH --previousver $PREVIOUSVER $SIGNER $VERSION
+    # from branch, with upload
+    #./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --commit --no-commit --build --server $SERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH --previousver $PREVIOUSVER $SIGNER $VERSION
 
-# sign from tag, with upload
-#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --sign --server $SERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH --previousver $PREVIOUSVER $SIGNER $VERSION
+    # from tag, with upload
+    #./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --server $SERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH --previousver $PREVIOUSVER $SIGNER $VERSION
 
-# from tag, no upload
-./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --no-upload --hash $HASH --previousver $PREVIOUSVER $SIGNER $VERSION
+    # sign from tag, with upload
+    #./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --sign --server $SERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH --previousver $PREVIOUSVER $SIGNER $VERSION
+
+    # from tag, no upload
+    ./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --no-upload --hash $HASH --previousver $PREVIOUSVER $SIGNER $VERSION
+else
+    echo "BUILD PARAMETERS: ./gitian-build.py $3 $1 $2"
+    ./gitian-build.py $3 $SIGNER $VERSION
+fi
