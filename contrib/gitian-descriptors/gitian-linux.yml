@@ -47,6 +47,7 @@ packages:
 - "cmake"
 - "libxkbcommon0"
 - "linux-libc-dev"
+- "doxygen"
 remotes:
 - "url": "https://bitbucket.org/ioncoin/ion.git"
   "dir": "ion"
