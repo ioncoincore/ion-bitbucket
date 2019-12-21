@@ -713,6 +713,7 @@
         "pruneblockchain",
         "pruneheight",
         "psabi",
+        "psam",
         "pubkey",
         "publicbt",
         "pushd",
