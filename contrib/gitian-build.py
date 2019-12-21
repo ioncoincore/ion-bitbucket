@@ -168,10 +168,36 @@ def logsupload():
 
     if args.uploadlogs:
         print('\n'+args.server+': Start uploading logs to the uploadserver.\n')
-        subprocess.check_call(['ssh', args.server, 'mkdir', '-p', args.uploadfolder+'/'+args.version+'logs'])
-        subprocess.check_call(['scp', '-r', 'gitian-builder/var', args.server+':'+args.uploadfolder+'/'+args.version])
+        subprocess.check_call(['ssh', args.server, 'mkdir', '-p', args.uploadfolder+'/'+args.version+'/logs'])
+        subprocess.check_call(['scp', '-r', 'gitian-builder/var', args.server+':'+args.uploadfolder+'/'+args.version+'/logs'])
     
+    if args.createreleasenotes:
+        print('\n'+args.server+': Start uploading release notes to the uploadserver.\n')
+        subprocess.check_call(['ssh', args.server, 'mkdir', '-p', args.uploadfolder+'/'+args.version+'/release-notes'])
+        subprocess.check_call(['scp', '-r', args.uploadfolder+'/'+args.version+'/release-notes', args.server+':'+args.uploadfolder+'/'+args.version+'/release-notes'])
+
     os.chdir(workdir)
+
+def releasenotes():
+    os.chdir(workdir)
+
+    if not os.path.isdir(args.uploadfolder+'/'+args.version+'/release-notes'):
+        subprocess.check_call('mkdir -p '+args.uploadfolder+'/'+args.version+'/release-notes', shell=True)
+
+    os.chdir('ion')
+    
+    if args.previousver:
+        # Create shortlog notes
+        subprocess.check_call('git shortlog --no-merges v'+args.previousver+'..v'+args.version+' > ../ion-binaries/'+args.version+'/release-notes/shortlog_v'+args.previousver+'..v'+args.version+'.md', shell=True)
+        # Create changes notes
+        subprocess.check_call('git log --oneline v'+args.previousver+'..v'+args.version+' > ../ion-binaries/'+args.version+'/release-notes/changes_'+args.previousver+'-v'+args.version+'.md', shell=True)
+        # Create authors notes
+        subprocess.check_call('git log --format='"'- %aN' v'+args.previousver+'..v'+args.version+' | sort -fiu > ../ion-binaries/"+args.version+'/release-notes/authors_'+args.previousver+'-v'+args.version+'.md', shell=True)
+        # Create detailed notes
+        subprocess.check_call('git log v'+args.previousver+'..v'+args.version+' --pretty="format:%at %C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nDate: %aD\n\n %s\n" | sort -r | cut -d" " -f2- | sed -e "s/\\\n/\\`echo -e '+"'"+"\n\r'`/g"+'" | tr -d '+"'\15\32'"+' | less -R  > ../ion-binaries/'+args.version+'/release-notes/detailedlog_'+args.previousver+'-v'+args.version+'.md', shell=True)
+
+    os.chdir(workdir)
+
 
 def verify():
     global args, workdir
@@ -230,6 +256,8 @@ def main():
     parser.add_argument('-l', '--uploadlogs', action='store_true', dest='uploadlogs', help='Upload logs and scripts (var folder)')
     parser.add_argument('-f', '--uploadfolder', dest='uploadfolder', default='ion-binaries', help='Upload folder on uploadserver')
     parser.add_argument('-y', '--hash', dest='hash', default='256', help='Create SHA hashes, choose beetwen SHA1, SHA256, SHA512')
+    parser.add_argument('-r', '--createreleasenotes', action='store_true', dest='createreleasenotes', help='Create release notes and changes to previous version, previous version variable must be set')
+    parser.add_argument('-P', '--previousver', dest='previousver', default='unset', help='Previous version for release notes, authors etc.')
     parser.add_argument('signer', nargs='?', help='GPG signer to sign each build assert file')
     parser.add_argument('version', nargs='?', help='Version number, commit, or branch to build. If building a commit or branch, the -c option must be specified')
     args = parser.parse_args()
@@ -300,6 +328,7 @@ def main():
         subprocess.check_call(['git', 'fetch', args.url, 'refs/pull/'+args.version+'/merge'])
         args.commit = subprocess.check_output(['git', 'show', '-s', '--format=%H', 'FETCH_HEAD'], universal_newlines=True, encoding='utf8').strip()
         args.version = 'pull-' + args.version
+        subprocess.check_call(['git', 'submodule', 'update', '--init', '--recursive'])
     print(args.commit)
     subprocess.check_call(['git', 'fetch'])
     subprocess.check_call(['git', 'checkout', args.commit])
@@ -327,6 +356,9 @@ def main():
 
     if args.uploadlogs:
         createhashes()
+
+    if args.createreleasenotes:
+        releasenotes()
 
     if args.upload:
         sshupload()

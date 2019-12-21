@@ -5,6 +5,7 @@ cd $HOME
 export SIGNER="E3FBDA7F43638C28"        # Signer ID,Name, Email ... (use ID listed in gpg --list-keys)
 #export VERSION="master"                # version (tag)/branch/hash
 export VERSION="5.0.99"       # version (tag)/branch/hash
+export PREVIOUSVER="4.0.00"
 # optional settings
 export SERVER="defaultuploadserver"
 export HASH="256"                    # hash new files
@@ -74,13 +75,13 @@ else
 fi
 
 # from branch, with upload
-#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --commit --no-commit --build --server $SERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH $SIGNER $VERSION
+#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --commit --no-commit --build --server $SERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH --previousver $PREVIOUSVER $SIGNER $VERSION
 
 # from tag, with upload
-#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --server $SERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH $SIGNER $VERSION
+#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --server $SERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH --previousver $PREVIOUSVER $SIGNER $VERSION
 
 # sign from tag, with upload
-#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --sign --server $SERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH $SIGNER $VERSION
+#./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --sign --server $SERVER --uploadlogs --uploadfolder $UPLOADFOLDER --hash $HASH --previousver $PREVIOUSVER $SIGNER $VERSION
 
 # from tag, no upload
-./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --no-upload --hash $HASH $SIGNER $VERSION
+./gitian-build.py --os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --no-upload --hash $HASH --previousver $PREVIOUSVER $SIGNER $VERSION
