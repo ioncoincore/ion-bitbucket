@@ -182,3 +182,6 @@ ___
 
 
 ### 5.0.99 Change log
+ckti <ckti@i2pmail.org> (1):
+
+- `commit to be added` CircleCI is now being used for continuous integration
