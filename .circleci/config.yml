@@ -25,7 +25,7 @@ jobs:
             # univalue
             git remote add -f univalue https://github.com/jgarzik/univalue
             # snap
-            git remote add -f snap  https://bitbucket.org/ioncoin/ion
+            git remote add -f snap  https://github.com/ioncoincore/ion
             git rm -rf src/leveldb
             git rm -rf src/secp256k1
             git rm -rf src/crypto/ctaes
