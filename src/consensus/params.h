@@ -153,8 +153,10 @@ struct Params {
     int POSStartHeight;
     int MidasStartHeight;
     int DGWStartHeight;
+    int DGWDifficultyStartHeight;
     int DGWStartTime;
     int ATPStartHeight;
+    int POSPOWStartHeight;
     /**
      * Minimum blocks including miner confirmation of the total of nMinerConfirmationWindow blocks in a retargeting period,
      * (nPowTargetTimespan / nPowTargetSpacing) which is also used for BIP9 deployments.
@@ -176,6 +178,9 @@ struct Params {
     int64_t DifficultyAdjustmentInterval() const { return nPowTargetTimespan / nPowTargetSpacing; }
     uint256 nMinimumChainWork;
     uint256 defaultAssumeValid;
+
+    /** ION specific consensus parameters */
+    int nCoinbaseMaturity;
 
     /** Proof of stake parameters */
     uint256 posLimit;
