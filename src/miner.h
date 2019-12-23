@@ -6,6 +6,7 @@
 #ifndef BITCOIN_MINER_H
 #define BITCOIN_MINER_H
 
+#include "key.h"
 #include "primitives/block.h"
 #include "txmempool.h"
 
@@ -18,6 +19,7 @@ class CBlockIndex;
 class CChainParams;
 class CConnman;
 class CScript;
+class CStakeInput;
 
 namespace Consensus { struct Params; };
 
@@ -167,7 +169,8 @@ public:
     BlockAssembler(const CChainParams& params, const Options& options);
 
     /** Construct a new block template with coinbase to scriptPubKeyIn */
-    std::unique_ptr<CBlockTemplate> CreateNewBlock(const CScript& scriptPubKeyIn);
+    std::unique_ptr<CBlockTemplate> CreateNewBlock(const CScript& scriptPubKeyIn,
+            std::shared_ptr<CMutableTransaction> pCoinstakeTx = nullptr, std::shared_ptr<CStakeInput> coinstakeInput = nullptr);
 
 private:
     // utility functions
@@ -175,6 +178,9 @@ private:
     void resetBlock();
     /** Add a tx to the block */
     void AddToBlock(CTxMemPool::txiter iter);
+
+    /** If the coinstake output is above a threshold, split the stake reward in two outputs */
+    bool SplitCoinstakeVouts(std::shared_ptr<CMutableTransaction> coinstakeTx);
 
     // Methods for how to add transactions to a block.
     /** Add transactions based on feerate including unconfirmed ancestors
