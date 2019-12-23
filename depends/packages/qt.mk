@@ -123,7 +123,7 @@ $(package)_config_opts_riscv64_linux = -platform linux-g++ -xplatform ion-linux-
 $(package)_config_opts_s390x_linux += -platform linux-g++ -xplatform ion-linux-g++
 
 $(package)_config_opts_mingw32 = -no-opengl
-$(package)_config_opts_mingw32 += -no-dbus
+#$(package)_config_opts_mingw32 += -no-dbus
 $(package)_config_opts_mingw32 += -xplatform win32-g++
 $(package)_config_opts_mingw32 += -device-option CROSS_COMPILE="$(host)-"
 
