@@ -200,3 +200,6 @@ dpi72.background.tiff
 # test builds and binaries
 ion-binaries/
 ioncore-binaries/
+
+# metadata for console
+metadata.*.meta
