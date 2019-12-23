@@ -557,7 +557,20 @@ bool AcceptPOSParameters(const CBlock& block, CValidationState& state, CBlockInd
     if (!pindexNew->SetStakeEntropyBit(pindexNew->GetStakeEntropyBit()))
         return state.Invalid(error("%s : SetStakeEntropyBit() failed", __func__));
 
-    if (pindexNew->nHeight < Params().GetConsensus().nBlockStakeModifierV2) {
+    if (pindexNew->nHeight >= Params().GetConsensus().POSPOWStartHeight) {
+        // compute v2 stake modifier
+        if (block.IsProofOfStake()) {
+            ComputeStakeModifierV2(pindexNew, block.vtx[1]->vin[0].prevout.hash);
+        } else {
+            ComputeStakeModifierV2(pindexNew, block.GetHash());
+        }
+    } else if (pindexNew->nHeight >= Params().GetConsensus().nBlockStakeModifierV2) {
+        // compute v2 stake modifier
+        if (block.IsProofOfStake()) {
+            ComputeStakeModifierV2(pindexNew, block.vtx[1]->vin[0].prevout.hash);
+        }
+    } else {
+        // compute v1 stake modifier
         uint64_t nStakeModifier = 0;
         bool fGeneratedStakeModifier = false;
         if (!ComputeNextStakeModifier(pindexNew->pprev, nStakeModifier, fGeneratedStakeModifier))
@@ -566,9 +579,6 @@ bool AcceptPOSParameters(const CBlock& block, CValidationState& state, CBlockInd
         pindexNew->nStakeModifierChecksum = GetStakeModifierChecksum(pindexNew);
         if (!CheckStakeModifierCheckpoints(pindexNew->nHeight, pindexNew->nStakeModifierChecksum))
             return state.DoS(20, error("%s : Rejected by stake modifier checkpoint height=%d, modifier=%sn", pindexNew->nHeight, std::to_string(nStakeModifier), __func__));
-    } else {
-        // compute v2 stake modifier
-        ComputeStakeModifierV2(pindexNew, block.vtx[1]->vin[0].prevout.hash);
     }
     return true;
 }

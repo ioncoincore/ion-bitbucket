@@ -182,7 +182,7 @@ unsigned int GetNextWorkRequiredBTC(const CBlockIndex* pindexLast, const CBlockH
 
 unsigned int static GetNextWorkRequiredPivx(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params, const bool fProofOfStake)
 {
-    if (Params().NetworkIDString() == CBaseChainParams::REGTEST)
+    if (params.fPowNoRetargeting)
         return pindexLast->nBits;
 
     /* current difficulty formula, ion - DarkGravity v3, written by Evan Duffield - evan@ionpay.io */
@@ -196,12 +196,39 @@ unsigned int static GetNextWorkRequiredPivx(const CBlockIndex* pindexLast, const
     arith_uint256 PastDifficultyAverage;
     arith_uint256 PastDifficultyAveragePrev;
 
-    if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || BlockLastSolved->nHeight < params.DGWStartHeight + PastBlocksMin) {
+    if (BlockLastSolved == NULL || BlockLastSolved->nHeight == 0 || BlockLastSolved->nHeight < params.DGWDifficultyStartHeight + PastBlocksMin) {
         return UintToArith256(params.powLimit).GetCompact();
     }
 
     arith_uint256 bnTargetLimit = fProofOfStake ? UintToArith256(params.posLimit) : UintToArith256(params.powLimit);
     if (pindexLast->nHeight > params.POSStartHeight) {
+        int64_t nTargetSpacing = 60;
+        int64_t nTargetTimespan = 60 * 40;
+
+        int64_t nActualSpacing = 0;
+        if (pindexLast->nHeight != 0)
+            nActualSpacing = pindexLast->GetBlockTime() - pindexLast->pprev->GetBlockTime();
+
+        if (nActualSpacing < 0)
+            nActualSpacing = 1;
+
+        // ppcoin: target change every block
+        // ppcoin: retarget with exponential moving toward target spacing
+        arith_uint256 bnNew;
+        bnNew.SetCompact(pindexLast->nBits);
+
+        int64_t nInterval = nTargetTimespan / nTargetSpacing;
+        bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
+        bnNew /= ((nInterval + 1) * nTargetSpacing);
+
+        if (bnNew <= 0 || bnNew > bnTargetLimit)
+            bnNew = bnTargetLimit;
+
+        return bnNew.GetCompact();
+    } else if (Params().NetworkIDString() == CBaseChainParams::TESTNET && pindexLast->nHeight + 3 > params.POSStartHeight) {
+        // Exception for current testnet; remove when starting a new testnet
+        bnTargetLimit = UintToArith256(params.posLimit);
+
         int64_t nTargetSpacing = 60;
         int64_t nTargetTimespan = 60 * 40;
 
@@ -289,7 +316,7 @@ void avgRecentTimestamps(const CBlockIndex* pindexLast, int64_t *avgOf5, int64_t
   for (blockoffset = 0; blockoffset < 17; blockoffset++)
   {
     oldblocktime = blocktime;
-    if (pindexLast)
+    if (pindexLast && pindexLast->pprev)
     {
       pindexLast = pindexLast->pprev;
       blocktime = pindexLast->GetBlockTime();
@@ -419,8 +446,11 @@ unsigned int static GetNextWorkRequiredMidas(const CBlockIndex* pindexLast, cons
 
 unsigned int static GetNextWorkRequiredOrig(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params, const bool fProofOfStake)
 {
-    uint256 bnTargetLimit = fProofOfStake ? uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
-        : uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+    if (params.fPowNoRetargeting)
+        return pindexLast->nBits;
+
+    uint256 bnTargetLimit = fProofOfStake && Params().NetworkIDString() == CBaseChainParams::MAIN ?
+                uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff") : params.powLimit;
 
     if (pindexLast == NULL)
         return UintToArith256(bnTargetLimit).GetCompact(); // genesis block
@@ -460,7 +490,7 @@ unsigned int static GetNextWorkRequiredOrig(const CBlockIndex* pindexLast, const
     return bnNew.GetCompact();
 }
 
-unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params)
+unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params, const bool fPos)
 {
     bool fProofOfStake;
     const int nHeight = pindexLast->nHeight + 1;
@@ -521,7 +551,9 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHead
     }
 
     // Most recent algo first
-    if (pindexLast->nHeight >= params.DGWStartHeight) {
+    if (pindexLast->nHeight >= params.POSPOWStartHeight) {
+        return GetNextWorkRequiredPivx(pindexLast, pblock, params, fPos);
+    } else if (pindexLast->nHeight >= params.DGWDifficultyStartHeight) {
         return GetNextWorkRequiredPivx(pindexLast, pblock, params, fProofOfStake);
     }
     else if (pindexLast->nHeight >= params.MidasStartHeight) {
