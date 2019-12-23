@@ -117,12 +117,13 @@ $(package)_config_opts_i686_linux  = -xplatform linux-g++-32
 $(package)_config_opts_x86_64_linux = -xplatform linux-g++-64
 $(package)_config_opts_aarch64_linux = -xplatform linux-aarch64-gnu-g++
 $(package)_config_opts_powerpc_linux += -platform linux-g++ -xplatform ion-linux-g++
+$(package)_config_opts_powerpc64_linux += -platform linux-g++ -xplatform ion-linux-g++
 $(package)_config_opts_powerpc64le_linux += -platform linux-g++ -xplatform ion-linux-g++
 $(package)_config_opts_riscv64_linux = -platform linux-g++ -xplatform ion-linux-g++
 $(package)_config_opts_s390x_linux += -platform linux-g++ -xplatform ion-linux-g++
 
 $(package)_config_opts_mingw32 = -no-opengl
-#$(package)_config_opts_mingw32 += -no-dbus
+$(package)_config_opts_mingw32 += -no-dbus
 $(package)_config_opts_mingw32 += -xplatform win32-g++
 $(package)_config_opts_mingw32 += -device-option CROSS_COMPILE="$(host)-"
 
@@ -146,9 +147,11 @@ $(package)_config_opts_armv7a_android += -android-arch armeabi-v7a
 $(package)_config_opts_x86_64_android += -android-arch x86_64
 $(package)_config_opts_i686_android += -android-arch i686
 
-$(package)_config_opts_sparc64_linux += -platform linux-g++ -xplatform ion-linux-g++-64
-$(package)_config_opts_alpha_linux += -platform linux-g++ -xplatform ion-linux-g++-64
-$(package)_config_opts_m68k_linux += -platform linux-g++ -xplatform ion-linux-g++-32
+$(package)_config_opts_mipsel_linux += -platform linux-g++ -xplatform ion-linux-g++
+$(package)_config_opts_mips_linux += -platform linux-g++ -xplatform ion-linux-g++
+$(package)_config_opts_sparc64_linux += -platform linux-g++-64 -xplatform ion-linux-g++
+$(package)_config_opts_alpha_linux += -platform linux-g++-64 -xplatform ion-linux-g++
+$(package)_config_opts_m68k_linux += -platform linux-g++-32 -xplatform ion-linux-g++
 
 $(package)_build_env  = QT_RCC_TEST=1
 $(package)_build_env += QT_RCC_SOURCE_DATE_OVERRIDE=1
