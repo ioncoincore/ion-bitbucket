@@ -163,14 +163,13 @@ def logsupload():
     global args, workdir
     os.chdir(workdir)
 
-    if not os.path.isdir(args.uploadfolder+'/'+args.version+'/logs'):
-        subprocess.check_call('mkdir -p '+args.uploadfolder+'/'+args.version+'/logs', shell=True)
-
     if args.uploadlogs:
         print('\n'+args.server+': Start uploading logs to the uploadserver.\n')
         subprocess.check_call(['ssh', args.server, 'mkdir', '-p', args.uploadfolder+'/'+args.version+'/logs'])
+        subprocess.check_call(['ssh', args.server, 'mkdir', '-p', args.uploadfolder+'/'+args.version+'/result'])
         subprocess.check_call(['scp', '-r', 'gitian-builder/var', args.server+':'+args.uploadfolder+'/'+args.version+'/logs'])
-    
+        subprocess.check_call(['scp', 'gitian-builder/result/ioncore-*.yml', args.server+':'+args.uploadfolder+'/'+args.version+'/result'])
+
     if args.createreleasenotes:
         print('\n'+args.server+': Start uploading release notes to the uploadserver.\n')
         subprocess.check_call(['ssh', args.server, 'mkdir', '-p', args.uploadfolder+'/'+args.version+'/release-notes'])
@@ -179,6 +178,7 @@ def logsupload():
     os.chdir(workdir)
 
 def releasenotes():
+    global args, workdir
     os.chdir(workdir)
 
     if not os.path.isdir(args.uploadfolder+'/'+args.version+'/release-notes'):
@@ -197,7 +197,6 @@ def releasenotes():
         subprocess.check_call('git log v'+args.previousver+'..v'+args.version+' --pretty="format:%at %C(yellow)commit %H%Creset\nAuthor: %an <%ae>\nDate: %aD\n\n %s\n" | sort -r | cut -d" " -f2- | sed -e "s/\\\n/\\`echo -e '+"'"+"\n\r'`/g"+'" | tr -d '+"'\15\32'"+' | less -R  > ../ion-binaries/'+args.version+'/release-notes/detailedlog_'+args.previousver+'-v'+args.version+'.md', shell=True)
 
     os.chdir(workdir)
-
 
 def verify():
     global args, workdir
@@ -354,11 +353,11 @@ def main():
     if args.hash:
         createhashes()
 
-    if args.uploadlogs:
-        createhashes()
-
     if args.createreleasenotes:
         releasenotes()
+
+    if args.uploadlogs:
+        createhashes()
 
     if args.upload:
         sshupload()
