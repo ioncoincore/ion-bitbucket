@@ -275,11 +275,6 @@ public:
         consensus.DIP0003EnforcementHeight = 99999999;
         consensus.DIP0003EnforcementHash = uint256S("000000000000002d1734087b4c5afc3133e4e1c3e1a89218f62bcd9bb3d17f81");
         consensus.IIP0006Height = 1510000;
-        consensus.POSStartHeight = 1001;
-        consensus.MidasStartHeight = 176500;
-        consensus.DGWStartHeight = 550000;
-        consensus.DGWStartTime = 1521851265;
-        consensus.ATPStartHeight = 1320000; // Start enforcing the Atomic Token Protocol (ATP) for blocks with version 11 and higher
         consensus.powLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 24
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
         consensus.nPowTargetSpacing = 2.5 * 60; // Ion: 2.5 minutes
@@ -289,11 +284,20 @@ public:
         consensus.nPowDGWHeight = 99999999;
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+        // ION
+        consensus.nCoinbaseMaturity = 60;
+        // POS
+        consensus.POSStartHeight = 1001;
+        consensus.MidasStartHeight = 176500;
+        consensus.DGWStartHeight = 550000;
+        consensus.DGWDifficultyStartHeight = 550000;
+        consensus.DGWStartTime = 1521851265;
         consensus.posLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 24
         consensus.nPosTargetTimespanMidas = 7 * 24 * 60 * 60; // 1 week
         consensus.nPosTargetSpacingMidas = 64;
         consensus.nPosTargetSpacing = 1 * 60; // 1 minute
         consensus.nStakeMinDepth = 600;
+        // Zerocoin
         consensus.nZerocoinRequiredStakeDepth = 200;
         consensus.nZerocoinStartHeight = 550001;
         consensus.nZerocoinStartTime = 1521851265; // GMT: Saturday, March 24, 2018 12:27:45 AM
@@ -311,8 +315,11 @@ public:
             "31438167899885040445364023527381951378636564391212010397122822120720357";
 
         // ATP
+        consensus.ATPStartHeight = 1320000; // Start enforcing the Atomic Token Protocol (ATP) for blocks with version 11 and higher
         consensus.strTokenManagementKey = "inqaYuaES1cmRBXHodp25UceeVPbWQG5wY";
         consensus.nOpGroupNewRequiredConfirmations = 1;
+        // POSPOW
+        consensus.POSPOWStartHeight = std::numeric_limits<int>::max();
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
@@ -482,15 +489,10 @@ public:
         consensus.BIP65Height = 2431; // 0000039cf01242c7f921dcb4806a5994bc003b48c1973ae0c89b67809c2bb2ab
         consensus.BIP66Height = 2075; // 0000002acdd29a14583540cb72e1c5cc83783560e38fa7081495d474fe1671f7
         consensus.DIP0001Height = 2;
-        consensus.DIP0003Height = 7000;
-        consensus.DIP0003EnforcementHeight = 7300;
+        consensus.DIP0003Height = 99999999;
+        consensus.DIP0003EnforcementHeight = 99999999;
         consensus.DIP0003EnforcementHash = uint256S("00000055ebc0e974ba3a3fb785c5ad4365a39637d4df168169ee80d313612f8f");
-        consensus.IIP0006Height = 90000;
-        consensus.POSStartHeight = 250;
-        consensus.MidasStartHeight = 999999999;
-        consensus.DGWStartHeight = 300;
-        consensus.DGWStartTime = 1554332940;
-        consensus.ATPStartHeight = 5530; // Start enforcing the Atomic Token Protocol (ATP) for blocks with version 11 and higher
+        consensus.IIP0006Height = 99999999;
         consensus.powLimit = uint256S("3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 2
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
         consensus.nPowTargetSpacing = 2.5 * 60; // Ion: 2.5 minutes
@@ -498,15 +500,34 @@ public:
         consensus.fPowNoRetargeting = false;
         consensus.nPowKGWHeight = 4002; // nPowKGWHeight >= nPowDGWHeight means "no KGW"
         consensus.nPowDGWHeight = 4002;
+        consensus.nRuleChangeActivationThreshold = 1512; // 75% for testchains
+        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
+        // ION
+        consensus.nCoinbaseMaturity = 15;
+        // POS
+        consensus.POSStartHeight = 203;
+        consensus.MidasStartHeight = 0;
+        consensus.DGWStartHeight = 300;
+        consensus.DGWDifficultyStartHeight = 0;
+        consensus.DGWStartTime = 1554332940;
+        consensus.posLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 24
+        consensus.nPosTargetTimespanMidas = 7 * 24 * 60 * 60; // 1 week
+        consensus.nPosTargetSpacingMidas = 64;
+        consensus.nPosTargetSpacing = 1 * 60; // 1 minute
         consensus.nStakeMinDepth = 100;
+        // Zerocoin
         consensus.nZerocoinRequiredStakeDepth = 200;
         consensus.nZerocoinStartHeight = 300;
         consensus.nZerocoinStartTime = 1501776000;
-        consensus.nBlockZerocoinV2 = 301;
+        consensus.nBlockZerocoinV2 = 1012710;
         consensus.nPublicZCSpends = 5500;
-        consensus.nBlockStakeModifierV2 = 1214000;
-        consensus.nRuleChangeActivationThreshold = 1512; // 75% for testchains
-        consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+        consensus.nBlockStakeModifierV2 = 5530;
+        consensus.nFakeSerialBlockheightEnd = -1;
+        consensus.nMintRequiredConfirmations = 20; //the maximum amount of confirmations until accumulated in 19
+        consensus.nRequiredAccumulation = 1;
         consensus.zerocoinModulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
             "4069182906412495150821892985591491761845028084891200728449926873928072877767359714183472702618963750149718246911"
             "6507761337985909570009733045974880842840179742910064245869181719511874612151517265463228221686998754918242243363"
@@ -519,8 +540,11 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
 
         // ATP
+        consensus.ATPStartHeight = 5530; // Start enforcing the Atomic Token Protocol (ATP) for blocks with version 11 and higher
         consensus.strTokenManagementKey = "gBi3gDLnGfw8HA2rN4HmNxHk9hMC4GLFbh";
         consensus.nOpGroupNewRequiredConfirmations = 1;
+        // POSPOW
+        consensus.POSPOWStartHeight = std::numeric_limits<int>::max();
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
@@ -614,7 +638,7 @@ public:
         nPoolMaxParticipants = 5;
         nFulfilledRequestExpireTime = 5*60; // fulfilled requests expire in 5 minutes
 
-        vSporkAddresses = {"gRgAY9dX7kN3tLNeVPQ8YoVGJdeNiE2Ubr"};
+        vSporkAddresses = {"gPp4w9xaDFjsiQ4KhTT5K9ATo8CVNhT7G2"};
         nMinSporkKeys = 1;
         fBIP9CheckMasternodesUpgraded = true;
 
@@ -666,12 +690,7 @@ public:
         consensus.DIP0003Height = 2; // DIP0003 activated immediately on devnet
         consensus.DIP0003EnforcementHeight = 2; // DIP0003 activated immediately on devnet
         consensus.DIP0003EnforcementHash = uint256();
-        consensus.IIP0006Height = 10; // IIP0006 activated immediately on devnet
-        consensus.POSStartHeight = 250;
-        consensus.MidasStartHeight = 999999999;
-        consensus.DGWStartHeight = 10;
-        consensus.DGWStartTime = 1554332940;
-        consensus.ATPStartHeight = 10; // Start enforcing the Atomic Token Protocol (ATP) for blocks with version 11 and higher
+        consensus.IIP0006Height = 1; // IIP0006 activated immediately on devnet
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
         consensus.nPowTargetSpacing = 2.5 * 60; // Ion: 2.5 minutes
@@ -684,6 +703,29 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
+        // ION
+        consensus.nCoinbaseMaturity = 15;
+        // POS
+        consensus.POSStartHeight = 250;
+        consensus.MidasStartHeight = 999999999;
+        consensus.DGWStartHeight = 300;
+        consensus.DGWDifficultyStartHeight = 300;
+        consensus.DGWStartTime = 1554332940;
+        consensus.posLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 24
+        consensus.nPosTargetTimespanMidas = 7 * 24 * 60 * 60; // 1 week
+        consensus.nPosTargetSpacingMidas = 64;
+        consensus.nPosTargetSpacing = 1 * 60; // 1 minute
+        consensus.nStakeMinDepth = 100;
+        // Zerocoin
+        consensus.nZerocoinRequiredStakeDepth = 200;
+        consensus.nZerocoinStartHeight = 300;
+        consensus.nZerocoinStartTime = 1501776000;
+        consensus.nBlockZerocoinV2 = 1012710;
+        consensus.nPublicZCSpends = 5500;
+        consensus.nBlockStakeModifierV2 = 5530;
+        consensus.nFakeSerialBlockheightEnd = -1;
+        consensus.nMintRequiredConfirmations = 20; //the maximum amount of confirmations until accumulated in 19
+        consensus.nRequiredAccumulation = 1;
         consensus.zerocoinModulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
             "4069182906412495150821892985591491761845028084891200728449926873928072877767359714183472702618963750149718246911"
             "6507761337985909570009733045974880842840179742910064245869181719511874612151517265463228221686998754918242243363"
@@ -692,8 +734,11 @@ public:
             "31438167899885040445364023527381951378636564391212010397122822120720357";
 
         // ATP
+        consensus.ATPStartHeight = 5530; // Start enforcing the Atomic Token Protocol (ATP) for blocks with version 11 and higher
         consensus.strTokenManagementKey = "gBi3gDLnGfw8HA2rN4HmNxHk9hMC4GLFbh";
         consensus.nOpGroupNewRequiredConfirmations = 1;
+        // POSPOW
+        consensus.POSPOWStartHeight = std::numeric_limits<int>::max();
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
@@ -834,11 +879,6 @@ public:
         consensus.DIP0003EnforcementHeight = 500;
         consensus.DIP0003EnforcementHash = uint256();
         consensus.IIP0006Height = 1;
-        consensus.POSStartHeight = 250;
-        consensus.MidasStartHeight = 999999999;
-        consensus.DGWStartHeight = 1;
-        consensus.DGWStartTime = 1554332940;
-        consensus.ATPStartHeight = 1; // Start enforcing the Atomic Token Protocol (ATP) for blocks with version 11 and higher
         consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 1
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
         consensus.nPowTargetSpacing = 2.5 * 60; // Ion: 2.5 minutes
@@ -846,23 +886,43 @@ public:
         consensus.fPowNoRetargeting = true;
         consensus.nPowKGWHeight = 15200; // same as mainnet
         consensus.nPowDGWHeight = 34140; // same as mainnet
-        consensus.nStakeMinDepth = 0;
-        consensus.nZerocoinRequiredStakeDepth = 200;
-        consensus.nZerocoinStartHeight = 300;
-        consensus.nZerocoinStartTime = 1501776000;
-        consensus.nBlockZerocoinV2 = 300;
-        consensus.nPublicZCSpends = 350;
-        consensus.nBlockStakeModifierV2 = std::numeric_limits<int>::max(); // max integer value (never switch on regtest)
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
         consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
-        consensus.strTokenManagementKey = "gBi3gDLnGfw8HA2rN4HmNxHk9hMC4GLFbh";
-        consensus.nOpGroupNewRequiredConfirmations = 1;
+        // ION
+        consensus.nCoinbaseMaturity = 100;
+        // POS
+        consensus.POSStartHeight = 250;
+        consensus.MidasStartHeight = 999999999;
+        consensus.DGWStartHeight = 300;
+        consensus.DGWDifficultyStartHeight = 300;
+        consensus.DGWStartTime = 1521414629;
+        consensus.posLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 24
+        consensus.nPosTargetTimespanMidas = 7 * 24 * 60 * 60; // 1 week
+        consensus.nPosTargetSpacingMidas = 64;
+        consensus.nPosTargetSpacing = 1 * 60; // 1 minute
+        consensus.nStakeMinDepth = 1;
+        // Zerocoin
+        consensus.nZerocoinRequiredStakeDepth = 200;
+        consensus.nZerocoinStartHeight = 350;
+        consensus.nZerocoinStartTime = 1521414629;
+        consensus.nBlockZerocoinV2 = 351;
+        consensus.nPublicZCSpends = 5500;
+        consensus.nBlockStakeModifierV2 = 400;
+        consensus.nFakeSerialBlockheightEnd = -1;
+        consensus.nMintRequiredConfirmations = 20; //the maximum amount of confirmations until accumulated in 19
+        consensus.nRequiredAccumulation = 1;
         consensus.zerocoinModulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
             "4069182906412495150821892985591491761845028084891200728449926873928072877767359714183472702618963750149718246911"
             "6507761337985909570009733045974880842840179742910064245869181719511874612151517265463228221686998754918242243363"
             "7259085141865462043576798423387184774447920739934236584823824281198163815010674810451660377306056201619676256133"
             "8441436038339044149526344321901146575444541784240209246165157233507787077498171257724679629263863563732899121548"
             "31438167899885040445364023527381951378636564391212010397122822120720357";
+        // ATP
+        consensus.ATPStartHeight = 300; // Start enforcing the Atomic Token Protocol (ATP) for blocks with version 11 and higher
+        consensus.strTokenManagementKey = "gAQQQjA4DCT2EZDVK6Jae4mFfB217V43Nt";
+        consensus.nOpGroupNewRequiredConfirmations = 1;
+        // POSPOW
+        consensus.POSPOWStartHeight = 350;
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;

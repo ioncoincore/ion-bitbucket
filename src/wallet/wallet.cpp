@@ -2926,6 +2926,13 @@ void CWallet::AvailableCoins(std::vector<COutput> &vCoins, bool fOnlySafe, const
                 }
                 if(!found) continue;
 
+                if (nCoinType == CoinType::STAKABLE_COINS) {
+                    if (pcoin->tx->vout[i].IsZerocoinMint())
+                        continue;
+                    if (IsOutputGrouped(pcoin->tx->vout[i]))
+                        continue;
+                }
+
                 if (pcoin->tx->vout[i].nValue < nMinimumAmount || pcoin->tx->vout[i].nValue > nMaximumAmount)
                     continue;
 
@@ -3351,8 +3358,6 @@ bool CWallet::SignTransaction(CMutableTransaction &tx)
 {
     AssertLockHeld(cs_wallet); // mapWallet
 
-    unsigned int sighashType = SIGHASH_ALL;
-
     CTransaction txNewConst(tx);
     int nIn = 0;
     for (const auto &input : tx.vin)
@@ -3363,7 +3368,6 @@ bool CWallet::SignTransaction(CMutableTransaction &tx)
             return false;
         }
         const CScript &scriptPubKey = mi->second.tx->vout[input.prevout.n].scriptPubKey;
-        const CAmount &amount = mi->second.tx->vout[input.prevout.n].nValue;
         SignatureData sigdata;
 
         if (!ProduceSignature(TransactionSignatureCreator(this, &txNewConst, nIn, SIGHASH_ALL), scriptPubKey, sigdata)) {
@@ -5920,7 +5924,7 @@ int CMerkleTx::GetBlocksToMaturity() const
 {
     if (!IsCoinBase())
         return 0;
-    return std::max(0, (COINBASE_MATURITY+1) - GetDepthInMainChain());
+    return std::max(0, (Consensus::Params().nCoinbaseMaturity+1) - GetDepthInMainChain());
 }
 
 

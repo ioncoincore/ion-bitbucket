@@ -69,7 +69,7 @@ CBlockIndex* CXIonStake::GetIndexFrom()
     return pindexFrom;
 }
 
-CAmount CXIonStake::GetValue()
+CAmount CXIonStake::GetValue() const
 {
     return denom * COIN;
 }
@@ -179,6 +179,11 @@ bool CXIonStake::GetTxFrom(CTransactionRef& tx)
     return false;
 }
 
+bool CXIonStake::GetScriptPubKeyKernel(CScript& scriptPubKeyKernel) const
+{
+    return false;
+}
+
 /*
 bool CXIonStake::MarkSpent(CWallet *pwallet, const uint256& txid)
 {
@@ -206,13 +211,19 @@ bool CIonStake::GetTxFrom(CTransactionRef& tx)
     return true;
 }
 
+bool CIonStake::GetScriptPubKeyKernel(CScript& scriptPubKeyKernel) const
+{
+    scriptPubKeyKernel = txFrom->vout[nPosition].scriptPubKey;
+    return true;
+}
+
 bool CIonStake::CreateTxIn(CWallet* pwallet, CTxIn& txIn, uint256 hashTxOut)
 {
     txIn = CTxIn(txFrom->GetHash(), nPosition);
     return true;
 }
 
-CAmount CIonStake::GetValue()
+CAmount CIonStake::GetValue() const
 {
     return txFrom->vout[nPosition].nValue;
 }
@@ -244,10 +255,6 @@ bool CIonStake::CreateTxOuts(CWallet* pwallet, std::vector<CTxOut>& vout, CAmoun
         scriptPubKey = scriptPubKeyKernel;
 
     vout.emplace_back(CTxOut(0, scriptPubKey));
-
-    // Calculate if we need to split the output
-    if (nTotal / 2 > (CAmount)(2000 * COIN))
-        vout.emplace_back(CTxOut(0, scriptPubKey));
 
     return true;
 }

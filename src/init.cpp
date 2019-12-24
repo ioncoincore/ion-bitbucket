@@ -30,6 +30,9 @@
 #include "policy/feerate.h"
 #include "policy/fees.h"
 #include "policy/policy.h"
+#ifdef ENABLE_WALLET
+#include "pos/staking-manager.h"
+#endif
 #include "rpc/server.h"
 #include "rpc/register.h"
 #include "rpc/blockchain.h"
@@ -668,6 +671,13 @@ std::string HelpMessage(HelpMessageMode mode)
         strUsage += HelpMessageOpt("-rpcworkqueue=<n>", strprintf("Set the depth of the work queue to service RPC calls (default: %d)", DEFAULT_HTTP_WORKQUEUE));
         strUsage += HelpMessageOpt("-rpcservertimeout=<n>", strprintf("Timeout during HTTP requests (default: %d)", DEFAULT_HTTP_SERVER_TIMEOUT));
     }
+
+#ifdef ENABLE_WALLET
+    strUsage += HelpMessageGroup(_("Staking options:"));
+    strUsage += HelpMessageOpt("-staking=<n>", strprintf(_("Enable staking functionality (0-1, default: %u)"), 1));
+    strUsage += HelpMessageOpt("-ionstake=<n>", strprintf(_("Enable or disable staking functionality for ION inputs (0-1, default: %u)"), 1));
+    strUsage += HelpMessageOpt("-reservebalance=<amt>", _("Keep the specified amount available for spending at all times (default: 0)"));
+#endif // ENABLE_WALLET
 
     return strUsage;
 }
@@ -2129,6 +2139,33 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
     }
 
     llmq::StartLLMQSystem();
+
+    // ********************************************************* Step 10d: setup and schedule ION-specific functionality
+
+#ifdef ENABLE_WALLET
+
+    if (vpwallets.empty()) {
+        stakingManager = std::shared_ptr<CStakingManager>(new CStakingManager());
+        stakingManager->fEnableStaking = false;
+        stakingManager->fEnableIONStaking = false;
+    } else {
+        stakingManager = std::shared_ptr<CStakingManager>(new CStakingManager(vpwallets[0]));
+        stakingManager->fEnableStaking = gArgs.GetBoolArg("-staking", !fLiteMode);
+        stakingManager->fEnableIONStaking = gArgs.GetBoolArg("-staking", true);
+    }
+
+    if (gArgs.IsArgSet("-reservebalance")) {
+        CAmount n = 0;
+        if (!ParseMoney(gArgs.GetArg("-reservebalance", ""), n)) {
+            return InitError(AmountErrMsg("reservebalance", gArgs.GetArg("-reservebalance", "")));
+        }
+        stakingManager->nReserveBalance = n;
+    }
+
+    if (!fLiteMode && stakingManager->fEnableStaking) {
+        scheduler.scheduleEvery(boost::bind(&CStakingManager::DoMaintenance, boost::ref(stakingManager), boost::ref(*g_connman)), 1 * 1000);
+    }
+#endif // ENABLE_WALLET
 
     // ********************************************************* Step 11: import blocks
 

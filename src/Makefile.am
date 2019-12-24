@@ -221,6 +221,8 @@ BITCOIN_CORE_H = \
   pos/checks.h \
   pos/kernel.h \
   pos/stakeinput.h \
+  pos/staker.h \
+  pos/staking-manager.h \
   pow.h \
   protocol.h \
   random.h \
@@ -410,6 +412,8 @@ libion_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libion_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 libion_wallet_a_SOURCES = \
   keepass.cpp \
+  pos/staker.cpp \
+  pos/staking-manager.cpp \
   privatesend/privatesend-client.cpp \
   privatesend/privatesend-util.cpp \
   tokens/rpctokens.cpp \

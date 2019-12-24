@@ -18,6 +18,7 @@ enum class CoinType
     ONLY_NONDENOMINATED,
     ONLY_1000, // find masternode outputs including locked ones (use with caution)
     ONLY_PRIVATESEND_COLLATERAL,
+    STAKABLE_COINS,
 };
 
 /** Coin Control Features. */
