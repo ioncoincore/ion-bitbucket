@@ -29,6 +29,8 @@ void RegisterEvoRPCCommands(CRPCTable &tableRPC);
 void RegisterQuorumsRPCCommands(CRPCTable &tableRPC);
 /** Register Tokens RPC commands */
 void RegisterTokensRPCCommands(CRPCTable &tableRPC);
+/** Register Tokens RPC commands */
+void RegisterTokenWalletRPCCommands(CRPCTable &tableRPC);
 
 static inline void RegisterAllCoreRPCCommands(CRPCTable &t)
 {

@@ -239,6 +239,7 @@ BITCOIN_CORE_H = \
   script/sigcache.h \
   script/sign.h \
   script/standard.h \
+  script/tokengroup.h \
   script/ismine.h \
   spork.h \
   stacktraces.h \
@@ -377,7 +378,6 @@ libion_server_a_SOURCES = \
   script/ismine.cpp \
   spork.cpp \
   timedata.cpp \
-  tokens/tokendb.cpp \
   torcontrol.cpp \
   txdb.cpp \
   txmempool.cpp \
@@ -416,10 +416,7 @@ libion_wallet_a_SOURCES = \
   pos/staking-manager.cpp \
   privatesend/privatesend-client.cpp \
   privatesend/privatesend-util.cpp \
-  tokens/rpctokens.cpp \
-  tokens/tokengroupconfiguration.cpp \
-  tokens/tokengroupdescription.cpp \
-  tokens/tokengroupmanager.cpp \
+  tokens/rpctokenwallet.cpp \
   tokens/tokengroupwallet.cpp \
   wallet/crypter.cpp \
   wallet/db.cpp \
@@ -611,7 +608,13 @@ libion_common_a_SOURCES = \
   saltedhasher.cpp \
   scheduler.cpp \
   script/standard.cpp \
+  script/tokengroup.cpp \
   script/sign.cpp \
+  tokens/rpctokens.cpp \
+  tokens/tokendb.cpp \
+  tokens/tokengroupconfiguration.cpp \
+  tokens/tokengroupdescription.cpp \
+  tokens/tokengroupmanager.cpp \
   warnings.cpp \
   xion/accumulators.cpp \
   xion/accumulatorcheckpoints.cpp \

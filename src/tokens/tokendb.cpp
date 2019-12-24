@@ -4,6 +4,7 @@
 
 #include "tokens/tokendb.h"
 #include "tokens/tokengroupmanager.h"
+#include "ui_interface.h"
 #include "validation.h"
 
 #include <boost/thread.hpp>
