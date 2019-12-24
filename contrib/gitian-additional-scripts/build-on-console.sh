@@ -2,14 +2,14 @@
 STARTTIMEID=$(date +%s)
 ENFORCEDSTOP="180" # in minutes, default is 180 minutes, 3 hours
 # gcloud vars
-NAME="gitiantmp"
+NAME="gitiantmp-$STARTTIMEID"
 IMAGE="gitian-debian10" # ubuntu-minimal-1804-bionic-v20191217
 DISKSIZE="60"   # In GB
 IMAGEFAMILY="debian-10"
 IMAGEPROJECT="debian-cloud"
 ZONE="europe-west1-b"
 CUSTOMCPU="6"
-CUSTOMMEMORY=$(($CUSTOMCPU*1000+500))
+CUSTOMMEMORY=$(($CUSTOMCPU*1024+512))
 CUSTOMVMTYPE="n2" # n1: Skylake or older (default), n2: VM's with CPU platform Cascade Lake(2-80vCPUs, 1-640GBs)
 #MACHINETYPE="n1-highcpu-$CPUS" # please ensure that machine is available
 DISKTYPE="ssd" # SCSI SSD
@@ -28,7 +28,7 @@ YOURNAME="Gitian User"
 COMMENT="Automatic build process ID $STARTTIMEID"
 EMAIL="gitianuser@i2pmail.org"
 EXPIREDATE="0"
-USERNAME="gitianuser"
+VMUSERNAME="gitianuser"
 
 # gitian
 SIGNER="RANDOMAUTOCREATION"
@@ -37,21 +37,24 @@ VERSION="5.0.99"
 # optional settings
 SERVER="defaultuploadserver"
 HASH="256"                    # hash new files
-UPLOADFOLDER="ion-binaries"      # folder on UPLOAD server (will be created if not existing)
+UPLOADFOLDER="ioncore-binaries"      # folder on UPLOAD server (will be created if not existing)
 JOBS="$CUSTOMCPU"                         # number of jobs, default: 2
 MEMORY=$(($CUSTOMMEMORY-500))                    # RAM to be used, default: 2000
 OS="m"				            # default: lwm
 GITURL="git@bitbucket.org/ioncoin/ion.git"
-GITIANOPTS="--os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --no-upload --hash $HASH --previousver $PREVIOUSVER"
+#GITIANOPTS="--os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --no-upload --hash $HASH --previousver $PREVIOUSVER"
+GITIANOPTS="--os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --hash $HASH --previousver $PREVIOUSVER"
+
+SHUTDOWN="no"
 
 # gitian SSH/UPLOAD
 # ssh upload server (required for .ssh/config creation)
 MYSSHUPLOADKEY="$MYSSHKEY"
 SSHUPLOADKEYPRIVATE=$(cat < $HOME/.ssh/$MYSSHUPLOADKEY)
 SSHUPLOADKEYPUBLIC=$(cat < $HOME/.ssh/$MYSSHUPLOADKEY.pub)
-UPLOADHOST="123.123.123.123"
-UPLOADHOSTPORT="2222"
-UPLOADHOSTUSER="someuser"
+UPLOADHOST="127.0.0.1"
+UPLOADHOSTPORT="22"
+UPLOADHOSTUSER="$VMUSERNAME"
 UPLOADHOSTIDENTITY="~/.ssh/$MYSSHUPLOADKEY"
 UPLOADHOSTRSA=$(ssh-keyscan -t rsa $UPLOADHOST)
 
@@ -74,45 +77,60 @@ EOF
 cat <<EOF | tee $METADATAFILESTARTUP
 # update system
 sudo apt-get update && sudo apt-get upgrade -y
-
 # go to gitianuser's home
-cd $(sudo -i -u $USERNAME echo \$HOME)
-sudo -i -u $USERNAME git clone --recurse-submodules http://bitbucket.org/ioncoin/ion.git
-sudo -i -u $USERNAME cp ion/contrib/gitian-build.py gitian-build.py ./
-sudo -i -u $USERNAME cp ion/contrib/gitian-additional-scripts/build-and-upload.sh ./
-sudo -i -u $USERNAME cp ion/contrib/gitian-additional-scripts/create-new-gpg-nopassword.sh ./
+cd /home/$VMUSERNAME
+sudo -i -u $VMUSERNAME git clone --recurse-submodules http://bitbucket.org/ioncoin/ion.git
+sudo -i -u $VMUSERNAME cp ion/contrib/gitian-build.py gitian-build.py ./
+sudo -i -u $VMUSERNAME cp ion/contrib/gitian-additional-scripts/build-and-upload.sh ./
+sudo -i -u $VMUSERNAME cp ion/contrib/gitian-additional-scripts/create-new-gpg-nopassword.sh ./
 
-sudo -i -u $USERNAME sed -i "s/RSA/$KEYTYPE/" ./create-new-gpg-nopassword.sh
-sudo -i -u $USERNAME sed -i "s/4096/$KEYLENGTH/" ./create-new-gpg-nopassword.sh
-sudo -i -u $USERNAME sed -i "s/RSA/$SUBKEYTYPE/" ./create-new-gpg-nopassword.sh
-sudo -i -u $USERNAME sed -i "s/4096/$SUBKEYLENGTH/" ./create-new-gpg-nopassword.sh
-sudo -i -u $USERNAME sed -i "s/Your Name/$YOURNAME/" ./create-new-gpg-nopassword.sh
-sudo -i -u $USERNAME sed -i "s/Some comment/$COMMENT/" ./create-new-gpg-nopassword.sh
-sudo -i -u $USERNAME sed -i "s/your@email.com/$EMAIL/" ./create-new-gpg-nopassword.sh
-sudo -i -u $USERNAME sed -i "s/yourusername/$USERNAME/" ./create-new-gpg-nopassword.sh
+sudo -i -u $VMUSERNAME sed -i "s/RSA/$KEYTYPE/" ./create-new-gpg-nopassword.sh
+sudo -i -u $VMUSERNAME sed -i "s/4096/$KEYLENGTH/" ./create-new-gpg-nopassword.sh
+sudo -i -u $VMUSERNAME sed -i "s/RSA/$SUBKEYTYPE/" ./create-new-gpg-nopassword.sh
+sudo -i -u $VMUSERNAME sed -i "s/4096/$SUBKEYLENGTH/" ./create-new-gpg-nopassword.sh
+sudo -i -u $VMUSERNAME sed -i "s/Your Name/$YOURNAME/" ./create-new-gpg-nopassword.sh
+sudo -i -u $VMUSERNAME sed -i "s/Some comment/$COMMENT/" ./create-new-gpg-nopassword.sh
+sudo -i -u $VMUSERNAME sed -i "s/your@email.com/$EMAIL/" ./create-new-gpg-nopassword.sh
+sudo -i -u $VMUSERNAME sed -i "s/yourusername/$VMUSERNAME/" ./create-new-gpg-nopassword.sh
 
-sudo -i -u $USERNAME ./create-new-gpg-nopassword.sh
+sudo -i -u $VMUSERNAME ./create-new-gpg-nopassword.sh
+EOF
 
+LISTKEYSLONGCOMMAND=$(echo "sudo -i -u $VMUSERNAME gpg --list-secret-keys --keyid-format"' LONG | awk "NR>1{print $2}" | awk -F "[/]" "{print $2}"')
+LISTKEYSSHORTCOMMAND=$(echo "sudo -i -u $VMUSERNAME gpg --list-secret-keys --keyid-format"' SHORT | awk "NR>1{print $2}" | awk -F "[/]" "{print $2}"')
+cat <<EOF | tee -a $METADATAFILESTARTUP
 # get long and short key-id's
-SIGNERLONG=$(sudo -i -u $USERNAME gpg --list-secret-keys --keyid-format LONG | awk 'NR>1{print $2}' | awk -F '[/]' '{print $2}')
-SIGNERSHORT=$(sudo -i -u $USERNAME gpg --list-secret-keys --keyid-format SHORT | awk 'NR>1{print $2}' | awk -F '[/]' '{print $2}')
+SIGNERLONG=$($LISTKEYSLONGCOMMAND)
+SIGNERSHORT=$($LISTKEYSSHORTCOMMAND)
+EOF
 
+cat <<EOF | tee -a $METADATAFILESTARTUP
 # add ssh upload keys for gitianuser
-sudo -i -u $USERNAME echo "$SSHUPLOADKEYPRIVATE" > /home/$USERNAME/.ssh/$MYSSHUPLOADKEY
-sudo -i -u $USERNAME echo "$SSHUPLOADKEYPUBLIC" > /home/$USERNAME/.ssh/$MYSSHUPLOADKEY.pub
+sudo -i -u $VMUSERNAME echo "$SSHUPLOADKEYPRIVATE" > /home/$VMUSERNAME/.ssh/$MYSSHUPLOADKEY
+sudo -i -u $VMUSERNAME echo "$SSHUPLOADKEYPUBLIC" > /home/$VMUSERNAME/.ssh/$MYSSHUPLOADKEY.pub
+EOF
 
+SSHEVALUATE=$(echo "sudo -i -u $VMUSERNAME eval "'"'"$(ssh-agent -s)"'"')
+cat <<"EOF" | tee -a $METADATAFILESTARTUP
+sudo -i -u $SSHEVALUATE
+EOF
+cat <<EOF | tee -a $METADATAFILESTARTUP
+sudo -i -u $VMUSERNAME ssh-add /home/$VMUSERNAME/.ssh/$MYSSHUPLOADKEY
+EOF
+
+cat <<EOF | tee -a $METADATAFILESTARTUP
 ## allow gitianuser to connect to upload server
-echo "$UPLOADHOSTRSA" | sudo -i -u $USERNAME tee -a /home/$USERNAME/.ssh/known_hosts
+echo "$UPLOADHOSTRSA" | sudo -i -u $VMUSERNAME tee -a /home/$VMUSERNAME/.ssh/known_hosts
 
 ## ensure that .ssh folder exists
-sudo -i -u $USERNAME mkdir -p /home/$USERNAME/.ssh
+sudo -i -u $VMUSERNAME mkdir -p /home/$VMUSERNAME/.ssh
 ### create ssh config for gitianuser
-sudo -i -u $USERNAME echo "host defaultuploadserver
+sudo -i -u $VMUSERNAME echo "host defaultuploadserver
     Hostname $UPLOADHOST
     port $UPLOADHOSTPORT
     PreferredAuthentications publickey
     IdentityFile $UPLOADHOSTIDENTITY
-    User $UPLOADHOSTUSER" > /home/$USERNAME/.ssh/config
+    User $UPLOADHOSTUSER" > /home/$VMUSERNAME/.ssh/config
 
 ## allow current user to connecto to upload server
 mkdir -p ~/.ssh
@@ -120,9 +138,21 @@ mkdir -p ~/.ssh
 echo "$SSHUPLOADKEYPRIVATE" > ~/.ssh/$MYSSHUPLOADKEY
 echo "$SSHUPLOADKEYPUBLIC" > ~/.ssh/$MYSSHUPLOADKEY.pub
 echo "$UPLOADHOSTRSA" | tee -a ~/.ssh/known_hosts
+EOF
 
+cat <<"EOF" | tee -a $METADATAFILESTARTUP
+eval "$(ssh-agent -s)"
+EOF
+cat <<EOF | tee -a $METADATAFILESTARTUP
+ssh-add ~/.ssh/$MYSSHUPLOADKEY
+EOF
+
+cat <<"EOF" | tee -a $METADATAFILESTARTUP
 # set gitian build vars
 export SIGNER="$SIGNERLONG"            # signer key-id, we use long ID in this script, short ID for filenames
+EOF
+
+cat <<EOF | tee -a $METADATAFILESTARTUP
 export VERSION="$VERSION"              # ion core version
 export PREVIOUSVER="$PREVIOUSVER"      # required for release notes, this can be a commit or a tag
 # optional settings
@@ -132,86 +162,97 @@ export UPLOADFOLDER="$UPLOADFOLDER"    # folder on UPLOAD server (will be create
 export JOBS="$JOBS"                    # number of jobs, default: 2
 export MEMORY="$MEMORY"                # RAM to be used, default: 2000
 export OS="$OS"				           # default: lwm
+EOF
 
-sudo -i -u $USERNAME gpg --export-secret-key -a $SIGNERLONG > $SIGNERSHORT-$EMAIL.private.asc
-sudo -i -u $USERNAME gpg --export -a $SIGNERLONG > $SIGNERSHORT-$EMAIL.public.asc
-sudo -i -u $USERNAME gpg --export-secret-key $SIGNERLONG > $SIGNERSHORT-$EMAIL.private.gpg
-sudo -i -u $USERNAME gpg --export $SIGNERLONG > $SIGNERSHORT-$EMAIL.public.gpg
+EXPORTSECRETLONGASCII=$(echo "sudo -i -u $VMUSERNAME gpg --export-secret-key -a "'$SIGNERLONG > $SIGNERSHORT'"-$EMAIL.private.asc")
+EXPORTPUBLICLONGASCII=$(echo "sudo -i -u $VMUSERNAME gpg --export -a "'$SIGNERLONG > $SIGNERSHORT'"-$EMAIL.public.asc")
+EXPORTSECRETLONGGPG=$(echo "sudo -i -u $VMUSERNAME gpg --export-secret-key -a "'$SIGNERLONG > $SIGNERSHORT'"-$EMAIL.private.gpg")
+EXPORTPUBLICLONGGPG=$(echo "sudo -i -u $VMUSERNAME gpg --export "'$SIGNERLONG > $SIGNERSHORT'"-$EMAIL.public.gpg")
+EXPORTPUBLICLONGASCIIBUNDLE=$(echo "sudo -i -u $VMUSERNAME gpg --export -a "'$SIGNERLONG > $SIGNERSHORT'"-$EMAIL.keybundle.asc")
+EXPORTSECRETLONGASCIIBUNDLE=$(echo "sudo -i -u $VMUSERNAME gpg --export-secret-key -a "'$SIGNERLONG >> $SIGNERSHORT'"-$EMAIL.keybundle.asc")
+EXPORTPUBLICLONGGPGBUNDLE=$(echo "sudo -i -u $VMUSERNAME gpg --export "'$SIGNERLONG > $SIGNERSHORT'"-$EMAIL.keybundle.gpg")
+EXPORTSECRETLONGGPGBUNDLE=$(echo "sudo -i -u $VMUSERNAME gpg --export-secret-key -a "'$SIGNERLONG >> $SIGNERSHORT'"-$EMAIL.keybundle.gpg")
 
-sudo -i -u $USERNAME gpg --export -a $SIGNERLONG > $SIGNERSHORT-$EMAIL.keybundle.asc
-sudo -i -u $USERNAME gpg --export-secret-key -a $SIGNERLONG >> $SIGNERSHORT-$EMAIL.keybundle.asc
-sudo -i -u $USERNAME gpg --export $SIGNERLONG > $SIGNERSHORT-$EMAIL.keybundle.gpg
-sudo -i -u $USERNAME gpg --export-secret-key $SIGNERLONG >> $SIGNERSHORT-$EMAIL.keybundle.gpg
+BUILDIONCORE=$(echo "sudo -i -u $VMUSERNAME ./gitian-build.py $GITIANOPTS "'$SIGNER'" $VERSION | sudo -i -u $VMUSERNAME tee ./gitian-build-${STARTTIMEID}.log")
+cat <<EOF | tee -a $METADATAFILESTARTUP
+$EXPORTSECRETLONGASCII
+$EXPORTPUBLICLONGASCII
+$EXPORTSECRETLONGGPG
+$EXPORTPUBLICLONGGPG
+
+$EXPORTPUBLICLONGASCIIBUNDLE
+$EXPORTSECRETLONGASCIIBUNDLE
+$EXPORTPUBLICLONGGPGBUNDLE
+$EXPORTSECRETLONGGPGBUNDLE
 
 # build ion-core
-sudo -i -u $USERNAME ./gitian-build.py "$GITIANOPTS" "$SIGNER" "$VERSION" | sudo -i -u $USERNAME tee ./gitian-build-${STARTTIMEID}.log
+$BUILDIONCORE
+EOF
 
+
+if [ $SHUTDOWN = "Yes" ]; then
+  SHUTDOWNCOMMAND="shutdown -h now"
+else
+  SHUTDOWNCOMMAND="echo 'shutdown disabled'"
+fi
+cat <<EOF | tee -a $METADATAFILESTARTUP
 # shutdown
-shutdown -h now
+$SHUTDOWNCOMMAND
 EOF
 
 consolestopandremove() {
-    ssh-keygen -f "$HOME/.ssh/known_hosts" -R "$IPADDRESS"
-    ssh gitianuser@$IPADDRESS
-
     gcloud compute instances stop $NAME --zone $ZONE
     echo DELETING
     echo "Y" | gcloud compute instances delete $NAME --zone $ZONE
-    # create image with external ip accessable over ssh
-    #gcloud compute instances create $NAME --zone $ZONE --custom-extensions --custom-cpu=$CUSTOMCPU --custom-memory=$CUSTOMMEMORY --custom-vm-type=$CUSTOMVMTYPE --image-family $IMAGEFAMILY --image-project $IMAGEPROJECT --boot-disk-device-name=$NAME --boot-disk-size=${DISKSIZE}GB --metadata-from-file=startup-script=$METADATAFILESTARTUP,ssh-keys=$METADATASSHKEYSFILE --preemptible
 }
 
 # create from prepared image
 consolecreateandstart () {
-    gcloud compute instances create $NAME --zone $ZONE \
-        --custom-extensions --custom-cpu=$CUSTOMCPU --custom-memory=$CUSTOMMEMORY --custom-vm-type=$CUSTOMVMTYPE \
-        --image $IMAGE \
-        --boot-disk-device-name=$NAME --boot-disk-size=${DISKSIZE}GB \
-        --metadata-from-file=startup-script=$METADATAFILESTARTUP,ssh-keys=$METADATASSHKEYSFILE \
-        --preemptible
-
     echo "# how to shutdown enforeced (copy and paste):
     gcloud compute instances stop $NAME --zone $ZONE
     echo DELETING
     echo 'Y' | gcloud compute instances delete $NAME --zone $ZONE"
+    # create image with external ip accessable over ssh
+    #gcloud compute instances create $NAME --zone $ZONE --custom-extensions --custom-cpu=$CUSTOMCPU --custom-memory=$CUSTOMMEMORY --custom-vm-type=$CUSTOMVMTYPE --image-family $IMAGEFAMILY --image-project $IMAGEPROJECT --boot-disk-device-name=$NAME --boot-disk-size=${DISKSIZE}GB --metadata-from-file=startup-script=$METADATAFILESTARTUP,ssh-keys=$METADATASSHKEYSFILE --preemptible
+    gcloud compute instances create $NAME --zone $ZONE \
+        --custom-extensions --custom-cpu=$CUSTOMCPU --custom-memory=${CUSTOMMEMORY}MB --custom-vm-type=$CUSTOMVMTYPE \
+        --image $IMAGE \
+        --boot-disk-device-name=$NAME --boot-disk-size=${DISKSIZE}GB \
+        --metadata-from-file=startup-script=$METADATAFILESTARTUP,ssh-keys=$METADATASSHKEYSFILE \
+        --preemptible
 }
 
 
 ## CREATE AND START CONSOLE ##
 STARTVMID=$(date +%s)
 consolecreateandstart
+sleep 5
+#get ip of vm
+VMIPADDRESS=$(gcloud compute instances list | grep $NAME | awk '{print $(NF-1)}')
+ssh-keygen -f $HOME/.ssh/known_hosts -R $VMIPADDRESS
+#ssh gitianuser@$VMIPADDRESS
 
-# if preemptable
-IPADDRESS=$(gcloud compute instances list | grep $NAME | awk '{print $6}')
-# if not preemptable
-#IPADDRESS=$(gcloud compute instances list | grep $NAME | awk '{print $5}')
-
-ssh-keygen -f $HOME/.ssh/known_hosts -R $IPADDRESS
-#ssh gitianuser@$IPADDRESS
-
-# if preemptable
-VMSTATUS=$(gcloud compute instances list | grep $NAME | awk '{print $7}')
-# if not preemptable
-#VMSTATUS=$(gcloud compute instances list | grep $NAME | awk '{print $6}')
-
-REFRESHRATE="60"
+VMSTATUS=$(gcloud compute instances list | grep $NAME | awk '{print $NF}')
+REFRESHRATE="30"
 while [ $VMSTATUS = "RUNNING" ]
 do
-  VMSTATUS=$(gcloud compute instances list | grep $NAME | awk '{print $7}')
-  # if not preemptable
-  #VMSTATUS=$(gcloud compute instances list | grep $NAME | awk '{print $6}')
+  VMSTATUS=$(gcloud compute instances list | grep $NAME | awk '{print $NF}')
   if [ $VMSTATUS = "TERMINATED" ]; then
-    echo "VM $NAME finished, terminating and deleting..."
-    consolestopandremove
-    break
+    if [ $SHUTDOWN = "Yes" ]; then
+      echo "VM $NAME finished, terminating and deleting..."
+      consolestopandremove
+      break
+    fi
   fi
   # check if current time is greater than max allowed, stop and delete VM in that case
   CURRENTTIME=$(date +%s)
   ENFORCEDSTOPTIME=$(($STARTVMID + $(($ENFORCEDSTOP*60))))
   if [[ $CURRENTTIME -gt $ENFORCEDSTOPTIME ]]; then
-    echo "VM $NAME reaching max runtime, terminating and deleting..."
-    consolestopandremove
-    break
+    if [ $SHUTDOWN = "Yes" ]; then
+      echo "VM $NAME reaching max runtime, terminating and deleting..."
+      consolestopandremove
+      break
+    fi
   fi
   sleep $REFRESHRATE
 done
