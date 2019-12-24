@@ -1,4 +1,5 @@
 #!/bin/bash
+# usage contrib/gitian-additional-scripts/build-on-console.sh "lwm"
 STARTTIMEID=$(date +%s)
 ENFORCEDSTOP="180" # in minutes, default is 180 minutes, 3 hours
 # gcloud vars
@@ -19,7 +20,7 @@ METADATASSHKEYSFILE="metadata.sshkeys.meta" # filepath
 # ssh - will be added to console as default key
 MYSSHKEY="id_ecdsa_ionian_official_releases_ecdsa_521b"
 
-# GPG
+# GPG Autocreation (this key will be created on vm, it is a different on each build, import gpg key of the release to your bitbucket/github accounts)
 KEYTYPE="RSA"
 KEYLENGTH="4096"
 SUBKEYTYPE="RSA"
@@ -31,7 +32,7 @@ EXPIREDATE="0"
 VMUSERNAME="gitianuser"
 
 # gitian
-SIGNER="RANDOMAUTOCREATION"
+SIGNER="$EMAIL"
 PREVIOUSVER="4.0.00"
 VERSION="5.0.99"
 # optional settings
@@ -40,12 +41,19 @@ HASH="256"                    # hash new files
 UPLOADFOLDER="ioncore-binaries"      # folder on UPLOAD server (will be created if not existing)
 JOBS="$CUSTOMCPU"                         # number of jobs, default: 2
 MEMORY=$(($CUSTOMMEMORY-500))                    # RAM to be used, default: 2000
-OS="m"				            # default: lwm
+OS="$1"				            # default: lwm
 GITURL="git@bitbucket.org/ioncoin/ion.git"
 #GITIANOPTS="--os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --no-upload --hash $HASH --previousver $PREVIOUSVER"
 GITIANOPTS="--os $OS --jobs $JOBS --memory $MEMORY --detach-sign --no-commit --build --hash $HASH --previousver $PREVIOUSVER"
+MACOSXSDKURL="https://github.com/gitianuser/MacOSX-SDKs/releases/download/MacOSX10.11.sdk/MacOSX10.11.sdk.tar.xz"
 
-SHUTDOWN="no"
+# Script options
+SHUTDOWN="yes"  # yes/no, yes ensures that VM shuts itself down when finished
+                # we do it to ensure that bi further costs are produced, set no only for debugging
+DELETEVM="no"   # yes/no, deletes VM after build succefull/failed.
+                # Yes is for automation process for deleting VM completly including disks after it finishes
+                # No is if you do not use upload function by gitian or if build fails and you need to access logs
+#USERPASSEDGPG="no"
 
 # gitian SSH/UPLOAD
 # ssh upload server (required for .ssh/config creation)
@@ -76,7 +84,7 @@ EOF
 ## metadata - startup script
 cat <<EOF | tee $METADATAFILESTARTUP
 # update system
-sudo apt-get update && sudo apt-get upgrade -y
+apt-get update && apt-get upgrade -y
 # go to gitianuser's home
 cd /home/$VMUSERNAME
 sudo -i -u $VMUSERNAME git clone --recurse-submodules http://bitbucket.org/ioncoin/ion.git
@@ -96,20 +104,33 @@ sudo -i -u $VMUSERNAME sed -i "s/yourusername/$VMUSERNAME/" ./create-new-gpg-nop
 sudo -i -u $VMUSERNAME ./create-new-gpg-nopassword.sh
 EOF
 
-LISTKEYSLONGCOMMAND=$(echo "sudo -i -u $VMUSERNAME gpg --list-secret-keys --keyid-format"' LONG | awk "NR>1{print $2}" | awk -F "[/]" "{print $2}"')
-LISTKEYSSHORTCOMMAND=$(echo "sudo -i -u $VMUSERNAME gpg --list-secret-keys --keyid-format"' SHORT | awk "NR>1{print $2}" | awk -F "[/]" "{print $2}"')
+#LISTKEYSLONGCOMMAND=$(echo "sudo -i -u $VMUSERNAME gpg --list-secret-keys --keyid-format LONG $EMAIL")
+#LISTKEYSSHORTCOMMAND=$(echo "sudo -i -u $VMUSERNAME gpg --list-secret-keys --keyid-format SHORT $EMAIL")
+#cat <<EOF | tee -a $METADATAFILESTARTUP
+## get long and short key-id's
+#SIGNERLONG=$($LISTKEYSLONGCOMMAND)
+#SIGNERSHORT=$($LISTKEYSSHORTCOMMAND)
+#EOF
+
+# add mac osx sdk
 cat <<EOF | tee -a $METADATAFILESTARTUP
-# get long and short key-id's
-SIGNERLONG=$($LISTKEYSLONGCOMMAND)
-SIGNERSHORT=$($LISTKEYSSHORTCOMMAND)
+echo "Downloading Mac SDK"
+cd ./gitian-builder/inputs
+wget $MACOSXSDKURL
+mkdir -p ./SDKs
+echo "Extracting Mac SDK"
+tar -C SDKs -xJf MacOSX10.11.sdk.tar.xz
+cd ../..
 EOF
 
+# add ssh keys for upload server
 cat <<EOF | tee -a $METADATAFILESTARTUP
 # add ssh upload keys for gitianuser
 sudo -i -u $VMUSERNAME echo "$SSHUPLOADKEYPRIVATE" > /home/$VMUSERNAME/.ssh/$MYSSHUPLOADKEY
 sudo -i -u $VMUSERNAME echo "$SSHUPLOADKEYPUBLIC" > /home/$VMUSERNAME/.ssh/$MYSSHUPLOADKEY.pub
 EOF
 
+# add keys to ssh agent (gitianuser)
 SSHEVALUATE=$(echo "sudo -i -u $VMUSERNAME eval "'"'"$(ssh-agent -s)"'"')
 cat <<"EOF" | tee -a $METADATAFILESTARTUP
 sudo -i -u $SSHEVALUATE
@@ -118,6 +139,7 @@ cat <<EOF | tee -a $METADATAFILESTARTUP
 sudo -i -u $VMUSERNAME ssh-add /home/$VMUSERNAME/.ssh/$MYSSHUPLOADKEY
 EOF
 
+# add ssh config and add uploadserver RSA to known_hosts
 cat <<EOF | tee -a $METADATAFILESTARTUP
 ## allow gitianuser to connect to upload server
 echo "$UPLOADHOSTRSA" | sudo -i -u $VMUSERNAME tee -a /home/$VMUSERNAME/.ssh/known_hosts
@@ -140,6 +162,7 @@ echo "$SSHUPLOADKEYPUBLIC" > ~/.ssh/$MYSSHUPLOADKEY.pub
 echo "$UPLOADHOSTRSA" | tee -a ~/.ssh/known_hosts
 EOF
 
+# add keys to ssh agent (root)
 cat <<"EOF" | tee -a $METADATAFILESTARTUP
 eval "$(ssh-agent -s)"
 EOF
@@ -147,9 +170,15 @@ cat <<EOF | tee -a $METADATAFILESTARTUP
 ssh-add ~/.ssh/$MYSSHUPLOADKEY
 EOF
 
-cat <<"EOF" | tee -a $METADATAFILESTARTUP
+# add gitian vars
+## check if OS variable was passed
+if [ -z "$1" ]; then
+  OS="lwm"
+fi
+
+cat <<EOF | tee -a $METADATAFILESTARTUP
 # set gitian build vars
-export SIGNER="$SIGNERLONG"            # signer key-id, we use long ID in this script, short ID for filenames
+export SIGNER="$EMAIL"            # signer key-id, we use long ID in this script, short ID for filenames
 EOF
 
 cat <<EOF | tee -a $METADATAFILESTARTUP
@@ -164,15 +193,15 @@ export MEMORY="$MEMORY"                # RAM to be used, default: 2000
 export OS="$OS"				           # default: lwm
 EOF
 
-EXPORTSECRETLONGASCII=$(echo "sudo -i -u $VMUSERNAME gpg --export-secret-key -a "'$SIGNERLONG > $SIGNERSHORT'"-$EMAIL.private.asc")
-EXPORTPUBLICLONGASCII=$(echo "sudo -i -u $VMUSERNAME gpg --export -a "'$SIGNERLONG > $SIGNERSHORT'"-$EMAIL.public.asc")
-EXPORTSECRETLONGGPG=$(echo "sudo -i -u $VMUSERNAME gpg --export-secret-key -a "'$SIGNERLONG > $SIGNERSHORT'"-$EMAIL.private.gpg")
-EXPORTPUBLICLONGGPG=$(echo "sudo -i -u $VMUSERNAME gpg --export "'$SIGNERLONG > $SIGNERSHORT'"-$EMAIL.public.gpg")
-EXPORTPUBLICLONGASCIIBUNDLE=$(echo "sudo -i -u $VMUSERNAME gpg --export -a "'$SIGNERLONG > $SIGNERSHORT'"-$EMAIL.keybundle.asc")
-EXPORTSECRETLONGASCIIBUNDLE=$(echo "sudo -i -u $VMUSERNAME gpg --export-secret-key -a "'$SIGNERLONG >> $SIGNERSHORT'"-$EMAIL.keybundle.asc")
-EXPORTPUBLICLONGGPGBUNDLE=$(echo "sudo -i -u $VMUSERNAME gpg --export "'$SIGNERLONG > $SIGNERSHORT'"-$EMAIL.keybundle.gpg")
-EXPORTSECRETLONGGPGBUNDLE=$(echo "sudo -i -u $VMUSERNAME gpg --export-secret-key -a "'$SIGNERLONG >> $SIGNERSHORT'"-$EMAIL.keybundle.gpg")
-
+# add gpg export and build commands
+EXPORTSECRETLONGASCII=$(echo "sudo -i -u $VMUSERNAME gpg --export-secret-key -a $EMAIL > $EMAIL.private.asc")
+EXPORTPUBLICLONGASCII=$(echo "sudo -i -u $VMUSERNAME gpg --export -a $EMAIL > $EMAIL.public.asc")
+EXPORTSECRETLONGGPG=$(echo "sudo -i -u $VMUSERNAME gpg --export-secret-key -a $EMAIL > $EMAIL.private.gpg")
+EXPORTPUBLICLONGGPG=$(echo "sudo -i -u $VMUSERNAME gpg --export $EMAIL > $EMAIL.public.gpg")
+EXPORTPUBLICLONGASCIIBUNDLE=$(echo "sudo -i -u $VMUSERNAME gpg --export -a $EMAIL > $EMAIL.keybundle.asc")
+EXPORTSECRETLONGASCIIBUNDLE=$(echo "sudo -i -u $VMUSERNAME gpg --export-secret-key -a $EMAIL > $EMAIL.keybundle.asc")
+EXPORTPUBLICLONGGPGBUNDLE=$(echo "sudo -i -u $VMUSERNAME gpg --export $EMAIL > $EMAIL.keybundle.gpg")
+EXPORTSECRETLONGGPGBUNDLE=$(echo "sudo -i -u $VMUSERNAME gpg --export-secret-key -a $EMAIL > $EMAIL.keybundle.gpg")
 BUILDIONCORE=$(echo "sudo -i -u $VMUSERNAME ./gitian-build.py $GITIANOPTS "'$SIGNER'" $VERSION | sudo -i -u $VMUSERNAME tee ./gitian-build-${STARTTIMEID}.log")
 cat <<EOF | tee -a $METADATAFILESTARTUP
 $EXPORTSECRETLONGASCII
@@ -189,21 +218,39 @@ $EXPORTSECRETLONGGPGBUNDLE
 $BUILDIONCORE
 EOF
 
-
-if [ $SHUTDOWN = "Yes" ]; then
+# add shutdown command
+if [ $SHUTDOWN = "yes" ]; then
   SHUTDOWNCOMMAND="shutdown -h now"
 else
   SHUTDOWNCOMMAND="echo 'shutdown disabled'"
 fi
+
 cat <<EOF | tee -a $METADATAFILESTARTUP
 # shutdown
 $SHUTDOWNCOMMAND
 EOF
 
+# google cloud functions
+consolestop() {
+    if [ $SHUTDOWN = "yes" ]; then
+      gcloud compute instances stop $NAME --zone $ZONE
+    else
+      echo "SHUTDOWN VM DISABLED"
+    fi
+}
+
+consoleremove() {
+    if [ $DELETEVM = "yes" ]; then
+      echo "Y" | gcloud compute instances delete $NAME --zone $ZONE
+    else
+      echo "DELETING VM DISABLED"
+      SHUTDOWNCOMMAND="echo 'shutdown disabled'"
+    fi
+}
+
 consolestopandremove() {
-    gcloud compute instances stop $NAME --zone $ZONE
-    echo DELETING
-    echo "Y" | gcloud compute instances delete $NAME --zone $ZONE
+    consolestop
+    consoleremove
 }
 
 # create from prepared image
@@ -222,6 +269,23 @@ consolecreateandstart () {
         --preemptible
 }
 
+# check functions
+checkdeletevm () {
+  if [ $DELETEVM = "yes" ]; then
+    echo "VM $NAME finished, terminating and deleting..."
+    consolestopandremove
+    break
+  else
+    echo "VM $NAME finished, terminating and deleting disabled"
+    break
+  fi
+}
+
+checkvmstatus () {
+  if [ $VMSTATUS = "TERMINATED" ]; then
+    checkdeletevm
+  fi
+}
 
 ## CREATE AND START CONSOLE ##
 STARTVMID=$(date +%s)
@@ -234,23 +298,23 @@ ssh-keygen -f $HOME/.ssh/known_hosts -R $VMIPADDRESS
 
 VMSTATUS=$(gcloud compute instances list | grep $NAME | awk '{print $NF}')
 REFRESHRATE="30"
+ENFORCEDSTOPTIME=$(($STARTVMID + $(($ENFORCEDSTOP*60))))
 while [ $VMSTATUS = "RUNNING" ]
 do
   VMSTATUS=$(gcloud compute instances list | grep $NAME | awk '{print $NF}')
-  if [ $VMSTATUS = "TERMINATED" ]; then
-    if [ $SHUTDOWN = "Yes" ]; then
-      echo "VM $NAME finished, terminating and deleting..."
-      consolestopandremove
-      break
-    fi
+  if [ $SHUTDOWN = "Yes" ]; then
+    checkvmstatus
+  else
+    echo "VM $NAME finished, terminating, shutdown and deleting disabled"
+    break
   fi
   # check if current time is greater than max allowed, stop and delete VM in that case
   CURRENTTIME=$(date +%s)
-  ENFORCEDSTOPTIME=$(($STARTVMID + $(($ENFORCEDSTOP*60))))
   if [[ $CURRENTTIME -gt $ENFORCEDSTOPTIME ]]; then
     if [ $SHUTDOWN = "Yes" ]; then
-      echo "VM $NAME reaching max runtime, terminating and deleting..."
-      consolestopandremove
+      checkvmstatus
+    else
+      echo "VM $NAME finished, terminating, shutdown and deleting disabled"
       break
     fi
   fi
