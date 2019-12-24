@@ -864,6 +864,9 @@ public:
     MasterKeyMap mapMasterKeys;
     unsigned int nMasterKeyMaxID;
 
+    // Staking
+    uint64_t nStakeSplitThreshold;
+
     // Create wallet with dummy database handle
     CWallet(): dbw(new CWalletDBWrapper())
     {
@@ -902,6 +905,9 @@ public:
         fAnonymizableTallyCachedNonDenom = false;
         vecAnonymizableTallyCached.clear();
         vecAnonymizableTallyCachedNonDenom.clear();
+
+        // Stake settings
+        nStakeSplitThreshold = 2000;
     }
 
     std::map<uint256, CWalletTx> mapWallet;
