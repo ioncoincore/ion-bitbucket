@@ -260,6 +260,7 @@ BITCOIN_CORE_H = \
   tokens/tokengroupmanager.h \
   tokens/tokengroupwallet.h \
   torcontrol.h \
+  transactionrecord.h \
   txdb.h \
   txmempool.h \
   ui_interface.h \
@@ -418,6 +419,7 @@ libion_wallet_a_SOURCES = \
   privatesend/privatesend-util.cpp \
   tokens/rpctokenwallet.cpp \
   tokens/tokengroupwallet.cpp \
+  transactionrecord.cpp \
   wallet/crypter.cpp \
   wallet/db.cpp \
   wallet/rpcdump.cpp \

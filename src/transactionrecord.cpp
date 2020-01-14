@@ -28,9 +28,9 @@ bool TransactionRecord::showTransaction(const CWalletTx &wtx)
 /*
  * Decompose CWallet transaction to model transaction records.
  */
-QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *wallet, const CWalletTx &wtx)
+std::vector<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *wallet, const CWalletTx &wtx)
 {
-    QList<TransactionRecord> parts;
+    std::vector<TransactionRecord> parts;
     int64_t nTime = wtx.GetTxTime();
     CAmount nCredit = wtx.GetCredit(ISMINE_ALL);
     CAmount nDebit = wtx.GetDebit(ISMINE_ALL);
@@ -74,7 +74,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
 
                 sub.address.SetString(sub.strAddress);
                 sub.txDest = sub.address.Get();
-                parts.append(sub);
+                parts.push_back(sub);
             }
         }
     }
@@ -109,8 +109,8 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
         }
 
         if(fAllFromMeDenom && fAllToMeDenom && nFromMe * nToMe) {
-            parts.append(TransactionRecord(hash, nTime, TransactionRecord::PrivateSendDenominate, "", -nDebit, nCredit));
-            parts.last().involvesWatchAddress = false;   // maybe pass to TransactionRecord as constructor argument
+            parts.push_back(TransactionRecord(hash, nTime, TransactionRecord::PrivateSendDenominate, "", -nDebit, nCredit));
+            parts.back().involvesWatchAddress = false;   // maybe pass to TransactionRecord as constructor argument
         }
         else if (fAllFromMe && fAllToMe)
         {
@@ -166,8 +166,8 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             sub.credit = nCredit - nChange;
             sub.address.SetString(sub.strAddress);
             sub.txDest = sub.address.Get();
-            parts.append(sub);
-            parts.last().involvesWatchAddress = involvesWatchAddress;   // maybe pass to TransactionRecord as constructor argument
+            parts.push_back(sub);
+            parts.back().involvesWatchAddress = involvesWatchAddress;   // maybe pass to TransactionRecord as constructor argument
         }
         else if (fAllFromMe)
         {
@@ -186,7 +186,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 sub.idx = 0;
                 sub.type = TransactionRecord::PrivateSendCollateralPayment;
                 sub.debit = -nDebit;
-                parts.append(sub);
+                parts.push_back(sub);
                 fDone = true;
             }
 
@@ -235,7 +235,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 sub.address.SetString(sub.strAddress);
                 sub.txDest = sub.address.Get();
 
-                parts.append(sub);
+                parts.push_back(sub);
             }
         }
         else
@@ -243,8 +243,8 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             //
             // Mixed debit transaction, can't break down payees
             //
-            parts.append(TransactionRecord(hash, nTime, TransactionRecord::Other, "", nNet, 0));
-            parts.last().involvesWatchAddress = involvesWatchAddress;
+            parts.push_back(TransactionRecord(hash, nTime, TransactionRecord::Other, "", nNet, 0));
+            parts.back().involvesWatchAddress = involvesWatchAddress;
         }
     }
 
@@ -283,7 +283,7 @@ void TransactionRecord::updateStatus(const CWalletTx &wtx, int chainLockHeight)
     if (addrBookIt == wtx.GetWallet()->mapAddressBook.end()) {
         status.label = "";
     } else {
-        status.label = QString::fromStdString(addrBookIt->second.name);
+        status.label = addrBookIt->second.name;
     }
 
     if (!CheckFinalTx(wtx))
@@ -370,12 +370,64 @@ bool TransactionRecord::statusUpdateNeeded(int chainLockHeight)
         || (!status.lockedByChainLocks && status.cachedChainLockHeight != chainLockHeight);
 }
 
-QString TransactionRecord::getTxID() const
+std::string TransactionRecord::getTxID() const
 {
-    return QString::fromStdString(hash.ToString());
+    return hash.ToString();
 }
 
 int TransactionRecord::getOutputIndex() const
 {
     return idx;
+}
+
+std::string TransactionRecord::GetTransactionRecordType() const
+{
+    return GetTransactionRecordType(type);
+}
+
+std::string TransactionRecord::GetTransactionRecordType(Type type) const
+{
+    switch (type)
+    {
+        case Other: return "Other";
+        case Generated: return "Generated";
+        case StakeMint: return "StakeMint";
+        case MNReward: return "MNReward";
+        case SendToAddress: return "SendToAddress";
+        case SendToOther: return "SendToOther";
+        case RecvWithAddress: return "RecvWithAddress";
+        case RecvFromOther: return "RecvFromOther";
+        case SendToSelf: return "SendToSelf";
+        case RecvWithPrivateSend: return "RecvWithPrivateSend";
+        case PrivateSendDenominate: return "PrivateSendDenominate";
+        case PrivateSendCollateralPayment: return "PrivateSendCollateralPayment";
+        case PrivateSendMakeCollaterals: return "PrivateSendMakeCollaterals";
+        case PrivateSendCreateDenominations: return "PrivateSendCreateDenominations";
+        case PrivateSend: return "PrivateSend";
+    }
+    return NULL;
+}
+
+std::string TransactionRecord::GetTransactionStatus() const
+{
+    return GetTransactionStatus(status.status);
+}
+std::string TransactionRecord::GetTransactionStatus(TransactionStatus::Status status) const
+{
+    switch (status)
+    {
+        case TransactionStatus::Confirmed: return "Confirmed";           /**< Have 6 or more confirmations (normal tx) or fully mature (mined tx) **/
+            /// Normal (sent/received) transactions
+        case TransactionStatus::OpenUntilDate: return "OpenUntilDate";   /**< Transaction not yet final, waiting for date */
+        case TransactionStatus::OpenUntilBlock: return "OpenUntilBlock"; /**< Transaction not yet final, waiting for block */
+        case TransactionStatus::Offline: return "Offline";               /**< Not sent to any other nodes **/
+        case TransactionStatus::Unconfirmed: return "Unconfirmed";       /**< Not yet mined into a block **/
+        case TransactionStatus::Confirming: return "Confirmed";          /**< Confirmed, but waiting for the recommended number of confirmations **/
+        case TransactionStatus::Conflicted: return "Conflicted";         /**< Conflicts with other transaction or mempool **/
+            /// Generated (mined) transactions
+        case TransactionStatus::Immature: return "Immature";             /**< Mined but waiting for maturity */
+        case TransactionStatus::MaturesWarning: return "MaturesWarning"; /**< Transaction will likely not mature because no nodes have confirmed */
+        case TransactionStatus::NotAccepted: return "NotAccepted";       /**< Mined but not accepted */
+    }
+    return NULL;
 }
