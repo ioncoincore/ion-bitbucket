@@ -36,5 +36,6 @@ static const int MAX_URI_LENGTH = 255;
 #define QAPP_APP_NAME_DEFAULT "Ion-Qt"
 #define QAPP_APP_NAME_TESTNET "Ion-Qt-testnet"
 #define QAPP_APP_NAME_DEVNET "Ion-Qt-%s"
+#define QAPP_APP_NAME_REGTEST "Ion-Qt-regtest"
 
 #endif // BITCOIN_QT_GUICONSTANTS_H
