@@ -24,6 +24,7 @@
 #include "primitives/transaction.h"
 #include "script/script.h"
 #include "script/sign.h"
+#include "script/tokengroup.h"
 #include "scheduler.h"
 #include "timedata.h"
 #include "tokens/tokengroupwallet.h"
@@ -5103,13 +5104,48 @@ void CWallet::MarkReserveKeysAsUsed(int64_t keypool_id)
 
 void CWallet::GetScriptForMining(std::shared_ptr<CReserveScript> &script)
 {
+    std::shared_ptr<CReserveKey> rKey;
+    CPubKey pubkey;
+    if (!GetKeyForMining(rKey, pubkey))
+        return;
+        
+    script = rKey;
+    script->reserveScript = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
+}
+
+bool CWallet::GetScriptForPowMining(std::shared_ptr<CReserveScript> &script, const std::shared_ptr<CReserveKey> &reservedKey)
+{
+    CPubKey pubkey;
+    if (!reservedKey->GetReservedKey(pubkey, false))
+        return false;
+
+    script = reservedKey;
+    script->reserveScript = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
+    return true;
+}
+
+bool CWallet::GetScriptForHybridMining(std::shared_ptr<CReserveScript> &script, const std::shared_ptr<CReserveKey> &reservedKey, const CTokenGroupID &grpID, const CAmount amount)
+{
+    CPubKey pubkey;
+    if (!reservedKey->GetReservedKey(pubkey, false))
+        return false;
+
+    script = reservedKey;
+    CTxDestination dst = pubkey.GetID();
+    script->reserveScript = GetScriptForDestination(dst, grpID, amount);
+    return true;
+}
+
+bool CWallet::GetKeyForMining(std::shared_ptr<CReserveKey> &reservedKey, CPubKey &reservedPubkey)
+{
     std::shared_ptr<CReserveKey> rKey = std::make_shared<CReserveKey>(this);
     CPubKey pubkey;
     if (!rKey->GetReservedKey(pubkey, false))
-        return;
+        return false;
 
-    script = rKey;
-    script->reserveScript = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
+    reservedKey = rKey;
+    reservedPubkey = pubkey;
+    return true;
 }
 
 void CWallet::LockCoin(const COutPoint& output)

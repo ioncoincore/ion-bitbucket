@@ -581,7 +581,7 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
         if (chainActive.Tip()->nHeight < chainparams.GetConsensus().ATPStartHeight)
         {
             return state.DoS(0, false, REJECT_NONSTANDARD, "premature-op_group-tx");
-        } else if (!IsAnyOutputGroupedCreation(tx, TokenGroupIdFlags::MGT_TOKEN) && !tokenGroupManager->ManagementTokensCreated()){
+        } else if (!IsAnyOutputGroupedCreation(tx, TokenGroupIdFlags::MGT_TOKEN) && !tokenGroupManager->ManagementTokensCreated(chainActive.Height())){
             for (const CTxOut &txout : tx.vout)
             {
                 CTokenGroupInfo grp(txout.scriptPubKey);
@@ -1051,7 +1051,7 @@ double ConvertBitsToDouble(unsigned int nBits)
     return dDiff;
 }
 
-CAmount GetBlockSubsidyION(int nPrevBits, int nPrevHeight, const Consensus::Params& consensusParams, bool fSuperblockPartOnly)
+CAmount GetBlockSubsidyION(int nPrevHeight, const Consensus::Params& consensusParams)
 {
     CAmount nSubsidy = 0;
     int nHeight = nPrevHeight + 1;
@@ -1125,7 +1125,7 @@ CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params&
     CAmount nSubsidyBase;
 
     if (nPrevHeight >= 0) {
-        CAmount nSubsidy = GetBlockSubsidyION(nPrevBits, nPrevHeight, consensusParams, fSuperblockPartOnly);
+        CAmount nSubsidy = GetBlockSubsidyION(nPrevHeight, consensusParams);
         CAmount nSuperblockPart = (nPrevHeight > consensusParams.nBudgetPaymentsStartBlock) ? nSubsidy/10 : 0;
         return fSuperblockPartOnly ? nSuperblockPart : nSubsidy - nSuperblockPart;
     }
@@ -1426,7 +1426,7 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi
                     if (!tokenGroupManager->CheckXDMFees(tx, tgMintMeltBalance, state, pindexPrev, nXDMFees)) {
                         return state.DoS(0, error("Token transaction does not pay enough XDM fees"), REJECT_MALFORMED, "token-group-imbalance");
                     }
-                    if (!tokenGroupManager->ManagementTokensCreated()){
+                    if (!tokenGroupManager->ManagementTokensCreated(chainActive.Height())){
                         for (const CTxOut &txout : tx.vout)
                         {
                             CTokenGroupInfo grp(txout.scriptPubKey);
