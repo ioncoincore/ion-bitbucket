@@ -31,7 +31,6 @@ QT_TS = \
   qt/locale/ion_ro.ts \
   qt/locale/ion_ru.ts \
   qt/locale/ion_sk.ts \
-  qt/locale/ion_sv.ts \
   qt/locale/ion_th.ts \
   qt/locale/ion_tr.ts \
   qt/locale/ion_uk.ts \
