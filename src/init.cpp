@@ -2154,6 +2154,9 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         stakingManager->fEnableStaking = gArgs.GetBoolArg("-staking", !fLiteMode);
         stakingManager->fEnableIONStaking = gArgs.GetBoolArg("-staking", true);
     }
+    if (Params().NetworkIDString() == CBaseChainParams::REGTEST) {
+        stakingManager->fEnableStaking = false;
+    }
 
     if (gArgs.IsArgSet("-reservebalance")) {
         CAmount n = 0;
