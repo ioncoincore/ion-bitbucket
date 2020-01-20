@@ -1051,10 +1051,15 @@ double ConvertBitsToDouble(unsigned int nBits)
     return dDiff;
 }
 
-CAmount GetBlockSubsidyION(int nPrevHeight, const Consensus::Params& consensusParams)
+CAmount GetBlockSubsidyION(const int nPrevHeight, const bool fPos, const Consensus::Params& consensusParams)
 {
     CAmount nSubsidy = 0;
     int nHeight = nPrevHeight + 1;
+
+    if (nHeight >= consensusParams.POSPOWStartHeight & !fPos) {
+        return 0;
+    }
+
     // TESTNET and REGTEST
     if (Params().NetworkIDString() == CBaseChainParams::REGTEST && nHeight < 86400) {
         if (nHeight == 0) {
@@ -1119,13 +1124,13 @@ NOTE:   unlike bitcoin we are using PREVIOUS block height here,
         might be a good idea to change this to use prev bits
         but current height to avoid confusion.
 */
-CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params& consensusParams, bool fSuperblockPartOnly)
+CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const bool fPos, const Consensus::Params& consensusParams, bool fSuperblockPartOnly)
 {
     double dDiff;
     CAmount nSubsidyBase;
 
     if (nPrevHeight >= 0) {
-        CAmount nSubsidy = GetBlockSubsidyION(nPrevHeight, consensusParams);
+        CAmount nSubsidy = GetBlockSubsidyION(nPrevHeight, fPos, consensusParams);
         CAmount nSuperblockPart = (nPrevHeight > consensusParams.nBudgetPaymentsStartBlock) ? nSubsidy/10 : 0;
         return fSuperblockPartOnly ? nSuperblockPart : nSubsidy - nSuperblockPart;
     }
@@ -2372,7 +2377,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     // ION : MODIFIED TO CHECK MASTERNODE PAYMENTS AND SUPERBLOCKS
 
     // TODO: resync data (both ways?) and try to reprocess this block later.
-    CAmount blockReward = nFees + GetBlockSubsidy(pindex->pprev->nBits, pindex->pprev->nHeight, chainparams.GetConsensus());
+    CAmount blockReward = nFees + GetBlockSubsidy(pindex->pprev->nBits, pindex->pprev->nHeight, block.IsProofOfStake(), chainparams.GetConsensus());
     std::string strError = "";
 
     int64_t nTime5_2 = GetTimeMicros(); nTimeSubsidy += nTime5_2 - nTime5_1;

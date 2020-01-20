@@ -182,6 +182,8 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     CBlockIndex* pindexPrev = chainActive.Tip();
     nHeight = pindexPrev->nHeight + 1;
 
+    bool fHybridPow = !fPos && nHeight >= chainparams.GetConsensus().POSPOWStartHeight;
+
     bool fDIP0003Active_context = nHeight >= chainparams.GetConsensus().DIP0003Height;
     bool fDIP0008Active_context = VersionBitsState(chainActive.Tip(), chainparams.GetConsensus(), Consensus::DEPLOYMENT_DIP0008, versionbitscache) == THRESHOLD_ACTIVE;
 
@@ -234,13 +236,15 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
         coinbaseTx.vout[0].scriptPubKey = scriptPubKeyIn;
 
     // NOTE: unlike in bitcoin, we need to pass PREVIOUS block height here
-    CAmount blockReward = nFees + GetBlockSubsidy(pindexPrev->nBits, pindexPrev->nHeight, Params().GetConsensus());
+    CAmount blockReward = nFees + GetBlockSubsidy(pindexPrev->nBits, pindexPrev->nHeight, true, Params().GetConsensus());
 
     // Compute regular coinbase transaction.
     if (fPos) {
         coinbaseTx.vout[0].nValue = 0;
-        pCoinstakeTx->vout[1].nValue = blockReward;
-        SplitCoinstakeVouts(pCoinstakeTx);
+        pCoinstakeTx->vout[1].nValue += blockReward;
+    } else if (fHybridPow) {
+        // HybridPow miner is rewarded in XELEC
+        coinbaseTx.vout[0].nValue = nFees + GetMasternodePayment(nHeight, blockReward);
     } else {
         coinbaseTx.vout[0].nValue = blockReward;
     }
@@ -279,8 +283,9 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     // Update coinbase transaction with additional info about masternode and governance payments,
     // get some info back to pass to getblocktemplate
     if (fPos) {
+        SplitCoinstakeVouts(pCoinstakeTx);
         FillBlockPayments(*pCoinstakeTx, nHeight, blockReward, pblocktemplate->voutMasternodePayments, pblocktemplate->voutSuperblockPayments);
-    // Sign for ION
+        // Sign for ION
         int nIn = 0;
         for (CTxIn txIn : pCoinstakeTx->vin) {
             CScript coinstakeInScript;
@@ -292,6 +297,10 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
         }
     } else {
         FillBlockPayments(coinbaseTx, nHeight, blockReward, pblocktemplate->voutMasternodePayments, pblocktemplate->voutSuperblockPayments);
+        if (fHybridPow) {
+            // HybridPow miner is rewarded in XELEC
+            coinbaseTx.vout[0].nValue = 0;
+        }
     }
 
     pblock->vtx[0] = MakeTransactionRef(std::move(coinbaseTx));
