@@ -288,7 +288,7 @@ uint64_t RenewAuthority(const COutput &authority, std::vector<CRecipient> &outpu
     // The melting authority is consumed.  A wallet can decide to create a child authority or not.
     // In this simple wallet, we will always create a new melting authority if we spend a renewable
     // (CCHILD is set) one.
-    uint64_t totalBchNeeded = 0;
+    uint64_t totalIONNeeded = 0;
     CTokenGroupInfo tg(authority.GetScriptPubKey());
 
     if (tg.allowsRenew())
@@ -300,20 +300,44 @@ uint64_t RenewAuthority(const COutput &authority, std::vector<CRecipient> &outpu
         CScript script = GetScriptForDestination(authDest, tg.associatedGroup, (CAmount)(tg.controllingGroupFlags() & GroupAuthorityFlags::ALL_BITS));
         CRecipient recipient = {script, GROUPED_SATOSHI_AMT, false};
         outputs.push_back(recipient);
-        totalBchNeeded += GROUPED_SATOSHI_AMT;
+        totalIONNeeded += GROUPED_SATOSHI_AMT;
     }
 
-    return totalBchNeeded;
+    return totalIONNeeded;
 }
 
 void ConstructTx(CWalletTx &wtxNew, const std::vector<COutput> &chosenCoins, const std::vector<CRecipient> &outputs,
-    CAmount totalAvailable, CAmount totalNeeded, CAmount totalGroupedAvailable, CAmount totalGroupedNeeded,
-    CAmount totalXDMAvailable, CAmount totalXDMNeeded, CTokenGroupID grpID, CWallet *wallet)
+    CAmount totalIONNeeded, CAmount totalGroupedNeeded,
+    CAmount totalXDMNeeded, CTokenGroupID grpID, CWallet *wallet)
 {
+    CAmount totalIONAvailable = 0;
+    CAmount totalGroupedAvailable = 0;
+    CAmount totalXDMAvailable = 0;
+    CTokenGroupID XDMGrpID;
+    bool XDMCreated;
+
     std::string strError;
     CMutableTransaction tx;
     CReserveKey groupChangeKeyReservation(wallet);
     CReserveKey feeChangeKeyReservation(wallet);
+
+    XDMCreated = tokenGroupManager->DarkMatterTokensCreated();
+    if (XDMCreated) {
+        XDMGrpID = tokenGroupManager->GetDarkMatterID();
+    }
+    for (auto coin : chosenCoins)
+    {
+        totalIONAvailable += coin.GetValue();
+        CTokenGroupInfo tg(coin.GetScriptPubKey());
+        if (!tg.isInvalid() && tg.associatedGroup != NoGroup && !tg.isAuthority())
+        {
+            if (tg.associatedGroup == grpID){
+                totalGroupedAvailable += tg.quantity;
+            } else if (XDMCreated && tg.associatedGroup == XDMGrpID) {
+                totalXDMAvailable += tg.quantity;
+            }
+        }
+    }
 
     {
         unsigned int approxSize = 0;
@@ -371,7 +395,7 @@ void ConstructTx(CWalletTx &wtxNew, const std::vector<COutput> &chosenCoins, con
         // Now add bitcoin fee
         CAmount fee = wallet->GetRequiredFee(approxSize);
 
-        if (totalAvailable < totalNeeded + fee) // need to find a fee input
+        if (totalIONAvailable < totalIONNeeded + fee) // need to find a fee input
         {
             // find a fee input
             std::vector<COutput> bchcoins;
@@ -389,11 +413,11 @@ void ConstructTx(CWalletTx &wtxNew, const std::vector<COutput> &chosenCoins, con
 
             CTxIn txin(feeCoin.GetOutPoint(), CScript(), std::numeric_limits<unsigned int>::max() - 1);
             tx.vin.push_back(txin);
-            totalAvailable += feeCoin.GetValue();
+            totalIONAvailable += feeCoin.GetValue();
         }
 
         // make change if input is too big -- its okay to overpay by FEE_FUDGE rather than make dust.
-        if (totalAvailable > totalNeeded + (FEE_FUDGE * fee))
+        if (totalIONAvailable > totalIONNeeded + (FEE_FUDGE * fee))
         {
             CPubKey newKey;
 
@@ -401,7 +425,7 @@ void ConstructTx(CWalletTx &wtxNew, const std::vector<COutput> &chosenCoins, con
                 throw JSONRPCError(
                     RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
 
-            CTxOut txout(totalAvailable - totalNeeded - fee, GetScriptForDestination(newKey.GetID()));
+            CTxOut txout(totalIONAvailable - totalIONNeeded - fee, GetScriptForDestination(newKey.GetID()));
             tx.vout.push_back(txout);
         }
 
@@ -444,7 +468,7 @@ void GroupMelt(CWalletTx &wtxNew, const CTokenGroupID &grpID, CAmount totalNeede
     std::vector<CRecipient> outputs; // Melt has no outputs (except change)
     CAmount totalAvailable = 0;
     CAmount totalBchAvailable = 0;
-    CAmount totalBchNeeded = 0;
+    CAmount totalIONNeeded = 0;
     LOCK2(cs_main, wallet->cs_wallet);
 
     // Find melt authority
@@ -512,10 +536,10 @@ void GroupMelt(CWalletTx &wtxNew, const CTokenGroupID &grpID, CAmount totalNeede
     chosenCoins.push_back(authority);
 
     CReserveKey childAuthorityKey(wallet);
-    totalBchNeeded += RenewAuthority(authority, outputs, childAuthorityKey);
+    totalIONNeeded += RenewAuthority(authority, outputs, childAuthorityKey);
     // by passing a fewer tokens available than are actually in the inputs, there is a surplus.
     // This surplus will be melted.
-    ConstructTx(wtxNew, chosenCoins, outputs, totalBchAvailable, totalBchNeeded, totalAvailable - totalNeeded, 0, 0, 0, grpID,
+    ConstructTx(wtxNew, chosenCoins, outputs, totalIONNeeded, totalNeeded, 0, grpID,
         wallet);
     childAuthorityKey.KeepKey();
 }
@@ -592,8 +616,8 @@ void GroupSend(CWalletTx &wtxNew,
         }
     }
 
-    ConstructTx(wtxNew, chosenCoins, outputs, 0, GROUPED_SATOSHI_AMT * outputs.size(), totalAvailable, totalNeeded,
-        totalXDMAvailable, totalXDMNeeded, grpID, wallet);
+    ConstructTx(wtxNew, chosenCoins, outputs, GROUPED_SATOSHI_AMT * outputs.size(), totalNeeded,
+        totalXDMNeeded, grpID, wallet);
 }
 
 CTokenGroupID findGroupId(const COutPoint &input, CScript opRetTokDesc, TokenGroupIdFlags flags, uint64_t &nonce)
