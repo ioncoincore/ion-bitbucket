@@ -740,7 +740,7 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
 
         // No transactions are allowed below minRelayTxFee except from disconnected blocks
         if (fLimitFree && nModifiedFees < ::minRelayTxFee.GetFee(nSize)) {
-            return state.DoS(0, false, REJECT_INSUFFICIENTFEE, "min relay fee not met");
+            return state.DoS(0, false, REJECT_INSUFFICIENTFEE, strprintf("min relay fee not met (fee: %d, minimum fee: %d, size: %d", nModifiedFees, minRelayTxFee.GetFee(nSize), nSize));
         }
 
         if (nAbsurdFee && nFees > nAbsurdFee)
