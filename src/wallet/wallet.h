@@ -78,6 +78,9 @@ static const int64_t TIMESTAMP_MIN = 0;
 //! if set, all keys will be derived by using BIP39/BIP44
 static const bool DEFAULT_USE_HD_WALLET = false;
 
+//! Masternode coin amount
+static const CAmount MASTERNODE_COLLATERAL_AMOUNT = 20000 * COIN;
+
 bool AutoBackupWallet (CWallet* wallet, const std::string& strWalletFile_, std::string& strBackupWarningRet, std::string& strBackupErrorRet);
 
 class CBlockIndex;
@@ -510,6 +513,10 @@ public:
 
     CAmount GetAnonymizedCredit(bool fUseCache=true) const;
     CAmount GetDenominatedCredit(bool unconfirmed, bool fUseCache=true) const;
+
+    CAmount GetUnlockedCredit(bool fUseCache=true, const isminefilter& filter = ISMINE_SPENDABLE) const;
+    CAmount GetLockedCredit(bool fUseCache=true, const isminefilter& filter = ISMINE_SPENDABLE) const;
+    CAmount GetLockedWatchOnlyCredit(const bool& fUseCache=true) const;
 
     void GetAmounts(std::list<COutputEntry>& listReceived,
                     std::list<COutputEntry>& listSent, CAmount& nFee, std::string& strSentAccount, const isminefilter& filter) const;
@@ -1081,6 +1088,10 @@ public:
     CAmount GetUnconfirmedWatchOnlyBalance() const;
     CAmount GetImmatureWatchOnlyBalance() const;
     CAmount GetLegacyBalance(const isminefilter& filter, int minDepth, const std::string* account, const bool fAddLocked) const;
+
+    CAmount GetUnlockedBalance() const;
+    CAmount GetLockedBalance() const;
+    CAmount GetLockedWatchOnlyBalance() const;
 
     CAmount GetAnonymizableBalance(bool fSkipDenominated = false, bool fSkipUnconfirmed = true) const;
     CAmount GetAnonymizedBalance() const;
