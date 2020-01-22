@@ -254,6 +254,7 @@ BITCOIN_CORE_H = \
   threadsafety.h \
   threadinterrupt.h \
   timedata.h \
+  tokens/groups.h \
   tokens/tokendb.h \
   tokens/tokengroupconfiguration.h \
   tokens/tokengroupdescription.h \
@@ -612,6 +613,7 @@ libion_common_a_SOURCES = \
   script/standard.cpp \
   script/tokengroup.cpp \
   script/sign.cpp \
+  tokens/groups.cpp \
   tokens/rpctokens.cpp \
   tokens/tokendb.cpp \
   tokens/tokengroupconfiguration.cpp \
