@@ -153,6 +153,9 @@ static const bool DEFAULT_PEERBLOOMFILTERS = true;
 /** Default for -stopatheight */
 static const int DEFAULT_STOPATHEIGHT = 0;
 
+//! Masternode coin amount
+static const CAmount MASTERNODE_COLLATERAL_AMOUNT = 20000 * COIN;
+
 struct BlockHasher
 {
     size_t operator()(const uint256& hash) const { return hash.GetCheapHash(); }

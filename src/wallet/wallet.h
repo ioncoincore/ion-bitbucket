@@ -78,9 +78,6 @@ static const int64_t TIMESTAMP_MIN = 0;
 //! if set, all keys will be derived by using BIP39/BIP44
 static const bool DEFAULT_USE_HD_WALLET = false;
 
-//! Masternode coin amount
-static const CAmount MASTERNODE_COLLATERAL_AMOUNT = 20000 * COIN;
-
 bool AutoBackupWallet (CWallet* wallet, const std::string& strWalletFile_, std::string& strBackupWarningRet, std::string& strBackupErrorRet);
 
 class CBlockIndex;
