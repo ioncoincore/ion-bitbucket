@@ -489,9 +489,9 @@ public:
         consensus.BIP65Height = 2431; // 0000039cf01242c7f921dcb4806a5994bc003b48c1973ae0c89b67809c2bb2ab
         consensus.BIP66Height = 2075; // 0000002acdd29a14583540cb72e1c5cc83783560e38fa7081495d474fe1671f7
         consensus.DIP0001Height = 2;
-        consensus.DIP0003Height = 99999999;
-        consensus.DIP0003EnforcementHeight = 99999999;
-        consensus.DIP0003EnforcementHash = uint256S("00000055ebc0e974ba3a3fb785c5ad4365a39637d4df168169ee80d313612f8f");
+        consensus.DIP0003Height = 141000;
+        consensus.DIP0003EnforcementHeight = 141067;
+//        consensus.DIP0003EnforcementHash = uint256S("059e5ee39302d06e3df836154db9818cffb1fcefd2733179b6aec86fb454b9c3");
         consensus.IIP0006Height = 99999999;
         consensus.powLimit = uint256S("3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 2
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
