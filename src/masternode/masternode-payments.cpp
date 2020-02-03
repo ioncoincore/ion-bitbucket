@@ -159,7 +159,7 @@ bool IsBlockValueValid(const CBlock& block, int nBlockHeight, CAmount blockRewar
     return true;
 }
 
-bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward)
+bool IsBlockPayeeValid(const CTransactionRef txNewMiner, const CTransactionRef txNewStaker, int nBlockHeight, CAmount blockReward)
 {
     if(fLiteMode) {
         //there is no budget data to use to check anything, let's just accept the longest chain
@@ -182,6 +182,8 @@ bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight, CAmount bloc
 
     // superblocks started
     // SEE IF THIS IS A VALID SUPERBLOCK
+
+    const CTransaction txNew = txNewStaker ? *txNewStaker : *txNewMiner;
 
     if(sporkManager.IsSporkActive(SPORK_15_SUPERBLOCKS_ENABLED)) {
         if(CSuperblockManager::IsSuperblockTriggered(nBlockHeight)) {

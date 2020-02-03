@@ -551,11 +551,8 @@ bool GetKernelStakeModifierPreDGW(uint256 hashBlockFrom, uint64_t& nStakeModifie
     return true;
 }
 
-bool AcceptPOSParameters(const CBlock& block, CValidationState& state, CBlockIndex* pindexNew) {
+bool SetPOSParemeters(const CBlock& block, CValidationState& state, CBlockIndex* pindexNew) {
     AssertLockHeld(cs_main);
-
-    if (!pindexNew->SetStakeEntropyBit(pindexNew->GetStakeEntropyBit()))
-        return state.Invalid(error("%s : SetStakeEntropyBit() failed", __func__));
 
     if (pindexNew->nHeight >= Params().GetConsensus().POSPOWStartHeight) {
         // compute v2 stake modifier

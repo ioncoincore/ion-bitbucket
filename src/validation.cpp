@@ -2100,6 +2100,9 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     // Get the script flags for this block
     unsigned int flags = GetBlockScriptFlags(pindex, chainparams.GetConsensus());
 
+    if (!SetPOSParemeters(block, state, pindex)) {
+        return state.Error("Error setting POS parameters");
+    }
     if (block.IsProofOfStake()) {
         std::unique_ptr<CStakeInput> stake;
         uint256 hashProofOfStake;
@@ -2390,7 +2393,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     int64_t nTime5_3 = GetTimeMicros(); nTimeValueValid += nTime5_3 - nTime5_2;
     LogPrint(BCLog::BENCHMARK, "      - IsBlockValueValid: %.2fms [%.2fs]\n", 0.001 * (nTime5_3 - nTime5_2), nTimeValueValid * 0.000001);
 
-    if (!IsBlockPayeeValid(*block.vtx[0], pindex->nHeight, blockReward)) {
+    if (!IsBlockPayeeValid(block.vtx[0], block.IsProofOfStake() ? block.vtx[1] : nullptr, pindex->nHeight, blockReward)) {
         return state.DoS(0, error("ConnectBlock(ION): couldn't find masternode or superblock payments"),
                                 REJECT_INVALID, "bad-cb-payee");
     }
@@ -3359,10 +3362,12 @@ static CBlockIndex* AddToBlockIndex(const CBlockHeader& block, enum BlockStatus 
 /** Mark a block as having its data received and checked (up to BLOCK_VALID_TRANSACTIONS). */
 bool ReceivedBlockTransactions(const CBlock &block, CValidationState& state, CBlockIndex *pindexNew, const CDiskBlockPos& pos)
 {
+    if (!pindexNew->SetStakeEntropyBit(pindexNew->GetStakeEntropyBit()))
+        return state.Invalid(error("%s : SetStakeEntropyBit() failed", __func__));
+
     if (block.IsProofOfStake()) {
         pindexNew->SetProofOfStake();
     }
-    AcceptPOSParameters(block, state, pindexNew);
     pindexNew->nTx = block.vtx.size();
     pindexNew->nChainTx = 0;
     pindexNew->nFile = pos.nFile;
@@ -3897,8 +3902,10 @@ bool ProcessNewBlock(const CChainParams& chainparams, const std::shared_ptr<cons
         // belt-and-suspenders.
         bool ret = CheckBlock(*pblock, state, chainparams.GetConsensus());
 
-        if (!CheckBlockSignature(*pblock))
-            return error("ProcessNewBlock() : bad proof-of-stake block signature");
+        if (!CheckBlockSignature(*pblock)) {
+            state.Error("ProcessNewBlock() : bad proof-of-stake block signature");
+            ret = false;
+        }
 
         LOCK(cs_main);
 
