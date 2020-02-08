@@ -112,6 +112,9 @@ AC_DEFUN([BITCOIN_QT_CONFIGURE],[
   TEMP_CXXFLAGS=$CXXFLAGS
   CPPFLAGS="$QT_INCLUDES $CPPFLAGS"
   CXXFLAGS="$PIC_FLAGS $CXXFLAGS"
+  if test "x$TARGET_OS" = xlinux; then
+    QT_LIBS="$QT_LIBS -lfontconfig -lfreetype"
+  fi
   _BITCOIN_QT_IS_STATIC
   if test "x$bitcoin_cv_static_qt" = xyes; then
     _BITCOIN_QT_FIND_STATIC_PLUGINS
