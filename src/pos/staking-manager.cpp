@@ -15,6 +15,9 @@
 #include "validation.h"
 #include "wallet/wallet.h"
 
+// fix windows build
+#include <boost/thread.hpp>
+
 std::shared_ptr<CStakingManager> stakingManager;
 
 CStakingManager::CStakingManager(CWallet * const pwalletIn) :
