@@ -83,8 +83,13 @@ public:
             LOCK2(cs_main, wallet->cs_wallet);
             for(std::map<uint256, CWalletTx>::iterator it = wallet->mapWallet.begin(); it != wallet->mapWallet.end(); ++it)
             {
-                if(TransactionRecord::showTransaction(it->second))
-                    cachedWallet.append(TransactionRecord::decomposeTransaction(wallet, it->second));
+                if (TransactionRecord::showTransaction(it->second)) {
+                    std::vector<TransactionRecord> vRecs = TransactionRecord::decomposeTransaction(wallet, it->second);
+                    QList<TransactionRecord> QLRecs;
+                    QLRecs.reserve(vRecs.size());
+                    std::copy(vRecs.begin(), vRecs.end(), std::back_inserter(QLRecs));
+                    cachedWallet.append(QLRecs);
+                }
             }
         }
     }
@@ -138,8 +143,10 @@ public:
                     break;
                 }
                 // Added -- insert at the right position
-                QList<TransactionRecord> toInsert =
-                        TransactionRecord::decomposeTransaction(wallet, mi->second);
+                std::vector<TransactionRecord> vToInsert = TransactionRecord::decomposeTransaction(wallet, mi->second);
+                QList<TransactionRecord> toInsert;
+                toInsert.reserve(vToInsert.size());
+                std::copy(vToInsert.begin(), vToInsert.end(), std::back_inserter(toInsert));
                 if(!toInsert.isEmpty()) /* only if something to insert */
                 {
                     parent->beginInsertRows(QModelIndex(), lowerIndex, lowerIndex+toInsert.size()-1);
@@ -467,7 +474,7 @@ QString TransactionTableModel::formatTxToAddress(const TransactionRecord *wtx, b
     case TransactionRecord::SendToAddress:
     case TransactionRecord::Generated:
     case TransactionRecord::PrivateSend:
-        return formatAddressLabel(wtx->strAddress, wtx->status.label, tooltip) + watchAddress;
+        return formatAddressLabel(wtx->strAddress, QString::fromStdString(wtx->status.label), tooltip) + watchAddress;
     case TransactionRecord::SendToOther:
         return QString::fromStdString(wtx->strAddress) + watchAddress;
     case TransactionRecord::SendToSelf:
@@ -627,7 +634,7 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
         case Status:
             return QString::fromStdString(rec->status.sortKey);
         case Date:
-            return rec->time;
+            return qint64(rec->time);
         case Type:
             return formatTxType(rec);
         case Watchonly:
@@ -687,11 +694,11 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
     case AddressRole:
         return QString::fromStdString(rec->strAddress);
     case LabelRole:
-        return rec->status.label;
+        return QString::fromStdString(rec->status.label);
     case AmountRole:
         return qint64(rec->credit + rec->debit);
     case TxIDRole:
-        return rec->getTxID();
+        return QString::fromStdString(rec->getTxID());
     case TxHashRole:
         return QString::fromStdString(rec->hash.ToString());
     case TxHexRole:
@@ -699,7 +706,7 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
     case TxPlainTextRole:
         {
             QString details;
-            QString txLabel = rec->status.label;
+            QString txLabel = QString::fromStdString(rec->status.label);
 
             details.append(formatTxDate(rec));
             details.append(" ");

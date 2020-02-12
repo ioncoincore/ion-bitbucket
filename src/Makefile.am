@@ -254,12 +254,14 @@ BITCOIN_CORE_H = \
   threadsafety.h \
   threadinterrupt.h \
   timedata.h \
+  tokens/groups.h \
   tokens/tokendb.h \
   tokens/tokengroupconfiguration.h \
   tokens/tokengroupdescription.h \
   tokens/tokengroupmanager.h \
   tokens/tokengroupwallet.h \
   torcontrol.h \
+  transactionrecord.h \
   txdb.h \
   txmempool.h \
   ui_interface.h \
@@ -418,6 +420,7 @@ libion_wallet_a_SOURCES = \
   privatesend/privatesend-util.cpp \
   tokens/rpctokenwallet.cpp \
   tokens/tokengroupwallet.cpp \
+  transactionrecord.cpp \
   wallet/crypter.cpp \
   wallet/db.cpp \
   wallet/rpcdump.cpp \
@@ -610,6 +613,7 @@ libion_common_a_SOURCES = \
   script/standard.cpp \
   script/tokengroup.cpp \
   script/sign.cpp \
+  tokens/groups.cpp \
   tokens/rpctokens.cpp \
   tokens/tokendb.cpp \
   tokens/tokengroupconfiguration.cpp \

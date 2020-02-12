@@ -78,6 +78,9 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "listtransactions", 1, "count" },
     { "listtransactions", 2, "skip" },
     { "listtransactions", 3, "include_watchonly" },
+    { "listtransactionrecords", 1, "count" },
+    { "listtransactionrecords", 2, "skip" },
+    { "listtransactionrecords", 3, "include_watchonly" },
     { "listaccounts", 0, "minconf" },
     { "listaccounts", 1, "addlocked" },
     { "listaccounts", 2, "include_watchonly" },
@@ -172,6 +175,7 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "getspecialtxes", 3, "skip" },
     { "getspecialtxes", 4, "verbosity" },
     { "disconnectnode", 1, "nodeid" },
+    { "setstakesplitthreshold", 0, "value" },
     // Echo with conversion (For testing only)
     { "echojson", 0, "arg0" },
     { "echojson", 1, "arg1" },

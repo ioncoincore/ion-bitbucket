@@ -51,13 +51,13 @@ static const unsigned int DEFAULT_KEYPOOL_SIZE = 1000;
 //! -paytxfee default
 static const CAmount DEFAULT_TRANSACTION_FEE = 0;
 //! -fallbackfee default
-static const CAmount DEFAULT_FALLBACK_FEE = 1000;
+static const CAmount DEFAULT_FALLBACK_FEE = 10000;
 //! -m_discard_rate default
-static const CAmount DEFAULT_DISCARD_FEE = 10000;
+static const CAmount DEFAULT_DISCARD_FEE = 100000;
 //! -mintxfee default
-static const CAmount DEFAULT_TRANSACTION_MINFEE = 1000;
+static const CAmount DEFAULT_TRANSACTION_MINFEE = 10000;
 //! minimum recommended increment for BIP 125 replacement txs
-static const CAmount WALLET_INCREMENTAL_RELAY_FEE = 5000;
+static const CAmount WALLET_INCREMENTAL_RELAY_FEE = 15000;
 //! target minimum change amount
 static const CAmount MIN_CHANGE = CENT;
 //! final minimum change amount after paying for fees
@@ -77,9 +77,6 @@ static const int64_t TIMESTAMP_MIN = 0;
 
 //! if set, all keys will be derived by using BIP39/BIP44
 static const bool DEFAULT_USE_HD_WALLET = false;
-
-//! Masternode coin amount
-static const CAmount MASTERNODE_COLLATERAL_AMOUNT = 20000 * COIN;
 
 bool AutoBackupWallet (CWallet* wallet, const std::string& strWalletFile_, std::string& strBackupWarningRet, std::string& strBackupErrorRet);
 
@@ -864,6 +861,9 @@ public:
     MasterKeyMap mapMasterKeys;
     unsigned int nMasterKeyMaxID;
 
+    // Staking
+    uint64_t nStakeSplitThreshold;
+
     // Create wallet with dummy database handle
     CWallet(): dbw(new CWalletDBWrapper())
     {
@@ -902,6 +902,9 @@ public:
         fAnonymizableTallyCachedNonDenom = false;
         vecAnonymizableTallyCached.clear();
         vecAnonymizableTallyCachedNonDenom.clear();
+
+        // Stake settings
+        nStakeSplitThreshold = 2000;
     }
 
     std::map<uint256, CWalletTx> mapWallet;
@@ -1201,6 +1204,9 @@ public:
     }
 
     void GetScriptForMining(std::shared_ptr<CReserveScript> &script);
+    bool GetScriptForPowMining(std::shared_ptr<CReserveScript> &script, const std::shared_ptr<CReserveKey> &reservedKey);
+    bool GetScriptForHybridMining(std::shared_ptr<CReserveScript> &script, const std::shared_ptr<CReserveKey> &reservedKey, const CTokenGroupID &grpID, const CAmount amount);
+    bool GetKeyForMining(std::shared_ptr<CReserveKey> &reservedKey, CPubKey &pubkey);
     
     unsigned int GetKeyPoolSize()
     {

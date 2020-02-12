@@ -12,15 +12,18 @@
 #include "init.h"
 #include "httpserver.h"
 #include "keepass.h"
+#include "masternode/masternode-sync.h"
 #include "net.h"
 #include "policy/feerate.h"
 #include "policy/fees.h"
 #include "pos/staker.h"
+#include "pos/staking-manager.h"
 #include "privatesend/privatesend-client.h"
 #include "rpc/mining.h"
 #include "rpc/server.h"
 #include "timedata.h"
 #include "tokens/tokengroupwallet.h"
+#include "transactionrecord.h"
 #include "util.h"
 #include "utilmoneystr.h"
 #include "validation.h"
@@ -1672,6 +1675,166 @@ UniValue listtransactions(const JSONRPCRequest& request)
     return ret;
 }
 
+void ListTransactionRecords(CWallet * const pwallet, const CWalletTx& wtx, const std::string& strAccount, int nMinDepth, bool fLong, UniValue& ret, const isminefilter& filter)
+{
+    std::vector<TransactionRecord> vRecs = TransactionRecord::decomposeTransaction(pwallet, wtx);
+    for(auto&& vRec: vRecs) {
+        UniValue entry(UniValue::VOBJ);
+        entry.push_back(Pair("type", vRec.GetTransactionRecordType()));
+        entry.push_back(Pair("transactionid", vRec.getTxID()));
+        entry.push_back(Pair("outputindex", vRec.getOutputIndex()));
+        entry.push_back(Pair("time", vRec.time));
+        entry.push_back(Pair("debit", vRec.debit));
+        entry.push_back(Pair("credit", vRec.credit));
+        entry.push_back(Pair("involvesWatchAddress", vRec.involvesWatchAddress));
+
+        if (fLong) {
+            int chainlockHeight = 0;
+            if (vRec.statusUpdateNeeded(chainlockHeight)) vRec.updateStatus(wtx, chainlockHeight); // TODO: Identify chainlockHeight
+
+            entry.push_back(Pair("depth", vRec.status.depth));
+            entry.push_back(Pair("status", vRec.GetTransactionStatus()));
+            entry.push_back(Pair("countsForBalance", vRec.status.countsForBalance));
+            entry.push_back(Pair("matures_in", vRec.status.matures_in));
+            entry.push_back(Pair("open_for", vRec.status.open_for));
+            entry.push_back(Pair("cur_num_blocks", vRec.status.cur_num_blocks));
+            entry.push_back(Pair("chainLockHeight", vRec.status.cachedChainLockHeight)); // TODO: identify chainLockHeight / cachedChainLockHeight
+        }
+        ret.push_back(entry);
+    }
+}
+
+UniValue listtransactionrecords(const JSONRPCRequest& request)
+{
+    CWallet * const pwallet = GetWalletForJSONRPCRequest(request);
+    if (!EnsureWalletIsAvailable(pwallet, request.fHelp)) {
+        return NullUniValue;
+    }
+
+    if (request.fHelp || request.params.size() > 4)
+        throw std::runtime_error(
+            "listtransactions ( \"account\" count skip include_watchonly)\n"
+            "\nReturns up to 'count' most recent transactions skipping the first 'from' transactions for account 'account'.\n"
+            "\nArguments:\n"
+            "1. \"account\"        (string, optional) DEPRECATED. The account name. Should be \"*\".\n"
+            "2. count            (numeric, optional, default=10) The number of transactions to return\n"
+            "3. skip           (numeric, optional, default=0) The number of transactions to skip\n"
+            "4. include_watchonly (bool, optional, default=false) Include transactions to watch-only addresses (see 'importaddress')\n"
+            "\nResult:\n"
+            "[\n"
+            "  {\n"
+            "    \"account\":\"accountname\",  (string) DEPRECATED. The account name associated with the transaction. \n"
+            "                                                It will be \"\" for the default account.\n"
+            "    \"address\":\"address\",    (string) The ion address of the transaction. Not present for \n"
+            "                                                move transactions (category = move).\n"
+            "    \"category\":\"send|receive|move\", (string) The transaction category. 'move' is a local (off blockchain)\n"
+            "                                                transaction between accounts, and not associated with an address,\n"
+            "                                                transaction id or block. 'send' and 'receive' transactions are \n"
+            "                                                associated with an address, transaction id and block details\n"
+            "    \"amount\": x.xxx,          (numeric) The amount in " + CURRENCY_UNIT + ". This is negative for the 'send' category, and for the\n"
+            "                                         'move' category for moves outbound. It is positive for the 'receive' category,\n"
+            "                                         and for the 'move' category for inbound funds.\n"
+            "    \"label\": \"label\",       (string) A comment for the address/transaction, if any\n"
+            "    \"vout\": n,                (numeric) the vout value\n"
+            "    \"fee\": x.xxx,             (numeric) The amount of the fee in " + CURRENCY_UNIT + ". This is negative and only available for the \n"
+            "                                         'send' category of transactions.\n"
+            "    \"confirmations\": n,       (numeric) The number of blockchain confirmations for the transaction. Available for 'send' and \n"
+            "                                         'receive' category of transactions. Negative confirmations indicate the\n"
+            "                                         transation conflicts with the block chain\n"
+            "    \"instantlock\" : true|false, (bool) Current transaction lock state. Available for 'send' and 'receive' category of transactions.\n"
+            "    \"instantlock_internal\" : true|false, (bool) Current internal transaction lock state. Available for 'send' and 'receive' category of transactions.\n"
+            "    \"chainlock\" : true|false, (bool) The state of the corresponding block chainlock\n"
+            "    \"trusted\": xxx,           (bool) Whether we consider the outputs of this unconfirmed transaction safe to spend.\n"
+            "    \"blockhash\": \"hashvalue\", (string) The block hash containing the transaction. Available for 'send' and 'receive'\n"
+            "                                          category of transactions.\n"
+            "    \"blockindex\": n,          (numeric) The index of the transaction in the block that includes it. Available for 'send' and 'receive'\n"
+            "                                          category of transactions.\n"
+            "    \"blocktime\": xxx,         (numeric) The block time in seconds since epoch (1 Jan 1970 GMT).\n"
+            "    \"txid\": \"transactionid\",  (string) The transaction id. Available for 'send' and 'receive' category of transactions.\n"
+            "    \"time\": xxx,              (numeric) The transaction time in seconds since epoch (midnight Jan 1 1970 GMT).\n"
+            "    \"timereceived\": xxx,      (numeric) The time received in seconds since epoch (midnight Jan 1 1970 GMT). Available \n"
+            "                                          for 'send' and 'receive' category of transactions.\n"
+            "    \"comment\": \"...\",         (string) If a comment is associated with the transaction.\n"
+            "    \"otheraccount\": \"accountname\",  (string) DEPRECATED. For the 'move' category of transactions, the account the funds came \n"
+            "                                          from (for receiving funds, positive amounts), or went to (for sending funds,\n"
+            "                                          negative amounts).\n"
+            "    \"abandoned\": xxx          (bool) 'true' if the transaction has been abandoned (inputs are respendable). Only available for the \n"
+            "                                         'send' category of transactions.\n"
+            "  }\n"
+            "]\n"
+
+            "\nExamples:\n"
+            "\nList the most recent 10 transactions in the systems\n"
+            + HelpExampleCli("listtransactionrecords", "") +
+            "\nList transactions 100 to 120\n"
+            + HelpExampleCli("listtransactionrecords", "\"*\" 20 100") +
+            "\nAs a json rpc call\n"
+            + HelpExampleRpc("listtransactionrecords", "\"*\", 20, 100")
+        );
+
+    LOCK2(cs_main, pwallet->cs_wallet);
+
+    std::string strAccount = "*";
+    if (!request.params[0].isNull())
+        strAccount = request.params[0].get_str();
+    int nCount = 10;
+    if (!request.params[1].isNull())
+        nCount = request.params[1].get_int();
+    int nFrom = 0;
+    if (!request.params[2].isNull())
+        nFrom = request.params[2].get_int();
+    isminefilter filter = ISMINE_SPENDABLE;
+    if(!request.params[3].isNull())
+        if(request.params[3].get_bool())
+            filter = filter | ISMINE_WATCH_ONLY;
+
+    if (nCount < 0)
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "Negative count");
+    if (nFrom < 0)
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "Negative from");
+
+    UniValue ret(UniValue::VARR);
+
+    const CWallet::TxItems & txOrdered = pwallet->wtxOrdered;
+
+    // iterate backwards until we have nCount items to return:
+    for (CWallet::TxItems::const_reverse_iterator it = txOrdered.rbegin(); it != txOrdered.rend(); ++it)
+    {
+        CWalletTx *const pwtx = (*it).second.first;
+        if (pwtx != 0)
+            ListTransactionRecords(pwallet, *pwtx, strAccount, 0, true, ret, filter);
+        CAccountingEntry *const pacentry = (*it).second.second;
+        if (pacentry != 0)
+            AcentryToJSON(*pacentry, strAccount, ret);
+
+        if ((int)ret.size() >= (nCount+nFrom)) break;
+    }
+    // ret is newest to oldest
+
+    if (nFrom > (int)ret.size())
+        nFrom = ret.size();
+    if ((nFrom + nCount) > (int)ret.size())
+        nCount = ret.size() - nFrom;
+
+    std::vector<UniValue> arrTmp = ret.getValues();
+
+    std::vector<UniValue>::iterator first = arrTmp.begin();
+    std::advance(first, nFrom);
+    std::vector<UniValue>::iterator last = arrTmp.begin();
+    std::advance(last, nFrom+nCount);
+
+    if (last != arrTmp.end()) arrTmp.erase(last, arrTmp.end());
+    if (first != arrTmp.begin()) arrTmp.erase(arrTmp.begin(), first);
+
+    std::reverse(arrTmp.begin(), arrTmp.end()); // Return oldest to newest
+
+    ret.clear();
+    ret.setArray();
+    ret.push_backV(arrTmp);
+
+    return ret;
+}
+
 UniValue listaccounts(const JSONRPCRequest& request)
 {
     CWallet * const pwallet = GetWalletForJSONRPCRequest(request);
@@ -3086,6 +3249,55 @@ UniValue fundrawtransaction(const JSONRPCRequest& request)
     return result;
 }
 
+UniValue setstakesplitthreshold(const JSONRPCRequest& request)
+{
+    CWallet * const pwallet = GetWalletForJSONRPCRequest(request);
+    if (!EnsureWalletIsAvailable(pwallet, request.fHelp)) {
+        return NullUniValue;
+    }
+
+    if (request.fHelp || request.params.size() != 1)
+        throw std::runtime_error(
+            "setstakesplitthreshold value\n"
+            "\nThis will set the output size of your stakes to never be below this number\n" +
+            HelpRequiringPassphrase(pwallet) + "\n"
+
+            "\nArguments:\n"
+            "1. value   (numeric, required) Threshold value between 1 and 999999\n"
+
+            "\nResult:\n"
+            "{\n"
+            "  \"threshold\": n,    (numeric) Threshold value set\n"
+            "  \"saved\": true|false    (boolean) 'true' if successfully saved to the wallet file\n"
+            "}\n"
+
+            "\nExamples:\n" +
+            HelpExampleCli("setstakesplitthreshold", "5000") + HelpExampleRpc("setstakesplitthreshold", "5000"));
+
+    EnsureWalletIsUnlocked(pwallet);
+
+    const UniValue &stakeSplitThreshold = request.params[0];
+
+    uint64_t nStakeSplitThreshold = request.params[0].get_int64();
+
+    if (nStakeSplitThreshold > 999999)
+        throw std::runtime_error("Value out of range, max allowed is 999999");
+
+    CWalletDB walletdb(pwallet->GetDBHandle());
+    LOCK(pwallet->cs_wallet);
+
+    UniValue result(UniValue::VOBJ);
+    if (!walletdb.WriteStakeSplitThreshold(nStakeSplitThreshold)) {
+        throw std::runtime_error(std::string(__func__) + ": writing generated key failed");
+    }
+    pwallet->nStakeSplitThreshold = nStakeSplitThreshold;
+
+    result.push_back(Pair("threshold", int(pwallet->nStakeSplitThreshold)));
+    result.push_back(Pair("saved", "true"));
+
+    return result;
+}
+
 #if ENABLE_MINER
 UniValue generate(const JSONRPCRequest& request)
 {
@@ -3116,22 +3328,69 @@ UniValue generate(const JSONRPCRequest& request)
         max_tries = request.params[1].get_int();
     }
 
-    std::shared_ptr<CReserveScript> coinbase_script;
-    pwallet->GetScriptForMining(coinbase_script);
+    std::shared_ptr<CReserveKey> coinbase_key;
+    CPubKey coinbase_pubkey;
+    if (!pwallet->GetKeyForMining(coinbase_key, coinbase_pubkey)){
+        throw JSONRPCError(RPC_INTERNAL_ERROR, "No key for coinbase available");
+    }
 
     // If the keypool is exhausted, no script is returned at all.  Catch this.
-    if (!coinbase_script) {
+    if (!coinbase_key) {
         throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
     }
 
-    //throw an error if no script was provided
-    if (coinbase_script->reserveScript.empty()) {
-        throw JSONRPCError(RPC_INTERNAL_ERROR, "No coinbase script available");
-    }
-
-    return generateHybridBlocks(coinbase_script, num_generate, max_tries, true, pwallet);
+    return generateHybridBlocks(coinbase_key, num_generate, max_tries, true, pwallet);
 }
 #endif //ENABLE_MINING
+
+UniValue getstakingstatus(const JSONRPCRequest& request)
+{
+    CWallet * const pwallet = GetWalletForJSONRPCRequest(request);
+    if (!EnsureWalletIsAvailable(pwallet, request.fHelp)) {
+        return NullUniValue;
+    }
+
+    if (request.fHelp || request.params.size() != 0)
+        throw std::runtime_error(
+            "getstakingstatus\n"
+            "\nReturns an object containing various staking information.\n"
+
+            "\nResult:\n"
+            "{\n"
+            "  \"validtime\": true|false,          (boolean) if the chain tip is within staking phases\n"
+            "  \"haveconnections\": true|false,    (boolean) if network connections are present\n"
+            "  \"walletunlocked\": true|false,     (boolean) if the wallet is unlocked\n"
+            "  \"mintablecoins\": true|false,      (boolean) if the wallet has mintable coins\n"
+            "  \"enoughcoins\": true|false,        (boolean) if available coins are greater than reserve balance\n"
+            "  \"mnsync\": true|false,             (boolean) if masternode data is synced\n"
+            "  \"staking status\": true|false,     (boolean) if the wallet is staking or not\n"
+            "}\n"
+
+            "\nExamples:\n" +
+            HelpExampleCli("getstakingstatus", "") + HelpExampleRpc("getstakingstatus", ""));
+
+    LOCK2(cs_main, pwallet->cs_wallet);
+
+    UniValue obj(UniValue::VOBJ);
+    obj.push_back(Pair("validtime", chainActive.Tip()->nTime > 1471482000));
+    obj.push_back(Pair("haveconnections", !g_connman ? false : g_connman->GetNodeCount(CConnman::CONNECTIONS_ALL) > 0));
+    if (pwallet) {
+        obj.push_back(Pair("walletunlocked", !pwallet->IsLocked()));
+        obj.push_back(Pair("mintablecoins", stakingManager->MintableCoins()));
+        obj.push_back(Pair("enoughcoins", stakingManager->nReserveBalance <= pwallet->GetBalance()));
+    }
+    obj.push_back(Pair("mnsync", masternodeSync.IsSynced()));
+
+    bool nStaking = false;
+/*
+    if (mapHashedBlocks.count(chainActive.Tip()->nHeight))
+        nStaking = true;
+    else if (mapHashedBlocks.count(chainActive.Tip()->nHeight - 1) && nLastCoinStakeSearchInterval)
+        nStaking = true;
+    obj.push_back(Pair("staking status", nStaking));
+*/
+    return obj;
+}
 
 extern UniValue abortrescan(const JSONRPCRequest& request); // in rpcdump.cpp
 extern UniValue dumpprivkey(const JSONRPCRequest& request); // in rpcdump.cpp
@@ -3186,6 +3445,7 @@ static const CRPCCommand commands[] =
     { "wallet",             "listreceivedbyaddress",    &listreceivedbyaddress,    false,  {"minconf","addlocked","include_empty","include_watchonly"} },
     { "wallet",             "listsinceblock",           &listsinceblock,           false,  {"blockhash","target_confirmations","include_watchonly","include_removed"} },
     { "wallet",             "listtransactions",         &listtransactions,         false,  {"account","count","skip","include_watchonly"} },
+    { "wallet",             "listtransactionrecords",   &listtransactionrecords,   false,  {"account","count","skip","include_watchonly"} },
     { "wallet",             "listunspent",              &listunspent,              false,  {"minconf","maxconf","addresses","include_unsafe","query_options"} },
     { "wallet",             "listwallets",              &listwallets,              true,   {} },
     { "wallet",             "lockunspent",              &lockunspent,              true,   {"unlock","transactions"} },
@@ -3210,6 +3470,8 @@ static const CRPCCommand commands[] =
     { "hidden",             "instantsendtoaddress",     &instantsendtoaddress,     false,  {"address","amount","comment","comment_to","subtractfeefromamount"} },
     { "wallet",             "dumphdinfo",               &dumphdinfo,               true,   {} },
     { "wallet",             "importelectrumwallet",     &importelectrumwallet,     true,   {"filename", "index"} },
+
+    { "wallet",             "getstakingstatus",         &getstakingstatus,         false,  {} },
 };
 
 void RegisterWalletRPCCommands(CRPCTable &t)

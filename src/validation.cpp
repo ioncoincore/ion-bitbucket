@@ -581,7 +581,7 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
         if (chainActive.Tip()->nHeight < chainparams.GetConsensus().ATPStartHeight)
         {
             return state.DoS(0, false, REJECT_NONSTANDARD, "premature-op_group-tx");
-        } else if (!IsAnyOutputGroupedCreation(tx, TokenGroupIdFlags::MGT_TOKEN) && !tokenGroupManager->ManagementTokensCreated()){
+        } else if (!IsAnyOutputGroupedCreation(tx, TokenGroupIdFlags::MGT_TOKEN) && !tokenGroupManager->ManagementTokensCreated(chainActive.Height())){
             for (const CTxOut &txout : tx.vout)
             {
                 CTokenGroupInfo grp(txout.scriptPubKey);
@@ -740,7 +740,7 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
 
         // No transactions are allowed below minRelayTxFee except from disconnected blocks
         if (fLimitFree && nModifiedFees < ::minRelayTxFee.GetFee(nSize)) {
-            return state.DoS(0, false, REJECT_INSUFFICIENTFEE, "min relay fee not met");
+            return state.DoS(0, false, REJECT_INSUFFICIENTFEE, strprintf("min relay fee not met (fee: %d, minimum fee: %d, size: %d", nModifiedFees, minRelayTxFee.GetFee(nSize), nSize));
         }
 
         if (nAbsurdFee && nFees > nAbsurdFee)
@@ -1051,10 +1051,15 @@ double ConvertBitsToDouble(unsigned int nBits)
     return dDiff;
 }
 
-CAmount GetBlockSubsidyION(int nPrevBits, int nPrevHeight, const Consensus::Params& consensusParams, bool fSuperblockPartOnly)
+CAmount GetBlockSubsidyION(const int nPrevHeight, const bool fPos, const Consensus::Params& consensusParams)
 {
     CAmount nSubsidy = 0;
     int nHeight = nPrevHeight + 1;
+
+    if (nHeight >= consensusParams.POSPOWStartHeight & !fPos) {
+        return 0;
+    }
+
     // TESTNET and REGTEST
     if (Params().NetworkIDString() == CBaseChainParams::REGTEST && nHeight < 86400) {
         if (nHeight == 0) {
@@ -1119,13 +1124,13 @@ NOTE:   unlike bitcoin we are using PREVIOUS block height here,
         might be a good idea to change this to use prev bits
         but current height to avoid confusion.
 */
-CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params& consensusParams, bool fSuperblockPartOnly)
+CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const bool fPos, const Consensus::Params& consensusParams, bool fSuperblockPartOnly)
 {
     double dDiff;
     CAmount nSubsidyBase;
 
     if (nPrevHeight >= 0) {
-        CAmount nSubsidy = GetBlockSubsidyION(nPrevBits, nPrevHeight, consensusParams, fSuperblockPartOnly);
+        CAmount nSubsidy = GetBlockSubsidyION(nPrevHeight, fPos, consensusParams);
         CAmount nSuperblockPart = (nPrevHeight > consensusParams.nBudgetPaymentsStartBlock) ? nSubsidy/10 : 0;
         return fSuperblockPartOnly ? nSuperblockPart : nSubsidy - nSuperblockPart;
     }
@@ -1426,7 +1431,7 @@ bool CheckInputs(const CTransaction& tx, CValidationState &state, const CCoinsVi
                     if (!tokenGroupManager->CheckXDMFees(tx, tgMintMeltBalance, state, pindexPrev, nXDMFees)) {
                         return state.DoS(0, error("Token transaction does not pay enough XDM fees"), REJECT_MALFORMED, "token-group-imbalance");
                     }
-                    if (!tokenGroupManager->ManagementTokensCreated()){
+                    if (!tokenGroupManager->ManagementTokensCreated(chainActive.Height())){
                         for (const CTxOut &txout : tx.vout)
                         {
                             CTokenGroupInfo grp(txout.scriptPubKey);
@@ -2095,6 +2100,9 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     // Get the script flags for this block
     unsigned int flags = GetBlockScriptFlags(pindex, chainparams.GetConsensus());
 
+    if (!SetPOSParemeters(block, state, pindex)) {
+        return state.Error("Error setting POS parameters");
+    }
     if (block.IsProofOfStake()) {
         std::unique_ptr<CStakeInput> stake;
         uint256 hashProofOfStake;
@@ -2372,7 +2380,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     // ION : MODIFIED TO CHECK MASTERNODE PAYMENTS AND SUPERBLOCKS
 
     // TODO: resync data (both ways?) and try to reprocess this block later.
-    CAmount blockReward = nFees + GetBlockSubsidy(pindex->pprev->nBits, pindex->pprev->nHeight, chainparams.GetConsensus());
+    CAmount blockReward = nFees + GetBlockSubsidy(pindex->pprev->nBits, pindex->pprev->nHeight, block.IsProofOfStake(), chainparams.GetConsensus());
     std::string strError = "";
 
     int64_t nTime5_2 = GetTimeMicros(); nTimeSubsidy += nTime5_2 - nTime5_1;
@@ -2385,7 +2393,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     int64_t nTime5_3 = GetTimeMicros(); nTimeValueValid += nTime5_3 - nTime5_2;
     LogPrint(BCLog::BENCHMARK, "      - IsBlockValueValid: %.2fms [%.2fs]\n", 0.001 * (nTime5_3 - nTime5_2), nTimeValueValid * 0.000001);
 
-    if (!IsBlockPayeeValid(*block.vtx[0], pindex->nHeight, blockReward)) {
+    if (!IsBlockPayeeValid(block.vtx[0], block.IsProofOfStake() ? block.vtx[1] : nullptr, pindex->nHeight, blockReward)) {
         return state.DoS(0, error("ConnectBlock(ION): couldn't find masternode or superblock payments"),
                                 REJECT_INVALID, "bad-cb-payee");
     }
@@ -3354,10 +3362,12 @@ static CBlockIndex* AddToBlockIndex(const CBlockHeader& block, enum BlockStatus 
 /** Mark a block as having its data received and checked (up to BLOCK_VALID_TRANSACTIONS). */
 bool ReceivedBlockTransactions(const CBlock &block, CValidationState& state, CBlockIndex *pindexNew, const CDiskBlockPos& pos)
 {
+    if (!pindexNew->SetStakeEntropyBit(pindexNew->GetStakeEntropyBit()))
+        return state.Invalid(error("%s : SetStakeEntropyBit() failed", __func__));
+
     if (block.IsProofOfStake()) {
         pindexNew->SetProofOfStake();
     }
-    AcceptPOSParameters(block, state, pindexNew);
     pindexNew->nTx = block.vtx.size();
     pindexNew->nChainTx = 0;
     pindexNew->nFile = pos.nFile;
@@ -3892,8 +3902,10 @@ bool ProcessNewBlock(const CChainParams& chainparams, const std::shared_ptr<cons
         // belt-and-suspenders.
         bool ret = CheckBlock(*pblock, state, chainparams.GetConsensus());
 
-        if (!CheckBlockSignature(*pblock))
-            return error("ProcessNewBlock() : bad proof-of-stake block signature");
+        if (!CheckBlockSignature(*pblock)) {
+            state.Error("ProcessNewBlock() : bad proof-of-stake block signature");
+            ret = false;
+        }
 
         LOCK(cs_main);
 

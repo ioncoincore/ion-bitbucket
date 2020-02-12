@@ -882,7 +882,7 @@ extern UniValue configuretokendryrun(const JSONRPCRequest& request)
     ret.push_back(Pair("outputs", retOutputs));
 */
 
-    if (tokenGroupManager->ManagementTokensCreated()) {
+    if (tokenGroupManager->ManagementTokensCreated(chainActive.Height())) {
         ret.push_back(Pair("xdm_available", tokenGroupManager->TokenValueFromAmount(totalXDMAvailable, tokenGroupManager->GetDarkMatterID())));
         ret.push_back(Pair("xdm_needed", tokenGroupManager->TokenValueFromAmount(XDMFeeNeeded, tokenGroupManager->GetDarkMatterID())));
     }
@@ -1037,7 +1037,7 @@ extern UniValue configuretoken(const JSONRPCRequest& request)
     }
 
     CWalletTx wtx;
-    ConstructTx(wtx, chosenCoins, outputs, coin.GetValue(), 0, 0, 0, totalXDMAvailable, XDMFeeNeeded, grpID, pwallet);
+    ConstructTx(wtx, chosenCoins, outputs, 0, XDMFeeNeeded, grpID, pwallet);
     authKeyReservation.KeepKey();
     UniValue ret(UniValue::VOBJ);
     ret.push_back(Pair("groupID", EncodeTokenGroup(grpID)));
@@ -1183,7 +1183,7 @@ extern UniValue configuremanagementtoken(const JSONRPCRequest& request)
     UniValue ret(UniValue::VOBJ);
     if (confirmed) {
         CWalletTx wtx;
-        ConstructTx(wtx, chosenCoins, outputs, coin.GetValue(), 0, 0, 0, 0, 0, grpID, pwallet);
+        ConstructTx(wtx, chosenCoins, outputs, 0, 0, grpID, pwallet);
         authKeyReservation.KeepKey();
         ret.push_back(Pair("groupID", EncodeTokenGroup(grpID)));
         ret.push_back(Pair("transaction", wtx.GetHash().GetHex()));
@@ -1216,8 +1216,6 @@ extern UniValue createtokenauthorities(const JSONRPCRequest& request)
     EnsureWalletIsUnlocked(pwallet);
 
     LOCK2(cs_main, pwallet->cs_wallet);
-    CAmount totalBchNeeded = 0;
-    CAmount totalBchAvailable = 0;
     unsigned int curparam = 0;
     std::vector<COutput> chosenCoins;
     std::vector<CRecipient> outputs;
@@ -1296,24 +1294,22 @@ extern UniValue createtokenauthorities(const JSONRPCRequest& request)
         // Just pick the first compatible authority.
         for (auto coin : coins)
         {
-            totalBchAvailable += coin.tx->tx->vout[coin.i].nValue;
             chosenCoins.push_back(coin);
             break;
         }
     }
 
     CReserveKey renewAuthorityKey(pwallet);
-    totalBchNeeded += RenewAuthority(chosenCoins[0], outputs, renewAuthorityKey);
+    RenewAuthority(chosenCoins[0], outputs, renewAuthorityKey);
 
     { // Construct the new authority
         CScript script = GetScriptForDestination(dst, grpID, (CAmount)auth);
         CRecipient recipient = {script, GROUPED_SATOSHI_AMT, false};
         outputs.push_back(recipient);
-        totalBchNeeded += GROUPED_SATOSHI_AMT;
     }
 
     CWalletTx wtx;
-    ConstructTx(wtx, chosenCoins, outputs, totalBchAvailable, totalBchNeeded, 0, 0, 0, 0, grpID, pwallet);
+    ConstructTx(wtx, chosenCoins, outputs, 0, 0, grpID, pwallet);
     renewAuthorityKey.KeepKey();
     return wtx.GetHash().GetHex();
 }
@@ -1405,8 +1401,6 @@ extern UniValue droptokenauthorities(const JSONRPCRequest& request)
     EnsureWalletIsUnlocked(pwallet);
 
     LOCK2(cs_main, pwallet->cs_wallet);
-    CAmount totalBchNeeded = 0;
-    CAmount totalBchAvailable = 0;
     unsigned int curparam = 0;
     std::vector<COutput> availableCoins;
     std::vector<COutput> chosenCoins;
@@ -1439,7 +1433,7 @@ extern UniValue droptokenauthorities(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_INVALID_PARAMS, "Invalid parameter: wrong vout nr");
     }
 
-    pwallet->AvailableCoins(availableCoins, false, nullptr, true, 0);
+    pwallet->AvailableCoins(availableCoins, true, nullptr, 0);
     if (availableCoins.empty()) {
         throw JSONRPCError(RPC_INVALID_PARAMS, "Invalid parameter: provided output is not available");
     }
@@ -1518,10 +1512,9 @@ extern UniValue droptokenauthorities(const JSONRPCRequest& request)
         CScript script = GetScriptForDestination(dest, grpID, (CAmount)authoritiesToKeep);
         CRecipient recipient = {script, GROUPED_SATOSHI_AMT, false};
         outputs.push_back(recipient);
-        totalBchNeeded += GROUPED_SATOSHI_AMT;
     }
     CWalletTx wtx;
-    ConstructTx(wtx, chosenCoins, outputs, totalBchAvailable, totalBchNeeded, 0, 0, 0, 0, grpID, pwallet);
+    ConstructTx(wtx, chosenCoins, outputs, 0, 0, grpID, pwallet);
     return ret;
 }
 
@@ -1552,7 +1545,6 @@ extern UniValue minttoken(const JSONRPCRequest& request)
     LOCK(pwallet->cs_wallet); // because I am reserving UTXOs for use in a tx
     CTokenGroupID grpID;
     CAmount totalTokensNeeded = 0;
-    CAmount totalBchNeeded = GROUPED_SATOSHI_AMT; // for the mint destination output
     unsigned int curparam = 0;
     std::vector<CRecipient> outputs;
     // Get data from the parameter line. this fills grpId and adds 1 output for the correct # of tokens
@@ -1604,13 +1596,11 @@ extern UniValue minttoken(const JSONRPCRequest& request)
         strError = _("To mint coins, an authority output with mint capability is needed.");
         throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, strError);
     }
-    CAmount totalBchAvailable = 0;
     COutput authority(nullptr, 0, 0, false, false, false);
 
     // Just pick the first one for now.
     for (auto coin : coins)
     {
-        totalBchAvailable += coin.tx->tx->vout[coin.i].nValue;
         authority = coin;
         break;
     }
@@ -1619,7 +1609,7 @@ extern UniValue minttoken(const JSONRPCRequest& request)
     chosenCoins.push_back(authority);
 
     CReserveKey childAuthorityKey(pwallet);
-    totalBchNeeded += RenewAuthority(authority, outputs, childAuthorityKey);
+    RenewAuthority(authority, outputs, childAuthorityKey);
 
     // When minting a regular (non-management) token, an XDM fee is needed
     // Note that XDM itself is also a management token
@@ -1661,7 +1651,7 @@ extern UniValue minttoken(const JSONRPCRequest& request)
     // I don't "need" tokens even though they are in the output because I'm minting, which is why
     // the token quantities are 0
     CWalletTx wtx;
-    ConstructTx(wtx, chosenCoins, outputs, totalBchAvailable, totalBchNeeded, 0, 0, totalXDMAvailable, XDMFeeNeeded, grpID, pwallet);
+    ConstructTx(wtx, chosenCoins, outputs, 0, XDMFeeNeeded, grpID, pwallet);
     childAuthorityKey.KeepKey();
     return wtx.GetHash().GetHex();
 }

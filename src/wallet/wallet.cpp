@@ -24,6 +24,7 @@
 #include "primitives/transaction.h"
 #include "script/script.h"
 #include "script/sign.h"
+#include "script/tokengroup.h"
 #include "scheduler.h"
 #include "timedata.h"
 #include "tokens/tokengroupwallet.h"
@@ -3018,8 +3019,8 @@ void CWallet::AvailableCoins(std::vector<COutput> &vCoins, bool fOnlySafe, const
                 } else if(nCoinType == CoinType::ONLY_NONDENOMINATED) {
                     if (CPrivateSend::IsCollateralAmount(pcoin->tx->vout[i].nValue)) continue; // do not use collateral amounts
                     found = !CPrivateSend::IsDenominatedAmount(pcoin->tx->vout[i].nValue);
-                } else if(nCoinType == CoinType::ONLY_1000) {
-                    found = pcoin->tx->vout[i].nValue == 1000*COIN;
+                } else if(nCoinType == CoinType::ONLY_20000) {
+                    found = pcoin->tx->vout[i].nValue == MASTERNODE_COLLATERAL_AMOUNT;
                 } else if(nCoinType == CoinType::ONLY_PRIVATESEND_COLLATERAL) {
                     found = CPrivateSend::IsCollateralAmount(pcoin->tx->vout[i].nValue);
                 } else {
@@ -3040,7 +3041,7 @@ void CWallet::AvailableCoins(std::vector<COutput> &vCoins, bool fOnlySafe, const
                 if (coinControl && coinControl->HasSelected() && !coinControl->fAllowOtherInputs && !coinControl->IsSelected(COutPoint(wtxid, i)))
                     continue;
 
-                if (IsLockedCoin(wtxid, i) && nCoinType != CoinType::ONLY_1000)
+                if (IsLockedCoin(wtxid, i) && nCoinType != CoinType::ONLY_20000)
                     continue;
 
                 if (IsSpent(wtxid, i))
@@ -3643,7 +3644,7 @@ bool CWallet::SelectCoinsGroupedByAddresses(std::vector<CompactTallyItem>& vecTa
             if(fAnonymizable) {
                 // ignore collaterals
                 if(CPrivateSend::IsCollateralAmount(wtx.tx->vout[i].nValue)) continue;
-                if(fMasternodeMode && wtx.tx->vout[i].nValue == 1000*COIN) continue;
+                if(fMasternodeMode && wtx.tx->vout[i].nValue == MASTERNODE_COLLATERAL_AMOUNT) continue;
                 // ignore outputs that are 10 times smaller then the smallest denomination
                 // otherwise they will just lead to higher fee / lower priority
                 if(wtx.tx->vout[i].nValue <= nSmallestDenom/10) continue;
@@ -3710,7 +3711,7 @@ bool CWallet::SelectPrivateCoins(CAmount nValueMin, CAmount nValueMax, std::vect
         if(out.tx->tx->vout[out.i].nValue < nValueMin/10) continue;
         //do not allow collaterals to be selected
         if(CPrivateSend::IsCollateralAmount(out.tx->tx->vout[out.i].nValue)) continue;
-        if(fMasternodeMode && out.tx->tx->vout[out.i].nValue == 1000*COIN) continue; //masternode input
+        if(fMasternodeMode && out.tx->tx->vout[out.i].nValue == MASTERNODE_COLLATERAL_AMOUNT) continue; //masternode input
 
         if(nValueRet + out.tx->tx->vout[out.i].nValue <= nValueMax){
             CTxIn txin = CTxIn(out.tx->GetHash(),out.i);
@@ -3755,7 +3756,7 @@ bool CWallet::GetMasternodeOutpointAndKeys(COutPoint& outpointRet, CPubKey& pubK
     // Find possible candidates
     std::vector<COutput> vPossibleCoins;
     CCoinControl coin_control;
-    coin_control.nCoinType = CoinType::ONLY_1000;
+    coin_control.nCoinType = CoinType::ONLY_20000;
     AvailableCoins(vPossibleCoins, true, &coin_control);
     if(vPossibleCoins.empty()) {
         LogPrintf("CWallet::GetMasternodeOutpointAndKeys -- Could not locate any valid masternode vin\n");
@@ -5103,13 +5104,48 @@ void CWallet::MarkReserveKeysAsUsed(int64_t keypool_id)
 
 void CWallet::GetScriptForMining(std::shared_ptr<CReserveScript> &script)
 {
+    std::shared_ptr<CReserveKey> rKey;
+    CPubKey pubkey;
+    if (!GetKeyForMining(rKey, pubkey))
+        return;
+        
+    script = rKey;
+    script->reserveScript = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
+}
+
+bool CWallet::GetScriptForPowMining(std::shared_ptr<CReserveScript> &script, const std::shared_ptr<CReserveKey> &reservedKey)
+{
+    CPubKey pubkey;
+    if (!reservedKey->GetReservedKey(pubkey, false))
+        return false;
+
+    script = reservedKey;
+    script->reserveScript = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
+    return true;
+}
+
+bool CWallet::GetScriptForHybridMining(std::shared_ptr<CReserveScript> &script, const std::shared_ptr<CReserveKey> &reservedKey, const CTokenGroupID &grpID, const CAmount amount)
+{
+    CPubKey pubkey;
+    if (!reservedKey->GetReservedKey(pubkey, false))
+        return false;
+
+    script = reservedKey;
+    CTxDestination dst = pubkey.GetID();
+    script->reserveScript = GetScriptForDestination(dst, grpID, amount);
+    return true;
+}
+
+bool CWallet::GetKeyForMining(std::shared_ptr<CReserveKey> &reservedKey, CPubKey &reservedPubkey)
+{
     std::shared_ptr<CReserveKey> rKey = std::make_shared<CReserveKey>(this);
     CPubKey pubkey;
     if (!rKey->GetReservedKey(pubkey, false))
-        return;
+        return false;
 
-    script = rKey;
-    script->reserveScript = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
+    reservedKey = rKey;
+    reservedPubkey = pubkey;
+    return true;
 }
 
 void CWallet::LockCoin(const COutPoint& output)

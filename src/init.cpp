@@ -1007,6 +1007,16 @@ void InitParameterInteraction()
     }
 #endif // ENABLE_WALLET
 
+#ifdef ENABLE_WALLET
+    bool fDisableWallet = gArgs.GetBoolArg("-disablewallet", DEFAULT_DISABLE_WALLET);
+    if (fDisableWallet) {
+#endif
+        if (gArgs.SoftSetBoolArg("-staking", false))
+            LogPrintf("AppInit2 : parameter interaction: wallet functionality not enabled -> setting -staking=0\n");
+#ifdef ENABLE_WALLET
+    }
+#endif
+
     // Make sure additional indexes are recalculated correctly in VerifyDB
     // (we must reconnect blocks whenever we disconnect them for these indexes to work)
     bool fAdditionalIndexes =
@@ -2154,6 +2164,9 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         stakingManager->fEnableStaking = gArgs.GetBoolArg("-staking", !fLiteMode);
         stakingManager->fEnableIONStaking = gArgs.GetBoolArg("-staking", true);
     }
+    if (Params().NetworkIDString() == CBaseChainParams::REGTEST) {
+        stakingManager->fEnableStaking = false;
+    }
 
     if (gArgs.IsArgSet("-reservebalance")) {
         CAmount n = 0;
@@ -2164,7 +2177,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
     }
 
     if (!fLiteMode && stakingManager->fEnableStaking) {
-        scheduler.scheduleEvery(boost::bind(&CStakingManager::DoMaintenance, boost::ref(stakingManager), boost::ref(*g_connman)), 1 * 1000);
+        scheduler.scheduleEvery(boost::bind(&CStakingManager::DoMaintenance, boost::ref(stakingManager), boost::ref(*g_connman)), 5 * 1000);
     }
 #endif // ENABLE_WALLET
 

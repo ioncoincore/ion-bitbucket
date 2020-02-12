@@ -474,7 +474,6 @@ static const CRPCCommand commands[] =
     { "tokens",             "tokeninfo",                &tokeninfo,                 false, {}  },
     { "tokens",             "gettokentransaction",      &gettokentransaction,       false, {}   },
     { "tokens",             "getsubgroupid",            &getsubgroupid,             false, {}   },
-//    { "tokens",             "scantokens",               &scantokens,                true, {}    },
 };
 
 void RegisterTokensRPCCommands(CRPCTable &tableRPC)

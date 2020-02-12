@@ -157,6 +157,11 @@ bool CWalletDB::WriteMinVersion(int nVersion)
     return WriteIC(std::string("minversion"), nVersion);
 }
 
+bool CWalletDB::WriteStakeSplitThreshold(uint64_t nStakeSplitThreshold)
+{
+    return WriteIC(std::string("stakeSplitThreshold"), nStakeSplitThreshold);
+}
+
 bool CWalletDB::ReadAccount(const std::string& strAccount, CAccount& account)
 {
     account.SetNull();
@@ -536,6 +541,10 @@ ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue,
                 strErr = "Error reading wallet database: LoadHDPubKey failed";
                 return false;
             }
+        }
+        else if (strType == "stakeSplitThreshold")
+        {
+            ssValue >> pwallet->nStakeSplitThreshold;
         }
     } catch (...)
     {
