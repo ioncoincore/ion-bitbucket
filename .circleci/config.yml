@@ -1,4 +1,4 @@
-# Copyright (c) 2019 The Ion Core developers
+# Copyright (c) 2020 The Ion Core developers
 version: 2.1
 jobs:
   lint_all:
