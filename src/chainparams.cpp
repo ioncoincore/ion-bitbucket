@@ -493,7 +493,7 @@ public:
         consensus.BIP66Height = 2075; // 0000002acdd29a14583540cb72e1c5cc83783560e38fa7081495d474fe1671f7
         consensus.DIP0001Height = 2;
         consensus.DIP0003Height = 141000;
-        consensus.DIP0003EnforcementHeight = 141067;
+        consensus.DIP0003EnforcementHeight = 155400;
 //        consensus.DIP0003EnforcementHash = uint256S("059e5ee39302d06e3df836154db9818cffb1fcefd2733179b6aec86fb454b9c3");
         consensus.IIP0006Height = 99999999;
         consensus.powLimit = uint256S("3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 2
@@ -550,7 +550,7 @@ public:
         consensus.strTokenManagementKey = "gBi3gDLnGfw8HA2rN4HmNxHk9hMC4GLFbh";
         consensus.nOpGroupNewRequiredConfirmations = 1;
         // POSPOW
-        consensus.POSPOWStartHeight = std::numeric_limits<int>::max();
+        consensus.POSPOWStartHeight = 155400;
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
@@ -919,7 +919,7 @@ public:
         consensus.nZerocoinStartTime = 1521414629;
         consensus.nBlockZerocoinV2 = 351;
         consensus.nPublicZCSpends = 5500;
-        consensus.nBlockStakeModifierV2 = 400;
+        consensus.nBlockStakeModifierV2 = 1;
         consensus.nFakeSerialBlockheightEnd = -1;
         consensus.nMintRequiredConfirmations = 20; //the maximum amount of confirmations until accumulated in 19
         consensus.nRequiredAccumulation = 1;
