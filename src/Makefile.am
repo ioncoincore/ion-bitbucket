@@ -562,6 +562,8 @@ libion_consensus_a_SOURCES = \
   consensus/validation.h \
   hash.cpp \
   hash.h \
+  pos/rewards.cpp \
+  pos/rewards.h \
   prevector.h \
   primitives/block.cpp \
   primitives/block.h \

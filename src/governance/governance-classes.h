@@ -10,6 +10,7 @@
 #include "script/standard.h"
 #include "util.h"
 
+class CBlockReward;
 class CSuperblock;
 class CGovernanceTriggerManager;
 class CSuperblockManager;
@@ -64,7 +65,7 @@ public:
     static void ExecuteBestSuperblock(int nBlockHeight);
 
     static std::string GetRequiredPaymentsString(int nBlockHeight);
-    static bool IsValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward);
+    static bool IsValid(const CTransaction& txNew, int nBlockHeight, CBlockReward blockReward);
 };
 
 /**
@@ -169,7 +170,7 @@ public:
     bool GetPayment(int nPaymentIndex, CGovernancePayment& paymentRet);
     CAmount GetPaymentsTotalAmount();
 
-    bool IsValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward);
+    bool IsValid(const CTransaction& txNew, int nBlockHeight, CBlockReward blockReward);
     bool IsExpired() const;
 };
 
