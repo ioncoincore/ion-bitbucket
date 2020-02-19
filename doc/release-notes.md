@@ -7,6 +7,7 @@
     - [Compatibility](#compatibility)
     - [Noteable Changes](#noteable-changes)
       - [Migrate Travis as pipeline](#migrate-travis-as-pipeline)
+      - [Hybrid Proof-of-Work / Proof-of-Stake](#hybrid-proof-of-work--proof-of-stake)
       - [Zerocoin](#zerocoin)
       - [Masternodes](#masternodes)
       - [Token implementation](#token-implementation)
@@ -48,11 +49,22 @@ ION Core should also work on most other Unix-like systems but is not frequently 
 - Move to bitbucket
   - The ION Core project is now available throug the [ION Coin Bitbucket repository](https://bitbucket.org/ioncoin/ion/)
   - The ION Core repository at github will for now remain available, but will no longer be updated.
-- Fee policy
-  - The current release partially implements IIP0006 - the remainder of the IIP0006 implementation will follow in a subsequent update.
-  - The new fee policy, proposed and adopted in IIP0006, is implemented. As a result, this client will only relay and mine transactions with
-    a feerate of 0.01 ION per KB.
-  - The fee calculation approach for token transactions has been made more accurate.
+- Implementation of [IIP0006](https://github.com/ionomy/iips/blob/master/iip_0006.md)
+  - Changes are adopted on mainnet at block <FORKBLOCK> and on testnet at block 155400.
+  - Block rewards are reduced to 0.5 ION per block
+    - 70% of block rewards are awarded to masternodes, 30% to stakers
+  - Fee policy
+    - The new fee policy, proposed and adopted in IIP0006, is implemented. As a result, this client will only relay and mine transactions with
+      a feerate of 0.01 ION per KB.
+    - The fee calculation approach for token transactions has been made more accurate.
+    - 50% of fees are awarded to masternodes, 25% to staking nodes and 25% is burned.
+- Switch from Proof-of-Stake to Hybrid Proof-of-Work/Proof-of-Stake
+  - During the Hybrid phase, miners can generate POW blocks and staking nodes can generate POS blocks.
+  - Both the POW difficulty algorithm and the POS difficulty algorithm aim at producing 1 block every 2 minutes.
+    - Combined, the ION chain will keep producing 1 block every 1 minute.
+  - Miners do not receive ION rewards. Instead, they receive rewards in the Electron token (ELEC).
+  - Mining uses Dash' X11 algorithm.
+  - The block version number includes a bit to specify if it is a POW or a POS block.
 - Core: the core code has been rebased from PivX to Dash.
   - The staking functionality has been ported to the new code base.
   - The token implementation (ATP) has been ported to the new code base.
@@ -108,6 +120,26 @@ ION Core should also work on most other Unix-like systems but is not frequently 
 - ~~I2p support~~
 
 #### Migrate Travis as pipeline
+
+#### Hybrid Proof-of-Work / Proof-of-Stake
+
+Combining POW with POS overcomes limitations in both. ION now supports mixed POW and POS blocks, where each algorithm
+manages its own difficulty targets, but provide and use entropy from both type of blocks.
+
+In POW blocks:
+- Miners receive 0.5 ELEC per block
+- Masternodes receive 70% of 0.5 ION = 0.35 ION rewards
+- Masternodes receive 50% of the mined transaction fees
+- 50% of the mined transaction fees are burned
+
+In POS blocks:
+- Stakers receive 2 x 30% of 0.5 ION = 0.30 ION rewards
+- Masternodes receive 70% of 0.5 ION = 0.35 ION rewards
+- Stakers receive 30% of the mined transaction fees
+- Masternodes receive 50% of the mined transaction fees
+- 20% of the mined transaction fees are burned
+
+Since 50% of the blocks will be POS blocks, stakers will receive an average of 30% of the block rewards.
 
 #### Zerocoin
 
