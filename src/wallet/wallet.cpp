@@ -6066,9 +6066,13 @@ bool CMerkleTx::IsChainLocked() const
 
 int CMerkleTx::GetBlocksToMaturity() const
 {
-    if (!IsCoinBase())
+    if (!(IsCoinBase() || IsCoinStake() || IsAnyOutputGroupedAuthority((CTransaction(*this)))))
         return 0;
-    return std::max(0, (Consensus::Params().nCoinbaseMaturity+1) - GetDepthInMainChain());
+    int depth = GetDepthInMainChain();
+    int minBlocksToMaturity = 0;
+    if (IsAnyOutputGroupedAuthority((CTransaction(*this))))
+        minBlocksToMaturity = std::max(0, (Consensus::Params().nOpGroupNewRequiredConfirmations + 1) - depth);
+    return std::max(minBlocksToMaturity, (Consensus::Params().nCoinbaseMaturity + 1) - depth);
 }
 
 
