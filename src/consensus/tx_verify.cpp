@@ -7,6 +7,7 @@
 #include "consensus.h"
 #include "primitives/transaction.h"
 #include "script/interpreter.h"
+#include "tokens/groups.h"
 #include "validation.h"
 
 // TODO remove the following dependencies
@@ -228,11 +229,25 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
         const Coin& coin = inputs.AccessCoin(prevout);
         assert(!coin.IsSpent());
 
-        // If prev is coinbase, check that it's matured
+        // If prev is coinbase, coinstake or group authority confirguration, check that it's matured
+        if (coin.IsCoinStake() && nSpendHeight - coin.nHeight < (nSpendHeight <= 100 ? (int)10 : Params().nCoinbaseMaturity)) {
+            return state.Invalid(false,
+                REJECT_INVALID, "bad-txns-premature-spend-of-coinstake",
+                strprintf("tried to spend coinstake at depth %d", nSpendHeight - coin.nHeight));
+        }
+
         if (coin.IsCoinBase() && nSpendHeight - coin.nHeight < (nSpendHeight <= 100 ? (int)10 : Params().nCoinbaseMaturity)) {
             return state.Invalid(false,
                 REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
                 strprintf("tried to spend coinbase at depth %d", nSpendHeight - coin.nHeight));
+        }
+
+        if (IsOutputGroupedAuthority(coin.out)) {
+            if (nSpendHeight - coin.nHeight < Params().nOpGroupNewRequiredConfirmations) {
+                return state.Invalid(
+                    error("CheckInputs() : tried to use a token authority before it reached maturity (%d confirmations)", Params().nOpGroupNewRequiredConfirmations),
+                    REJECT_INVALID, "bad-txns-premature-use-of-token-authority");
+            }
         }
 
         // Check for negative or overflow input values
