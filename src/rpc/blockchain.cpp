@@ -1069,7 +1069,7 @@ static void ApplyStats(CCoinsStats &stats, CHashWriter& ss, const uint256& hash,
 {
     assert(!outputs.empty());
     ss << hash;
-    ss << VARINT(outputs.begin()->second.nHeight * 2 + outputs.begin()->second.fCoinBase);
+    ss << VARINT(outputs.begin()->second.nHeight * 4 + outputs.begin()->second.fCoinStake * 2 + outputs.begin()->second.fCoinBase);
     stats.nTransactions++;
     for (const auto output : outputs) {
         ss << VARINT(output.first + 1);
@@ -1288,6 +1288,7 @@ UniValue gettxout(const JSONRPCRequest& request)
     ScriptPubKeyToUniv(coin.out.scriptPubKey, o, true);
     ret.push_back(Pair("scriptPubKey", o));
     ret.push_back(Pair("coinbase", (bool)coin.fCoinBase));
+    ret.push_back(Pair("coinstake", (bool)coin.fCoinStake));
 
     return ret;
 }
@@ -1861,8 +1862,8 @@ static inline bool SetHasKeys(const std::set<T>& set, const Tk& key, const Args&
     return (set.count(key) != 0) || SetHasKeys(set, args...);
 }
 
-// outpoint (needed for the utxo index) + nHeight + fCoinBase
-static constexpr size_t PER_UTXO_OVERHEAD = sizeof(COutPoint) + sizeof(uint32_t) + sizeof(bool);
+// outpoint (needed for the utxo index) + nHeight + fCoinBase + fCoinStake
+static constexpr size_t PER_UTXO_OVERHEAD = sizeof(COutPoint) + sizeof(uint32_t) + sizeof(bool) + sizeof(bool);
 
 static UniValue getblockstats(const JSONRPCRequest& request)
 {
