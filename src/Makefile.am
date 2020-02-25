@@ -229,6 +229,7 @@ BITCOIN_CORE_H = \
   random.h \
   reverse_iterator.h \
   reverselock.h \
+  reward-manager.h \
   rpc/blockchain.h \
   rpc/client.h \
   rpc/mining.h \
@@ -420,6 +421,7 @@ libion_wallet_a_SOURCES = \
   pos/staking-manager.cpp \
   privatesend/privatesend-client.cpp \
   privatesend/privatesend-util.cpp \
+  reward-manager.cpp \
   tokens/rpctokenwallet.cpp \
   tokens/tokengroupwallet.cpp \
   transactionrecord.cpp \

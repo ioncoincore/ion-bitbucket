@@ -32,6 +32,7 @@
 #include "policy/policy.h"
 #ifdef ENABLE_WALLET
 #include "pos/staking-manager.h"
+#include "reward-manager.h"
 #endif
 #include "rpc/server.h"
 #include "rpc/register.h"
@@ -2007,6 +2008,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
 
     // ********************************************************* Step 8: load wallet
 #ifdef ENABLE_WALLET
+    rewardManager = std::shared_ptr<CRewardManager>(new CRewardManager());
     if (!CWallet::InitLoadWallet())
         return false;
 #else
@@ -2163,6 +2165,9 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         stakingManager = std::shared_ptr<CStakingManager>(new CStakingManager(vpwallets[0]));
         stakingManager->fEnableStaking = gArgs.GetBoolArg("-staking", !fLiteMode);
         stakingManager->fEnableIONStaking = gArgs.GetBoolArg("-staking", true);
+
+        rewardManager->BindWallet(vpwallets[0]);
+        rewardManager->fEnableRewardManager = true;
     }
     if (Params().NetworkIDString() == CBaseChainParams::REGTEST) {
         stakingManager->fEnableStaking = false;
@@ -2176,8 +2181,13 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         stakingManager->nReserveBalance = n;
     }
 
-    if (!fLiteMode && stakingManager->fEnableStaking) {
-        scheduler.scheduleEvery(boost::bind(&CStakingManager::DoMaintenance, boost::ref(stakingManager), boost::ref(*g_connman)), 5 * 1000);
+    if (!fLiteMode) {
+        if (stakingManager->fEnableStaking) {
+            scheduler.scheduleEvery(boost::bind(&CStakingManager::DoMaintenance, boost::ref(stakingManager), boost::ref(*g_connman)), 5 * 1000);
+        }
+        if (rewardManager->fEnableRewardManager) {
+            scheduler.scheduleEvery(boost::bind(&CRewardManager::DoMaintenance, boost::ref(rewardManager), boost::ref(*g_connman)), 5 * 60 * 1000);
+        }
     }
 #endif // ENABLE_WALLET
 
