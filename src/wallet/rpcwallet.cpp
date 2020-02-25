@@ -3276,8 +3276,6 @@ UniValue setstakesplitthreshold(const JSONRPCRequest& request)
 
     EnsureWalletIsUnlocked(pwallet);
 
-    const UniValue &stakeSplitThreshold = request.params[0];
-
     uint64_t nStakeSplitThreshold = request.params[0].get_int64();
 
     if (nStakeSplitThreshold > 999999)
@@ -3473,6 +3471,7 @@ static const CRPCCommand commands[] =
     { "wallet",             "importelectrumwallet",     &importelectrumwallet,     true,   {"filename", "index"} },
 
     { "wallet",             "getstakingstatus",         &getstakingstatus,         false,  {} },
+    { "wallet",             "setstakesplitthreshold",   &setstakesplitthreshold,   true,   {"value"} },
 };
 
 void RegisterWalletRPCCommands(CRPCTable &t)
