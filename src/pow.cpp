@@ -39,7 +39,11 @@ unsigned int static HybridPoWDarkGravityWave(const CBlockIndex* pindexLastIn, co
     }
 
     if (params.fPowAllowMinDifficultyBlocks) {
-        int64_t nPrevBlockTime = GetHybridPrevIndex(pindexLastIn, false, params.POSPOWStartHeight)->GetBlockTime();
+        const CBlockIndex* pindexPrev = GetHybridPrevIndex(pindexLast, false, params.POSPOWStartHeight);
+        if (pindexPrev == nullptr) {
+            return bnPowLimit.GetCompact();
+        }
+        int64_t nPrevBlockTime = pindexPrev->GetBlockTime();
         // recent block is more than 2 hours old
         if (pindexLast->GetBlockTime() > nPrevBlockTime + 2 * 60 * 60) {
             return bnPowLimit.GetCompact();

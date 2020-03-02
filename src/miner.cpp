@@ -184,7 +184,9 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     bool fDIP0003Active_context = nHeight >= chainparams.GetConsensus().DIP0003Height;
     bool fDIP0008Active_context = VersionBitsState(chainActive.Tip(), chainparams.GetConsensus(), Consensus::DEPLOYMENT_DIP0008, versionbitscache) == THRESHOLD_ACTIVE;
 
-    pblock->nVersion = ComputeBlockVersion(pindexPrev, chainparams.GetConsensus(), fPos, chainparams.BIP9CheckMasternodesUpgraded());
+    pblock->nVersion = nHeight >= chainparams.GetConsensus().POSPOWStartHeight ?
+        ComputeBlockVersion(pindexPrev, chainparams.GetConsensus(), fPos, chainparams.BIP9CheckMasternodesUpgraded())
+        : VERSIONBITS_LAST_OLD_BLOCK_VERSION;
     // -regtest only: allow overriding block.nVersion with
     // -blockversion=N to test forking scenarios
     if (chainparams.MineBlocksOnDemand())
