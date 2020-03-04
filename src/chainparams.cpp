@@ -270,14 +270,14 @@ public:
         consensus.BIP34Hash = uint256S("603066b255ac410e0a488dcad007a74917257ad6dbdade34938f6a17e522722b");
         consensus.BIP65Height = 619382; // 00000000000076d8fcea02ec0963de4abfd01e771fec0863f960c2c64fe6f357
         consensus.BIP66Height = 245817; // 00000000000b1fa2dfa312863570e13fae9ca7b5566cb27e55422620b469aefa
-        consensus.DIP0001Height = 1510000;
-        consensus.DIP0003Height = 1510000;
+        consensus.DIP0001Height = 1600000;
+        consensus.DIP0003Height = 1600000;
         consensus.DIP0003EnforcementHeight = std::numeric_limits<int>::max();
         consensus.DIP0003EnforcementHash = uint256();
-        consensus.IIP0006Height = 1510000;
-        consensus.CSVHeight = 1510000;
-        consensus.BIP147Height = 1510000;
-        consensus.DIP0008Height = 1510000;
+        consensus.IIP0006Height = 1600000;
+        consensus.CSVHeight = 1600000;
+        consensus.BIP147Height = 1600000;
+        consensus.DIP0008Height = 1600000;
         consensus.powLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 24
         consensus.hybridPowLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 24
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
@@ -325,7 +325,7 @@ public:
         consensus.strTokenManagementKey = "inqaYuaES1cmRBXHodp25UceeVPbWQG5wY";
         consensus.nOpGroupNewRequiredConfirmations = 1;
         // POSPOW
-        consensus.POSPOWStartHeight = std::numeric_limits<int>::max();
+        consensus.POSPOWStartHeight = 1600000;
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 25;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
@@ -461,14 +461,14 @@ public:
         consensus.BIP34Hash = uint256S("0x000008ebb1db2598e897d17275285767717c6acfeac4c73def49fbea1ddcbcb6");
         consensus.BIP65Height = 2431; // 0000039cf01242c7f921dcb4806a5994bc003b48c1973ae0c89b67809c2bb2ab
         consensus.BIP66Height = 2075; // 0000002acdd29a14583540cb72e1c5cc83783560e38fa7081495d474fe1671f7
-        consensus.DIP0001Height = 141000;
-        consensus.DIP0003Height = 141000;
+        consensus.DIP0001Height = 117000;
+        consensus.DIP0003Height = 117000;
         consensus.DIP0003EnforcementHeight = std::numeric_limits<int>::max();
 //        consensus.DIP0003EnforcementHash = uint256S("059e5ee39302d06e3df836154db9818cffb1fcefd2733179b6aec86fb454b9c3");
         consensus.IIP0006Height = 99999999;
-        consensus.CSVHeight = 141000;
-        consensus.BIP147Height = 141000;
-        consensus.DIP0008Height = 141000;
+        consensus.CSVHeight = 117000;
+        consensus.BIP147Height = 117000;
+        consensus.DIP0008Height = 117000;
         consensus.powLimit = uint256S("3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 2
         consensus.hybridPowLimit = ArithToUint256(~arith_uint256(0) >> 12);
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
@@ -523,7 +523,7 @@ public:
         consensus.strTokenManagementKey = "gBi3gDLnGfw8HA2rN4HmNxHk9hMC4GLFbh";
         consensus.nOpGroupNewRequiredConfirmations = 1;
         // POSPOW
-        consensus.POSPOWStartHeight = 155400;
+        consensus.POSPOWStartHeight = 117000;
 
         // The best chain should have at least this much work.
         consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000062cd3e94ad2d62"); // 95930
@@ -590,17 +590,15 @@ public:
 
         checkpointData = (CCheckpointData) {
             {
-                {261, uint256S("0x00000c26026d0815a7e2ce4fa270775f61403c040647ff2c3091f99e894a4618")},
-                {1999, uint256S("0x00000052e538d27fa53693efe6fb6892a0c1d26c0235f599171c48a3cce553b1")},
-                {2999, uint256S("0x0000024bc3f4f4cb30d29827c13d921ad77d2c6072e586c7f60d83c2722cdcc5")},
-                {96090, uint256S("0x00000000033df4b94d17ab43e999caaf6c4735095cc77703685da81254d09bba")},
-                {155400, uint256S("00011a363f6136f59b65cbaa59e4bf0ed03375483a01dcb71f8f41879e4af6f0")},
+                {1, uint256S("0x16ac2683f6ccab2f095a6270d485087e5c441f39a18fd32e00c7bfa996cdf696")},
+                {5530, uint256S("0xa7332c2034d501bb11f686ae6c224dbcbdf5332c2522204a63224a8ca670c18b")},
+                {117000, uint256S("0x4c092ef6ad08622df9be8b5287ea29a1e9bfbe6756fd3056b9caebed61c697ca")},
             }
         };
 
         chainTxData = ChainTxData{
-            1581953150, // * UNIX timestamp of last known number of transactions (Block 155400)
-            317398,     // * total number of transactions between genesis and that timestamp
+            1583350779, // * UNIX timestamp of last known number of transactions (Block 155400)
+            233982,     // * total number of transactions between genesis and that timestamp
                         //   (the tx=... number in the SetBestChain debug.log lines)
             0.01        // * estimated number of transactions per second after that timestamp
         };
