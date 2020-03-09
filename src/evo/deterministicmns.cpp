@@ -10,6 +10,7 @@
 #include "core_io.h"
 #include "script/standard.h"
 #include "ui_interface.h"
+#include "spork.h"
 #include "validation.h"
 #include "validationinterface.h"
 
@@ -929,7 +930,7 @@ CDeterministicMNList CDeterministicMNManager::GetListForBlock(const CBlockIndex*
 CDeterministicMNList CDeterministicMNManager::GetListAtChainTip()
 {
     LOCK(cs);
-    if (!tipIndex || tipIndex->nHeight < Params().GetConsensus().DIP0003EnforcementHeight) {
+    if (!tipIndex || tipIndex->nHeight < sporkManager.GetSporkValue(SPORK_16_DETERMINISTIC_MNS_ENABLED)) {
         return {};
     }
     return GetListForBlock(tipIndex);
@@ -965,7 +966,7 @@ bool CDeterministicMNManager::IsDIP3Enforced(int nHeight)
         nHeight = tipIndex->nHeight;
     }
 
-    return nHeight >= Params().GetConsensus().DIP0003EnforcementHeight;
+    return nHeight >= sporkManager.GetSporkValue(SPORK_16_DETERMINISTIC_MNS_ENABLED);
 }
 
 void CDeterministicMNManager::CleanupCache(int nHeight)

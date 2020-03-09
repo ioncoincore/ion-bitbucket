@@ -182,7 +182,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     bool fHybridPow = !fPos && nHeight >= chainparams.GetConsensus().POSPOWStartHeight;
 
     bool fDIP0003Active_context = nHeight >= chainparams.GetConsensus().DIP0003Height;
-    bool fDIP0008Active_context = VersionBitsState(chainActive.Tip(), chainparams.GetConsensus(), Consensus::DEPLOYMENT_DIP0008, versionbitscache) == THRESHOLD_ACTIVE;
+    bool fDIP0008Active_context = nHeight >= chainparams.GetConsensus().DIP0008Height;
 
     pblock->nVersion = nHeight >= chainparams.GetConsensus().POSPOWStartHeight ?
         ComputeBlockVersion(pindexPrev, chainparams.GetConsensus(), fPos, chainparams.BIP9CheckMasternodesUpgraded())

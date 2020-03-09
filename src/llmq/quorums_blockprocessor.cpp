@@ -15,6 +15,7 @@
 #include "net.h"
 #include "net_processing.h"
 #include "primitives/block.h"
+#include "spork.h"
 #include "validation.h"
 
 namespace llmq
@@ -269,8 +270,8 @@ void CQuorumBlockProcessor::UpgradeDB()
 
     LogPrintf("CQuorumBlockProcessor::%s -- Upgrading DB...\n", __func__);
 
-    if (chainActive.Height() >= Params().GetConsensus().DIP0003EnforcementHeight) {
-        auto pindex = chainActive[Params().GetConsensus().DIP0003EnforcementHeight];
+    if (chainActive.Height() >= sporkManager.GetSporkValue(SPORK_16_DETERMINISTIC_MNS_ENABLED)) {
+        auto pindex = chainActive[sporkManager.GetSporkValue(SPORK_16_DETERMINISTIC_MNS_ENABLED)];
         while (pindex) {
             if (fPruneMode && !(pindex->nStatus & BLOCK_HAVE_DATA)) {
                 // Too late, we already pruned blocks we needed to reprocess commitments

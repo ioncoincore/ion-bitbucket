@@ -75,7 +75,6 @@
         <file alias="splash_testnet">res/images/splash_testnet.png</file>
         <file alias="splash_regtest">res/images/splash_regtest.png</file>
         <file alias="unchecked">res/images/unchecked.png</file>
-        <file alias="walletframe_background">res/images/walletframe_background.png</file>
     </qresource>
     <qresource prefix="/movies">
         <file alias="spinner-000">res/movies/spinner-000.png</file>
