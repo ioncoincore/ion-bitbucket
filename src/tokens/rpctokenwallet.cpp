@@ -1697,12 +1697,211 @@ extern UniValue melttoken(const JSONRPCRequest& request)
     return wtx.GetHash().GetHex();
 }
 
+UniValue listunspenttokens(const JSONRPCRequest& request)
+{
+    CWallet * const pwallet = GetWalletForJSONRPCRequest(request);
+    if (!EnsureWalletIsAvailable(pwallet, request.fHelp)) {
+        return NullUniValue;
+    }
+
+    if (request.fHelp || request.params.size() > 6)
+        throw std::runtime_error(
+            "listunspenttokens ( minconf maxconf  [\"addresses\",...] [include_unsafe] [query_options])\n"
+            "\nReturns array of unspent transaction outputs\n"
+            "with between minconf and maxconf (inclusive) confirmations.\n"
+            "Optionally filter to only include txouts paid to specified addresses.\n"
+            "\nArguments:\n"
+            "1. \"groupid\"      (string, optional) the token group identifier. Leave empty for all groups.\n"
+            "2. minconf          (numeric, optional, default=1) The minimum confirmations to filter\n"
+            "3. maxconf          (numeric, optional, default=9999999) The maximum confirmations to filter\n"
+            "4. \"addresses\"      (string) A json array of ion addresses to filter\n"
+            "    [\n"
+            "      \"address\"     (string) ion address\n"
+            "      ,...\n"
+            "    ]\n"
+            "5. include_unsafe (bool, optional, default=true) Include outputs that are not safe to spend\n"
+            "                  See description of \"safe\" attribute below.\n"
+            "6. query_options    (json, optional) JSON with query options\n"
+            "    {\n"
+            "      \"minimumAmount\"    (numeric or string, default=0) Minimum value of each UTXO in " + CURRENCY_UNIT + "\n"
+            "      \"maximumAmount\"    (numeric or string, default=unlimited) Maximum value of each UTXO in " + CURRENCY_UNIT + "\n"
+            "      \"maximumCount\"     (numeric or string, default=unlimited) Maximum number of UTXOs\n"
+            "      \"minimumSumAmount\" (numeric or string, default=unlimited) Minimum sum value of all UTXOs in " + CURRENCY_UNIT + "\n"
+            "    }\n"
+            "\nResult\n"
+            "[                   (array of json object)\n"
+            "  {\n"
+            "    \"txid\" : \"txid\",          (string) the transaction id \n"
+            "    \"vout\" : n,               (numeric) the vout value\n"
+            "    \"address\" : \"address\",    (string) the ion address\n"
+            "    \"address\" : \"address\",    (string) the ion address\n"
+            "    \"address\" : \"address\",    (string) the ion address\n"
+            "    \"account\" : \"account\",    (string) DEPRECATED. The associated account, or \"\" for the default account\n"
+            "    \"scriptPubKey\" : \"key\",   (string) the script key\n"
+            "    \"amount\" : x.xxx,         (numeric) the transaction output amount in " + CURRENCY_UNIT + "\n"
+            "    \"confirmations\" : n,      (numeric) The number of confirmations\n"
+            "    \"redeemScript\" : n        (string) The redeemScript if scriptPubKey is P2SH\n"
+            "    \"spendable\" : xxx,        (bool) Whether we have the private keys to spend this output\n"
+            "    \"solvable\" : xxx,         (bool) Whether we know how to spend this output, ignoring the lack of keys\n"
+            "    \"safe\" : xxx              (bool) Whether this output is considered safe to spend. Unconfirmed transactions\n"
+            "                              from outside keys and unconfirmed replacement transactions are considered unsafe\n"
+            "                              and are not eligible for spending by fundrawtransaction and sendtoaddress.\n"
+            "    \"ps_rounds\" : n           (numeric) The number of PS rounds\n"
+            "  }\n"
+            "  ,...\n"
+            "]\n"
+
+            "\nExamples:\n"
+            + HelpExampleCli("listunspenttokens", "")
+            + HelpExampleCli("listunspenttokens", "\"tion1z0ysghq9vf3r38tpmfd87sf9s9fw6yl59ctnrd0jl905m39d8mfss3v0s8j\" 6 9999999 \"[\\\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\\\",\\\"XuQQkwA4FYkq2XERzMY2CiAZhJTEDAbtcg\\\"]\"")
+            + HelpExampleRpc("listunspenttokens", "\"\" 6, 9999999 \"[\\\"idFcVh28YpxoCdJhiVjmsUn1Cq9rpJ6KP6\\\",\\\"XuQQkwA4FYkq2XERzMY2CiAZhJTEDAbtcg\\\"]\"")
+            + HelpExampleCli("listunspenttokens", "\"tion1z0ysghq9vf3r38tpmfd87sf9s9fw6yl59ctnrd0jl905m39d8mfss3v0s8j\" 6 9999999 '[]' true '{ \"minimumAmount\": 0.005 }'")
+            + HelpExampleRpc("listunspenttokens", "\"\"6, 9999999, [] , true, { \"minimumAmount\": 0.005 } ")
+        );
+    int curparam = 0;
+
+    bool fIncludeGrouped = true;
+    bool fFilterGrouped = false;
+    CTokenGroupID filterGroupID;
+    if (request.params.size() > curparam && !request.params[curparam].isNull()) {
+        filterGroupID = GetTokenGroup(request.params[curparam].get_str());
+        if (!filterGroupID.isUserGroup()) {
+            throw JSONRPCError(RPC_INVALID_PARAMS, "Invalid parameter 1: No group specified");
+        } else {
+            fFilterGrouped = true;
+        }
+        if (filterGroupID == NoGroup) {
+            fIncludeGrouped = false;
+        }
+    }
+    curparam++;
+
+    int nMinDepth = 1;
+    if (request.params.size() > curparam && !request.params[curparam].isNull()) {
+        RPCTypeCheckArgument(request.params[curparam], UniValue::VNUM);
+        nMinDepth = request.params[curparam].get_int();
+    }
+    curparam++;
+
+    int nMaxDepth = 9999999;
+    if (request.params.size() > curparam && !request.params[curparam].isNull()) {
+        RPCTypeCheckArgument(request.params[curparam], UniValue::VNUM);
+        nMaxDepth = request.params[curparam].get_int();
+    }
+    curparam++;
+
+    std::set<CBitcoinAddress> setAddress;
+    if (request.params.size() > curparam && !request.params[curparam].isNull()) {
+        RPCTypeCheckArgument(request.params[curparam], UniValue::VARR);
+        UniValue inputs = request.params[curparam].get_array();
+        for (unsigned int idx = 0; idx < inputs.size(); idx++) {
+            const UniValue& input = inputs[idx];
+            CBitcoinAddress address(input.get_str());
+            if (!address.IsValid())
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Ion address: ")+input.get_str());
+            if (setAddress.count(address))
+                throw JSONRPCError(RPC_INVALID_PARAMETER, std::string("Invalid parameter, duplicated address: ")+input.get_str());
+           setAddress.insert(address);
+        }
+    }
+    curparam++;
+
+    bool include_unsafe = true;
+    if (request.params.size() > curparam && !request.params[curparam].isNull()) {
+        RPCTypeCheckArgument(request.params[curparam], UniValue::VBOOL);
+        include_unsafe = request.params[curparam].get_bool();
+    }
+    curparam++;
+
+    CAmount nMinimumAmount = 0;
+    CAmount nMaximumAmount = MAX_MONEY;
+    CAmount nMinimumSumAmount = MAX_MONEY;
+    uint64_t nMaximumCount = 0;
+
+    if (!request.params[curparam].isNull()) {
+        const UniValue& options = request.params[curparam].get_obj();
+
+        if (options.exists("minimumAmount"))
+            nMinimumAmount = AmountFromValue(options["minimumAmount"]);
+
+        if (options.exists("maximumAmount"))
+            nMaximumAmount = AmountFromValue(options["maximumAmount"]);
+
+        if (options.exists("minimumSumAmount"))
+            nMinimumSumAmount = AmountFromValue(options["minimumSumAmount"]);
+
+        if (options.exists("maximumCount"))
+            nMaximumCount = options["maximumCount"].get_int64();
+    }
+    curparam++;
+
+    UniValue results(UniValue::VARR);
+    std::vector<COutput> vecOutputs;
+    assert(pwallet != nullptr);
+    LOCK2(cs_main, pwallet->cs_wallet);
+
+    pwallet->AvailableCoins(vecOutputs, !include_unsafe, nullptr, nMinimumAmount, nMaximumAmount, nMinimumSumAmount, nMaximumCount, nMinDepth, nMaxDepth, fIncludeGrouped);
+    for (const COutput& out : vecOutputs) {
+        CTxDestination address;
+        const CScript& scriptPubKey = out.tx->tx->vout[out.i].scriptPubKey;
+
+        CTokenGroupInfo grp(scriptPubKey);
+        CTokenGroupCreation tgCreation;
+        bool fValidGroup = !grp.invalid && grp.associatedGroup != NoGroup && !grp.isAuthority() && tokenGroupManager->GetTokenGroupCreation(grp.associatedGroup, tgCreation);
+
+        if (fFilterGrouped && (!fValidGroup || grp.associatedGroup != filterGroupID))
+            continue;
+
+        bool fValidAddress = ExtractDestination(scriptPubKey, address);
+
+        if (setAddress.size() && (!fValidAddress || !setAddress.count(address)))
+            continue;
+
+        UniValue entry(UniValue::VOBJ);
+        entry.push_back(Pair("txid", out.tx->GetHash().GetHex()));
+        entry.push_back(Pair("vout", out.i));
+
+        if (fValidGroup) {
+            entry.push_back(Pair("groupID", EncodeTokenGroup(grp.associatedGroup)));
+            entry.push_back(Pair("ticker", tgCreation.tokenGroupDescription.strTicker));
+            entry.push_back(Pair("tokenAmount", tokenGroupManager->TokenValueFromAmount(grp.getAmount(), tgCreation.tokenGroupInfo.associatedGroup)));
+        }
+
+        if (fValidAddress) {
+            entry.push_back(Pair("address", CBitcoinAddress(address).ToString()));
+
+            if (pwallet->mapAddressBook.count(address)) {
+                entry.push_back(Pair("account", pwallet->mapAddressBook[address].name));
+            }
+
+            if (scriptPubKey.IsPayToScriptHash()) {
+                const CScriptID& hash = boost::get<CScriptID>(address);
+                CScript redeemScript;
+                if (pwallet->GetCScript(hash, redeemScript)) {
+                    entry.push_back(Pair("redeemScript", HexStr(redeemScript.begin(), redeemScript.end())));
+                }
+            }
+        }
+
+        entry.push_back(Pair("scriptPubKey", HexStr(scriptPubKey.begin(), scriptPubKey.end())));
+        entry.push_back(Pair("amount", ValueFromAmount(out.tx->tx->vout[out.i].nValue)));
+        entry.push_back(Pair("confirmations", out.nDepth));
+        entry.push_back(Pair("spendable", out.fSpendable));
+        entry.push_back(Pair("solvable", out.fSolvable));
+        entry.push_back(Pair("safe", out.fSafe));
+        entry.push_back(Pair("ps_rounds", pwallet->GetCappedOutpointPrivateSendRounds(COutPoint(out.tx->GetHash(), out.i))));
+        results.push_back(entry);
+    }
+
+    return results;
+}
 
 static const CRPCCommand commands[] =
 { //  category              name                        actor (function)            okSafeMode
   //  --------------------- --------------------------  --------------------------  ----------
     { "tokens",             "listtokentransactions",    &listtokentransactions,     false, {}   },
     { "tokens",             "listtokenssinceblock",     &listtokenssinceblock,      false, {}   },
+    { "tokens",             "listunspenttokens",        &listunspenttokens,         false, {"groupid","minconf","maxconf","addresses","include_unsafe","query_options"} },
     { "tokens",             "gettokenbalance",          &gettokenbalance,           false, {}   },
     { "tokens",             "sendtoken",                &sendtoken,                 false, {}   },
     { "tokens",             "configuretoken",           &configuretoken,            false, {}   },
