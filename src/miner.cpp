@@ -23,6 +23,7 @@
 #include "policy/policy.h"
 #include "pos/kernel.h"
 #include "pos/stakeinput.h"
+#include "pos/rewards.h"
 #include "pow.h"
 #include "primitives/transaction.h"
 #include "script/sign.h"
@@ -73,10 +74,6 @@ int64_t UpdateTime(CBlockHeader* pblock, const Consensus::Params& consensusParam
 
     if (nOldTime < nNewTime)
         pblock->nTime = nNewTime;
-
-    // Updating time can change work required on testnet:
-    if (consensusParams.fPowAllowMinDifficultyBlocks)
-        pblock->nBits = GetNextWorkRequired(pindexPrev, pblock, consensusParams);
 
     return nNewTime - nOldTime;
 }
@@ -187,7 +184,7 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     bool fDIP0003Active_context = nHeight >= chainparams.GetConsensus().DIP0003Height;
     bool fDIP0008Active_context = VersionBitsState(chainActive.Tip(), chainparams.GetConsensus(), Consensus::DEPLOYMENT_DIP0008, versionbitscache) == THRESHOLD_ACTIVE;
 
-    pblock->nVersion = ComputeBlockVersion(pindexPrev, chainparams.GetConsensus(), chainparams.BIP9CheckMasternodesUpgraded());
+    pblock->nVersion = ComputeBlockVersion(pindexPrev, chainparams.GetConsensus(), fPos, chainparams.BIP9CheckMasternodesUpgraded());
     // -regtest only: allow overriding block.nVersion with
     // -blockversion=N to test forking scenarios
     if (chainparams.MineBlocksOnDemand())
@@ -235,18 +232,20 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     if (!fPos)
         coinbaseTx.vout[0].scriptPubKey = scriptPubKeyIn;
 
-    // NOTE: unlike in bitcoin, we need to pass PREVIOUS block height here
-    CAmount blockReward = nFees + GetBlockSubsidy(pindexPrev->nBits, pindexPrev->nHeight, true, Params().GetConsensus());
+    CBlockReward blockReward(nHeight, nFees, fPos, Params().GetConsensus());
 
     // Compute regular coinbase transaction.
     if (fPos) {
         coinbaseTx.vout[0].nValue = 0;
-        pCoinstakeTx->vout[1].nValue += blockReward;
+        // TODO: Add token amounts
+        pCoinstakeTx->vout[1].nValue += blockReward.GetCoinstakeReward().IONAmount;
     } else if (fHybridPow) {
         // HybridPow miner is rewarded in ELEC
-        coinbaseTx.vout[0].nValue = nFees + GetMasternodePayment(nHeight, blockReward);
+        // TODO: Add token amounts
+        coinbaseTx.vout[0].nValue = blockReward.GetCoinbaseReward().IONAmount;
     } else {
-        coinbaseTx.vout[0].nValue = blockReward;
+        // TODO: Add token amounts
+        coinbaseTx.vout[0].nValue = blockReward.GetCoinbaseReward().IONAmount;
     }
 
     if (!fDIP0003Active_context) {
@@ -285,6 +284,12 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     if (fPos) {
         SplitCoinstakeVouts(pCoinstakeTx);
         FillBlockPayments(*pCoinstakeTx, nHeight, blockReward, pblocktemplate->voutMasternodePayments, pblocktemplate->voutSuperblockPayments);
+        // Unpaid masternode rewards default to the staking node
+        CAmount nMasternodePaymentAmount = 0;
+        for (const auto& txout : pblocktemplate->voutMasternodePayments) {
+            nMasternodePaymentAmount += txout.nValue;
+        }
+        pCoinstakeTx->vout[1].nValue += blockReward.GetMasternodeReward().IONAmount - nMasternodePaymentAmount;
         // Sign for ION
         int nIn = 0;
         for (CTxIn txIn : pCoinstakeTx->vin) {
@@ -297,10 +302,6 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
         }
     } else {
         FillBlockPayments(coinbaseTx, nHeight, blockReward, pblocktemplate->voutMasternodePayments, pblocktemplate->voutSuperblockPayments);
-        if (fHybridPow) {
-            // HybridPow miner is rewarded in ELEC
-            coinbaseTx.vout[0].nValue = 0;
-        }
     }
 
     pblock->vtx[0] = MakeTransactionRef(std::move(coinbaseTx));
@@ -314,8 +315,9 @@ std::unique_ptr<CBlockTemplate> BlockAssembler::CreateNewBlock(const CScript& sc
     }
     // Fill in header
     pblock->hashPrevBlock  = pindexPrev->GetBlockHash();
-    UpdateTime(pblock, chainparams.GetConsensus(), pindexPrev);
-    pblock->nBits          = GetNextWorkRequired(pindexPrev, pblock, chainparams.GetConsensus(), fPos);
+    if (!fPos)
+        UpdateTime(pblock, chainparams.GetConsensus(), pindexPrev);
+    pblock->nBits          = GetNextWorkRequired(pindexPrev, chainparams.GetConsensus(), fHybridPow);
     pblock->nNonce         = 0;
     pblocktemplate->nPrevBits = pindexPrev->nBits;
     pblocktemplate->vTxSigOps[0] = GetLegacySigOpCount(*pblock->vtx[0]);

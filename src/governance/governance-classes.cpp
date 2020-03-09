@@ -5,6 +5,7 @@
 #include "governance-classes.h"
 #include "core_io.h"
 #include "init.h"
+#include "pos/rewards.h"
 #include "utilstrencodings.h"
 #include "validation.h"
 
@@ -361,7 +362,7 @@ bool CSuperblockManager::GetSuperblockPayments(int nBlockHeight, std::vector<CTx
     return true;
 }
 
-bool CSuperblockManager::IsValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward)
+bool CSuperblockManager::IsValid(const CTransaction& txNew, int nBlockHeight, CBlockReward blockReward)
 {
     // GET BEST SUPERBLOCK, SHOULD MATCH
     LOCK(governance.cs);
@@ -577,7 +578,7 @@ CAmount CSuperblock::GetPaymentsTotalAmount()
 *   - Does this transaction match the superblock?
 */
 
-bool CSuperblock::IsValid(const CTransaction& txNew, int nBlockHeight, CAmount blockReward)
+bool CSuperblock::IsValid(const CTransaction& txNew, int nBlockHeight, CBlockReward blockReward)
 {
     // TODO : LOCK(cs);
     // No reason for a lock here now since this method only accesses data
@@ -621,8 +622,9 @@ bool CSuperblock::IsValid(const CTransaction& txNew, int nBlockHeight, CAmount b
 
     // miner and masternodes should not get more than they would usually get
     CAmount nBlockValue = txNew.GetValueOut();
-    if (nBlockValue > blockReward + nPaymentsTotalAmount) {
-        LogPrintf("CSuperblock::IsValid -- ERROR: Block invalid, block value limit exceeded: block %lld, limit %lld\n", nBlockValue, blockReward + nPaymentsTotalAmount);
+    // TODO: check token values too
+    if (nBlockValue > blockReward.GetTotalRewards().IONAmount + nPaymentsTotalAmount) {
+        LogPrintf("CSuperblock::IsValid -- ERROR: Block invalid, block value limit exceeded: block %lld, limit %lld\n", nBlockValue, blockReward.GetTotalRewards().IONAmount + nPaymentsTotalAmount);
         return false;
     }
 

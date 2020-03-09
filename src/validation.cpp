@@ -26,6 +26,7 @@
 #include "pos/blocksignature.h"
 #include "pos/checks.h"
 #include "pos/kernel.h"
+#include "pos/rewards.h"
 #include "pow.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"
@@ -1051,74 +1052,6 @@ double ConvertBitsToDouble(unsigned int nBits)
     return dDiff;
 }
 
-CAmount GetBlockSubsidyION(const int nPrevHeight, const bool fPos, const Consensus::Params& consensusParams)
-{
-    CAmount nSubsidy = 0;
-    int nHeight = nPrevHeight + 1;
-
-    if (nHeight >= consensusParams.POSPOWStartHeight & !fPos) {
-        return 0;
-    }
-
-    // TESTNET and REGTEST
-    if (Params().NetworkIDString() == CBaseChainParams::REGTEST && nHeight < 86400) {
-        if (nHeight == 0) {
-            nSubsidy = 1 * COIN;
-        } else if (nHeight < 200 && nHeight > 0) {
-            nSubsidy = 250000 * COIN;
-        } else if (nHeight < 86400 && nHeight >= 200) {
-            nSubsidy = 250 * COIN;
-        }
-    } else if ((Params().NetworkIDString() == CBaseChainParams::TESTNET) && nHeight <= 570062) {
-        if (nHeight == 0) {
-            nSubsidy = 1 * COIN;
-        } else if (nHeight == 1) {
-            nSubsidy = 1 * COIN;
-        } else if (nHeight == 2) {
-            nSubsidy = 16400000 * COIN;
-        } else if (nHeight >= 3 && nHeight <= 125146) {
-            nSubsidy = 23 * COIN;
-        } else if (nHeight > 125146 && nHeight <= 570062) {
-            nSubsidy = 17 * COIN;
-        }
-    } else if ((Params().NetworkIDString() == CBaseChainParams::DEVNET) && nHeight <= 570062) {
-        if (nHeight == 0) {
-            nSubsidy = 1 * COIN;
-        } else if (nHeight == 1) {
-            nSubsidy = 1 * COIN;
-        } else if (nHeight == 2) {
-            nSubsidy = 16399999 * COIN;
-        } else if (nHeight >= 2 && nHeight <= 125146) {
-            nSubsidy = 23 * COIN;
-        } else if (nHeight > 125146 && nHeight <= 570062) {
-            nSubsidy = 17 * COIN;
-        }
-    } else {
-        if (nHeight == 0) {
-            nSubsidy = 1 * COIN;
-        } else if (nHeight == 1) {
-            nSubsidy = 16400000 * COIN;
-        } else if (nHeight <= 125146) {
-            nSubsidy = 23 * COIN;
-        } else if (nHeight <= consensusParams.DGWStartHeight + 1) {
-            nSubsidy = 17 * COIN;
-        } else if (nHeight <= consensusParams.DGWStartHeight + 1 + 1440) {
-            nSubsidy = 0.02 * COIN;
-        } else if (nHeight <= 570062 + 1) { // 568622 + 1440 = 570062
-            nSubsidy = 17 * COIN;
-        } else if (nHeight <= 1013538 + 1) {    // 568622+1440=570062   1012098+1440=1013538
-            nSubsidy = 11.5 * COIN;
-        } else if (nHeight <= 4167138 + 1) {    // phase 4-9
-            nSubsidy = 5.75 * COIN;
-        } else if (nHeight <= 4692738 + 1) {    // phase 10
-            nSubsidy = 1.9 * COIN;
-        } else {
-            nSubsidy = 0.02 * COIN;
-        }
-    }
-    return nSubsidy;
-}
-
 /*
 NOTE:   unlike bitcoin we are using PREVIOUS block height here,
         might be a good idea to change this to use prev bits
@@ -1866,10 +1799,18 @@ void ThreadScriptCheck() {
 // Protected by cs_main
 VersionBitsCache versionbitscache;
 
-int32_t ComputeBlockVersion(const CBlockIndex* pindexPrev, const Consensus::Params& params, bool fCheckMasternodesUpgraded)
+int32_t ComputeBlockVersion(const CBlockIndex* pindexPrev, const Consensus::Params& params, const bool fPos, bool fCheckMasternodesUpgraded)
 {
     LOCK(cs_main);
     int32_t nVersion = VERSIONBITS_TOP_BITS;
+
+    if (pindexPrev->nHeight + 1 >= params.POSPOWStartHeight) {
+        if (fPos) {
+            nVersion |= BlockTypeBits::BLOCKTYPE_STAKING;
+        } else {
+            nVersion |= BlockTypeBits::BLOCKTYPE_MINING;
+        }
+    }
 
     for (int i = 0; i < (int)Consensus::MAX_VERSION_BITS_DEPLOYMENTS; i++) {
         Consensus::DeploymentPos pos = Consensus::DeploymentPos(i);
@@ -2153,6 +2094,11 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
 
     bool fDIP0001Active_context = pindex->nHeight >= Params().GetConsensus().DIP0001Height;
 
+    CAmount coinstakeValueIn = 0;
+    if (block.IsProofOfStake()) {
+        coinstakeValueIn = view.GetValueIn(*(block.vtx[1]));
+    }
+
     for (unsigned int i = 0; i < block.vtx.size(); i++)
     {
         const CTransactionRef tx = block.vtx[i];
@@ -2380,13 +2326,14 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
     // ION : MODIFIED TO CHECK MASTERNODE PAYMENTS AND SUPERBLOCKS
 
     // TODO: resync data (both ways?) and try to reprocess this block later.
-    CAmount blockReward = nFees + GetBlockSubsidy(pindex->pprev->nBits, pindex->pprev->nHeight, block.IsProofOfStake(), chainparams.GetConsensus());
+    CBlockReward blockReward(pindex->nHeight, nFees, block.IsProofOfStake(), Params().GetConsensus());
+
     std::string strError = "";
 
     int64_t nTime5_2 = GetTimeMicros(); nTimeSubsidy += nTime5_2 - nTime5_1;
     LogPrint(BCLog::BENCHMARK, "      - GetBlockSubsidy: %.2fms [%.2fs]\n", 0.001 * (nTime5_2 - nTime5_1), nTimeSubsidy * 0.000001);
 
-    if (!IsBlockValueValid(block, pindex->nHeight, blockReward, strError)) {
+    if (!IsBlockValueValid(block, pindex->nHeight, blockReward, coinstakeValueIn, strError)) {
         return state.DoS(0, error("ConnectBlock(ION): %s", strError), REJECT_INVALID, "bad-cb-amount");
     }
 
@@ -2704,7 +2651,7 @@ void static UpdateTip(CBlockIndex *pindexNew, const CChainParams& chainParams) {
         for (int i = 0; i < 100 && pindex != nullptr; i++)
         {
             int32_t nExpectedVersion = ComputeBlockVersion(pindex->pprev, chainParams.GetConsensus());
-            if (pindex->nVersion > VERSIONBITS_LAST_OLD_BLOCK_VERSION && (pindex->nVersion & ~nExpectedVersion) != 0)
+            if (pindex->nVersion > VERSIONBITS_LAST_OLD_BLOCK_VERSION && (pindex->nVersion & ~nExpectedVersion & ~BLOCKTYPEBITS_MASK) != 0)
                 ++nUpgraded;
             pindex = pindex->pprev;
         }
@@ -3602,18 +3549,9 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, CValidationSta
 
     // Check proof of work
     const Consensus::Params& consensusParams = params.GetConsensus();
-    if(Params().NetworkIDString() == CBaseChainParams::MAIN && nHeight <= -1){
-        // architecture issues with DGW v1 and v2)
-        unsigned int nBitsNext = GetNextWorkRequired(pindexPrev, &block, consensusParams);
-        double n1 = ConvertBitsToDouble(block.nBits);
-        double n2 = ConvertBitsToDouble(nBitsNext);
-
-        if (std::abs(n1-n2) > n1*0.5)
-            return state.DoS(100, error("%s : incorrect proof of work (DGW pre-fork) - %f %f %f at %d", __func__, std::abs(n1-n2), n1, n2, nHeight),
-                            REJECT_INVALID, "bad-diffbits");
-    } else {
-        if (block.nBits != GetNextWorkRequired(pindexPrev, &block, consensusParams))
-            return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, strprintf("incorrect proof of work at %d", nHeight));
+    bool fHybridPow = ((block.nVersion & BLOCKTYPEBITS_MASK) == BlockTypeBits::BLOCKTYPE_MINING) && (nHeight >= consensusParams.POSPOWStartHeight);
+    if (block.nBits != GetNextWorkRequired(pindexPrev, consensusParams, fHybridPow)) {
+        return state.DoS(100, false, REJECT_INVALID, "bad-diffbits", false, strprintf("incorrect proof of work at %d", nHeight));
     }
 
     // Check against checkpoints

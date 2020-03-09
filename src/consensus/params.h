@@ -169,9 +169,12 @@ struct Params {
     BIP9Deployment vDeployments[MAX_VERSION_BITS_DEPLOYMENTS];
     /** Proof of work parameters */
     uint256 powLimit;
+    uint256 hybridPowLimit;
     bool fPowAllowMinDifficultyBlocks;
     bool fPowNoRetargeting;
     int64_t nPowTargetSpacing;
+    int64_t nHybridPowTargetSpacing;
+    int64_t nHybridPosTargetSpacing;
     int64_t nPowTargetTimespan;
     int nPowKGWHeight;
     int nPowDGWHeight;
