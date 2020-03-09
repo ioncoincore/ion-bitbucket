@@ -11,6 +11,7 @@
 #include "consensus/validation.h"
 #include "fs.h"
 #include "protocol.h"
+#include "reward-manager.h"
 #include "serialize.h"
 #include "sync.h"
 #include "util.h"
@@ -160,6 +161,14 @@ bool CWalletDB::WriteMinVersion(int nVersion)
 bool CWalletDB::WriteStakeSplitThreshold(uint64_t nStakeSplitThreshold)
 {
     return WriteIC(std::string("stakeSplitThreshold"), nStakeSplitThreshold);
+}
+
+bool CWalletDB::WriteAutoCombineSettings(bool fEnable, CAmount nCombineThreshold)
+{
+    std::pair<bool, CAmount> pSettings;
+    pSettings.first = fEnable;
+    pSettings.second = nCombineThreshold;
+    return WriteIC(std::string("autocombinesettings"), pSettings);
 }
 
 bool CWalletDB::ReadAccount(const std::string& strAccount, CAccount& account)
@@ -545,6 +554,12 @@ ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue,
         else if (strType == "stakeSplitThreshold")
         {
             ssValue >> pwallet->nStakeSplitThreshold;
+        }
+        else if (strType == "autocombinesettings")
+        {
+            std::pair<bool, CAmount> pSettings;
+            ssValue >> pSettings;
+            rewardManager->AutoCombineSettings(pSettings.first, pSettings.second);
         }
     } catch (...)
     {

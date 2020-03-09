@@ -20,6 +20,7 @@
 #include "net.h"
 #include "policy/fees.h"
 #include "policy/policy.h"
+#include "pos/rewards.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"
 #include "script/script.h"
@@ -2977,7 +2978,7 @@ unsigned int CWallet::FilterCoins(std::vector<COutput> &vCoins,
     return ret;
 }
 
-void CWallet::AvailableCoins(std::vector<COutput> &vCoins, bool fOnlySafe, const CCoinControl *coinControl, const CAmount &nMinimumAmount, const CAmount &nMaximumAmount, const CAmount &nMinimumSumAmount, const uint64_t &nMaximumCount, const int &nMinDepth, const int &nMaxDepth) const
+void CWallet::AvailableCoins(std::vector<COutput> &vCoins, bool fOnlySafe, const CCoinControl *coinControl, const CAmount &nMinimumAmount, const CAmount &nMaximumAmount, const CAmount &nMinimumSumAmount, const uint64_t &nMaximumCount, const int &nMinDepth, const int &nMaxDepth, const bool includeGrouped) const
 {
     vCoins.clear();
     CoinType nCoinType = coinControl ? coinControl->nCoinType : CoinType::ALL_COINS;
@@ -2993,7 +2994,7 @@ void CWallet::AvailableCoins(std::vector<COutput> &vCoins, bool fOnlySafe, const
             if (!CheckFinalTx(*pcoin))
                 continue;
 
-            if (pcoin->IsCoinBase() && pcoin->GetBlocksToMaturity() > 0)
+            if ((pcoin->IsCoinBase() || pcoin->IsCoinStake()) && pcoin->GetBlocksToMaturity() > 0)
                 continue;
 
             int nDepth = pcoin->GetDepthInMainChain();
@@ -3013,6 +3014,9 @@ void CWallet::AvailableCoins(std::vector<COutput> &vCoins, bool fOnlySafe, const
                 continue;
 
             for (unsigned int i = 0; i < pcoin->tx->vout.size(); i++) {
+                if (!includeGrouped && IsOutputGrouped(pcoin->tx->vout[i]))
+                    continue;
+
                 bool found = false;
                 if(nCoinType == CoinType::ONLY_DENOMINATED) {
                     found = CPrivateSend::IsDenominatedAmount(pcoin->tx->vout[i].nValue);
@@ -5124,7 +5128,7 @@ bool CWallet::GetScriptForPowMining(std::shared_ptr<CReserveScript> &script, con
     return true;
 }
 
-bool CWallet::GetScriptForHybridMining(std::shared_ptr<CReserveScript> &script, const std::shared_ptr<CReserveKey> &reservedKey, const CTokenGroupID &grpID, const CAmount amount)
+bool CWallet::GetScriptForHybridMining(std::shared_ptr<CReserveScript> &script, const std::shared_ptr<CReserveKey> &reservedKey, const CReward &reward)
 {
     CPubKey pubkey;
     if (!reservedKey->GetReservedKey(pubkey, false))
@@ -5132,7 +5136,13 @@ bool CWallet::GetScriptForHybridMining(std::shared_ptr<CReserveScript> &script, 
 
     script = reservedKey;
     CTxDestination dst = pubkey.GetID();
-    script->reserveScript = GetScriptForDestination(dst, grpID, amount);
+
+    std::map<CTokenGroupID, CAmount>::const_iterator it = reward.tokenAmounts.begin();
+    if (it == reward.tokenAmounts.end()) {
+        script->reserveScript = CScript();
+    } else {
+        script->reserveScript = GetScriptForDestination(dst, it->first, it->second);
+    }
     return true;
 }
 
@@ -6059,9 +6069,13 @@ bool CMerkleTx::IsChainLocked() const
 
 int CMerkleTx::GetBlocksToMaturity() const
 {
-    if (!IsCoinBase())
+    if (!(IsCoinBase() || IsCoinStake() || IsAnyOutputGroupedAuthority((CTransaction(*this)))))
         return 0;
-    return std::max(0, (Consensus::Params().nCoinbaseMaturity+1) - GetDepthInMainChain());
+    int depth = GetDepthInMainChain();
+    int minBlocksToMaturity = 0;
+    if (IsAnyOutputGroupedAuthority((CTransaction(*this))))
+        minBlocksToMaturity = std::max(0, (Consensus::Params().nOpGroupNewRequiredConfirmations + 1) - depth);
+    return std::max(minBlocksToMaturity, (Consensus::Params().nCoinbaseMaturity + 1) - depth);
 }
 
 

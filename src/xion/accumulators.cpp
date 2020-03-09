@@ -321,7 +321,7 @@ bool ValidateAccumulatorCheckpoint(const CBlock& block, CBlockIndex* pindex, Acc
     //V1 accumulators are completely phased out by the time this code hits the public and begins generating new checkpoints
     //It is VERY IMPORTANT that when this is being run and height < v2_start, then xION need to be disabled at the same time!!
     bool fVerifyingBlocks = false;
-    if (pindex->nHeight < Params().GetConsensus().nBlockZerocoinV2 || fVerifyingBlocks)
+    if (pindex->nHeight < Params().GetConsensus().nBlockZerocoinV2 || pindex->nHeight >= Params().GetConsensus().IIP0006Height || fVerifyingBlocks)
         return true;
 
     if (pindex->nHeight % 10 == 0) {
