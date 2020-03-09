@@ -3323,7 +3323,7 @@ UniValue generate(const JSONRPCRequest& request)
     }
 
     int num_generate = request.params[0].get_int();
-    uint64_t max_tries = 1000000000;
+    uint64_t max_tries = std::numeric_limits<uint64_t>::max();
     if (request.params.size() > 1 && !request.params[1].isNull()) {
         max_tries = request.params[1].get_int();
     }

@@ -288,6 +288,8 @@ public:
     unsigned int GetTotalSize() const;
 
 
+    CAmount GetZerocoinSpent() const;
+
     bool HasZerocoinSpendInputs() const;
     bool HasZerocoinPublicSpendInputs() const;
 

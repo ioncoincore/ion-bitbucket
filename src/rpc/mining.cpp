@@ -17,6 +17,7 @@
 #include "miner.h"
 #include "net.h"
 #include "policy/fees.h"
+#include "pos/rewards.h"
 #include "pow.h"
 #include "rpc/blockchain.h"
 #include "rpc/mining.h"
@@ -470,7 +471,8 @@ UniValue getblocktemplate(const JSONRPCRequest& request)
     // Get expected MN/superblock payees. The call to GetBlockTxOuts might fail on regtest/devnet or when
     // testnet is reset. This is fine and we ignore failure (blocks will be accepted)
     std::vector<CTxOut> voutMasternodePayments;
-    mnpayments.GetBlockTxOuts(chainActive.Height() + 1, 0, voutMasternodePayments);
+    CBlockReward blockReward;
+    mnpayments.GetBlockTxOuts(chainActive.Height() + 1, blockReward, voutMasternodePayments);
 
     // next bock is a superblock and we need governance info to correctly construct it
     if (sporkManager.IsSporkActive(SPORK_15_SUPERBLOCKS_ENABLED)
