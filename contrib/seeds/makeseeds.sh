@@ -48,7 +48,8 @@ TESTNETONIONSEEDS="mdbpyigvanhrv6jg.onion:27170
 ndqgxcnvvd2s6pbr.onion:27170
 3szeblrpwucr6eze.onion:27170
 mdbpyigvanhrv6jg.onion:27170
-g2x6xrzpef6fktez.onion:27170"
+g2x6xrzpef6fktez.onion:27170
+heaoykp3ic2ykdb4.onion:27170"
 
 setcustomseeds () {
 cat <<EOF | tee -a $1
