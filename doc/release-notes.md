@@ -1,7 +1,7 @@
 # ION Core release notes
 
 - [ION Core release notes](#ion-core-release-notes)
-  - [ION Core version 5.0.99 is now available](#ion-core-version-5099-is-now-available)
+  - [ION Core version 5.0.01 is now available](#ion-core-version-5001-is-now-available)
     - [Mandatory Update](#mandatory-update)
     - [How to Upgrade](#how-to-upgrade)
     - [Compatibility](#compatibility)
@@ -15,9 +15,9 @@
       - [Masternodes](#masternodes-1)
     - [Deprecated RPC Commands](#deprecated-rpc-commands)
       - [Masternodes](#masternodes-2)
-    - [5.0.99 Change log](#5099-change-log)
+    - [5.0.01 Change log](#5001-change-log)
 
-## ION Core version 5.0.99 is now available  
+## ION Core version 5.0.01 is now available  
 
 Download at: https://bitbucket.org/ioncoin/ion/downloads/
 
@@ -47,7 +47,7 @@ ION Core should also work on most other Unix-like systems but is not frequently 
 ### Noteable Changes
 
 - Move to bitbucket
-  - The ION Core project is now available throug the [ION Coin Bitbucket repository](https://bitbucket.org/ioncoin/ion/)
+  - The ION Core project is now available through the [ION Coin Bitbucket repository](https://bitbucket.org/ioncoin/ion/)
   - The ION Core repository at github will for now remain available, but will no longer be updated.
 - Implementation of [IIP0006](https://github.com/ionomy/iips/blob/master/iip_0006.md)
   - Changes are adopted on mainnet at block <FORKBLOCK> and on testnet at block 155400.
@@ -55,7 +55,7 @@ ION Core should also work on most other Unix-like systems but is not frequently 
     - 70% of block rewards are awarded to masternodes, 30% to stakers
   - Fee policy
     - The new fee policy, proposed and adopted in IIP0006, is implemented. As a result, this client will only relay and mine transactions with
-      a feerate of 0.01 ION per KB.
+      a fee rate of 0.01 ION per KB.
     - The fee calculation approach for token transactions has been made more accurate.
     - 50% of fees are awarded to masternodes, 25% to staking nodes and 25% is burned.
 - Switch from Proof-of-Stake to Hybrid Proof-of-Work/Proof-of-Stake
@@ -117,7 +117,8 @@ ION Core should also work on most other Unix-like systems but is not frequently 
 - BLS
   - [BLS Signature Scheme](https://github.com/dashpay/dips/blob/master/dip-0006/bls_signature_scheme.md)
   - [BLS M-of-N Threshold Scheme and Distributed Key Generation](https://github.com/dashpay/dips/blob/master/dip-0006/bls_m-of-n_threshold_scheme_and_dkg.md#bls-m-of-n-threshold-scheme-and-distributed-key-generation)
-- ~~I2p support~~
+- New version keeps all languages which our old sources had. For more info please check [translation process](translation_process.md).
+- New hardcoded seeds
 
 #### Migrate Travis as pipeline
 
@@ -234,7 +235,7 @@ masternodelist ( "mode" "filter" )
 `listmasternodeconf ( "filter" )`  
 `listmasternodes ( "filter" )`
 
-### 5.0.99 Change log  
+### 5.0.01 Change log  
 ckti <ckti@i2pmail.org> (1):
 
 - `3ad7b4d` CircleCI is now being used for continuous integration

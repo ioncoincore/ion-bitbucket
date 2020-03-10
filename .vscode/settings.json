@@ -806,6 +806,7 @@
         "sporkaddr",
         "ssapp",
         "sshd",
+        "stakers",
         "startmasternode",
         "startmenu",
         "strftime",

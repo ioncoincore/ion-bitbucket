@@ -4,6 +4,8 @@
     - [Example Qt translation](#example-qt-translation)
   - [Creating a pull-request](#creating-a-pull-request)
   - [Creating a Transifex account](#creating-a-transifex-account)
+  - [Translator project page](#translator-project-page)
+  - [Translator Editor and Instructions URL](#translator-editor-and-instructions-url)
   - [Installing the Transifex client command-line tool](#installing-the-transifex-client-command-line-tool)
     - [For Linux and Mac](#for-linux-and-mac)
     - [For Windows](#for-windows)
@@ -63,7 +65,13 @@ git commit
 
 Visit the [Transifex Signup](https://www.transifex.com/signup/) page to create an account. Take note of your username and password, as they will be required to configure the command-line tool.
 
+## Translator project page
+
 You can find the Ion translation project at [https://www.transifex.com/ioncoincore/ioncore/](https://www.transifex.com/ioncoincore/ioncore/).
+
+## Translator Editor and Instructions URL
+
+Online translation editor: https://www.ioncore.xyz/translate
 
 ## Installing the Transifex client command-line tool
 

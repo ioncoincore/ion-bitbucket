@@ -107,6 +107,9 @@ EXPECTED_HOLDER_NAMES = [
     "Sam Rushing\n",
     "ArtForz -- public domain half-a-node\n",
     "The Ion Core developers\n",
+    "The Ion core developers\n",
+    "The Ion developers\n",
+    "cevap\n",
 ]
 
 DOMINANT_STYLE_COMPILED = {}
