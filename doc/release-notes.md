@@ -122,6 +122,8 @@ ION Core should also work on most other Unix-like systems but is not frequently 
 
 #### Migrate Travis as pipeline
 
+- CircleCI is now being used for continuous integration
+
 #### Hybrid Proof-of-Work / Proof-of-Stake
 
 Combining POW with POS overcomes limitations in both. ION now supports mixed POW and POS blocks, where each algorithm
@@ -150,7 +152,7 @@ Since 50% of the blocks will be POS blocks, stakers will receive an average of 3
 
 #### Masternodes
 
-Testnet masternodes requires using the `protx` command:
+- Testnet masternodes require using the `protx` command:
 - Ensure a 20k collateral is available (`masternode outputs`).
 - Generate the keys:
   - Generate the 'owner private key' (`getnewaddress`).
@@ -239,3 +241,4 @@ masternodelist ( "mode" "filter" )
 ckti <ckti@i2pmail.org> (1):
 
 - `3ad7b4d` CircleCI is now being used for continuous integration
+- new version of QT solves the arm build issue where text could not be entered in the debug window
