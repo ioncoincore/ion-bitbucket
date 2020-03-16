@@ -336,11 +336,12 @@ extern UniValue gettokenbalance(const JSONRPCRequest& request)
 
     if (request.fHelp)
         throw std::runtime_error(
-            "gettokenbalance ( \"groupid\" )\n"
+            "gettokenbalance ( \"groupid\" ) ( \"address\" )\n"
             "\nIf groupID is not specified, returns all tokens with a balance (including token authorities).\n"
             "If a groupID is specified, returns the balance of the specified token group.\n"
             "\nArguments:\n"
-            "1. \"groupid\" (string, optional) the token group identifier\n"
+            "1. \"groupid\" (string, optional) the token group identifier to filter\n"
+            "2. \"address\" (string, optional) the ION address to filter\n"
             "\n"
             "\nExamples:\n" +
             HelpExampleCli("gettokenbalance", "groupid ionrt1zwm0kzlyptdmwy3849fd6z5epesnjkruqlwlv02u7y6ymf75nk4qs6u85re") +
@@ -712,8 +713,8 @@ extern UniValue sendtoken(const JSONRPCRequest& request)
 
     if (request.fHelp || request.params.size() < 1)
         throw std::runtime_error(
-            "sendtoken \"groupid\" \"address\" amount \n"
-            "\nSends token to a given address.\n"
+            "sendtoken \"groupid\" \"address\" amount ( \"address\" amount ) ( .. ) \n"
+            "\nSends token to a given address. Specify multiple addresses and amounts for multiple recipients.\n"
             "\n"
             "1. \"groupid\"     (string, required) the group identifier\n"
             "2. \"address\"     (string, required) the destination address\n"
