@@ -8,6 +8,7 @@
 #include "base58.h"
 #include "consensus/consensus.h"
 #include "validation.h"
+#include "pos/rewards.h"
 #include "timedata.h"
 #include "wallet/wallet.h"
 
@@ -22,6 +23,140 @@ bool TransactionRecord::showTransaction(const CWalletTx &wtx)
 {
     // There are currently no cases where we hide transactions, but
     // we may want to use this in the future for things like RBF.
+    return true;
+}
+
+bool DecomposeReward(const CWallet* wallet, const CWalletTx& wtx, const CTxDestination address, const bool fPos, std::vector<TransactionRecord> &records) {
+    std::map<uint64_t, CTxOut> coinstakeRewards;
+    std::map<uint64_t, CTxOut> coinbaseRewards;
+    std::map<uint64_t, CTxOut> MNRewards;
+
+    // Only a stake reward, so the default decompose function suffices
+    if (wtx.tx->vout.size() < (fPos ? 3 : 2)) return false;
+
+    const Consensus::Params& consensusParams = Params().GetConsensus();
+
+    // When the block has not confirmed - or when not yet in hybrid mode, the default decompose function suffices
+    const CBlockIndex* pindexWtx;
+    const int nBlockDepth = wtx.GetDepthInMainChain(pindexWtx);
+    if (nBlockDepth <= 0 || !pindexWtx) return false;
+    const int nBlockHeight = pindexWtx->nHeight;
+    if (nBlockHeight < consensusParams.POSPOWStartHeight) return false;
+
+    CBlockReward blockReward(nBlockHeight, 0, fPos, consensusParams);
+
+    if (fPos) {
+        // When no coinstake value can be determined, the default decompose function suffices
+        COutPoint prevout = wtx.tx->vin[0].prevout;
+        uint256 hashBlock;
+        CTransactionRef txIn;
+        if (!GetTransaction(prevout.hash, txIn, consensusParams, hashBlock, true)) return false;
+        if (txIn->vout.size() < prevout.n + 1) return false;
+
+        CAmount nStakeInValue = txIn->vout[prevout.n].nValue;
+
+        CAmount wtxOutValue = 0;
+        for (auto txOut : wtx.tx->vout) {
+            wtxOutValue += txOut.nValue;
+        }
+        CAmount nFees = (wtxOutValue - nStakeInValue) - blockReward.GetTotalRewards().IONAmount;
+        blockReward.AddHybridFees(nFees / 0.8 + 1); // 20% of the fees were burned. Add 1 for slack, to avoid fetching the full block.
+
+        CAmount nStakeValue = blockReward.GetCoinstakeReward().IONAmount;
+
+        bool fAllCoinstakesFound = false;
+        CAmount nStakeValueFound = 0;
+        for (int i = 1; i < (int)wtx.tx->vout.size(); i++) {
+
+            CTxOut curOut = wtx.tx->vout[i];
+            if (!fAllCoinstakesFound) {
+                if (nStakeValueFound + curOut.nValue <= nStakeInValue + nStakeValue) {
+                    nStakeValueFound += curOut.nValue;
+                    coinstakeRewards.insert(std::make_pair(i, curOut));
+                } else {
+                    MNRewards.insert(std::make_pair(i, curOut));
+                    fAllCoinstakesFound = true;
+                }
+            } else {
+                MNRewards.insert(std::make_pair(i, curOut));
+            }
+        }
+    } else {
+        CAmount nCoinbaseValue = blockReward.GetCoinbaseReward().IONAmount;
+
+        bool fAllCoinbasesFound = false;
+        CAmount nCoinbaseValueFound = 0;
+        for (int i = 0; i < (int)wtx.tx->vout.size(); i++) {
+
+            CTxOut curOut = wtx.tx->vout[i];
+            if (!fAllCoinbasesFound) {
+                if (nCoinbaseValueFound + curOut.nValue <= nCoinbaseValue) {
+                    nCoinbaseValueFound += curOut.nValue;
+                    coinbaseRewards.insert(std::make_pair(i, curOut));
+                } else {
+                    MNRewards.insert(std::make_pair(i, curOut));
+                    fAllCoinbasesFound = true;
+                }
+            } else {
+                MNRewards.insert(std::make_pair(i, curOut));
+            }
+        }
+    }
+
+    int64_t nTime = wtx.GetTxTime();
+    const uint256 hash = wtx.GetHash();
+    std::map<std::string, std::string> mapValue = wtx.mapValue;
+
+    TransactionRecord stakeRecord(hash, nTime);
+    if (coinstakeRewards.size() > 0) {
+        if (isminetype mine = wallet->IsMine(wtx.tx->vout[1])){
+            // Stake reward
+            stakeRecord.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
+            stakeRecord.type = TransactionRecord::StakeMint;
+            stakeRecord.strAddress = CBitcoinAddress(address).ToString();
+            stakeRecord.address.SetString(stakeRecord.strAddress);
+            stakeRecord.txDest = stakeRecord.address.Get();
+            for (auto stakeReward : coinstakeRewards) {
+                stakeRecord.credit += wallet->GetCredit(stakeReward.second, ISMINE_ALL);
+            }
+            stakeRecord.credit -= wtx.GetDebit(ISMINE_ALL);
+            records.push_back(stakeRecord);
+        }
+    }
+
+    TransactionRecord coinbaseRecord(hash, nTime);
+    if (coinbaseRewards.size() > 0) {
+        if (isminetype mine = wallet->IsMine(wtx.tx->vout[0])){
+            // Stake reward
+            coinbaseRecord.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
+            coinbaseRecord.type = TransactionRecord::Generated;
+            coinbaseRecord.strAddress = CBitcoinAddress(address).ToString();
+            coinbaseRecord.address.SetString(coinbaseRecord.strAddress);
+            coinbaseRecord.txDest = coinbaseRecord.address.Get();
+            for (auto coinbaseReward : coinbaseRewards) {
+                coinbaseRecord.credit += wallet->GetCredit(coinbaseReward.second, ISMINE_ALL);
+            }
+            records.push_back(coinbaseRecord);
+        }
+    }
+
+    TransactionRecord MNRecord(hash, nTime);
+    if (MNRewards.size() > 0) {
+        auto MNReward = MNRewards.begin();
+        // Masternode reward
+        if (isminetype mine = wallet->IsMine(MNReward->second)) {
+            CTxDestination destMN;
+            ExtractDestination(MNReward->second.scriptPubKey, destMN);
+            MNRecord.involvesWatchAddress = mine & ISMINE_WATCH_ONLY;
+            MNRecord.type = TransactionRecord::MNReward;
+            MNRecord.strAddress = CBitcoinAddress(destMN).ToString();
+            MNRecord.address.SetString(MNRecord.strAddress);
+            MNRecord.txDest = MNRecord.address.Get();
+            MNRecord.credit = MNReward->second.nValue;
+            records.push_back(MNRecord);
+        }
+   }
+
     return true;
 }
 
@@ -43,6 +178,10 @@ std::vector<TransactionRecord> TransactionRecord::decomposeTransaction(const CWa
         CTxDestination address;
         if (!ExtractDestination(wtx.tx->vout[1].scriptPubKey, address))
             return parts;
+
+        if (DecomposeReward(wallet, wtx, address, true, parts)) {
+            return parts;
+        }
 
         if (isminetype mine = wallet->IsMine(wtx.tx->vout[1])) {
             // ION stake reward
@@ -68,6 +207,13 @@ std::vector<TransactionRecord> TransactionRecord::decomposeTransaction(const CWa
         parts.push_back(sub);
     } else if (nNet > 0 || wtx.IsCoinBase())
     {
+        if (wtx.tx->IsCoinBase()) {
+            TransactionRecord sub(hash, nTime);
+            CTxDestination address;
+            if (ExtractDestination(wtx.tx->vout[0].scriptPubKey, address) && DecomposeReward(wallet, wtx, address, false, parts)) {
+                return parts;
+            }
+        }
         //
         // Credit
         //
