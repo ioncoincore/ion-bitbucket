@@ -23,7 +23,7 @@ class DIP3Test(BitcoinTestFramework):
         self.setup_clean_chain = True
 
         self.extra_args = ["-budgetparams=10:10:10"]
-        self.extra_args += ["-sporkkey=cP4EKFyJsHT39LDqgdcB43Y3YXjNyjb5Fuas1GQSeAtjnZWmZEQK"]
+        self.extra_args += ["-sporkkey=93QPD8M8SrVb4yL3E679sCGztzy1NRWYH3fs2wJQr2LMKnppFCJ"]
         self.extra_args += ["-dip3params=135:150"]
 
 
