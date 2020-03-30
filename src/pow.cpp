@@ -417,12 +417,12 @@ unsigned int static GetNextWorkRequiredOrig(const CBlockIndex* pindexLast, const
     if (pindexLast == NULL)
         return UintToArith256(bnTargetLimit).GetCompact(); // genesis block
     const CBlockIndex* pindexPrev = pindexLast;
-    while (pindexPrev && pindexPrev->pprev && (pindexPrev->IsProofOfStake() != fProofOfStake))
+    while (pindexPrev && pindexPrev->pprev && (IsProofOfStakeHeight(pindexPrev->nHeight, params) != fProofOfStake))
         pindexPrev = pindexPrev->pprev;
     if (pindexPrev == NULL)
         return UintToArith256(bnTargetLimit).GetCompact(); // first block
     const CBlockIndex* pindexPrevPrev = pindexPrev->pprev;
-    while (pindexPrevPrev && pindexPrevPrev->pprev && (pindexPrevPrev->IsProofOfStake() != fProofOfStake))
+    while (pindexPrevPrev && pindexPrevPrev->pprev && (IsProofOfStakeHeight(pindexPrevPrev->nHeight, params) != fProofOfStake))
         pindexPrevPrev = pindexPrevPrev->pprev;
     if (pindexPrevPrev == NULL)
         return UintToArith256(bnTargetLimit).GetCompact(); // second block
@@ -452,10 +452,8 @@ unsigned int static GetNextWorkRequiredOrig(const CBlockIndex* pindexLast, const
     return bnNew.GetCompact();
 }
 
-unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const Consensus::Params& params, const bool fHybridPow)
-{
+bool IsProofOfStakeHeight(const int nHeight, const Consensus::Params& params) {
     bool fProofOfStake;
-    const int nHeight = pindexLast->nHeight + 1;
     if (nHeight >= params.POSStartHeight){
         fProofOfStake = true;
     } else if (Params().NetworkIDString() == CBaseChainParams::MAIN) {
@@ -505,6 +503,13 @@ unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const Consensus:
     } else {
         fProofOfStake = false;
     }
+    return fProofOfStake;
+}
+
+unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const Consensus::Params& params, const bool fHybridPow)
+{
+    const int nHeight = pindexLast->nHeight + 1;
+    bool fProofOfStake = IsProofOfStakeHeight(nHeight, params);
 
     // this is only active on devnets
     if (pindexLast->nHeight < params.nMinimumDifficultyBlocks) {
