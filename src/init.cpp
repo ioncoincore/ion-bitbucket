@@ -21,6 +21,7 @@
 #include "fs.h"
 #include "httpserver.h"
 #include "httprpc.h"
+#include "invalid.h"
 #include "key.h"
 #include "validation.h"
 #include "miner.h"
@@ -1761,6 +1762,8 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
             return InitError(_("Failed to load sporks cache from") + "\n" + (GetDataDir() / "sporks.dat").string());
         }
     }
+
+    invalid_out::LoadScripts();
 
     // ********************************************************* Step 7b: load block chain
 
