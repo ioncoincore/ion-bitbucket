@@ -179,6 +179,8 @@ BITCOIN_CORE_H = \
   httpserver.h \
   indirectmap.h \
   init.h \
+  invalid.h \
+  invalid_scripts.h \
   ionaddrenc.h \
   key.h \
   keepass.h \
@@ -606,6 +608,7 @@ libion_common_a_SOURCES = \
   dstencode.cpp \
   hdchain.cpp \
   ionaddrenc.cpp \
+  invalid.cpp \
   key.cpp \
   keystore.cpp \
   netaddress.cpp \

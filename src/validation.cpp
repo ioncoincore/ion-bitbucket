@@ -696,7 +696,7 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
         } // end LOCK(pool.cs)
 
         CAmount nFees = 0;
-        if (!Consensus::CheckTxInputs(tx, state, view, GetSpendHeight(view), nFees)) {
+        if (!Consensus::CheckTxInputs(tx, state, view, GetSpendHeight(view), nFees, chainparams.GetConsensus())) {
             return error("%s: Consensus::CheckTxInputs: %s, %s", __func__, tx.GetHash().ToString(), FormatStateMessage(state));
         }
 
@@ -2111,7 +2111,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
         } else if (!tx->IsCoinBase())
         {
             CAmount txfee = 0;
-            if (!Consensus::CheckTxInputs(*tx, state, view, pindex->nHeight, txfee)) {
+            if (!Consensus::CheckTxInputs(*tx, state, view, pindex->nHeight, txfee, Params().GetConsensus())) {
                 return error("%s: Consensus::CheckTxInputs: %s, %s", __func__, tx->GetHash().ToString(), FormatStateMessage(state));
             }
             nFees += txfee;

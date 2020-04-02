@@ -50,10 +50,10 @@ More information at [ionomy.com](https://www.ionomy.com) Visit our ANN thread at
 
 Coin specifications ||
 :------------ | :---:
-Algorithm | Quark |
+Algorithm | hybrid: X11 (PoW) / SHA-256 (PoS) |
 Retargeting Algorithm | DGW |
 Difficulty Retargeting | Every Block
-Max Coin Supply | 48,035,935.4 ION
+Max Coin Supply | Unlimited
 Premine | 16,400,000 ION*
 
 _*16,629,951 Ion Premine was burned in block [1](https://chainz.cryptoid.info/ion/block.dws?000000ed2f68cd6c7935831cc1d473da7c6decdb87e8b5dba0afff0b00002690.htm)_
@@ -68,28 +68,32 @@ _*16,629,951 Ion Premine was burned in block [1](https://chainz.cryptoid.info/io
 
 ### PoW Rewards Breakdown
 
-Block Height | Masternodes | Miner | Total |
- ----------: | ----------: | ----: | ----: |
-2-454 | 50% (11.5 ION) | 50% (11.5 ION) | 10,419 ION |
+Block Height | Masternodes | Miner | Total | Max coin supply |
+ ----------: | ----------: | ----: | ----: | ----: |
+2-454 | 50% (11.5 ION) | 50% (11.5 ION) | 10,419 ION | 16,410,419 ION |
 
 ### PoS/PoW Rewards Breakdown
 
-Block Height | Masternodes | Miner | Budget |
- ----------: | ----------: | ----: | -----: |
-455-1000 | 50% (11.5 ION) | 50% (11.5 ION)| 12,558 ION |
+Block Height | Masternodes | Miner/Minter | Budget | Max coin supply |
+ ----------: | ----------: | ----: | -----: | ----: |
+455-1000 | 50% (11.5 ION) | 50% (11.5 ION)| 12,558 ION | 16,422,977 ION |
 
 ### PoS Rewards Breakdown
 
-Block Height | Masternodes | Miner | Budget |
- ----------: | ----------: | ----: | -----: |
-1001-125147 | 50% (11.5 ION) | 50% (11.5 ION) | 2,855,381 ION |
-125148-550001 | 50% (8.5 ION) | 50% (8.5 ION) | 7,222,518 ION |
-550002-551441 | 50% (0.01 ION) | 50% (0.01 ION) | 28.8 ION |
-551442-570063 | 50% (8.5 ION) | 50% (8.5 ION) | 316,574 ION |
-570064-1013539 | 50% (5.75 ION) | 50% (5.75 ION) | 5,099,974 ION |
-1013540-1457015 | 50% (2.875 ION) | 50% (2.875 ION) | 2,549,987 ION |
-1457016-3677391 | 50% (0.925 ION) | 50% (0.925 ION) | 4,107,695.6 ION |
-3677392-50981391 | 50% (0.1 ION) | 50% (0.1 ION) | 9,460,800 ION |
+Block Height | Masternodes | Minter | Budget | Max coin supply |
+ ----------: | ----------: | ----: | -----: | ----: |
+1001-125146 | 50% (11.5 ION) | 50% (11.5 ION) | 2,855,358 ION | 19,278,335 ION |
+125147-550001 | 50% (8.5 ION) | 50% (8.5 ION) | 7,222,535 ION | 26,500,870 ION |
+550002-551441 | 50% (0.01 ION) | 50% (0.01 ION) | 28.8 ION | 26,500,898.8 ION |
+551442-570063 | 50% (8.5 ION) | 50% (8.5 ION) | 316,574 ION | 26,817,472.8 ION |
+570064-1013539 | 50% (5.75 ION) | 50% (5.75 ION) | 5,099,974 ION | 31,917,446.8 ION |
+1013540-1600000 | 50% (2.875 ION) | 50% (2.875 ION) | 3,372,150.75 ION | 35,289,597.55 ION |
+
+### Hybrid PoS/PoW Rewards Breakdown
+
+Block Height | Masternodes | Miner | Minter | Annual (ION) | Annual (ELEC) |
+ ----------: | ----------: | ----: | -----: | ----: | ----: |
+1600000 - | 70% ION (0.35 ION) | 100% ELEC (0.5 ELEC)| 30% ION (0.15 ION)| 262,800 ION | 262,800 ELEC |
 
 ## Ion Core FAQ/Help
 _get support/chat with us or send your request per [Email](mail:support@ionomy.com). You can also join our discord or encrypted chat on matrix._

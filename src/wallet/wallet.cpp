@@ -9,6 +9,7 @@
 #include "base58.h"
 #include "checkpoints.h"
 #include "chain.h"
+#include "chainparams.h"
 #include "wallet/coincontrol.h"
 #include "consensus/consensus.h"
 #include "consensus/validation.h"
@@ -6074,8 +6075,8 @@ int CMerkleTx::GetBlocksToMaturity() const
     int depth = GetDepthInMainChain();
     int minBlocksToMaturity = 0;
     if (IsAnyOutputGroupedAuthority((CTransaction(*this))))
-        minBlocksToMaturity = std::max(0, (Consensus::Params().nOpGroupNewRequiredConfirmations + 1) - depth);
-    return std::max(minBlocksToMaturity, (Consensus::Params().nCoinbaseMaturity + 1) - depth);
+        minBlocksToMaturity = std::max(0, (Params().GetConsensus().nOpGroupNewRequiredConfirmations + 1) - depth);
+    return std::max(minBlocksToMaturity, (Params().GetConsensus().nCoinbaseMaturity + 1) - depth);
 }
 
 

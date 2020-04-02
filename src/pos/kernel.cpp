@@ -11,6 +11,7 @@
 #include "wallet/db.h"
 #include "kernel.h"
 #include "policy/policy.h"
+#include "pow.h"
 #include "script/interpreter.h"
 #include "timedata.h"
 #include "util.h"
@@ -91,7 +92,7 @@ static bool SelectBlockFromCandidates(
         // the selection hash is divided by 2**32 so that proof-of-stake block
         // is always favored over proof-of-work block. this is to preserve
         // the energy efficiency property
-        if (pindex->IsProofOfStake())
+        if (IsProofOfStakeHeight(pindex->nHeight, Params().GetConsensus()))
             hashSelection = ArithToUint256(UintToArith256(hashSelection) >> 32);
 
         if (fSelected && UintToArith256(hashSelection) < UintToArith256(hashBest)) {
