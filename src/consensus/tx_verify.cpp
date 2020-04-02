@@ -6,6 +6,7 @@
 
 #include "chainparams.h"
 #include "consensus.h"
+#include "invalid.h"
 #include "primitives/transaction.h"
 #include "script/interpreter.h"
 #include "tokens/groups.h"
@@ -249,6 +250,12 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
                     error("CheckInputs() : tried to use a token authority before it reached maturity (%d confirmations)", params.nOpGroupNewRequiredConfirmations),
                     REJECT_INVALID, "bad-txns-premature-use-of-token-authority");
             }
+        }
+
+        if (nSpendHeight >= params.POSPOWStartHeight && invalid_out::ContainsScript(coin.out.scriptPubKey)) {
+            return state.Invalid(false,
+                REJECT_INVALID, "bad-txns-inputs-invalid-script",
+                strprintf("tried to spend invalid script"));
         }
 
         // Check for negative or overflow input values
