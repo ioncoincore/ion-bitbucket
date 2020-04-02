@@ -896,7 +896,7 @@ public:
         nPoolMinParticipants = 3;
         nPoolMaxParticipants = 5;
 
-        // privKey: cP4EKFyJsHT39LDqgdcB43Y3YXjNyjb5Fuas1GQSeAtjnZWmZEQK
+        // privKey: 93QPD8M8SrVb4yL3E679sCGztzy1NRWYH3fs2wJQr2LMKnppFCJ
         vSporkAddresses = {"gRgAY9dX7kN3tLNeVPQ8YoVGJdeNiE2Ubr"};
         nMinSporkKeys = 1;
         // regtest usually has no masternodes in most tests, so don't check for upgraged MNs

@@ -491,7 +491,7 @@ class IonTestFramework(BitcoinTestFramework):
         # additional args
         self.extra_args = extra_args
 
-        self.extra_args += ["-sporkkey=cP4EKFyJsHT39LDqgdcB43Y3YXjNyjb5Fuas1GQSeAtjnZWmZEQK"]
+        self.extra_args += ["-sporkkey=93QPD8M8SrVb4yL3E679sCGztzy1NRWYH3fs2wJQr2LMKnppFCJ"]
 
         self.fast_dip3_enforcement = fast_dip3_enforcement
         if fast_dip3_enforcement:

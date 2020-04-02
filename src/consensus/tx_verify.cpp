@@ -4,6 +4,7 @@
 
 #include "tx_verify.h"
 
+#include "chainparams.h"
 #include "consensus.h"
 #include "primitives/transaction.h"
 #include "script/interpreter.h"
@@ -215,7 +216,7 @@ bool CheckTransaction(const CTransaction& tx, CValidationState &state, const boo
     return true;
 }
 
-bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, const CCoinsViewCache& inputs, int nSpendHeight, CAmount& txfee)
+bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, const CCoinsViewCache& inputs, int nSpendHeight, CAmount& txfee, const Consensus::Params& params)
 {
     // are the actual inputs available?
     if (!inputs.HaveInputs(tx)) {
@@ -230,22 +231,22 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
         assert(!coin.IsSpent());
 
         // If prev is coinbase, coinstake or group authority confirguration, check that it's matured
-        if (coin.IsCoinStake() && nSpendHeight - coin.nHeight < (nSpendHeight <= 100 ? (int)10 : Params().nCoinbaseMaturity)) {
+        if (coin.IsCoinStake() && nSpendHeight - coin.nHeight < (nSpendHeight <= 100 ? (int)10 : params.nCoinbaseMaturity)) {
             return state.Invalid(false,
                 REJECT_INVALID, "bad-txns-premature-spend-of-coinstake",
                 strprintf("tried to spend coinstake at depth %d", nSpendHeight - coin.nHeight));
         }
 
-        if (coin.IsCoinBase() && nSpendHeight - coin.nHeight < (nSpendHeight <= 100 ? (int)10 : Params().nCoinbaseMaturity)) {
+        if (coin.IsCoinBase() && nSpendHeight - coin.nHeight < (nSpendHeight <= 100 ? (int)10 : params.nCoinbaseMaturity)) {
             return state.Invalid(false,
                 REJECT_INVALID, "bad-txns-premature-spend-of-coinbase",
                 strprintf("tried to spend coinbase at depth %d", nSpendHeight - coin.nHeight));
         }
 
         if (IsOutputGroupedAuthority(coin.out)) {
-            if (nSpendHeight - coin.nHeight < Params().nOpGroupNewRequiredConfirmations) {
+            if (nSpendHeight - coin.nHeight < params.nOpGroupNewRequiredConfirmations) {
                 return state.Invalid(
-                    error("CheckInputs() : tried to use a token authority before it reached maturity (%d confirmations)", Params().nOpGroupNewRequiredConfirmations),
+                    error("CheckInputs() : tried to use a token authority before it reached maturity (%d confirmations)", params.nOpGroupNewRequiredConfirmations),
                     REJECT_INVALID, "bad-txns-premature-use-of-token-authority");
             }
         }
