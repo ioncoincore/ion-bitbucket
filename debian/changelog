@@ -1,7 +1,6 @@
-ioncore (3.2.99-bionic1) bionic; urgency=medium
+ioncore (5.0.99-eoan1) eoan; urgency=medium
 
   * New upstream releases.
 
- -- dev (Ionomy) <dev@i2pmail.org>  Fri, 12 Apr 2019 22:38:00 +0100
-
+ -- ckti (Ionomy) <ckti@i2pmail.org>  Wed, 11 Mar 2020 11:14:14 +0000
 
