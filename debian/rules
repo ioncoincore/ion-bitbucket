@@ -1,5 +1,10 @@
 #!/usr/bin/make -f
 # -*- mode: makefile; coding: utf-8 -*-
+ifeq ($(DEB_BUILD_GNU_TYPE),i686-linux-gnu)
+	MAKE_HOST = "i386-linux-gnu"
+else
+	MAKE_HOST = $(DEB_BUILD_GNU_TYPE)
+endif
 
 #DEB_MAKE_CHECK_TARGET = test_ion
 #build/iond::
@@ -26,7 +31,10 @@ override_dh_auto_clean:
 # Yea, autogen should be run on the source archive, but I like doing git archive
 override_dh_auto_configure:
 	./autogen.sh
-	./configure
+	./configure --enable-reduce-exports --disable-bench --disable-gui-tests --disable-ccache --disable-tests --disable-debug --disable-shared --enable-cxx --with-pic --with-boost-libdir=/usr/lib/${MAKE_HOST}
 
-override_dh_auto_test:
-	make check
+override_dh_auto_build:
+	make -j6
+
+#override_dh_auto_test:
+#	make check
