@@ -270,14 +270,14 @@ public:
         consensus.BIP34Hash = uint256S("603066b255ac410e0a488dcad007a74917257ad6dbdade34938f6a17e522722b");
         consensus.BIP65Height = 619382; // 00000000000076d8fcea02ec0963de4abfd01e771fec0863f960c2c64fe6f357
         consensus.BIP66Height = 245817; // 00000000000b1fa2dfa312863570e13fae9ca7b5566cb27e55422620b469aefa
-        consensus.DIP0001Height = 1600000;
-        consensus.DIP0003Height = 1600000;
+        consensus.DIP0001Height = 9999999;
+        consensus.DIP0003Height = 9999999;
         consensus.DIP0003EnforcementHeight = std::numeric_limits<int>::max();
         consensus.DIP0003EnforcementHash = uint256();
-        consensus.IIP0006Height = 1600000;
-        consensus.CSVHeight = 1600000;
-        consensus.BIP147Height = 1600000;
-        consensus.DIP0008Height = 1600000;
+        consensus.IIP0006Height = 9999999;
+        consensus.CSVHeight = 9999999;
+        consensus.BIP147Height = 9999999;
+        consensus.DIP0008Height = 9999999;
         consensus.powLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 24
         consensus.hybridPowLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 24
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
@@ -325,7 +325,7 @@ public:
         consensus.strTokenManagementKey = "inqaYuaES1cmRBXHodp25UceeVPbWQG5wY";
         consensus.nOpGroupNewRequiredConfirmations = 1;
         // POSPOW
-        consensus.POSPOWStartHeight = 1600000;
+        consensus.POSPOWStartHeight = 9999999;
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 25;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
@@ -335,7 +335,7 @@ public:
         consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000ab5cc326ba5cc01516"); // 1571132
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x000000000000001e09926bcf5fa4513d23e870a34f74e38200db99eb3f5b7a70"); // 1067570
+        consensus.defaultAssumeValid = uint256S("0x1599d484cfd57e3dc0ef8a2e8bc428c6b12ed8f8f73d6f5afd6c405c100f9a15"); // 1571132
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
