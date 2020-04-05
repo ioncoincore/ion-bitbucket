@@ -3264,11 +3264,11 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, const int nConfMin
 
             bool fLockedByIS = pcoin->IsLockedByInstantSend();
 
-            // if (logCategories != BCLog::NONE) LogPrint(BCLog::SELECTCOINS, "value %s confirms %d\n", FormatMoney(pcoin->vout[output.i].nValue), output.nDepth);
+//            if (fDebug) LogPrint("selectcoins", "value %s confirms %d\n", FormatMoney(pcoin->vout[output.i].nValue), output.nDepth);
             if (output.nDepth < (pcoin->IsFromMe(ISMINE_ALL) ? nConfMine : nConfTheirs) && !fLockedByIS)
                 continue;
 
-            if (!mempool.TransactionWithinChainLimit(pcoin->GetHash(), nMaxAncestors))
+            if (!mempool.TransactionWithinChainLimit(pcoin->GetHash(), fLockedByIS ? nMaxChainLength : nMaxAncestors))
                 continue;
 
             int i = output.i;
