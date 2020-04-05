@@ -6818,7 +6818,7 @@ Please be patient...</source>
     </message>
     <message>
         <location line="+1"/>
-        <source>Copyright (C) 2018-%i The ION Core Developers</source>
+        <source>Copyright (C) 2018-%i The Ion Core Developers</source>
         <translation type="unfinished"/>
     </message>
     <message>
