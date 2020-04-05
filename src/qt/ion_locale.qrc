@@ -20,7 +20,6 @@
         <file alias="pl">locale/ion_pl.qm</file>
         <file alias="pt">locale/ion_pt.qm</file>
         <file alias="pt_BR">locale/ion_pt_BR.qm</file>
-        <file alias="ro_RO">locale/ion_ro_RO.qm</file>
         <file alias="ru">locale/ion_ru.qm</file>
         <file alias="sk">locale/ion_sk.qm</file>
         <file alias="sv">locale/ion_sv.qm</file>
