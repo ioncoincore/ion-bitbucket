@@ -3915,6 +3915,10 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>الحد الأدنى لعدد مميّزي مواقع السبط المحدد </translation>
     </message>
     <message>
+        <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
+        <translation>ابقى على اقصى حد &lt;n&gt; معاملات غير قابلة للاتصال في الذاكرة (القيمة الافتراضية: %u)</translation>
+    </message>
+    <message>
         <source>Keypool ran out, please call keypoolrefill first</source>
         <translation>ركض خارج ، يرجى الاتصال الأولى</translation>
     </message>

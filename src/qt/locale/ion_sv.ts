@@ -1,6 +1,10 @@
-<TS language="sv" version="2.0">
+<TS language="sv" version="2.1">
 <context>
     <name>AddressBookPage</name>
+    <message>
+        <source>Right-click to edit address or label</source>
+        <translation>Höger klicka för att redigera adress eller etikett</translation>
+    </message>
     <message>
         <source>Create a new address</source>
         <translation>Skapa en ny adress</translation>
@@ -89,7 +93,11 @@
         <source>Exporting Failed</source>
         <translation>Exporteringen misslyckades</translation>
     </message>
-    </context>
+    <message>
+        <source>There was an error trying to save the address list to %1. Please try again.</source>
+        <translation>Det uppstod ett fel när vi försökte spara adresslistan till %1. Var snäll och försök på nytt.</translation>
+    </message>
+</context>
 <context>
     <name>AddressTableModel</name>
     <message>
@@ -124,12 +132,8 @@
         <translation>Upprepa ny lösenfras</translation>
     </message>
     <message>
-        <source>Serves to disable the trivial sendmoney when OS account compromised. Provides no real security.</source>
-        <translation>Arbetar för att inaktivera de triviala sändpengarna när OS-kontot är komprometterat. Ger ingen reell säkerhet.</translation>
-    </message>
-    <message>
-        <source>For anonymization only</source>
-        <translation>Endast för anonymisering</translation>
+        <source>Enter the new passphrase to the wallet.&lt;br/&gt;Please use a passphrase of &lt;b&gt;ten or more random characters&lt;/b&gt;, or &lt;b&gt;eight or more words&lt;/b&gt;.</source>
+        <translation>Skriv in den nya lösenfrasen för plånboken.&lt;br/&gt;Var vänlig använd en lösenfras bestående av &lt;b&gt;tio eller mer slumpmässiga bokstäver&lt;/b&gt;, eller &lt;b&gt;åtta eller flera ord &lt;/b&gt;.</translation>
     </message>
     <message>
         <source>Encrypt wallet</source>
@@ -156,10 +160,6 @@
         <translation>Ändra lösenfras</translation>
     </message>
     <message>
-        <source>Enter the old and new passphrase to the wallet.</source>
-        <translation>Skriv in den gamla och den nya lösenfrasen för plånboken.</translation>
-    </message>
-    <message>
         <source>Confirm wallet encryption</source>
         <translation>Bekräfta plånbokskryptering</translation>
     </message>
@@ -174,10 +174,6 @@
     <message>
         <source>Wallet encrypted</source>
         <translation>Plånbok krypterad</translation>
-    </message>
-    <message>
-        <source>Ion will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your ions from being stolen by malware infecting your computer.</source>
-        <translation>Ion kommer nu att färdigställa krypteringsprocessen. Kom ihåg att krypteringen av din plånbok inte kan skydda dig helt och hållet från att dina Ion stjäls av skadeprogram som har infekterat din dator.</translation>
     </message>
     <message>
         <source>IMPORTANT: Any previous backups you have made of your wallet file should be replaced with the newly generated, encrypted wallet file. For security reasons, previous backups of the unencrypted wallet file will become useless as soon as you start using the new, encrypted wallet.</source>
@@ -214,6 +210,17 @@
     <message>
         <source>Warning: The Caps Lock key is on!</source>
         <translation>Varning: Caps Lock är aktiverat!</translation>
+    </message>
+</context>
+<context>
+    <name>BanTableModel</name>
+    <message>
+        <source>IP/Netmask</source>
+        <translation>IP/Nätmask</translation>
+    </message>
+    <message>
+        <source>Banned Until</source>
+        <translation>Portad fram tills</translation>
     </message>
 </context>
 <context>
@@ -264,16 +271,20 @@
         <translation>Bläddra i transaktionshistoriken</translation>
     </message>
     <message>
+        <source>&amp;Masternodes</source>
+        <translation>Masternoder</translation>
+    </message>
+    <message>
+        <source>Browse masternodes</source>
+        <translation>Utforska masternoder</translation>
+    </message>
+    <message>
         <source>E&amp;xit</source>
         <translation>A&amp;vsluta</translation>
     </message>
     <message>
         <source>Quit application</source>
         <translation>Avsluta applikationen</translation>
-    </message>
-    <message>
-        <source>&amp;About Ion Core</source>
-        <translation>&amp;Om Ion Core</translation>
     </message>
     <message>
         <source>About &amp;Qt</source>
@@ -286,10 +297,6 @@
     <message>
         <source>&amp;Options...</source>
         <translation>&amp;Alternativ...</translation>
-    </message>
-    <message>
-        <source>Modify configuration options for Ion</source>
-        <translation>Anpassa konfigurationsalternatv för Ion</translation>
     </message>
     <message>
         <source>&amp;Show / Hide</source>
@@ -376,12 +383,36 @@
         <translation>Visa nätverksövervakare</translation>
     </message>
     <message>
-        <source>Open &amp;Configuration File</source>
-        <translation>Öppna &amp;Konfigurationsfil</translation>
+        <source>&amp;Peers list</source>
+        <translation>enhets lista</translation>
+    </message>
+    <message>
+        <source>Show peers info</source>
+        <translation>Visa enhetslista</translation>
+    </message>
+    <message>
+        <source>Wallet &amp;Repair</source>
+        <translation>Plånbok &amp;Reparera</translation>
+    </message>
+    <message>
+        <source>Show wallet repair options</source>
+        <translation>Visa val av reparation av plånbok</translation>
+    </message>
+    <message>
+        <source>Open Wallet &amp;Configuration File</source>
+        <translation>Öppna Plånbok &amp;Konfigurations Fil</translation>
     </message>
     <message>
         <source>Open configuration file</source>
         <translation>Öppna konfigurationsfil</translation>
+    </message>
+    <message>
+        <source>Show Automatic &amp;Backups</source>
+        <translation>Visa Automatiskt &amp;Säkerthetskopior</translation>
+    </message>
+    <message>
+        <source>Show automatically created wallet backups</source>
+        <translation>Visa automatiskt skapade säkerhetskopior av plånbok</translation>
     </message>
     <message>
         <source>&amp;Sending addresses...</source>
@@ -412,10 +443,6 @@
         <translation>&amp;Kommandoradalternativ</translation>
     </message>
     <message>
-        <source>Show the Ion Core help message to get a list with possible Ion command-line options</source>
-        <translation>Visa Ion Core-hjälpmeddelandet för att få en lista med möjliga Ion-kommandoradalternativ</translation>
-    </message>
-    <message>
         <source>&amp;File</source>
         <translation>&amp;Fil</translation>
     </message>
@@ -440,24 +467,8 @@
         <translation>Synkroniserar med nätverk...</translation>
     </message>
     <message>
-        <source>Importing blocks from disk...</source>
-        <translation>Importerar block från disk...</translation>
-    </message>
-    <message>
         <source>Reindexing blocks on disk...</source>
         <translation>Återindexerar block på disk...</translation>
-    </message>
-    <message>
-        <source>No block source available...</source>
-        <translation>Ingen tillgänglig blockkälla...</translation>
-    </message>
-    <message>
-        <source>Up to date</source>
-        <translation>Aktuell</translation>
-    </message>
-    <message>
-        <source>%1 and %2</source>
-        <translation>%1 och %2</translation>
     </message>
     <message>
         <source>%1 behind</source>
@@ -474,6 +485,14 @@
     <message>
         <source>Transactions after this will not yet be visible.</source>
         <translation>Transaktioner efter denna kommer ännu inte vara synliga.</translation>
+    </message>
+    <message>
+        <source>Up to date</source>
+        <translation>Aktuell</translation>
+    </message>
+    <message>
+        <source>Synchronizing additional data: %p%</source>
+        <translation>synchroniserar ytterligare data %p%</translation>
     </message>
     <message>
         <source>Error</source>
@@ -496,35 +515,12 @@
         <translation>Inkommande transaktion</translation>
     </message>
     <message>
-        <source>Date: %1
-Amount: %2
-Type: %3
-Address: %4
-</source>
-        <translation>Datum: %1
-Mängd: %2
-Typ: %3
-Adress: %4
-</translation>
-    </message>
-    <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>Plånboken är &lt;b&gt;krypterad&lt;/b&gt; och för närvarande &lt;b&gt;olåst&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt; for anonimization only</source>
-        <translation>Plånboken är &lt;b&gt;krypterad&lt;/b&gt; och för närvarande &lt;b&gt;olåst&lt;/b&gt; endast för anonymisering</translation>
-    </message>
-    <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>Plånboken är &lt;b&gt;krypterad&lt;/b&gt; och för närvarande &lt;b&gt;låst&lt;/b&gt;</translation>
-    </message>
-</context>
-<context>
-    <name>ClientModel</name>
-    <message>
-        <source>Network Alert</source>
-        <translation>Nätverkslarm</translation>
     </message>
 </context>
 <context>
@@ -542,12 +538,16 @@ Adress: %4
         <translation>Mängd:</translation>
     </message>
     <message>
-        <source>Priority:</source>
-        <translation>Prioritet:</translation>
-    </message>
-    <message>
         <source>Fee:</source>
         <translation>Avgift:</translation>
+    </message>
+    <message>
+        <source>Coin Selection</source>
+        <translation>Mynt Val</translation>
+    </message>
+    <message>
+        <source>Dust:</source>
+        <translation>Dust:</translation>
     </message>
     <message>
         <source>After Fee:</source>
@@ -560,6 +560,10 @@ Adress: %4
     <message>
         <source>(un)select all</source>
         <translation>(av)markera alla</translation>
+    </message>
+    <message>
+        <source>toggle lock state</source>
+        <translation>toggla låst läge</translation>
     </message>
     <message>
         <source>Tree mode</source>
@@ -578,6 +582,14 @@ Adress: %4
         <translation>Mängd</translation>
     </message>
     <message>
+        <source>Received with label</source>
+        <translation>Mottag med etikett</translation>
+    </message>
+    <message>
+        <source>Received with address</source>
+        <translation>Mottag med adress</translation>
+    </message>
+    <message>
         <source>Date</source>
         <translation>Datum</translation>
     </message>
@@ -589,10 +601,6 @@ Adress: %4
     <message>
         <source>Confirmed</source>
         <translation>Bekräftad</translation>
-    </message>
-    <message>
-        <source>Priority</source>
-        <translation>Prioritet</translation>
     </message>
     <message>
         <source>Copy address</source>
@@ -635,60 +643,20 @@ Adress: %4
         <translation>Kopiera bytes</translation>
     </message>
     <message>
-        <source>Copy priority</source>
-        <translation>Kopiera prioritet</translation>
+        <source>Copy dust</source>
+        <translation>Kopiera dust</translation>
     </message>
     <message>
         <source>Copy change</source>
         <translation>Kopiera växel</translation>
     </message>
     <message>
-        <source>highest</source>
-        <translation>högst</translation>
-    </message>
-    <message>
-        <source>higher</source>
-        <translation>högre</translation>
-    </message>
-    <message>
-        <source>high</source>
-        <translation>hög</translation>
-    </message>
-    <message>
-        <source>medium-high</source>
-        <translation>medelhög</translation>
-    </message>
-    <message>
-        <source>n/a</source>
-        <translation>E/t</translation>
-    </message>
-    <message>
-        <source>medium</source>
-        <translation>medel</translation>
-    </message>
-    <message>
-        <source>low-medium</source>
-        <translation>medellåg</translation>
-    </message>
-    <message>
-        <source>low</source>
-        <translation>låg</translation>
-    </message>
-    <message>
-        <source>lower</source>
-        <translation>lägre</translation>
-    </message>
-    <message>
-        <source>lowest</source>
-        <translation>lägst</translation>
+        <source>Please switch to "List mode" to use this function.</source>
+        <translation>Var vänlig byt till "Lista läge" för att använda denna funktion.</translation>
     </message>
     <message>
         <source>(%1 locked)</source>
         <translation>(%1 låst)</translation>
-    </message>
-    <message>
-        <source>none</source>
-        <translation>inga</translation>
     </message>
     <message>
         <source>yes</source>
@@ -697,30 +665,6 @@ Adress: %4
     <message>
         <source>no</source>
         <translation>nej</translation>
-    </message>
-    <message>
-        <source>This label turns red, if the transaction size is greater than 1000 bytes.</source>
-        <translation>Denna etikett blir röd om transaktionsstorleken är större än 1000 bytes.</translation>
-    </message>
-    <message>
-        <source>This means a fee of at least %1 per kB is required.</source>
-        <translation>Detta innebär att en avgift om åtminstone %1 krävs per kB.</translation>
-    </message>
-    <message>
-        <source>Can vary +/- 1 byte per input.</source>
-        <translation>Kan variera +/- 1 byte per indata.</translation>
-    </message>
-    <message>
-        <source>Transactions with higher priority are more likely to get included into a block.</source>
-        <translation>Transaktioner med högre prioritet är mer benägna att inkluderas i ett block.</translation>
-    </message>
-    <message>
-        <source>This label turns red, if the priority is smaller than "medium".</source>
-        <translation>Denna etikett blir röd om prioriteten är mindre än "medel".</translation>
-    </message>
-    <message>
-        <source>This label turns red, if any recipient receives an amount smaller than %1.</source>
-        <translation>Denna etikett blir röd om en mottagare mottar en mängd mindre än %1.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -734,72 +678,9 @@ Adress: %4
         <source>(change)</source>
         <translation>(växel)</translation>
     </message>
-</context>
-<context>
-    <name>DarksendConfig</name>
     <message>
-        <source>Configure Darksend</source>
-        <translation>Konfigurera Darksend</translation>
-    </message>
-    <message>
-        <source>Basic Privacy</source>
-        <translation>Grundläggande integritet</translation>
-    </message>
-    <message>
-        <source>High Privacy</source>
-        <translation>Hög integritet</translation>
-    </message>
-    <message>
-        <source>Maximum Privacy</source>
-        <translation>Maximal integritet</translation>
-    </message>
-    <message>
-        <source>Please select a privacy level.</source>
-        <translation>Vänligen välj en integritetsnivå.</translation>
-    </message>
-    <message>
-        <source>Use 2 separate masternodes to mix funds up to 1000 ION</source>
-        <translation>Använd 2 enskilda masternoder för att mixa medel upp till 1000 ION</translation>
-    </message>
-    <message>
-        <source>Use 8 separate masternodes to mix funds up to 1000 ION</source>
-        <translation>Använd 8 enskilda masternoder för att mixa medel upp till 1000 ION.</translation>
-    </message>
-    <message>
-        <source>Use 16 separate masternodes</source>
-        <translation>Använd 16 enskilda masternoder</translation>
-    </message>
-    <message>
-        <source>This option is the quickest and will cost about ~0.025 ION to anonymize 1000 ION</source>
-        <translation>Detta alternativ är det snabbaste och kommer att kosta omkring ~0,025 ION för att anonymisera 1000 ION</translation>
-    </message>
-    <message>
-        <source>This option is moderately fast and will cost about 0.05 ION to anonymize 1000 ION</source>
-        <translation>Detta alternativ är relativt snabbt och kommer att kosta omkring 0,05 ION för att anonymisera 1000 ION</translation>
-    </message>
-    <message>
-        <source>0.1 ION per 1000 ION you anonymize.</source>
-        <translation>0,1 ION per 1000 ION du anonymiserar.</translation>
-    </message>
-    <message>
-        <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
-        <translation>Detta är det långsammaste och det säkraste alternativet. Användning av maximal anonymitet kommer att kosta</translation>
-    </message>
-    <message>
-        <source>Darksend Configuration</source>
-        <translation>Darksend-konfiguration</translation>
-    </message>
-    <message>
-        <source>Darksend was successfully set to basic (%1 and 2 rounds). You can change this at any time by opening Ion's configuration screen.</source>
-        <translation>Darksend ställdes framgångsrikt om till grundläggande (%1 och 2 omgångar). Du kan ändra detta när som helst genom att öppna Ion:s konfigurationsskärm.</translation>
-    </message>
-    <message>
-        <source>Darksend was successfully set to high (%1 and 8 rounds). You can change this at any time by opening Ion's configuration screen.</source>
-        <translation>Darksend ställdes framgångsrikt in på hög (%1 och 8 omgångar). Du kan ändra detta när som helst genom att öppna Ion:s konfigurationsskärm.</translation>
-    </message>
-    <message>
-        <source>Darksend was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Ion's configuration screen.</source>
-        <translation>Darksend ställdes framgångsrikt in på maximal (%1 och 16 omgångar). Du kan ändra detta när som helst genom att öppna Ion:s konfigurationsskärm</translation>
+        <source>n/a</source>
+        <translation>E/t</translation>
     </message>
 </context>
 <context>
@@ -883,13 +764,16 @@ Adress: %4
 <context>
     <name>HelpMessageDialog</name>
     <message>
-        <source>Ion Core</source>
-        <translation>Ion Core
-</translation>
-    </message>
-    <message>
         <source>version</source>
         <translation>version</translation>
+    </message>
+    <message>
+        <source>(%1-bit)</source>
+        <translation>(%1-bit)</translation>
+    </message>
+    <message>
+        <source>Command-line options</source>
+        <translation>Kommandoradsalternativ</translation>
     </message>
     <message>
         <source>Usage:</source>
@@ -900,12 +784,12 @@ Adress: %4
         <translation>kommandoradalternativ</translation>
     </message>
     <message>
-        <source>UI options</source>
-        <translation>UI-alternativ</translation>
+        <source>UI Options:</source>
+        <translation>Användargränssnitts-alternativ</translation>
     </message>
     <message>
-        <source>Choose data directory on startup (default: 0)</source>
-        <translation>Välj datakatalog vid uppstart (standardvärde: 0)</translation>
+        <source>Choose data directory on startup (default: %u)</source>
+        <translation>Välj data katalog vid start (standard: %u)</translation>
     </message>
     <message>
         <source>Set language, for example "de_DE" (default: system locale)</source>
@@ -920,27 +804,15 @@ Adress: %4
         <translation>Ställ in SSL-root-certifikat för betalningsbegäranden (standardvärde: -system-)</translation>
     </message>
     <message>
-        <source>Show splash screen on startup (default: 1)</source>
-        <translation>Visa startbilden vid uppstart (standardvärde: 1)</translation>
+        <source>Show splash screen on startup (default: %u)</source>
+        <translation>Visa startbild vid start (standard: %u)</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>Intro</name>
     <message>
         <source>Welcome</source>
         <translation>Välkommen</translation>
-    </message>
-    <message>
-        <source>Welcome to Ion Core.</source>
-        <translation>Välkommen till Ion Core.</translation>
-    </message>
-    <message>
-        <source>As this is the first time the program is launched, you can choose where Ion Core will store its data.</source>
-        <translation>Då detta är första gången programmet startas kan du välja var Ion Core ska lagra sin data.</translation>
-    </message>
-    <message>
-        <source>Ion Core will download and store a copy of the Ion block chain. At least %1GB of data will be stored in this directory, and it will grow over time. The wallet will also be stored in this directory.</source>
-        <translation>Ion Core kommer att laddas ned och lagra en kopia av Ion:s blockkedja. Minst %1 GB data kommer att lagras i denna katalog och den kommer att växa med tiden. Plånboken kommer också att lagras i denna katalog.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -951,9 +823,39 @@ Adress: %4
         <translation>Använd en anpassad datakatalog:</translation>
     </message>
     <message>
+        <source>Error: Specified data directory "%1" cannot be created.</source>
+        <translation>Fel: Den specifierade data katalogen "%1" kan inte skapas.</translation>
+    </message>
+    <message>
         <source>Error</source>
         <translation>Fel</translation>
     </message>
+    <message>
+        <source>%1 GB of free space available</source>
+        <translation>%1 GB ledigt diskutrymme tillgängligt</translation>
+    </message>
+    <message>
+        <source>(of %1 GB needed)</source>
+        <translation>(varav %1 GB är nödvändigt)</translation>
+    </message>
+</context>
+<context>
+    <name>MasternodeList</name>
+    <message>
+        <source>Form</source>
+        <translation>Formulär</translation>
+    </message>
+    <message>
+        <source>Status</source>
+        <translation>Status</translation>
+    </message>
+    <message>
+        <source>0</source>
+        <translation>0</translation>
+    </message>
+    </context>
+<context>
+    <name>ModalOverlay</name>
     </context>
 <context>
     <name>OpenURIDialog</name>
@@ -989,14 +891,6 @@ Adress: %4
         <translation>&amp;Huvud</translation>
     </message>
     <message>
-        <source>Automatically start Ion after logging in to the system.</source>
-        <translation>Starta Ion automatiskt efter systeminloggning.</translation>
-    </message>
-    <message>
-        <source>&amp;Start Ion on system login</source>
-        <translation>&amp;Starta Ion vid systeminloggning</translation>
-    </message>
-    <message>
         <source>Size of &amp;database cache</source>
         <translation>Storlek på &amp;databascache</translation>
     </message>
@@ -1013,20 +907,24 @@ Adress: %4
         <translation>(0 = auto, &lt;0 = lämna så många kärnor lediga)</translation>
     </message>
     <message>
-        <source>Darksend rounds to use</source>
-        <translation>Darksend-omgångar att använda</translation>
-    </message>
-    <message>
-        <source>This amount acts as a threshold to turn off Darksend once it's reached.</source>
-        <translation>Denna mängd fungerar som en tröskel att stänga av Darksend då det har uppnåtts.</translation>
-    </message>
-    <message>
-        <source>Amount of Ion to keep anonymized</source>
-        <translation>Mängd Ion att bibehålla anonymiserade</translation>
-    </message>
-    <message>
         <source>W&amp;allet</source>
         <translation>P&amp;lånbok</translation>
+    </message>
+    <message>
+        <source>Show additional tab listing all your masternodes in first sub-tab&lt;br/&gt;and all masternodes on the network in second sub-tab.</source>
+        <translation>Visa ytterligare en flik som visar alla dina huvudnoder i sin första sub-flik&lt;br/&gt;och alla huvudnoder på nätverket i en andra sub-flik.</translation>
+    </message>
+    <message>
+        <source>Show Masternodes Tab</source>
+        <translation>Visa Huvudnoder Flik</translation>
+    </message>
+    <message>
+        <source>If you disable the spending of unconfirmed change, the change from a transaction&lt;br/&gt;cannot be used until that transaction has at least one confirmation.&lt;br/&gt;This also affects how your balance is computed.</source>
+        <translation>Om du avaktiverar spenderandet av okonfirmerad växel så kommer växeln från en transaktion &lt;br/&gt;ej kunna användas föräns transaktionen har minst en bekräftelse. &lt;br/&gt; Detta påverkar även hur ditt saldo beräknas.</translation>
+    </message>
+    <message>
+        <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
+        <translation>&amp;Koppla upp genom SOCKS5 proxy (standard proxy):</translation>
     </message>
     <message>
         <source>Expert</source>
@@ -1049,12 +947,16 @@ Adress: %4
         <translation>&amp;Nätverk</translation>
     </message>
     <message>
-        <source>Automatically open the Ion client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Öppna Ion:s klientport automatiskt på routern. Detta fungerar bara om din router stöder UPnP och är aktiverad.</translation>
-    </message>
-    <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Kartlägg port med hjälp av &amp;UPnP</translation>
+    </message>
+    <message>
+        <source>Accept connections from outside</source>
+        <translation>Acceptera anslutningar utifrån</translation>
+    </message>
+    <message>
+        <source>Allow incoming connections</source>
+        <translation>Tillåt inkommande anslutningar</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
@@ -1085,10 +987,6 @@ Adress: %4
         <translation>&amp;Minimera till systemfältet istället för till aktivitetsfältet</translation>
     </message>
     <message>
-        <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Quit in the menu.</source>
-        <translation>Minimera applikationen istället för att stänga ner den när fönstret stängs. När detta alternativ är aktiverat kommer applikationen endast att stängas efter att man väljer Avsluta i menyn.</translation>
-    </message>
-    <message>
         <source>M&amp;inimize on close</source>
         <translation>M&amp;inimera vid stängning</translation>
     </message>
@@ -1101,14 +999,14 @@ Adress: %4
         <translation>Användargränssnitt&amp;språk: </translation>
     </message>
     <message>
-        <source>The user interface language can be set here. This setting will take effect after restarting Ion.</source>
-        <translation>Användargränssnittspråket kan ställas in här. Denna inställning träder i kraft efter att Ion startats om.</translation>
-    </message>
-    <message>
         <source>Language missing or translation incomplete? Help contributing translations here:
 https://www.transifex.com/ioncoincore/ioncore/</source>
         <translation>Fattas språk eller är det en ofullständig översättning? Hjälp till att bidra med översättningar här:
 https://www.transifex.com/ioncoincore/ioncore/</translation>
+    </message>
+    <message>
+        <source>User Interface Theme:</source>
+        <translation>Användargränssnitts Tema:</translation>
     </message>
     <message>
         <source>&amp;Unit to show amounts in:</source>
@@ -1119,8 +1017,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Välj standardindelningenheten som ska visas i gränssnittet och när mynt skickas.</translation>
     </message>
     <message>
-        <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
-        <translation>Tredjeparts-URL:er (t.ex. en blockutforskare) som finns i transaktionstabben som ett menyval i sammanhanget. %s i URL:en ersätts med transaktionshashen. Flera URL:er är avskilda med det vertikala strecket: |.</translation>
+        <source>Decimal digits</source>
+        <translation>Decimal platser</translation>
     </message>
     <message>
         <source>Third party transaction URLs</source>
@@ -1161,10 +1059,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Client restart required to activate changes.</source>
         <translation>Klientomstart krävs för att aktivera ändringar.</translation>
-    </message>
-    <message>
-        <source>Client will be shutdown, do you want to proceed?</source>
-        <translation>Klienten kommer att stängas ned, vill du fortsätta?</translation>
     </message>
     <message>
         <source>This change would require a client restart.</source>
@@ -1210,12 +1104,32 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Det utvunna saldot som ännu inte har mognat</translation>
     </message>
     <message>
+        <source>Unconfirmed transactions to watch-only addresses</source>
+        <translation>Obekräftade transaktioner till "watch only" adresser</translation>
+    </message>
+    <message>
         <source>Total:</source>
         <translation>Totalt:</translation>
     </message>
     <message>
         <source>Your current total balance</source>
         <translation>Ditt totalsaldo för närvarande</translation>
+    </message>
+    <message>
+        <source>Current total balance in watch-only addresses</source>
+        <translation>Nuvarande totalt saldo i "watch only" adresser</translation>
+    </message>
+    <message>
+        <source>Watch-only:</source>
+        <translation>"Watch only":</translation>
+    </message>
+    <message>
+        <source>Your current balance in watch-only addresses</source>
+        <translation>Ditt nuvarande saldo i "watch only" adresser</translation>
+    </message>
+    <message>
+        <source>Spendable:</source>
+        <translation>Spenderbar:</translation>
     </message>
     <message>
         <source>Status:</source>
@@ -1228,10 +1142,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Completion:</source>
         <translation>Förlopp:</translation>
-    </message>
-    <message>
-        <source>Darksend Balance:</source>
-        <translation>Darksend-medel:</translation>
     </message>
     <message>
         <source>Amount and Rounds:</source>
@@ -1250,8 +1160,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>E/t</translation>
     </message>
     <message>
-        <source>Darksend</source>
-        <translation>Darksend</translation>
+        <source>Recent transactions</source>
+        <translation>Senaste transaktioner</translation>
     </message>
     <message>
         <source>Start/Stop Mixing</source>
@@ -1262,72 +1172,22 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>(Senaste meddelande)</translation>
     </message>
     <message>
-        <source>Try to manually submit a Darksend request.</source>
-        <translation>Försök att lämna in en Darksend-begäran manuellt.</translation>
-    </message>
-    <message>
-        <source>Try Mix</source>
-        <translation>Försök att mixa</translation>
-    </message>
-    <message>
-        <source>Reset the current status of Darksend (can interrupt Darksend if it's in the process of Mixing, which can cost you money!)</source>
-        <translation>Återställ den nuvarande Darksend-statusen (kan störa Darksend om den håller på att mixa vilket kan kosta dig pengar!)</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>Återställ</translation>
-    </message>
-    <message>
         <source>out of sync</source>
         <translation>osynkroniserad</translation>
-    </message>
-    <message>
-        <source>Disabled</source>
-        <translation>Inaktiverad</translation>
-    </message>
-    <message>
-        <source>Start Darksend Mixing</source>
-        <translation>Påbörja Darksend-mixning</translation>
-    </message>
-    <message>
-        <source>Stop Darksend Mixing</source>
-        <translation>Stoppa Darksend-mixning</translation>
     </message>
     <message>
         <source>No inputs detected</source>
         <translation>Inga inmatningar hittades</translation>
     </message>
     <message>
+        <source>Disabled</source>
+        <translation>Inaktiverad</translation>
+    </message>
+    <message>
         <source>Enabled</source>
         <translation>Aktiverad</translation>
     </message>
-    <message>
-        <source>Last Darksend message:
-</source>
-        <translation>Senaste Darksend-meddelande:
-
-
-
-
-</translation>
-    </message>
-    <message>
-        <source>N/A</source>
-        <translation>E/t</translation>
-    </message>
-    <message>
-        <source>Darksend was successfully reset.</source>
-        <translation>Darksend återställdes framgångsrikt.</translation>
-    </message>
-    <message>
-        <source>Darksend requires at least %1 to use.</source>
-        <translation>Darksend kräver åtminstone %1 att använda.</translation>
-    </message>
-    <message>
-        <source>Wallet is locked and user declined to unlock. Disabling Darksend.</source>
-        <translation>Plånboken är låst och användaren avböjde upplåsning. Inaktiverar Darksend.</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>PaymentServer</name>
     <message>
@@ -1347,8 +1207,28 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Betalningsbegäran för att hämta-URL är ogiltig: %1</translation>
     </message>
     <message>
+        <source>Invalid payment address %1</source>
+        <translation>Ogiltig betalningsadress %1</translation>
+    </message>
+    <message>
         <source>Payment request file handling</source>
         <translation>Hantering av betalningsbegäranfil</translation>
+    </message>
+    <message>
+        <source>Payment request file cannot be read! This can be caused by an invalid payment request file.</source>
+        <translation>Betalningsförfrågan fil kan ej läsas! Detta kan orsakas av en ogiltig betalsningsförfrågan fil.</translation>
+    </message>
+    <message>
+        <source>Payment request rejected</source>
+        <translation>Betalningsförfrågan nekad</translation>
+    </message>
+    <message>
+        <source>Payment request network doesn't match client network.</source>
+        <translation>Betalningsförfrågan nätverk stämmer inte överens med klient nätverk.</translation>
+    </message>
+    <message>
+        <source>Payment request is not initialized.</source>
+        <translation>Betalningsförfrågan är inte initialiserad.</translation>
     </message>
     <message>
         <source>Unverified payment requests to custom payment scripts are unsupported.</source>
@@ -1363,8 +1243,16 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Återbetalning från %1</translation>
     </message>
     <message>
+        <source>Payment request %1 is too large (%2 bytes, allowed %3 bytes).</source>
+        <translation>Betalningsförfrågan %1 är för stor (%2 bytes, tillåten %3 bytes).</translation>
+    </message>
+    <message>
         <source>Error communicating with %1: %2</source>
         <translation>Kommunikationsfel med %1: %2</translation>
+    </message>
+    <message>
+        <source>Payment request cannot be parsed!</source>
+        <translation>Betalningsförfrågan kan ej analyseras!</translation>
     </message>
     <message>
         <source>Bad response from server %1</source>
@@ -1384,6 +1272,47 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     </context>
 <context>
     <name>QObject</name>
+    <message>
+        <source>Amount</source>
+        <translation>Mängd</translation>
+    </message>
+    <message>
+        <source>%1 d</source>
+        <translation>%1 d</translation>
+    </message>
+    <message>
+        <source>%1 h</source>
+        <translation>%1 t</translation>
+    </message>
+    <message>
+        <source>%1 m</source>
+        <translation>%1 m</translation>
+    </message>
+    <message>
+        <source>%1 s</source>
+        <translation>%1 s</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation>Inget</translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation>N/A</translation>
+    </message>
+    <message>
+        <source>%1 ms</source>
+        <translation>%1 ms</translation>
+    </message>
+    </context>
+<context>
+    <name>QObject::QObject</name>
+    </context>
+<context>
+    <name>QRDialog</name>
+    </context>
+<context>
+    <name>QRGeneralImageWidget</name>
     </context>
 <context>
     <name>QRImageWidget</name>
@@ -1423,20 +1352,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Namn</translation>
     </message>
     <message>
-        <source>Client name</source>
-        <translation>Klientnamn</translation>
-    </message>
-    <message>
         <source>N/A</source>
         <translation>E/t</translation>
     </message>
     <message>
         <source>Number of connections</source>
         <translation>Antal anslutningar</translation>
-    </message>
-    <message>
-        <source>Open the Ion debug log file from the current data directory. This can take a few seconds for large log files.</source>
-        <translation>Öppna Ions avsökningsloggfil från den nuvarande datakatalogen. Detta kan ta ett par sekunder för stora loggfiler.</translation>
     </message>
     <message>
         <source>&amp;Open</source>
@@ -1459,14 +1380,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Avsökningsloggfil</translation>
     </message>
     <message>
-        <source>Using OpenSSL version</source>
-        <translation>Använder OpenSSL-version</translation>
-    </message>
-    <message>
-        <source>Build date</source>
-        <translation>Kompileringsdatum</translation>
-    </message>
-    <message>
         <source>Current number of blocks</source>
         <translation>Nuvarande antal block</translation>
     </message>
@@ -1475,8 +1388,16 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Klientversion</translation>
     </message>
     <message>
+        <source>Using BerkeleyDB version</source>
+        <translation>Använder BerkeleyDB version</translation>
+    </message>
+    <message>
         <source>Block chain</source>
         <translation>Blockkedja</translation>
+    </message>
+    <message>
+        <source>Number of Masternodes</source>
+        <translation>Antal Huvudnoder "masternodes"</translation>
     </message>
     <message>
         <source>&amp;Console</source>
@@ -1491,12 +1412,144 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>&amp;Nätverkstrafik</translation>
     </message>
     <message>
-        <source>&amp;Clear</source>
-        <translation>&amp;Rensa</translation>
-    </message>
-    <message>
         <source>Totals</source>
         <translation>Sammanlagt</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <translation>Mottaget</translation>
+    </message>
+    <message>
+        <source>Sent</source>
+        <translation>Skickat</translation>
+    </message>
+    <message>
+        <source>&amp;Peers</source>
+        <translation>&amp;Peers</translation>
+    </message>
+    <message>
+        <source>Banned peers</source>
+        <translation>Förbjudna kamrater</translation>
+    </message>
+    <message>
+        <source>Select a peer to view detailed information.</source>
+        <translation>Välj en person för att visa detaljerad information.</translation>
+    </message>
+    <message>
+        <source>Whitelisted</source>
+        <translation>Vitlistad</translation>
+    </message>
+    <message>
+        <source>Direction</source>
+        <translation>Riktning</translation>
+    </message>
+    <message>
+        <source>Version</source>
+        <translation>Version</translation>
+    </message>
+    <message>
+        <source>Starting Block</source>
+        <translation>Startblock</translation>
+    </message>
+    <message>
+        <source>Synced Headers</source>
+        <translation>Synkroniserade Rubriker</translation>
+    </message>
+    <message>
+        <source>Synced Blocks</source>
+        <translation>Synkroniserade Block</translation>
+    </message>
+    <message>
+        <source>Services</source>
+        <translation>Tjänster</translation>
+    </message>
+    <message>
+        <source>Ban Score</source>
+        <translation>"Ban" Poäng</translation>
+    </message>
+    <message>
+        <source>Connection Time</source>
+        <translation>Anslutningstid</translation>
+    </message>
+    <message>
+        <source>Last Send</source>
+        <translation>Senast skickad</translation>
+    </message>
+    <message>
+        <source>Last Receive</source>
+        <translation>Senast mottagen</translation>
+    </message>
+    <message>
+        <source>Ping Time</source>
+        <translation>Ping Tid</translation>
+    </message>
+    <message>
+        <source>The duration of a currently outstanding ping.</source>
+        <translation>Varaktigheten på ett nuvarande utomstående ping.</translation>
+    </message>
+    <message>
+        <source>Ping Wait</source>
+        <translation>Ping Vänta</translation>
+    </message>
+    <message>
+        <source>Time Offset</source>
+        <translation>Tidsförskjutning</translation>
+    </message>
+    <message>
+        <source>&amp;Wallet Repair</source>
+        <translation>&amp;Plånboks Reparation</translation>
+    </message>
+    <message>
+        <source>Salvage wallet</source>
+        <translation>Spara plånboken</translation>
+    </message>
+    <message>
+        <source>Rescan blockchain files</source>
+        <translation>Skanna om blockchain filer</translation>
+    </message>
+    <message>
+        <source>Recover transactions 1</source>
+        <translation>Hämta åter transaktion 1</translation>
+    </message>
+    <message>
+        <source>Recover transactions 2</source>
+        <translation>Hämta åter transaktion 2</translation>
+    </message>
+    <message>
+        <source>Upgrade wallet format</source>
+        <translation>Uppgradera plånboksformat</translation>
+    </message>
+    <message>
+        <source>The buttons below will restart the wallet with command-line options to repair the wallet, fix issues with corrupt blockhain files or missing/obsolete transactions.</source>
+        <translation>Knapparna nedanför kommer starta om plånboken med ett kommandorads val att reparera plånboken, lösa problem med korrupta blockchain filer eller saknade/föråldrade transaktioner.</translation>
+    </message>
+    <message>
+        <source>Wallet repair options.</source>
+        <translation>Plånbok reparerings alternativ.</translation>
+    </message>
+    <message>
+        <source>Rebuild index</source>
+        <translation>Bygg om index</translation>
+    </message>
+    <message>
+        <source>1 &amp;hour</source>
+        <translation>1 &amp;timme</translation>
+    </message>
+    <message>
+        <source>1 &amp;day</source>
+        <translation>1 &amp;dag</translation>
+    </message>
+    <message>
+        <source>1 &amp;week</source>
+        <translation>1 &amp;vecka</translation>
+    </message>
+    <message>
+        <source>1 &amp;year</source>
+        <translation>1 &amp;år</translation>
+    </message>
+    <message>
+        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
+        <translation>Skriv &lt;b&gt;help&lt;/b&gt; för en översikt av alla tillgängliga kommandon.</translation>
     </message>
     <message>
         <source>In:</source>
@@ -1505,18 +1558,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Out:</source>
         <translation>Ut:</translation>
-    </message>
-    <message>
-        <source>Welcome to the Ion RPC console.</source>
-        <translation>Välkommen till Ions RPC-konsol.</translation>
-    </message>
-    <message>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>Använd upp- och ner-pilarna för att navigera i historiken och &lt;b&gt;Ctrl-L&lt;/b&gt; för att rensa skärmen.</translation>
-    </message>
-    <message>
-        <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
-        <translation>Skriv &lt;b&gt;help&lt;/b&gt; för en översikt av alla tillgängliga kommandon.</translation>
     </message>
     <message>
         <source>%1 B</source>
@@ -1534,9 +1575,45 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <source>%1 GB</source>
         <translation>%1 GB</translation>
     </message>
-    </context>
+    <message>
+        <source>(node id: %1)</source>
+        <translation>(nod id: %1)</translation>
+    </message>
+    <message>
+        <source>via %1</source>
+        <translation>via %1</translation>
+    </message>
+    <message>
+        <source>never</source>
+        <translation>aldrig</translation>
+    </message>
+    <message>
+        <source>Inbound</source>
+        <translation>Inkommande</translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <translation>Utgående</translation>
+    </message>
+    <message>
+        <source>Yes</source>
+        <translation>Ja</translation>
+    </message>
+    <message>
+        <source>No</source>
+        <translation>Nej</translation>
+    </message>
+    <message>
+        <source>Unknown</source>
+        <translation>Okänd</translation>
+    </message>
+</context>
 <context>
     <name>ReceiveCoinsDialog</name>
+    <message>
+        <source>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</source>
+        <translation>Återanvänd en av de föregående använda adresserna.&lt;br&gt;Återanvända adresser har säkerhets och sekretess problem.&lt;br&gt;Använd inte detta utöver att generera om en tidigare betalningsförfrågan.</translation>
+    </message>
     <message>
         <source>R&amp;euse an existing receiving address (not recommended)</source>
         <translation>Åt&amp;eranvänd en befintlig mottagaradress (rekommenderas inte)</translation>
@@ -1684,10 +1761,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Meddelande</translation>
     </message>
     <message>
-        <source>Amount</source>
-        <translation>Mängd</translation>
-    </message>
-    <message>
         <source>(no label)</source>
         <translation>(ingen etikett)</translation>
     </message>
@@ -1695,11 +1768,7 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <source>(no message)</source>
         <translation>(inget meddelande)</translation>
     </message>
-    <message>
-        <source>(no amount)</source>
-        <translation>(ingen mängd)</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>SendCoinsDialog</name>
     <message>
@@ -1735,20 +1804,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Mängd:</translation>
     </message>
     <message>
-        <source>Priority:</source>
-        <translation>Prioritet:</translation>
-    </message>
-    <message>
-        <source>medium</source>
-        <translation>medel</translation>
-    </message>
-    <message>
         <source>Fee:</source>
         <translation>Avgift:</translation>
     </message>
     <message>
-        <source>no</source>
-        <translation>nej</translation>
+        <source>Dust:</source>
+        <translation>Dust:</translation>
     </message>
     <message>
         <source>After Fee:</source>
@@ -1765,6 +1826,34 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Custom change address</source>
         <translation>Specialväxeladress</translation>
+    </message>
+    <message>
+        <source>Transaction Fee:</source>
+        <translation>Transaktionsavgift:</translation>
+    </message>
+    <message>
+        <source>Choose...</source>
+        <translation>Välj...</translation>
+    </message>
+    <message>
+        <source>collapse fee-settings</source>
+        <translation>göm avgifts-inställningar</translation>
+    </message>
+    <message>
+        <source>per kilobyte</source>
+        <translation>per kilobyte</translation>
+    </message>
+    <message>
+        <source>(read the tooltip)</source>
+        <translation>(läs verktygstipset)</translation>
+    </message>
+    <message>
+        <source>Custom:</source>
+        <translation>Skräddarsy:</translation>
+    </message>
+    <message>
+        <source>(Smart fee not initialized yet. This usually takes a few blocks...)</source>
+        <translation>(Smart fee inte initierad än. Detta tar vanligtvis några block...)</translation>
     </message>
     <message>
         <source>Confirm the send action</source>
@@ -1791,14 +1880,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Lägg till &amp;mottagare</translation>
     </message>
     <message>
-        <source>Darksend</source>
-        <translation>Darksend</translation>
-    </message>
-    <message>
-        <source>InstantX</source>
-        <translation>InstantX</translation>
-    </message>
-    <message>
         <source>Balance:</source>
         <translation>Saldo:</translation>
     </message>
@@ -1823,8 +1904,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Kopiera bytes</translation>
     </message>
     <message>
-        <source>Copy priority</source>
-        <translation>Kopiera prioritet</translation>
+        <source>Copy dust</source>
+        <translation>Kopiera dust</translation>
     </message>
     <message>
         <source>Copy change</source>
@@ -1833,22 +1914,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>using</source>
         <translation>använder</translation>
-    </message>
-    <message>
-        <source>anonymous funds</source>
-        <translation>anonyma medel</translation>
-    </message>
-    <message>
-        <source>(darksend requires this amount to be rounded up to the nearest %1).</source>
-        <translation>(darksend kräver att denna mängd avrundas uppåt till närmaste %1)</translation>
-    </message>
-    <message>
-        <source>any available funds (not recommended)</source>
-        <translation>vilka tillgängliga medel som helst (rekommenderas inte)</translation>
-    </message>
-    <message>
-        <source>and InstantX</source>
-        <translation>och InstantX</translation>
     </message>
     <message>
         <source>%1 to %2</source>
@@ -1863,12 +1928,16 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>läggs till som en transaktionsavgift</translation>
     </message>
     <message>
-        <source>Confirm send coins</source>
-        <translation>Bekräfta myntsändning</translation>
+        <source>Total Amount = &lt;b&gt;%1&lt;/b&gt;&lt;br /&gt;= %2</source>
+        <translation>Totala Mängd = &lt;b&gt;%1&lt;/b&gt;&lt;br /&gt;= %2</translation>
     </message>
     <message>
-        <source>The recipient address is not valid, please recheck.</source>
-        <translation>Mottagaradressen är inte giltig, vänligen kontrollera igen.</translation>
+        <source>&lt;b&gt;(%1 of %2 entries displayed)&lt;/b&gt;</source>
+        <translation>&lt;b&gt;(%1 of %2 entries displayed)&lt;/b&gt;</translation>
+    </message>
+    <message>
+        <source>Confirm send coins</source>
+        <translation>Bekräfta myntsändning</translation>
     </message>
     <message>
         <source>The amount to pay must be larger than 0.</source>
@@ -1883,20 +1952,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Totalsumman överstiger ditt saldo när transaktionsavgiften %1 inkluderas.</translation>
     </message>
     <message>
-        <source>Duplicate address found, can only send to each address once per send operation.</source>
-        <translation>Dubblettadress hittad, kan endast skicka till en adress åt gången vid varje sändningshandling.</translation>
-    </message>
-    <message>
         <source>Transaction creation failed!</source>
         <translation>Transaktionsskapandet misslyckades!</translation>
     </message>
-    <message>
-        <source>The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.</source>
-        <translation>Transaktionen avslogs! Detta kan hända om några av mynten i din plånbok redan har spenderats, t.ex. om du har använt en kopia av wallet.dat och mynt spenderades i kopian men inte har markerats som spenderade här.</translation>
-    </message>
-    <message>
-        <source>Error: The wallet was unlocked only to anonymize coins.</source>
-        <translation>Fel: Plånboken låstes upp enbart för att anonymisera mynt.</translation>
+    <message numerus="yes">
+        <source>Estimated to begin confirmation within %n block(s).</source>
+        <translation><numerusform>Uppskattat att starta konfirmation inom %n block.</numerusform><numerusform>Uppskattat att starta konfirmation inom %n block.</numerusform></translation>
     </message>
     <message>
         <source>Warning: Invalid Ion address</source>
@@ -1962,10 +2023,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Ett meddelande som bifogades till Ion: URI vilket kommer att lagras med transaktionen så att du vet. Observera: Meddelandet kommer inte att skickas över Ion-nätverket.</translation>
     </message>
     <message>
-        <source>This is an unverified payment request.</source>
-        <translation>Detta är en obekräftad betalningsbegäran.</translation>
-    </message>
-    <message>
         <source>Pay To:</source>
         <translation>Betala Till:</translation>
     </message>
@@ -1974,20 +2031,15 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>PM:</translation>
     </message>
     <message>
-        <source>This is a verified payment request.</source>
-        <translation>Detta är en bekräftad betalningsbegäran.</translation>
-    </message>
-    <message>
         <source>Enter a label for this address to add it to your address book</source>
         <translation>Ange en etikett för denna adress för att lägga till den i din adressbok</translation>
     </message>
 </context>
 <context>
+    <name>SendConfirmationDialog</name>
+    </context>
+<context>
     <name>ShutdownWindow</name>
-    <message>
-        <source>Ion Core is shutting down...</source>
-        <translation>Ion Core stängs ned...</translation>
-    </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
         <translation>Stäng inte av datorn förrän detta fönster försvinner.</translation>
@@ -2002,10 +2054,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>&amp;Sign Message</source>
         <translation>&amp;Signera Meddelande</translation>
-    </message>
-    <message>
-        <source>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Du kan signera meddelanden med dina adresser för att bevisa att du äger dem. Var försiktig med att inte skriva på någonting oklart då phishing-attacker kan försöka lura dig till att skriva över din identitet till dem. Signera endast väldetaljerade uppgifter du samtycker till.</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2054,10 +2102,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>&amp;Verify Message</source>
         <translation>&amp;Bekräfta Meddelande</translation>
-    </message>
-    <message>
-        <source>Enter the signing address, message (ensure you copy line breaks, spaces, tabs, etc. exactly) and signature below to verify the message. Be careful not to read more into the signature than what is in the signed message itself, to avoid being tricked by a man-in-the-middle attack.</source>
-        <translation>Skriv in signeringsadressen, meddelandet, (försäkra dig om att du kopierar linjeavbrott, mellanslag, flikar med mera) och signera nedtill för att verifiera meddelandet. Var försiktig med att inte läsa in mer i signaturen än vad som finns i det signerade meddelandet för att undvika att bli lurad av en mellanhandattack.</translation>
     </message>
     <message>
         <source>Verify the message to ensure it was signed with the specified Ion address</source>
@@ -2127,29 +2171,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Ion Core</source>
-        <translation>Ion Core
-</translation>
+        <source>[testnet]</source>
+        <translation>[testnet]</translation>
     </message>
     <message>
         <source>Version %1</source>
         <translation>Version %1</translation>
-    </message>
-    <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core-utvecklarna</translation>
-    </message>
-    <message>
-        <source>The Dash Core developers</source>
-        <translation>Dash Core-utvecklarna</translation>
-    </message>
-    <message>
-        <source>The Ion Core developers</source>
-        <translation>Ion Core-utvecklarna</translation>
-    </message>
-    <message>
-        <source>[testnet]</source>
-        <translation>[testnet]</translation>
     </message>
 </context>
 <context>
@@ -2161,6 +2188,10 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
 </context>
 <context>
     <name>TransactionDesc</name>
+    <message numerus="yes">
+        <source>Open for %n more block(s)</source>
+        <translation><numerusform>Öppna för %n fler block</numerusform><numerusform>Öppna för %n fler block</numerusform></translation>
+    </message>
     <message>
         <source>Open until %1</source>
         <translation>Öppen till %1</translation>
@@ -2168,18 +2199,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>conflicted</source>
         <translation>konflikterad</translation>
-    </message>
-    <message>
-        <source>%1/offline (verified via instantx)</source>
-        <translation>%1/offline (bekräftad genom instantx)</translation>
-    </message>
-    <message>
-        <source>%1/confirmed (verified via instantx)</source>
-        <translation>%1/bekräftad (bekräftad genom instantx)</translation>
-    </message>
-    <message>
-        <source>%1 confirmations (verified via instantx)</source>
-        <translation>%1/bekräftelser (bekräftad genom instantx)</translation>
     </message>
     <message>
         <source>%1/offline</source>
@@ -2194,32 +2213,16 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>%1 bekräftelser</translation>
     </message>
     <message>
-        <source>%1/offline (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1/offline (InstantX-bekräftelse under behandling - %2 av %3 signaturer)</translation>
-    </message>
-    <message>
-        <source>%1/confirmed (InstantX verification in progress - %2 of %3 signatures )</source>
-        <translation>%1/bekräftad (InstantX-bekräftelse under behandling - %2 av %3 signaturer)</translation>
-    </message>
-    <message>
-        <source>%1 confirmations (InstantX verification in progress - %2 of %3 signatures)</source>
-        <translation>%1 bekräftelser (InstantX-bekräftelse under behandling - %2 av %3 signaturer)</translation>
-    </message>
-    <message>
-        <source>%1/offline (InstantX verification failed)</source>
-        <translation>%1/offline (InstantX-bekräftelse misslyckades)</translation>
-    </message>
-    <message>
-        <source>%1/confirmed (InstantX verification failed)</source>
-        <translation>%1/bekräftad (InstantX-bekräftelse misslyckades)</translation>
-    </message>
-    <message>
         <source>Status</source>
         <translation>Status</translation>
     </message>
     <message>
         <source>, has not been successfully broadcast yet</source>
         <translation>,har ännu inte framgångsrikt utsänts.</translation>
+    </message>
+    <message numerus="yes">
+        <source>, broadcast through %n node(s)</source>
+        <translation><numerusform>, sänder via %n nod</numerusform><numerusform>, sänder via %n noder</numerusform></translation>
     </message>
     <message>
         <source>Date</source>
@@ -2250,12 +2253,20 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>egen adress</translation>
     </message>
     <message>
+        <source>watch-only</source>
+        <translation>se-endast</translation>
+    </message>
+    <message>
         <source>label</source>
         <translation>etikett</translation>
     </message>
     <message>
         <source>Credit</source>
         <translation>Kredit</translation>
+    </message>
+    <message numerus="yes">
+        <source>matures in %n more block(s)</source>
+        <translation><numerusform>mognar om %n fler block</numerusform><numerusform>mognar om %n fler block</numerusform></translation>
     </message>
     <message>
         <source>not accepted</source>
@@ -2264,6 +2275,14 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Debit</source>
         <translation>Debet</translation>
+    </message>
+    <message>
+        <source>Total debit</source>
+        <translation>Total debit</translation>
+    </message>
+    <message>
+        <source>Total credit</source>
+        <translation>Total kredit</translation>
     </message>
     <message>
         <source>Transaction fee</source>
@@ -2284,6 +2303,10 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Transaction ID</source>
         <translation>Transaktions-ID</translation>
+    </message>
+    <message>
+        <source>Output index</source>
+        <translation>Utgångsindex</translation>
     </message>
     <message>
         <source>Merchant</source>
@@ -2321,14 +2344,10 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
 <context>
     <name>TransactionDescDialog</name>
     <message>
-        <source>Transaction details</source>
-        <translation>Transaktionsdetaljer</translation>
-    </message>
-    <message>
         <source>This pane shows a detailed description of the transaction</source>
         <translation>Den här panelen visar en detaljerad transaktionsbeskrivning</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>TransactionTableModel</name>
     <message>
@@ -2339,9 +2358,9 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <source>Type</source>
         <translation>Typ</translation>
     </message>
-    <message>
-        <source>Address</source>
-        <translation>Adress</translation>
+    <message numerus="yes">
+        <source>Open for %n more block(s)</source>
+        <translation><numerusform>Öppna för %n fler block</numerusform><numerusform>Öppna för %n fler block</numerusform></translation>
     </message>
     <message>
         <source>Open until %1</source>
@@ -2388,10 +2407,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Mottagen från</translation>
     </message>
     <message>
-        <source>Received via Darksend</source>
-        <translation>Mottagen genom Darksend</translation>
-    </message>
-    <message>
         <source>Sent to</source>
         <translation>Skickad till</translation>
     </message>
@@ -2404,24 +2419,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Utvunnen</translation>
     </message>
     <message>
-        <source>Darksend Denominate</source>
-        <translation>Darksend-denomination</translation>
-    </message>
-    <message>
-        <source>Darksend Collateral Payment</source>
-        <translation>Darskends-säkerhetsbetalning</translation>
-    </message>
-    <message>
-        <source>Darksend Make Collateral Inputs</source>
-        <translation>Darksend-skapa säkerhetsinmatningar</translation>
-    </message>
-    <message>
-        <source>Darksend Create Denominations</source>
-        <translation>Darksend-skapa denominationer</translation>
-    </message>
-    <message>
-        <source>Darksent</source>
-        <translation>Darksent-(skickat)</translation>
+        <source>watch-only</source>
+        <translation>se-endast</translation>
     </message>
     <message>
         <source>(n/a)</source>
@@ -2440,8 +2439,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Transaktionstyp.</translation>
     </message>
     <message>
-        <source>Destination address of transaction.</source>
-        <translation>Transaktionens destinationsadress.</translation>
+        <source>Whether or not a watch-only address is involved in this transaction.</source>
+        <translation>Om en "watch only" adress är involverad i denna transaktion.</translation>
     </message>
     <message>
         <source>Amount removed from or added to balance.</source>
@@ -2479,32 +2478,16 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Period...</translation>
     </message>
     <message>
+        <source>Most Common</source>
+        <translation>Vanligast</translation>
+    </message>
+    <message>
         <source>Received with</source>
         <translation>Mottagen med</translation>
     </message>
     <message>
         <source>Sent to</source>
         <translation>Skickad till</translation>
-    </message>
-    <message>
-        <source>Darksent</source>
-        <translation>Darksent-(skickat)</translation>
-    </message>
-    <message>
-        <source>Darksend Make Collateral Inputs</source>
-        <translation>Darksend-skapa säkerhetsinmatningar</translation>
-    </message>
-    <message>
-        <source>Darksend Create Denominations</source>
-        <translation>Darksend-skapa denominationer</translation>
-    </message>
-    <message>
-        <source>Darksend Denominate</source>
-        <translation>Darksend-denomination</translation>
-    </message>
-    <message>
-        <source>Darksend Collateral Payment</source>
-        <translation>Darskends-säkerhetsbetalning</translation>
     </message>
     <message>
         <source>To yourself</source>
@@ -2563,6 +2546,10 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Bekräftad</translation>
     </message>
     <message>
+        <source>Watch-only</source>
+        <translation>Se-bara</translation>
+    </message>
+    <message>
         <source>Date</source>
         <translation>Datum</translation>
     </message>
@@ -2609,7 +2596,11 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
 </context>
 <context>
     <name>UnitDisplayStatusBarControl</name>
-    </context>
+    <message>
+        <source>Unit to show amounts in. Click to select another unit.</source>
+        <translation>Enhet att visa mängd i. Klicka för att välja en annan enhet.</translation>
+    </message>
+</context>
 <context>
     <name>WalletFrame</name>
     <message>
@@ -2623,7 +2614,7 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <source>Send Coins</source>
         <translation>Skicka mynt</translation>
     </message>
-    </context>
+</context>
 <context>
     <name>WalletView</name>
     <message>
@@ -2633,6 +2624,10 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Export the data in the current tab to a file</source>
         <translation>Exportera datan i den nuvarande fliken till en fil</translation>
+    </message>
+    <message>
+        <source>Selected amount:</source>
+        <translation>Vald mängd:</translation>
     </message>
     <message>
         <source>Backup Wallet</source>
@@ -2666,18 +2661,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Sammanbind till fastställd adress och avlyssna alltid den. Använd [host]:port-notation för IPv6</translation>
     </message>
     <message>
-        <source>Cannot obtain a lock on data directory %s. Ion Core is probably already running.</source>
-        <translation>Kan inte erhålla ett lås på datakatalog %s. Ion Core körs förmodligen redan.</translation>
-    </message>
-    <message>
-        <source>Darksend uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.</source>
-        <translation>Darksend använder exakta denominationsmängder för att skicka medel, du kanske måste anonymisera fler mynt.</translation>
-    </message>
-    <message>
-        <source>Enter regression test mode, which uses a special chain in which blocks can be solved instantly.</source>
-        <translation>Gå in i regressionstestläget, vilken använder en särskild kedja i vilken block kan lösas direkt.</translation>
-    </message>
-    <message>
         <source>Error: Listening for incoming connections failed (listen returned error %s)</source>
         <translation>Fel: Lyssnande på inkommande anslutningar misslyckades (avlyssna återkommande fel %s)</translation>
     </message>
@@ -2694,24 +2677,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Exekvera kommandot när det bästa blocket ändras (%s i cmd ersätts av blockhash)</translation>
     </message>
     <message>
-        <source>In this mode -genproclimit controls how many blocks are generated immediately.</source>
-        <translation>I detta läge kontrollerar -genproclimit hur många block som genereras omedelbart.</translation>
-    </message>
-    <message>
-        <source>InstantX requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.</source>
-        <translation>InstantX kräver indatan med åtminstone 6 bekräftelser. Du kanske måste vänta ett par minuter och försöka igen.</translation>
-    </message>
-    <message>
         <source>Name to construct url for KeePass entry that stores the wallet passphrase</source>
         <translation>Namnge för att skapa en url för en KeePass-inmatning som lagrar plånbokslösenfrasen.</translation>
-    </message>
-    <message>
-        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect)</source>
-        <translation>Förfrågan till peer-adresser via DNS-lookup, om det är brist på adresser (standardvärde:1 unless -connect)</translation>
-    </message>
-    <message>
-        <source>Set maximum size of high-priority/low-fee transactions in bytes (default: %d)</source>
-        <translation>Ställ in en maximal storlek för högprioriterade/lågavgiftstransaktioner i byte (standard: %d)</translation>
     </message>
     <message>
         <source>Set the number of script verification threads (%u to %d, 0 = auto, &lt;0 = leave that many cores free, default: %d)</source>
@@ -2722,22 +2689,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Detta är en förhandsutgiven testkompilering - använd på egen risk - använd inte för utvinning eller handlarapplikationer.</translation>
     </message>
     <message>
-        <source>Unable to bind to %s on this computer. Ion Core is probably already running.</source>
-        <translation>Det går inte att binda till %s till denna dator. Ion Core körs förmodligen redan.</translation>
-    </message>
-    <message>
-        <source>Unable to locate enough Darksend denominated funds for this transaction.</source>
-        <translation>Kunde inte hitta tillräckliga Darksend-denominationsmedel för denna transaktion.</translation>
-    </message>
-    <message>
-        <source>Unable to locate enough Darksend non-denominated funds for this transaction that are not equal 1000 ION.</source>
-        <translation>Kunde inte hitta tillräckliga Darksend-icke-denominationsmedel för denna transaktion som inte är likvärdiga 1000 ION.</translation>
-    </message>
-    <message>
-        <source>Warning: -paytxfee is set very high! This is the transaction fee you will pay if you send a transaction.</source>
-        <translation>Varning: -paytxfee är väldigt högt satt! Detta är transaktionsavgiften du kommer att få betala om du skickar en transaktion.</translation>
-    </message>
-    <message>
         <source>Warning: The network does not appear to fully agree! Some miners appear to be experiencing issues.</source>
         <translation>Varning: Nätverket verkar inte hålla med helt och hållet! Några utvinnare verkar uppleva problem.</translation>
     </message>
@@ -2746,32 +2697,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Varning: Vi verkar inte överensstämma med våra peers! Du kanske måste uppgradera eller så måste andra noder uppgradera.</translation>
     </message>
     <message>
-        <source>Warning: error reading wallet.dat! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
-        <translation>Varning: Fel vid läsning av wallet.dat! Alla nycklar lästes korrekt men transaktionsdatan eller adressbokposterna kanske saknas eller är felaktiga.</translation>
-    </message>
-    <message>
-        <source>Warning: wallet.dat corrupt, data salvaged! Original wallet.dat saved as wallet.{timestamp}.bak in %s; if your balance or transactions are incorrect you should restore from a backup.</source>
-        <translation>Varning: wallet.dat är korrumperad, data räddad! Den ursprungliga wallet.dat är sparad som wallet.{timestamp}.bak i %s; om ditt saldo eller transaktioner är felaktiga kanske du måste återställa från en säkerhetskopia.</translation>
-    </message>
-    <message>
-        <source>You must specify a masternodeprivkey in the configuration. Please see documentation for help.</source>
-        <translation>Du måste specificera en masternodepriv-nyckel i konfigurationen. Vänligen se dokumentationen för hjälp.</translation>
-    </message>
-    <message>
-        <source>(default: 1)</source>
-        <translation>(standardvärde: 1)</translation>
-    </message>
-    <message>
         <source>Accept command line and JSON-RPC commands</source>
         <translation>Acceptera kommandorad och JSON-RPC-kommandon</translation>
-    </message>
-    <message>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Acceptera anslutningar utifrån (standardvärde: 1 om ingen -proxy eller -connect)</translation>
-    </message>
-    <message>
-        <source>Add a node to connect to and attempt to keep the connection open</source>
-        <translation>Lägg till en nod att ansluta till och försök att hålla anslutningen öppen</translation>
     </message>
     <message>
         <source>Allow DNS lookups for -addnode, -seednode and -connect</source>
@@ -2782,28 +2709,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Har redan den indatan.</translation>
     </message>
     <message>
-        <source>Attempt to recover private keys from a corrupt wallet.dat</source>
-        <translation>Försök att återskapa privatnycklar från en korrumperad wallet.dat</translation>
-    </message>
-    <message>
         <source>Block creation options:</source>
         <translation>Blockskapandealternativ:</translation>
     </message>
     <message>
-        <source>Can't denominate: no compatible inputs left.</source>
-        <translation>Kan inte denominera: Inga kompatibla indatan kvar.</translation>
-    </message>
-    <message>
         <source>Cannot downgrade wallet</source>
         <translation>Kan inte nedgradera plånboken</translation>
-    </message>
-    <message>
-        <source>Cannot resolve -bind address: '%s'</source>
-        <translation>Kan inte lösa -bind address: '%s'</translation>
-    </message>
-    <message>
-        <source>Cannot resolve -externalip address: '%s'</source>
-        <translation>Kan inte lösa -externalip address: '%s'</translation>
     </message>
     <message>
         <source>Cannot write default address</source>
@@ -2812,10 +2723,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Collateral not valid.</source>
         <translation>Säkerhetsåtgärd ej giltig.</translation>
-    </message>
-    <message>
-        <source>Connect only to the specified node(s)</source>
-        <translation>Anslut endast till specifik(a) nod(er)</translation>
     </message>
     <message>
         <source>Connect to a node to retrieve peer addresses, and disconnect</source>
@@ -2830,16 +2737,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Korrumperad blockdatabas upptäcktes</translation>
     </message>
     <message>
-        <source>Darksend options:</source>
-        <translation>Darksend-alternativ:</translation>
-    </message>
-    <message>
         <source>Debugging/Testing options:</source>
         <translation>Avsöknings-/testalternativ:</translation>
-    </message>
-    <message>
-        <source>Discover own IP address (default: 1 when listening and no -externalip)</source>
-        <translation>Upptäck din egen IP-adress (standardvärde: 1 vid avlyssning och no -externalip)</translation>
     </message>
     <message>
         <source>Do not load the wallet and disable wallet RPC calls</source>
@@ -2870,24 +2769,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Fel vid laddning av blockdatabas</translation>
     </message>
     <message>
-        <source>Error loading wallet.dat</source>
-        <translation>Fel vid laddning av wallet.dat</translation>
-    </message>
-    <message>
-        <source>Error loading wallet.dat: Wallet corrupted</source>
-        <translation>Fel vid laddning av wallet.dat: Plånboken är korrumperad</translation>
-    </message>
-    <message>
         <source>Error opening block database</source>
         <translation>Fel vid öppnande av blockdatabas</translation>
     </message>
     <message>
         <source>Error reading from database, shutting down.</source>
         <translation>Fel vid läsning från databas, stänger ned.</translation>
-    </message>
-    <message>
-        <source>Error recovering public key.</source>
-        <translation>Fel vid återhämtning av publik nyckel.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -2898,36 +2785,92 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Fel: Diskutrymmet är lågt!</translation>
     </message>
     <message>
-        <source>Error: Wallet locked, unable to create transaction!</source>
-        <translation>Fel: Plånbok låst, kan inte skapa en transaktion!</translation>
-    </message>
-    <message>
-        <source>Error: You already have pending entries in the Darksend pool</source>
-        <translation>Fel: Du har redan väntande inmatningar i Darksend-poolen</translation>
-    </message>
-    <message>
         <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
         <translation>Kunde inte avlyssna någon port. Använd -listen=0 om du vill detta.</translation>
     </message>
     <message>
-        <source>Failed to read block</source>
-        <translation>Kunde inte läsa block</translation>
+        <source>(1 = keep tx meta data e.g. account owner and payment request information, 2 = drop tx meta data)</source>
+        <translation>(1 = behåll tx meta data t.ex. kontoägare och information om betalningsförfråga, 2 = släpp tx meta data)</translation>
     </message>
     <message>
-        <source>If &lt;category&gt; is not supplied, output all debugging information.</source>
-        <translation>Om &lt;category&gt; inte finns, lägg ut all avsökningsinformation.</translation>
+        <source>Allow JSON-RPC connections from specified source. Valid for &lt;ip&gt; are a single IP (e.g. 1.2.3.4), a network/netmask (e.g. 1.2.3.4/255.255.255.0) or a network/CIDR (e.g. 1.2.3.4/24). This option can be specified multiple times</source>
+        <translation>Tillåt JSON-RPC anslutningar från specifierad källa. Giltig till &lt;ip&gt; är en singel IP (t.ex. 1.2.3.4), ett nätverk/nätmask (t.ex. 1.2.3.4/255.255.255.0) eller ett nätverk/CIDR (t.ex. 1.2.3.4/24). Detta alternativ kan specifieras flera gånger</translation>
+    </message>
+    <message>
+        <source>Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6</source>
+        <translation>Bind till angiven adress och vitlista peers att ansluta till den. Använd [värd]:port notation för IPv6</translation>
+    </message>
+    <message>
+        <source>Create new files with system default permissions, instead of umask 077 (only effective with disabled wallet functionality)</source>
+        <translation>Skapa nya filer med systemets standard tillstånd, istället för umask 077 (endast effektgivande med inaktiverade plånboksfunktioner)</translation>
+    </message>
+    <message>
+        <source>Delete all wallet transactions and only recover those parts of the blockchain through -rescan on startup</source>
+        <translation>Radera alla plånbokstransaktioner och återhämta endast de delar av blockchain genom -rescan vid uppstart</translation>
     </message>
     <message>
         <source>Found unconfirmed denominated outputs, will wait till they confirm to continue.</source>
         <translation>Hittade obekräftade denominationsutdatan, kommer att vänta tills de bekräftar att fortsätta.</translation>
     </message>
     <message>
+        <source>If paytxfee is not set, include enough fee so transactions begin confirmation on average within n blocks (default: %u)</source>
+        <translation>Om paytxfee inte är satt, inkludera tillräcklig avgift för att transaktionen ska börja bekräfta i genomsnitt inom n block (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Invalid amount for -maxtxfee=&lt;amount&gt;: '%s' (must be at least the minrelay fee of %s to prevent stuck transactions)</source>
+        <translation>Ogiltig mängd -maxtxfee=&lt;amount&gt;: '%s' (måste vara minst minrelay avgift av %s för att förhindra att transaktioner fastnar)</translation>
+    </message>
+    <message>
+        <source>Maintain a full transaction index, used by the getrawtransaction rpc call (default: %u)</source>
+        <translation>Behåll en full transaktionsindex, använd av getrawtransaction rpc call (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Maximum size of data in data carrier transactions we relay and mine (default: %u)</source>
+        <translation>Maximal datastorlek i databärar transaktioner ändrar vi väg och mine (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Number of seconds to keep misbehaving peers from reconnecting (default: %u)</source>
+        <translation>Antal sekunder att hindra peers som beter sig illa från att återansluta (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Output debugging information (default: %u, supplying &lt;category&gt; is optional)</source>
+        <translation>Utmata felsökningsinformation (standard: %u, tillgodose &lt;category&gt; är frivilligt)</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
+        <translation>Använd separera SOCKS5 proxy för att nå peers via Tor hidden services (standard: %s)</translation>
+    </message>
+    <message>
+        <source>Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway</source>
+        <translation>Vitlistade peers kan ej DoS bannas och deras transaktioner är alltid vidarebofordrade, även om dom redan är i mempool, användbart t.ex. för en gateway</translation>
+    </message>
+    <message>
+        <source>(default: %s)</source>
+        <translation>(standard: %s)</translation>
+    </message>
+    <message>
+        <source>Accept public REST requests (default: %u)</source>
+        <translation>Acceptera offentlig REST förfrågningar (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Always query for peer addresses via DNS lookup (default: %u)</source>
+        <translation>Fråga alltid efter peer adresser via DNS lookup (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Connect through SOCKS5 proxy</source>
+        <translation>Anslut genom SOCKS5 proxy</translation>
+    </message>
+    <message>
+        <source>How many blocks to check at startup (default: %u, 0 = all)</source>
+        <translation>Hur  många block som kollas vid start (standard: %u, 0 = alla)</translation>
+    </message>
+    <message>
         <source>Importing...</source>
         <translation>Importerar...</translation>
     </message>
     <message>
-        <source>Imports blocks from external blk000??.dat file</source>
-        <translation>Importerar block från den externa blok000??.dat-fil-en</translation>
+        <source>Include IP addresses in debug output (default: %u)</source>
+        <translation>Inkludera IP adress i felsökningens utmatning (standard: %u)</translation>
     </message>
     <message>
         <source>Incompatible mode.</source>
@@ -2946,48 +2889,112 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Information</translation>
     </message>
     <message>
-        <source>Initialization sanity check failed. Ion Core is shutting down.</source>
-        <translation>Initialiseringstillståndkontroll misslyckades. Ion Core stängs ned.</translation>
-    </message>
-    <message>
         <source>Input is not valid.</source>
         <translation>Indata är inte giltig.</translation>
-    </message>
-    <message>
-        <source>InstantX options:</source>
-        <translation>InstantX-alternativ:</translation>
     </message>
     <message>
         <source>Insufficient funds.</source>
         <translation>Otillräckliga medel!</translation>
     </message>
     <message>
-        <source>Invalid -onion address: '%s'</source>
-        <translation>Ogiltig -onion-adress: '%s'</translation>
+        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
+        <translation>Ogiltig mäng -paytxfee=&lt;amount&gt;: '%s' (måste vara minst %s)</translation>
     </message>
     <message>
-        <source>Invalid -proxy address: '%s'</source>
-        <translation>Ogiltig -proxy-adress: '%s'</translation>
+        <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
+        <translation>Bibehåll som mest &lt;n&gt; icke-anslutningsbara transaktioner i minnet (standardvärde: %u)</translation>
     </message>
     <message>
-        <source>Invalid amount for -minrelaytxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ogiltig mängd för -minrelaytxfee=&lt;amount&gt;: '%s'</translation>
+        <source>Listen for JSON-RPC connections on &lt;port&gt; (default: %u or testnet: %u)</source>
+        <translation>Lystna efter JSON-RPC anslutningar på &lt;port&gt; (standard: %u eller testnet: %u)</translation>
     </message>
     <message>
-        <source>Invalid amount for -mintxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ogiltig mängd för -mintxfee=&lt;amount&gt;: '%s'</translation>
+        <source>Listen for connections on &lt;port&gt; (default: %u or testnet: %u)</source>
+        <translation>Lystna efter anslutningar på &lt;port&gt;(default: %u or testnet: %u) </translation>
     </message>
     <message>
-        <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s'</source>
-        <translation>Ogiltig mängd för -paytxfee=&lt;amount&gt;: '%s'</translation>
+        <source>Loading masternode cache...</source>
+        <translation>Laddar huvudnod cache...</translation>
     </message>
     <message>
-        <source>Invalid masternodeprivkey. Please see documenation.</source>
-        <translation>Ogiltig masternodepriv-nyckel. Vänligen se dokumentationen.</translation>
+        <source>Maximum per-connection receive buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
+        <translation>Maximala mottagna per-anslutning buffer, &lt;n&gt;*1000 bytes (standard: %u)</translation>
     </message>
     <message>
-        <source>Invalid private key.</source>
-        <translation>Ogiltig privatnyckel.</translation>
+        <source>Maximum per-connection send buffer, &lt;n&gt;*1000 bytes (default: %u)</source>
+        <translation>Maximala skicka per-anslutning buffer, &lt;n&gt;*1000 bytes (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Need to specify a port with -whitebind: '%s'</source>
+        <translation>Port behöver specifieras med -whitebind: '%s'</translation>
+    </message>
+    <message>
+        <source>Only connect to nodes in network &lt;net&gt; (ipv4, ipv6 or onion)</source>
+        <translation>Anslut endast till noder i nätverk &lt;net&gt; (ipv4, ipv6 eller onion)</translation>
+    </message>
+    <message>
+        <source>Prepend debug output with timestamp (default: %u)</source>
+        <translation>Addera till början felsöknings utmatning med tidsstämpel (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Set key pool size to &lt;n&gt; (default: %u)</source>
+        <translation>Ställ in nyckel pool storlek till &lt;n&gt; (standard: %u) </translation>
+    </message>
+    <message>
+        <source>Set the number of threads to service RPC calls (default: %d)</source>
+        <translation>Ställ in antalet trådar att behandla RPC calls (default: %d)</translation>
+    </message>
+    <message>
+        <source>Specify configuration file (default: %s)</source>
+        <translation>Specifiera konfigurationsfil (standard: %s)</translation>
+    </message>
+    <message>
+        <source>Specify connection timeout in milliseconds (minimum: 1, default: %d)</source>
+        <translation>Specifiera anslutnings timeout i millisekunder (minimum: 1, standard: %d)</translation>
+    </message>
+    <message>
+        <source>Specify pid file (default: %s)</source>
+        <translation>Specifiera pid fil (standard: %s)</translation>
+    </message>
+    <message>
+        <source>Spend unconfirmed change when sending transactions (default: %u)</source>
+        <translation>Spendera obekräftad växel när transaktioner skickas (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Synchronization failed</source>
+        <translation>Synchronisering misslyckad</translation>
+    </message>
+    <message>
+        <source>Synchronization finished</source>
+        <translation>Synkronisering klar</translation>
+    </message>
+    <message>
+        <source>Threshold for disconnecting misbehaving peers (default: %u)</source>
+        <translation>Tröskel för att koppla från peers som beteer sig illa (standard: %u)</translation>
+    </message>
+    <message>
+        <source>Tor control port password (default: empty)</source>
+        <translation>Tor kontroll port lösenord (standard: tom)</translation>
+    </message>
+    <message>
+        <source>Tor control port to use if onion listening enabled (default: %s)</source>
+        <translation>Tor kontroll port att använda om onion lystning är aktiverad (standard: %s)</translation>
+    </message>
+    <message>
+        <source>Unable to start HTTP server. See debug log for details.</source>
+        <translation>Kan ej starta HTTP server. Se felsöknings log för detaljer.</translation>
+    </message>
+    <message>
+        <source>Use UPnP to map the listening port (default: %u)</source>
+        <translation>Använd UPnP för att kartlägga den lystnande porten (standard: %u)</translation>
+    </message>
+    <message>
+        <source>User Agent comment (%s) contains unsafe characters.</source>
+        <translation>Användaragent kommentar (%s) innehåller osäkra tecken.</translation>
+    </message>
+    <message>
+        <source>Invalid netmask specified in -whitelist: '%s'</source>
+        <translation>Ogiltig nätmask spefifierad i -whitelist: '%s'</translation>
     </message>
     <message>
         <source>Invalid script detected.</source>
@@ -3002,16 +3009,48 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>KeePassHttp-nyckel för AES-krypterad kommunikation med KeePass</translation>
     </message>
     <message>
-        <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
-        <translation>Bibehåll som mest &lt;n&gt; icke-anslutningsbara transaktioner i minnet (standardvärde: %u)</translation>
+        <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
+        <translation>Slumpa kreditiv för varje proxy anslutning. Detta tillåter Tor stream isolation (standard: %u)</translation>
     </message>
     <message>
-        <source>Last Darksend was too recent.</source>
-        <translation>Senaste Darksend gjordes för inte alltför länge sedan.</translation>
+        <source>Support filtering of blocks and transaction with bloom filters (default: %u)</source>
+        <translation>Stödjer filtrering av block och transaktioner med blomm filter (standard: %u)</translation>
     </message>
     <message>
-        <source>Loading addresses...</source>
-        <translation>Laddar adresser...</translation>
+        <source>Total length of network version string (%i) exceeds maximum length (%i). Reduce the number or size of uacomments.</source>
+        <translation>Totala längden av nätverks verisionens sträng (%i) överskrider maximala längd (%i). Minska mängden eller storleken av uakommentarer.</translation>
+    </message>
+    <message>
+        <source>&lt;category&gt; can be:</source>
+        <translation>&lt;category&gt; kan vara:</translation>
+    </message>
+    <message>
+        <source>Append comment to the user agent string</source>
+        <translation>Bifoga kommentar till användaragent strängen</translation>
+    </message>
+    <message>
+        <source>Automatically create Tor hidden service (default: %d)</source>
+        <translation>Skapa automatiskt Tor hidden service (standard: %d)</translation>
+    </message>
+    <message>
+        <source>Enable publish hash block in &lt;address&gt;</source>
+        <translation>Aktivera publicera hash block i &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish hash transaction in &lt;address&gt;</source>
+        <translation>Aktivera publicera hash transaktion i &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish raw block in &lt;address&gt;</source>
+        <translation>Aktivera publicera rå block i &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Enable publish raw transaction in &lt;address&gt;</source>
+        <translation>Aktivera publicera rå transaktion i &lt;address&gt;</translation>
+    </message>
+    <message>
+        <source>Error: A fatal internal error occurred, see debug.log for details</source>
+        <translation>Fel: Ett fatalt internt fel hände, se debug.log för detaljer</translation>
     </message>
     <message>
         <source>Loading block index...</source>
@@ -3024,6 +3063,10 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Loading wallet...</source>
         <translation>Laddar plånbok...</translation>
+    </message>
+    <message>
+        <source>Location of the auth cookie (default: data dir)</source>
+        <translation>Lokation av auth cookie (standard: data dir)</translation>
     </message>
     <message>
         <source>Masternode options:</source>
@@ -3042,12 +3085,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Indatatransaktionsinformation fattas.</translation>
     </message>
     <message>
-        <source>No funds detected in need of denominating.</source>
-        <translation>Inga medel hittades som är i behov denominering.</translation>
-    </message>
-    <message>
         <source>No matching denominations found for mixing.</source>
         <translation>Inga matchande denominationer hittades för mixning.</translation>
+    </message>
+    <message>
+        <source>Node relay options:</source>
+        <translation>Nod relä val:</translation>
     </message>
     <message>
         <source>Non-standard public key detected.</source>
@@ -3070,28 +3113,40 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Lösenord för JSON-RPC-anslutningar</translation>
     </message>
     <message>
-        <source>RPC SSL options: (see the Bitcoin Wiki for SSL setup instructions)</source>
-        <translation>RPC SSL-alternativ: (Se Bitcoin Wiki för SSL-inställningsinstruktioner)</translation>
+        <source>Print version and exit</source>
+        <translation>Skriv ut version och stäng</translation>
+    </message>
+    <message>
+        <source>Transaction too large</source>
+        <translation>Transaktionen är för stor</translation>
+    </message>
+    <message>
+        <source>You need to rebuild the database using -reindex to change -txindex</source>
+        <translation>Du måste återuppbygga databasen med -reindex för att ändra -txindex</translation>
+    </message>
+    <message>
+        <source>ZeroMQ notification options:</source>
+        <translation>ZeroMQ-anmälningsalternativ:</translation>
     </message>
     <message>
         <source>RPC server options:</source>
         <translation>RPC-serveralternativ:</translation>
     </message>
     <message>
-        <source>Randomly drop 1 of every &lt;n&gt; network messages</source>
-        <translation>Släpp 1 av varje &lt;n&gt; nätverksmeddelande slumpmässigt</translation>
+        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
+        <translation>Acceptera anslutningar utifrån (standardvärde: 1 om ingen -proxy eller -connect)</translation>
     </message>
     <message>
-        <source>Randomly fuzz 1 of every &lt;n&gt; network messages</source>
-        <translation>Ludda 1 av varje &lt;n&gt; nätverksmeddelande slumpmässigt</translation>
+        <source>Invalid -onion address or hostname: '%s'</source>
+        <translation>Ogiltig -onion adress eller värdnamn: '%s'</translation>
     </message>
     <message>
-        <source>Rebuild block chain index from current blk000??.dat files</source>
-        <translation>Återuppbygg blockkedjeindexet från den aktuella blk000??.dat-filen</translation>
+        <source>Relay and mine data carrier transactions (default: %u)</source>
+        <translation>Lägg om och utvinn data bärar transaktioner (standard: %u)</translation>
     </message>
     <message>
-        <source>Rescan the block chain for missing wallet transactions</source>
-        <translation>Omskanna blockkedjan efter försvunna plånbokstransaktioner</translation>
+        <source>Relay non-P2SH multisig (default: %u)</source>
+        <translation>Lägg om icke-P2SH multisig (standard: %u)</translation>
     </message>
     <message>
         <source>Rescanning...</source>
@@ -3106,6 +3161,10 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Sessionen är inte fullständig!</translation>
     </message>
     <message>
+        <source>Session timed out.</source>
+        <translation>Sessionens tidsgräns överskriden</translation>
+    </message>
+    <message>
         <source>Set database cache size in megabytes (%d to %d, default: %d)</source>
         <translation>Ställ in databascachens storlek i megabytes (%d till %d, standardvärde: %d)</translation>
     </message>
@@ -3114,20 +3173,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Ställ in maximal blockstorlek i bytes (standardvärde: %d)</translation>
     </message>
     <message>
-        <source>Set the masternode private key</source>
-        <translation>Ställ in masternodprivatnyckeln</translation>
-    </message>
-    <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>
         <translation>Visa alla avsökningsalternativ (usage: --help -help-debug)</translation>
     </message>
     <message>
         <source>Shrink debug.log file on client startup (default: 1 when no -debug)</source>
         <translation>Förminska debug.log-filen vid klientuppstart (standardvärde 1 vid ingen -debug)</translation>
-    </message>
-    <message>
-        <source>Signing failed.</source>
-        <translation>Signering misslyckades.</translation>
     </message>
     <message>
         <source>Signing transaction failed</source>
@@ -3146,20 +3197,16 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Specificera din egen publika adress</translation>
     </message>
     <message>
-        <source>This help message</source>
-        <translation>Detta hjälpmeddelande</translation>
+        <source>Synchronization pending...</source>
+        <translation>Synchronisering väntar</translation>
     </message>
     <message>
-        <source>This is intended for regression testing tools and app development.</source>
-        <translation>Detta är ämnat för regressionstestverktyg och apputveckling.</translation>
+        <source>This is experimental software.</source>
+        <translation>Detta är experimentiell mjukvara</translation>
     </message>
     <message>
         <source>Transaction amount too small</source>
         <translation>Transaktionsmängden är för liten</translation>
-    </message>
-    <message>
-        <source>Transaction amounts must be positive</source>
-        <translation>Transaktionsmängder måste vara positiva</translation>
     </message>
     <message>
         <source>Transaction created successfully.</source>
@@ -3174,8 +3221,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Transaktionen är inte giltig.</translation>
     </message>
     <message>
-        <source>Transaction too large</source>
-        <translation>Transaktionen är för stor</translation>
+        <source>Transaction too large for fee policy</source>
+        <translation>Transaktionen för stor för avgifts policy</translation>
     </message>
     <message>
         <source>Unable to bind to %s on this computer (bind returned error %s)</source>
@@ -3190,36 +3237,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Okänt specificerat nätverk i -onlynet: '%s'</translation>
     </message>
     <message>
-        <source>Upgrade wallet to latest format</source>
-        <translation>Uppgradera plånboken till det senaste formatet</translation>
-    </message>
-    <message>
-        <source>Use OpenSSL (https) for JSON-RPC connections</source>
-        <translation>Använd OpenSSL (https) för JSON-RPC-anslutningar</translation>
-    </message>
-    <message>
-        <source>Use UPnP to map the listening port (default: 1 when listening)</source>
-        <translation>Använd UPnP för att kartlägga avlyssningsporten (standardvärde: 1 vid avlyssning)</translation>
-    </message>
-    <message>
-        <source>Use the test network</source>
-        <translation>Använd testnätverket</translation>
-    </message>
-    <message>
         <source>Username for JSON-RPC connections</source>
         <translation>Användarnamn för JSON-RPC-anslutningar</translation>
     </message>
     <message>
-        <source>Value more than Darksend pool maximum allows.</source>
-        <translation>Värdera mer än vad Darksends poolmaximum tillåter.</translation>
-    </message>
-    <message>
         <source>Verifying blocks...</source>
         <translation>Bekräftar block...</translation>
-    </message>
-    <message>
-        <source>Verifying wallet...</source>
-        <translation>Bekräftar plånbok...</translation>
     </message>
     <message>
         <source>Wallet %s resides outside data directory %s</source>
@@ -3234,28 +3257,16 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Plånboksalternativ:</translation>
     </message>
     <message>
+        <source>Wallet window title</source>
+        <translation>Plånboksfönster tittle</translation>
+    </message>
+    <message>
         <source>Warning</source>
         <translation>Varning</translation>
     </message>
     <message>
-        <source>Warning: This version is obsolete, upgrade required!</source>
-        <translation>Varning: Versionen är förlegad, uppgradering krävs!</translation>
-    </message>
-    <message>
-        <source>You need to rebuild the database using -reindex to change -txindex</source>
-        <translation>Du måste återuppbygga databasen med -reindex för att ändra -txindex</translation>
-    </message>
-    <message>
         <source>Zapping all transactions from wallet...</source>
         <translation>Zappar alla transaktioner från plånboken...</translation>
-    </message>
-    <message>
-        <source>on startup</source>
-        <translation>vid uppstart</translation>
-    </message>
-    <message>
-        <source>wallet.dat corrupt, salvage failed</source>
-        <translation>wallet.dat är korrumperad, räddning misslyckades</translation>
     </message>
 </context>
 </TS>

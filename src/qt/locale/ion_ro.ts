@@ -294,10 +294,6 @@
         <translation>P&amp;rimeşte</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and dash: URIs)</source>
-        <translation>Cereţi plăţi (generează coduri QR şi Ion-uri: URls)</translation>
-    </message>
-    <message>
         <source>&amp;Transactions</source>
         <translation>&amp;Tranzacţii</translation>
     </message>
@@ -480,10 +476,6 @@
     <message>
         <source>Open &amp;URI...</source>
         <translation>Deschide &amp;URI...</translation>
-    </message>
-    <message>
-        <source>Open a dash: URI or payment request</source>
-        <translation>Deschidere Ion: o adresa URI sau o cerere de plată</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -1737,10 +1729,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Eroare la cererea de plată</translation>
     </message>
     <message>
-        <source>Cannot start dash: click-to-pay handler</source>
-        <translation>Ion nu poate porni: click-to-pay handler</translation>
-    </message>
-    <message>
         <source>URI handling</source>
         <translation>Gestionare URI</translation>
     </message>
@@ -2875,10 +2863,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Message:</source>
         <translation>Mesaj:</translation>
-    </message>
-    <message>
-        <source>A message that was attached to the dash: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Ion network.</source>
-        <translation>un mesaj a fost ataşat la Ion: URI care va fi stocat cu tranzacţia pentru referinţa dvs. Notă: Acest mesaj nu va fi trimis către reţeaua Ion.</translation>
     </message>
     <message>
         <source>This is an unauthenticated payment request.</source>
