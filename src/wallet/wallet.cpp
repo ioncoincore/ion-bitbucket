@@ -1429,7 +1429,7 @@ void CWallet::SyncTransaction(const CTransactionRef& ptx, const CBlockIndex *pin
     fAnonymizableTallyCachedNonDenom = false;
 }
 
-void CWallet::TransactionAddedToMempool(const CTransactionRef& ptx) {
+void CWallet::TransactionAddedToMempool(const CTransactionRef& ptx, int64_t nAcceptTime) {
     LOCK2(cs_main, cs_wallet);
     SyncTransaction(ptx);
 }
@@ -3264,7 +3264,7 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, const int nConfMin
 
             bool fLockedByIS = pcoin->IsLockedByInstantSend();
 
-            // if (logCategories != BCLog::NONE) LogPrint(BCLog::SELECTCOINS, "value %s confirms %d\n", FormatMoney(pcoin->vout[output.i].nValue), output.nDepth);
+//            if (fDebug) LogPrint("selectcoins", "value %s confirms %d\n", FormatMoney(pcoin->vout[output.i].nValue), output.nDepth);
             if (output.nDepth < (pcoin->IsFromMe(ISMINE_ALL) ? nConfMine : nConfTheirs) && !fLockedByIS)
                 continue;
 
@@ -3278,7 +3278,7 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, const int nConfMin
             if (tryDenom == 0 && CPrivateSend::IsDenominatedAmount(coin.txout.nValue)) continue; // we don't want denom values on first run
 
             if (nCoinType == CoinType::ONLY_DENOMINATED) {
-                // Make sure it's actually anonymized
+                // Make sure it's actually mixed
                 COutPoint outpoint = COutPoint(pcoin->GetHash(), i);
                 int nRounds = GetRealOutpointPrivateSendRounds(outpoint);
                 if (nRounds < privateSendClient.nPrivateSendRounds) continue;
@@ -3388,7 +3388,7 @@ bool CWallet::SelectCoins(const std::vector<COutput>& vAvailableCoins, const CAm
             if(nCoinType == CoinType::ONLY_DENOMINATED) {
                 COutPoint outpoint = COutPoint(out.tx->GetHash(),out.i);
                 int nRounds = GetCappedOutpointPrivateSendRounds(outpoint);
-                // make sure it's actually anonymized
+                // make sure it's actually mixed
                 if(nRounds < privateSendClient.nPrivateSendRounds) continue;
             }
             nValueRet += out.tx->tx->vout[out.i].nValue;
@@ -3420,8 +3420,8 @@ bool CWallet::SelectCoins(const std::vector<COutput>& vAvailableCoins, const CAm
             if (pcoin->tx->vout.size() <= outpoint.n)
                 return false;
             if (nCoinType == CoinType::ONLY_DENOMINATED) {
-                // Make sure to include anonymized preset inputs only,
-                // even if some non-anonymized inputs were manually selected via CoinControl
+                // Make sure to include mixed preset inputs only,
+                // even if some non-mixed inputs were manually selected via CoinControl
                 int nRounds = GetRealOutpointPrivateSendRounds(outpoint);
                 if (nRounds < privateSendClient.nPrivateSendRounds) continue;
             }
@@ -3600,7 +3600,7 @@ bool CWallet::SelectCoinsGroupedByAddresses(std::vector<CompactTallyItem>& vecTa
 
     isminefilter filter = ISMINE_SPENDABLE;
 
-    // Try using the cache for already confirmed anonymizable inputs.
+    // Try using the cache for already confirmed mixable inputs.
     // This should only be used if nMaxOupointsPerAddress was NOT specified.
     if(nMaxOupointsPerAddress == -1 && fAnonymizable && fSkipUnconfirmed) {
         if(fSkipDenominated && fAnonymizableTallyCachedNonDenom) {
@@ -3653,7 +3653,7 @@ bool CWallet::SelectCoinsGroupedByAddresses(std::vector<CompactTallyItem>& vecTa
                 // ignore outputs that are 10 times smaller then the smallest denomination
                 // otherwise they will just lead to higher fee / lower priority
                 if(wtx.tx->vout[i].nValue <= nSmallestDenom/10) continue;
-                // ignore anonymized
+                // ignore mixed
                 if(GetCappedOutpointPrivateSendRounds(COutPoint(outpoint.hash, i)) >= privateSendClient.nPrivateSendRounds) continue;
             }
 
@@ -3674,7 +3674,7 @@ bool CWallet::SelectCoinsGroupedByAddresses(std::vector<CompactTallyItem>& vecTa
         vecTallyRet.push_back(item.second);
     }
 
-    // Cache already confirmed anonymizable entries for later use.
+    // Cache already confirmed mixable entries for later use.
     // This should only be used if nMaxOupointsPerAddress was NOT specified.
     if(nMaxOupointsPerAddress == -1 && fAnonymizable && fSkipUnconfirmed) {
         if(fSkipDenominated) {
@@ -3966,6 +3966,10 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
 
     wtxNew.fTimeReceivedIsTxTime = true;
     wtxNew.BindWallet(this);
+    if (coin_control.nCoinType == CoinType::ONLY_DENOMINATED) {
+        wtxNew.mapValue["DS"] = "1";
+    }
+
     CMutableTransaction txNew;
 
     // Discourage fee sniping.
@@ -4099,7 +4103,7 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                             strFailReason = _("Unable to locate enough PrivateSend non-denominated funds for this transaction.");
                         } else if (coin_control.nCoinType == CoinType::ONLY_DENOMINATED) {
                             strFailReason = _("Unable to locate enough PrivateSend denominated funds for this transaction.");
-                            strFailReason += " " + _("PrivateSend uses exact denominated amounts to send funds, you might simply need to anonymize some more coins.");
+                            strFailReason += " " + _("PrivateSend uses exact denominated amounts to send funds, you might simply need to mix some more coins.");
                         } else if (nValueIn < nValueToSelect) {
                             strFailReason = _("Insufficient funds.");
                         }
@@ -4116,7 +4120,6 @@ bool CWallet::CreateTransaction(const std::vector<CRecipient>& vecSend, CWalletT
                     if (coin_control.nCoinType == CoinType::ONLY_DENOMINATED) {
                         nChangePosInOut = -1;
                         nFeeRet += nChange;
-                        wtxNew.mapValue["DS"] = "1";
                     } else {
                         // Fill a vout to ourself
                         newTxOut = CTxOut(nChange, scriptChange);

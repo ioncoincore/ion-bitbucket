@@ -432,7 +432,7 @@ void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
             int nRounds = vpwallets[0]->GetRealOutpointPrivateSendRounds(outpt);
             if (coinControl->IsUsingPrivateSend() && nRounds < privateSendClient.nPrivateSendRounds) {
                 QMessageBox::warning(this, windowTitle(),
-                    tr("Non-anonymized input selected. <b>PrivateSend will be disabled.</b><br><br>If you still want to use PrivateSend, please deselect all non-anonymized inputs first and then check the PrivateSend checkbox again."),
+                    tr("Non-mixed input selected. <b>PrivateSend will be disabled.</b><br><br>If you still want to use PrivateSend, please deselect all non-mixed inputs first and then check the PrivateSend checkbox again."),
                     QMessageBox::Ok, QMessageBox::Ok);
                 coinControl->UsePrivateSend(false);
             }
@@ -621,7 +621,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     }
 
     // turn label red when dust
-    l7->setStyleSheet((fDust) ? "color:red;" : "");
+    l7->setStyleSheet((fDust) ? GUIUtil::getThemedStyleQString(GUIUtil::ThemedStyle::TS_ERROR) : "");
 
     // tool tips
     QString toolTipDust = tr("This label turns red if any recipient receives an amount smaller than the current dust threshold.");

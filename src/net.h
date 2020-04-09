@@ -410,6 +410,7 @@ public:
     bool IsMasternodeQuorumNode(const CNode* pnode);
 
     size_t GetNodeCount(NumConnections num);
+    size_t GetMaxOutboundNodeCount();
     void GetNodeStats(std::vector<CNodeStats>& vstats);
     bool DisconnectNode(const std::string& node);
     bool DisconnectNode(NodeId id);
@@ -699,6 +700,8 @@ public:
     CAddress addr;
     // Bind address of our side of the connection
     CAddress addrBind;
+    // In case this is a verified MN, this value is the proTx of the MN
+    uint256 verifiedProRegTxHash;
 };
 
 
@@ -1001,7 +1004,7 @@ public:
     void PushInventory(const CInv& inv)
     {
         LOCK(cs_inventory);
-        if (inv.type == MSG_TX) {
+        if (inv.type == MSG_TX || inv.type == MSG_DSTX) {
             if (!filterInventoryKnown.contains(inv.hash)) {
                 LogPrint(BCLog::NET, "PushInventory --  inv: %s peer=%d\n", inv.ToString(), id);
                 setInventoryTxToSend.insert(inv.hash);

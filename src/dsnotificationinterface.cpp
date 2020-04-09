@@ -71,10 +71,10 @@ void CDSNotificationInterface::UpdatedBlockTip(const CBlockIndex *pindexNew, con
     llmq::quorumDKGSessionManager->UpdatedBlockTip(pindexNew, fInitialDownload);
 }
 
-void CDSNotificationInterface::TransactionAddedToMempool(const CTransactionRef& ptx)
+void CDSNotificationInterface::TransactionAddedToMempool(const CTransactionRef& ptx, int64_t nAcceptTime)
 {
     llmq::quorumInstantSendManager->TransactionAddedToMempool(ptx);
-    llmq::chainLocksHandler->TransactionAddedToMempool(ptx);
+    llmq::chainLocksHandler->TransactionAddedToMempool(ptx, nAcceptTime);
     CPrivateSend::TransactionAddedToMempool(ptx);
 }
 
@@ -109,4 +109,5 @@ void CDSNotificationInterface::NotifyMasternodeListChanged(bool undo, const CDet
 void CDSNotificationInterface::NotifyChainLock(const CBlockIndex* pindex, const llmq::CChainLockSig& clsig)
 {
     llmq::quorumInstantSendManager->NotifyChainLock(pindex);
+    CPrivateSend::NotifyChainLock(pindex);
 }
