@@ -26,6 +26,7 @@
 #include "script/tokengroup.h"
 #include "streams.h"
 #include "sync.h"
+#include "tokens/tokengroupmanager.h"
 #include "txdb.h"
 #include "txmempool.h"
 #include "util.h"
@@ -2460,8 +2461,9 @@ bool FindTokenGroupID(std::atomic<int>& scan_progress, const std::atomic<bool>& 
             scan_progress = (int)(high * 100.0 / 65536.0 + 0.5);
         }
         CTokenGroupInfo tokenGrp(coin.out.scriptPubKey);
-        if ((tokenGrp.associatedGroup != NoGroup) && !tokenGrp.isAuthority() && tokenGrp.associatedGroup == needle) // must be sitting in any group address
-        {
+        if (tokenGrp.associatedGroup != NoGroup && // must be sitting in any group address
+                tokenGrp.associatedGroup == needle &&
+                coin.nHeight >= Params().GetConsensus().ATPStartHeight) {
             out_results.emplace(key, coin);
         }
         cursor->Next();
@@ -2492,12 +2494,14 @@ UniValue scantokens(const JSONRPCRequest& request)
             "    \"vout\" : n,                 (numeric) the vout value\n"
             "    \"address\" : \"address\",      (string) the address that received the tokens\n"
             "    \"scriptPubKey\" : \"script\",  (string) the script key\n"
-            "    \"ION_amount\" : x.xxx,       (numeric) The total amount in ION of the unspent output\n"
-            "    \"token_amount\" : xxx,       (numeric) The total token amount of the unspent output\n"
+            "    \"amount\" : x.xxx,           (numeric) The total amount in ION of the unspent output\n"
+            "    \"amountSat\" : x.xxx,        (numeric) The total amount in ION of the unspent output\n"
+            "    \"tokenAmount\" : xxx,       (numeric) The total token amount of the unspent output\n"
+            "    \"tokenAmountSat\" : xxx,    (numeric) The total token amount of the unspent output\n"
             "    \"height\" : n,               (numeric) Height of the unspent transaction output\n"
             "   }\n"
             "   ,...], \n"
-            " \"total_amount\" : xxx,          (numeric) The total token amount of all found unspent outputs\n"
+            " \"total_tokenAmountSat\" : xxx,          (numeric) The total token amount of all found unspent outputs\n"
             "]\n"
         );
 
@@ -2528,6 +2532,7 @@ UniValue scantokens(const JSONRPCRequest& request)
         }
         std::set<CScript> needles;
         CAmount total_in = 0;
+        GroupAuthorityFlags total_authorities = GroupAuthorityFlags::NONE;
 
         if (!request.params[1].isStr()){
             throw JSONRPCError(RPC_INVALID_PARAMETER, "No token group ID specified");
@@ -2566,7 +2571,8 @@ UniValue scantokens(const JSONRPCRequest& request)
             ExtractDestination(txo.scriptPubKey, dest);
 
             input_txos.push_back(txo);
-            total_in += tokenGroupInfo.quantity;
+            total_in += tokenGroupInfo.getAmount();
+            total_authorities |= tokenGroupInfo.controllingGroupFlags();
 
             UniValue unspent(UniValue::VOBJ);
             unspent.pushKV("txid", outpoint.hash.GetHex());
@@ -2575,14 +2581,25 @@ UniValue scantokens(const JSONRPCRequest& request)
                 unspent.push_back(Pair("address", EncodeDestination(dest)));
             }
             unspent.pushKV("scriptPubKey", HexStr(txo.scriptPubKey.begin(), txo.scriptPubKey.end()));
-            unspent.pushKV("ION_Amount", ValueFromAmount(txo.nValue));
-            unspent.pushKV("token_Amount", tokenGroupInfo.quantity);
+            unspent.pushKV("amount", ValueFromAmount(txo.nValue));
+            unspent.pushKV("amountSat", txo.nValue);
+            if (tokenGroupInfo.isAuthority()){
+                unspent.pushKV("tokenType", "authority");
+                unspent.pushKV("tokenAuthorities", EncodeGroupAuthority(tokenGroupInfo.controllingGroupFlags()));
+            } else {
+                unspent.pushKV("tokenType", "amount");
+                unspent.pushKV("tokenAmount", tokenGroupManager->TokenValueFromAmount(tokenGroupInfo.quantity, needle));
+                unspent.pushKV("tokenAmountSat", tokenGroupInfo.quantity);
+            }
+
             unspent.pushKV("height", (int32_t)coin.nHeight);
 
             unspents.push_back(unspent);
         }
         result.pushKV("unspents", unspents);
-        result.pushKV("total_amount", ValueFromAmount(total_in));
+        result.pushKV("total_tokenValue", tokenGroupManager->TokenValueFromAmount(total_in, needle));
+        result.pushKV("total_tokenValueSat", ValueFromAmount(total_in));
+        result.pushKV("total_tokenAuthorities", EncodeGroupAuthority(total_authorities));
     } else {
         throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid command");
     }
