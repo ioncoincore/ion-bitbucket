@@ -12,9 +12,11 @@
       - [Masternodes](#masternodes)
       - [Token implementation](#token-implementation)
     - [New RPC Commands](#new-rpc-commands)
-      - [Masternodes](#masternodes-1)
+      - [Evo](#evo)
+      - [Tokens](#tokens)
+      - [Util](#util)
     - [Deprecated RPC Commands](#deprecated-rpc-commands)
-      - [Masternodes](#masternodes-2)
+      - [Masternodes](#masternodes-1)
     - [5.0.01 Change log](#5001-change-log)
 
 ## ION Core version 5.0.01 is now available  
@@ -57,7 +59,7 @@ ION Core should also work on most other Unix-like systems but is not frequently 
     - The new fee policy, proposed and adopted in IIP0006, is implemented. As a result, this client will only relay and mine transactions with
       a fee rate of 0.01 ION per KB.
     - The fee calculation approach for token transactions has been made more accurate.
-    - 50% of fees are awarded to masternodes, 25% to staking nodes and 25% is burned.
+    - 50% of fees are awarded to masternodes, 30% to staking nodes and 20% is burned (50% on mining blocks).
 - Switch from Proof-of-Stake to Hybrid Proof-of-Work/Proof-of-Stake
   - During the Hybrid phase, miners can generate POW blocks and staking nodes can generate POS blocks.
   - Both the POW difficulty algorithm and the POS difficulty algorithm aim at producing 1 block every 2 minutes.
@@ -152,6 +154,13 @@ Since 50% of the blocks will be POS blocks, stakers will receive an average of 3
 
 #### Masternodes
 
+The full documentation on ION v5 masternodes can be found in the Dash Documentation section
+on [Setting up Masternodes](https://docs.dash.org/en/stable/masternodes/setup.html).
+
+An example of how this can be done using an ION controller wallet and an ION remote masternode
+can be found at the ionomy wiki entry on
+[Setting up ION coin Masternodes](https://github.com/ionomy/ion/wiki/HOW-TO:-Setup-ION-coin-Masternode-with-Ubuntu-remote-and-local-QT-wallet-(DASH-Rebase)).
+
 - Testnet masternodes require using the `protx` command:
 - Ensure a 20k collateral is available (`masternode outputs`).
 - Generate the keys:
@@ -209,22 +218,57 @@ Since 50% of the blocks will be POS blocks, stakers will receive an average of 3
 
 ### New RPC Commands
 
-#### Masternodes
+A full list of RPC commands can be found in the [API Calls List](https://bitbucket.org/ioncoin/ion/wiki/API-Calls-List).
 
-masternode "command" ...
-masternodelist ( "mode" "filter" )
+The most notable new commands relate to masternodes, voting and tokens.
 
-`masternode count`        - Get information about number of masternodes (DEPRECATED options: 'total', 'ps', 'enabled', 'qualify', 'all')
-`masternode current`      - Print info on current masternode winner to be paid the next block (calculated locally)
-`masternode outputs`      - Print masternode compatible outputs
-`masternode status`       - Print masternode status information
-`masternode list`         - Print list of all known masternodes (see masternodelist for more info)
-`masternode winner`       - Print info on next masternode winner to vote for
-`masternode winners`      - Print list of masternode winners
+####  Evo
+
+Command|Description
+---|---
+bls "command" ...  |  Set of commands to execute BLS related actions. To get help on individual commands, use "help bls command".
+protx "command" ...  |  Set of commands to execute ProTx related actions. To get help on individual commands, use "help protx command".
+quorum "command" ...  |  Set of commands for quorums/LLMQs.To get help on individual commands, use "help quorum command".
+
+masternode "command" ...  |  Set of commands to execute masternode related actions
+masternodelist ( "mode" "filter" )  |  Get a list of masternodes in different modes. This call is identical to 'masternode list' call.
+####  Tokens
+
+Command|Description
+---|---
+configuremanagementtoken "ticker" "name" decimalpos "description_url" description_hash ( confirm_send )  |  Configures a new management token type. Currelty the only management tokens are MAGIC, XDM and ATOM.
+configuretoken "ticker" "name" decimalpos "description_url" description_hash ( confirm_send )  |  Configures a new token type.
+createrawtokentransaction [{"txid":"id","vout":n},...] {"address":amount,"data":"hex",...} ( locktime )  |  Create a transaction spending the given inputs and creating new outputs.
+createtokenauthorities "groupid" "ionaddress" authoritylist  |  Creates new authorities and sends them to the specified address.
+droptokenauthorities "groupid" "transactionid" outputnr [ authority1 ( authority2 ... ) ]  |  Drops a token group's authorities.
+getsubgroupid "groupid" "data"  |  Translates a group and additional data into a subgroup identifier.
+gettokenbalance ( "groupid" ) ( "address" )  |  If groupID is not specified, returns all tokens with a balance (including token authorities).
+gettokentransaction "txid" ( "blockhash" )  |  Return the token transaction data.
+listtokenauthorities ( "groupid" )  |  Lists the available token authorities.
+listtokenssinceblock "groupid" ( "blockhash" target-confirmations includeWatchonly )  |  Get all transactions in blocks since block [blockhash], or all transactions if omitted
+listtokentransactions "groupid" ( count from includeWatchonly )  |  Returns up to 'count' most recent transactions skipping the first 'from' transactions for account 'account'.
+listunspenttokens ( minconf maxconf ["addresses",...] [include_unsafe] [query_options])  |  Returns array of unspent transaction outputs
+melttoken "groupid" quantity  |  Melts the specified amount of tokens.
+minttoken "groupid" "ionaddress" quantity  |  Mint new tokens.
+scantokens \<action\> ( \<tokengroupid\> )  |  Scans the unspent transaction output set for possible entries that belong to a specified token group.
+sendtoken "groupid" "address" amount ( "address" amount ) ( .. )  |  Sends token to a given address. Specify multiple addresses and amounts for multiple recipients.
+tokeninfo [list, all, stats, groupid, ticker, name] ( "specifier " ) ( "extended_info" )  |  Returns information on all tokens configured on the blockchain.
+
+####  Util
+
+Command|Description
+---|---
+createmultisig nrequired ["key",...]  |  Creates a multi-signature address with n signature of m keys required.
+verifymessage "address" "signature" "message"  |  Verify a signed message
+getextendedbalance  |  Returns extended balance information
+signmessage "address" "message"  |  Sign a message with the private key of an address
 
 ### Deprecated RPC Commands
 
 #### Masternodes
+
+Configuring a masternode is now done using the command `protx`.
+The following commands are deprecated:
 
 `createmasternodekey `  
 `getmasternodeoutputs `  
