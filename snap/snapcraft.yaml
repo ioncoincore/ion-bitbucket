@@ -135,7 +135,7 @@ parts:
   ion:
     source: https://bitbucket.org/ioncoin/ion
     source-type: git
-    source-tagː master
+    source-tag: master
     plugin: nil
     override-build: |
       echo "+++++++++++++++++++++++++++++++++++++++++++++++"
