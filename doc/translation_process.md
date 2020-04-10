@@ -8,6 +8,7 @@
   - [Translator Editor and Instructions URL](#translator-editor-and-instructions-url)
   - [Installing the Transifex client command-line tool](#installing-the-transifex-client-command-line-tool)
     - [For Linux and Mac](#for-linux-and-mac)
+      - [For Ubuntu bionic (or later) users](#for-ubuntu-bionic-or-later-users)
     - [For Windows](#for-windows)
   - [Synchronizing translations](#synchronizing-translations)
   - [Handling Plurals (in source files)](#handling-plurals-in-source-files)
@@ -80,6 +81,11 @@ The client it used to fetch updated translations. If you are having problems, or
 ### For Linux and Mac
 
 `pip install transifex-client`
+
+#### For Ubuntu bionic (or later) users
+
+Upgrade pip with:         `sudo -H pip3 install --upgrade pip`
+Install transifex client: `sudo -H pip3 install transifex-client`
 
 Setup your transifex client config as follows. Please *ignore the token field*.
 
