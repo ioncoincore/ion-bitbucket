@@ -336,5 +336,21 @@
     </context>
 <context>
     <name>ion-core</name>
+    <message>
+        <source>The %s developers</source>
+        <translation>Розробники %s</translation>
+    </message>
+    <message>
+        <source>The PIVX Core developers</source>
+        <translation>Розробники PIVX Core</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Розробники Dash Core</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Розробники Bitcoin Core</translation>
+    </message>
     </context>
 </TS>

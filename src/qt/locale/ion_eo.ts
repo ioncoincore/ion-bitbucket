@@ -1521,6 +1521,22 @@
         <translation>Tro longa transakcio</translation>
     </message>
     <message>
+        <source>The %s developers</source>
+        <translation>La programistoj de %s</translation>
+    </message>
+    <message>
+        <source>The PIVX Core developers</source>
+        <translation>La programistoj de PIVX Core</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>La programistoj de Dash Core</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>La programistoj de Bitcoin Core</translation>
+    </message>
+    <message>
         <source>This is experimental software.</source>
         <translation>Ĉi tio estas eksperimenta programaro.</translation>
     </message>

@@ -2877,6 +2877,22 @@
         <translation>Opcije RPC poslužitelja:</translation>
     </message>
     <message>
+        <source>The %s developers</source>
+        <translation>%s razrađivači</translation>
+    </message>
+    <message>
+        <source>The PIVX Core developers</source>
+        <translation>PIVX Core razrađivači</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Dash Core razrađivači</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Bitcoin Core razrađivači</translation>
+    </message>
+    <message>
         <source>Invalid -onion address or hostname: '%s'</source>
         <translation>nevažeća -onion adresa ili naziv hosta: '%s'</translation>
     </message>

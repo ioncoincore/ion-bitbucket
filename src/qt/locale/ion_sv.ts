@@ -3121,10 +3121,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Transaktionen är för stor</translation>
     </message>
     <message>
-        <source>You need to rebuild the database using -reindex to change -txindex</source>
-        <translation>Du måste återuppbygga databasen med -reindex för att ändra -txindex</translation>
-    </message>
-    <message>
         <source>ZeroMQ notification options:</source>
         <translation>ZeroMQ-anmälningsalternativ:</translation>
     </message>
@@ -3133,8 +3129,20 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>RPC-serveralternativ:</translation>
     </message>
     <message>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Acceptera anslutningar utifrån (standardvärde: 1 om ingen -proxy eller -connect)</translation>
+        <source>The %s developers</source>
+        <translation>%s-utvecklarna</translation>
+    </message>
+    <message>
+        <source>The PIVX Core developers</source>
+        <translation>PIVX Core-utvecklarna</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Dash Core-utvecklarna</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Bitcoin Core-utvecklarna</translation>
     </message>
     <message>
         <source>Invalid -onion address or hostname: '%s'</source>

@@ -1817,6 +1817,22 @@
         <translation>ZeroMQ pranešimų nustatymai:</translation>
     </message>
     <message>
+        <source>The %s developers</source>
+        <translation>%s kūrėjai</translation>
+    </message>
+    <message>
+        <source>The PIVX Core developers</source>
+        <translation>PIVX Core kūrėjai</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Dash Core kūrėjai</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Bitcoin Core  kūrėjai</translation>
+    </message>
+    <message>
         <source>Session timed out.</source>
         <translation>Sesijos laikas baigėsi.</translation>
     </message>

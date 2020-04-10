@@ -2437,6 +2437,18 @@
         <translation>opções do servidor RPC:</translation>
     </message>
     <message>
+        <source>The PIVX Core developers</source>
+        <translation>Desenvolvedores do PIVX Core</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Desenvolvedores do Dash Core</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Desenvolvedores do Bitcoin Core</translation>
+    </message>
+    <message>
         <source>Rescanning...</source>
         <translation>Reescaneando...</translation>
     </message>

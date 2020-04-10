@@ -4579,6 +4579,18 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>%s المبرمجون</translation>
     </message>
     <message>
+        <source>The PIVX Core developers</source>
+        <translation>PIVX Core المبرمجون</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Dash Core المبرمجون</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Bitcoin Core المبرمجون</translation>
+    </message>
+    <message>
         <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
         <translation>لا يمكن الحصول على قفل على دليل البيانات %s. من المحتمل أن %s يعمل بالفعل.</translation>
     </message>
