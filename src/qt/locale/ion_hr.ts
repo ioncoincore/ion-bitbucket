@@ -2885,7 +2885,7 @@
         <translation>%p razrađivači</translation>
     </message>
     <message>
-        <source>%d Core developers</source>
+        <source>The %d developers</source>
         <translation>%d razrađivači</translation>
     </message>
     <message>

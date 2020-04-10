@@ -350,7 +350,7 @@
     </message>
     <message>
         <source>The %b developers</source>
-        <translation>%b Core</translation>
+        <translation>Розробники %b</translation>
     </message>
     </context>
 </TS>
