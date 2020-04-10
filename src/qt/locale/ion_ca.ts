@@ -62,14 +62,6 @@
         <translation>Adreces de recepció</translation>
     </message>
     <message>
-        <source>These are your ION addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Aquestes són les teves adreces ION per fer enviar pagaments. Sempre comprova l'import i l'adreça de recepció abans d'enviar les monedes.</translation>
-    </message>
-    <message>
-        <source>These are your ION addresses for receiving payments. It is recommended to use a new receiving address for each transaction.</source>
-        <translation>Aquestes són les teves adreces ION per rebre pagaments. Es recomana utilitzar noves adreces de recepció per cada transacció.</translation>
-    </message>
-    <message>
         <source>&amp;Copy Address</source>
         <translation>&amp;Copia adreça</translation>
     </message>
@@ -160,24 +152,16 @@
         <translation>Canvia la contrasenya</translation>
     </message>
     <message>
-        <source>Enter the old and new passphrase to the wallet.</source>
-        <translation>Introduïu la contrasenya antiga i la contrasenya nova al moneder.</translation>
-    </message>
-    <message>
         <source>Confirm wallet encryption</source>
         <translation>Confirma l'encriptació del moneder</translation>
     </message>
     <message>
-        <source>ION will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your IONs from being stolen by malware infecting your computer.</source>
-        <translation>ION es tancarà per finalitzar el procés d'encriptació. Recorda que encriptant el teu moneder no protegeix els teus ION de ser robats si el teu ordinador està infectat amb programari maliciós.</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ION&lt;/b&gt;!</source>
+        <translation>Avís: Si encripteu el vostre moneder i perdeu la contrasenya, &lt;b&gt;PERDREU TOTS ELS VOSTRES IONS&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Estàs segur que vols encriptar el moneder?</translation>
-    </message>
-    <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR ION&lt;/b&gt;!</source>
-        <translation>Avís: Si encripteu el vostre moneder i perdeu la contrasenya, &lt;b&gt;PERDREU TOTS ELS VOSTRES IONS&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -212,74 +196,11 @@
     <name>BanTableModel</name>
     </context>
 <context>
-    <name>Bip38ToolDialog</name>
-    <message>
-        <source>BIP 38 Tool</source>
-        <translation>Eina BIP 38</translation>
-    </message>
-    <message>
-        <source>&amp;BIP 38 Encrypt</source>
-        <translation>&amp;Encriptació BIP 38</translation>
-    </message>
-    <message>
-        <source>Address:</source>
-        <translation>Adreça:</translation>
-    </message>
-    <message>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <source>Alt+P</source>
-        <translation>Alt+P</translation>
-    </message>
-    <message>
-        <source>Passphrase: </source>
-        <translation>Contrasenya:</translation>
-    </message>
-    <message>
-        <source>Encrypted Key:</source>
-        <translation>Clau encriptada:</translation>
-    </message>
-    <message>
-        <source>&amp;BIP 38 Decrypt</source>
-        <translation>&amp;Desencriptació BIP 38</translation>
-    </message>
-    <message>
-        <source>Decrypt &amp;Key</source>
-        <translation>Desencriptar &amp;Clau</translation>
-    </message>
-    <message>
-        <source>Decrypted Key:</source>
-        <translation>Clau desencriptada:</translation>
-    </message>
-    <message>
-        <source>Import Address</source>
-        <translation>Importa adreça</translation>
-    </message>
-    <message>
-        <source>The entered passphrase is invalid. </source>
-        <translation>La contrasenya introduïda és incorrecta.</translation>
-    </message>
-    <message>
-        <source>Allowed: 0-9,a-z,A-Z,</source>
-        <translation>Permès: 0-9,a-z,A-Z,</translation>
-    </message>
-    <message>
-        <source>The entered address is invalid.</source>
-        <translation>L'adreça introduïda no és vàlida</translation>
-    </message>
-    <message>
-        <source>Wallet unlock was cancelled.</source>
-        <translation>El desbloqueig del moneder ha estat cancel·lat</translation>
-    </message>
-    <message>
-        <source>Data Not Valid.</source>
-        <translation>Dades no vàlides.</translation>
-    </message>
-    </context>
-<context>
     <name>BitcoinGUI</name>
+    <message>
+        <source>Ion Core</source>
+        <translation>Ion Core</translation>
+    </message>
     <message>
         <source>Wallet</source>
         <translation>Moneder</translation>
@@ -311,6 +232,10 @@
     <message>
         <source>Browse transaction history</source>
         <translation>Mostra històric de transaccions</translation>
+    </message>
+    <message>
+        <source>&amp;Masternodes</source>
+        <translation>&amp;Masternodes</translation>
     </message>
     <message>
         <source>E&amp;xit</source>
@@ -389,6 +314,10 @@
         <translation>&amp;Repara el moneder</translation>
     </message>
     <message>
+        <source>Open Wallet &amp;Configuration File</source>
+        <translation>Obre el fitxer de &amp;configuració del moneder</translation>
+    </message>
+    <message>
         <source>Open configuration file</source>
         <translation>Obre el fitxer de configuració</translation>
     </message>
@@ -421,60 +350,12 @@
         <translation>A&amp;juda</translation>
     </message>
     <message>
-        <source>Ion Core</source>
-        <translation>Ion Core</translation>
-    </message>
-    <message>
-        <source>Send coins to a ION address</source>
-        <translation>Envia monedes a una adreça ION</translation>
-    </message>
-    <message>
-        <source>&amp;Privacy</source>
-        <translation>&amp;Privacitat</translation>
-    </message>
-    <message>
-        <source>&amp;Masternodes</source>
-        <translation>&amp;Masternodes</translation>
-    </message>
-    <message>
-        <source>&amp;About Ion Core</source>
-        <translation>&amp;Sobre Ion Core</translation>
-    </message>
-    <message>
-        <source>&amp;BIP38 tool</source>
-        <translation>Eina &amp;BIP38</translation>
-    </message>
-    <message>
-        <source>&amp;MultiSend</source>
-        <translation>&amp;MultiSend</translation>
-    </message>
-    <message>
-        <source>Open Wallet &amp;Configuration File</source>
-        <translation>Obre el fitxer de &amp;configuració del moneder</translation>
-    </message>
-    <message>
-        <source>Open &amp;Masternode Configuration File</source>
-        <translation>Obre el fitxer de &amp;configuració del Masternode</translation>
-    </message>
-    <message>
-        <source>Open Masternode configuration file</source>
-        <translation>Obre el fitxer de configuració del Masternode</translation>
-    </message>
-    <message>
-        <source>Ion Core client</source>
-        <translation>Client ION core</translation>
-    </message>
-    <message>
         <source>Synchronizing with network...</source>
         <translation>Sinconitzant amb la xarxa...</translation>
     </message>
     <message>
         <source>Up to date</source>
         <translation>Actualitzat</translation>
-    </message>
-    <message>
-        <source>%1 and %2</source>
-        <translation>%1 i %2</translation>
     </message>
     <message>
         <source>Error</source>
@@ -489,66 +370,12 @@
         <translation>Informació</translation>
     </message>
     <message>
-        <source>Staking is active
- MultiSend: %1</source>
-        <translation>Staking actiu
- MultiSend: %1</translation>
-    </message>
-    <message>
-        <source>Active</source>
-        <translation>Actiu</translation>
-    </message>
-    <message>
-        <source>Not Active</source>
-        <translation>Inactiu</translation>
-    </message>
-    <message>
-        <source>Staking is not active
- MultiSend: %1</source>
-        <translation>Staking inactiu
- MultiSend: %1</translation>
-    </message>
-    <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
         <translation>El moneder està &lt;b&gt;encriptat &lt;/b&gt; i desbloquejat&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
         <translation>El moneder està &lt;b&gt;encriptat&lt;/b&gt; i bloquejat&lt;/b&gt;</translation>
-    </message>
-</context>
-<context>
-    <name>BlockExplorer</name>
-    <message>
-        <source>Blockchain Explorer</source>
-        <translation>Explorador del Blockchain</translation>
-    </message>
-    <message>
-        <source>Back</source>
-        <translation>Enrere</translation>
-    </message>
-    <message>
-        <source>Forward</source>
-        <translation>Endavant</translation>
-    </message>
-    <message>
-        <source>Address / Block / Transaction</source>
-        <translation>Adreça / Bloc / Transacció</translation>
-    </message>
-    <message>
-        <source>Search</source>
-        <translation>Cerca</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>EtiquetaDeText</translation>
-    </message>
-    </context>
-<context>
-    <name>ClientModel</name>
-    <message>
-        <source>Network Alert</source>
-        <translation>Alerta de xarxa</translation>
     </message>
 </context>
 <context>
@@ -564,10 +391,6 @@
     <message>
         <source>Amount:</source>
         <translation>Import:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Prioritat:</translation>
     </message>
     <message>
         <source>Fee:</source>
@@ -618,10 +441,6 @@
         <translation>Rebut amb l'adreça</translation>
     </message>
     <message>
-        <source>Type</source>
-        <translation>Tipus</translation>
-    </message>
-    <message>
         <source>Date</source>
         <translation>Data</translation>
     </message>
@@ -632,10 +451,6 @@
     <message>
         <source>Confirmed</source>
         <translation>Confirmat</translation>
-    </message>
-    <message>
-        <source>Priority</source>
-        <translation>Prioritat</translation>
     </message>
     <message>
         <source>Copy address</source>
@@ -670,10 +485,6 @@
         <translation>Copia els bytes</translation>
     </message>
     <message>
-        <source>Copy priority</source>
-        <translation>Copia la prioritat</translation>
-    </message>
-    <message>
         <source>Copy change</source>
         <translation>Copia canvi</translation>
     </message>
@@ -682,48 +493,8 @@
         <translation>Si us plau canvia a "Mode llista" per utilitzar aquesta funció.</translation>
     </message>
     <message>
-        <source>highest</source>
-        <translation>màxima</translation>
-    </message>
-    <message>
-        <source>higher</source>
-        <translation>molt alta</translation>
-    </message>
-    <message>
-        <source>high</source>
-        <translation>alta</translation>
-    </message>
-    <message>
-        <source>medium-high</source>
-        <translation>mitjana-alta</translation>
-    </message>
-    <message>
-        <source>medium</source>
-        <translation>mitjana</translation>
-    </message>
-    <message>
-        <source>low-medium</source>
-        <translation>baixa-mitjana</translation>
-    </message>
-    <message>
-        <source>low</source>
-        <translation>baixa</translation>
-    </message>
-    <message>
-        <source>lower</source>
-        <translation>molt baixa</translation>
-    </message>
-    <message>
-        <source>lowest</source>
-        <translation>mínima</translation>
-    </message>
-    <message>
         <source>(%1 locked)</source>
         <translation>(%1 bloquejat)</translation>
-    </message>
-    <message>
-        <source>none</source>
-        <translation>cap</translation>
     </message>
     <message>
         <source>yes</source>
@@ -732,30 +503,6 @@
     <message>
         <source>no</source>
         <translation>no</translation>
-    </message>
-    <message>
-        <source>This label turns red, if the transaction size is greater than 1000 bytes.</source>
-        <translation>Aquesta etiqueta es posa vermella si la mida de la transacció és major que 1000 bytes.</translation>
-    </message>
-    <message>
-        <source>This means a fee of at least %1 per kB is required.</source>
-        <translation>Això significa que és requereix una comissió d'almenys %1 per kB.</translation>
-    </message>
-    <message>
-        <source>Can vary +/- 1 byte per input.</source>
-        <translation>Pot variar +/- 1 byte per entrada.</translation>
-    </message>
-    <message>
-        <source>Transactions with higher priority are more likely to get included into a block.</source>
-        <translation>Les transaccions amb prioritat més alta són més probables de ser incloses en el bloc.</translation>
-    </message>
-    <message>
-        <source>This label turns red, if the priority is smaller than "medium".</source>
-        <translation>Aquesta etiqueta es posa vermella si la prioritat és més petita que "mitjana"</translation>
-    </message>
-    <message>
-        <source>This label turns red, if any recipient receives an amount smaller than %1.</source>
-        <translation>Aquesta etiqueta es posa vermella si algun destinatari rep un import inferior a l' %1.</translation>
     </message>
     <message>
         <source>(no label)</source>
@@ -769,7 +516,7 @@
         <source>(change)</source>
         <translation>(canvi)</translation>
     </message>
-</context>
+    </context>
 <context>
     <name>EditAddressDialog</name>
     <message>
@@ -803,10 +550,6 @@
     <message>
         <source>Edit sending address</source>
         <translation>Edita l'adreça d'enviament</translation>
-    </message>
-    <message>
-        <source>The entered address "%1" is not a valid ION address.</source>
-        <translation>L'adreça introduïda "%1" no és una adreça ION vàlida.</translation>
     </message>
     <message>
         <source>The entered address "%1" is already in the address book.</source>
@@ -851,16 +594,8 @@
         <translation>versió</translation>
     </message>
     <message>
-        <source>Ion Core</source>
-        <translation>Ion Core</translation>
-    </message>
-    <message>
         <source>(%1-bit)</source>
         <translation>(%1-bit)</translation>
-    </message>
-    <message>
-        <source>About Ion Core</source>
-        <translation>Sobre Ion Core</translation>
     </message>
     <message>
         <source>Command-line options</source>
@@ -883,10 +618,6 @@
         <translation>Escull la carpeta de dades a l'iniciar (per defecte: %u)</translation>
     </message>
     <message>
-        <source>Show splash screen on startup (default: %u)</source>
-        <translation>Mostra la pantalla de benvinguda a l'iniciar (per defecte: %u)</translation>
-    </message>
-    <message>
         <source>Set language, for example "de_DE" (default: system locale)</source>
         <translation>Selecciona l'idioma, per exemple "ca" (per defecte: idioma del sistema)</translation>
     </message>
@@ -898,20 +629,16 @@
         <source>Set SSL root certificates for payment request (default: -system-)</source>
         <translation>Estableix el certificats SSL arrel per a la sol·licitud de pagament (per defecte: -sistema-)</translation>
     </message>
-</context>
+    <message>
+        <source>Show splash screen on startup (default: %u)</source>
+        <translation>Mostra la pantalla de benvinguda a l'iniciar (per defecte: %u)</translation>
+    </message>
+    </context>
 <context>
     <name>Intro</name>
     <message>
         <source>Welcome</source>
         <translation>Benvingut</translation>
-    </message>
-    <message>
-        <source>Welcome to Ion Core.</source>
-        <translation>Benvingut a Ion Core.</translation>
-    </message>
-    <message>
-        <source>As this is the first time the program is launched, you can choose where Ion Core will store its data.</source>
-        <translation>Al ser el primer cop que s'inicia el programa, pots escollir on es desaran les dades del Ion Core.</translation>
     </message>
     <message>
         <source>Use the default data directory</source>
@@ -920,10 +647,6 @@
     <message>
         <source>Use a custom data directory:</source>
         <translation>Usar una carpeta de dades personalitzada:</translation>
-    </message>
-    <message>
-        <source>Ion Core</source>
-        <translation>Ion Core</translation>
     </message>
     <message>
         <source>Error: Specified data directory "%1" cannot be created.</source>
@@ -949,232 +672,16 @@
         <translation>Formulari</translation>
     </message>
     <message>
-        <source>Alias</source>
-        <translation>Àlies</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Adreça</translation>
-    </message>
-    <message>
-        <source>Protocol</source>
-        <translation>Protocol</translation>
-    </message>
-    <message>
         <source>Status</source>
         <translation>Estat</translation>
     </message>
     <message>
-        <source>Active</source>
-        <translation>Actiu</translation>
-    </message>
-    <message>
-        <source>Last Seen (UTC)</source>
-        <translation>Vist per últim cop (UTC)</translation>
-    </message>
-    <message>
-        <source>Pubkey</source>
-        <translation>ClauPública</translation>
-    </message>
-    <message>
-        <source>Status will be updated automatically in (sec):</source>
-        <translation>L'estat s'actualitzarà automàticament en (seg):</translation>
-    </message>
-    <message>
         <source>0</source>
         <translation>0</translation>
-    </message>
-    <message>
-        <source>Start alias</source>
-        <translation>Inicia àlies</translation>
-    </message>
-    <message>
-        <source>Confirm masternode start</source>
-        <translation>Confirma l'inici del Masternode</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to start masternode %1?</source>
-        <translation>Estàs segur que vols iniciar el Masternode %1?</translation>
-    </message>
-    <message>
-        <source>Confirm all masternodes start</source>
-        <translation>Confirma l'inici de tots els Masternodes</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to start ALL masternodes?</source>
-        <translation>Estàs segur que vols iniciar TOTS els Masternodes?</translation>
-    </message>
-    <message>
-        <source>Command is not available right now</source>
-        <translation>La comanda no està disponible en aquests moments</translation>
-    </message>
-    <message>
-        <source>You can't use this command until masternode list is synced</source>
-        <translation>No es pot utilitzar aquesta comanda fins que la llista de masternodes estigui sincronitzada.</translation>
-    </message>
-    <message>
-        <source>Confirm missing masternodes start</source>
-        <translation>Confirma l'inici dels Masternodes desapareguts</translation>
-    </message>
-    <message>
-        <source>Are you sure you want to start MISSING masternodes?</source>
-        <translation>Estàs segur que vols iniciar els Masternodes DESAPAREGUTS?</translation>
-    </message>
-</context>
-<context>
-    <name>MultiSendDialog</name>
-    <message>
-        <source>MultiSend</source>
-        <translation>MultiSend</translation>
-    </message>
-    <message>
-        <source>Enter whole numbers 1 - 100</source>
-        <translation>Introdueix nombres enters 1 - 100</translation>
-    </message>
-    <message>
-        <source>Add to MultiSend Vector</source>
-        <translation>Afegeix al vector MultiSend</translation>
-    </message>
-    <message>
-        <source>Add</source>
-        <translation>Afegeix</translation>
-    </message>
-    <message>
-        <source>Deactivate MultiSend</source>
-        <translation>Desactiva MultiSend</translation>
-    </message>
-    <message>
-        <source>Deactivate</source>
-        <translation>Desactiva</translation>
-    </message>
-    <message>
-        <source>Choose an address from the address book</source>
-        <translation>Tria una adreça de la llibreta d'adreces</translation>
-    </message>
-    <message>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <source>Percentage of stake to send</source>
-        <translation>Percentatge d'stake a enviar</translation>
-    </message>
-    <message>
-        <source>Percentage:</source>
-        <translation>Percentatge:</translation>
-    </message>
-    <message>
-        <source>Address:</source>
-        <translation>Adreça:</translation>
-    </message>
-    <message>
-        <source>Delete</source>
-        <translation>Elimina</translation>
-    </message>
-    <message>
-        <source>Activate MultiSend</source>
-        <translation>Activar MultiSend</translation>
-    </message>
-    <message>
-        <source>Activate</source>
-        <translation>Activa</translation>
-    </message>
-    <message>
-        <source>(no label)</source>
-        <translation>(sense etiqueta)</translation>
-    </message>
-    <message>
-        <source>The entered address:
-</source>
-        <translation>L'adreça introduïda:
-</translation>
-    </message>
-    <message>
-        <source>Please Enter 1 - 100 for percent.</source>
-        <translation>Si us plau introdueix 1 - 100 per al percentatge</translation>
-    </message>
-    <message>
-        <source>MultiSend Vector
-</source>
-        <translation>Vector MultiSend
-</translation>
-    </message>
-    <message>
-        <source>Removed </source>
-        <translation>Eliminat</translation>
-    </message>
-    <message>
-        <source>Could not locate address
-</source>
-        <translation>No s'ha trobat l'adreça
-</translation>
-    </message>
-</context>
-<context>
-    <name>MultisigDialog</name>
-    <message>
-        <source>Status:</source>
-        <translation>Estat:</translation>
-    </message>
-    <message>
-        <source>0</source>
-        <translation>0</translation>
-    </message>
-    <message>
-        <source>Amount:</source>
-        <translation>Import:</translation>
     </message>
     </context>
 <context>
-    <name>ObfuscationConfig</name>
-    <message>
-        <source>Configure Obfuscation</source>
-        <translation>Configura ofuscació</translation>
-    </message>
-    <message>
-        <source>Basic Privacy</source>
-        <translation>Privacitat bàsica</translation>
-    </message>
-    <message>
-        <source>High Privacy</source>
-        <translation>Privacitat alta</translation>
-    </message>
-    <message>
-        <source>Maximum Privacy</source>
-        <translation>Privacitat màxima</translation>
-    </message>
-    <message>
-        <source>Please select a privacy level.</source>
-        <translation>Si us plau, selecciona un nivell de privacitat.</translation>
-    </message>
-    <message>
-        <source>Use 2 separate masternodes to mix funds up to 10000 ION</source>
-        <translation>Utilitza 2 masternodes diferents per mesclar fons de fins a 10000 ION</translation>
-    </message>
-    <message>
-        <source>Use 8 separate masternodes to mix funds up to 10000 ION</source>
-        <translation>Utilitza 8 masternodes diferents per mesclar fons de fins a 10000 ION</translation>
-    </message>
-    <message>
-        <source>Use 16 separate masternodes</source>
-        <translation>Utilitza 16 masternodes diferents</translation>
-    </message>
-    <message>
-        <source>This option is the quickest and will cost about ~0.025 ION to anonymize 10000 ION</source>
-        <translation>Aquesta opció és la més ràpida i té un cost d'uns ~0.025 ION per anonimitzar 10000 ION</translation>
-    </message>
-    <message>
-        <source>This option is moderately fast and will cost about 0.05 ION to anonymize 10000 ION</source>
-        <translation>Aquesta opció és moderadament ràpida i té un cost d'uns 0.05 ION per anonimitzar 10000 ION</translation>
-    </message>
-    <message>
-        <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
-        <translation>Aquesta és l'opció més lenta però més segura. Usar l'anonimitzat màxim té un cost de</translation>
-    </message>
-    <message>
-        <source>Obfuscation Configuration</source>
-        <translation>Configuració de l'ofuscació</translation>
-    </message>
+    <name>ModalOverlay</name>
     </context>
 <context>
     <name>OpenURIDialog</name>
@@ -1202,8 +709,8 @@
         <translation>MB</translation>
     </message>
     <message>
-        <source>Allow incoming connections</source>
-        <translation>Permet connexions entrants</translation>
+        <source>Show Masternodes Tab</source>
+        <translation>Mostra la pestanya de Masternodes</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1214,10 +721,6 @@
         <translation>Expert</translation>
     </message>
     <message>
-        <source>Automatically start ION after logging in to the system.</source>
-        <translation>Inicia ION automàticament després d'identificar-te en el sistema.</translation>
-    </message>
-    <message>
         <source>Whether to show coin control features or not.</source>
         <translation>Mostra o no les funcionalitats de control de monedes.</translation>
     </message>
@@ -1226,8 +729,8 @@
         <translation>Activa la funcionalitat de &amp;control de monedes</translation>
     </message>
     <message>
-        <source>Show Masternodes Tab</source>
-        <translation>Mostra la pestanya de Masternodes</translation>
+        <source>Allow incoming connections</source>
+        <translation>Permet connexions entrants</translation>
     </message>
     <message>
         <source>&amp;Port:</source>
@@ -1286,93 +789,6 @@
     </context>
 <context>
     <name>PeerTableModel</name>
-    <message>
-        <source>Version</source>
-        <translation>Versió</translation>
-    </message>
-    <message>
-        <source>Ping Time</source>
-        <translation>Temps de Ping</translation>
-    </message>
-</context>
-<context>
-    <name>PrivacyDialog</name>
-    <message>
-        <source>0</source>
-        <translation>0</translation>
-    </message>
-    <message>
-        <source>xION</source>
-        <translation>xION</translation>
-    </message>
-    <message>
-        <source>0.000 000 00 ION</source>
-        <translation>0.000 000 00 ION</translation>
-    </message>
-    <message>
-        <source>Reset</source>
-        <translation>Restableix</translation>
-    </message>
-    <message>
-        <source>Quantity:</source>
-        <translation>Quantitat:</translation>
-    </message>
-    <message>
-        <source>Amount:</source>
-        <translation>Import:</translation>
-    </message>
-    <message>
-        <source>0 xION</source>
-        <translation>0 xION</translation>
-    </message>
-    <message>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <source>Alt+P</source>
-        <translation>Alt+P</translation>
-    </message>
-    <message>
-        <source>A&amp;mount:</source>
-        <translation>I&amp;mport:</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>Prioritat:</translation>
-    </message>
-    <message>
-        <source>TextLabel</source>
-        <translation>EtiquetaDeText</translation>
-    </message>
-    <message>
-        <source>Fee:</source>
-        <translation>Comissió:</translation>
-    </message>
-    <message>
-        <source>no</source>
-        <translation>no</translation>
-    </message>
-    <message>
-        <source>Bytes:</source>
-        <translation>Bytes:</translation>
-    </message>
-    <message>
-        <source>medium</source>
-        <translation>mitjana</translation>
-    </message>
-    <message>
-        <source>Change:</source>
-        <translation>Canvi:</translation>
-    </message>
-    <message>
-        <source>Copy quantity</source>
-        <translation>Copia la quantitat</translation>
-    </message>
-    <message>
-        <source>Copy amount</source>
-        <translation>Copia l'import</translation>
-    </message>
     </context>
 <context>
     <name>QObject</name>
@@ -1397,14 +813,19 @@
         <translation>%1 s</translation>
     </message>
     <message>
-        <source>NETWORK</source>
-        <translation>XARXA</translation>
-    </message>
-    <message>
         <source>%1 ms</source>
         <translation>%1 ms</translation>
     </message>
-</context>
+    </context>
+<context>
+    <name>QObject::QObject</name>
+    </context>
+<context>
+    <name>QRDialog</name>
+    </context>
+<context>
+    <name>QRGeneralImageWidget</name>
+    </context>
 <context>
     <name>QRImageWidget</name>
     <message>
@@ -1443,10 +864,6 @@
         <translation>Xarxa</translation>
     </message>
     <message>
-        <source>Build date</source>
-        <translation>Data de compilació</translation>
-    </message>
-    <message>
         <source>&amp;Console</source>
         <translation>&amp;Consola</translation>
     </message>
@@ -1463,24 +880,12 @@
         <translation>Enviat</translation>
     </message>
     <message>
-        <source>Protocol</source>
-        <translation>Protocol</translation>
-    </message>
-    <message>
         <source>Version</source>
         <translation>Versió</translation>
     </message>
     <message>
         <source>Services</source>
         <translation>Serveis</translation>
-    </message>
-    <message>
-        <source>Bytes Sent</source>
-        <translation>Bytes Enviats</translation>
-    </message>
-    <message>
-        <source>Bytes Received</source>
-        <translation>Bytes Rebuts</translation>
     </message>
     <message>
         <source>Ping Time</source>
@@ -1584,10 +989,6 @@
         <translation>Missatge</translation>
     </message>
     <message>
-        <source>Amount</source>
-        <translation>Import</translation>
-    </message>
-    <message>
         <source>(no label)</source>
         <translation>(sense etiqueta)</translation>
     </message>
@@ -1607,20 +1008,8 @@
         <translation>Import:</translation>
     </message>
     <message>
-        <source>Priority:</source>
-        <translation>Prioritat:</translation>
-    </message>
-    <message>
-        <source>medium</source>
-        <translation>mitjana</translation>
-    </message>
-    <message>
         <source>Fee:</source>
         <translation>Comissió:</translation>
-    </message>
-    <message>
-        <source>no</source>
-        <translation>no</translation>
     </message>
     <message>
         <source>After Fee:</source>
@@ -1629,26 +1018,6 @@
     <message>
         <source>Change:</source>
         <translation>Canvi:</translation>
-    </message>
-    <message>
-        <source>Minimize</source>
-        <translation>Minimitzar</translation>
-    </message>
-    <message>
-        <source>Confirmation time:</source>
-        <translation>Temps de Confirmació:</translation>
-    </message>
-    <message>
-        <source>normal</source>
-        <translation>normal</translation>
-    </message>
-    <message>
-        <source>fast</source>
-        <translation>ràpid</translation>
-    </message>
-    <message>
-        <source>Recommended</source>
-        <translation>Recomanat</translation>
     </message>
     <message>
         <source>Balance:</source>
@@ -1673,10 +1042,6 @@
     <message>
         <source>Copy bytes</source>
         <translation>Copia els bytes</translation>
-    </message>
-    <message>
-        <source>Copy priority</source>
-        <translation>Copia la prioritat</translation>
     </message>
     <message>
         <source>Copy change</source>
@@ -1711,11 +1076,10 @@
     </message>
     </context>
 <context>
+    <name>SendConfirmationDialog</name>
+    </context>
+<context>
     <name>ShutdownWindow</name>
-    <message>
-        <source>Ion Core is shutting down...</source>
-        <translation>Ion Core s'està tancant...</translation>
-    </message>
     <message>
         <source>Do not shut down the computer until this window disappears.</source>
         <translation>No apagueu l'ordinador fins que aquesta finestra desaparegui.</translation>
@@ -1779,14 +1143,10 @@
 <context>
     <name>SplashScreen</name>
     <message>
-        <source>Ion Core</source>
-        <translation>Ion Core</translation>
-    </message>
-    <message>
         <source>Version %1</source>
         <translation>Versió %1</translation>
     </message>
-    </context>
+</context>
 <context>
     <name>TrafficGraphWidget</name>
     </context>
@@ -1831,10 +1191,6 @@
 </context>
 <context>
     <name>TransactionDescDialog</name>
-    <message>
-        <source>Transaction details</source>
-        <translation>Detalls de la transacció</translation>
-    </message>
     </context>
 <context>
     <name>TransactionTableModel</name>
@@ -1845,14 +1201,6 @@
     <message>
         <source>Type</source>
         <translation>Tipus</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>Adreça</translation>
-    </message>
-    <message>
-        <source>Obfuscated</source>
-        <translation>Ofuscat</translation>
     </message>
     <message>
         <source>(n/a)</source>
@@ -1959,33 +1307,10 @@
     </message>
     </context>
 <context>
-    <name>XIonControlDialog</name>
-    <message>
-        <source>Quantity</source>
-        <translation>Quantitat</translation>
-    </message>
-    <message>
-        <source>0</source>
-        <translation>0</translation>
-    </message>
-    <message>
-        <source>xION</source>
-        <translation>xION</translation>
-    </message>
-    </context>
-<context>
     <name>ion-core</name>
-    <message>
-        <source>Can't mix while sync in progress.</source>
-        <translation>No es pot mesclar mentre s'està sincronitzant.</translation>
-    </message>
     <message>
         <source>Connection options:</source>
         <translation>Opcions de connexió:</translation>
-    </message>
-    <message>
-        <source>Error connecting to Masternode.</source>
-        <translation>Error connectant al Masternode.</translation>
     </message>
     <message>
         <source>Error</source>
@@ -1994,26 +1319,6 @@
     <message>
         <source>Information</source>
         <translation>Informació</translation>
-    </message>
-    <message>
-        <source>Invalid private key.</source>
-        <translation>Clau privada no vàlida.</translation>
-    </message>
-    <message>
-        <source>Loading block index...</source>
-        <translation>S'està carregant l'índex de blocs...</translation>
-    </message>
-    <message>
-        <source>Loading wallet... (%3.1f %%)</source>
-        <translation>S'està carregant el moneder... (%3.1f %%)</translation>
-    </message>
-    <message>
-        <source>Loading wallet...</source>
-        <translation>S'està carregant el moneder...</translation>
-    </message>
-    <message>
-        <source>Masternode:</source>
-        <translation>Masternode:</translation>
     </message>
     <message>
         <source>Mixing in progress...</source>
@@ -2028,26 +1333,6 @@
         <translation>No s'han trobat masternodes compatibles.</translation>
     </message>
     <message>
-        <source>Options:</source>
-        <translation>Opcions:</translation>
-    </message>
-    <message>
-        <source>RPC server options:</source>
-        <translation>Opcions del servidor RPC:</translation>
-    </message>
-    <message>
-        <source>Rescanning...</source>
-        <translation>S'està reescanejant...</translation>
-    </message>
-    <message>
-        <source>Submitted following entries to masternode: %u / %d</source>
-        <translation>S'ha enviat les següents entrades al masternode: %u /%d</translation>
-    </message>
-    <message>
-        <source>Submitted to masternode, waiting for more entries ( %u / %d ) %s</source>
-        <translation>Enviat al masternode, esperant més entrades ( %u / %d ) %s</translation>
-    </message>
-    <message>
         <source>Submitted to masternode, waiting in queue %s</source>
         <translation>Enviat al masternode, esperant a la cua %s</translation>
     </message>
@@ -2060,16 +1345,40 @@
         <translation>Sincronització finalitzada</translation>
     </message>
     <message>
+        <source>Can't mix while sync in progress.</source>
+        <translation>No es pot mesclar mentre s'està sincronitzant.</translation>
+    </message>
+    <message>
+        <source>Loading block index...</source>
+        <translation>S'està carregant l'índex de blocs...</translation>
+    </message>
+    <message>
+        <source>Loading wallet...</source>
+        <translation>S'està carregant el moneder...</translation>
+    </message>
+    <message>
+        <source>Masternode:</source>
+        <translation>Masternode:</translation>
+    </message>
+    <message>
+        <source>Options:</source>
+        <translation>Opcions:</translation>
+    </message>
+    <message>
+        <source>RPC server options:</source>
+        <translation>Opcions del servidor RPC:</translation>
+    </message>
+    <message>
+        <source>Rescanning...</source>
+        <translation>S'està reescanejant...</translation>
+    </message>
+    <message>
         <source>Transaction not valid.</source>
         <translation>Transacció no vàlida.</translation>
     </message>
     <message>
         <source>Verifying blocks...</source>
         <translation>Verificant blocs...</translation>
-    </message>
-    <message>
-        <source>Verifying wallet...</source>
-        <translation>Verificant moneder...</translation>
     </message>
     <message>
         <source>Wallet is locked.</source>
