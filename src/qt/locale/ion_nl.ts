@@ -4640,16 +4640,16 @@ Nota: Het bericht zal niet verzonden worden met de betaling over het Ion netwerk
         <translation>De %s ontwikkelaars</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>De PIVX Core ontwikkelaars</translation>
+        <source>The %p developers</source>
+        <translation>De %p ontwikkelaars</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>De Dash Core ontwikkelaars</translation>
+        <source>The %d developers</source>
+        <translation>De %d ontwikkelaars</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>De Bitcoin Core ontwikkelaars</translation>
+        <source>The %b developers</source>
+        <translation>De %b ontwikkelaars</translation>
     </message>
     <message>
         <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>

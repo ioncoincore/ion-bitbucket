@@ -2897,16 +2897,16 @@
         <translation>%s 개발자</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>PIVX Core 개발자</translation>
+        <source>The %p developers</source>
+        <translation>%p 개발자</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>Dash Core 개발자</translation>
+        <source>The %d developers</source>
+        <translation>%d 개발자</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core 개발자</translation>
+        <source>The %b developers</source>
+        <translation>%b 개발자</translation>
     </message>
     <message>
         <source>Invalid -onion address or hostname: '%s'</source>

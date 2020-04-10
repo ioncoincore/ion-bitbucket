@@ -4635,16 +4635,16 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>%s นักพัฒนา</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>PIVX Core นักพัฒนา</translation>
+        <source>The %p developers</source>
+        <translation>%p นักพัฒนา</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>Dash Core นักพัฒนา</translation>
+        <source>The %d developers</source>
+        <translation>%d นักพัฒนา</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core นักพัฒนา</translation>
+        <source>The %b developers</source>
+        <translation>%b นักพัฒนา</translation>
     </message>
     <message>
         <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>

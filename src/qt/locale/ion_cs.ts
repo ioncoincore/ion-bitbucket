@@ -1517,16 +1517,16 @@
         <translation>%s vývojáři</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>PIVX Core vývojáři</translation>
+        <source>The %p developers</source>
+        <translation>%p vývojáři</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>Dash Core vývojáři</translation>
+        <source>The %d developers</source>
+        <translation>%d vývojáři</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core vývojáři</translation>
+        <source>The %b developers</source>
+        <translation>%b vývojáři</translation>
     </message>
     <message>
         <source>Synchronization pending...</source>
