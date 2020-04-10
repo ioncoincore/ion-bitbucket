@@ -269,16 +269,16 @@
         <translation>%s कोर के डेवलपर्स</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>PIVX Core कोर के डेवलपर्स</translation>
+        <source>The %p developers</source>
+        <translation>%p कोर के डेवलपर्स</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>Dash Core कोर के डेवलपर्स</translation>
+        <source>The %d developers</source>
+        <translation>%d कोर के डेवलपर्स</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core कोर के डेवलपर्स</translation>
+        <source>The %b developers</source>
+        <translation>%b कोर के डेवलपर्स</translation>
     </message>
     <message>
         <source>Warning</source>

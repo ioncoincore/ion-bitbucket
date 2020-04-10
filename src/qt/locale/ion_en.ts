@@ -6198,18 +6198,18 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>The PIVX Core developers</source>
-        <translation>The PIVX Core developers</translation>
+        <source>The %p developers</source>
+        <translation>The %p developers</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>The Dash Core developers</source>
-        <translation>The Dash Core developers</translation>
+        <source>The %d developers</source>
+        <translation>The %d developers</translation>
     </message>
     <message>
         <location line="+1"/>
-        <source>The Bitcoin Core developers</source>
-        <translation>The Bitcoin Core developers</translation>
+        <source>The %b developers</source>
+        <translation>The %b developers</translation>
     </message>
     <message>
         <location line="+38"/>

@@ -4637,16 +4637,16 @@ Non è possibile avviare un masternode in modalità lite</translation>
         <translation>Sviluppatori di %s</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>Sviluppatori di PIVX Core</translation>
+        <source>The %p developers</source>
+        <translation>Sviluppatori di %p</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>Sviluppatori di Dash Core</translation>
+        <source>The %d developers</source>
+        <translation>Sviluppatori di %d</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Sviluppatori di Bitcoin Core</translation>
+        <source>The %b developers</source>
+        <translation>Sviluppatori di %b</translation>
     </message>
     <message>
         <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>

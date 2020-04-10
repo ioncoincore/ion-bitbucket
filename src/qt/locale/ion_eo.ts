@@ -1525,16 +1525,16 @@
         <translation>La programistoj de %s</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>La programistoj de PIVX Core</translation>
+        <source>The %p developers</source>
+        <translation>La programistoj de %p</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>La programistoj de Dash Core</translation>
+        <source>The %d developers</source>
+        <translation>La programistoj de %d</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>La programistoj de Bitcoin Core</translation>
+        <source>The %b developers</source>
+        <translation>La programistoj de %b</translation>
     </message>
     <message>
         <source>This is experimental software.</source>

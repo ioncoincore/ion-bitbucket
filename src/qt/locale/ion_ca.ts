@@ -1373,16 +1373,16 @@
         <translation>Els desenvolupadors de %s</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>Els desenvolupadors de PIVX Core</translation>
+        <source>The %p developers</source>
+        <translation>Els desenvolupadors de %p</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>Els desenvolupadors de Dash Core</translation>
+        <source>The %d developers</source>
+        <translation>Els desenvolupadors de %d</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Els desenvolupadors de Bitcoin Core</translation>
+        <source>The %b developers</source>
+        <translation>Els desenvolupadors de %b</translation>
     </message>
     <message>
         <source>Rescanning...</source>

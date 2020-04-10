@@ -2877,16 +2877,16 @@
         <translation>%s udviklerne</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>PIVX Core udviklerne</translation>
+        <source>The %p developers</source>
+        <translation>%p udviklerne</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>Dash Core udviklerne</translation>
+        <source>The %d developers</source>
+        <translation>%d udviklerne</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core udviklerne</translation>
+        <source>The %b developers</source>
+        <translation>%b udviklerne</translation>
     </message>
     <message>
         <source>Invalid -onion address or hostname: '%s'</source>
