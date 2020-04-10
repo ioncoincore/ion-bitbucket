@@ -1287,10 +1287,6 @@
         <translation>&amp;เชื่อมต่อผ่าน พร็อกซี่ SOCKS5 (พร็อกซี่เริ่มต้น):</translation>
     </message>
     <message>
-        <source>Shows if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
-        <translation>แสดง หากพร็อกซี SOCKS5 เป็นค่าเริ่มต้นที่ใช้เพื่อเข้าถึง Peers ผ่านเครือข่ายประเภทนี้</translation>
-    </message>
-    <message>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Exit in the menu.</source>
         <translation>มินิไมซ์แอพ แทนการออกจากแอพพลิเคชั่น เมื่อวินโดว์ได้รับการปิด เมื่อเลือกตัวเลือกนี้ แอพพลิเคชั่น จะถูกปิด ก็ต่อเมื่อ มีการเลือกเมนู Exit/ออกจากระบบ เท่านั้น</translation>
     </message>
@@ -2142,20 +2138,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>เปิดแฟ้มบันทึกข้อผิดพลาด %1 จากไดเร็กทอรีข้อมูลปัจจุบัน อาจใช้เวลาสักครู่สำหรับไฟล์บันทึกขนาดใหญ่</translation>
     </message>
     <message>
-        <source>InstantSend locks</source>
-        <translation>InstantSend ล็อค</translation>
-    </message>
-    <message>
         <source>Decrease font size</source>
         <translation>ลดขนาดตัวอักษร</translation>
     </message>
     <message>
         <source>Increase font size</source>
         <translation>เพิ่มขนาดตัวอักษร</translation>
-    </message>
-    <message>
-        <source>&amp;Reset</source>
-        <translation>&amp;รีเซต </translation>
     </message>
     <message>
         <source>Services</source>
@@ -2292,14 +2280,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
         <translation>พิมพ์ &lt;b&gt;help&lt;/b&gt;สำหรับภาพรวมของคำสั่งที่พร้อมใช้งาน </translation>
-    </message>
-    <message>
-        <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
-        <translation>ใช้ลูกศรขึ้นและลงเพื่อเลื่อนดูประวัติ และ %1 เพื่อเคลียร์หน้าจอ</translation>
-    </message>
-    <message>
-        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
-        <translation>คำเตือน: สแกมเมอร์กำลังใช้งานอยู่, กำลังบอกให้ผู้ใช้พิมพ์คำสั่งที่นี่, ขโมยเนื้อหาใน wallet ได้ ห้ามใช้คอนโซลนี้โดยไม่เข้าใจส่วนย่อยของคำสั่ง</translation>
     </message>
     <message>
         <source>In:</source>
@@ -2634,14 +2614,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>ต่อกิโลไบต์</translation>
     </message>
     <message>
-        <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until you have validated the complete chain.</source>
-        <translation>การใช้ fallbackfee อาจส่งผลให้การส่งธุรกรรมที่ต้องใช้เวลาหลายชั่วโมงหรือหลายวัน (หรือไม่) เพื่อยืนยัน พิจารณาเลือกค่าธรรมเนียมด้วยตนเองหรือรอจนกว่าคุณจะได้ตรวจสอบความสมบูรณ์ของสายโซ่</translation>
-    </message>
-    <message>
-        <source>Note: Not enough data for fee estimation, using the fallback fee instead.</source>
-        <translation>หมายเหตุ: ข้อมูลไม่เพียงพอสำหรับการประมาณการค่าบริการ โปรดใช้ค่าบริการ fallback แทน</translation>
-    </message>
-    <message>
         <source>Hide</source>
         <translation>ซ่อน</translation>
     </message>
@@ -2718,10 +2690,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>คัดลอกการเปลี่ยนแปลง</translation>
     </message>
     <message>
-        <source>%1 (%2 blocks)</source>
-        <translation>%1 (%2 blocks)</translation>
-    </message>
-    <message>
         <source>using</source>
         <translation>การใช้</translation>
     </message>
@@ -2744,10 +2712,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>&lt;b&gt;(%1 of %2 entries displayed)&lt;/b&gt;</source>
         <translation>&lt;b&gt;(%1 of %2 รายการที่แสดง)&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <source>any available funds</source>
-        <translation>เงินทุนที่มีอยู่</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -3991,10 +3955,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>เงินทุนไม่เพียงพอ</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>จำนวนเงินไม่ถูกต้องสำหรับ -discardfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
         <translation>จำนวนที่ไม่ถูกต้องสำหรับ -paytxfee = &lt;amount&gt;: '%s' (ต้องมีอย่างน้อย %s)</translation>
     </message>
@@ -4183,10 +4143,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>ตัวแทนผู้ใช้แสดงความคิดเห็น (%s) มีอักขระที่ไม่ปลอดภัย</translation>
     </message>
     <message>
-        <source>Verifying wallet(s)...</source>
-        <translation>กำลังตรวจสอบ wallet(s)...</translation>
-    </message>
-    <message>
         <source>Will retry...</source>
         <translation>จะลองใหม่ ...</translation>
     </message>
@@ -4285,10 +4241,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Prune: last wallet synchronisation goes beyond pruned data. You need to -reindex (download the whole blockchain again in case of pruned node)</source>
         <translation>การซิงโครไนซ์ wallet ครั้งล่าสุดเหนือกว่าข้อมูล pruned คุณต้อง -reindex (ดาวน์โหลด blockchain ทั้งหมดอีกครั้งในกรณีของ pruned โหนด)</translation>
-    </message>
-    <message>
-        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect used)</source>
-        <translation>ข้อสงสัยสำหรับที่อยู่ของ peer ค้นหาได้ทาง DNS หากมีที่อยู่ต่ำ (ค่าเริ่มต้น: 1 เว้นแต่ -connect ถูกใช้)</translation>
     </message>
     <message>
         <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
@@ -4453,10 +4405,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
         <translation>จำนวนเงินที่ไม่ถูกต้องสำหรับ -fallbackfee = 1: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid masternodeblsprivkey. Please see documentation.</source>
-        <translation>masternodeprivkey ไม่ถูกต้อง โปรดดูเอกสารประกอบ</translation>
     </message>
     <message>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
@@ -4663,14 +4611,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>คุณไม่สามารถเริ่มต้น masternode ใน Lite mode</translation>
     </message>
     <message>
-        <source>You can not start a masternode with wallet enabled.</source>
-        <translation>คุณไม่สามารถเริ่มต้น masternode กับ wallet เปิดการใช้งาน</translation>
-    </message>
-    <message>
-        <source>You need to rebuild the database using -reindex to change -txindex</source>
-        <translation>คุณจำเป็นต้องสร้างฐานข้อมูลโดยใช้ -reindex-chainstate เพื่อเปลี่ยน -txindex</translation>
-    </message>
-    <message>
         <source>ZeroMQ notification options:</source>
         <translation>ตัวเลือกการแจ้งเตือน ZeroMQ:</translation>
     </message>
@@ -4695,6 +4635,18 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>%s นักพัฒนา</translation>
     </message>
     <message>
+        <source>The PIVX Core developers</source>
+        <translation>PIVX Core นักพัฒนา</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Dash Core นักพัฒนา</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Bitcoin Core นักพัฒนา</translation>
+    </message>
+    <message>
         <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
         <translation>ไม่สามารถรับการล็อกไดเรกทอรีข้อมูล %s ได้ %s มันอาจทำงานอยู่แล้ว</translation>
     </message>
@@ -4703,24 +4655,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>เผยแพร่ภายใต้ใบอนุญาตซอฟต์แวร์ MIT โปรดดูที่ไฟล์ที่แนบมา %s หรือ %s</translation>
     </message>
     <message>
-        <source>Enable use of PrivateSend for funds stored in this wallet (0-1, default: %u)</source>
-        <translation>เปิดใช้งาน PrivateSend สำหรับเก็บเงินไว้ใน wallet นี้ (0-1 ค่าเริ่มต้น: %u)</translation>
-    </message>
-    <message>
-        <source>Error loading %s: You can't enable HD on an already existing non-HD wallet</source>
-        <translation>เกิดข้อผิดพลาดในการโหลด %s: คุณไม่สามารถเปิดใช้งาน HD บน wallet ที่ไม่ใช่ของ HD ที่มีอยู่แล้ว</translation>
-    </message>
-    <message>
-        <source>Error loading wallet %s. -wallet parameter must only specify a filename (not a path).</source>
-        <translation>เกิดข้อผิดพลาดในการโหลด wallet %s. -wallet พารามิเตอร์ต้องกำหนดชื่อไฟล์เท่านั้น (ไม่ใช่ path)</translation>
-    </message>
-    <message>
         <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
         <translation>เกิดข้อผิดพลาดในการอ่าน %s! คีย์ทั้งหมดอ่านได้อย่างถูกต้อง แต่ข้อมูลธุรกรรมหรือรายการสมุดที่อยู่อาจหายไปหรือไม่ถูกต้อง</translation>
-    </message>
-    <message>
-        <source>Exclude debugging information for a category. Can be used in conjunction with -debug=1 to output debug logs for all categories except one or more specified categories.</source>
-        <translation>ไม่รวมข้อมูลการแก้ไขจุดบกพร่อง สามารถถูกใช้ในคำเชื่อมกับ -debug=1 ไปยัง output บันทึกดีบักสำหรับทุกประเภทนอกจากประเภทที่กำหนด</translation>
     </message>
     <message>
         <source>Force relay of transactions from whitelisted peers even if they violate local relay policy (default: %d)</source>
@@ -4759,14 +4695,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>กำหนดอัตราค่าธรรมเนียมต่ำสุด (%s / kB) สำหรับธุรกรรมที่ถูกรวมในการสร้างบล็อค (ค่าดีฟอลต์: %s)</translation>
     </message>
     <message>
-        <source>The fee rate (in %s/kB) that indicates your tolerance for discarding change by adding it to the fee (default: %s). Note: An output is discarded if it is dust at this rate, but we will always discard up to the dust relay fee and a discard fee above that is limited by the fee estimate for the longest target</source>
-        <translation>อัตราค่าธรรมเนียม (%s / kB) ที่บ่งบอกการยอมรับความคิดเห็นของคุณสำหรับละทิ้งการเปลี่ยนแปลงโดยเพิ่มไปยังค่าธรรมเนียม (default: %s). หมายเหตุ: Output จะถูกละทิ้งหาก dust ในอัตรานี้ เราจะละทิ้งถึงค่าธรรมเนียมโอน dust และการละทิ้งค่าธรรมเนียมที่สูงกว่าจะถูกจำกัดโดยค่าธรรมเนียมที่ประมาณสำหรับเป้าหมายที่ยาวที่สุด</translation>
-    </message>
-    <message>
-        <source>This is the transaction fee you may discard if change is smaller than dust at this level</source>
-        <translation>นี่คือค่าธรรมเนียมการทำธุรกรรมที่คุณอาจจะละทิ้ง ถ้าการเปลี่ยนแปลงเล็กกว่า dust ในเลเวลนี้</translation>
-    </message>
-    <message>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
         <translation>นี่คือค่าธรรมเนียมการทำธุรกรรมที่คุณอาจจะต้องจ่าย เมื่อประมาณการค่าบริการไม่พร้อมใช้งาน</translation>
     </message>
@@ -4777,10 +4705,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Unable to locate enough PrivateSend non-denominated funds for this transaction.</source>
         <translation>ไม่สามารถหาเงินทุนที่ไม่ใช่สกุลเงินที่ระบุ PrivateSend ได้มากพอสำหรับธุรกรรมนี้</translation>
-    </message>
-    <message>
-        <source>Unable to replay blocks. You will need to rebuild the database using -reindex-chainstate.</source>
-        <translation>ไม่สามารถ replay blocks คุณจะต้องสร้างฐานข้อมูลโดยใช้ -reindex-chainstate</translation>
     </message>
     <message>
         <source>Use N separate masternodes for each denominated input to mix funds (%u-%u, default: %u)</source>
@@ -4807,20 +4731,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>คำเตือน: ไฟล์ Wallet เสียหาย, ข้อมูลได้ถูกกู้! %s จากเดิมถูกบันทึกเป็น %s ใน %s; หากยอดคงเหลือหรือธุรกรรมของคุณไม่ถูกต้องคุณควรเรียกคืนจากสำเนาสำรอง</translation>
     </message>
     <message>
-        <source>Whether to save the mempool on shutdown and load on restart (default: %u)</source>
-        <translation>ไม่ว่าจะเซฟ mempool ในเลาปิดเครื่องและโหลดตอนรีสตาร์ท (ค่าเริ่มต้น: %u)</translation>
-    </message>
-    <message>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
         <translation>Whitelist peers กำลังเชื่อมต่อจากที่อยู่ IP ที่ระบุ (เช่น 1.2.3.4) หรือเครือข่ายที่ได้รับการจดบันทึก CIDR (เช่น 1.2.3.0/24) สามารถระบุได้หลายครั้ง</translation>
-    </message>
-    <message>
-        <source>You are starting in lite mode, most Ion-specific functionality is disabled.</source>
-        <translation>คุณกำลังเริ่มต้นใน Lite Mode ฟังก์ชันการทำงานเฉพาะ Ion ส่วนใหญ่จะถูกปิดใช้งาน</translation>
-    </message>
-    <message>
-        <source>%d of last 100 blocks have unexpected version</source>
-        <translation>%d ของ 100 บล็อคล่าสุดมีเวอร์ชั่นที่ไม่คาดคิด</translation>
     </message>
     <message>
         <source>%s corrupt, salvage failed</source>
@@ -4851,10 +4763,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>-rpcport ควรระบุเฉพาะเมื่อระบุ -devnet และ -server</translation>
     </message>
     <message>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>ยอมรับการเชื่อมต่อจากภายนอก (ค่าเริ่มต้น: 1 ถ้าไม่มี -proxy หรือ - เชื่อมต่อ)</translation>
-    </message>
-    <message>
         <source>Allow RFC1918 addresses to be relayed and connected to (default: %u)</source>
         <translation>อนุญาตให้ที่อยู่ RFC1918 ถูกส่งต่อและเชื่อมต่อกับ (ค่าเริ่มต้น: %u)</translation>
     </message>
@@ -4875,10 +4783,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>ลิขสิทธิ์ (C)</translation>
     </message>
     <message>
-        <source>Create up to N inputs of each denominated amount (%u-%u, default: %u)</source>
-        <translation>สร้างได้ถึงจำนวน N inputs ของแต่ละจำนวน (%u-%u, ค่าดีฟอลต์: %u)</translation>
-    </message>
-    <message>
         <source>Error loading %s</source>
         <translation>เกิดข้อผิดพลาดในการโหลด %s</translation>
     </message>
@@ -4889,22 +4793,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Error loading %s: Wallet requires newer version of %s</source>
         <translation>เกิดข้อผิดพลาดในการโหลด %s: Wallet ต้องใช้เวอร์ชันที่ใหม่กว่า %s</translation>
-    </message>
-    <message>
-        <source>Error loading %s: You can't disable HD on an already existing HD wallet</source>
-        <translation>เกิดข้อผิดพลาดในการโหลด %s: คุณไม่สามารถปิดการใช้งาน HD บน HD wallet ที่มีอยู่แล้ว</translation>
-    </message>
-    <message>
-        <source>Error loading wallet %s. -wallet filename must be a regular file.</source>
-        <translation>เกิดข้อผิดพลาดในการโหลด wallet %s. ชื่อไฟล์ -wallet จะต้องเป็นไฟล์ปกติ</translation>
-    </message>
-    <message>
-        <source>Error loading wallet %s. Duplicate -wallet filename specified.</source>
-        <translation>เกิดข้อผิดพลาดในการโหลด wallet %s. คัดลอกชื่อไฟล์ -wallet เฉพาะเจาะจง</translation>
-    </message>
-    <message>
-        <source>Error loading wallet %s. Invalid characters in -wallet filename.</source>
-        <translation>เกิดข้อผิดพลาดในการโหลด wallet %s. อักขระไม่ถูกต้องในชื่อไฟล์ -wallet</translation>
     </message>
     <message>
         <source>Error upgrading chainstate database</source>
@@ -4921,10 +4809,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Initialization sanity check failed. %s is shutting down.</source>
         <translation>การตรวจสอบความถูกต้องล้มเหลว  %s กำลังจะปิด</translation>
-    </message>
-    <message>
-        <source>Inputs vs outputs size mismatch.</source>
-        <translation>ขนาดของ inputs และ outputs ไม่สัมพันธ์กัน</translation>
     </message>
     <message>
         <source>Invalid -onion address or hostname: '%s'</source>
@@ -4961,10 +4845,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Relay non-P2SH multisig (default: %u)</source>
         <translation>ส่งผ่าน non-P2SH multisig (ค่าดีฟอลต์: %u)</translation>
-    </message>
-    <message>
-        <source>Replaying blocks...</source>
-        <translation>กำลัง reply blocks...</translation>
     </message>
     <message>
         <source>Rescanning...</source>
@@ -5019,10 +4899,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>กำหนดที่อยู่สาธารณะของคุณเอง</translation>
     </message>
     <message>
-        <source>Start PrivateSend automatically (0-1, default: %u)</source>
-        <translation>เริ่มต้น PrivateSend อัตโนมัติ (0-1, ค่าดีฟอลต์: %u)</translation>
-    </message>
-    <message>
         <source>Starting network threads...</source>
         <translation>เริ่มต้นเธรดเครือข่าย ..</translation>
     </message>
@@ -5055,10 +4931,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>ทำธุรกรรมสำเร็จแล้ว</translation>
     </message>
     <message>
-        <source>Transaction fee and change calculation failed</source>
-        <translation>ธุรกรรมค่าธรรมเนียมและการคำนวณล้มเหลว</translation>
-    </message>
-    <message>
         <source>Transaction fees are too high.</source>
         <translation>ค่าธรรมเนียมการทำธุรกรรมสูงเกินไป</translation>
     </message>
@@ -5085,10 +4957,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Unknown state: id = %u</source>
         <translation>ไม่ทราบสถานะ : ไอดี = %u</translation>
-    </message>
-    <message>
-        <source>Unsupported logging category %s=%s.</source>
-        <translation>การบันทึกประเภทที่ไม่ได้รับการสนับสนุน %s=%s</translation>
     </message>
     <message>
         <source>Username for JSON-RPC connections</source>

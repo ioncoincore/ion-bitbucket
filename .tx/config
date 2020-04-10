@@ -1,7 +1,9 @@
 [main]
 host = https://www.transifex.com
 
-[ion.qt-translation-012x]
+[ioncore.ion_ents]
 file_filter = src/qt/locale/ion_<lang>.ts
+minimum_perc = 0
 source_file = src/qt/locale/ion_en.ts
 source_lang = en
+type = QT

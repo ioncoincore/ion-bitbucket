@@ -205,6 +205,6 @@ def postprocess_translations(reduce_diff_hacks=False):
 
 if __name__ == '__main__':
     check_at_repository_root()
-    # fetch_all_translations()
+    fetch_all_translations()
     postprocess_translations()
 

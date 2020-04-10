@@ -2873,6 +2873,22 @@
         <translation>RPC server optioner:</translation>
     </message>
     <message>
+        <source>The %s developers</source>
+        <translation>%s udviklerne</translation>
+    </message>
+    <message>
+        <source>The PIVX Core developers</source>
+        <translation>PIVX Core udviklerne</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Dash Core udviklerne</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Bitcoin Core udviklerne</translation>
+    </message>
+    <message>
         <source>Invalid -onion address or hostname: '%s'</source>
         <translation>Ugyldig -onionadresse eller værtsnavn: ' %s'</translation>
     </message>

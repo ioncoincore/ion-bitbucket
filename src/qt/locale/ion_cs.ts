@@ -1513,6 +1513,22 @@
         <translation>Transakce je příliš velká</translation>
     </message>
     <message>
+        <source>The %s developers</source>
+        <translation>%s vývojáři</translation>
+    </message>
+    <message>
+        <source>The PIVX Core developers</source>
+        <translation>PIVX Core vývojáři</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Dash Core vývojáři</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Bitcoin Core vývojáři</translation>
+    </message>
+    <message>
         <source>Synchronization pending...</source>
         <translation>Synchronizace probíhá</translation>
     </message>

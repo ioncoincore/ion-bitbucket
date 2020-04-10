@@ -265,6 +265,22 @@
         <translation>जानकारी</translation>
     </message>
     <message>
+        <source>The %s developers</source>
+        <translation>%s कोर के डेवलपर्स</translation>
+    </message>
+    <message>
+        <source>The PIVX Core developers</source>
+        <translation>PIVX Core कोर के डेवलपर्स</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Dash Core कोर के डेवलपर्स</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Bitcoin Core कोर के डेवलपर्स</translation>
+    </message>
+    <message>
         <source>Warning</source>
         <translation>चेतावनी</translation>
     </message>

@@ -1279,10 +1279,6 @@
         <translation>&amp;Conectare printr-un proxy SOCKS (implicit proxy):</translation>
     </message>
     <message>
-        <source>Shows if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
-        <translation>Afișează dacă proxy-ul implicit SOCKS5 furnizat este utilizat pentru a ajunge la peers prin intermediul acestui tip de rețea.</translation>
-    </message>
-    <message>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Exit in the menu.</source>
         <translation>Minimizează fereastra în locul părăsirii programului în momentul închiderii ferestrei. Cînd acestă opţiune e activă, aplicaţia se va opri doar în momentul selectării comenzii 'Închide aplicaţia' din menu.</translation>
     </message>
@@ -2130,20 +2126,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Deschide fişierul jurnal depanare %1 din directorul curent. Aceasta poate dura cateva secunde pentru fişierele mai mari.</translation>
     </message>
     <message>
-        <source>InstantSend locks</source>
-        <translation>Chei TrimiteInstant</translation>
-    </message>
-    <message>
         <source>Decrease font size</source>
         <translation>Micsoreaza fontul</translation>
     </message>
     <message>
         <source>Increase font size</source>
         <translation>Mareste fontul</translation>
-    </message>
-    <message>
-        <source>&amp;Reset</source>
-        <translation>&amp;Resetează</translation>
     </message>
     <message>
         <source>Services</source>
@@ -2280,14 +2268,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
         <translation>Scrie &lt;b&gt;help&lt;/b&gt; pentru a vedea comenzile disponibile</translation>
-    </message>
-    <message>
-        <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
-        <translation>Foloseste sagetile sus si jos pentru a naviga in istoric si %1 pentru a curata.</translation>
-    </message>
-    <message>
-        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
-        <translation>AVERTIZARE: scamerii au fost si sunt activi, spunându-le utilizatorilor să tasteze aici comenzile, furându-le conținutul portofelului. Nu folosiți această consolă fără să înțelegeți complet ramificările unei comenzi.</translation>
     </message>
     <message>
         <source>In:</source>
@@ -2622,14 +2602,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>per kilooctet</translation>
     </message>
     <message>
-        <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until you have validated the complete chain.</source>
-        <translation>Utilizarea fallbackfee-ului poate duce la trimiterea unei tranzacții care va dura mai multe ore sau zile (sau niciodată) pentru confirmare. Ia în considerare alegerea manuală a taxei sau așteaptă până când ai validat lanțul complet.</translation>
-    </message>
-    <message>
-        <source>Note: Not enough data for fee estimation, using the fallback fee instead.</source>
-        <translation>Notă: Nu sunt suficiente date pentru estimarea comisionului, folosind în schimb taxa de recuperare.</translation>
-    </message>
-    <message>
         <source>Hide</source>
         <translation>Ascunde</translation>
     </message>
@@ -2706,10 +2678,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Copiază rest</translation>
     </message>
     <message>
-        <source>%1 (%2 blocks)</source>
-        <translation>%1 (%2 block-uri)</translation>
-    </message>
-    <message>
         <source>using</source>
         <translation>folosind</translation>
     </message>
@@ -2732,10 +2700,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>&lt;b&gt;(%1 of %2 entries displayed)&lt;/b&gt;</source>
         <translation>&lt;b&gt;(%1 of %2 înregistrările afișate)&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <source>any available funds</source>
-        <translation>orice fonduri disponibile</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -3975,10 +3939,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Fonduri insuficiente.</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Suma nevalidă pentru -discardfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
         <translation>Sumă nevalidă pentru -paytxfee=&lt;suma&gt;: '%s' (trebuie să fie cel puţin %s)</translation>
     </message>
@@ -4163,10 +4123,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Comentariul (%s) al Agentului Utilizator contine caractere nesigure.</translation>
     </message>
     <message>
-        <source>Verifying wallet(s)...</source>
-        <translation>Verificare portofelului (rilor) ...</translation>
-    </message>
-    <message>
         <source>Will retry...</source>
         <translation>Se va reîncerca...</translation>
     </message>
@@ -4267,10 +4223,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Reductie: ultima sincronizare merge dincolo de datele reductiei. Trebuie sa faceti -reindex (sa descarcati din nou intregul blockchain in cazul unui nod redus)</translation>
     </message>
     <message>
-        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect used)</source>
-        <translation>Interogare pentru adrese peer prin căutare DNS, dacă există puține adrese (implicit: 1 decât daca -conectarea este în folosință)</translation>
-    </message>
-    <message>
         <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
         <translation>Randomizează acreditările pentru fiecare conexiune proxy. Asta permite izolarea stream-ului Tor (implicit: %u)</translation>
     </message>
@@ -4333,10 +4285,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Warning: Unknown block versions being mined! It's possible unknown rules are in effect</source>
         <translation>Atentie: se mineaza blocuri cu versiune necunoscuta! Este posibil sa fie in vigoare reguli necunoscute.</translation>
-    </message>
-    <message>
-        <source>You need to rebuild the database using -reindex to change -timestampindex</source>
-        <translation>Trebuie să reconstruiești baza de date utilizând -reindex pentru a schimba -timestampindex</translation>
     </message>
     <message>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
@@ -4437,10 +4385,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
         <translation>Suma nevalidă pentru -fallbackfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid masternodeblsprivkey. Please see documentation.</source>
-        <translation>masternodeblsprivkey nu este valabil. Consultă documentația.</translation>
     </message>
     <message>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
@@ -4647,22 +4591,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Nu poți porni un masternode în modul lite.</translation>
     </message>
     <message>
-        <source>You can not start a masternode with wallet enabled.</source>
-        <translation>Nu poți porni un masternode cu portofelul activat.</translation>
-    </message>
-    <message>
-        <source>You need to rebuild the database using -reindex to change -addressindex</source>
-        <translation>Trebuie să reconstruiești baza de date utilizând -reindex pentru a schimba -addressindex</translation>
-    </message>
-    <message>
-        <source>You need to rebuild the database using -reindex to change -spentindex</source>
-        <translation>Trebuie să reconstruiești baza de date utilizând -reindex pentru a schimba -spentindex</translation>
-    </message>
-    <message>
-        <source>You need to rebuild the database using -reindex to change -txindex</source>
-        <translation>Trebuie să reconstruiești baza de date utilizând -reindex pentru a schimba -txindex</translation>
-    </message>
-    <message>
         <source>ZeroMQ notification options:</source>
         <translation>Opțiuni de notificare ZeroMQ:</translation>
     </message>
@@ -4687,6 +4615,18 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Dezvoltatorii %s</translation>
     </message>
     <message>
+        <source>The PIVX Core developers</source>
+        <translation>Dezvoltatorii PIVX Core</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Dezvoltatorii Dash Core</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Dezvoltatorii Bitcoin Core</translation>
+    </message>
+    <message>
         <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
         <translation>Nu se poate obține o blocare a directorului de date %s. %s probabil rulează deja.</translation>
     </message>
@@ -4695,24 +4635,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Distribuit sub licenţa de programe MIT, vezi fişierul însoţitor %s sau %s</translation>
     </message>
     <message>
-        <source>Enable use of PrivateSend for funds stored in this wallet (0-1, default: %u)</source>
-        <translation>Activează TrimitePrivat pentru fondurile stocate în acest portofel (0-1, implicit: %u)</translation>
-    </message>
-    <message>
-        <source>Error loading %s: You can't enable HD on an already existing non-HD wallet</source>
-        <translation>Eroare la încărcare %s: Nu poți activa HD pe un portofel non-HD deja existent</translation>
-    </message>
-    <message>
-        <source>Error loading wallet %s. -wallet parameter must only specify a filename (not a path).</source>
-        <translation>Eroare la încărcarea portofelului %s. -wallet parametrul trebuie să specifice doar un nume de fișier (nu o cale).</translation>
-    </message>
-    <message>
         <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
         <translation>Eroare la citirea %s! Toate cheile sînt citite corect, dar datele tranzactiei sau anumite intrări din agenda sînt incorecte sau lipsesc.</translation>
-    </message>
-    <message>
-        <source>Exclude debugging information for a category. Can be used in conjunction with -debug=1 to output debug logs for all categories except one or more specified categories.</source>
-        <translation>Excludeți informațiile de debugging pentru o categorie. Poate fi utilizat împreună cu -debug=1 pentru a produce jurnalele de debug pentru toate categoriile, cu excepția uneia sau a mai multor categorii specificate.</translation>
     </message>
     <message>
         <source>Force relay of transactions from whitelisted peers even if they violate local relay policy (default: %d)</source>
@@ -4751,14 +4675,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Setează cea mai mică rată de taxă (în %s/kB) pentru tranzacțiile care vor fi incluse în crearea block-urilor. (implicit: %s)</translation>
     </message>
     <message>
-        <source>The fee rate (in %s/kB) that indicates your tolerance for discarding change by adding it to the fee (default: %s). Note: An output is discarded if it is dust at this rate, but we will always discard up to the dust relay fee and a discard fee above that is limited by the fee estimate for the longest target</source>
-        <translation>Rata taxei (in %s/kB) care indică toleranța ta pentru eliminarea schimbării prin adăugarea acesteia la taxă (implicit: %s). Notă: O producție este aruncată dacă este dust în acest ritm, dar vom elimina întotdeauna până la taxa de releu dust și o taxă de eliminare peste cea limitată de estimarea tarifului pentru cea mai lungă țintă</translation>
-    </message>
-    <message>
-        <source>This is the transaction fee you may discard if change is smaller than dust at this level</source>
-        <translation>Aceasta este taxa de tranzacție pe care o puteți elimina dacă schimbarea este mai mică decât dust la acest nivel</translation>
-    </message>
-    <message>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
         <translation>Aceasta este taxa de tranzactie pe care este posibil sa o platiti daca estimarile de taxe nu sunt disponibile.</translation>
     </message>
@@ -4769,10 +4685,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Unable to locate enough PrivateSend non-denominated funds for this transaction.</source>
         <translation>Nu se pot localiza destule fonduri nedenominate TrimitePrivat pentru această tranzacție.</translation>
-    </message>
-    <message>
-        <source>Unable to replay blocks. You will need to rebuild the database using -reindex-chainstate.</source>
-        <translation>Imposibil de redat block-urile. Va trebui să reconstruiți baza de date folosind -reindex-chainstate.</translation>
     </message>
     <message>
         <source>Use N separate masternodes for each denominated input to mix funds (%u-%u, default: %u)</source>
@@ -4799,20 +4711,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Atenţie: fişierul portofelului este corupt, date salvate! Fişierul %s a fost salvat ca %s in %s; dacă balanta sau tranzactiile sunt incorecte ar trebui să restauraţi dintr-o copie de siguranţă.</translation>
     </message>
     <message>
-        <source>Whether to save the mempool on shutdown and load on restart (default: %u)</source>
-        <translation>Dacă salvezi mempool-ul la oprire și-l încărci la repornire (implicit: %u)</translation>
-    </message>
-    <message>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
         <translation>Whitelist peers care se conectează de la adresa IP dată (ex. 1.2.3.4) sau rețeaua notată CIDR (ex. 1.2.3.0/24). Poate fi specificat de mai multe ori.</translation>
-    </message>
-    <message>
-        <source>You are starting in lite mode, most Ion-specific functionality is disabled.</source>
-        <translation>Începeți în modul lite, cele mai multe funcționalități specifice Ion sunt dezactivate.</translation>
-    </message>
-    <message>
-        <source>%d of last 100 blocks have unexpected version</source>
-        <translation>%d din ultimele 100 de blocuri au versiune neașteptată</translation>
     </message>
     <message>
         <source>%s corrupt, salvage failed</source>
@@ -4843,10 +4743,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>-rpcport trebuie specificat când -devnet și -server sunt specificate</translation>
     </message>
     <message>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Acceptă conexiunile din exterior (implicit: 1 dacă nu -proxy sau -connect)</translation>
-    </message>
-    <message>
         <source>Allow RFC1918 addresses to be relayed and connected to (default: %u)</source>
         <translation>Permite adreselor RFC1918 să fie transmise și conectate la (implicit: %u)</translation>
     </message>
@@ -4867,10 +4763,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Copyright (C)</translation>
     </message>
     <message>
-        <source>Create up to N inputs of each denominated amount (%u-%u, default: %u)</source>
-        <translation>Creează până la N intrări pentru fiecare sumă denominată (%u-%u, implicit: %u)</translation>
-    </message>
-    <message>
         <source>Error loading %s</source>
         <translation>Eroare la încărcarea %s</translation>
     </message>
@@ -4881,22 +4773,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Error loading %s: Wallet requires newer version of %s</source>
         <translation>Eroare la încărcarea %s: Portofelul are nevoie de o versiune %s mai nouă</translation>
-    </message>
-    <message>
-        <source>Error loading %s: You can't disable HD on an already existing HD wallet</source>
-        <translation>Eroare la încărcare %s: Nu poți dezactiva HD pe un portofel HD deja existent</translation>
-    </message>
-    <message>
-        <source>Error loading wallet %s. -wallet filename must be a regular file.</source>
-        <translation>Eroare la încărcarea portofelului %s. Numele fișierului -wallet trebuie să fie un fișier obișnuit.</translation>
-    </message>
-    <message>
-        <source>Error loading wallet %s. Duplicate -wallet filename specified.</source>
-        <translation>Eroare la încărcarea portofelului %s. Numele de fișier duplicat -walet specificat.</translation>
-    </message>
-    <message>
-        <source>Error loading wallet %s. Invalid characters in -wallet filename.</source>
-        <translation>Eroare la încărcarea portofelului %s. Caractere invalide în numele de fişier -wallet.</translation>
     </message>
     <message>
         <source>Error upgrading chainstate database</source>
@@ -4913,10 +4789,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Initialization sanity check failed. %s is shutting down.</source>
         <translation>Nu s-a reuşit iniţierea verificării sănătăţii. %s se inchide.</translation>
-    </message>
-    <message>
-        <source>Inputs vs outputs size mismatch.</source>
-        <translation>Nepotriviri în mărime între intrări și ieșiri.</translation>
     </message>
     <message>
         <source>Invalid -onion address or hostname: '%s'</source>
@@ -4953,10 +4825,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Relay non-P2SH multisig (default: %u)</source>
         <translation>Transmite multisig non-P2SH (implicit: %u)</translation>
-    </message>
-    <message>
-        <source>Replaying blocks...</source>
-        <translation>Redirecționarea block-urilor ...</translation>
     </message>
     <message>
         <source>Rescanning...</source>
@@ -5011,10 +4879,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Specifică adresa ta publică</translation>
     </message>
     <message>
-        <source>Start PrivateSend automatically (0-1, default: %u)</source>
-        <translation>Pornește TrimitePrivat automat (0-1, implicit: %u)</translation>
-    </message>
-    <message>
         <source>Starting network threads...</source>
         <translation>Se pornesc threadurile retelei...</translation>
     </message>
@@ -5047,10 +4911,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Tranzacția a fost creată cu succes.</translation>
     </message>
     <message>
-        <source>Transaction fee and change calculation failed</source>
-        <translation>Taxa de tranzacție și calculul modificărilor au eșuat</translation>
-    </message>
-    <message>
         <source>Transaction fees are too high.</source>
         <translation>Taxele de tranzacție sunt prea mari.</translation>
     </message>
@@ -5077,10 +4937,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Unknown state: id = %u</source>
         <translation>Status necunoscut: id = %u</translation>
-    </message>
-    <message>
-        <source>Unsupported logging category %s=%s.</source>
-        <translation>Categorie de înregistrare neacceptată %s=%s.</translation>
     </message>
     <message>
         <source>Username for JSON-RPC connections</source>

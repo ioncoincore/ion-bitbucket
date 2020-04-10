@@ -2893,6 +2893,22 @@
         <translation>RPC 서버 설정</translation>
     </message>
     <message>
+        <source>The %s developers</source>
+        <translation>%s 개발자</translation>
+    </message>
+    <message>
+        <source>The PIVX Core developers</source>
+        <translation>PIVX Core 개발자</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Dash Core 개발자</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Bitcoin Core 개발자</translation>
+    </message>
+    <message>
         <source>Invalid -onion address or hostname: '%s'</source>
         <translation>올바르지 않은 -onion 주소 또는 호스트 이름: '%s'</translation>
     </message>

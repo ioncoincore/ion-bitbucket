@@ -598,30 +598,6 @@
         <translation>Информация</translation>
     </message>
     <message>
-        <source>Received and sent multiple transactions</source>
-        <translation>Получено и отправлено несколько транзакций</translation>
-    </message>
-    <message>
-        <source>Sent multiple transactions</source>
-        <translation>Отправлено несколько транзакций</translation>
-    </message>
-    <message>
-        <source>Received multiple transactions</source>
-        <translation>Получено несколько транзакций</translation>
-    </message>
-    <message>
-        <source>Sent Amount: %1
-</source>
-        <translation>Отправлено: %1
-</translation>
-    </message>
-    <message>
-        <source>Received Amount: %1
-</source>
-        <translation>Получено: %1
-</translation>
-    </message>
-    <message>
         <source>Date: %1
 </source>
         <translation>Дата: %1
@@ -815,10 +791,6 @@
         <translation>Пожалуйста, переключитесь в режим списка для использования этой функции.</translation>
     </message>
     <message>
-        <source>Non-mixed input selected. &lt;b&gt;PrivateSend will be disabled.&lt;/b&gt;&lt;br&gt;&lt;br&gt;If you still want to use PrivateSend, please deselect all non-mixed inputs first and then check the PrivateSend checkbox again.</source>
-        <translation>Выбраны еще не перемешанные средства. &lt;b&gt;PrivateSend будет отключен.&lt;/b&gt;&lt;br&gt;&lt;br&gt;Если Вы все-таки хотите использовать PrivateSend, пожалуйста, снимите выделение со всех еще не перемешанных средств и заново поставьте галочку напротив PrivateSend.</translation>
-    </message>
-    <message>
         <source>(%1 locked)</source>
         <translation>(%1 заблокировано)</translation>
     </message>
@@ -991,11 +963,7 @@
         <source>PrivateSend information</source>
         <translation>Информация о PrivateSend</translation>
     </message>
-    <message>
-        <source>&lt;h3&gt;PrivateSend Basics&lt;/h3&gt; PrivateSend gives you true financial privacy by obscuring the origins of your funds. All the Ion in your wallet is comprised of different "inputs" which you can think of as separate, discrete coins.&lt;br&gt; PrivateSend uses an innovative process to mix your inputs with the inputs of two other people, without having your coins ever leave your wallet. You retain control of your money at all times.&lt;hr&gt; &lt;b&gt;The PrivateSend process works like this:&lt;/b&gt;&lt;ol type="1"&gt; &lt;li&gt;PrivateSend begins by breaking your transaction inputs down into standard denominations. These denominations are 0.001 ION, 0.01 ION, 0.1 ION, 1 ION and 10 ION -- sort of like the paper money you use every day.&lt;/li&gt; &lt;li&gt;Your wallet then sends requests to specially configured software nodes on the network, called "masternodes." These masternodes are informed then that you are interested in mixing a certain denomination. No identifiable information is sent to the masternodes, so they never know "who" you are.&lt;/li&gt; &lt;li&gt;When two other people send similar messages, indicating that they wish to mix the same denomination, a mixing session begins. The masternode mixes up the inputs and instructs all three users' wallets to pay the now-transformed input back to themselves. Your wallet pays that denomination directly to itself, but in a different address (called a change address).&lt;/li&gt; &lt;li&gt;In order to fully obscure your funds, your wallet must repeat this process a number of times with each denomination. Each time the process is completed, it's called a "round." Each round of PrivateSend makes it exponentially more difficult to determine where your funds originated.&lt;/li&gt; &lt;li&gt;This mixing process happens in the background without any intervention on your part. When you wish to make a transaction, your funds will already be mixed. No additional waiting is required.&lt;/li&gt; &lt;/ol&gt; &lt;hr&gt;&lt;b&gt;IMPORTANT:&lt;/b&gt; Your wallet only contains 1000 of these "change addresses." Every time a mixing event happens, up to 9 of your addresses are used up. This means those 1000 addresses last for about 100 mixing events. When 900 of them are used, your wallet must create more addresses. It can only do this, however, if you have automatic backups enabled.&lt;br&gt; Consequently, users who have backups disabled will also have PrivateSend disabled. &lt;hr&gt;For more information, see the &lt;a href="https://docs.ionomy.com/en/stable/wallets/ioncore/privatesend-instantsend.html"&gt;PrivateSend documentation&lt;/a&gt;.</source>
-        <translation>&lt;h3&gt;Основы PrivateSend&lt;/h3&gt;PrivateSend позволяет Вам получить настоящую финансовую конфиденциальность за счет скрытия источников Ваших средств. Все Ion в  Вашем кошельке состоят из различных "входов", Вы можете думать о них как об отдельных монетах.&lt;br&gt;PrivateSend использует инновационный процесс для перемешивания Ваших входов со входами еще двоих человек, но при этом Ваши монеты никогда не покидают Ваш кошелек. Вы сохраняете контроль над Вашими деньгами на протяжении всего времени.&lt;hr&gt; &lt;b&gt;PrivateSend работает так:&lt;/b&gt;&lt;ol type="1"&gt; &lt;li&gt;PrivateSend начинается с разбиения Ваших входов транзакций на стандартные номиналы. Такими номиналами являются 0.001 ION, 0.01 ION, 0.1 ION, 1 ION и 10 ION -- что-то вроде купюр, которыми вы пользуетесь каждый день.&lt;/li&gt; &lt;li&gt;Ваш кошелек затем отправляет запросы к особым образом настроенным сетевым узлам, называемым "мастернодами". Эти мастерноды знают только то, что Вы хотите перемешать определенные номиналы. Никакой идентифицирующей информации мастернодам не отправляется, так что они не знают "кто" Вы конкретно.&lt;/li&gt; &lt;li&gt;Сессия перемешивания начинается тогда, когда еще двое человек отправляют схожее сообщение, подтверждающее, что они хотят перемешать точно такой же номинал. Мастернода перемешивает входы и просит кошельки всех пользователей осуществить платежи по ним. Ваш кошелек осуществляет выплату самому себе, но на другой адрес (тоже из вашего кошелька).&lt;/li&gt; &lt;li&gt;Для скрытия Ваших средств кошелек должен повторить этот процесс несколько раз с каждым номиналом. Каждый раз, когда такой процесс завершается, называется "раундом". С каждым раундом PrivateSend становится экспоненциально сложнее определить откуда поступили средства.&lt;/li&gt; &lt;li&gt;Процесс перемешивания выполняется в фоне, без участия пользователя. Когда Вы захотите провести транзакцию, средства уже будут перемешаны. Дополнительно ждать не требуется.&lt;/li&gt; &lt;/ol&gt; &lt;hr&gt;&lt;b&gt;ВАЖНО:&lt;/b&gt; Ваш кошелек содержит 1000 адресов. Каждое перемешивание использует до 9 из этих адресов. Это означает, что 1000 адресов хватит примерно на 100 перемешиваний. Когда 900 адресов будут уже использованы, Ваш кошелек должен создать новые адреса. Однако, он может сделать это, только если у Вас включены автоматические резервные копии.&lt;br&gt;Соответственно, пользователям с отключенным резервным копированием PrivateSend не доступен. &lt;hr&gt;Дополнительная информация доступна в &lt;a href="https://docs.ionomy.com/en/stable/wallets/ioncore/privatesend-instantsend.html"&gt;документации по PrivateSend&lt;/a&gt;</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>Intro</name>
     <message>
@@ -1098,10 +1066,6 @@
         <translation>Только мои мастерноды</translation>
     </message>
     <message>
-        <source>Service</source>
-        <translation>Сервис</translation>
-    </message>
-    <message>
         <source>PoSe Score</source>
         <translation>PoSe штраф</translation>
     </message>
@@ -1118,24 +1082,8 @@
         <translation>Следующий платеж</translation>
     </message>
     <message>
-        <source>Payout Address</source>
-        <translation>Адрес для выплат</translation>
-    </message>
-    <message>
         <source>Operator Reward</source>
         <translation>Награда оператора</translation>
-    </message>
-    <message>
-        <source>Collateral Address</source>
-        <translation>Обеспечительный адрес</translation>
-    </message>
-    <message>
-        <source>Owner Address</source>
-        <translation>Адрес владельца</translation>
-    </message>
-    <message>
-        <source>Voting Address</source>
-        <translation>Адрес для голосования</translation>
     </message>
     <message>
         <source>Copy ProTx Hash</source>
@@ -1327,10 +1275,6 @@
         <translation>Это пороговое значение, при достижении которого PrivateSend отключается.</translation>
     </message>
     <message>
-        <source>Target PrivateSend balance</source>
-        <translation>Целевой баланс PrivateSend</translation>
-    </message>
-    <message>
         <source>Automatically open the Ion Core client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>Автоматически открыть порт для Ion Core на роутере. Работает только в том случае, если Ваш роутер поддерживает UPnP и данная функция включена.</translation>
     </message>
@@ -1341,10 +1285,6 @@
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
         <translation>&amp;Подключаться через прокси SOCKS5 (прокси по умолчанию):</translation>
-    </message>
-    <message>
-        <source>Shows if the supplied default SOCKS5 proxy is used to reach peers via this network type.</source>
-        <translation>Показывает, используется ли указанный по умолчанию SOCKS5 прокси для подключения к пирам этого типа сети.</translation>
     </message>
     <message>
         <source>Minimize instead of exit the application when the window is closed. When this option is enabled, the application will be closed only after selecting Exit in the menu.</source>
@@ -1385,10 +1325,6 @@
     <message>
         <source>&amp;Spend unconfirmed change</source>
         <translation>&amp;Тратить неподтверждённую сдачу</translation>
-    </message>
-    <message>
-        <source>This setting determines the amount of individual masternodes that an input will be mixed through.&lt;br/&gt;More rounds of mixing gives a higher degree of privacy, but also costs more in fees.</source>
-        <translation>Эта настройка определяет количество отдельных мастернод, через которые пройдет перемешивание.&lt;br/&gt;Чем больше раундов, тем выше степень конфиденциальности, но также выше и суммарная стоимость комиссий.</translation>
     </message>
     <message>
         <source>&amp;Network</source>
@@ -1718,10 +1654,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Denominated</source>
         <translation>Разбито на номиналы</translation>
-    </message>
-    <message>
-        <source>Partially mixed</source>
-        <translation>Частично перемешано</translation>
     </message>
     <message>
         <source>Mixed</source>
@@ -2206,20 +2138,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Открыть отладочный лог-файл %1 из текущего каталога данных. Для больших лог-файлов эта операция может занять несколько секунд.</translation>
     </message>
     <message>
-        <source>InstantSend locks</source>
-        <translation>Блокировки InstantSend</translation>
-    </message>
-    <message>
         <source>Decrease font size</source>
         <translation>Уменьшить шрифт</translation>
     </message>
     <message>
         <source>Increase font size</source>
         <translation>Увеличить шрифт</translation>
-    </message>
-    <message>
-        <source>&amp;Reset</source>
-        <translation>&amp;Сбросить</translation>
     </message>
     <message>
         <source>Services</source>
@@ -2356,14 +2280,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Type &lt;b&gt;help&lt;/b&gt; for an overview of available commands.</source>
         <translation>Напишите &lt;b&gt;help&lt;/b&gt; для просмотра доступных команд.</translation>
-    </message>
-    <message>
-        <source>Use up and down arrows to navigate history, and %1 to clear screen.</source>
-        <translation>Используйте стрелки вверх и вниз для просмотра истории и %1 для очистки экрана.</translation>
-    </message>
-    <message>
-        <source>WARNING: Scammers have been active, telling users to type commands here, stealing their wallet contents. Do not use this console without fully understanding the ramifications of a command.</source>
-        <translation>ВНИМАНИЕ: Мошенники могут попросить Вас ввести сюда команды и таким образом украсть Ваши средства. Не используйте эту консоль, если Вы не до конца понимаете последствия вводимых команд.</translation>
     </message>
     <message>
         <source>In:</source>
@@ -2698,14 +2614,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>за килобайт</translation>
     </message>
     <message>
-        <source>Using the fallbackfee can result in sending a transaction that will take several hours or days (or never) to confirm. Consider choosing your fee manually or wait until you have validated the complete chain.</source>
-        <translation>Использование fallbackfee может привести к тому, что для подтверждения транзакции потребуется несколько часов или дней (или она вообще никогда не подтвердится). Лучше укажите комиссию вручную или дождитесь полной синхронизации.</translation>
-    </message>
-    <message>
-        <source>Note: Not enough data for fee estimation, using the fallback fee instead.</source>
-        <translation>Внимание: недостаточно данных для определения комиссии, используется комиссия по умолчанию.</translation>
-    </message>
-    <message>
         <source>Hide</source>
         <translation>Скрыть</translation>
     </message>
@@ -2782,10 +2690,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Копировать сдачу</translation>
     </message>
     <message>
-        <source>%1 (%2 blocks)</source>
-        <translation>%1 (блоков: %2)</translation>
-    </message>
-    <message>
         <source>using</source>
         <translation>, используя</translation>
     </message>
@@ -2808,34 +2712,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>&lt;b&gt;(%1 of %2 entries displayed)&lt;/b&gt;</source>
         <translation>&lt;b&gt;(показано записей: %1 из %2)&lt;/b&gt;</translation>
-    </message>
-    <message>
-        <source>PrivateSend funds only</source>
-        <translation>только средства PrivateSend</translation>
-    </message>
-    <message>
-        <source>any available funds</source>
-        <translation>любые доступные средства</translation>
-    </message>
-    <message>
-        <source>(PrivateSend transactions have higher fees usually due to no change output being allowed)</source>
-        <translation>(комиссии у транзакций PrivateSend как правило выше поскольку у них отсутствует сдача)</translation>
-    </message>
-    <message>
-        <source>Transaction size: %1</source>
-        <translation>Размер транзакции: %1</translation>
-    </message>
-    <message>
-        <source>Fee rate: %1</source>
-        <translation>Уровень комиссии: %1</translation>
-    </message>
-    <message numerus="yes">
-        <source>This transaction will consume %n input(s)</source>
-        <translation><numerusform>Эта транзакция израсходует %n вход</numerusform><numerusform>Эта транзакция израсходует %n входов</numerusform><numerusform>Эта транзакция израсходует %n входов</numerusform><numerusform>Эта транзакция израсходует %n входов</numerusform></translation>
-    </message>
-    <message>
-        <source>Warning: Using PrivateSend with %1 or more inputs can harm your privacy and is not recommended</source>
-        <translation>Внимание: Использование транзакции PrivateSend с %1 и более входами может повредить вашей приватности и потому не рекомендуется</translation>
     </message>
     <message>
         <source>Confirm send coins</source>
@@ -3971,10 +3847,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Установить новый минимум количества подписантов спорков. Полезно только для regtest и devnet. Использование этого параметра на mainnet или testnet приведет к блокировке.</translation>
     </message>
     <message>
-        <source>PrivateSend uses exact denominated amounts to send funds, you might simply need to mix some more coins.</source>
-        <translation>При отправке PrivateSend использует только деноминированные средства, возможно, Вам просто нужно перемешать немного больше монет.</translation>
-    </message>
-    <message>
         <source>Use N separate masternodes in parallel to mix funds (%u-%u, default: %u)</source>
         <translation>Использовать N отдельных мастернод для параллельного перемешивания средств (%u-%u, по умолчанию: %u)</translation>
     </message>
@@ -4083,20 +3955,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Недостаточно средств.</translation>
     </message>
     <message>
-        <source>Invalid amount for -discardfee=&lt;amount&gt;: '%s'</source>
-        <translation>Неверная сумма в параметре -discardfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
         <source>Invalid amount for -paytxfee=&lt;amount&gt;: '%s' (must be at least %s)</source>
         <translation>Неверная сумма в параметре -paytxfee=&lt;amount&gt;: '%s' (должна быть минимум %s)</translation>
     </message>
     <message>
         <source>Invalid minimum number of spork signers specified with -minsporkkeys</source>
         <translation>Некорректное минимальное количество подписантов спорков, указанное в -minsporkkeys</translation>
-    </message>
-    <message>
-        <source>Keep N ION mixed (%u-%u, default: %u)</source>
-        <translation>Держать N ION перемешанными (%u-%u, по умолчанию: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
@@ -4157,10 +4021,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>No compatible Masternode found.</source>
         <translation>Отсутствуют совместимые мастерноды.</translation>
-    </message>
-    <message>
-        <source>Not enough funds to mix.</source>
-        <translation>Недостаточно средств, подходящих для перемешивания.</translation>
     </message>
     <message>
         <source>Not in the Masternode list.</source>
@@ -4283,10 +4143,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Комментарий User Agent  (%s) содержит небезопасные символы.</translation>
     </message>
     <message>
-        <source>Verifying wallet(s)...</source>
-        <translation>Проверка кошелька(ов)...</translation>
-    </message>
-    <message>
         <source>Will retry...</source>
         <translation>Попробуем еще раз...</translation>
     </message>
@@ -4323,20 +4179,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>%s файл содержит в себе все закрытые ключи для этого кошелька. Никому его не показывайте!</translation>
     </message>
     <message>
-        <source>-masternode option is deprecated and ignored, specifying -masternodeblsprivkey is enough to start this node as a masternode.</source>
-        <translation>Опция -masternode устарела и будет проигнорирована, достаточно указать -masternodeblsprivkey, чтобы запустить этот узел в качестве мастерноды .</translation>
-    </message>
-    <message>
-        <source>Add a node to connect to and attempt to keep the connection open (see the `addnode` RPC command help for more info)</source>
-        <translation>Добавить узел для подключения и пытаться поддерживать соединение открытым (для получения дополнительной информации смотрите помощь для RPC команды `addnode`)</translation>
-    </message>
-    <message>
         <source>Bind to given address to listen for JSON-RPC connections. This option is ignored unless -rpcallowip is also passed. Port is optional and overrides -rpcport. Use [host]:port notation for IPv6. This option can be specified multiple times (default: 127.0.0.1 and ::1 i.e., localhost, or if -rpcallowip has been specified, 0.0.0.0 and :: i.e., all addresses)</source>
         <translation>Привязаться к указанному адресу для прослушивания JSON-RPC соединений. Эта опция игнорируется, если опция -rpcallowip не указана. Порт можно не указывать, но если указать то он перекроет опцию -rpcport. Используйте [хост]:порт для IPv6. Эту опцию можно указывать несколько раз (по умолчанию: 127.0.0.1 и ::1, т.е. localhost, а если указан -rpcallowip, то 0.0.0.0 и ::, т.е. все интерфейсы)</translation>
-    </message>
-    <message>
-        <source>Connect only to the specified node(s); -connect=0 disables automatic connections (the rules for this peer are the same as for -addnode)</source>
-        <translation>Присоединиться только к указанному узлу(ам); -connect=0 отключает автоматические соединения (правила для такого узла аналогичны правилам для узла, подключенного с помощью -addnode)</translation>
     </message>
     <message>
         <source>Discover own IP addresses (default: 1 when listening and no -externalip or -proxy)</source>
@@ -4391,14 +4235,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Поддерживать не более &lt;n&gt; подключений к узлам (без учета временных сервисных соединений) (по умолчанию: %u)</translation>
     </message>
     <message>
-        <source>Make sure to encrypt your wallet and delete all non-encrypted backups after you have verified that the wallet works!</source>
-        <translation>Не забудьте зашифровать кошелек и удалить все незашифрованные резервные копии после того как убедитесь, что кошелек работает!</translation>
-    </message>
-    <message>
-        <source>Maximum total size of all orphan transactions in megabytes (default: %u)</source>
-        <translation>Максимальный суммарный размер всех транзакций с неизвестными входами, в мегабайтах (по умолчанию: %u)</translation>
-    </message>
-    <message>
         <source>Prune configured below the minimum of %d MiB.  Please use a higher number.</source>
         <translation>Удаление блоков настроено ниже допустимого предела в %d MiB.  Пожалуйста, укажите большее число.</translation>
     </message>
@@ -4407,20 +4243,12 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Удаление блоков: последняя синхронизация кошелька выходит за рамки удаленных данных. Вам нужно запустить клиента с ключом -reindex (в случае узла с удаленными блоками это означает повторное скачивание всей цепи блоков)</translation>
     </message>
     <message>
-        <source>Query for peer addresses via DNS lookup, if low on addresses (default: 1 unless -connect used)</source>
-        <translation>Запрашивать адреса участников с помощью DNS, если адресов мало (по умолчанию: 1, если не указан -connect)</translation>
-    </message>
-    <message>
         <source>Randomize credentials for every proxy connection. This enables Tor stream isolation (default: %u)</source>
         <translation>Использовать случайные учётные данные для каждого прокси-подключения. Эта функция позволяет изолировать потоки Tor (по умолчанию: %u)</translation>
     </message>
     <message>
         <source>Rescans are not possible in pruned mode. You will need to use -reindex which will download the whole blockchain again.</source>
         <translation>Повторное сканирование невозможно в режиме удаления блоков. Вам надо будет использовать -reindex, что приведет к повторной загрузке всей цепи блоков.</translation>
-    </message>
-    <message>
-        <source>Set the masternode BLS private key and enable the client to act as a masternode</source>
-        <translation>Установить закрытый BLS ключ включить режим мастерноды для данного узла </translation>
     </message>
     <message>
         <source>Specify full path to directory for automatic wallet backups (must exist)</source>
@@ -4477,10 +4305,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Warning: Unknown block versions being mined! It's possible unknown rules are in effect</source>
         <translation>Внимание: создаются блоки неизвестной версии! Возможно активированы неизвестные правила</translation>
-    </message>
-    <message>
-        <source>You need to rebuild the database using -reindex to change -timestampindex</source>
-        <translation>Вам необходимо пересобрать базы данных с помощью -reindex, чтобы изменить -timestampindex</translation>
     </message>
     <message>
         <source>You need to rebuild the database using -reindex to go back to unpruned mode.  This will redownload the entire blockchain</source>
@@ -4581,10 +4405,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Invalid amount for -fallbackfee=&lt;amount&gt;: '%s'</source>
         <translation>Неверная сумма в параметре -fallbackfee=&lt;amount&gt;: '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid masternodeblsprivkey. Please see documentation.</source>
-        <translation>Некорректный masternodeblsprivkey. Пожалуйста, ознакомьтесь с документацией.</translation>
     </message>
     <message>
         <source>Keep the transaction memory pool below &lt;n&gt; megabytes (default: %u)</source>
@@ -4791,22 +4611,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Вы не можете запустить мастерноду в облегченном режиме.</translation>
     </message>
     <message>
-        <source>You can not start a masternode with wallet enabled.</source>
-        <translation>Вы не можете запустить мастерноду с включенным кошельком.</translation>
-    </message>
-    <message>
-        <source>You need to rebuild the database using -reindex to change -addressindex</source>
-        <translation>Вам необходимо пересобрать базы данных с помощью -reindex, чтобы изменить -addressindex</translation>
-    </message>
-    <message>
-        <source>You need to rebuild the database using -reindex to change -spentindex</source>
-        <translation>Вам необходимо пересобрать базы данных с помощью -reindex, чтобы изменить -spentindex</translation>
-    </message>
-    <message>
-        <source>You need to rebuild the database using -reindex to change -txindex</source>
-        <translation>Вам необходимо пересобрать базы данных с помощью -reindex, чтобы изменить -txindex</translation>
-    </message>
-    <message>
         <source>ZeroMQ notification options:</source>
         <translation>Параметры оповещения ZeroMQ:</translation>
     </message>
@@ -4831,6 +4635,18 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Разработчики %s</translation>
     </message>
     <message>
+        <source>The PIVX Core developers</source>
+        <translation>Разработчики PIVX Core</translation>
+    </message>
+    <message>
+        <source>The Dash Core developers</source>
+        <translation>Разработчики Dash Core</translation>
+    </message>
+    <message>
+        <source>The Bitcoin Core developers</source>
+        <translation>Разработчики Bitcoin Core</translation>
+    </message>
+    <message>
         <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>
         <translation>Не удалось установить блокировку на каталог данных %s. Возможно, %s уже запущен.</translation>
     </message>
@@ -4839,24 +4655,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Распространяется под лицензией на программное обеспечение MIT, смотрите прилагаемый файл %s или %s.</translation>
     </message>
     <message>
-        <source>Enable use of PrivateSend for funds stored in this wallet (0-1, default: %u)</source>
-        <translation>Разрешить перемешивание PrivateSend для средств, хранящихся в этом кошельке (0-1, по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Error loading %s: You can't enable HD on an already existing non-HD wallet</source>
-        <translation>Ошибка загрузки %s: Вы не можете включить HD режим для существующего не-HD кошелька</translation>
-    </message>
-    <message>
-        <source>Error loading wallet %s. -wallet parameter must only specify a filename (not a path).</source>
-        <translation>Ошибка загрузки кошелька %s. Параметр -wallet должен указывать только имя файла (без пути).</translation>
-    </message>
-    <message>
         <source>Error reading %s! All keys read correctly, but transaction data or address book entries might be missing or incorrect.</source>
         <translation>Ошибка чтения %s! Все ключи прочитаны верно, но данные транзакций или записи адресной книги могут отсутствовать или быть неправильными.</translation>
-    </message>
-    <message>
-        <source>Exclude debugging information for a category. Can be used in conjunction with -debug=1 to output debug logs for all categories except one or more specified categories.</source>
-        <translation>Исключить отладочную информацию для указаной категории. Может быть использовано вместе с -debug=1, чтобы выводить все отладочную информацию, кроме информаци, относящейся к одной или нескольким указанным категориям.</translation>
     </message>
     <message>
         <source>Force relay of transactions from whitelisted peers even if they violate local relay policy (default: %d)</source>
@@ -4895,14 +4695,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Установить минимальную комиссию (в %s/kB) для добавления транзакций в блок (по умолчанию: %s)</translation>
     </message>
     <message>
-        <source>The fee rate (in %s/kB) that indicates your tolerance for discarding change by adding it to the fee (default: %s). Note: An output is discarded if it is dust at this rate, but we will always discard up to the dust relay fee and a discard fee above that is limited by the fee estimate for the longest target</source>
-        <translation>Уровень комиссии (в %s/kB), отвечающий за возможность списания сдачи в пользу комиссии (default: %s). Внимание: выход, который при данном уровне комиссии будет считаться "пылью", будет отброшен. Вне зависимости от данной настройки все выходы с уровнем комиссии ниже уровня "пыли" также отбрасываются, а максимальное значение сверх этого ограничено комиссией, рассчитанной для самого долгого подтверждения</translation>
-    </message>
-    <message>
-        <source>This is the transaction fee you may discard if change is smaller than dust at this level</source>
-        <translation>Это комиссия, которую Вы заплатите дополнительно, если сдача меньше "пыли" при таком уровне комиссии</translation>
-    </message>
-    <message>
         <source>This is the transaction fee you may pay when fee estimates are not available.</source>
         <translation>Это комиссия, которую Вы заплатите при отправке транзакции, если расчет комиссии не доступен.</translation>
     </message>
@@ -4913,10 +4705,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Unable to locate enough PrivateSend non-denominated funds for this transaction.</source>
         <translation>Не удалось обнаружить достаточных для выполнения этой транзакции неденоминированных средств.</translation>
-    </message>
-    <message>
-        <source>Unable to replay blocks. You will need to rebuild the database using -reindex-chainstate.</source>
-        <translation>Невозможно повторить блоки. Необходимо перестроить базы даных с помощью -reindex-chainstate.</translation>
     </message>
     <message>
         <source>Use N separate masternodes for each denominated input to mix funds (%u-%u, default: %u)</source>
@@ -4943,20 +4731,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Внимание: кошелек повреждён, данные спасены! Оригинальный %s сохранён как %s в %s. Если Ваш баланс или транзакции некорректны, Вы должны восстановить файл из резервной копии.</translation>
     </message>
     <message>
-        <source>Whether to save the mempool on shutdown and load on restart (default: %u)</source>
-        <translation>Сохранять ли пул памяти при остановке и загружать ли его при последующем старте узла (по умолчанию: %u)</translation>
-    </message>
-    <message>
         <source>Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or CIDR notated network (e.g. 1.2.3.0/24). Can be specified multiple times.</source>
         <translation>Внести пиров, соединяющихся с IP адреса (например, 1.2.3.4) или с адресов, подходящих по маске в CIDR нотации (например, 1.2.3.0/24), в белый список. Опция может быть указана несколько раз.</translation>
-    </message>
-    <message>
-        <source>You are starting in lite mode, most Ion-specific functionality is disabled.</source>
-        <translation>Вы запускаете кошелек в облегченном режиме, большая часть специфичных для Ion функций отключена.</translation>
-    </message>
-    <message>
-        <source>%d of last 100 blocks have unexpected version</source>
-        <translation>%d из последних 100 блоков имеют неожиданную версию</translation>
     </message>
     <message>
         <source>%s corrupt, salvage failed</source>
@@ -4987,10 +4763,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Необходимо указать -rpcport, если указаны -devnet и -server</translation>
     </message>
     <message>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>Принимать подключения извне (по умолчанию: 1, если не используется -proxy или -connect)</translation>
-    </message>
-    <message>
         <source>Allow RFC1918 addresses to be relayed and connected to (default: %u)</source>
         <translation>Позволять передачу и соединение к RFC1918 адресам (по умолчанию: %u)</translation>
     </message>
@@ -5011,10 +4783,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Copyright (C)</translation>
     </message>
     <message>
-        <source>Create up to N inputs of each denominated amount (%u-%u, default: %u)</source>
-        <translation>Создавать до N входов для каждого номинала (%u-%u, по умолчанию: %u)</translation>
-    </message>
-    <message>
         <source>Error loading %s</source>
         <translation>Ошибка при загрузке %s</translation>
     </message>
@@ -5025,22 +4793,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Error loading %s: Wallet requires newer version of %s</source>
         <translation>Ошибка загрузки %s: кошелёк требует более новой версии %s</translation>
-    </message>
-    <message>
-        <source>Error loading %s: You can't disable HD on an already existing HD wallet</source>
-        <translation>Ошибка загрузки %s: Вы не можете отключить HD режим для существующего HD кошелька</translation>
-    </message>
-    <message>
-        <source>Error loading wallet %s. -wallet filename must be a regular file.</source>
-        <translation>Ошибка загрузки кошелька %s. Имя файла -wallet должно указывать на обычный файл.</translation>
-    </message>
-    <message>
-        <source>Error loading wallet %s. Duplicate -wallet filename specified.</source>
-        <translation>Ошибка загрузки кошелька %s. Имя файла -wallet указано повторно.</translation>
-    </message>
-    <message>
-        <source>Error loading wallet %s. Invalid characters in -wallet filename.</source>
-        <translation>Ошибка загрузки кошелька %s. Имя файла -wallet содержит некорректные символы.</translation>
     </message>
     <message>
         <source>Error upgrading chainstate database</source>
@@ -5057,10 +4809,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Initialization sanity check failed. %s is shutting down.</source>
         <translation>Проверка на непротиворечивость закончилась неудачно. %s выключается.</translation>
-    </message>
-    <message>
-        <source>Inputs vs outputs size mismatch.</source>
-        <translation>Несоответствие размера входов и выходов.</translation>
     </message>
     <message>
         <source>Invalid -onion address or hostname: '%s'</source>
@@ -5097,10 +4845,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Relay non-P2SH multisig (default: %u)</source>
         <translation>Ретрансляция не-P2SH multisig (по умолчанию: %u)</translation>
-    </message>
-    <message>
-        <source>Replaying blocks...</source>
-        <translation>Повтор блоков...</translation>
     </message>
     <message>
         <source>Rescanning...</source>
@@ -5155,10 +4899,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Укажите Ваш собственный публичный адрес</translation>
     </message>
     <message>
-        <source>Start PrivateSend automatically (0-1, default: %u)</source>
-        <translation>Запускать PrivateSend автоматически (0-1, по умолчанию: %u)</translation>
-    </message>
-    <message>
         <source>Starting network threads...</source>
         <translation>Запуск сетевых потоков...</translation>
     </message>
@@ -5191,10 +4931,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>Создание транзакции прошло успешно.</translation>
     </message>
     <message>
-        <source>Transaction fee and change calculation failed</source>
-        <translation>Не удалось вычислить комиссию и сдачу</translation>
-    </message>
-    <message>
         <source>Transaction fees are too high.</source>
         <translation>Комиссия по транзакции слишком большая.</translation>
     </message>
@@ -5221,10 +4957,6 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
     <message>
         <source>Unknown state: id = %u</source>
         <translation>Неизвестное состояние: id = %u</translation>
-    </message>
-    <message>
-        <source>Unsupported logging category %s=%s.</source>
-        <translation>Неподдерживаемая категория отладочной информации %s=%s.</translation>
     </message>
     <message>
         <source>Username for JSON-RPC connections</source>
