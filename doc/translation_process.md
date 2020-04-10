@@ -7,8 +7,8 @@
   - [Translator project page](#translator-project-page)
   - [Translator Editor and Instructions URL](#translator-editor-and-instructions-url)
   - [Installing the Transifex client command-line tool](#installing-the-transifex-client-command-line-tool)
-    - [For Linux and Mac](#for-linux-and-mac)
-      - [For Ubuntu bionic (or later) users](#for-ubuntu-bionic-or-later-users)
+    - [For Ubuntu bionic (or later) users](#for-ubuntu-bionic-or-later-users)
+    - [For older Linux and Mac](#for-older-linux-and-mac)
     - [For Windows](#for-windows)
   - [Synchronizing translations](#synchronizing-translations)
   - [Handling Plurals (in source files)](#handling-plurals-in-source-files)
@@ -78,14 +78,16 @@ Online translation editor: https://www.ioncore.xyz/translate
 
 The client it used to fetch updated translations. If you are having problems, or need more details, see [http://docs.transifex.com/developer/client/setup](http://docs.transifex.com/developer/client/setup)
 
-### For Linux and Mac
-
-`pip install transifex-client`
-
-#### For Ubuntu bionic (or later) users
+### For Ubuntu bionic (or later) users
 
 Upgrade pip with:         `sudo -H pip3 install --upgrade pip`
 Install transifex client: `sudo -H pip3 install transifex-client`
+
+Setup your transifex client config with `tx config` or create manually like shown below.
+
+### For older Linux and Mac
+
+`pip install transifex-client`
 
 Setup your transifex client config as follows. Please *ignore the token field*.
 
