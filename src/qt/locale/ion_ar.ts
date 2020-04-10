@@ -4579,8 +4579,8 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>%s المبرمجون</translation>
     </message>
     <message>
-        <source>The %p Core developers</source>
-        <translation>%p Core المبرمجون</translation>
+        <source>The %p developers</source>
+        <translation>%p المبرمجون</translation>
     </message>
     <message>
         <source>The %d developers</source>
