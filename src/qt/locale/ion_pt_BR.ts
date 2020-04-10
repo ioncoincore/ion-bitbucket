@@ -2437,6 +2437,10 @@
         <translation>opções do servidor RPC:</translation>
     </message>
     <message>
+        <source>The %s developers</source>
+        <translation>Desenvolvedores do %s</translation>
+    </message>
+    <message>
         <source>The %p developers</source>
         <translation>Desenvolvedores do %p</translation>
     </message>
