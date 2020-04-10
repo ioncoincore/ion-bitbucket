@@ -2881,16 +2881,16 @@
         <translation>%s razrađivači</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>PIVX Core razrađivači</translation>
+        <source>The %p developers</source>
+        <translation>%p razrađivači</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>Dash Core razrađivači</translation>
+        <source>%d Core developers</source>
+        <translation>%d razrađivači</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core razrađivači</translation>
+        <source>The %b developers</source>
+        <translation>%b razrađivači</translation>
     </message>
     <message>
         <source>Invalid -onion address or hostname: '%s'</source>

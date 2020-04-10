@@ -4640,16 +4640,16 @@ Vähennä uakommenttien määrää tai kokoa.</translation>
         <translation>%s kehittäjät</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>PIVX Core kehittäjät</translation>
+        <source>The %p developers</source>
+        <translation>%p kehittäjät</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>Dash Core kehittäjät</translation>
+        <source>The %d developers</source>
+        <translation>%d kehittäjät</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core kehittäjät</translation>
+        <source>The %b developers</source>
+        <translation>%b kehittäjät</translation>
     </message>
     <message>
         <source>Cannot obtain a lock on data directory %s. %s is probably already running.</source>

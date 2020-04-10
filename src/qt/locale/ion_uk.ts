@@ -341,16 +341,16 @@
         <translation>Розробники %s</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>Розробники PIVX Core</translation>
+        <source>The %p developers</source>
+        <translation>Розробники %p</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>Розробники Dash Core</translation>
+        <source>The %d developers</source>
+        <translation>Розробники %d</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Розробники Bitcoin Core</translation>
+        <source>The %b developers</source>
+        <translation>%b Core</translation>
     </message>
     </context>
 </TS>

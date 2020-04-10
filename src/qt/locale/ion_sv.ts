@@ -3133,16 +3133,16 @@ https://www.transifex.com/ioncoincore/ioncore/</translation>
         <translation>%s-utvecklarna</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>PIVX Core-utvecklarna</translation>
+        <source>The %p developers</source>
+        <translation>%p-utvecklarna</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>Dash Core-utvecklarna</translation>
+        <source>The %d developers</source>
+        <translation>%d-utvecklarna</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core-utvecklarna</translation>
+        <source>The %b developers</source>
+        <translation>%b-utvecklarna</translation>
     </message>
     <message>
         <source>Invalid -onion address or hostname: '%s'</source>

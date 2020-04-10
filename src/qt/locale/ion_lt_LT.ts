@@ -1821,16 +1821,16 @@
         <translation>%s kūrėjai</translation>
     </message>
     <message>
-        <source>The PIVX Core developers</source>
-        <translation>PIVX Core kūrėjai</translation>
+        <source>The %p developers</source>
+        <translation>%p kūrėjai</translation>
     </message>
     <message>
-        <source>The Dash Core developers</source>
-        <translation>Dash Core kūrėjai</translation>
+        <source>The %d developers</source>
+        <translation>%d kūrėjai</translation>
     </message>
     <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>Bitcoin Core  kūrėjai</translation>
+        <source>The %b developers</source>
+        <translation>%b  kūrėjai</translation>
     </message>
     <message>
         <source>Session timed out.</source>
