@@ -607,4 +607,7 @@ QT_TRANSLATE_NOOP("ion-core", "Zapping all transactions from wallet..."),
 QT_TRANSLATE_NOOP("ion-core", "ZeroMQ notification options:"),
 QT_TRANSLATE_NOOP("ion-core", "no mixing available."),
 QT_TRANSLATE_NOOP("ion-core", "see debug.log for details."),
+QT_TRANSLATE_NOOP("ion-core", "The %p developers"),
+QT_TRANSLATE_NOOP("ion-core", "The %d developers"),
+QT_TRANSLATE_NOOP("ion-core", "The %b developers"),
 };
