@@ -106,13 +106,13 @@ unsigned int static HybridPoSPIVXDifficulty(const CBlockIndex* pindexLastIn, con
     const CBlockIndex* pindexLast = ((pindexLastIn->nVersion & BLOCKTYPEBITS_MASK) == BlockTypeBits::BLOCKTYPE_STAKING) ?
         pindexLastIn : GetHybridPrevIndex(pindexLastIn, true, params.POSPOWStartHeight);
 
-    if (params.fPowNoRetargeting)
-        return pindexLast->nBits;
-
     // params.POSPOWStartHeight marks the first hybrid POS block. Start with a minimum difficulty block.
     if (pindexLast == nullptr || pindexLast->nHeight <= params.POSPOWStartHeight) {
         return UintToArith256(params.posLimit).GetCompact();
     }
+
+    if (params.fPowNoRetargeting)
+        return pindexLast->nBits;
 
     arith_uint256 bnTargetLimit = UintToArith256(params.posLimit);
     if (pindexLast->nHeight > params.POSStartHeight) {
