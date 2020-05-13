@@ -283,7 +283,7 @@ bool GetHashProofOfStakePreDGW(const CBlockIndex* pindexPrev, CStakeInput* stake
     const unsigned int nTimeBlockFrom = pindexfrom->nTime;
 
     CDataStream ss(SER_GETHASH, 0);
-    ss << nTimeBlockFrom << hashProofOfStakeRet << stake->GetValue() << nTimeTx;
+    ss << nTimeBlockFrom << uint256() << stake->GetValue() << nTimeTx;
     hashProofOfStakeRet = Hash(ss.begin(), ss.end());
 
     return true;
