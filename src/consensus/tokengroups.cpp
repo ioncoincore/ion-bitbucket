@@ -36,7 +36,7 @@ bool IsMagicInput(CScript script) {
 
 bool AnyInputsGrouped(const CTransaction &transaction, const int nHeight, const CCoinsViewCache& view, const CTokenGroupID tgID) {
     bool anyInputsGrouped = false;
-    if (!transaction.IsCoinBase() && !transaction.IsCoinStake() && !transaction.HasZerocoinSpendInputs()) {
+    if (!transaction.IsGenerated() && !transaction.HasZerocoinSpendInputs()) {
 
         if (!view.HaveInputs(transaction))
             return false;

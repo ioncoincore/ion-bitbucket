@@ -307,6 +307,7 @@ public:
     }
 
     bool IsCoinStake() const;
+    bool IsGenerated() const;
 
     friend bool operator==(const CTransaction& a, const CTransaction& b)
     {

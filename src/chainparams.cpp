@@ -818,7 +818,7 @@ public:
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
         consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
         // ION
-        consensus.nCoinbaseMaturity = 100;
+        consensus.nCoinbaseMaturity = 15;
         // POS
         consensus.POSStartHeight = 250;
         consensus.MidasStartHeight = 999999999;
