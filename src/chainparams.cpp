@@ -483,7 +483,7 @@ public:
         consensus.nPowDGWHeight = 4002;
         consensus.nRuleChangeActivationThreshold = 1512; // 75% for testchains
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 25;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
         // ION
@@ -516,7 +516,7 @@ public:
             "8441436038339044149526344321901146575444541784240209246165157233507787077498171257724679629263863563732899121548"
             "31438167899885040445364023527381951378636564391212010397122822120720357";
 
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 25;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
 
@@ -656,7 +656,7 @@ public:
         consensus.nPowDGWHeight = 4001;
         consensus.nRuleChangeActivationThreshold = 1512; // 75% for testchains
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 25;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
         // ION
@@ -752,7 +752,7 @@ public:
         nPoolMaxParticipants = 5;
         nFulfilledRequestExpireTime = 5*60; // fulfilled requests expire in 5 minutes
 
-        vSporkAddresses = {"gRgAY9dX7kN3tLNeVPQ8YoVGJdeNiE2Ubr"};
+        vSporkAddresses = {"g6JXj9btw63aVnVhJCYc8frJqPF4ZggAes"};
         nMinSporkKeys = 1;
         // devnets are started with no blocks and no MN, so we can't check for upgraded MN (as there are none)
         fBIP9CheckMasternodesUpgraded = false;
@@ -818,7 +818,7 @@ public:
         consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
         consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
         // ION
-        consensus.nCoinbaseMaturity = 100;
+        consensus.nCoinbaseMaturity = 15;
         // POS
         consensus.POSStartHeight = 250;
         consensus.MidasStartHeight = 999999999;
@@ -853,7 +853,7 @@ public:
         // POSPOW
         consensus.POSPOWStartHeight = 350;
 
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 25;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 999999999999ULL;
 
@@ -901,7 +901,7 @@ public:
         nPoolMaxParticipants = 5;
 
         // privKey: 93QPD8M8SrVb4yL3E679sCGztzy1NRWYH3fs2wJQr2LMKnppFCJ
-        vSporkAddresses = {"gRgAY9dX7kN3tLNeVPQ8YoVGJdeNiE2Ubr"};
+        vSporkAddresses = {"g6JXj9btw63aVnVhJCYc8frJqPF4ZggAes"};
         nMinSporkKeys = 1;
         // regtest usually has no masternodes in most tests, so don't check for upgraged MNs
         fBIP9CheckMasternodesUpgraded = false;

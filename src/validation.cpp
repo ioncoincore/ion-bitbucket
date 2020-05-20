@@ -492,7 +492,7 @@ void UpdateMempoolForReorg(DisconnectedBlockTransactions &disconnectpool, bool f
     while (it != disconnectpool.queuedTx.get<insertion_order>().rend()) {
         // ignore validation errors in resurrected transactions
         CValidationState stateDummy;
-        if (!fAddToMempool || (*it)->IsCoinBase() || !AcceptToMemoryPool(mempool, stateDummy, *it, false, nullptr, true)) {
+        if (!fAddToMempool || (*it)->IsGenerated() || !AcceptToMemoryPool(mempool, stateDummy, *it, false, nullptr, true)) {
             // If the transaction doesn't make it in to the mempool, remove any
             // transactions that depend on it (which would now be orphans).
             mempool.removeRecursive(**it, MemPoolRemovalReason::REORG);
@@ -573,8 +573,8 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
     }
 
     // Coinbase is only valid in a block, not as a loose transaction
-    if (tx.IsCoinBase())
-        return state.DoS(100, false, REJECT_INVALID, "coinbase");
+    if (tx.IsGenerated())
+        return state.DoS(100, false, REJECT_INVALID, "coinbase-coinstake-not-allowed");
 
     // Disallow any OP_GROUP txs from entering the mempool until OP_GROUP is enabled.
     // This ensures that someone won't create an invalid OP_GROUP tx that sits in the mempool until after activation,
@@ -713,17 +713,17 @@ static bool AcceptToMemoryPoolWorker(const CChainParams& chainparams, CTxMemPool
 
         // Keep track of transactions that spend a coinbase, which we re-scan
         // during reorgs to ensure COINBASE_MATURITY is still met.
-        bool fSpendsCoinbase = false;
+        bool fSpendsGenerated = false;
         for (const CTxIn &txin : tx.vin) {
             const Coin &coin = view.AccessCoin(txin.prevout);
-            if (coin.IsCoinBase()) {
-                fSpendsCoinbase = true;
+            if (coin.IsGenerated()) {
+                fSpendsGenerated = true;
                 break;
             }
         }
 
         CTxMemPoolEntry entry(ptx, nFees, nAcceptTime, chainActive.Height(),
-                              fSpendsCoinbase, nSigOps, lp);
+                              fSpendsGenerated, nSigOps, lp);
         unsigned int nSize = entry.GetTxSize();
 
         // Check that the transaction doesn't have an excessive number of
@@ -2044,14 +2044,11 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
         return state.Error("Error setting POS parameters");
     }
     if (block.IsProofOfStake()) {
-        std::unique_ptr<CStakeInput> stake;
         uint256 hashProofOfStake;
 
-        if (!CheckProofOfStake(block, hashProofOfStake, stake, pindex))
+        if (!CheckProofOfStake(block, hashProofOfStake, pindex)) {
             return state.DoS(100, error("%s: proof of stake check failed", __func__));
-
-        if (!stake)
-            return error("%s: null stake ptr", __func__);
+        }
 
         uint256 hash = block.GetHash();
         if(!mapProofOfStake.count(hash)) // add to mapProofOfStake
@@ -2647,7 +2644,7 @@ void static UpdateTip(CBlockIndex *pindexNew, const CChainParams& chainParams) {
             }
         }
         // Check the version of the last 100 blocks to see if we need to upgrade:
-        for (int i = 0; i < 100 && pindex != nullptr; i++)
+        for (int i = 0; i < 100 && pindex != nullptr && pindex->pprev != nullptr; i++)
         {
             int32_t nExpectedVersion = ComputeBlockVersion(pindex->pprev, chainParams.GetConsensus());
             if (pindex->nVersion > VERSIONBITS_LAST_OLD_BLOCK_VERSION && (pindex->nVersion & ~nExpectedVersion & ~BLOCKTYPEBITS_MASK) != 0)
