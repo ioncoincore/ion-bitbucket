@@ -2,7 +2,11 @@
 # Copyright (c) 2010 ArtForz -- public domain half-a-node
 # Copyright (c) 2012 Jeff Garzik
 # Copyright (c) 2010-2016 The Bitcoin Core developers
+<<<<<<< HEAD
+# Copyright (c) 2018-2020 The Ion Core developers
+=======
 # Copyright (c) 2020 The Ion Core developers
+>>>>>>> remotes/origin/master
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Ion P2P network half-a-node.

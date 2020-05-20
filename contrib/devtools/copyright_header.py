@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (c) 2016 The Bitcoin Core developers
 # Copyright (c) 2019 The Dash Core developers
+# Copyright (c) 2020 The Ion Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -106,7 +107,16 @@ EXPECTED_HOLDER_NAMES = [
     "Jan-Klaas Kollhof\n",
     "Sam Rushing\n",
     "ArtForz -- public domain half-a-node\n",
+    "The Dash Core developers\n",
+    "The Dash Core developers +\*\n",
+    "The Dash core developers\n",
+    "The Dash developers\n",
+    "The PIVX Core developers\n",
+    "The PIVX Core developers +\*\n",
+    "The PIVX core developers\n",
+    "The PIVX developers\n",
     "The Ion Core developers\n",
+    "The Ion Core developers +\*\n",
     "The Ion core developers\n",
     "The Ion developers\n",
     "cevap\n",
@@ -416,21 +426,21 @@ UPDATE_USAGE = """
 Updates all the copyright headers of "The Ion Core developers" which were
 changed in a year more recent than is listed. For example:
 
-// Copyright (c) <firstYear>-<lastYear> The Dash Core developers
+// Copyright (c) <firstYear>-<lastYear> The Ion Core developers
 
 will be updated to:
 
-// Copyright (c) <firstYear>-<lastModifiedYear> The Dash Core developers
+// Copyright (c) <firstYear>-<lastModifiedYear> The Ion Core developers
 
 where <lastModifiedYear> is obtained from the 'git log' history.
 
 This subcommand also handles copyright headers that have only a single year. In those cases:
 
-// Copyright (c) <year> The Dash Core developers
+// Copyright (c) <year> The Ion Core developers
 
 will be updated to:
 
-// Copyright (c) <year>-<lastModifiedYear> The Dash Core developers
+// Copyright (c) <year>-<lastModifiedYear> The Ion Core developers
 
 where the update is appropriate.
 
@@ -463,7 +473,7 @@ def get_header_lines(header, start_year, end_year):
     return [line + '\n' for line in lines]
 
 CPP_HEADER = '''
-// Copyright (c) %s The Dash Core developers
+// Copyright (c) %s The Ion Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 '''
@@ -472,7 +482,7 @@ def get_cpp_header_lines_to_insert(start_year, end_year):
     return reversed(get_header_lines(CPP_HEADER, start_year, end_year))
 
 PYTHON_HEADER = '''
-# Copyright (c) %s The Dash Core developers
+# Copyright (c) %s The Ion Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 '''

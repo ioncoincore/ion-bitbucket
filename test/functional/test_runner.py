@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
+<<<<<<< HEAD
+# Copyright (c) 2018-2020 The Ion Core developers
+=======
 # Copyright (c) 2020 The Ion Core developers
+>>>>>>> remotes/origin/master
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Run regression test suite.
