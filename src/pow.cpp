@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
+// Copyright (c) 2018-2020 The Ion Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -105,13 +106,13 @@ unsigned int static HybridPoSPIVXDifficulty(const CBlockIndex* pindexLastIn, con
     const CBlockIndex* pindexLast = ((pindexLastIn->nVersion & BLOCKTYPEBITS_MASK) == BlockTypeBits::BLOCKTYPE_STAKING) ?
         pindexLastIn : GetHybridPrevIndex(pindexLastIn, true, params.POSPOWStartHeight);
 
-    if (params.fPowNoRetargeting)
-        return pindexLast->nBits;
-
     // params.POSPOWStartHeight marks the first hybrid POS block. Start with a minimum difficulty block.
     if (pindexLast == nullptr || pindexLast->nHeight <= params.POSPOWStartHeight) {
         return UintToArith256(params.posLimit).GetCompact();
     }
+
+    if (params.fPowNoRetargeting)
+        return pindexLast->nBits;
 
     arith_uint256 bnTargetLimit = UintToArith256(params.posLimit);
     if (pindexLast->nHeight > params.POSStartHeight) {

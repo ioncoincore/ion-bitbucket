@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin Core developers
+// Copyright (c) 2018-2020 The Ion Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -189,6 +190,11 @@ bool CTransaction::IsCoinStake() const
         return false;
 
     return (vout.size() >= 2 && vout[0].IsEmpty());
+}
+
+bool CTransaction::IsGenerated() const
+{
+    return IsCoinBase() || IsCoinStake();
 }
 
 bool CTxIn::IsZerocoinSpend() const

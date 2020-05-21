@@ -1,5 +1,6 @@
 // Copyright (c) 2015 The Bitcoin Core developers
 // Copyright (c) 2014-2019 The Dash Core developers
+// Copyright (c) 2018-2020 The Ion Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -119,13 +120,13 @@ struct TestMemPoolEntryHelper
     CAmount nFee;
     int64_t nTime;
     unsigned int nHeight;
-    bool spendsCoinbase;
+    bool spendsGenerated;
     unsigned int sigOpCount;
     LockPoints lp;
 
     TestMemPoolEntryHelper() :
         nFee(0), nTime(0), nHeight(1),
-        spendsCoinbase(false), sigOpCount(4) { }
+        spendsGenerated(false), sigOpCount(4) { }
     
     CTxMemPoolEntry FromTx(const CMutableTransaction &tx);
     CTxMemPoolEntry FromTx(const CTransaction &tx);
@@ -134,7 +135,7 @@ struct TestMemPoolEntryHelper
     TestMemPoolEntryHelper &Fee(CAmount _fee) { nFee = _fee; return *this; }
     TestMemPoolEntryHelper &Time(int64_t _time) { nTime = _time; return *this; }
     TestMemPoolEntryHelper &Height(unsigned int _height) { nHeight = _height; return *this; }
-    TestMemPoolEntryHelper &SpendsCoinbase(bool _flag) { spendsCoinbase = _flag; return *this; }
+    TestMemPoolEntryHelper &SpendsCoinbase(bool _flag) { spendsGenerated = _flag; return *this; }
     TestMemPoolEntryHelper &SigOps(unsigned int _sigops) { sigOpCount = _sigops; return *this; }
 };
 #endif
