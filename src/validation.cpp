@@ -2186,7 +2186,7 @@ static bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockInd
                 }
 */
                 CTokenGroupCreation newTokenGroupCreation;
-                if (CreateTokenGroup(tx, pindex->GetBlockHash(), newTokenGroupCreation)) {
+                if (CreateTokenGroup(tx, block.GetHash(), newTokenGroupCreation)) {
                     newTokenGroups.push_back(newTokenGroupCreation);
                 } else {
                     return state.Invalid(false, REJECT_INVALID, "bad OP_GROUP");
