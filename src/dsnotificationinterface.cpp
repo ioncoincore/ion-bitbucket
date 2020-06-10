@@ -10,6 +10,7 @@
 #include "masternode/masternode-sync.h"
 #include "privatesend/privatesend.h"
 #ifdef ENABLE_WALLET
+#include "mining-manager.h"
 #include "pos/staking-manager.h"
 #include "privatesend/privatesend-client.h"
 #endif // ENABLE_WALLET
@@ -59,6 +60,7 @@ void CDSNotificationInterface::UpdatedBlockTip(const CBlockIndex *pindexNew, con
 #ifdef ENABLE_WALLET
     privateSendClient.UpdatedBlockTip(pindexNew);
     stakingManager->UpdatedBlockTip(pindexNew);
+    miningManager->UpdatedBlockTip(pindexNew);
 #endif // ENABLE_WALLET
 
     if (fLiteMode)

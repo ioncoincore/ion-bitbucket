@@ -387,6 +387,7 @@ public:
         fRequireStandard = true;
         fRequireRoutableExternalIP = true;
         fMineBlocksOnDemand = false;
+        fMiningRequiresPeers = true;
         fAllowMultipleAddressesFromGroup = false;
         fAllowMultiplePorts = false;
 
@@ -579,6 +580,7 @@ public:
         fRequireStandard = false;
         fRequireRoutableExternalIP = true;
         fMineBlocksOnDemand = false;
+        fMiningRequiresPeers = true;
         fAllowMultipleAddressesFromGroup = false;
         fAllowMultiplePorts = true;
 
@@ -745,6 +747,7 @@ public:
         fDefaultConsistencyChecks = false;
         fRequireStandard = false;
         fMineBlocksOnDemand = false;
+        fMiningRequiresPeers = true;
         fAllowMultipleAddressesFromGroup = true;
         fAllowMultiplePorts = true;
 
@@ -893,6 +896,7 @@ public:
         fRequireStandard = false;
         fRequireRoutableExternalIP = false;
         fMineBlocksOnDemand = true;
+        fMiningRequiresPeers = true;
         fAllowMultipleAddressesFromGroup = true;
         fAllowMultiplePorts = true;
 

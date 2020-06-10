@@ -210,6 +210,7 @@ BITCOIN_CORE_H = \
   merkleblock.h \
   messagesigner.h \
   miner.h \
+  mining-manager.h \
   net.h \
   net_processing.h \
   netaddress.h \
@@ -357,6 +358,7 @@ libion_server_a_SOURCES = \
   merkleblock.cpp \
   messagesigner.cpp \
   miner.cpp \
+  mining-manager.cpp \
   net.cpp \
   netfulfilledman.cpp \
   net_processing.cpp \

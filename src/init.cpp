@@ -33,6 +33,7 @@
 #include "policy/fees.h"
 #include "policy/policy.h"
 #ifdef ENABLE_WALLET
+#include "mining-manager.h"
 #include "pos/staking-manager.h"
 #include "reward-manager.h"
 #endif
@@ -258,6 +259,8 @@ void PrepareShutdown()
         pwallet->Flush(false);
     }
 #endif
+    miningManager->GenerateBitcoins(false, 0);
+
     MapPort(false);
 
     // Because these depend on each-other, we make sure that neither can be
@@ -596,6 +599,8 @@ std::string HelpMessage(HelpMessageMode mode)
     strUsage += HelpMessageOpt("-debugexclude=<category>", strprintf(_("Exclude debugging information for a category. Can be used in conjunction with -debug=1 to output debug logs for all categories except one or more specified categories.")));
     if (showDebug)
         strUsage += HelpMessageOpt("-nodebug", "Turn off debugging messages, same as -debug=0");
+    strUsage += HelpMessageOpt("-gen", strprintf(_("Generate coins (default: %u)"), DEFAULT_GENERATE));
+    strUsage += HelpMessageOpt("-genproclimit=<n>", strprintf(_("Set the number of threads for coin generation if enabled (-1 = all cores, default: %d)"), DEFAULT_GENERATE_THREADS));
     strUsage += HelpMessageOpt("-help-debug", _("Show all debugging options (usage: --help -help-debug)"));
     strUsage += HelpMessageOpt("-logips", strprintf(_("Include IP addresses in debug output (default: %u)"), DEFAULT_LOGIPS));
     strUsage += HelpMessageOpt("-logtimestamps", strprintf(_("Prepend debug output with timestamp (default: %u)"), DEFAULT_LOGTIMESTAMPS));
@@ -2230,10 +2235,18 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
         stakingManager = std::shared_ptr<CStakingManager>(new CStakingManager());
         stakingManager->fEnableStaking = false;
         stakingManager->fEnableIONStaking = false;
+
+        miningManager = std::shared_ptr<CMiningManager>(new CMiningManager(Params(), g_connman.get()));
+        miningManager->fEnableMining = false;
+        miningManager->fEnableIONMining = false;
     } else {
         stakingManager = std::shared_ptr<CStakingManager>(new CStakingManager(vpwallets[0]));
         stakingManager->fEnableStaking = gArgs.GetBoolArg("-staking", !fLiteMode);
         stakingManager->fEnableIONStaking = gArgs.GetBoolArg("-staking", true);
+
+        miningManager = std::shared_ptr<CMiningManager>(new CMiningManager(Params(), g_connman.get(), vpwallets[0]));
+        miningManager->fEnableMining = true;
+        miningManager->fEnableIONMining = gArgs.GetBoolArg("-gen", false);
 
         rewardManager->BindWallet(vpwallets[0]);
         rewardManager->fEnableRewardManager = true;
@@ -2361,6 +2374,10 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
     if (!connman.Start(scheduler, connOptions)) {
         return false;
     }
+
+    // Generate coins in the background
+    miningManager->GenerateBitcoins(gArgs.GetBoolArg("-gen", DEFAULT_GENERATE),
+        gArgs.GetArg("-genproclimit", DEFAULT_GENERATE_THREADS));
 
     // ********************************************************* Step 13: finished
 
