@@ -6,7 +6,6 @@
 
 #include "chainparams.h"
 #include "init.h"
-#include "masternode/masternode-sync.h"
 #include "miner.h"
 #include "net.h"
 #include "policy/policy.h"
@@ -15,6 +14,7 @@
 #include "pos/rewards.h"
 #include "pos/stakeinput.h"
 #include "script/sign.h"
+#include "script/tokengroup.h"
 #include "tokens/tokengroupmanager.h"
 #include "utilmoneystr.h"
 #include "validation.h"
@@ -30,29 +30,57 @@ std::shared_ptr<CMiningManager> miningManager;
 // Internal miner
 //
 
+//	
+// ScanHash scans nonces looking for a hash with at least some zero bits.	
+// The nonce is usually preserved between calls, but periodically or if the	
+// nonce is 0xffff0000 or above, the block is rebuilt and nNonce starts over at	
+// zero.	
+//	
+
+bool static ScanHash(const CBlockHeader *pblock, const arith_uint256& hashTarget, uint32_t& nNonce, uint256& phash)
+{
+    // HashX11 currently does not have an intermediary state
+    // So we revert to doing a full hash calculation and check
+    CBlockHeader block = *pblock;
+    while (true) {
+        nNonce++;
+        block.nNonce = nNonce;
+        phash = block.GetHash();
+
+        if (UintToArith256(phash) <= hashTarget)
+            return true;
+        // If nothing found after trying for a while, return -1	
+        if ((nNonce & 0xfff) == 0)	
+            return false;	
+    }
+}
+
 void static IONMiner(CWallet * const pwallet)
 {
     LogPrintf("IONMiner started\n");
     RenameThread("ion-miner");
 
-    std::shared_ptr<CReserveKey> coinbaseKey;
-    CPubKey coinbase_pubkey;
-    if (!pwallet->GetKeyForMining(coinbaseKey, coinbase_pubkey) || !coinbaseKey){
-        throw std::runtime_error("No coinbase script available (mining requires a wallet)");
+    if (!g_connman) {
+        throw std::runtime_error("No connection manager");
     }
+
+    std::shared_ptr<CReserveKey> coinbaseKey;
+    CPubKey coinbasePubKey;
+    {
+        LOCK(pwallet->cs_wallet);
+        if (!pwallet->GetKeyForMining(coinbaseKey, coinbasePubKey) || !coinbaseKey){
+            throw std::runtime_error("No coinbase script available (mining requires a wallet and keys in the keypool)");
+        }
+    }
+
 
     const auto& params = Params().GetConsensus();
     const bool fRegtest = Params().NetworkIDString() == CBaseChainParams::REGTEST;
-    static const int nInnerLoopCount = 0x10000;
     bool fPosPowPhase;
     bool fPosPhase;
     int nHeight = 0;
-
-    {   // Don't keep cs_main locked
-        LOCK(cs_main);
-        nHeight = chainActive.Height();
-    }
     unsigned int nExtraNonce = 0;
+
     UniValue blockHashes(UniValue::VARR);
     try {
         while (true) {
@@ -60,11 +88,19 @@ void static IONMiner(CWallet * const pwallet)
                 // Busy-wait for the network to come online so we don't waste time mining
                 // on an obsolete chain. In regtest mode we expect to fly solo.
                 do {
-                    bool fHaveConnections = !g_connman ? false : g_connman->GetNodeCount(CConnman::CONNECTIONS_ALL) > 0;
-                    if (fHaveConnections && !IsInitialBlockDownload())
+                    bool fHaveConnections = g_connman->GetNodeCount(CConnman::CONNECTIONS_ALL) > 0;
+                    if (fHaveConnections)
                         break;
-                    MilliSleep(1000);
+                    MilliSleep(5 * 1000);
                 } while (true);
+            }
+
+            unsigned int nTransactionsUpdatedLast = mempool.GetTransactionsUpdated();
+            CBlockIndex* pindexPrev;
+            {   // Don't keep cs_main locked
+                LOCK(cs_main);
+                pindexPrev = chainActive.Tip();
+                nHeight = chainActive.Height();
             }
 
             fPosPowPhase = nHeight + 1 >= params.POSPOWStartHeight;
@@ -77,27 +113,34 @@ void static IONMiner(CWallet * const pwallet)
                 continue;
             } else {
                 if (fPosPowPhase) {
+                    LOCK2(cs_main, pwallet->cs_wallet);
+
                     if (!tokenGroupManager->ElectronTokensCreated()) {
                         LogPrintf("Error: Mining in hybrid mode, but the Electron token group is not yet created\n");
                         MilliSleep(60 * 1000);
                         continue;
                     }
-                    std::shared_ptr<CReserveScript> coinbase_script;
+                    CScript coinbase_script;
                     CBlockReward reward(nHeight + 1, 0, false, params);
-                    if (!pwallet->GetScriptForHybridMining(coinbase_script, coinbaseKey, reward.GetCoinbaseReward())) {
-                        LogPrintf("Error: Keypool ran out, need to call keypoolrefill\n");
-                        MilliSleep(60 * 1000);
-                        continue;
+                    CReward coinbaseReward = reward.GetCoinbaseReward();
+
+                    CTxDestination dst = coinbasePubKey.GetID();
+
+                    std::map<CTokenGroupID, CAmount>::const_iterator it = coinbaseReward.tokenAmounts.begin();
+                    if (it == coinbaseReward.tokenAmounts.end()) {
+                        coinbase_script = CScript();
+                    } else {
+                        coinbase_script = GetScriptForDestination(dst, it->first, it->second);
                     }
-                    pblocktemplate = BlockAssembler(Params()).CreateNewBlock(coinbase_script->reserveScript);
+
+                    pblocktemplate = BlockAssembler(Params()).CreateNewBlock(coinbase_script);
                 } else {
-                    std::shared_ptr<CReserveScript> coinbase_script;
-                    if (!pwallet->GetScriptForPowMining(coinbase_script, coinbaseKey)) {
-                        LogPrintf("Error: Keypool ran out, need to call keypoolrefill\n");
-                        MilliSleep(60 * 1000);
-                        continue;
-                    }
-                    pblocktemplate = BlockAssembler(Params()).CreateNewBlock(coinbase_script->reserveScript);
+                    LOCK2(cs_main, pwallet->cs_wallet);
+
+                    CScript coinbase_script;
+                    coinbase_script = CScript() << ToByteVector(coinbasePubKey) << OP_CHECKSIG;
+
+                    pblocktemplate = BlockAssembler(Params()).CreateNewBlock(coinbase_script);
                 }
             }
             if (!pblocktemplate.get()) {
@@ -106,30 +149,72 @@ void static IONMiner(CWallet * const pwallet)
                 continue;
             }
             CBlock *pblock = &pblocktemplate->block;
-            {
-                LOCK(cs_main);
-                IncrementExtraNonce(pblock, chainActive.Tip(), nExtraNonce);
-            }
-            while (pblock->nNonce < nInnerLoopCount && !CheckProofOfWork(pblock->GetHash(), pblock->nBits, Params().GetConsensus())) {
-                boost::this_thread::interruption_point();
-                ++pblock->nNonce;
-            }
-            if (pblock->nNonce == nInnerLoopCount) {
-                continue;
-            }
+            miningManager->GetIncrementedExtraNonce(pblock, pindexPrev, nExtraNonce);
 
-            std::shared_ptr<const CBlock> shared_pblock = std::make_shared<const CBlock>(*pblock);
-            if (!ProcessNewBlock(Params(), shared_pblock, true, nullptr)) {
-                LogPrintf("ProcessNewBlock, block not accepted\n");
+            //
+            // Search
+            //
+            int64_t nStart = GetTime();
+
+            bool fNegative;
+            bool fOverflow;
+            arith_uint256 hashTarget;
+            hashTarget.SetCompact(pblock->nBits, &fNegative, &fOverflow);
+            // Check range
+            if (fNegative || hashTarget == 0 || fOverflow || hashTarget > UintToArith256(Params().GetConsensus().powLimit)) {
+                LogPrintf("%s - Incorrect difficulty\n");
                 MilliSleep(1000);
-                continue;
+                break;
             }
-            ++nHeight;
-            LogPrintf("IONMiner:\n");
-            LogPrintf("proof-of-work found  \n  hash: %s  \ntarget: %s\n", pblock->GetHash().GetHex(), pblock->nBits);
+            
+            uint256 hash;
+            uint32_t nNonce = 0;
+            while (true) {
+                if (ScanHash(pblock, hashTarget, nNonce, hash)) {
+                    // Found a solution
+                    pblock->nNonce = nNonce;
+                    assert(hash == pblock->GetHash());
 
-            //mark script as important because it was used at least for one coinbase output if the script came from the wallet
-            coinbaseKey->KeepKey();
+                    LogPrintf("IONMiner:\n");
+                    LogPrintf("proof-of-work found  \n  hash: %s  \ntarget: %s\n", pblock->GetHash().GetHex(), pblock->nBits);
+                    std::shared_ptr<const CBlock> shared_pblock = std::make_shared<const CBlock>(*pblock);
+                    if (!ProcessNewBlock(Params(), shared_pblock, true, nullptr)) {
+                        LogPrintf("ProcessNewBlock, block not accepted\n");
+                        MilliSleep(500);
+                        continue;
+                    }
+                    ++nHeight;
+                    //mark script as important because it was used at least for one coinbase output if the script came from the wallet
+                    coinbaseKey->KeepKey();
+
+                    break;
+                }
+                // Check for stop or if block needs to be rebuilt	
+                boost::this_thread::interruption_point();	
+
+                if (nNonce >= 0xffff0000) {
+                    nNonce = 0;
+                    break;	
+                }
+                if (mempool.GetTransactionsUpdated() != nTransactionsUpdatedLast && GetTime() - nStart > 60)
+                    break;
+                {
+                    LOCK(cs_main);
+                    if (pindexPrev != chainActive.Tip())
+                        break;
+                }
+                // Update nTime every few seconds
+                if (UpdateTime(pblock, Params().GetConsensus(), pindexPrev) < 0)
+                    break; // Recreate the block if the clock has run backwards,
+                           // so that we can use the correct time.
+                if (Params().GetConsensus().fPowAllowMinDifficultyBlocks)
+                {
+                    // Changing pblock->nTime can change work required on testnet:
+                    hashTarget.SetCompact(pblock->nBits);
+                }
+                if (Params().MiningRequiresPeers() && g_connman->GetNodeCount(CConnman::CONNECTIONS_ALL) < 1)
+                    break;
+            }
         }
     }
     catch (const boost::thread_interrupted&)
@@ -141,6 +226,14 @@ void static IONMiner(CWallet * const pwallet)
     {
         LogPrintf("IONMiner runtime error: %s\n", e.what());
         return;
+    }
+}
+
+void CMiningManager::GetIncrementedExtraNonce(CBlock* pblock, const CBlockIndex* pindexPrev, unsigned int& nMinerExtraNonce) {
+    {
+        LOCK(cs);
+        IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
+        nMinerExtraNonce = nExtraNonce;
     }
 }
 
@@ -157,7 +250,6 @@ bool CMiningManager::GenerateBitcoins(bool fGenerate, int nThreads)
     LOCK2(cs_main, pwallet->cs_wallet);
 
     if (miningManager->fEnableMining) {
-//        scheduler.scheduleEvery(boost::bind(&CMiningManager::DoMaintenance, boost::ref(miningManager), boost::ref(*g_connman)), 100);
         static boost::thread_group* minerThreads = NULL;
 
         if (nThreads < 0)
@@ -166,6 +258,7 @@ bool CMiningManager::GenerateBitcoins(bool fGenerate, int nThreads)
         if (minerThreads != NULL)
         {
             minerThreads->interrupt_all();
+            MilliSleep(600);
             delete minerThreads;
             minerThreads = NULL;
         }
@@ -174,7 +267,7 @@ bool CMiningManager::GenerateBitcoins(bool fGenerate, int nThreads)
             return false;
 
         minerThreads = new boost::thread_group();
-        for (int i = 0; i < nThreads; i++)
+        for (unsigned int i = 0; i < nThreads; i++)
             minerThreads->create_thread(boost::bind(&IONMiner, boost::ref(pwallet)));
     }
 

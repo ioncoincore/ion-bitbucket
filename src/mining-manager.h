@@ -11,6 +11,7 @@
 
 #include <univalue.h>
 
+class CBlock;
 class CBlockIndex;
 class CChainParams;
 class CConnman;
@@ -43,6 +44,7 @@ public:
     bool fEnableIONMining;
 
     bool GenerateBitcoins(bool fGenerate, int nThreads);
+    void GetIncrementedExtraNonce(CBlock* pblock, const CBlockIndex* pindexPrev, unsigned int& nMinerExtraNonce);
 
     void UpdatedBlockTip(const CBlockIndex* pindex);
 

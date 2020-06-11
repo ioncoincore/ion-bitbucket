@@ -5122,31 +5122,29 @@ void CWallet::GetScriptForMining(std::shared_ptr<CReserveScript> &script)
     script->reserveScript = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
 }
 
-bool CWallet::GetScriptForPowMining(std::shared_ptr<CReserveScript> &script, const std::shared_ptr<CReserveKey> &reservedKey)
+bool CWallet::GetScriptForPowMining(CScript& script, const std::shared_ptr<CReserveKey> &reservedKey)
 {
     CPubKey pubkey;
     if (!reservedKey->GetReservedKey(pubkey, false))
         return false;
 
-    script = reservedKey;
-    script->reserveScript = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
+    script = CScript() << ToByteVector(pubkey) << OP_CHECKSIG;
     return true;
 }
 
-bool CWallet::GetScriptForHybridMining(std::shared_ptr<CReserveScript> &script, const std::shared_ptr<CReserveKey> &reservedKey, const CReward &reward)
+bool CWallet::GetScriptForHybridMining(CScript& script, const std::shared_ptr<CReserveKey> &reservedKey, const CReward &reward)
 {
     CPubKey pubkey;
     if (!reservedKey->GetReservedKey(pubkey, false))
         return false;
 
-    script = reservedKey;
     CTxDestination dst = pubkey.GetID();
 
     std::map<CTokenGroupID, CAmount>::const_iterator it = reward.tokenAmounts.begin();
     if (it == reward.tokenAmounts.end()) {
-        script->reserveScript = CScript();
+        script = CScript();
     } else {
-        script->reserveScript = GetScriptForDestination(dst, it->first, it->second);
+        script = GetScriptForDestination(dst, it->first, it->second);
     }
     return true;
 }
