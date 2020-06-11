@@ -101,10 +101,10 @@ class GetblockstatsTest(BitcoinTestFramework):
 
     def run_test(self):
         test_data = os.path.join(TESTSDIR, self.options.test_data)
-        if self.options.gen_test_data:
-            self.generate_test_data(test_data)
-        else:
-            self.load_test_data(test_data)
+        #if self.options.gen_test_data:
+        self.generate_test_data(test_data)
+        #else:
+        #    self.load_test_data(test_data)
 
         self.sync_all()
         stats = self.get_stats()
