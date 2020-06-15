@@ -3039,6 +3039,8 @@ void CWallet::AvailableCoins(std::vector<COutput> &vCoins, bool fOnlySafe, const
                         continue;
                     if (IsOutputGrouped(pcoin->tx->vout[i]))
                         continue;
+                    if (pcoin->tx->vout[i].nValue == MASTERNODE_COLLATERAL_AMOUNT)
+                        continue;
                 }
 
                 if (pcoin->tx->vout[i].nValue < nMinimumAmount || pcoin->tx->vout[i].nValue > nMaximumAmount)
