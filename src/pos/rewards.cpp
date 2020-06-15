@@ -81,7 +81,7 @@ CReward::CReward(const RewardType typeIn, const CTxOut& out) {
     IONAmount = 0;
 
     CTokenGroupInfo tokenGrp(out.scriptPubKey);
-    if ((tokenGrp.associatedGroup != NoGroup) && !tokenGrp.isAuthority()) {
+    if ((tokenGrp.associatedGroup != NoGroup)) {
         AddRewardAmounts(out.nValue, tokenGrp.associatedGroup, tokenGrp.getAmount());
     } else {
         AddRewardAmounts(out.nValue);
