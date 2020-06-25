@@ -108,7 +108,7 @@ BASE_SCRIPTS= [
     'disconnect_ban.py',
     #'addressindex.py', # not working TODO fix it
     'timestampindex.py',
-    #'spentindex.py', # not working TODO fix it
+    'spentindex.py',
     #'decodescript.py',# runaway process when running in test_runner.py
     'blockchain.py',
     'disablewallet.py',
@@ -149,7 +149,7 @@ EXTENDED_SCRIPTS = [
     # Longest test should go first, to favor running tests in parallel
     #'pruning.py', # NOTE: Prune mode is incompatible with -txindex, should work in litemode though. -- not working TODO fix it
     # vv Tests less than 20m vv
-    #'smartfees.py', # not working TODO fix it
+    'smartfees.py',
     # vv Tests less than 5m vv
     #'maxuploadtarget.py', # not working TODO fix it
     #'mempool_packages.py', # not working TODO fix it
@@ -165,7 +165,7 @@ EXTENDED_SCRIPTS = [
     #assumevalid.py', # runaway process when run using test_runner.py
     #'txn_doublespend.py', # not working TODO fix it
     #'txn_clone.py --mineblock', # not working TODO fix it
-    #'txindex.py', # not working TODO fix it
+    'txindex.py',
     'forknotify.py',
     'invalidateblock.py',
 ]

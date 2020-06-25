@@ -55,7 +55,7 @@ MAX_BLOCK_SIZE = 1000000
 COIN = 100000000 # 1 btc in satoshis
 
 NODE_NETWORK = (1 << 0)
-#NODE_GETUTXO = (1 << 1)
+NODE_GETUTXO = (1 << 1)
 NODE_BLOOM = (1 << 2)
 
 MSG_TX = 1
@@ -432,6 +432,7 @@ class CTransaction(object):
         if tx is None:
             self.nVersion = 1
             self.nType = 0
+            self.nTime = 0
             self.vin = []
             self.vout = []
             self.nLockTime = 0
@@ -441,6 +442,7 @@ class CTransaction(object):
         else:
             self.nVersion = tx.nVersion
             self.nType = tx.nType
+            self.nTime = tx.nTime
             self.vin = copy.deepcopy(tx.vin)
             self.vout = copy.deepcopy(tx.vout)
             self.nLockTime = tx.nLockTime
@@ -452,6 +454,7 @@ class CTransaction(object):
         ver32bit = struct.unpack("<i", f.read(4))[0]
         self.nVersion = ver32bit & 0xffff
         self.nType = (ver32bit >> 16) & 0xffff
+        self.nTime = struct.unpack("<I", f.read(4))[0]
         self.vin = deser_vector(f, CTxIn)
         self.vout = deser_vector(f, CTxOut)
         self.nLockTime = struct.unpack("<I", f.read(4))[0]
@@ -464,6 +467,7 @@ class CTransaction(object):
         r = b""
         ver32bit = int(self.nVersion | (self.nType << 16))
         r += struct.pack("<i", ver32bit)
+        r += struct.pack("<I", self.nTime)
         r += ser_vector(self.vin)
         r += ser_vector(self.vout)
         r += struct.pack("<I", self.nLockTime)
@@ -493,8 +497,8 @@ class CTransaction(object):
         return True
 
     def __repr__(self):
-        return "CTransaction(nVersion=%i vin=%s vout=%s nLockTime=%i)" \
-            % (self.nVersion, repr(self.vin), repr(self.vout), self.nLockTime)
+        return "CTransaction(nVersion=%i nTime=%i vin=%s vout=%s nLockTime=%i)" \
+            % (self.nVersion, self.nTime, repr(self.vin), repr(self.vout), self.nLockTime)
 
 
 class CBlockHeader(object):
