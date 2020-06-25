@@ -41,7 +41,14 @@ Vcs-Browser: http://bitbucket.org/ioncoin/ion
 
 Package: iond
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: libboost-program-options1.71.0 | libboost-program-options1.67.0 | libboost-program-options1.65.1 | libboost-program-options1.58.0,
+ libboost-thread1.71.0 | libboost-thread1.67.0 | libboost-thread1.65.1 | libboost-thread1.58.0,
+ libboost-chrono1.71.0 | libboost-chrono1.67.0 | libboost-chrono1.65.1 | libboost-chrono1.58.0,
+ libqrencode3 | libqrencode4,
+ libprotobuf17 | libprotobuf10 | libprotobuf9v5,
+ libdb4.8++,
+ libevent-pthreads-2.1-7 | libevent-pthreads-2.1-6 | libevent-pthreads-2.0-5,
+ libssl1.0.0 | libssl1.0.0-depends
 Description: gaming related peer-to-peer network based digital currency daemon
  Ion Core is an MIT licensed,  open source, gaming oriented,
  blockchain-based cryptocurrency with ultra fast transactions,
@@ -80,7 +87,14 @@ Description: gaming related peer-to-peer network based digital currency daemon
 
 Package: ion-cli
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: libboost-program-options1.71.0 | libboost-program-options1.67.0 | libboost-program-options1.65.1 | libboost-program-options1.58.0,
+ libboost-thread1.71.0 | libboost-thread1.67.0 | libboost-thread1.65.1 | libboost-thread1.58.0,
+ libboost-chrono1.71.0 | libboost-chrono1.67.0 | libboost-chrono1.65.1 | libboost-chrono1.58.0,
+ libqrencode3 | libqrencode4,
+ libprotobuf17 | libprotobuf10 | libprotobuf9v5,
+ libdb4.8++,
+ libevent-pthreads-2.1-7 | libevent-pthreads-2.1-6 | libevent-pthreads-2.0-5,
+ libssl1.0.0 | libssl1.0.0-depends
 Description: gaming related peer-to-peer network based digital currency CLI
  Ion Core is an MIT licensed,  open source, gaming oriented,
  blockchain-based cryptocurrency with ultra fast transactions,
@@ -119,7 +133,16 @@ Description: gaming related peer-to-peer network based digital currency CLI
 
 Package: ion-qt
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: libboost-program-options1.71.0 | libboost-program-options1.67.0 | libboost-program-options1.65.1 | libboost-program-options1.58.0,
+ libboost-thread1.71.0 | libboost-thread1.67.0 | libboost-thread1.65.1 | libboost-thread1.58.0,
+ libboost-chrono1.71.0 | libboost-chrono1.67.0 | libboost-chrono1.65.1 | libboost-chrono1.58.0,
+ libqt5network5,
+ libqt5widgets5,
+ libqrencode3 | libqrencode4,
+ libprotobuf17 | libprotobuf10 | libprotobuf9v5,
+ libdb4.8++,
+ libevent-pthreads-2.1-7 | libevent-pthreads-2.1-6 | libevent-pthreads-2.0-5,
+ libssl1.0.0 | libssl1.0.0-depends
 Description: gaming related peer-to-peer network based digital currency ION GUI
  Ion Core is an MIT licensed,  open source, gaming oriented,
  blockchain-based cryptocurrency with ultra fast transactions,
@@ -158,7 +181,14 @@ Description: gaming related peer-to-peer network based digital currency ION GUI
 
 Package: ion-tx
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: libboost-program-options1.71.0 | libboost-program-options1.67.0 | libboost-program-options1.65.1 | libboost-program-options1.58.0,
+ libboost-thread1.71.0 | libboost-thread1.67.0 | libboost-thread1.65.1 | libboost-thread1.58.0,
+ libboost-chrono1.71.0 | libboost-chrono1.67.0 | libboost-chrono1.65.1 | libboost-chrono1.58.0,
+ libqrencode3 | libqrencode4,
+ libprotobuf17 | libprotobuf10 | libprotobuf9v5,
+ libdb4.8++,
+ libevent-pthreads-2.1-7 | libevent-pthreads-2.1-6 | libevent-pthreads-2.0-5,
+ libssl1.0.0 | libssl1.0.0-depends
 Description: gaming related peer-to-peer network based digital currency tx tool
  Ion Core is an MIT licensed,  open source, gaming oriented,
  blockchain-based cryptocurrency with ultra fast transactions,
@@ -197,7 +227,16 @@ Description: gaming related peer-to-peer network based digital currency tx tool
 
 Package: ion-full
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: libboost-program-options1.71.0 | libboost-program-options1.67.0 | libboost-program-options1.65.1 | libboost-program-options1.58.0,
+ libboost-thread1.71.0 | libboost-thread1.67.0 | libboost-thread1.65.1 | libboost-thread1.58.0,
+ libboost-chrono1.71.0 | libboost-chrono1.67.0 | libboost-chrono1.65.1 | libboost-chrono1.58.0,
+ libqt5network5,
+ libqt5widgets5,
+ libqrencode3 | libqrencode4,
+ libprotobuf17 | libprotobuf10 | libprotobuf9v5,
+ libdb4.8++,
+ libevent-pthreads-2.1-7 | libevent-pthreads-2.1-6 | libevent-pthreads-2.0-5,
+ libssl1.0.0 | libssl1.0.0-depends
 Description: gaming related peer-to-peer network based digital currency full suite
  Ion Core is an MIT licensed,  open source, gaming oriented,
  blockchain-based cryptocurrency with ultra fast transactions,
@@ -237,7 +276,16 @@ Description: gaming related peer-to-peer network based digital currency full sui
 
 Package: ion-dev
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: libboost-program-options1.71.0 | libboost-program-options1.67.0 | libboost-program-options1.65.1 | libboost-program-options1.58.0,
+ libboost-thread1.71.0 | libboost-thread1.67.0 | libboost-thread1.65.1 | libboost-thread1.58.0,
+ libboost-chrono1.71.0 | libboost-chrono1.67.0 | libboost-chrono1.65.1 | libboost-chrono1.58.0,
+ libqt5network5,
+ libqt5widgets5,
+ libqrencode3 | libqrencode4,
+ libprotobuf17 | libprotobuf10 | libprotobuf9v5,
+ libdb4.8++,
+ libevent-pthreads-2.1-7 | libevent-pthreads-2.1-6 | libevent-pthreads-2.0-5,
+ libssl1.0.0 | libssl1.0.0-depends
 Description: gaming related peer-to-peer network based digital currency dev package
  Ion Core is an MIT licensed,  open source, gaming oriented,
  blockchain-based cryptocurrency with ultra fast transactions,
