@@ -32,9 +32,10 @@ class TokenTest (BitcoinTestFramework):
         self.log.info("Generating Tokens...")
         self.nodes[0].generate(100)
         self.nodes[0].importprivkey("cUnScAFQYLW8J8V9bWr57yj2AopudqTd266s6QuWGMMfMix3Hff4")
+        self.nodes[0].generate(100)
+        self.nodes[0].generate(99)
         self.nodes[0].sendtoaddress(ION_AUTH_ADDR, 10)
-        self.nodes[0].generate(100)
-        self.nodes[0].generate(100)
+        self.nodes[0].generate(1)
         MagicTok=self.nodes[0].configuremanagementtoken("MAGIC", "MagicToken", "4", "https://github.com/ioncoincore/ATP-descriptions/blob/master/ION-testnet-MAGIC.json", "4f92d91db24bb0b8ca24a2ec86c4b012ccdc4b2e9d659c2079f5cc358413a765", "true")
         self.nodes[0].generate(1)
         MagicGroup_ID=MagicTok['groupID']
