@@ -60,7 +60,7 @@ jobs:
           command: |
             git submodule update --init --recursive
             apt-get -y update
-            apt-get -y install pkg-config autoconf libtool automake bsdmainutils ca-certificates python3 cmake libxkbcommon0 gcc-8 g++-8
+            apt-get -y install pkg-config autoconf libtool automake bsdmainutils ca-certificates python3 cmake libxkbcommon0 gcc-8 g++-8 libpython3.6-dev python3-distutils
             update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-8 100
             update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-8 100
             update-alternatives --install /usr/bin/${HOST}-gcc ${HOST}-gcc /usr/bin/${HOST}-gcc-8 100
@@ -69,6 +69,10 @@ jobs:
             ./autogen.sh
             ./configure --host=${HOST} --prefix=`pwd`/depends/${HOST} --enable-zmq --enable-glibc-back-compat --enable-reduce-exports LDFLAGS=-static-libstdc++
             make -j${JOBS}
+            cd contrib/ion_hash
+            python3 setup.py install
+            cd -
+            test/functional/test_runner.py
   i686_bionic:
     docker:
       - image: ioncoin/gitian:latest
@@ -222,7 +226,7 @@ jobs:
             tar -C `pwd`/depends/SDKs -xJf ./MacOSX10.11.sdk.tar.xz
             make -j${JOBS} -C depends HOST=${HOST}
             ./autogen.sh
-            ./configure --host=${HOST} --prefix=`pwd`/depends/${HOST} --enable-reduce-exports --enable-werror --disable-ccache --disable-maintainer-mode --disable-dependency-tracking 
+            ./configure --host=${HOST} --prefix=`pwd`/depends/${HOST} --enable-reduce-exports --enable-werror --disable-ccache --disable-maintainer-mode --disable-dependency-tracking
             make -j${JOBS}
   snapcraft_build:
     docker:
@@ -238,7 +242,7 @@ workflows:
       - lint_all
       - x86_64_bionic:
           requires:
-            - lint_all      
+            - lint_all
       - i686_bionic:
           requires:
             - lint_all
