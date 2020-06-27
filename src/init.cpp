@@ -2268,7 +2268,7 @@ bool AppInitMain(boost::thread_group& threadGroup, CScheduler& scheduler)
             scheduler.scheduleEvery(boost::bind(&CStakingManager::DoMaintenance, boost::ref(stakingManager), boost::ref(*g_connman)), 5 * 1000);
         }
         if (rewardManager->fEnableRewardManager) {
-            scheduler.scheduleEvery(boost::bind(&CRewardManager::DoMaintenance, boost::ref(rewardManager), boost::ref(*g_connman)), 1000);
+            scheduler.scheduleEvery(boost::bind(&CRewardManager::DoMaintenance, boost::ref(rewardManager), boost::ref(*g_connman)), 3 * 60 * 1000);
         }
     }
 #endif // ENABLE_WALLET
