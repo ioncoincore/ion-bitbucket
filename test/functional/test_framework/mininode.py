@@ -2,11 +2,7 @@
 # Copyright (c) 2010 ArtForz -- public domain half-a-node
 # Copyright (c) 2012 Jeff Garzik
 # Copyright (c) 2010-2016 The Bitcoin Core developers
-<<<<<<< HEAD
 # Copyright (c) 2018-2020 The Ion Core developers
-=======
-# Copyright (c) 2020 The Ion Core developers
->>>>>>> remotes/origin/master
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Ion P2P network half-a-node.
@@ -46,11 +42,10 @@ import threading
 from test_framework.siphash import siphash256
 from test_framework.util import hex_str_to_bytes, bytes_to_hex_str, wait_until
 
-# Available in contrib/ion_hash
 import ion_hash
 
-BIP0031_VERSION = 60000
-MY_VERSION = 70214  # MIN_PEER_PROTO_VERSION
+BIP0031_VERSION = 95700
+MY_VERSION = 96000  # MIN_PEER_PROTO_VERSION
 MY_SUBVERSION = b"/python-mininode-tester:0.0.3/"
 MY_RELAY = 1 # from version 70001 onwards, fRelay should be appended to version messages (BIP37)
 
@@ -302,10 +297,27 @@ class CAddress(object):
 
 class CInv(object):
     typemap = {
-        0: "Error",
-        1: "TX",
-        2: "Block",
-        20: "CompactBlock"
+        0: "MSG_ERROR",
+        1: "MSG_TX",
+        2: "MSG_BLOCK",
+        3: "MSG_FILTERED_BLOCK",
+        4: "MSG_TXLOCK_REQUEST",
+        5: "MSG_TXLOCK_VOTE",
+        6: "MSG_SPORK",
+        7: "MSG_MASTERNODE_WINNER",
+        8: "MSG_MASTERNODE_SCANNING_ERROR",
+        9: "MSG_BUDGET_VOTE",
+        10: "MSG_BUDGET_PROPOSAL",
+        11: "MSG_BUDGET_FINALIZED",
+        12: "MSG_BUDGET_FINALIZED_VOTE",
+        13: "MSG_MASTERNODE_QUORUM",
+        14: "MSG_MASTERNODE_QUORUM",
+        15: "MSG_MASTERNODE_ANNOUNCE",
+        16: "MSG_MASTERNODE_PING",
+        17: "MSG_DSTX",
+        18: "MSG_PUBCOINS",
+        19: "MSG_GENWIT",
+        20: "MSG_ACC_VALUE"
     }
 
     def __init__(self, t=0, h=0):
@@ -420,6 +432,7 @@ class CTransaction(object):
         if tx is None:
             self.nVersion = 1
             self.nType = 0
+            self.nTime = 0
             self.vin = []
             self.vout = []
             self.nLockTime = 0
@@ -429,6 +442,7 @@ class CTransaction(object):
         else:
             self.nVersion = tx.nVersion
             self.nType = tx.nType
+            self.nTime = tx.nTime
             self.vin = copy.deepcopy(tx.vin)
             self.vout = copy.deepcopy(tx.vout)
             self.nLockTime = tx.nLockTime
@@ -440,6 +454,7 @@ class CTransaction(object):
         ver32bit = struct.unpack("<i", f.read(4))[0]
         self.nVersion = ver32bit & 0xffff
         self.nType = (ver32bit >> 16) & 0xffff
+        self.nTime = struct.unpack("<I", f.read(4))[0]
         self.vin = deser_vector(f, CTxIn)
         self.vout = deser_vector(f, CTxOut)
         self.nLockTime = struct.unpack("<I", f.read(4))[0]
@@ -452,6 +467,7 @@ class CTransaction(object):
         r = b""
         ver32bit = int(self.nVersion | (self.nType << 16))
         r += struct.pack("<i", ver32bit)
+        r += struct.pack("<I", self.nTime)
         r += ser_vector(self.vin)
         r += ser_vector(self.vout)
         r += struct.pack("<I", self.nLockTime)
@@ -481,8 +497,8 @@ class CTransaction(object):
         return True
 
     def __repr__(self):
-        return "CTransaction(nVersion=%i vin=%s vout=%s nLockTime=%i)" \
-            % (self.nVersion, repr(self.vin), repr(self.vout), self.nLockTime)
+        return "CTransaction(nVersion=%i nTime=%i vin=%s vout=%s nLockTime=%i)" \
+            % (self.nVersion, self.nTime, repr(self.vin), repr(self.vout), self.nLockTime)
 
 
 class CBlockHeader(object):
@@ -1722,9 +1738,9 @@ class NodeConn(asyncore.dispatcher):
         b"qfcommit": None,
     }
     MAGIC_BYTES = {
-        "mainnet": b"\xbf\x0c\x6b\xbd",   # mainnet
-        "testnet": b"\xce\xe2\xca\xff",  # testnet
-        "regtest": b"\xfc\xc1\xb7\xdc",   # regtest
+        "mainnet": b"\xc4\xe1\xd8\xec",   # mainnet
+        "testnet": b"\xdb\x86\xfc\x69",  # testnet
+        "regtest": b"\xb5\x9a\x39\x9e",   # regtest
         "devnet": b"\xe2\xca\xff\xce",    # devnet
     }
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Copyright (c) 2014-2016 The Bitcoin Core developers
 # Copyright (c) 2014-2019 The Dash Core developers
-# Copyright (c) 2020 The Ion Core developers
+# Copyright (c) 2018-2020 The Ion Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Base class for RPC testing."""
@@ -467,7 +467,7 @@ class BitcoinTestFramework(object):
         for i in range(self.num_nodes):
             initialize_datadir(self.options.tmpdir, i)
 
-MASTERNODE_COLLATERAL = 1000
+MASTERNODE_COLLATERAL = 20000
 
 
 class MasternodeInfo:
@@ -892,7 +892,7 @@ class ComparisonTestFramework(BitcoinTestFramework):
         if hasattr(self, "extra_args"):
             extra_args = self.extra_args
         self.add_nodes(self.num_nodes, extra_args,
-                       binary=[self.options.testbinary] +
+                       binary=[self.options.testbinary]
                        [self.options.refbinary] * (self.num_nodes - 1))
         self.start_nodes()
 

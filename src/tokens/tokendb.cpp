@@ -65,7 +65,7 @@ bool CTokenDB::FindTokenGroups(std::vector<CTokenGroupCreation>& vTokenGroups, s
             if (pcursor->GetValue(tokenGroupCreation)) {
                 vTokenGroups.push_back(tokenGroupCreation);
             } else {
-                strError = "LoadTokensFromDB() : failed to read value";
+                strError = "Failed to read token data from database";
                 return error(strError.c_str());
             }
         }
@@ -84,6 +84,57 @@ bool CTokenDB::LoadTokensFromDB(std::string& strError) {
     return true;
 }
 
+bool VerifyTokenDB(std::string &strError) {
+    std::vector<CTokenGroupCreation> vTokenGroups;
+    if (!pTokenDB->FindTokenGroups(vTokenGroups, strError)) {
+        return error(strError.c_str());
+    }
+    if (fHavePruned) {
+        LogPrintf("The block database has been pruned: lowering token database validation level\n");
+    }
+    for (auto tgCreation : vTokenGroups) {
+        uint256 hash_block;
+        CTransactionRef tx;
+        uint256 txHash = tgCreation.creationTransaction->GetHash();
+
+        LOCK(cs_main);
+        auto pindex = mapBlockIndex.find(tgCreation.creationBlockHash);
+        if (pindex == mapBlockIndex.end()) {
+            strError = "Cannot find token creation transaction's block";
+            return error(strError.c_str());
+        }
+        if (!chainActive.Contains(pindex->second)) {
+            strError = "Token creation not found in the current chain";
+            return error(strError.c_str());
+        }
+        if (fHavePruned && !(pindex->second->nStatus & BLOCK_HAVE_DATA) && pindex->second->nTx > 0) {
+            // Block is in the index, but it's data has been pruned
+            continue;
+        }
+        CBlock block;
+        if (!ReadBlockFromDisk(block, pindex->second, Params().GetConsensus())) {
+            strError = "Cannot locate token creation transaction's block";
+            return error(strError.c_str());
+        }
+        for (auto& tx : block.vtx) {
+            if (tx->GetHash() != txHash) {
+                continue;
+            }
+            // Found creation transaction
+            CTokenGroupCreation tgCreation2;
+            if (!CreateTokenGroup(tx, block.GetHash(), tgCreation2)) {
+                strError = "Cannot recreate token configuration transaction";
+                return error(strError.c_str());
+            }
+            if (!(tgCreation == tgCreation2)) {
+                strError = "Cannot verify token configuration transaction";
+                return error(strError.c_str());
+            }
+        }
+    }
+    return true;
+}
+
 bool ReindexTokenDB(std::string &strError) {
     if (!pTokenDB->DropTokenGroups(strError)) {
         strError = "Failed to reset token database";
@@ -98,7 +149,7 @@ bool ReindexTokenDB(std::string &strError) {
     while (pindex) {
         uiInterface.ShowProgress(_("Reindexing token database..."), std::max(1, std::min(99, (int)((double)(pindex->nHeight - Params().GetConsensus().ATPStartHeight) / (double)(chainActive.Height() - Params().GetConsensus().ATPStartHeight) * 100))));
 
-        if (pindex->nHeight % 1000 == 0)
+        if (pindex->nHeight % 10000 == 0)
             LogPrintf("Reindexing token database: block %d...\n", pindex->nHeight);
 
         CBlock block;
@@ -110,30 +161,20 @@ bool ReindexTokenDB(std::string &strError) {
         for (const CTransactionRef& ptx : block.vtx) {
             if (!ptx->IsCoinBase() && !ptx->HasZerocoinSpendInputs() && IsAnyOutputGroupedCreation(*ptx)) {
                 CTokenGroupCreation tokenGroupCreation;
-                if (CreateTokenGroup(ptx, tokenGroupCreation)) {
+                if (CreateTokenGroup(ptx, block.GetHash(), tokenGroupCreation)) {
                     vTokenGroups.push_back(tokenGroupCreation);
                 }
             }
         }
 
-        // Write the token database to disk every 100 blocks
-        if (pindex->nHeight % 100 == 0) {
-            if (!vTokenGroups.empty() && !pTokenDB->WriteTokenGroupsBatch(vTokenGroups)) {
-                strError = "Error writing token database to disk";
-                return false;
-            }
-            tokenGroupManager->AddTokenGroups(vTokenGroups);
-            vTokenGroups.clear();
+        if (!vTokenGroups.empty() && !pTokenDB->WriteTokenGroupsBatch(vTokenGroups)) {
+            strError = "Error writing token database to disk";
+            return false;
         }
+        tokenGroupManager->AddTokenGroups(vTokenGroups);
+        vTokenGroups.clear();
 
         pindex = chainActive.Next(pindex);
-    }
-    uiInterface.ShowProgress("", 100);
-
-    // Final flush to disk in case any remaining information exists
-    if (!vTokenGroups.empty() && !pTokenDB->WriteTokenGroupsBatch(vTokenGroups)) {
-        strError = "Error writing token database to disk";
-        return false;
     }
 
     uiInterface.ShowProgress("", 100);

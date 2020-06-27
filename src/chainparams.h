@@ -74,6 +74,8 @@ public:
     uint64_t PruneAfterHeight() const { return nPruneAfterHeight; }
     /** Make miner stop after a block is found. In RPC, don't return until nGenProcLimit blocks are generated */
     bool MineBlocksOnDemand() const { return fMineBlocksOnDemand; }
+    /** Make miner stop after a block is found. In RPC, don't return until nGenProcLimit blocks are generated */
+    bool MiningRequiresPeers() const { return fMiningRequiresPeers; }
     /** Allow multiple addresses to be selected from the same network group (e.g. 192.168.x.x) */
     bool AllowMultipleAddressesFromGroup() const { return fAllowMultipleAddressesFromGroup; }
     /** Allow nodes with the same address and multiple ports */
@@ -118,6 +120,7 @@ protected:
     bool fRequireStandard;
     bool fRequireRoutableExternalIP;
     bool fMineBlocksOnDemand;
+    bool fMiningRequiresPeers;
     bool fAllowMultipleAddressesFromGroup;
     bool fAllowMultiplePorts;
     CCheckpointData checkpointData;

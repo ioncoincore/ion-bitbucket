@@ -67,18 +67,18 @@ UniValue generateHybridBlocks(std::shared_ptr<CReserveKey> coinbaseKey, int nGen
                 if (!tokenGroupManager->ElectronTokensCreated()) {
                     throw JSONRPCError(RPC_MISC_ERROR, "Error: Mining in hybrid mode, but the Electron token group is not yet created");
                 }
-                std::shared_ptr<CReserveScript> coinbase_script;
+                CScript coinbase_script;
                 CBlockReward reward(nHeight + 1, 0, false, params);
                 if (!pwallet->GetScriptForHybridMining(coinbase_script, coinbaseKey, reward.GetCoinbaseReward())) {
                     throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
                 }
-                pblocktemplate = BlockAssembler(Params()).CreateNewBlock(coinbase_script->reserveScript);
+                pblocktemplate = BlockAssembler(Params()).CreateNewBlock(coinbase_script);
             } else {
-                std::shared_ptr<CReserveScript> coinbase_script;
+                CScript coinbase_script;
                 if (!pwallet->GetScriptForPowMining(coinbase_script, coinbaseKey)) {
                     throw JSONRPCError(RPC_WALLET_KEYPOOL_RAN_OUT, "Error: Keypool ran out, please call keypoolrefill first");
                 }
-                pblocktemplate = BlockAssembler(Params()).CreateNewBlock(coinbase_script->reserveScript);
+                pblocktemplate = BlockAssembler(Params()).CreateNewBlock(coinbase_script);
             }
         }
         if (!pblocktemplate.get())

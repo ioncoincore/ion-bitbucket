@@ -89,7 +89,7 @@ void CTokenGroupManager::ResetTokenGroups() {
     CTransaction tgTxION;
     CTokenGroupDescription tgDescriptionION("ION", "Ion", 8, "https://www.ionomy.com", uint256());
     CTokenGroupStatus tokenGroupStatus;
-    CTokenGroupCreation tgCreationION(MakeTransactionRef(tgTxION), tgInfoION, tgDescriptionION, tokenGroupStatus);
+    CTokenGroupCreation tgCreationION(MakeTransactionRef(tgTxION), uint256(), tgInfoION, tgDescriptionION, tokenGroupStatus);
     mapTokenGroups.insert(std::pair<CTokenGroupID, CTokenGroupCreation>(NoGroup, tgCreationION));
 
 }

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # Copyright (c) 2016 The Bitcoin Core developers
+# Copyright (c) 2018-2020 The Ion Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test RPC commands for signing and verifying messages."""
@@ -16,9 +17,9 @@ class SignMessagesTest(BitcoinTestFramework):
         message = 'This is just a test message'
 
         self.log.info('test signing with priv_key')
-        priv_key = 'cU4zhap7nPJAWeMFu4j6jLrfPmqakDAzy8zn8Fhb3oEevdm4e5Lc'
-        address = 'yeMpGzMj3rhtnz48XsfpB8itPHhHtgxLc3'
-        expected_signature = 'ICzMhjIUmmXcPWy2+9nw01zQMawo+s5FIy6F7VMkL+TmIeNq1j3AMEuw075os29kh5KYLbysKkDlDD+EAqERBd4='
+        priv_key = 'cMte1yTqHq4kju8dENdpsiwx4WEheSrHUHcv8RuvvvGvsfGnhkxm'
+        address = 'gS6WwMgjAUtnTKnggiYxszoNxnmWThfaLX'
+        expected_signature = 'ILMEcAWB/ESbsrWUDgqpcTh/7i3o9zxSddBOTT5FAHfXJuKnPOXAS/BrX9LTD6nC3eJL157AYb1x0Gv5heH+gD4='
         signature = self.nodes[0].signmessagewithprivkey(priv_key, message)
         assert_equal(expected_signature, signature)
         assert(self.nodes[0].verifymessage(address, signature, message))

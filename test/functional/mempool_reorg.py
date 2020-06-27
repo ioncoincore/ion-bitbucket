@@ -54,11 +54,12 @@ class MempoolCoinbaseTest(BitcoinTestFramework):
         assert_raises_rpc_error(-26, "non-final", self.nodes[0].sendrawtransaction, timelock_tx)
 
         # Broadcast and mine spend_102 and 103:
-        spend_102_id = self.nodes[0].sendrawtransaction(spend_102_raw)
-        spend_103_id = self.nodes[0].sendrawtransaction(spend_103_raw)
+        #time.sleep(3600)
+        spend_102_id = self.nodes[0].sendrawtransaction(spend_102_raw, True)
+        spend_103_id = self.nodes[0].sendrawtransaction(spend_103_raw, True)
         self.nodes[0].generate(1)
         # Time-locked transaction is still too immature to spend
-        assert_raises_rpc_error(-26,'non-final', self.nodes[0].sendrawtransaction, timelock_tx)
+        assert_raises_rpc_error(-26,'non-final', self.nodes[0].sendrawtransaction, timelock_tx, True)
 
         # Create 102_1 and 103_1:
         spend_102_1_raw = create_tx(self.nodes[0], spend_102_id, node1_address, 499.8)
@@ -68,11 +69,11 @@ class MempoolCoinbaseTest(BitcoinTestFramework):
         spend_103_1_id = self.nodes[0].sendrawtransaction(spend_103_1_raw)
         last_block = self.nodes[0].generate(1)
         # Time-locked transaction can now be spent
-        timelock_tx_id = self.nodes[0].sendrawtransaction(timelock_tx)
+        timelock_tx_id = self.nodes[0].sendrawtransaction(timelock_tx, True)
 
         # ... now put spend_101 and spend_102_1 in memory pools:
-        spend_101_id = self.nodes[0].sendrawtransaction(spend_101_raw)
-        spend_102_1_id = self.nodes[0].sendrawtransaction(spend_102_1_raw)
+        spend_101_id = self.nodes[0].sendrawtransaction(spend_101_raw, True)
+        spend_102_1_id = self.nodes[0].sendrawtransaction(spend_102_1_raw, True)
 
         self.sync_all()
 
@@ -90,6 +91,7 @@ class MempoolCoinbaseTest(BitcoinTestFramework):
             node.invalidateblock(new_blocks[0])
 
         self.sync_all()
+        self.nodes[0].generate(5)
 
         # mempool should be empty.
         assert_equal(set(self.nodes[0].getrawmempool()), set())

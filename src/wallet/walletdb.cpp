@@ -164,11 +164,11 @@ bool CWalletDB::WriteStakeSplitThreshold(uint64_t nStakeSplitThreshold)
     return WriteIC(std::string("stakeSplitThreshold"), nStakeSplitThreshold);
 }
 
-bool CWalletDB::WriteAutoCombineSettings(bool fEnable, CAmount nCombineThreshold)
+bool CWalletDB::WriteAutoCombineSettings(bool fEnable, CAmount nCombineThresholdAmount)
 {
     std::pair<bool, CAmount> pSettings;
     pSettings.first = fEnable;
-    pSettings.second = nCombineThreshold;
+    pSettings.second = nCombineThresholdAmount;
     return WriteIC(std::string("autocombinesettings"), pSettings);
 }
 
