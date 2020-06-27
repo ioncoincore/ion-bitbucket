@@ -1208,8 +1208,8 @@ public:
     }
 
     void GetScriptForMining(std::shared_ptr<CReserveScript> &script);
-    bool GetScriptForPowMining(std::shared_ptr<CReserveScript> &script, const std::shared_ptr<CReserveKey> &reservedKey);
-    bool GetScriptForHybridMining(std::shared_ptr<CReserveScript> &script, const std::shared_ptr<CReserveKey> &reservedKey, const CReward &reward);
+    bool GetScriptForPowMining(CScript& script, const std::shared_ptr<CReserveKey> &reservedKey);
+    bool GetScriptForHybridMining(CScript& script, const std::shared_ptr<CReserveKey> &reservedKey, const CReward &reward);
     bool GetKeyForMining(std::shared_ptr<CReserveKey> &reservedKey, CPubKey &pubkey);
     
     unsigned int GetKeyPoolSize()

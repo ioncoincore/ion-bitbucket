@@ -81,7 +81,7 @@ CReward::CReward(const RewardType typeIn, const CTxOut& out) {
     IONAmount = 0;
 
     CTokenGroupInfo tokenGrp(out.scriptPubKey);
-    if ((tokenGrp.associatedGroup != NoGroup) && !tokenGrp.isAuthority()) {
+    if ((tokenGrp.associatedGroup != NoGroup)) {
         AddRewardAmounts(out.nValue, tokenGrp.associatedGroup, tokenGrp.getAmount());
     } else {
         AddRewardAmounts(out.nValue);
@@ -139,18 +139,6 @@ CBlockReward::CBlockReward(const CBlock& block, const bool fHybridPowBlock, cons
             }
         }
     }
-/*
-    for (auto out : block.vtx[0]->vout) {
-        CReward reward(CReward::REWARD_COINBASE, out);
-        AddReward(reward);
-    }
-    if (block.IsProofOfStake()) {
-        for (auto out : block.vtx[1]->vout) {
-            CReward reward(CReward::REWARD_COINSTAKE, out);
-            AddReward(reward);
-        }
-    }
-*/
 }
 
 CBlockReward::CBlockReward(const int nHeight, const CAmount nFees, const bool fPos, const Consensus::Params& consensusParams) {
