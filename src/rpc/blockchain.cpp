@@ -1823,10 +1823,12 @@ UniValue getchaintxstats(const JSONRPCRequest& request)
     const CBlockIndex* pindexPast = pindex->GetAncestor(pindex->nHeight - blockcount);
     int nTimeDiff = pindex->GetMedianTimePast() - pindexPast->GetMedianTimePast();
     int nTxDiff = pindex->nChainTx - pindexPast->nChainTx;
+    int nXDMTxDiff = pindex->nChainXDMTransactions - pindexPast->nChainXDMTransactions;
 
     UniValue ret(UniValue::VOBJ);
     ret.push_back(Pair("time", (int64_t)pindex->nTime));
     ret.push_back(Pair("txcount", (int64_t)pindex->nChainTx));
+    ret.push_back(Pair("xdmtxcount", (int64_t)pindex->nChainXDMTransactions));
     ret.push_back(Pair("txrate", ((double)nTxDiff) / nTimeDiff));
 
     return ret;
