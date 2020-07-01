@@ -150,12 +150,7 @@ UniValue getprivatesendinfo(const JSONRPCRequest& request)
 
 static const CRPCCommand commands[] =
     { //  category              name                      actor (function)         okSafe argNames
-        //  --------------------- ------------------------  -----------------------  ------ ----------
-        { "ion",               "getpoolinfo",            &getpoolinfo,            true,  {} },
-        { "ion",               "getprivatesendinfo",     &getprivatesendinfo,     true,  {} },
-#ifdef ENABLE_WALLET
-        { "ion",               "privatesend",            &privatesend,            false, {} },
-#endif // ENABLE_WALLET
+      //  --------------------- ------------------------  -----------------------  ------ ----------
 };
 
 void RegisterPrivateSendRPCCommands(CRPCTable &t)
