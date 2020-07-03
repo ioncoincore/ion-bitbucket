@@ -271,14 +271,14 @@ public:
         consensus.BIP34Hash = uint256S("000000ed2f68cd6c7935831cc1d473da7c6decdb87e8b5dba0afff0b00002690");
         consensus.BIP65Height = 1014023; // Start enforcing BIP65 (CHECKLOCKTIMEVERIFY) for blocks with version 9 and higher
         consensus.BIP66Height = 1; // Start enforcing BIP66 (Strict DER signatures) for blocks with version 7 and higher
-        consensus.DIP0001Height = 9999999;
-        consensus.DIP0003Height = 9999999;
+        consensus.DIP0001Height = 1760000;
+        consensus.DIP0003Height = 1760000;
         consensus.DIP0003EnforcementHeight = std::numeric_limits<int>::max();
         consensus.DIP0003EnforcementHash = uint256();
-        consensus.IIP0006Height = 9999999;
-        consensus.CSVHeight = 9999999;
-        consensus.BIP147Height = 9999999;
-        consensus.DIP0008Height = 9999999;
+        consensus.IIP0006Height = 1760000;
+        consensus.CSVHeight = 1760000;
+        consensus.BIP147Height = 1760000;
+        consensus.DIP0008Height = 1760000;
         consensus.powLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 24
         consensus.hybridPowLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // ~uint256(0) >> 24
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Ion: 1 day
@@ -326,7 +326,7 @@ public:
         consensus.strTokenManagementKey = "inqaYuaES1cmRBXHodp25UceeVPbWQG5wY";
         consensus.nOpGroupNewRequiredConfirmations = 1;
         // POSPOW
-        consensus.POSPOWStartHeight = 9999999;
+        consensus.POSPOWStartHeight = 1760000;
 
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 25;
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
